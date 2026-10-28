@@ -1,7 +1,8 @@
-name: Test and publish Willow Valley
+name: Publish Willow Valley
 on:
-  push:
-    branches: [main, develop]
+  workflow_run:
+    workflows: ["Test Willow Valley"]
+    types: [completed]
   workflow_dispatch:
 permissions:
   contents: read
@@ -11,21 +12,8 @@ concurrency:
   group: willow-valley-pages
   cancel-in-progress: true
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-      - name: Test deterministic simulation
-        run: |
-          node --check app.mjs
-          node --check simulation.mjs
-          node --check config.mjs
-          node --test tests/*.test.mjs
   deploy:
-    needs: test
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     environment:
       name: github-pages
