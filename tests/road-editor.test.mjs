@@ -76,10 +76,10 @@ test("AC-08 regression: legacy v1 saves remain readable and road geometry stays 
 });
 test("safety: bound max points, reject malformed anchors and avoid accidental map edits",()=>{
  const d=createRoadDraft();
- for(let i=0;i<MAX_ANCHORS;i++)assert.equal(addRoadAnchor(d,point(150+i*10,400)),true);
+ for(let i=0;i<MAX_ANCHORS;i++)assert.equal(addRoadAnchor(d,point(172+i*10,472)),true);
  assert.equal(addRoadAnchor(d,point(600,400)),false);
  assert.equal(addRoadAnchor(createRoadDraft(),point(NaN,5)),false);
- const c=beginRoadBend(d,0);updateRoadBend(d,0,c,point(155,400),point(155,480));
+ const c=beginRoadBend(d,0);updateRoadBend(d,0,c,point(177,472),point(177,530));
  assert.ok(flattenRoadDraft(d).length<=512);
  const s=startGame();assert.equal(addRoad(s,flattenRoadDraft(d)).ok,true);
  assert.equal(validState(s),true);
