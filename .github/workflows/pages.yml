@@ -42,6 +42,7 @@ jobs:
           cp preview/road-editor.mjs _site/dev/road-editor.mjs
           cp preview/road-network.mjs _site/dev/road-network.mjs
           cp preview/road-gesture.mjs _site/dev/road-gesture.mjs
+          cp preview/desire-paths.mjs _site/dev/desire-paths.mjs
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4

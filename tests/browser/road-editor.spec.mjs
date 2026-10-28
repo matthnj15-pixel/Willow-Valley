@@ -108,3 +108,53 @@ test("WV-ROAD-002 AC-07: insert intersection on an existing segment",async({page
  await page.locator("#confirmRoad").click();
  expect((await saved(page)).roadGraph.segments).toHaveLength(5);
 });
+
+
+test("WV-ROAD-003 fixed endpoint: hold at node and drag only moves opposite curve control",async({page})=>{
+ await extendFrom(page,{x:460,y:454});
+ await holdDrag(page,{x:560,y:325},{x:72,y:60});
+ const d=await preview(page).getAttribute("d");
+ expect(d).toMatch(/^M 460 454 Q /);
+ expect(d).toMatch(/ 560 325$/);
+ await page.locator("#confirmRoad").click();
+ const state=await saved(page);
+ const latest=state.roadGraph.segments.at(-1);
+ const anchor=state.roadGraph.nodes.find(n=>n.id===latest.b);
+ expect(anchor.x).toBe(560);expect(anchor.y).toBe(325);
+ expect(latest.control.x).toBeLessThan(anchor.x);
+ expect(latest.control.y).toBeLessThan(anchor.y);
+});
+test("WV-ROAD-003 intersection: crossing a built segment creates four connected arms",async({page})=>{
+ await tapMap(page,{x:400,y:340});
+ await tapMap(page,{x:400,y:540});
+ await page.locator("#confirmRoad").click();
+ const state=await saved(page);
+ const crossing=state.roadGraph.nodes.find(n=>Math.abs(n.x-400)<2&&n.y>400&&n.y<475);
+ expect(crossing).toBeTruthy();
+ expect(state.roadGraph.segments.filter(e=>e.a===crossing.id||e.b===crossing.id)).toHaveLength(4);
+});
+test("WV-ROAD-003 isolated road: new independent street is allowed and gains desire paths",async({page})=>{
+ await tapMap(page,{x:110,y:100});
+ await tapMap(page,{x:240,y:100});
+ await page.locator("#confirmRoad").click();
+ await expect(page.locator("#toast")).toContainText("Isolated street");
+ const isolated=await saved(page);
+ expect(isolated.desirePaths).toHaveLength(0);
+ await page.locator("#nextBtn").click();
+ const later=await saved(page);
+ expect(later.desirePaths).toHaveLength(1);
+ expect(later.desirePaths[0].progress).toBeGreaterThan(0);
+ expect(later.roadGraph.segments).toEqual(isolated.roadGraph.segments);
+});
+test("WV-ROAD-003 disconnected homes show red warning and lower taxes",async({page})=>{
+ const before=await saved(page);
+ await tapMap(page,{x:330,y:417});
+ page.once("dialog",dialog=>dialog.accept());
+ await page.getByRole("button",{name:/Destroy this junction/}).click();
+ await expect(page.locator('#map circle[fill="#d6e4ce"]')).toHaveCount(3);
+ expect(await page.locator('#map rect[stroke="#c54f43"]').count()).toBeGreaterThan(0);
+ await page.locator("#nextBtn").click();
+ const s=await saved(page);
+ expect(s.gold).toBeLessThan(before.gold);
+ expect(s.report).toContain("residents");
+});

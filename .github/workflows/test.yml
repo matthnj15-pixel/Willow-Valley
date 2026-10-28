@@ -22,6 +22,7 @@ jobs:
           node --check road-editor.mjs
           node --check road-network.mjs
           node --check road-gesture.mjs
+          node --check desire-paths.mjs
           node --check config.mjs
           node --test tests/*.test.mjs
       - name: Install browser test dependencies
