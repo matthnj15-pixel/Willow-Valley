@@ -43,7 +43,7 @@ test("AC-06: preview has a single Q only when the user explicitly bends a segmen
  const origin=beginRoadBend(d,1);updateRoadBend(d,1,origin,point(400,500),point(470,500));
  assert.equal((roadDraftPath(d).match(/ Q /g)||[]).length,1);
  assert.equal((roadDraftPath(d).match(/ L /g)||[]).length,1);
- assert.equal(hitRoadSegment(d,point(435,500),32),1);
+ assert.equal(hitRoadSegment(d,point(470,500),32),1);
  assert.equal(hitRoadSegment(d,point(100,100),30),-1);
 });
 test("AC-07: cost tracks actual bend length and undo reverses last action",()=>{

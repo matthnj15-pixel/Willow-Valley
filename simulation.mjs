@@ -25,7 +25,7 @@ export function startGame(){return {
 };}
 export function validState(x){return !!x&&x.version===VERSION&&Number.isInteger(x.turn)&&x.turn>=0&&x.turn<200000&&
  ["people","gold","food","wood","tools","happiness"].every(k=>Number.isFinite(x[k]))&&
- Array.isArray(x.roads)&&x.roads.length<500&&x.roads.every(r=>Array.isArray(r)&&r.length>=2&&r.length<=100&&r.every(validPoint))&&
+ Array.isArray(x.roads)&&x.roads.length<500&&x.roads.every(r=>Array.isArray(r)&&r.length>=2&&r.length<=512&&r.every(validPoint))&&
  Array.isArray(x.buildings)&&x.buildings.length<300&&x.buildings.every(b=>BUILDINGS[b.type]&&validPoint(b))&&
  Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(validPoint)&&Array.isArray(x.logs);}
 function validPoint(p){return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=WORLD.w&&p.y>=0&&p.y<=WORLD.h;}
@@ -38,7 +38,7 @@ export function placeBuilding(s,type,p){const b=BUILDINGS[type];if(!b)return{ok:
  if(s.gold<b.gold||s.wood<b.wood||s.tools<b.tools)return{ok:false,reason:"Insufficient treasury, wood, or tools."};
  s.gold-=b.gold;s.wood-=b.wood;s.tools-=b.tools;s.buildings.push({type,x:Math.round(p.x),y:Math.round(p.y)});
  s.report=b.label+" established. Road access affects monthly production.";s.logs.unshift(monthLabel(s.turn)+": "+b.label+" built.");return{ok:true};}
-export function addRoad(s,points){if(points.length<2||points.length>60||!points.every(validPoint))return{ok:false,reason:"Choose at least two valid road points."};
+export function addRoad(s,points){if(points.length<2||points.length>512||!points.every(validPoint))return{ok:false,reason:"Choose at least two valid road points."};
  if(roadLength(points)<28)return{ok:false,reason:"Road must be at least 28 map units long."};
  if(nearestRoad(points[0],s.roads)>65&&nearestRoad(points.at(-1),s.roads)>65)return{ok:false,reason:"Connect one end to your existing road network."};
  const price=roadCost(points);if(s.gold<price)return{ok:false,reason:"You need "+price+" gold to build this road."};
