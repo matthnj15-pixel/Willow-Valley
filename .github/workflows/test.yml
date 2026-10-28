@@ -22,3 +22,9 @@ jobs:
           node --check road-editor.mjs
           node --check config.mjs
           node --test tests/*.test.mjs
+      - name: Install browser test dependencies
+        run: npm install --no-audit --no-fund --no-package-lock
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Exercise mobile portrait road interactions
+        run: npm run test:e2e
