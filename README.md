@@ -16,7 +16,11 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 - Pan the map with one finger.
 - Pinch with two fingers or use the +/- buttons to zoom.
 - Select **Roads**, then tap the start and corners of a road. Every tap adds a **straight segment** and corners stay sharp.
-- **Press and hold any unfinished road segment for about 0.36 seconds, then drag it** to bend that segment into a controlled curve. Repeat the gesture to refine it.
+- Enter Roads mode to reveal **existing** road junctions. Tap a built junction to extend or destroy it. The original village gateway remains protected.
+- Tap a built road segment to insert an intersection, branch from it, or remove the segment. Demolition has no direct cost or refund, but disconnected industries stop producing.
+- Tap empty land to place a new starting point, then tap again to make straight corners. **Hold any point for ~0.36 seconds and drag in one action** to create an additional curved segment, with the initial touch controlling its bend.
+- Press and drag an unfinished segment to reshape it, or hold an orange curve handle to adjust an already built curve.
+- **Build road** commits new road geometry; constructed nodes become existing junctions with extend/destroy actions.
 - Drag empty map space to pan, or pinch with two fingers to zoom. A quick swipe over a road also pans instead of bending it.
 - Tap **Undo** to reverse the last node or curve, **Cancel** to discard the draft, or **Build road** to commit. Cost updates with the real road length.
 - Select **Build** and pick an industry, then tap a location on the map to place it.
@@ -41,7 +45,9 @@ The current Advisor uses local deterministic heuristics and **does not make AI r
 ## Architecture
 
 - `simulation.mjs`: pure deterministic simulation, save validation, construction and road rules.
-- `road-editor.mjs`: pure tested editor model for straight segments, quadratic curves, long-press eligibility, undo, and save-compatible road polylines.
+- `road-editor.mjs`: draft road geometry and undo logic.
+- `road-network.mjs`: persistent junction IDs, editable edges, connected road access, and legacy save compatibility.
+- `road-gesture.mjs`: interprets a hold-and-drag into an optional curve.
 - `app.mjs`: browser UI, gestures, SVG drawing, local saves.
 - `config.mjs`: environment-specific configuration and feature flags.
 - `tests/`: unit tests without external dependencies.

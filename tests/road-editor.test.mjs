@@ -66,9 +66,9 @@ test("AC-08: confirmed curved road persists in v1 saves and affects distance cal
  assert.equal(validState(s),true);
  const loaded=JSON.parse(JSON.stringify(s));
  assert.equal(validState(loaded),true);
- assert.deepEqual(loaded.roads.at(-1),s.roads.at(-1));
+ assert.deepEqual(loaded.roadGraph,s.roadGraph);
  assert.ok(nearestRoad(point(570,520),loaded.roads)<100);
- assert.ok(roadLength(loaded.roads.at(-1))>220);
+ assert.ok(loaded.roads.slice(-14).reduce((sum,r)=>sum+roadLength(r),0)>220);
 });
 test("AC-08 regression: legacy v1 saves remain readable and road geometry stays linear",()=>{
  const old=JSON.parse(JSON.stringify(startGame()));assert.equal(validState(old),true);
@@ -76,10 +76,10 @@ test("AC-08 regression: legacy v1 saves remain readable and road geometry stays 
 });
 test("safety: bound max points, reject malformed anchors and avoid accidental map edits",()=>{
  const d=createRoadDraft();
- for(let i=0;i<MAX_ANCHORS;i++)assert.equal(addRoadAnchor(d,point(150+i*10,400)),true);
+ for(let i=0;i<MAX_ANCHORS;i++)assert.equal(addRoadAnchor(d,point(172+i*10,472)),true);
  assert.equal(addRoadAnchor(d,point(600,400)),false);
  assert.equal(addRoadAnchor(createRoadDraft(),point(NaN,5)),false);
- const c=beginRoadBend(d,0);updateRoadBend(d,0,c,point(155,400),point(155,480));
+ const c=beginRoadBend(d,0);updateRoadBend(d,0,c,point(177,472),point(177,530));
  assert.ok(flattenRoadDraft(d).length<=512);
  const s=startGame();assert.equal(addRoad(s,flattenRoadDraft(d)).ok,true);
  assert.equal(validState(s),true);

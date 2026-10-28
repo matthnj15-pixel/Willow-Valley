@@ -40,6 +40,8 @@ jobs:
           # Stable may not yet have features under testing on develop.
           if [ -f stable/road-editor.mjs ]; then cp stable/road-editor.mjs _site/road-editor.mjs; fi
           cp preview/road-editor.mjs _site/dev/road-editor.mjs
+          cp preview/road-network.mjs _site/dev/road-network.mjs
+          cp preview/road-gesture.mjs _site/dev/road-gesture.mjs
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
