@@ -24,9 +24,13 @@ jobs:
           node --check road-gesture.mjs
           node --check desire-paths.mjs
           node --check config.mjs
+          node --check scripts/build-offline.mjs
+          node --check sw.js
           node --test tests/*.test.mjs
       - name: Install browser test dependencies
         run: npm install --no-audit --no-fund --no-package-lock
+      - name: Build self-contained offline HTML
+        run: npm run build:offline
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Exercise mobile portrait road interactions

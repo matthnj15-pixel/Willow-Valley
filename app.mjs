@@ -1,5 +1,5 @@
 import {IS_PREVIEW,FLAGS,SAVE_KEY} from "./config.mjs";
-import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance,advice} from "./simulation.mjs";
+import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance} from "./simulation.mjs";
 import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,SNAP_RADIUS} from "./road-network.mjs";
 import {radialCurveGesture} from "./road-gesture.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
@@ -122,12 +122,8 @@ function menuPanel(){const el=document.createElement("div");el.append(textNode("
  sheetButton(el,"Export save as JSON",()=>{const blob=new Blob([JSON.stringify(game,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="willow-valley-"+(IS_PREVIEW?"dev":"stable")+"-turn-"+game.turn+".json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);notify("Save export started.");});
  sheetButton(el,"Import a saved game",()=>{$("importSave").click();});
  sheetButton(el,"Restart settlement",()=>{if(confirm("Start a new settlement in this environment? Export your save first if you want to keep it.")){game=startGame();refresh();closeSheet();notify("A new Willow Valley begins.");}});
- el.append(textNode("p","Feature flags: local advisor ON, remote AI OFF. No API credentials are stored in this page.","note"));
+ el.append(textNode("p","Willow Valley is an offline-first strategy game. All simulation turns run on your device, without accounts or cloud AI.","note"));
  openSheet("Your settlement",el);}
-function advisorPanel(){const [headline,detail]=advice(game),el=document.createElement("div");el.append(textNode("p","Your council reviews the settlement's actual resource balances and infrastructure."));
- el.append(textNode("h3",headline),textNode("p",detail));
- el.append(textNode("p","This is a rule-based advisor. Live AI conversation is planned for a secure, authenticated backend. There is no OpenAI API key in the game.","note"));
- openSheet("The council advisor",el);}
 function historyPanel(){const el=document.createElement("div");el.append(textNode("p","Significant milestones and monthly decisions in the life of Willow Valley."));const list=document.createElement("ol");for(const message of game.logs.slice(0,25))list.append(textNode("li",message));el.append(list);openSheet("Valley history",el);}
 function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=structureAccess(game,item);const detail=item.kind==="house"?"Household access: "+(access==="road"?"Connected to the town road network.":access==="footpath"?"Only a walking desire path connects this home; services and tax revenue are limited.":"DISCONNECTED. The household cannot receive normal services or contribute full taxes."):"Structure access: "+(access==="road"?"Connected to the road network.":access==="footpath"?"Footpath access only. This does not support full service or deliveries.":"DISCONNECTED: no road service or industrial deliveries.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
 const roadPixelRadius=()=>{const r=svg.getBoundingClientRect();return HIT_RADIUS_PX*(920/camera.scale)/r.width;};
@@ -309,7 +305,6 @@ $("zoomIn").onclick=()=>zoom(1.32);$("zoomOut").onclick=()=>zoom(1/1.32);
 $("exploreBtn").onclick=()=>setMode("explore");
 $("roadsBtn").onclick=()=>setMode("road");
 $("buildBtn").onclick=()=>buildPanel();
-$("advisorBtn").onclick=()=>advisorPanel();
 $("menuBtn").onclick=()=>menuPanel();
 $("historyBtn").onclick=()=>historyPanel();
 $("closeSheet").onclick=closeSheet;$("backdrop").onclick=closeSheet;
@@ -321,3 +316,18 @@ $("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];
 window.addEventListener("resize",renderMap);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet();});
 setStats();save();requestAnimationFrame(renderMap);
+
+// Cache the complete game shell while connected, then play offline in flight mode.
+// A standalone downloaded HTML file skips the worker and uses its embedded assets.
+if(location.protocol==="file:"){
+ $("offlineStatus").textContent="LOCAL OFFLINE EDITION";
+}else if("serviceWorker" in navigator &&
+ (location.protocol==="https:"||["localhost","127.0.0.1"].includes(location.hostname))){
+ $("offlineStatus").textContent="PREPARING OFFLINE MODE";
+ navigator.serviceWorker.register("./sw.js",{scope:"./"})
+  .then(()=>navigator.serviceWorker.ready)
+  .then(()=>{$("offlineStatus").textContent="OFFLINE READY";})
+  .catch(error=>{$("offlineStatus").textContent="OFFLINE UNAVAILABLE";console.warn("Offline setup failed",error);});
+}else{
+ $("offlineStatus").textContent="LOCAL GAME";
+}
