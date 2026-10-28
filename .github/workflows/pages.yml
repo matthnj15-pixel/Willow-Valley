@@ -40,6 +40,10 @@ jobs:
           # A preview feature can add a module before it exists on stable.
           if [ -f stable/road-editor.mjs ]; then cp stable/road-editor.mjs _site/road-editor.mjs; fi
           if [ -f preview/road-editor.mjs ]; then cp preview/road-editor.mjs _site/dev/road-editor.mjs; fi
+          if [ -f stable/road-network.mjs ]; then cp stable/road-network.mjs _site/road-network.mjs; fi
+          if [ -f stable/road-gesture.mjs ]; then cp stable/road-gesture.mjs _site/road-gesture.mjs; fi
+          if [ -f preview/road-network.mjs ]; then cp preview/road-network.mjs _site/dev/road-network.mjs; fi
+          if [ -f preview/road-gesture.mjs ]; then cp preview/road-gesture.mjs _site/dev/road-gesture.mjs; fi
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
