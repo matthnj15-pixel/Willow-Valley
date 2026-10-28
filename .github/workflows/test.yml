@@ -25,10 +25,15 @@ jobs:
           node --check desire-paths.mjs
           node --check config.mjs
           node --check scripts/build-offline.mjs
+          node --check scripts/build-icons.mjs
           node --check sw.js
           node --test tests/*.test.mjs
       - name: Install browser test dependencies
         run: npm install --no-audit --no-fund --no-package-lock
+      - name: Render iOS and PWA icons
+        run: |
+          npm run build:icons
+          node --test tests/icon-artifacts.test.mjs
       - name: Build self-contained offline HTML
         run: npm run build:offline
       - name: Install Chromium

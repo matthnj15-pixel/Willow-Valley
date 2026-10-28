@@ -25,3 +25,13 @@ test("WV-OFFLINE-003: game retains local save export and import",()=>{
  assert.match(app,/Export save as JSON/);
  assert.match(app,/Import a saved game/);
 });
+
+test("WV-ICON-001: iOS touch icon and PWA PNG assets are declared",()=>{
+ const html=read("index.html"),manifest=JSON.parse(read("manifest.webmanifest")),sw=read("sw.js");
+ assert.match(html,/<link rel="apple-touch-icon" sizes="180x180" href="\.\/apple-touch-icon\.png">/);
+ assert.match(html,/<meta name="apple-mobile-web-app-title" content="Willow Valley">/);
+ assert.ok(manifest.icons.some(icon=>icon.src==="./icon-192.png"&&icon.sizes==="192x192"));
+ assert.ok(manifest.icons.some(icon=>icon.src==="./icon-512.png"&&icon.sizes==="512x512"));
+ for(const file of ["apple-touch-icon.png","icon-192.png","icon-512.png"])
+  assert.ok(sw.includes(file),"Offline install cache should include "+file);
+});
