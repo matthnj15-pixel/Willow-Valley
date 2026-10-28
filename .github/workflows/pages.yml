@@ -55,6 +55,19 @@ jobs:
           # Build tooling lives on develop but uses stable's own source for stable.
           if [ -f preview/scripts/build-offline.mjs ]; then
             (cd preview && npm install --no-audit --no-fund --no-package-lock)
+            # iOS requires a real PNG touch icon. Render PNGs separately
+            # for each environment using its own SVG source of truth.
+            if [ -f preview/scripts/build-icons.mjs ]; then
+              for branch in stable preview; do
+                if [ "$branch" = stable ]; then dest="_site"; else dest="_site/dev"; fi
+                if [ -f "$branch/icon.svg" ]; then
+                  node preview/scripts/build-icons.mjs "$branch" "$dest"
+                  test -s "$dest/apple-touch-icon.png"
+                  test -s "$dest/icon-192.png"
+                  test -s "$dest/icon-512.png"
+                fi
+              done
+            fi
             node preview/scripts/build-offline.mjs preview _site/dev/offline.html
             node preview/scripts/build-offline.mjs stable _site/offline.html
             (cd _site/dev && zip -9 -q willow-valley-offline.zip offline.html)
