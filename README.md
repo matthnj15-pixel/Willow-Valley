@@ -11,6 +11,13 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 
 **The production build uses the `main` branch.** The preview build uses `develop`. Both are deployed together to one Pages site. Game data uses separate browser storage namespaces; the preview cannot overwrite your production save.
 
+## WV-ROAD-003 development changes
+
+- Press and hold at the exact intended **new road node**, then drag: the node stays fixed and the curve handle moves to the **opposite** side of the finger, with radial distance determining curvature. Tap as usual for a straight segment.
+- A new road may cross an existing one anywhere: the crossing produces a shared intersection junction automatically, ready for future traffic-control features.
+- A street with no built connection is now allowed. The game warns that residents cannot directly reach it, and walking desire paths gradually form after monthly turns. Desire paths are not paved roads and cannot carry industry deliveries.
+- All structures, including houses, farms, parks and plazas, now participate in road service. Disconnected homes reduce tax revenue and satisfaction.
+
 ## Controls
 
 - Pan the map with one finger.
