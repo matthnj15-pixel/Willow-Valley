@@ -15,6 +15,7 @@ const result=await build({
 });
 const js=result.outputFiles[0].text.replace(/<\/script/gi,"<\\/script");
 let bundled=html.replace(/<link rel="manifest"[^>]*>\s*/g,"")
+ .replace(/<link rel="icon"[^>]*>\s*/g,"")
  .replace(/<link rel="stylesheet" href="\.\/styles\.css">/,
   "<style>\n"+css.replace(/<\/style/gi,"<\\/style")+"\n</style>")
  .replace(/<script type="module" src="\.\/app\.mjs"><\/script>/,
