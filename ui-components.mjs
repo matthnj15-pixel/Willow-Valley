@@ -38,6 +38,7 @@ const GLYPHS={
  info:'<circle cx="12" cy="12" r="10" fill="#5F8FA8"/><path d="M12 11v7m0-12v.5" stroke="#fff9eb" stroke-width="2.3" stroke-linecap="round"/>',
  heart:'<path d="M12 21 3 12C-1 5 6 1 12 7c6-6 13-2 9 5Z" fill="#C85A4B"/>',
  smile:'<circle cx="12" cy="12" r="10" fill="#F3E8BC" stroke="#D98C3F"/><circle cx="8.5" cy="9" r="1.1" fill="#035352"/><circle cx="15.5" cy="9" r="1.1" fill="#035352"/><path d="M7 14q5 6 10 0" fill="none" stroke="#035352" stroke-width="1.7"/>',
+ compass:'<circle cx="12" cy="12" r="9.5" fill="#F3E8BC" stroke="#8c764c" stroke-width="1.1"/><path d="m12 2 2.8 7.2L22 12l-7.2 2.8L12 22l-2.8-7.2L2 12l7.2-2.8Z" fill="#035352" stroke="#456d62" stroke-width=".7"/><path d="m12 4 1.1 6.9L20 12l-6.9 1.1L12 20l-1.1-6.9L4 12l6.9-1.1Z" fill="#E6C07A"/><circle cx="12" cy="12" r="2.1" fill="#035352"/>',
  menu:'<path d="M4 6h16M4 12h16M4 18h16" stroke="#035352" stroke-width="2.4" stroke-linecap="round"/>',
  settings:'<circle cx="12" cy="12" r="8.5" fill="none" stroke="#035352" stroke-width="3"/><circle cx="12" cy="12" r="3.5" fill="#D98C3F"/>',
  close:'<path d="m5 5 14 14m0-14L5 19" stroke="#035352" stroke-width="2.5" stroke-linecap="round"/>'
@@ -139,13 +140,37 @@ export function mountGameDock(target){
  );
  return target;
 }
-export function createSheetPreview({title="Construction",body}={}){
- const sheet=el("section","sheet wv-sheet-preview");
- sheet.setAttribute("role","dialog");sheet.setAttribute("aria-label",title);
+export function createDialogActions({
+ primaryLabel="Build",secondaryLabel="Cancel",primaryIcon="house",
+ onPrimary,onSecondary,primaryVariant="primary"
+}={}){
+ const row=el("div","wv-dialog-actions");
+ row.setAttribute("role","group");row.setAttribute("aria-label","Dialog actions");
+ row.append(
+  createButton({label:primaryLabel,variant:primaryVariant,iconName:primaryIcon,onClick:onPrimary}),
+  createButton({label:secondaryLabel,variant:"secondary",onClick:onSecondary})
+ );
+ return row;
+}
+export function createSheetPreview({title="Construction",body,footer,eyebrow="THE SETTLEMENT"}={}){
+ // No legacy .sheet class: this is a compact, centered cartography dialog,
+ // not the game's edge-to-edge bottom sheet.
+ const sheet=el("section","wv-sheet-preview");
+ sheet.setAttribute("role","dialog");sheet.setAttribute("aria-modal","true");
+ sheet.setAttribute("aria-label",title);
  sheet.append(el("div","sheet-grip"));
- const header=el("div","sheet-head");header.append(el("h2","",title));
- const exit=el("button","icon-button","×");exit.setAttribute("aria-label","Close");
- exit.addEventListener("click",()=>sheet.remove());header.append(exit);sheet.append(header);
+ const kicker=el("div","wv-sheet-kicker");
+ kicker.append(icon("compass",{size:17}),el("span","",eyebrow));
+ sheet.append(kicker);
+ const header=el("div","sheet-head");
+ header.append(el("h2","",title));
+ const exit=el("button","icon-button wv-dialog-close");
+ exit.type="button";exit.setAttribute("aria-label","Close");
+ exit.append(icon("close",{size:20}));
+ exit.addEventListener("click",()=>sheet.remove());
+ header.append(exit);sheet.append(header);
  const content=el("div","sheet-body");
- if(body)content.append(body);sheet.append(content);return sheet;
+ if(body)content.append(body);sheet.append(content);
+ if(footer)sheet.append(footer);
+ return sheet;
 }
