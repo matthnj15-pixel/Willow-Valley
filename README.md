@@ -8,7 +8,7 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 
 - Stable: https://matthnj15-pixel.github.io/Willow-Valley/
 - Preview: https://matthnj15-pixel.github.io/Willow-Valley/dev/
-- **Living UI Kit:** https://matthnj15-pixel.github.io/Willow-Valley/dev/ui-kit/ (interactive components and real game preview)
+- **Living UI Kit (Stable, after release):** https://matthnj15-pixel.github.io/Willow-Valley/ui-kit/\n- **Living UI Kit (Development):** https://matthnj15-pixel.github.io/Willow-Valley/dev/ui-kit/ (interactive components and real game preview)
 
 **The production build uses the `main` branch.** The preview build uses `develop`. Both are deployed together to one Pages site. Game data uses separate browser storage namespaces; the preview cannot overwrite your production save.
 
