@@ -33,6 +33,10 @@ self.addEventListener("fetch",event=>{
  if(url.origin!==scope.origin||!url.pathname.startsWith(scope.pathname))return;
  event.respondWith((async()=>{
    const cache=await caches.open(CACHE);
+   // A directory URL and its index.html must both work in airplane mode.
+   if(url.pathname.endsWith("/ui-kit/")||url.pathname.endsWith("/ui-kit")){
+     const kit=await cache.match("./ui-kit/index.html");if(kit)return kit;
+   }
    const matched=await cache.match(request,{ignoreSearch:true});
    if(matched)return matched;
    try{
