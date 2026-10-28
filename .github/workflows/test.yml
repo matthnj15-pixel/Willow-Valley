@@ -33,7 +33,7 @@ jobs:
       - name: Render iOS and PWA icons
         run: |
           npm run build:icons
-          node --test tests/icon-artifacts.test.mjs
+          CHECK_BUILT_ICONS=1 node --test tests/icon-artifacts.test.mjs
       - name: Build self-contained offline HTML
         run: npm run build:offline
       - name: Install Chromium
