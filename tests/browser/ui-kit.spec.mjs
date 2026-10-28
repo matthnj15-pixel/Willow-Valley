@@ -56,3 +56,54 @@ test("WV-UI-002: Development game links directly to its living UI catalog",async
  await expect(page).toHaveURL(/\/ui-kit\/$/);
  await expect(page.locator(".kit-hero h1")).toContainText("Willow Valley");
 });
+
+test("WV-UI-003: cartography dialog is ~80% width with a horizontal aligned action row",async({page})=>{
+ for(const [width,height] of [[390,844],[600,850],[320,568]]){
+  await page.setViewportSize({width,height});
+  await page.goto("/ui-kit/");
+  await page.locator("#sheetButton .wv-btn").click();
+  const dialog=page.locator("#modalBackdrop .wv-sheet-preview");
+  await expect(dialog).toBeVisible();
+  const bounds=await dialog.boundingBox();
+  expect(bounds).toBeTruthy();
+  expect(bounds.width).toBeLessThanOrEqual(width*.8+2);
+  expect(bounds.width).toBeGreaterThan(190);
+  expect(bounds.height).toBeLessThanOrEqual(height*.72+2);
+  const actions=page.locator("#modalBackdrop .wv-dialog-actions");
+  await expect(actions).toBeVisible();
+  const build=await actions.locator(".wv-btn").first().boundingBox();
+  const cancel=await actions.locator(".wv-btn").nth(1).boundingBox();
+  expect(build&&cancel).toBeTruthy();
+  expect(Math.abs(build.y-cancel.y)).toBeLessThanOrEqual(1);
+  expect(Math.abs(build.height-cancel.height)).toBeLessThanOrEqual(1);
+  expect(build.height).toBeGreaterThanOrEqual(44);
+  expect(cancel.height).toBeGreaterThanOrEqual(44);
+  expect(cancel.x).toBeGreaterThanOrEqual(build.x+build.width+8);
+  expect(cancel.x+cancel.width).toBeLessThanOrEqual(bounds.x+bounds.width-10);
+  const color=await dialog.locator(".sheet-body>p").evaluate(el=>getComputedStyle(el).color);
+  expect(color).toBe("rgb(64, 91, 77)");
+  await actions.locator(".wv-btn--secondary").click();
+  await expect(page.locator("#modalBackdrop")).toBeHidden();
+ }
+});
+test("WV-UI-003: rustic dialog and game sheet share parchment/material tokens",async({page})=>{
+ await page.goto("/ui-kit/");
+ await page.locator("#sheetButton .wv-btn").click();
+ const dialog=page.locator("#modalBackdrop .wv-sheet-preview");
+ await expect(dialog.locator(".wv-sheet-kicker")).toContainText("THE SETTLEMENT");
+ await expect(dialog.locator(".wv-icon").first()).toBeVisible();
+ const border=await dialog.evaluate(el=>getComputedStyle(el).borderTopColor);
+ expect(border).toBe("rgb(189, 167, 119)");
+ const game=page.frameLocator('iframe[title="Live Willow Valley Development game"]');
+ await game.locator("#buildBtn").click();
+ const real=game.locator("#sheet");
+ await expect(real).toBeVisible();
+ const gameBorder=await real.evaluate(el=>getComputedStyle(el).borderTopColor);
+ expect(gameBorder).toBe(border);
+ const realRow=game.locator("#sheetBody .wv-build-row").first();
+ await expect(realRow).toBeVisible();
+ const rowHeight=await realRow.evaluate(el=>el.getBoundingClientRect().height);
+ expect(rowHeight).toBeGreaterThanOrEqual(55);
+ await dialog.locator('[aria-label="Close"]').click();
+ await expect(page.locator("#modalBackdrop")).toBeHidden();
+});
