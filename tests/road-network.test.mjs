@@ -37,7 +37,7 @@ test("AC-03 deleted road connections can be restored through a newly built route
  const s=startGame(),j=nearestNode(s.roadGraph,pt(330,417),1);removeRoadNode(s,j.id);
  const isolated=nearestNode(s.roadGraph,pt(460,454),1);
  assert.equal(connectedEdgeIds(s.roadGraph).size,0);
- const built=buildRoad(s,[pt(172,472),pt(isolated.x,isolated.y)],[null]);
+ const built=buildRoad(s,[pt(172,472),pt(288,400),pt(isolated.x,isolated.y)],[null,null]);
  assert.equal(built.ok,true);
  assert.ok(connectedEdgeIds(s.roadGraph).size>1);
  assert.ok(advance(s,{events:false}).woodProduction>0);
