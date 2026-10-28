@@ -10,7 +10,7 @@ Willow Valley is a player-guided, self-organizing settlement, **not a lot-by-lot
 
 ### Fundamental distinction
 
-- **Player intent:** Paint areas; reserve nature; place primary roads and service buildings; manage policy, spending and staffing priorities.
+- **Player intent:** Paint broad areas; reserve nature; place primary roads and service buildings; manage policy, spending and staffing priorities. **Uniform subdivisions are an optional later unlock**, not a founding-village requirement.
 - **Simulation agency:** Create homes **only when household demand exists**; choose viable plots within permitted zones; trace organic footpaths and neighborhood layout from real travel.
 - **Hard limits:** No cliffside houses, development in water/blocked terrain, industry through protected habitat, unauthorized gravel/stone spending, or buildings generated to invent population.
 - **Reporting:** Every material simulation choice should have a visible reason in the town journal and be reproducible in a diagnostic log.
@@ -56,31 +56,47 @@ Households have stable IDs, member counts, housing status and arrival/need dates
 
 The town journal and diagnostic log record household-created, vacancy-filled, parcel-reserved, construction-started/completed/blocked, homelessness-started, homelessness-resolved, and homelessness-expired events with reasons, cost and age. Do not spawn people merely because a home is constructed.
 
-### Parcel sizes, spacing and settlement character
+### Organic early-settlement parcels, spacing and later formal planning
 
-Residential planning uses **land parcels/footprints, not pixel occupancy**. The following are **initial tunable game-world-unit targets** for the existing `WORLD={w:1200,h:900}` and approximate 22×22-unit drawn house models, **not a real-world meter scale**.
+**Design decision: early-game Willow Valley must NOT generate a uniform subdivision.** The first hamlets grow unevenly and opportunistically, as settlements evolve over time: cottages gather around a useful track, near farms, woodland edges, community wells or a junction; another home may stand farther back across a meadow. Frontage, shape, size and orientation vary because residents respond to topography, available routes and neighbors. The player paints the broad Residential permission boundary and builds the main routes, not repetitive rectangular property lines.
 
-| Property | Initial tuning target | Meaning |
+**Procedural residential development operates on irregular, complete land parcels**, not a fixed lot grid or leftover pixels. Boundaries can be trapezoidal, wedge-shaped, curved, multi-sided or asymmetrical. Some houses have generous gardens; others sit in a modest cluster. Their doorways can face a local footpath, a shared yard or an angled approach rather than all aligning square to the main road. Organic does **not** mean overcrowded, random spinning, obstructed access or implausible building collisions.
+
+Initial **world-unit safety envelopes**, based on the current `WORLD={w:1200,h:900}`, and drawn houses of roughly 22×22 units (not real meters):
+
+| Constraint | Initial tuning target | Enforcement |
 | --- | --- | --- |
-| Cottage lot street frontage | **48–56 world units** | Minimum continuous access-facing frontage, not simply a house-center distance |
-| Cottage parcel depth | **60–72 world units** | Includes house, front approach and usable yard |
-| Cottage house footprint | **20–26 × 20–28 units** | Approximate collision footprint; 3D model shape ultimately determines exact footprint |
-| Side spacing between house footprints | **≥ 12 units** | Avoid wall-to-wall crowds, even across neighboring parcel boundaries |
-| Front setback | **≥ 10 units** | Room for path/steps/landscaping before the house |
-| Back usable space | **≥ 12 units** | Yard and trees; adjust for foundation and slope |
-| Local minor residential access lane | **12–18 units of shared corridor width** | Count access corridor as consumed land, not free plot space |
-| Terrain grade and obstacle buffers | **By explicit suitability rules** | Entire house and necessary safe access must fit without cliff/water/vegetation collision |
+| Cottage physical footprint | Approx. **20–26 × 20–28 world units**, replaced by true 3D model bounds later | Full footprint must fit safe ground and avoid other structures |
+| House-to-house breathing room | **At least ~12 world units** clear between occupied building footprints | Apply across neighboring parcels and all orientations |
+| Safe pedestrian approach | Continuous, traversable entrance connection to an existing road or emerging local lane/footpath | Cannot cross cliffs, unsafe grades, water or a neighbor's building/yard exclusion |
+| Usable living space | House footprint + entrance approach + reasonable clear outdoor space | Reserve the *whole irregular parcel*, not only a building's center |
+| Typical early cottage land allocation | **Varied, not a fixed dimension**; begin experimenting around 2,500–5,000 world-unit² where terrain allows | Broader, narrower, deeper or angled sites permitted when safely usable; no universal rectangular width/depth |
+| Free natural land | Retain meaningful scattered trees, meadow gaps and communal breathing space | Target roughly 15–25% of suitable gross zone area initially, subject to visual/terrain tuning |
+| Gentle slope and preserved features | Suitability checked across foundation and approach, not only center point | Seat foundations on hills; reject cliff edges, water and protected natural obstacles |
 
-These are **prototypes**, to be calibrated on real iPhone zoom and 3D model scale. The first implementation should expose named tuning parameters with tests rather than hard-code magic values. If parcels need to be scaled with the world's authoritative unit system in the 3D prototype, update the targets while preserving their relative spacing.
+Numbers are prototype parameters, **not mandatory repeated frontage or identical 48×60 rectangles**. Minimum fit/safety constraints are hard; lot size distributions, gardening/woodland space and candidate scoring are tunable. Display failed candidate parcels as unsuitable in the zoning view, not as a promise that every pixel will be occupied.
 
-**Parcel generator:** Search only inside committed Residential polygons, using suitable ground and route-facing frontage; then subdivide into plausible lots with variable widths, depths, orientations, curved frontage and garden space. Reserve entire parcel polygons, not just building centers. Reject overlaps with road/lane corridors, other reserved parcels, building exclusion areas, water/cliff buffers, agricultural fields and preserves. Use 2D polygon intersection plus terrain-envelope checks, not the legacy blanket `distance(center,center)<57` occupancy shortcut (which may conflict with frontage-based layouts).
+**Early-hamlet procedural layout, in this order:**
 
-Avoid unnatural packing:
-- Permit **irregular lots, gaps, tree retention and front gardens**, especially where terrain or winding streets call for it.
-- Keep **at least 15–25% of *suitable gross residential-zone area* unassigned** as a starting landscape/open-space target (including appropriate shared green), then tune. This is a proposed planning target, not a rigid universal cap.
-- Do not squeeze a new micro-lot merely because slivers of land remain between two large lots. An undersized polygon is **unbuildable** and should appear as such in the zoning overlay.
-- Homes may have varying capacity and lot sizes by future density/policy; the first milestone uses a low-density cottage archetype. A *later* townhouse/higher-density unlock can deliberately change lot/frontage rules rather than silently increasing packing.
-- Sloped lots can use small foundations and grading within a threshold; no cliffside foundations. Full site/yard and safe route are considered, not only the building center.
+1. Find reasonable settlement anchors: accessible existing road/junctions, emerging local tracks, nearby employment, resources and community sites, along with suitable ground. Do not infer formal city blocks from the painted zone boundary.
+2. Find a small number of **individually viable sites**, constrained by local slope and landscape. Favor natural bends and low-disturbance ground rather than optimally packing the most buildings.
+3. Generate an irregular parcel around each candidate site's real foundation and outdoor use. Site shape follows contours, neighboring routes, trees and other occupied parcels; **reserve the entire parcel and setbacks**.
+4. Orient each cottage with a plausible entrance, grade/terrace and relation to its nearest path, while allowing different angles, spacing and variable garden directions. A path can curve organically **toward** houses as destinations emerge; no prerequisite rectangular service grid.
+5. Permit homes to arrive **incrementally** as real households need them. Keep open land between clusters and don't "backfill" leftover slivers with miniature cottages.
+6. Use reproducible seed and stable IDs for material costs, site scoring, cluster location and walking-access generation. Vary outcomes through environment and household needs, not frame-rate randomness.
+
+**Development phases and settlement character**
+
+| Settlement phase | Built form | Player control |
+| --- | --- | --- |
+| **Hamlet / early village (default)** | Loose, irregular, different-sized plots, angled cottages, opportunistic clusters, dirt tracks and shared open land | Paint residential intent; provide major connectors and protect scenery |
+| **Maturing village** | Some infill and neighborhood strengthening along heavily used paths; paths may be formalized into lanes | Optional policy for street improvement and densification |
+| **Planned town (future progression unlock)** | Formal **subdivisions**, repeatable measured lots, straighter rows, regular blocks and higher-density neighborhoods where desired | Player deliberately chooses/plans a subdivision and density policy rather than the game imposing it |
+| **Civic town** | Mixed organic historic core plus planned newer districts, with stone streets and municipal oversight | Preserve old character while building formal civic neighborhoods |
+
+**Key visual goal:** A founding village should look like people found good places to live, rather than a property developer divided a polygon into equally spaced lots. New planned districts can appear later, visibly marking the settlement's civic and historical evolution.
+
+**Collision and anti-packing contract:** Validate polygon overlaps (including existing road/path corridors), full parcel reservation, building/model footprint, slope, entrance accessibility and obstacle clearances. The current `occupied()` test using house-center distance alone is inadequate. No site is legal just because there are spare pixels between existing objects. The layout must remain reproducible, while taking advantage of contours and landscape diversity.
 
 ### Main roads vs emergent residential paths
 
@@ -124,7 +140,7 @@ Roads remain persistent editable edges with connectivity; material, condition, t
 
 ## F. Progression through achievement, not arbitrary turn count
 
-A sample path: **Hamlet** (housing/fields/wood/dirt paths) → **Village** (stable homes, jobs, food surplus, commerce, quarry) → **Market Town** (stone infrastructure, maintenance, specialist services) → **Civic Center** (administration, tax office, manor/castle policy tools). Building unlocks reflect needs and prior achievement and present a tangible problem/solution loop. Natural beauty/preserves and mobility matter to attractiveness; poor planning has recoverable consequences.
+A sample path: **Hamlet** (irregular cottages, shared green space, housing/fields/wood/dirt paths) → **Village** (stable homes, jobs, food surplus, commerce, quarry) → **Market Town** (formal subdivision and denser-district planning **option**, stone infrastructure, maintenance, specialist services) → **Civic Center** (administration, tax office, manor/castle policy tools). Formal street/lot regularity must be an explicit later progression choice, never imposed on the original organic village. Building unlocks reflect needs and prior achievement and present a tangible problem/solution loop. Natural beauty/preserves and mobility matter to attractiveness; poor planning has recoverable consequences.
 
 ## G. Save slots and diagnostics — protective prerequisite
 
@@ -154,16 +170,18 @@ Before schema-heavy world changes:
 | WORLD-13 | Three slots are isolated and safely migrate one legacy settlement per environment; no accidental stable-preview cross-save. |
 | WORLD-14 | All procedural results are deterministic for a given seed, action stream and turn; event log explains each material effect. |
 | WORLD-15 | Complete Node + Playwright suite (mobile portrait, offline startup and reload) remains green; no change is promoted to main without owner PR merge. |
-| WORLD-16 | Procedural cottage construction reserves non-overlapping **full parcel polygons** with road frontage, minimum lot dimensions, house footprints, setbacks and valid grade; rejected leftover slivers stay unbuildable. |
+| WORLD-16 | Procedural cottage construction reserves non-overlapping **full irregular parcel polygons** with realistic variable area/shape/angle, safe path access, physical footprint spacing and valid grade; rejected leftover slivers stay unbuildable. No equal rectangular-grid subdivision in the founding hamlet. |
 | WORLD-17 | The housing chart reports vacancies, viable vacant lots, zoned-but-unbuildable area and homeless households with independent countdowns; a family housed before its second additional turn does not leave. |
-| WORLD-18 | Local residential dirt lanes can self-form from main roads based on travel/terrain and consume corridor space; player's arterial/collector hierarchy remains unchanged without their command. |
+| WORLD-18 | Local residential dirt lanes can self-form from main roads based on travel/terrain, connect naturally grouped irregular cottage sites and consume corridor space; player's arterial/collector hierarchy remains unchanged without their command. |
+
+| WORLD-19 | On a deterministic test terrain with enough demand for multiple homes, a new hamlet generates demonstrably different parcel sizes/shapes/orientations and breathing spaces; regular, repeatable blocks appear only after explicitly unlocked planned-neighborhood policy. |
 
 ## I. Implementation slices (working order, not feature priority dictated by graphics)
 
 0. **SAVE-001 safety rail:** three slots, event log, import/export and legacy migration; prove reproducibility.
 1. **WORLD-001 terrain and painting prototype:** height/slope/obstacle authoritative data, contour + suitability visualization, touch zone brush and commit, safe region storage. Preserve existing SVG gameplay while prototyping.
 2. **WORLD-002 organic routes + visual vertical slice:** seeded terrain/river/trees/first GLB scene, grade-aware collision-free desire paths and a few walking sims; use existing road graph and UI Kit.
-3. **WORLD-003 household and housing agency:** real vacancies vs zoned buildable parcels, physical lot subdivision, two-additional-turn homelessness expiry and residential development constrained to player-painted zones.
+3. **WORLD-003 household and housing agency:** real vacancies vs zoned buildable parcels, irregular site-based cottage generation (not grid subdivision), two-additional-turn homelessness expiry and residential development constrained to player-painted zones. Formal subdivision tools are later progression mechanics.
 4. **WORLD-004 workforce + farm fields:** plot linking, crop production, smart auto-staff, manual priorities and efficiency/commute trade-offs.
 5. **WORLD-005 material infrastructure:** quarry, gravel-to-dirt decay, damaged stone, repair staffing and road upgrades.
 6. **WORLD-006 progression + balancing:** clear milestone unlocks, preserve attractiveness, longer-form season/year simulation tests.
