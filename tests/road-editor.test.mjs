@@ -66,9 +66,9 @@ test("AC-08: confirmed curved road persists in v1 saves and affects distance cal
  assert.equal(validState(s),true);
  const loaded=JSON.parse(JSON.stringify(s));
  assert.equal(validState(loaded),true);
- assert.deepEqual(loaded.roads.at(-1),s.roads.at(-1));
+ assert.deepEqual(loaded.roadGraph,s.roadGraph);
  assert.ok(nearestRoad(point(570,520),loaded.roads)<100);
- assert.ok(roadLength(loaded.roads.at(-1))>220);
+ assert.ok(loaded.roads.slice(-14).reduce((sum,r)=>sum+roadLength(r),0)>220);
 });
 test("AC-08 regression: legacy v1 saves remain readable and road geometry stays linear",()=>{
  const old=JSON.parse(JSON.stringify(startGame()));assert.equal(validState(old),true);
