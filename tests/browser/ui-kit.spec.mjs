@@ -80,7 +80,7 @@ test("WV-UI-003: cartography dialog is ~80% width with a horizontal aligned acti
   expect(cancel.height).toBeGreaterThanOrEqual(44);
   expect(cancel.x).toBeGreaterThanOrEqual(build.x+build.width+8);
   expect(cancel.x+cancel.width).toBeLessThanOrEqual(bounds.x+bounds.width-10);
-  const color=await dialog.locator(".sheet-body>p").evaluate(el=>getComputedStyle(el).color);
+  const color=await dialog.locator(".sheet-body p").evaluate(el=>getComputedStyle(el).color);
   expect(color).toBe("rgb(64, 91, 77)");
   await actions.locator(".wv-btn--secondary").click();
   await expect(page.locator("#modalBackdrop")).toBeHidden();
@@ -94,6 +94,8 @@ test("WV-UI-003: rustic dialog and game sheet share parchment/material tokens",a
  await expect(dialog.locator(".wv-icon").first()).toBeVisible();
  const border=await dialog.evaluate(el=>getComputedStyle(el).borderTopColor);
  expect(border).toBe("rgb(189, 167, 119)");
+ await dialog.locator('[aria-label="Close"]').click();
+ await expect(page.locator("#modalBackdrop")).toBeHidden();
  const game=page.frameLocator('iframe[title="Live Willow Valley Development game"]');
  await game.locator("#buildBtn").click();
  const real=game.locator("#sheet");
@@ -104,6 +106,4 @@ test("WV-UI-003: rustic dialog and game sheet share parchment/material tokens",a
  await expect(realRow).toBeVisible();
  const rowHeight=await realRow.evaluate(el=>el.getBoundingClientRect().height);
  expect(rowHeight).toBeGreaterThanOrEqual(55);
- await dialog.locator('[aria-label="Close"]').click();
- await expect(page.locator("#modalBackdrop")).toBeHidden();
 });
