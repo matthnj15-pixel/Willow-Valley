@@ -35,7 +35,7 @@ for(const [name,variant,iconName] of choices){
 }
 let activeNav="Build";
 for(const [label,iconName] of [["Build","house"],["Roads","roads"],["Map","map"],["Tasks","tasks"],["Citizens","people"]]){
- const button=createNavTool({label,iconName,active:label===activeNav,onClick:()=>{
+ const button=createNavTool({label,iconName,active:label===activeNav,compact:true,onClick:()=>{
   activeNav=label;for(const b of $("navigationGallery").children){
    const active=b.getAttribute("aria-label")===label;b.classList.toggle("active",active);
    b.setAttribute("aria-pressed",String(active));
@@ -51,7 +51,7 @@ const resources=[
  {label:"People",value:"32",iconName:"people",delta:"+3/mo"},
  {label:"Tools",value:"9",iconName:"tools",delta:"+2/mo"}
 ];
-mountResourceBar($("resourceGallery"),resources);
+mountResourceBar($("resourceGallery"),resources,{compact:true});
 for(const spec of [
  {text:"Constructing",variant:"success",iconName:"food"},
  {text:"Upgrade ready",variant:"info",iconName:"tools"},
