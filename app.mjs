@@ -50,6 +50,11 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
  for(const b of game.buildings)if(b.type==="farm"){svg.append(node("rect",{x:b.x-63,y:b.y-50,width:126,height:100,rx:5,fill:"#d9c58b",stroke:"#bea770","stroke-width":3,opacity:".81"}));for(let i=0;i<7;i++)svg.append(node("path",{d:"M "+(b.x-55)+" "+(b.y-38+i*12)+" l 110 0",stroke:"#a79d66","stroke-width":5,opacity:".65"}));}
  // Committed roads show persistent, editable nodes and curve handles.
  const graph=ensureGraph(game);
+ // Pedestrian shortcuts grow after the month advances. They are not roads.
+ for(const trail of visibleDesirePaths(game)){
+   svg.append(node("path",{d:"M "+trail.from.x+" "+trail.from.y+" L "+trail.to.x+" "+trail.to.y,
+    fill:"none",stroke:"#9f8256","stroke-width":6,"stroke-dasharray":"7 9","stroke-linecap":"round",opacity:".9"}));
+ }
  for(const e of graph.segments){
    const a=nodeAt(graph,e.a),b=nodeAt(graph,e.b);
    if(!a||!b)continue;
@@ -59,8 +64,20 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
  }
  const previewPoints=flattenRoadDraft(draft);
  if(previewPoints.length>1)roadGraphic(svg,previewPoints,true,roadDraftPath(draft));
- if(liveGesture&&liveGesture.end)roadGraphic(svg,[liveGesture.start,liveGesture.end],true,liveGesture.control?
-   "M "+liveGesture.start.x+" "+liveGesture.start.y+" Q "+liveGesture.control.x+" "+liveGesture.control.y+" "+liveGesture.end.x+" "+liveGesture.end.y:null);
+ if(liveGesture&&liveGesture.end){
+   if(distance(liveGesture.start,liveGesture.end)>8)roadGraphic(svg,[liveGesture.start,liveGesture.end],true,
+    "M "+liveGesture.start.x+" "+liveGesture.start.y+" Q "+liveGesture.control.x+" "+liveGesture.control.y+" "+liveGesture.end.x+" "+liveGesture.end.y);
+   svg.append(node("path",{d:"M "+liveGesture.end.x+" "+liveGesture.end.y+" L "+liveGesture.control.x+" "+liveGesture.control.y,
+      stroke:"#ffdf95","stroke-width":3,"stroke-dasharray":"4 6"}));
+   svg.append(node("circle",{cx:liveGesture.end.x,cy:liveGesture.end.y,r:12,fill:"#fff0bd",stroke:"#3e6047","stroke-width":3}));
+   svg.append(node("circle",{cx:liveGesture.control.x,cy:liveGesture.control.y,r:9,fill:"#ffae61",stroke:"#543e32","stroke-width":2}));
+ }
+ if(pendingControl&&draft.anchors.length){
+   const anchor=draft.anchors.at(-1);
+   svg.append(node("path",{d:"M "+anchor.x+" "+anchor.y+" L "+pendingControl.x+" "+pendingControl.y,
+    stroke:"#ffdf95","stroke-width":3,"stroke-dasharray":"4 6"}));
+   svg.append(node("circle",{cx:pendingControl.x,cy:pendingControl.y,r:9,fill:"#ffae61",stroke:"#543e32","stroke-width":2}));
+ }
  for(const bend of curvedSegments(draft)){
    svg.append(node("circle",{cx:bend.anchor.x,cy:bend.anchor.y,r:9,fill:"#ffcf7c",stroke:"#445c43","stroke-width":2}));
  }
@@ -74,15 +91,15 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
    for(const n of graph.nodes)svg.append(node("circle",{cx:n.x,cy:n.y,r:11,fill:"#d6e4ce",stroke:n.id===graph.hubId?"#bc783d":"#345840","stroke-width":3}));
  }
  for(const p of draft.anchors)svg.append(node("circle",{cx:p.x,cy:p.y,r:11,fill:"#fff1c2",stroke:"#53664b","stroke-width":3}));
- for(const h of game.houses){svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".25"}));
- svg.append(node("rect",{x:h.x-11,y:h.y-9,width:22,height:22,rx:2,fill:"#f2e2bc",stroke:"#aa9a78","stroke-width":1.3}));
+ for(const h of game.houses){const access=structureAccess(game,h);svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".25"}));
+ svg.append(node("rect",{x:h.x-11,y:h.y-9,width:22,height:22,rx:2,fill:"#f2e2bc",stroke:access==="road"?"#aa9a78":access==="footpath"?"#e6a34d":"#c54f43","stroke-width":access==="road"?1.3:4}));
  svg.append(node("path",{d:"M "+(h.x-16)+" "+(h.y-10)+" L "+h.x+" "+(h.y-23)+" L "+(h.x+16)+" "+(h.y-10)+" Z",fill:"#a67353",stroke:"#7e654b","stroke-width":1.4}));
- svg.append(node("rect",{x:h.x+2,y:h.y,width:4,height:13,fill:"#826c52"}));}
- for(const b of game.buildings){const shade={lumber:"#8f623c",farm:"#b98d49",smith:"#677777"}[b.type];const disconnected=nearestRoad(b,accessibleRoads(game))>125;
+ svg.append(node("rect",{x:h.x+2,y:h.y,width:4,height:13,fill:"#826c52}));if(access!=="road")appendText(svg,access==="footpath"?"~":"!",h.x+18,h.y-21,27,access==="footpath"?"#e4a34e":"#b93434",{"font-weight":"bold"});}
+ for(const b of game.buildings){const shade={lumber:"#8f623c",farm:"#b98d49",smith:"#677777",park:"#658c57",plaza:"#b6a77d"}[b.type]||"#a18b68";const access=structureAccess(game,b),disconnected=access!=="road";
  svg.append(node("ellipse",{cx:b.x,cy:b.y+18,rx:28,ry:9,fill:"#455f3d",opacity:".33"}));
- svg.append(node("rect",{x:b.x-22,y:b.y-17,width:44,height:36,rx:3,fill:shade,stroke:disconnected?"#cf614c":"#fff1bb","stroke-width":disconnected?5:3}));
+ svg.append(node("rect",{x:b.x-22,y:b.y-17,width:44,height:36,rx:3,fill:shade,stroke:access==="road"?"#fff1bb":access==="footpath"?"#e5a14b":"#cf614c","stroke-width":disconnected?5:3}));
  svg.append(node("path",{d:"M "+(b.x-26)+" "+(b.y-17)+" L "+b.x+" "+(b.y-33)+" L "+(b.x+26)+" "+(b.y-17)+" Z",fill:"#6a503c",stroke:"#4e4838","stroke-width":2}));
- appendText(svg,{farm:"F",lumber:"L",smith:"T"}[b.type],b.x,b.y+11,24,"#fff2cb",{"font-family":"Georgia,serif","font-weight":"bold"});if(disconnected)appendText(svg,"!",b.x+26,b.y-28,31,"#c74734",{"font-weight":"bold"});}
+ appendText(svg,{farm:"F",lumber:"L",smith:"T",park:"P",plaza:"S"}[b.type],b.x,b.y+11,24,"#fff2cb",{"font-family":"Georgia,serif","font-weight":"bold"});if(disconnected)appendText(svg,access==="footpath"?"~":"!",b.x+26,b.y-28,31,access==="footpath"?"#e5a14b":"#c74734",{"font-weight":"bold"});}
  appendText(svg,"WILLOW VALLEY",475,265,25,"#416347",{"font-family":"Georgia,serif","letter-spacing":"3",opacity:".68"});
  const marker=node("circle",{cx:475,cy:286,r:3,fill:"#416347",opacity:".7"});svg.append(marker);
 }
