@@ -19,7 +19,11 @@ jobs:
         with:
           node-version: '22'
       - name: Test deterministic simulation
-        run: node --test tests/*.test.mjs
+        run: |
+          node --check app.mjs
+          node --check simulation.mjs
+          node --check config.mjs
+          node --test tests/*.test.mjs
   deploy:
     needs: test
     runs-on: ubuntu-latest
