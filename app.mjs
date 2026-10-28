@@ -1,17 +1,27 @@
 import {IS_PREVIEW,FLAGS,SAVE_KEY} from "./config.mjs";
+import {mountResourceBar,mountGameDock,createBuildRow,createButton,renderGameToast} from "./ui-components.mjs";
 import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance} from "./simulation.mjs";
 import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,SNAP_RADIUS} from "./road-network.mjs";
 import {radialCurveGesture} from "./road-gesture.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
+mountResourceBar($("resourceBar"),[
+ {label:"People",value:"32",iconName:"people",id:"people"},
+ {label:"Treasury",value:"740",iconName:"gold",id:"gold"},
+ {label:"Food",value:"66",iconName:"food",id:"food"},
+ {label:"Wood",value:"20",iconName:"wood",id:"wood"},
+ {label:"Tools",value:"9",iconName:"tools",id:"tools"}
+],{compact:true});
+mountGameDock($("gameDock"));
+
 let game=readSave(),mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
 function readSave(){try{const v=JSON.parse(localStorage.getItem(SAVE_KEY));if(validState(v)){ensureGraph(v);return v;}}catch(e){console.warn("Save unavailable",e);}return startGame();}
 function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(game));}catch(e){notify("Storage unavailable. Use Export Save to preserve progress.");}}
 function num(v){return Math.round(v).toLocaleString();}
-function notify(message){$("toast").textContent=message;$("toast").hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").hidden=true,3300);}
-function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;selectedBuild=null;for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"}))$(id).classList.toggle("active",m===next);
+function notify(message){renderGameToast($("toast"),message);clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").hidden=true,3300);}
+function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;selectedBuild=null;for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"})){$(id).classList.toggle("active",m===next);$(id).setAttribute("aria-pressed",String(m===next));}
  $("roadControls").hidden=next!=="road";$("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",road:"Roads · tap for straight; hold and drag to shape a fixed node",build:"Construction · tap clear ground to place"}[next];
  updateRoadInfo();renderMap();}
 function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
@@ -109,18 +119,26 @@ function mapPoint(clientX,clientY){const r=svg.getBoundingClientRect(),w=920/cam
 function refresh(){setStats();renderMap();updateRoadInfo();save();}
 function openSheet(title,content){$("sheetTitle").textContent=title;const body=$("sheetBody");body.replaceChildren();if(typeof content==="string")body.innerHTML=content;else body.append(content);$("sheet").hidden=false;$("backdrop").hidden=false;}
 function closeSheet(){$("sheet").hidden=true;$("backdrop").hidden=true;}
-function sheetButton(parent,label,callback,cls="wide"){const b=document.createElement("button");b.className=cls;b.textContent=label;b.onclick=callback;parent.append(b);return b;}
+function sheetButton(parent,label,callback,cls="wide"){const b=createButton({label,variant:cls==="danger"?"danger":"secondary",onClick:callback});b.classList.add(cls);parent.append(b);return b;}
 function textNode(tag,content,cls){const e=document.createElement(tag);e.textContent=content;if(cls)e.className=cls;return e;}
 function buildPanel(){setMode("build");const el=document.createElement("div");el.append(textNode("p","Choose an industry, then tap clear land on the map. Buildings near roads produce more efficiently."));
  for(const [key,b]of Object.entries(BUILDINGS)){
- const button=document.createElement("button");button.className="item";
- const info=document.createElement("span");info.append(textNode("b",b.label),textNode("small",b.description));
- button.append(info,textNode("span",b.gold+" gold\n"+b.wood+" wood · "+b.tools+" tools","price"));
- button.onclick=()=>{selectedBuild=key;closeSheet();$("modeLabel").textContent="Place "+b.label+" · tap clear land";notify("Tap the map to place "+b.label+".");};el.append(button);}
+ const button=createBuildRow({title:b.label,description:b.description,
+ cost:b.gold+" gold · "+b.wood+" wood · "+b.tools+" tools",
+ iconName:key==="lumber"?"wood":key==="farm"?"food":key==="park"?"tree":key==="plaza"?"people":key==="smith"?"tools":"house",
+ onClick:()=>{selectedBuild=key;closeSheet();$("modeLabel").textContent="Place "+b.label+" · tap clear land";notify("Tap the map to place "+b.label+".");}});
+ el.append(button);}
  openSheet("Construction",el);}
 function menuPanel(){const el=document.createElement("div");el.append(textNode("p",IS_PREVIEW?"Development environment. Your save is isolated from the stable game.":"Stable environment. Your progress is stored locally on this device and browser."));
  sheetButton(el,"Export save as JSON",()=>{const blob=new Blob([JSON.stringify(game,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="willow-valley-"+(IS_PREVIEW?"dev":"stable")+"-turn-"+game.turn+".json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);notify("Save export started.");});
  sheetButton(el,"Import a saved game",()=>{$("importSave").click();});
+ if(IS_PREVIEW&&location.protocol!=="file:"){
+   const kit=document.createElement("a");
+   kit.href="./ui-kit/";kit.className="download-link";
+   kit.textContent="View the living UI kit";
+   kit.setAttribute("aria-label","Open the interactive Willow Valley design system");
+   el.append(kit);
+ }
  if(location.protocol!=="file:"){
    const link=document.createElement("a");
    link.href="./offline.html";link.download="Willow-Valley-Offline.html";
