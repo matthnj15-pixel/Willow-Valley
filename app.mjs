@@ -1,18 +1,20 @@
 import {IS_PREVIEW,FLAGS,SAVE_KEY} from "./config.mjs";
-import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,advance,advice} from "./simulation.mjs";
+import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,advance,advice} from "./simulation.mjs";
+import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,SNAP_RADIUS} from "./road-network.mjs";
+import {gestureSegment} from "./road-gesture.mjs";
 import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
-let game=readSave(),mode="explore",draft=createRoadDraft(),selectedBuild=null;
+let game=readSave(),mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
-function readSave(){try{const v=JSON.parse(localStorage.getItem(SAVE_KEY));if(validState(v))return v;}catch(e){console.warn("Save unavailable",e);}return startGame();}
+function readSave(){try{const v=JSON.parse(localStorage.getItem(SAVE_KEY));if(validState(v)){ensureGraph(v);return v;}}catch(e){console.warn("Save unavailable",e);}return startGame();}
 function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(game));}catch(e){notify("Storage unavailable. Use Export Save to preserve progress.");}}
 function num(v){return Math.round(v).toLocaleString();}
 function notify(message){$("toast").textContent=message;$("toast").hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").hidden=true,3300);}
 function setMode(next){mode=next;draft=createRoadDraft();selectedBuild=null;for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"}))$(id).classList.toggle("active",m===next);
- $("roadControls").hidden=next!=="road";$("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",road:"Roads · tap corners, hold a road and drag to bend",build:"Construction · tap clear ground to place"}[next];
+ $("roadControls").hidden=next!=="road";$("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",road:"Roads · tap a node or hold and drag to draw",build:"Construction · tap clear ground to place"}[next];
  updateRoadInfo();renderMap();}
 function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
- $("roadInfo").textContent=draft.anchors.length<2?"Tap two points for a straight road. Hold and drag a segment to bend it.":draft.anchors.length+" nodes · "+num(cost)+" gold · hold and drag any segment to curve.";
+ $("roadInfo").textContent=draft.anchors.length<2?"Tap an existing node to branch, or hold and drag to draw a road.":draft.anchors.length+" nodes · "+num(cost)+" gold · tap for straight, hold and drag for a curve.";
  $("confirmRoad").disabled=draft.anchors.length<2;}
 function setStats(){for(const id of ["people","gold","food","wood","tools"])$(id).textContent=num(game[id]);$("calendar").textContent=monthLabel(game.turn);$("environment").textContent=IS_PREVIEW?"DEVELOPMENT":"STABLE";$("report").textContent=game.report;}
 function node(tag,attrs){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,String(v));return n;}
@@ -45,13 +47,30 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
  svg.append(node("circle",{cx:x,cy:y,r:r,fill:i%4?"#527c55":"#456b4c",opacity:".88"}));
  svg.append(node("circle",{cx:x-r*.27,cy:y-r*.28,r:r*.72,fill:"#759869",opacity:".86"}));}
  for(const b of game.buildings)if(b.type==="farm"){svg.append(node("rect",{x:b.x-63,y:b.y-50,width:126,height:100,rx:5,fill:"#d9c58b",stroke:"#bea770","stroke-width":3,opacity:".81"}));for(let i=0;i<7;i++)svg.append(node("path",{d:"M "+(b.x-55)+" "+(b.y-38+i*12)+" l 110 0",stroke:"#a79d66","stroke-width":5,opacity:".65"}));}
- for(const r of game.roads)roadGraphic(svg,r);
+ // Committed roads show persistent, editable nodes and curve handles.
+ const graph=ensureGraph(game);
+ for(const e of graph.segments){
+   const a=nodeAt(graph,e.a),b=nodeAt(graph,e.b);
+   if(!a||!b)continue;
+   const geometry=e.control?"M "+a.x+" "+a.y+" Q "+(liveCurve?.id===e.id?liveCurve.control.x:e.control.x)+" "+(liveCurve?.id===e.id?liveCurve.control.y:e.control.y)+" "+b.x+" "+b.y:
+     "M "+a.x+" "+a.y+" L "+b.x+" "+b.y;
+   roadGraphic(svg,[a,b],false,geometry);
+ }
  const previewPoints=flattenRoadDraft(draft);
  if(previewPoints.length>1)roadGraphic(svg,previewPoints,true,roadDraftPath(draft));
- // Each control handle indicates a user-authored, adjustable curve.
+ if(liveGesture&&liveGesture.end)roadGraphic(svg,[liveGesture.start,liveGesture.end],true,liveGesture.control?
+   "M "+liveGesture.start.x+" "+liveGesture.start.y+" Q "+liveGesture.control.x+" "+liveGesture.control.y+" "+liveGesture.end.x+" "+liveGesture.end.y:null);
  for(const bend of curvedSegments(draft)){
-   svg.append(node("path",{d:"M "+bend.anchor.x+" "+bend.anchor.y+" L "+bend.control.x+" "+bend.control.y,stroke:"#f7e3a3","stroke-width":2,"stroke-dasharray":"5 5",opacity:".8"}));
-   svg.append(node("circle",{cx:bend.anchor.x,cy:bend.anchor.y,r:7,fill:"#ffe4a5",stroke:"#445c43","stroke-width":2}));
+   svg.append(node("circle",{cx:bend.anchor.x,cy:bend.anchor.y,r:9,fill:"#ffcf7c",stroke:"#445c43","stroke-width":2}));
+ }
+ if(mode==="road"){
+   for(const e of graph.segments){
+     if(!e.control)continue;
+     const a=nodeAt(graph,e.a),b=nodeAt(graph,e.b);
+     const middle=quadraticPoint(a,liveCurve?.id===e.id?liveCurve.control:e.control,b,.5);
+     svg.append(node("circle",{cx:middle.x,cy:middle.y,r:12,fill:"#f3b969",stroke:"#364c40","stroke-width":3}));
+   }
+   for(const n of graph.nodes)svg.append(node("circle",{cx:n.x,cy:n.y,r:11,fill:"#d6e4ce",stroke:n.id===graph.hubId?"#bc783d":"#345840","stroke-width":3}));
  }
  for(const p of draft.anchors)svg.append(node("circle",{cx:p.x,cy:p.y,r:11,fill:"#fff1c2",stroke:"#53664b","stroke-width":3}));
  for(const h of game.houses){svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".25"}));
