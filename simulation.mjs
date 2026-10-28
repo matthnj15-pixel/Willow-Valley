@@ -1,10 +1,13 @@
 import {ensureGraph,validGraph,graphLines,addGeometry,deleteNode,deleteSegment,setSegmentCurve,saveGraphRoads,splitSegment} from "./road-network.mjs";
+import {advanceDesirePaths,visibleDesirePaths,validDesirePaths} from "./desire-paths.mjs";
 export const VERSION=1;
 export const WORLD={w:1200,h:900};
 export const BUILDINGS={
   lumber:{label:"Lumber camp",gold:110,wood:4,tools:1,upkeep:7,description:"Produces 7 wood per month."},
   farm:{label:"Farm",gold:120,wood:5,tools:1,upkeep:8,description:"Produces 12 food per month."},
-  smith:{label:"Toolsmith",gold:175,wood:8,tools:3,upkeep:15,description:"Consumes 4 wood to produce 3 tools."}
+  smith:{label:"Toolsmith",gold:175,wood:8,tools:3,upkeep:15,description:"Consumes 4 wood to produce 3 tools."},
+  park:{label:"Park",gold:85,wood:3,tools:0,upkeep:5,description:"Improves happiness when connected to a road."},
+  plaza:{label:"Plaza",gold:135,wood:6,tools:1,upkeep:9,description:"A gathering place that improves happiness when accessible."}
 };
 export const MONTHS=["March","April","May","June","July","August","September","October","November","December","January","February"];
 export function monthLabel(turn){return MONTHS[turn%12]+" · Year "+(1+Math.floor(turn/12));}
@@ -20,7 +23,7 @@ export function startGame(){const state={
   roads:[[{x:172,y:472},{x:330,y:417},{x:460,y:454},{x:656,y:383}]],
   buildings:[{type:"lumber",x:288,y:340},{type:"farm",x:530,y:553}],
   houses:[{x:242,y:505},{x:350,y:374},{x:418,y:497},{x:545,y:400}],
-  happiness:76,
+  happiness:76,desirePaths:[],
   logs:["The first families establish Willow Valley beside an old forest road."],
   report:"Your town has supplies for its first expansion. Design a new road or develop another industry."
 };ensureGraph(state);return state;}
@@ -28,7 +31,7 @@ export function validState(x){return !!x&&x.version===VERSION&&Number.isInteger(
  ["people","gold","food","wood","tools","happiness"].every(k=>Number.isFinite(x[k]))&&
  Array.isArray(x.roads)&&x.roads.length<500&&x.roads.every(r=>Array.isArray(r)&&r.length>=2&&r.length<=512&&r.every(validPoint))&&
  Array.isArray(x.buildings)&&x.buildings.length<300&&x.buildings.every(b=>BUILDINGS[b.type]&&validPoint(b))&&
- Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(validPoint)&&Array.isArray(x.logs)&&(!x.roadGraph||validGraph(x.roadGraph));}
+ Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(validPoint)&&Array.isArray(x.logs)&&(!x.roadGraph||validGraph(x.roadGraph))&&validDesirePaths(x.desirePaths);}
 function validPoint(p){return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=WORLD.w&&p.y>=0&&p.y<=WORLD.h;}
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
 function onRiver(p){return Math.abs(p.x-riverX(p.y))<69;}
@@ -51,9 +54,9 @@ export function buildRoad(s,anchors,controls){
  const cost=Math.ceil(newLength*.18);
  if(s.gold<cost)return{ok:false,reason:"You need "+cost+" gold to build this road."};
  s.gold-=cost;s.roadGraph=graph;saveGraphRoads(s);
- s.report="Road completed. New intersections may improve your industries' access.";
+ s.report=result.isolated?"Isolated road built. No sims can reach it directly yet. Desire paths will form as people walk toward it.":"Road completed. Crossings become real intersections and improve connected access.";
  s.logs.unshift(monthLabel(s.turn)+": Road built for "+cost+" gold.");
- return{ok:true,cost};
+ return{ok:true,cost,isolated:result.isolated,intersections:result.intersections};
 }
 export function removeRoadNode(s,id){
  const outcome=deleteNode(ensureGraph(s),id);if(!outcome.ok)return outcome;
@@ -76,28 +79,47 @@ export function makeRoadIntersection(s,id,t){
  saveGraphRoads(s);return{ok:true,node};
 }
 export function accessibleRoads(s){return s.roadGraph?graphLines(s.roadGraph,true):s.roads;}
-function productionAccess(s,b){return nearestRoad(b,accessibleRoads(s))<=125?1:0;}
+// Every structure requires access. Footpaths support some pedestrians but
+// do not substitute for built roads needed by industry.
+export function structureAccess(s,p){
+ const connected=accessibleRoads(s);
+ if(nearestRoad(p,connected)<=125)return"road";
+ const trails=visibleDesirePaths(s).filter(t=>t.complete);
+ if(!trails.length)return"none";
+ const nearTrail=nearestRoad(p,trails.map(t=>[t.from,t.to]))<=66;
+ const isolatedRoads=s.roadGraph?graphLines(s.roadGraph).filter(line=>!connected.includes(line)&&nearestRoad(line[0],connected)>125):[];
+ const nearIsolated=nearestRoad(p,isolatedRoads)<=110;
+ return nearTrail||nearIsolated?"footpath":"none";
+}
+function productionAccess(s,b){return structureAccess(s,b)==="road"?1:0;}
+export function housingAccess(s){return s.houses.map(h=>structureAccess(s,h));}
 function housingSite(s){for(let k=0;k<130;k++){const lines=accessibleRoads(s);if(!lines.length)return null;const i=(s.turn*13+k*23)%997,r=lines[i%lines.length],seg=i%(r.length-1),a=r[seg],b=r[seg+1],t=.17+seedValue(i+800)*.66;
  const x=a.x+(b.x-a.x)*t,y=a.y+(b.y-a.y)*t,n=Math.hypot(b.y-a.y,b.x-a.x)||1,sgn=seedValue(i+40)<.5?-1:1;
  const p={x:Math.round(x+(b.y-a.y)/n*sgn*49),y:Math.round(y-(b.x-a.x)/n*sgn*49)};
  if(canPlace(s,p))return p;}return null;}
 export function advance(s,{events=true}={}){s.turn++;const notices=[],oldPeople=s.people;
+ advanceDesirePaths(s);
  let foodProduction=0,woodProduction=0,toolProduction=0,upkeep=0,smiths=[];
  for(const b of s.buildings){const access=productionAccess(s,b),v=BUILDINGS[b.type];upkeep+=v.upkeep;
   if(!access)notices.push(v.label+" has no reachable road connection.");
   if(b.type==="farm")foodProduction+=Math.round(12*access);
   if(b.type==="lumber")woodProduction+=Math.round(7*access);
-  if(b.type==="smith")smiths.push(access);}
+  if(b.type==="smith")smiths.push(access);
+  if((b.type==="park"||b.type==="plaza")&&access)s.happiness=clamp(s.happiness+1,0,100);}
  s.food+=foodProduction;s.wood+=woodProduction;
- for(const access of smiths){if(s.wood>=4){s.wood-=4;const n=Math.max(1,Math.round(3*access));s.tools+=n;toolProduction+=n;}else notices.push("The toolsmith could not obtain enough wood.");}
+ for(const access of smiths){if(!access){notices.push("Toolsmith cannot receive supplies without road access.");continue;}if(s.wood>=4){s.wood-=4;const n=Math.max(1,Math.round(3*access));s.tools+=n;toolProduction+=n;}else notices.push("The toolsmith could not obtain enough wood.");}
  const foodRequired=Math.ceil(s.people*.22);s.food-=foodRequired;
- const taxes=Math.round(s.people*1.5),roadUpkeep=Math.ceil(s.roads.reduce((v,r)=>v+roadLength(r),0)*.018);s.gold+=taxes-upkeep-roadUpkeep;
+ const houseStatuses=housingAccess(s),servedHomes=houseStatuses.filter(x=>x==="road").length,walkingHomes=houseStatuses.filter(x=>x==="footpath").length;
+ const serviceRate=s.houses.length?(servedHomes+walkingHomes*.4)/s.houses.length:0;
+ if(servedHomes<s.houses.length){s.happiness=clamp(s.happiness-2,0,100);notices.push("Some homes have lost road access. Household taxes and happiness have fallen.");}
+ const taxes=Math.round(s.people*1.5*serviceRate),roadUpkeep=Math.ceil(s.roads.reduce((v,r)=>v+roadLength(r),0)*.018);s.gold+=taxes-upkeep-roadUpkeep;
  if(events&&s.turn%6===0){s.food+=8;notices.push("A seasonal harvest added 8 food.");}
  if(s.food<0){s.food=0;s.people=Math.max(8,s.people-3);s.happiness=clamp(s.happiness-8,0,100);notices.push("A food shortage drove three residents away.");}
  else if(s.food>=8&&s.happiness>=42){const site=housingSite(s);if(site){s.houses.push(site);s.people+=3;s.happiness=clamp(s.happiness+1,0,100);notices.push("A new home appeared along your road network.");}}
  if(s.food<12){s.happiness=clamp(s.happiness-3,0,100);notices.push("Food reserves are running low.");}
  if(s.gold<0){s.happiness=clamp(s.happiness-4,0,100);notices.push("The treasury is in deficit.");}
  const net=s.people-oldPeople,balance=taxes-upkeep-roadUpkeep;
+ if(s.desirePaths.some(p=>p.progress>=1))notices.push("Residents have established walking desire paths to isolated roads.");
  s.report="+"+foodProduction+" food, +"+woodProduction+" wood, +"+toolProduction+" tools. "+(balance>=0?"+":"")+balance+" gold net. "+(net>=0?"+":"")+net+" residents."+ (notices.length?" "+notices[0]:"");
  s.logs.unshift(monthLabel(s.turn)+": "+s.report);
  if(s.logs.length>60)s.logs.length=60;
@@ -106,5 +128,5 @@ export function advice(s){if(s.food<22)return["Food security needs attention.","
  if(s.wood<10)return["Your wood supply is tight.","Add a lumber camp with access to an existing road. Tool production also consumes wood each month."];
  if(s.tools<3)return["Construction tools are scarce.","A toolsmith can replenish tools, but it consumes wood. Check the entire chain before expanding."];
  if(s.gold<220)return["Protect the treasury.","Building costs and monthly upkeep will restrict your next expansion. Advance cautiously or improve tax revenue through population growth."];
- if(s.buildings.some(b=>nearestRoad(b,accessibleRoads(s))>125))return["One of your industries lacks road access.","A disconnected industry produces nothing. Reconnect its road to the original village road network."];
+ if(s.buildings.some(b=>structureAccess(s,b)!=="road")||housingAccess(s).some(x=>x!=="road"))return["Buildings or homes lack road access.","All structures need a connected road. Desire paths provide partial pedestrian access, but not full deliveries or service."];
  return["The settlement can expand.","Your reserves are currently reasonable. Consider planning a new road, adding a production building, or advancing a month to observe development."];}
