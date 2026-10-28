@@ -68,7 +68,7 @@ body.ui-kit-page{height:auto;min-height:100dvh;overflow:auto;background:#ece9d8;
 .kit-modal-backdrop .wv-sheet-preview .sheet-head h2{color:var(--wv-teal)}
 .kit-modal-backdrop .wv-sheet-preview .sheet-head .icon-button{background:#eadbad;color:var(--wv-teal)}
 .kit-modal-backdrop .wv-sheet-preview .sheet-body{display:block}
-.kit-modal-backdrop .wv-sheet-preview .sheet-body>p{color:#405b4d;font-size:13px}
+.kit-modal-backdrop .wv-sheet-preview .sheet-body p{color:#405b4d;font-size:13px}
 @media(max-width:720px){.kit-hero{padding:32px 17px}.kit-main{padding:19px 12px 45px}.kit-two{grid-template-columns:1fr}.kit-paper{padding:15px}.kit-colors{grid-template-columns:repeat(2,minmax(0,1fr))}.kit-heading h2{font-size:22px}.kit-live{grid-template-columns:1fr}.kit-device{margin:0 auto;width:min(100%,420px)}.kit-device iframe{height:min(760px,82dvh)}}
 
 /* Cartography-inspired showcase: parchment, framed survey lines, inked headings.
