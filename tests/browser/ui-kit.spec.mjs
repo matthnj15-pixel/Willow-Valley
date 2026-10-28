@@ -47,3 +47,12 @@ test("WV-UI-002: installed local UI kit can reopen while disconnected",async({pa
  await expect(page.getByRole("heading",{name:"Willow Valley UI Kit"})).toBeVisible();
  await expect(page.locator("#palette .kit-swatch")).toHaveCount(11);
 });
+
+test("WV-UI-002: Development game links directly to its living UI catalog",async({page})=>{
+ await page.goto("/");
+ await page.locator("#menuBtn").click();
+ await expect(page.getByRole("link",{name:"Open the interactive Willow Valley design system"})).toBeVisible();
+ await page.getByRole("link",{name:"Open the interactive Willow Valley design system"}).click();
+ await expect(page).toHaveURL(/\/ui-kit\/$/);
+ await expect(page.locator(".kit-hero h1")).toContainText("Willow Valley");
+});
