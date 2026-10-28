@@ -1,5 +1,5 @@
 /* UI kit surrounds only. Components, colors, and states come from ../styles.css. */
-html{scroll-behavior:smooth}
+html{height:auto;overflow:auto;scroll-behavior:smooth}
 body.ui-kit-page{height:auto;min-height:100dvh;overflow:auto;background:#ece9d8;color:var(--wv-charcoal);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif}
 .ui-kit-page *{box-sizing:border-box}
 .kit-hero{background:var(--wv-teal);color:var(--wv-yellow);padding:46px 20px 42px;position:relative;overflow:hidden}
