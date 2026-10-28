@@ -33,7 +33,7 @@ jobs:
         run: |
           set -eu
           mkdir -p _site/dev
-          for file in index.html styles.css app.mjs simulation.mjs config.mjs; do
+          for file in index.html styles.css app.mjs simulation.mjs config.mjs road-editor.mjs; do
             cp "stable/$file" "_site/$file"
             cp "preview/$file" "_site/dev/$file"
           done

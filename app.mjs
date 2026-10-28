@@ -1,22 +1,25 @@
 import {IS_PREVIEW,FLAGS,SAVE_KEY} from "./config.mjs";
 import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,advance,advice} from "./simulation.mjs";
+import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
-let game=readSave(),mode="explore",draft=[],selectedBuild=null;
-let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,lastTapMoved=false,toastTimer;
+let game=readSave(),mode="explore",draft=createRoadDraft(),selectedBuild=null;
+let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
 function readSave(){try{const v=JSON.parse(localStorage.getItem(SAVE_KEY));if(validState(v))return v;}catch(e){console.warn("Save unavailable",e);}return startGame();}
 function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(game));}catch(e){notify("Storage unavailable. Use Export Save to preserve progress.");}}
 function num(v){return Math.round(v).toLocaleString();}
 function notify(message){$("toast").textContent=message;$("toast").hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").hidden=true,3300);}
-function setMode(next){mode=next;draft=[];selectedBuild=null;for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"}))$(id).classList.toggle("active",m===next);
- $("roadControls").hidden=next!=="road";$("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",road:"Roads · tap waypoints to trace a curve",build:"Construction · tap clear ground to place"}[next];
+function setMode(next){mode=next;draft=createRoadDraft();selectedBuild=null;for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"}))$(id).classList.toggle("active",m===next);
+ $("roadControls").hidden=next!=="road";$("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",road:"Roads · tap corners, hold a road and drag to bend",build:"Construction · tap clear ground to place"}[next];
  updateRoadInfo();renderMap();}
-function updateRoadInfo(){const cost=roadCost(draft);$("roadInfo").textContent=draft.length<2?"Tap at least two map points to trace a road.":draft.length+" waypoints · "+num(cost)+" gold · confirm when ready.";$("confirmRoad").disabled=draft.length<2;}
+function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
+ $("roadInfo").textContent=draft.anchors.length<2?"Tap two points for a straight road. Hold and drag a segment to bend it.":draft.anchors.length+" nodes · "+num(cost)+" gold · hold and drag any segment to curve.";
+ $("confirmRoad").disabled=draft.anchors.length<2;}
 function setStats(){for(const id of ["people","gold","food","wood","tools"])$(id).textContent=num(game[id]);$("calendar").textContent=monthLabel(game.turn);$("environment").textContent=IS_PREVIEW?"DEVELOPMENT":"STABLE";$("report").textContent=game.report;}
 function node(tag,attrs){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,String(v));return n;}
 function appendText(parent,text,x,y,size,fill="#fff",extras={}){const e=node("text",{x,y,"text-anchor":"middle",fill,"font-size":size,...extras});e.textContent=text;parent.append(e);return e;}
-function path(points){if(!points.length)return"";let s="M "+points[0].x+" "+points[0].y;if(points.length===1)return s;
- for(let i=1;i<points.length-1;i++){const p=points[i],b=points[i+1];s+=" Q "+p.x+" "+p.y+" "+((p.x+b.x)/2)+" "+((p.y+b.y)/2);}const p=points.at(-1);return s+" L "+p.x+" "+p.y;}
-function roadGraphic(parent,pts,preview=false){if(pts.length<2)return;const d=path(pts);
+// Committed roads are polylines; explicit curves are previewed with SVG Q segments.
+function path(points){return points.map((p,i)=>(i===0?"M ":" L ")+p.x+" "+p.y).join("");}
+function roadGraphic(parent,pts,preview=false,explicitPath=null){if(pts.length<2)return;const d=explicitPath||path(pts);
  parent.append(node("path",{d,fill:"none",stroke:preview?"#ffe5ae":"#738267","stroke-width":preview?27:32,"stroke-linejoin":"round","stroke-linecap":"round",opacity:preview?.76:1}));
  parent.append(node("path",{d,fill:"none",stroke:preview?"#fbd18d":"#d4c395","stroke-width":preview?15:19,"stroke-linejoin":"round","stroke-linecap":"round","stroke-dasharray":preview?"15 12":"none"}));}
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
@@ -43,8 +46,14 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
  svg.append(node("circle",{cx:x-r*.27,cy:y-r*.28,r:r*.72,fill:"#759869",opacity:".86"}));}
  for(const b of game.buildings)if(b.type==="farm"){svg.append(node("rect",{x:b.x-63,y:b.y-50,width:126,height:100,rx:5,fill:"#d9c58b",stroke:"#bea770","stroke-width":3,opacity:".81"}));for(let i=0;i<7;i++)svg.append(node("path",{d:"M "+(b.x-55)+" "+(b.y-38+i*12)+" l 110 0",stroke:"#a79d66","stroke-width":5,opacity:".65"}));}
  for(const r of game.roads)roadGraphic(svg,r);
- if(draft.length)roadGraphic(svg,draft,true);
- for(const p of draft)svg.append(node("circle",{cx:p.x,cy:p.y,r:10,fill:"#fff1c2",stroke:"#53664b","stroke-width":3}));
+ const previewPoints=flattenRoadDraft(draft);
+ if(previewPoints.length>1)roadGraphic(svg,previewPoints,true,roadDraftPath(draft));
+ // Each control handle indicates a user-authored, adjustable curve.
+ for(const bend of curvedSegments(draft)){
+   svg.append(node("path",{d:"M "+bend.anchor.x+" "+bend.anchor.y+" L "+bend.control.x+" "+bend.control.y,stroke:"#f7e3a3","stroke-width":2,"stroke-dasharray":"5 5",opacity:".8"}));
+   svg.append(node("circle",{cx:bend.anchor.x,cy:bend.anchor.y,r:7,fill:"#ffe4a5",stroke:"#445c43","stroke-width":2}));
+ }
+ for(const p of draft.anchors)svg.append(node("circle",{cx:p.x,cy:p.y,r:11,fill:"#fff1c2",stroke:"#53664b","stroke-width":3}));
  for(const h of game.houses){svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".25"}));
  svg.append(node("rect",{x:h.x-11,y:h.y-9,width:22,height:22,rx:2,fill:"#f2e2bc",stroke:"#aa9a78","stroke-width":1.3}));
  svg.append(node("path",{d:"M "+(h.x-16)+" "+(h.y-10)+" L "+h.x+" "+(h.y-23)+" L "+(h.x+16)+" "+(h.y-10)+" Z",fill:"#a67353",stroke:"#7e654b","stroke-width":1.4}));
@@ -85,15 +94,77 @@ function advisorPanel(){const [headline,detail]=advice(game),el=document.createE
 function historyPanel(){const el=document.createElement("div");el.append(textNode("p","Significant milestones and monthly decisions in the life of Willow Valley."));const list=document.createElement("ol");for(const message of game.logs.slice(0,25))list.append(textNode("li",message));el.append(list);openSheet("Valley history",el);}
 function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=nearestRoad(item,game.roads);const detail=item.kind==="house"?"Residents live here and need access to jobs and food.":BUILDINGS[item.type].description+" Road access: "+(access<=84?"Connected, full production.":"Too far from the road, half production.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
 function handleTap(p){if(p.x<0||p.y<0||p.x>WORLD.w||p.y>WORLD.h)return;
- if(mode==="road"){if(draft.length>=60){notify("Road has reached its waypoint limit.");return;}draft.push({x:Math.round(p.x),y:Math.round(p.y)});updateRoadInfo();renderMap();return;}
+ if(mode==="road"){if(draft.anchors.length>=MAX_ANCHORS){notify("Road has reached its node limit.");return;}
+ if(!addRoadAnchor(draft,{x:Math.round(p.x),y:Math.round(p.y)})){notify("Tap inside the map.");return;}
+ updateRoadInfo();renderMap();return;}
  if(mode==="build"){if(!selectedBuild){buildPanel();return;}const r=placeBuilding(game,selectedBuild,p);if(!r.ok){notify(r.reason);return;}refresh();notify(BUILDINGS[selectedBuild].label+" constructed.");selectedBuild=null;setMode("explore");return;}
  inspectPoint(p);}
-svg.addEventListener("pointerdown",e=>{if(e.pointerType==="mouse"&&e.button!==0)return;e.preventDefault();svg.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,moved:false});if(pointers.size===2){const [a,b]=[...pointers.values()];gesture={distance:distance(a,b),scale:camera.scale};for(const p of pointers.values())p.moved=true;}});
-svg.addEventListener("pointermove",e=>{const p=pointers.get(e.pointerId);if(!p)return;e.preventDefault();const dx=e.clientX-p.x,dy=e.clientY-p.y;if(Math.hypot(e.clientX-p.startX,e.clientY-p.startY)>9)p.moved=true;
- p.x=e.clientX;p.y=e.clientY;if(pointers.size===2){const [a,b]=[...pointers.values()];if(gesture)camera.scale=clamp(gesture.scale*(distance(a,b)/Math.max(gesture.distance,10)),.75,3.8);renderMap();}
- else if(p.moved){const r=svg.getBoundingClientRect(),w=920/camera.scale;camera.cx-=dx/r.width*w;camera.cy-=dy/r.width*w*(r.height/r.width);renderMap();}});
-function endPointer(e){const p=pointers.get(e.pointerId);if(!p)return;const tap=!p.moved&&pointers.size===1;const at=mapPoint(e.clientX,e.clientY);pointers.delete(e.pointerId);if(pointers.size<2)gesture=null;if(tap)handleTap(at);}
-svg.addEventListener("pointerup",endPointer);svg.addEventListener("pointercancel",e=>pointers.delete(e.pointerId));
+function clearHold(p){if(p.holdTimer!==null){clearTimeout(p.holdTimer);p.holdTimer=null;}}
+function downPointer(e){
+ if(e.pointerType==="mouse"&&e.button!==0)return;
+ e.preventDefault();svg.setPointerCapture(e.pointerId);
+ const rect=svg.getBoundingClientRect(),radius=HIT_RADIUS_PX*(920/camera.scale)/rect.width;
+ const down=mapPoint(e.clientX,e.clientY);
+ const index=mode==="road"?hitRoadSegment(draft,down,radius):-1;
+ const p={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,down,moved:false,holdReady:false,holdTimer:null,curveActive:false,curveIndex:index,initialControl:null};
+ pointers.set(e.pointerId,p);
+ if(pointers.size===2){
+   for(const entry of pointers.values()){clearHold(entry);entry.holdReady=false;entry.moved=true;}
+   const [a,b]=[...pointers.values()];gesture={distance:distance(a,b),scale:camera.scale};
+ }else if(index>=0&&e.pointerType!=="mouse"){
+   // A quick swipe keeps panning the map. Only an intentional hold enables bending.
+   p.holdTimer=setTimeout(()=>{
+     if(pointers.size===1&&pointers.get(e.pointerId)===p&&!p.moved&&mode==="road"){
+       p.holdReady=true;$("modeLabel").textContent="Curve selected · drag to bend this road";
+     }
+   },HOLD_MS);
+ }else if(index>=0&&e.pointerType==="mouse"){
+   // Desktop testing uses the same long-press behavior.
+   p.holdTimer=setTimeout(()=>{
+     if(pointers.size===1&&pointers.get(e.pointerId)===p&&!p.moved&&mode==="road"){
+       p.holdReady=true;$("modeLabel").textContent="Curve selected · drag to bend this road";
+     }
+   },HOLD_MS);
+ }
+}
+function movePointer(e){
+ const p=pointers.get(e.pointerId);if(!p)return;e.preventDefault();
+ const dx=e.clientX-p.x,dy=e.clientY-p.y;
+ const travel=Math.hypot(e.clientX-p.startX,e.clientY-p.startY);
+ p.x=e.clientX;p.y=e.clientY;
+ if(pointers.size===2){
+   const [a,b]=[...pointers.values()];
+   if(gesture)camera.scale=clamp(gesture.scale*(distance(a,b)/Math.max(gesture.distance,10)),.75,3.8);
+   renderMap();return;
+ }
+ if(canBeginCurve({mode,pointerCount:pointers.size,holdMs:p.holdReady?HOLD_MS:0,movementPx:travel,segmentIndex:p.curveIndex})){
+   if(!p.curveActive){p.initialControl=beginRoadBend(draft,p.curveIndex);p.curveActive=true;}
+   p.moved=true;clearHold(p);
+   updateRoadBend(draft,p.curveIndex,p.initialControl,p.down,mapPoint(e.clientX,e.clientY));
+   updateRoadInfo();renderMap();return;
+ }
+ if(travel>MOVE_SLOP_PX){
+   p.moved=true;clearHold(p);
+   const rect=svg.getBoundingClientRect(),w=920/camera.scale;
+   camera.cx-=dx/rect.width*w;
+   camera.cy-=dy/rect.width*w*(rect.height/rect.width);
+   renderMap();
+ }
+}
+function endPointer(e){
+ const p=pointers.get(e.pointerId);if(!p)return;
+ clearHold(p);
+ const tap=!p.moved&&!p.holdReady&&pointers.size===1;
+ const at=mapPoint(e.clientX,e.clientY);
+ pointers.delete(e.pointerId);if(pointers.size<2)gesture=null;
+ if(mode==="road"&&p.holdReady)$("modeLabel").textContent="Roads · tap corners, hold a road and drag to bend";
+ if(tap)handleTap(at);
+}
+function cancelPointer(e){const p=pointers.get(e.pointerId);if(p)clearHold(p);pointers.delete(e.pointerId);if(pointers.size<2)gesture=null;}
+svg.addEventListener("pointerdown",downPointer);
+svg.addEventListener("pointermove",movePointer);
+svg.addEventListener("pointerup",endPointer);
+svg.addEventListener("pointercancel",cancelPointer);
 $("zoomIn").onclick=()=>zoom(1.32);$("zoomOut").onclick=()=>zoom(1/1.32);
 $("exploreBtn").onclick=()=>setMode("explore");
 $("roadsBtn").onclick=()=>setMode("road");
@@ -102,9 +173,9 @@ $("advisorBtn").onclick=()=>advisorPanel();
 $("menuBtn").onclick=()=>menuPanel();
 $("historyBtn").onclick=()=>historyPanel();
 $("closeSheet").onclick=closeSheet;$("backdrop").onclick=closeSheet;
-$("undoRoad").onclick=()=>{draft.pop();updateRoadInfo();renderMap();};
-$("cancelRoad").onclick=()=>{draft=[];updateRoadInfo();renderMap();};
-$("confirmRoad").onclick=()=>{const r=addRoad(game,draft);if(!r.ok){notify(r.reason);return;}draft=[];refresh();notify("Road built for "+r.cost+" gold.");};
+$("undoRoad").onclick=()=>{undoRoadAction(draft);updateRoadInfo();renderMap();};
+$("cancelRoad").onclick=()=>{draft=createRoadDraft();updateRoadInfo();renderMap();};
+$("confirmRoad").onclick=()=>{const r=addRoad(game,flattenRoadDraft(draft));if(!r.ok){notify(r.reason);return;}draft=createRoadDraft();refresh();notify("Road built for "+r.cost+" gold.");};
 $("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents});refresh();notify(monthLabel(game.turn)+": "+(result.populationDelta>=0?"+":"")+result.populationDelta+" residents, "+(result.balance>=0?"+":"")+result.balance+" gold.");};
 $("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;closeSheet();refresh();notify("Save imported successfully.");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
 window.addEventListener("resize",renderMap);

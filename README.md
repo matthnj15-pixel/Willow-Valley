@@ -15,7 +15,10 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 
 - Pan the map with one finger.
 - Pinch with two fingers or use the +/- buttons to zoom.
-- Select **Roads**, then tap points along your desired route. Tap **Build road** to commit. Tap **Undo** or **Cancel** to revise it.
+- Select **Roads**, then tap the start and corners of a road. Every tap adds a **straight segment** and corners stay sharp.
+- **Press and hold any unfinished road segment for about 0.36 seconds, then drag it** to bend that segment into a controlled curve. Repeat the gesture to refine it.
+- Drag empty map space to pan, or pinch with two fingers to zoom. A quick swipe over a road also pans instead of bending it.
+- Tap **Undo** to reverse the last node or curve, **Cancel** to discard the draft, or **Build road** to commit. Cost updates with the real road length.
 - Select **Build** and pick an industry, then tap a location on the map to place it.
 - Advance a month to resolve production, food consumption, taxes, upkeep, and residential growth.
 - Tap **Advisor** for rule-based recommendations. AI is **not enabled**.
@@ -38,6 +41,7 @@ The current Advisor uses local deterministic heuristics and **does not make AI r
 ## Architecture
 
 - `simulation.mjs`: pure deterministic simulation, save validation, construction and road rules.
+- `road-editor.mjs`: pure tested editor model for straight segments, quadratic curves, long-press eligibility, undo, and save-compatible road polylines.
 - `app.mjs`: browser UI, gestures, SVG drawing, local saves.
 - `config.mjs`: environment-specific configuration and feature flags.
 - `tests/`: unit tests without external dependencies.

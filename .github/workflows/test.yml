@@ -9,7 +9,7 @@ permissions:
   contents: read
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -19,5 +19,12 @@ jobs:
         run: |
           node --check app.mjs
           node --check simulation.mjs
+          node --check road-editor.mjs
           node --check config.mjs
           node --test tests/*.test.mjs
+      - name: Install browser test dependencies
+        run: npm install --no-audit --no-fund --no-package-lock
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Exercise mobile portrait road interactions
+        run: npm run test:e2e
