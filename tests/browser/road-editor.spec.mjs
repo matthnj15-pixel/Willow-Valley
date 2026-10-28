@@ -86,12 +86,12 @@ test("WV-ROAD-002 AC-06: completed curve stays editable by hold-and-drag",async(
  expect(after.gold).toBe(earlier.gold);
 });
 test("WV-ROAD-002 AC-03: existing junction deletion has no direct cost but disconnects production",async({page})=>{
- const before=await saved(page);
+ const beforeGold=Number((await page.locator("#gold").innerText()).replace(/,/g,""));
  await tapMap(page,{x:330,y:417});
  page.once("dialog",dialog=>dialog.accept());
  await page.getByRole("button",{name:/Destroy this junction/}).click();
  const after=await saved(page);
- expect(after.gold).toBe(before.gold);
+ expect(after.gold).toBe(beforeGold);
  expect(after.roadGraph.segments.length).toBe(1);
  await page.locator("#nextBtn").click();
  const next=await saved(page);
