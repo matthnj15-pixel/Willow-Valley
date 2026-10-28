@@ -112,74 +112,165 @@ function advisorPanel(){const [headline,detail]=advice(game),el=document.createE
  openSheet("The council advisor",el);}
 function historyPanel(){const el=document.createElement("div");el.append(textNode("p","Significant milestones and monthly decisions in the life of Willow Valley."));const list=document.createElement("ol");for(const message of game.logs.slice(0,25))list.append(textNode("li",message));el.append(list);openSheet("Valley history",el);}
 function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=nearestRoad(item,game.roads);const detail=item.kind==="house"?"Residents live here and need access to jobs and food.":BUILDINGS[item.type].description+" Road access: "+(access<=84?"Connected, full production.":"Too far from the road, half production.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
+const roadPixelRadius=()=>{const r=svg.getBoundingClientRect();return HIT_RADIUS_PX*(920/camera.scale)/r.width;};
+function nodePanel(n){
+ const el=document.createElement("div");
+ const attached=game.roadGraph.segments.filter(e=>e.a===n.id||e.b===n.id).length;
+ el.append(textNode("p","Existing road junction. "+attached+" connected segment(s). Roads can be extended or removed without refund."));
+ sheetButton(el,"Extend road from here",()=>{
+  draft=createRoadDraft();addRoadAnchor(draft,{x:n.x,y:n.y});
+  closeSheet();updateRoadInfo();renderMap();notify("Tap to create straight segments, or hold and drag for a curve.");
+ });
+ if(n.id===game.roadGraph.hubId)el.append(textNode("p","The original village gateway is protected as the connection origin.","note"));
+ else sheetButton(el,"Destroy this junction and attached segments",()=>{
+  if(!confirm("Remove this road node and all "+attached+" attached segments? Industries may lose access. No refund."))return;
+  const result=removeRoadNode(game,n.id);closeSheet();
+  if(!result.ok){notify(result.reason);return;}
+  draft=createRoadDraft();refresh();notify("Road junction removed, with no refund.");
+ });
+ openSheet("Existing road junction",el);
+}
+function segmentPanel(hit){
+ const el=document.createElement("div");
+ el.append(textNode("p","This road is already built. You can add an intersection, extend from it, or remove the segment."));
+ sheetButton(el,"Insert a junction here and extend",()=>{
+  const result=makeRoadIntersection(game,hit.segment.id,hit.t);if(!result.ok){notify(result.reason);return;}
+  draft=createRoadDraft();addRoadAnchor(draft,{x:result.node.x,y:result.node.y});
+  closeSheet();refresh();notify("Junction added. Tap or hold and drag to extend this road.");
+ });
+ sheetButton(el,"Destroy this segment (no refund)",()=>{
+  if(!confirm("Destroy this existing road segment? Isolated roads and industries may stop functioning. No refund."))return;
+  const outcome=removeRoadSegment(game,hit.segment.id);closeSheet();
+  if(!outcome.ok){notify(outcome.reason);return;}
+  draft=createRoadDraft();refresh();notify("Road removed. Check industry access.");
+ });
+ openSheet("Existing road segment",el);
+}
+function curvePanel(e){
+ const el=document.createElement("div");
+ el.append(textNode("p","This is an editable curve node. Press, hold, and drag the orange handle to reshape the built road."));
+ sheetButton(el,"Straighten this segment",()=>{
+  const outcome=reshapeRoadSegment(game,e.id,null);closeSheet();
+  if(!outcome.ok){notify(outcome.reason);return;}
+  refresh();notify("Curve straightened. No charge or refund.");
+ });
+ sheetButton(el,"Destroy this segment (no refund)",()=>{
+  if(!confirm("Remove this curved road segment? No refund."))return;
+  removeRoadSegment(game,e.id);closeSheet();refresh();
+ });
+ openSheet("Existing curve",el);
+}
+function hitBuiltCurve(p,radius){
+ const g=game.roadGraph;let best=null,minimum=radius;
+ for(const e of g.segments){
+  if(!e.control)continue;
+  const a=nodeAt(g,e.a),b=nodeAt(g,e.b),q=quadraticPoint(a,e.control,b,.5),d=distance(q,p);
+  if(d<=minimum){minimum=d;best={segment:e,point:q};}
+ }
+ return best;
+}
 function handleTap(p){if(p.x<0||p.y<0||p.x>WORLD.w||p.y>WORLD.h)return;
- if(mode==="road"){if(draft.anchors.length>=MAX_ANCHORS){notify("Road has reached its node limit.");return;}
- if(!addRoadAnchor(draft,{x:Math.round(p.x),y:Math.round(p.y)})){notify("Tap inside the map.");return;}
- updateRoadInfo();renderMap();return;}
+ if(mode==="road"){
+  const radius=roadPixelRadius(),near=nearestNode(game.roadGraph,p,radius);
+  if(draft.anchors.length===0){
+   if(near){nodePanel(near);return;}
+   const curve=hitBuiltCurve(p,radius);
+   if(curve){curvePanel(curve.segment);return;}
+   const segment=nearestSegment(game.roadGraph,p,radius);
+   if(segment){segmentPanel(segment);return;}
+  }
+  if(draft.anchors.length>=MAX_ANCHORS){notify("Road has reached its node limit.");return;}
+  const chosen=near||p;
+  if(!addRoadAnchor(draft,{x:Math.round(chosen.x),y:Math.round(chosen.y)})){notify("Tap inside the map.");return;}
+  updateRoadInfo();renderMap();return;
+ }
  if(mode==="build"){if(!selectedBuild){buildPanel();return;}const r=placeBuilding(game,selectedBuild,p);if(!r.ok){notify(r.reason);return;}refresh();notify(BUILDINGS[selectedBuild].label+" constructed.");selectedBuild=null;setMode("explore");return;}
- inspectPoint(p);}
+ inspectPoint(p);
+}
 function clearHold(p){if(p.holdTimer!==null){clearTimeout(p.holdTimer);p.holdTimer=null;}}
 function downPointer(e){
  if(e.pointerType==="mouse"&&e.button!==0)return;
  e.preventDefault();svg.setPointerCapture(e.pointerId);
- const rect=svg.getBoundingClientRect(),radius=HIT_RADIUS_PX*(920/camera.scale)/rect.width;
- const down=mapPoint(e.clientX,e.clientY);
- const index=mode==="road"?hitRoadSegment(draft,down,radius):-1;
- const p={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,down,moved:false,holdReady:false,holdTimer:null,curveActive:false,curveIndex:index,initialControl:null};
+ const down=mapPoint(e.clientX,e.clientY),radius=roadPixelRadius(),g=game.roadGraph;
+ const n=mode==="road"?nearestNode(g,down,radius):null;
+ const bend=mode==="road"&&!n&&draft.anchors.length===0?hitBuiltCurve(down,radius):null;
+ const draftIndex=mode==="road"&&!n&&!bend?hitRoadSegment(draft,down,radius): -1;
+ const hit={node:n,builtCurve:bend,segmentIndex:draftIndex};
+ const p={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,down,moved:false,
+  holdReady:false,holdTimer:null,curveActive:false,gestureActive:false,initialControl:null,hit,trail:[]};
  pointers.set(e.pointerId,p);
  if(pointers.size===2){
    for(const entry of pointers.values()){clearHold(entry);entry.holdReady=false;entry.moved=true;}
    const [a,b]=[...pointers.values()];gesture={distance:distance(a,b),scale:camera.scale};
- }else if(index>=0&&e.pointerType!=="mouse"){
-   // A quick swipe keeps panning the map. Only an intentional hold enables bending.
+ }else if(mode==="road"){
    p.holdTimer=setTimeout(()=>{
-     if(pointers.size===1&&pointers.get(e.pointerId)===p&&!p.moved&&mode==="road"){
-       p.holdReady=true;$("modeLabel").textContent="Curve selected · drag to bend this road";
-     }
-   },HOLD_MS);
- }else if(index>=0&&e.pointerType==="mouse"){
-   // Desktop testing uses the same long-press behavior.
-   p.holdTimer=setTimeout(()=>{
-     if(pointers.size===1&&pointers.get(e.pointerId)===p&&!p.moved&&mode==="road"){
-       p.holdReady=true;$("modeLabel").textContent="Curve selected · drag to bend this road";
-     }
+    if(pointers.size===1&&pointers.get(e.pointerId)===p&&!p.moved&&mode==="road"){
+      p.holdReady=true;$("modeLabel").textContent="Road gesture active · drag to shape";
+    }
    },HOLD_MS);
  }
 }
 function movePointer(e){
  const p=pointers.get(e.pointerId);if(!p)return;e.preventDefault();
- const dx=e.clientX-p.x,dy=e.clientY-p.y;
- const travel=Math.hypot(e.clientX-p.startX,e.clientY-p.startY);
+ const dx=e.clientX-p.x,dy=e.clientY-p.y,travel=Math.hypot(e.clientX-p.startX,e.clientY-p.startY);
  p.x=e.clientX;p.y=e.clientY;
  if(pointers.size===2){
    const [a,b]=[...pointers.values()];
-   if(gesture)camera.scale=clamp(gesture.scale*(distance(a,b)/Math.max(gesture.distance,10)),.75,3.8);
+   if(gesture)camera.scale=clamp(gesture.scale*distance(a,b)/Math.max(gesture.distance,10),.75,3.8);
    renderMap();return;
  }
- if(canBeginCurve({mode,pointerCount:pointers.size,holdMs:p.holdReady?HOLD_MS:0,movementPx:travel,segmentIndex:p.curveIndex})){
-   if(!p.curveActive){p.initialControl=beginRoadBend(draft,p.curveIndex);p.curveActive=true;}
+ if(mode==="road"&&p.holdReady&&travel>=MOVE_SLOP_PX){
    p.moved=true;clearHold(p);
-   updateRoadBend(draft,p.curveIndex,p.initialControl,p.down,mapPoint(e.clientX,e.clientY));
+   if(p.hit.segmentIndex>=0){
+     if(!p.curveActive){p.initialControl=beginRoadBend(draft,p.hit.segmentIndex);p.curveActive=true;}
+     updateRoadBend(draft,p.hit.segmentIndex,p.initialControl,p.down,mapPoint(e.clientX,e.clientY));
+   }else if(p.hit.builtCurve){
+     const eId=p.hit.builtCurve.segment.id,initial=p.hit.builtCurve.segment.control;
+     const current=mapPoint(e.clientX,e.clientY);
+     const c={x:clamp(initial.x+2*(current.x-p.down.x),0,WORLD.w),y:clamp(initial.y+2*(current.y-p.down.y),0,WORLD.h)};
+     liveCurve={id:eId,control:c};p.curveActive=true;
+   }else{
+     const origin=draft.anchors.length?draft.anchors.at(-1):(p.hit.node||p.down);
+     const current=mapPoint(e.clientX,e.clientY);
+     p.trail.push(current);
+     liveGesture=gestureSegment(origin,p.down,current,p.trail);
+     p.gestureActive=true;
+   }
    updateRoadInfo();renderMap();return;
  }
- if(travel>MOVE_SLOP_PX){
+ if(travel>MOVE_SLOP_PX&&!p.holdReady){
    p.moved=true;clearHold(p);
    const rect=svg.getBoundingClientRect(),w=920/camera.scale;
-   camera.cx-=dx/rect.width*w;
-   camera.cy-=dy/rect.width*w*(rect.height/rect.width);
+   camera.cx-=dx/rect.width*w;camera.cy-=dy/rect.width*w*(rect.height/rect.width);
    renderMap();
  }
 }
 function endPointer(e){
  const p=pointers.get(e.pointerId);if(!p)return;
- clearHold(p);
- const tap=!p.moved&&!p.holdReady&&pointers.size===1;
- const at=mapPoint(e.clientX,e.clientY);
+ clearHold(p);const tap=!p.moved&&!p.holdReady&&pointers.size===1;
  pointers.delete(e.pointerId);if(pointers.size<2)gesture=null;
- if(mode==="road"&&p.holdReady)$("modeLabel").textContent="Roads · tap corners, hold a road and drag to bend";
- if(tap)handleTap(at);
+ if(p.curveActive&&p.hit.builtCurve&&liveCurve){
+   const outcome=reshapeRoadSegment(game,liveCurve.id,liveCurve.control);
+   if(!outcome.ok)notify(outcome.reason);else refresh();
+ }else if(p.gestureActive&&liveGesture&&mode==="road"){
+   const geometry=liveGesture;
+   const startCount=draft.anchors.length;
+   if(!startCount)addRoadAnchor(draft,{x:Math.round(geometry.start.x),y:Math.round(geometry.start.y)});
+   const near=nearestNode(game.roadGraph,geometry.end,roadPixelRadius()),endpoint=near||geometry.end;
+   if(addRoadAnchor(draft,{x:Math.round(endpoint.x),y:Math.round(endpoint.y)})){
+     const i=draft.controls.length-1;
+     if(geometry.control)draft.controls[i]=geometry.control;
+     if(!startCount&&draft.history.length>=2)draft.history.splice(draft.history.length-2,1);
+   }
+   updateRoadInfo();
+ }
+ liveGesture=null;liveCurve=null;
+ if(mode==="road")$("modeLabel").textContent="Roads · tap a node or hold and drag to draw";
+ if(tap)handleTap(mapPoint(e.clientX,e.clientY));
+ renderMap();
 }
-function cancelPointer(e){const p=pointers.get(e.pointerId);if(p)clearHold(p);pointers.delete(e.pointerId);if(pointers.size<2)gesture=null;}
+function cancelPointer(e){const p=pointers.get(e.pointerId);if(p)clearHold(p);pointers.delete(e.pointerId);
+ if(pointers.size<2)gesture=null;liveGesture=null;liveCurve=null;renderMap();}
 svg.addEventListener("pointerdown",downPointer);
 svg.addEventListener("pointermove",movePointer);
 svg.addEventListener("pointerup",endPointer);
@@ -194,7 +285,7 @@ $("historyBtn").onclick=()=>historyPanel();
 $("closeSheet").onclick=closeSheet;$("backdrop").onclick=closeSheet;
 $("undoRoad").onclick=()=>{undoRoadAction(draft);updateRoadInfo();renderMap();};
 $("cancelRoad").onclick=()=>{draft=createRoadDraft();updateRoadInfo();renderMap();};
-$("confirmRoad").onclick=()=>{const r=addRoad(game,flattenRoadDraft(draft));if(!r.ok){notify(r.reason);return;}draft=createRoadDraft();refresh();notify("Road built for "+r.cost+" gold.");};
+$("confirmRoad").onclick=()=>{const r=buildRoad(game,draft.anchors,draft.controls);if(!r.ok){notify(r.reason);return;}draft=createRoadDraft();refresh();notify("Road built for "+r.cost+" gold.");};
 $("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents});refresh();notify(monthLabel(game.turn)+": "+(result.populationDelta>=0?"+":"")+result.populationDelta+" residents, "+(result.balance>=0?"+":"")+result.balance+" gold.");};
 $("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;closeSheet();refresh();notify("Save imported successfully.");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
 window.addEventListener("resize",renderMap);
