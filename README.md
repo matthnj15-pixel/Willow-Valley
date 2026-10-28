@@ -32,7 +32,6 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 - Tap **Undo** to reverse the last node or curve, **Cancel** to discard the draft, or **Build road** to commit. Cost updates with the real road length.
 - Select **Build** and pick an industry, then tap a location on the map to place it.
 - Advance a month to resolve production, food consumption, taxes, upkeep, and residential growth.
-- Tap **Advisor** for rule-based recommendations. AI is **not enabled**.
 - Open the menu to export/import a JSON save.
 
 ## Development
@@ -43,11 +42,40 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 - Pull requests from develop to main promote tested changes.
 - GitHub Actions runs Node's built-in test runner, then publishes main plus develop to independent site paths.
 
-## Privacy and AI
+## Offline-first, no AI
 
-There are **no API keys** in this repository. GitHub Pages is public. When AI is introduced, calls must go through an authenticated server-side backend with secret storage, quota enforcement, and explicit user permission. Never put API keys, service credentials, or personal data in this repository or in static browser assets.
+Willow Valley uses entirely local, deterministic game mechanics. There is no
+advisor, AI integration, cloud requirement, API token, or service charge.
 
-The current Advisor uses local deterministic heuristics and **does not make AI requests**.
+### Install on iPhone (recommended)
+
+1. Open the **Development** URL while on Wi-Fi/cellular.
+2. Wait until the game displays **OFFLINE READY** at the top.
+3. Use the browser's Share menu → **Add to Home Screen**.
+4. Before a flight, activate Airplane Mode and open the installed game to verify.
+5. The game continues locally in airplane mode. The settlement save stays on
+   this device and installation; **Export save as JSON** frequently.
+
+The first visit needs internet access to install/cache the game's complete
+HTML, CSS and JavaScript. Browser storage can be evicted, including cached
+files and local saves: keep a separate JSON backup.
+
+### Downloadable standalone HTML
+
+The release pipeline also creates a self-contained `offline.html` file with
+all CSS and JavaScript bundled into the page, using the build script:
+
+```sh
+npm install
+npm run build:offline
+```
+
+Visit the Development site's `/dev/offline.html` to save the generated file.
+It needs **no server or network resources** once downloaded. On desktop, this
+is a portable offline option. On iPhone, Safari may not execute HTML opened
+from Files consistently; the installed PWA is preferred. Browser saves are
+**not automatically shared** between the downloaded file and installed site:
+use Export/Import Save to transfer them.
 
 ## Architecture
 
@@ -56,7 +84,9 @@ The current Advisor uses local deterministic heuristics and **does not make AI r
 - `road-network.mjs`: persistent junction IDs, editable edges, connected road access, and legacy save compatibility.
 - `road-gesture.mjs`: interprets a hold-and-drag into an optional curve.
 - `app.mjs`: browser UI, gestures, SVG drawing, local saves.
-- `config.mjs`: environment-specific configuration and feature flags.
+- `config.mjs`: environment-specific settings and non-AI feature flags.
+- `sw.js` and `manifest.webmanifest`: offline install and scoped caching.
+- `scripts/build-offline.mjs`: export a fully self-contained HTML game.
 - `tests/`: unit tests without external dependencies.
 - `.github/workflows/pages.yml`: tests and dual-path Pages deployment.
 

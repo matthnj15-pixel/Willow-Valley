@@ -6,3 +6,7 @@ node_modules/
 secrets.json
 *.pem
 *.key
+
+# Generated standalone distributions
+offline.html
+willow-valley-offline.zip

@@ -7,12 +7,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Willow Valley · Your living settlement</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" type="image/svg+xml" href="./icon.svg">
 <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
 <div id="app">
 <header class="topbar">
-  <div><div class="eyebrow"><span id="environment">DEVELOPMENT</span> · LIVING SETTLEMENT</div><h1>Willow Valley</h1><div id="calendar" class="calendar"></div></div>
+  <div><div class="eyebrow"><span id="environment">DEVELOPMENT</span> · <span id="offlineStatus">LOCAL GAME</span></div><h1>Willow Valley</h1><div id="calendar" class="calendar"></div></div>
   <button class="icon-button" id="menuBtn" aria-label="Game menu">☰</button>
 </header>
 <section class="stats" aria-label="Settlement resources">
@@ -33,7 +35,6 @@
   <button id="exploreBtn" class="dock-tool active" aria-label="Explore the map"><span class="symbol">⌖</span><span>Explore</span></button>
   <button id="roadsBtn" class="dock-tool" aria-label="Draw roads"><span class="symbol">⌁</span><span>Roads</span></button>
   <button id="buildBtn" class="dock-tool" aria-label="Build structures"><span class="symbol">▣</span><span>Build</span></button>
-  <button id="advisorBtn" class="dock-tool" aria-label="Speak to your advisor"><span class="symbol">✧</span><span>Advisor</span></button>
   <button id="nextBtn" class="advance"><small>END MONTH</small><b>Advance →</b></button>
 </nav>
 </div>

@@ -124,9 +124,3 @@ export function advance(s,{events=true}={}){s.turn++;const notices=[],oldPeople=
  s.logs.unshift(monthLabel(s.turn)+": "+s.report);
  if(s.logs.length>60)s.logs.length=60;
  return{foodProduction,woodProduction,toolProduction,foodRequired,balance,populationDelta:net,notices};}
-export function advice(s){if(s.food<22)return["Food security needs attention.","Your current reserves are low. Add a farm near a road, or slow population growth until production catches up."];
- if(s.wood<10)return["Your wood supply is tight.","Add a lumber camp with access to an existing road. Tool production also consumes wood each month."];
- if(s.tools<3)return["Construction tools are scarce.","A toolsmith can replenish tools, but it consumes wood. Check the entire chain before expanding."];
- if(s.gold<220)return["Protect the treasury.","Building costs and monthly upkeep will restrict your next expansion. Advance cautiously or improve tax revenue through population growth."];
- if(s.buildings.some(b=>structureAccess(s,b)!=="road")||housingAccess(s).some(x=>x!=="road"))return["Buildings or homes lack road access.","All structures need a connected road. Desire paths provide partial pedestrian access, but not full deliveries or service."];
- return["The settlement can expand.","Your reserves are currently reasonable. Consider planning a new road, adding a production building, or advancing a month to observe development."];}
