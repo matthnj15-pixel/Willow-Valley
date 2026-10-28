@@ -142,6 +142,21 @@ Roads remain persistent editable edges with connectivity; material, condition, t
 
 A sample path: **Hamlet** (irregular cottages, shared green space, housing/fields/wood/dirt paths) → **Village** (stable homes, jobs, food surplus, commerce, quarry) → **Market Town** (formal subdivision and denser-district planning **option**, stone infrastructure, maintenance, specialist services) → **Civic Center** (administration, tax office, manor/castle policy tools). Formal street/lot regularity must be an explicit later progression choice, never imposed on the original organic village. Building unlocks reflect needs and prior achievement and present a tangible problem/solution loop. Natural beauty/preserves and mobility matter to attractiveness; poor planning has recoverable consequences.
 
+### Historical design precedent — Cádiz, Spain
+
+**Approved visual and urban-development reference:** the historic city of **Cádiz, Spain**. Its old town is useful because generations of construction and economic change produced a layered urban fabric with narrow streets, irregular blocks, different building orientations, small squares and courtyards, and later more deliberate urban interventions. Research on its morphology explicitly considers historical street formation, block alteration and building density (Jiménez-Verdejo, Pulido-Arcas & Funo, 2015: https://www.jstage.jst.go.jp/article/aija/80/713/80_1557/_article/-char/en). University of Cádiz research describes the evolution of its commercial/fortified urban area, changing settlement pressure and later planned districts (https://produccioncientifica.uca.es/documentos/5febd9275ef7446310f94ad4).
+
+**Important:** Cádiz's compact, urbanized core is a reference for **the accumulated outcome of centuries**, not a template to impose on an early rural hamlet. Willow Valley's first few families should have irregular, loosely separated cottages, useful footpaths and room for gardens. As population and services intensify, those original routes can become permanent lanes, courtyards and small squares; additional households fill appropriate gaps, subject to actual space, access, sanitation, terrain and policy. New districts may adopt regular subdivision patterns **only after deliberate progression unlocks**, while the old settlement retains its evolved geometry.
+
+**Generative design principles:**
+- **Layer history:** preserve the initial paths, cottage orientations, settled parcel IDs and village centers through subsequent phases. Later buildings respond to those constraints instead of regenerating the map into neat rows.
+- **Infill over reset:** demand can thicken a suitable neighborhood by subdividing/reusing land *where legally permitted*, but never erase existing houses, protected nature, road alignments or meaningful gaps without a player-led redevelopment action.
+- **Purposeful public space:** repeated routes and destinations can eventually establish village greens and intimate squares, not just uniform setback corridors. These spaces serve access, commerce and community functions.
+- **Context determines density:** a constrained waterfront or fortified center may become much more compact than a rural upland settlement. Terrain, economics, historical routes and municipal choices drive those differences rather than a universal density curve.
+- **Controlled contrast:** formal newer neighborhoods can coexist with a winding historic core; the difference should read as a change in civic capability and period, not an accident in procedural generation.
+
+**Visual regression brief:** Simulate the same town across multiple milestone stages. At each, compare persistent street geometry and parcel/building provenance. The hamlet should be visibly loose and varied; the mature core should retain its irregular historic character even as safe infill densifies it; an unlocked planned district should be distinguishable by its measured layout. Do not treat proximity to Cádiz as requiring its architectural style, peninsula shape or exact historical chronology.
+
 ## G. Save slots and diagnostics — protective prerequisite
 
 Before schema-heavy world changes:
@@ -175,6 +190,7 @@ Before schema-heavy world changes:
 | WORLD-18 | Local residential dirt lanes can self-form from main roads based on travel/terrain, connect naturally grouped irregular cottage sites and consume corridor space; player's arterial/collector hierarchy remains unchanged without their command. |
 
 | WORLD-19 | On a deterministic test terrain with enough demand for multiple homes, a new hamlet generates demonstrably different parcel sizes/shapes/orientations and breathing spaces; regular, repeatable blocks appear only after explicitly unlocked planned-neighborhood policy. |
+| WORLD-20 | In a multi-stage seeded settlement, initial crooked lanes, irregular parcels and community spaces retain their geometry and historical identity as demand-driven infill occurs; a separately unlocked subdivision is planned rather than retroactively regularizing the old village. |
 
 ## I. Implementation slices (working order, not feature priority dictated by graphics)
 
