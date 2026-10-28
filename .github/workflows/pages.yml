@@ -33,10 +33,13 @@ jobs:
         run: |
           set -eu
           mkdir -p _site/dev
-          for file in index.html styles.css app.mjs simulation.mjs config.mjs road-editor.mjs; do
+          for file in index.html styles.css app.mjs simulation.mjs config.mjs; do
             cp "stable/$file" "_site/$file"
             cp "preview/$file" "_site/dev/$file"
           done
+          # Stable may not yet have features under testing on develop.
+          if [ -f stable/road-editor.mjs ]; then cp stable/road-editor.mjs _site/road-editor.mjs; fi
+          cp preview/road-editor.mjs _site/dev/road-editor.mjs
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
