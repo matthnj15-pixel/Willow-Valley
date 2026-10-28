@@ -6,5 +6,5 @@ test("a road costs money and joins existing infrastructure",()=>{const s=startGa
 test("isolated roads are built with a warning and spawn walking access over time",()=>{const s=startGame(),result=addRoad(s,[{x:30,y:30},{x:80,y:50}]);assert.equal(result.ok,true);assert.equal(result.isolated,true);assert.match(s.report,/No sims can reach/);});
 test("placing a building consumes materials",()=>{const s=startGame();const old=s.gold;assert.equal(placeBuilding(s,"farm",{x:700,y:610}).ok,true);assert.equal(s.gold,old-120);});
 test("turns resolve deterministically",()=>{const a=startGame(),b=startGame();for(let i=0;i<12;i++){assert.deepEqual(advance(a),advance(b));}assert.deepEqual(a,b);assert.equal(validState(a),true);});
-test("a food shortage produces deterministic gameplay consequences",()=>{const s=startGame();s.food=0;const result=advance(s,{events:false});assert.ok(result.notices.some(n=>n.includes("food shortage")));});
+test("a food shortage produces deterministic gameplay consequences",()=>{const s=startGame();s.food=0;s.people=200;const result=advance(s,{events:false});assert.ok(result.notices.some(n=>n.includes("food shortage")));});
 
