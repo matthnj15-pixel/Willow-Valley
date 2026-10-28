@@ -77,11 +77,11 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
  svg.append(node("rect",{x:h.x-11,y:h.y-9,width:22,height:22,rx:2,fill:"#f2e2bc",stroke:"#aa9a78","stroke-width":1.3}));
  svg.append(node("path",{d:"M "+(h.x-16)+" "+(h.y-10)+" L "+h.x+" "+(h.y-23)+" L "+(h.x+16)+" "+(h.y-10)+" Z",fill:"#a67353",stroke:"#7e654b","stroke-width":1.4}));
  svg.append(node("rect",{x:h.x+2,y:h.y,width:4,height:13,fill:"#826c52"}));}
- for(const b of game.buildings){const shade={lumber:"#8f623c",farm:"#b98d49",smith:"#677777"}[b.type];
+ for(const b of game.buildings){const shade={lumber:"#8f623c",farm:"#b98d49",smith:"#677777"}[b.type];const disconnected=nearestRoad(b,accessibleRoads(game))>125;
  svg.append(node("ellipse",{cx:b.x,cy:b.y+18,rx:28,ry:9,fill:"#455f3d",opacity:".33"}));
- svg.append(node("rect",{x:b.x-22,y:b.y-17,width:44,height:36,rx:3,fill:shade,stroke:"#fff1bb","stroke-width":3}));
+ svg.append(node("rect",{x:b.x-22,y:b.y-17,width:44,height:36,rx:3,fill:shade,stroke:disconnected?"#cf614c":"#fff1bb","stroke-width":disconnected?5:3}));
  svg.append(node("path",{d:"M "+(b.x-26)+" "+(b.y-17)+" L "+b.x+" "+(b.y-33)+" L "+(b.x+26)+" "+(b.y-17)+" Z",fill:"#6a503c",stroke:"#4e4838","stroke-width":2}));
- appendText(svg,{farm:"F",lumber:"L",smith:"T"}[b.type],b.x,b.y+11,24,"#fff2cb",{"font-family":"Georgia,serif","font-weight":"bold"});}
+ appendText(svg,{farm:"F",lumber:"L",smith:"T"}[b.type],b.x,b.y+11,24,"#fff2cb",{"font-family":"Georgia,serif","font-weight":"bold"});if(disconnected)appendText(svg,"!",b.x+26,b.y-28,31,"#c74734",{"font-weight":"bold"});}
  appendText(svg,"WILLOW VALLEY",475,265,25,"#416347",{"font-family":"Georgia,serif","letter-spacing":"3",opacity:".68"});
  const marker=node("circle",{cx:475,cy:286,r:3,fill:"#416347",opacity:".7"});svg.append(marker);
 }
@@ -111,7 +111,7 @@ function advisorPanel(){const [headline,detail]=advice(game),el=document.createE
  el.append(textNode("p","This is a rule-based advisor. Live AI conversation is planned for a secure, authenticated backend. There is no OpenAI API key in the game.","note"));
  openSheet("The council advisor",el);}
 function historyPanel(){const el=document.createElement("div");el.append(textNode("p","Significant milestones and monthly decisions in the life of Willow Valley."));const list=document.createElement("ol");for(const message of game.logs.slice(0,25))list.append(textNode("li",message));el.append(list);openSheet("Valley history",el);}
-function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=nearestRoad(item,game.roads);const detail=item.kind==="house"?"Residents live here and need access to jobs and food.":BUILDINGS[item.type].description+" Road access: "+(access<=84?"Connected, full production.":"Too far from the road, half production.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
+function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=nearestRoad(item,accessibleRoads(game));const detail=item.kind==="house"?"Residents live here and need access to jobs and food.":BUILDINGS[item.type].description+" Road access: "+(access<=125?"Connected to the village, full production.":"DISCONNECTED: no production until you restore a connected road within reach.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
 const roadPixelRadius=()=>{const r=svg.getBoundingClientRect();return HIT_RADIUS_PX*(920/camera.scale)/r.width;};
 function nodePanel(n){
  const el=document.createElement("div");
@@ -290,4 +290,4 @@ $("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents}
 $("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;closeSheet();refresh();notify("Save imported successfully.");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
 window.addEventListener("resize",renderMap);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet();});
-setStats();requestAnimationFrame(renderMap);
+setStats();save();requestAnimationFrame(renderMap);
