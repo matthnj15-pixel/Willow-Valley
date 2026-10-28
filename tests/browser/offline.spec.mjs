@@ -36,3 +36,17 @@ test("WV-OFFLINE-004: packaged HTML is a usable single-file game",async({page})=
  await page.locator("#nextBtn").click();
  await expect(page.locator("#calendar")).toContainText("April");
 });
+
+test("WV-ICON-003: installed iPhone touch icon and PWA icons are valid PNG resources",async({page,request})=>{
+ await page.goto("/");
+ const touch=page.locator('link[rel="apple-touch-icon"]');
+ await expect(touch).toHaveAttribute("sizes","180x180");
+ for(const [name,size] of [["apple-touch-icon.png",180],["icon-192.png",192],["icon-512.png",512]]){
+   const response=await request.get("/"+name);
+   expect(response.ok()).toBe(true);
+   const bytes=await response.body();
+   expect(bytes.subarray(1,4).toString("ascii")).toBe("PNG");
+   expect(bytes.readUInt32BE(16)).toBe(size);
+   expect(bytes.readUInt32BE(20)).toBe(size);
+ }
+});
