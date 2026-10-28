@@ -12,7 +12,7 @@ mountResourceBar($("resourceBar"),[
  {label:"Food",value:"66",iconName:"food",id:"food"},
  {label:"Wood",value:"20",iconName:"wood",id:"wood"},
  {label:"Tools",value:"9",iconName:"tools",id:"tools"}
-]);
+],{compact:true});
 mountGameDock($("gameDock"));
 
 let game=readSave(),mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
