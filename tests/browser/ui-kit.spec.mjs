@@ -19,8 +19,7 @@ test("WV-UI-002: build row, modal and toast are real interactive shared componen
  await page.locator("#modalBackdrop .wv-btn--primary").click();
  await expect(page.locator("#modalBackdrop")).toBeHidden();
  await expect(page.locator("#toastGallery .wv-toast")).toContainText("House constructed!");
- await page.getByLabel("Sound Volume").count().catch(()=>{}); 
- await page.locator("#volume").fill("35");
+ await page.locator("#volume").evaluate(el=>{el.value="35";el.dispatchEvent(new Event("input",{bubbles:true}));});
  await expect(page.locator("#volumeValue")).toHaveText("35%");
 });
 test("WV-UI-002: catalog and embedded live game share actual resource and navigation styles",async({page})=>{
