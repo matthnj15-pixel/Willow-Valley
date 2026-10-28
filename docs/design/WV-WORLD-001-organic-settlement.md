@@ -40,18 +40,59 @@ The terrain and simulation must share **one authoritative elevation/obstacle rep
 
 **Suggested modules:** `terrain.mjs`, `zones.mjs`, `land-suitability.mjs`, `route-planner.mjs`, `world-renderer.mjs`; feature flags isolate prototypes while retaining v1 saves. These names are an architecture sketch, not files already implemented.
 
-## C. Organic residential neighborhood generation
+## C. Residential demand, homelessness, parcels and organic neighborhoods
 
-1. Compute households, people per household, vacancies and immigration pressure separately.
-2. Demand for homes originates from real population pressure / eligible incoming families, not a blind per-turn house generator.
-3. The engine searches **inside committed Residential zones** and assesses footprint, slope, rivers, preserve boundaries, access, adjacency, beauty, available logs/tools and town construction policies.
-4. The player authors the broad road backbone. The game may organically trace **minor dirt access paths** and lot approaches within Residential zones without spending valuable gravel/stone or bulldozing protected terrain. These are not free full-quality roads; their pedestrian access has real limitations. Expose a settlement policy for how aggressively organic local access may develop.
-5. When valid plots and materials exist, houses grow incrementally and are assigned occupants from real households; vacancies may persist but do not themselves generate people.
-6. If housing is needed and usable plots/access are insufficient, show an actionable request: draw more Residential land, provide a reachable corridor, or address slope/material constraints.
-7. **Three monthly-turn grace period** from first unresolved need: escalating prompt; on expiration, eligible households may seek informal housing/footpaths **only in permitted, suitable ground** or leave. Departures/failed migration reduce immigration attractiveness. Do not place houses on cliffs, water or preserves as a shortcut.
-8. Keep the outcome understandable (e.g. "2 families left: no reachable residential land" or "new cottages settled beside a worn trail"). In-migration attractiveness changes future arrivals, not a magic population rollback.
+### Housing demand decision — vacancies, viable land and two-turn departure
 
-The initial neighborhood generator should optimize for natural variation without endless randomness: reproducible seed, sensible spacing, road proximity and site qualities. Never consume reserves invisibly; residential build costs and allocation policy must be exposed and logged.
+Households have stable IDs, member counts, housing status and arrival/need dates. Existing residents whose house is lost and eligible incoming households use the same occupancy rules. At each monthly turn, resolve in this order:
+
+1. **Available existing housing:** Match households seeking a home with an existing **vacant dwelling that has enough capacity**. Assign occupancy without generating a new house.
+2. **Unoccupied valid land within a committed Residential zone:** If no suitable home exists, determine whether a **complete, viable parcel** can be generated inside an eligible zone. If it can, the town may construct on that plot, using material/build-time/road access requirements. Only a real completed dwelling can house the household. A reserved or under-construction plot is not a vacant home.
+3. **Unsheltered demand:** If no adequate home is ready—and no viable parcel can be developed, or construction is delayed—the household becomes **homeless**. The game clearly explains the cause (no free homes, no usable residential lots, blocked access, materials, or construction delay); it does **not** automatically demand that the player build arterial roads.
+4. **Exactly two further monthly turns:** The first turn where housing need becomes unresolved records homeless age **0**. At the first subsequent turn, if still homeless, age becomes **1**. At the second subsequent turn, if still homeless, the household **leaves the town**; all its residents are removed and immigration attractiveness decreases. Resolving their housing at either opportunity cancels the countdown. Each homeless household tracks its own age; new arrivals do not reset anyone else's clock.
+5. **No uncontrolled sprawl outside painted Residential land:** Homelessness does **not** authorize the engine to squat on unzoned land or create emergency homes along desire paths. Players choose permitted development areas; the engine chooses locations *within* them. A preserve, cliff, river, inaccessible steep slope or protected obstacle is never overridden.
+
+**Housing demand dashboard** distinguishes: (a) residents/households requiring housing, (b) vacant existing dwelling capacity, (c) **viable buildable vacant parcels** within committed Residential zones, (d) residential area that is zoned but unsuitable/unserviced, (e) homes planned/under construction, (f) homeless households and countdown, and (g) immigration attractiveness and why it changed. Display actionable shortages based on *what is really missing*; a large green zone with no suitable land must not count as housing capacity.
+
+The town journal and diagnostic log record household-created, vacancy-filled, parcel-reserved, construction-started/completed/blocked, homelessness-started, homelessness-resolved, and homelessness-expired events with reasons, cost and age. Do not spawn people merely because a home is constructed.
+
+### Parcel sizes, spacing and settlement character
+
+Residential planning uses **land parcels/footprints, not pixel occupancy**. The following are **initial tunable game-world-unit targets** for the existing `WORLD={w:1200,h:900}` and approximate 22×22-unit drawn house models, **not a real-world meter scale**.
+
+| Property | Initial tuning target | Meaning |
+| --- | --- | --- |
+| Cottage lot street frontage | **48–56 world units** | Minimum continuous access-facing frontage, not simply a house-center distance |
+| Cottage parcel depth | **60–72 world units** | Includes house, front approach and usable yard |
+| Cottage house footprint | **20–26 × 20–28 units** | Approximate collision footprint; 3D model shape ultimately determines exact footprint |
+| Side spacing between house footprints | **≥ 12 units** | Avoid wall-to-wall crowds, even across neighboring parcel boundaries |
+| Front setback | **≥ 10 units** | Room for path/steps/landscaping before the house |
+| Back usable space | **≥ 12 units** | Yard and trees; adjust for foundation and slope |
+| Local minor residential access lane | **12–18 units of shared corridor width** | Count access corridor as consumed land, not free plot space |
+| Terrain grade and obstacle buffers | **By explicit suitability rules** | Entire house and necessary safe access must fit without cliff/water/vegetation collision |
+
+These are **prototypes**, to be calibrated on real iPhone zoom and 3D model scale. The first implementation should expose named tuning parameters with tests rather than hard-code magic values. If parcels need to be scaled with the world's authoritative unit system in the 3D prototype, update the targets while preserving their relative spacing.
+
+**Parcel generator:** Search only inside committed Residential polygons, using suitable ground and route-facing frontage; then subdivide into plausible lots with variable widths, depths, orientations, curved frontage and garden space. Reserve entire parcel polygons, not just building centers. Reject overlaps with road/lane corridors, other reserved parcels, building exclusion areas, water/cliff buffers, agricultural fields and preserves. Use 2D polygon intersection plus terrain-envelope checks, not the legacy blanket `distance(center,center)<57` occupancy shortcut (which may conflict with frontage-based layouts).
+
+Avoid unnatural packing:
+- Permit **irregular lots, gaps, tree retention and front gardens**, especially where terrain or winding streets call for it.
+- Keep **at least 15–25% of *suitable gross residential-zone area* unassigned** as a starting landscape/open-space target (including appropriate shared green), then tune. This is a proposed planning target, not a rigid universal cap.
+- Do not squeeze a new micro-lot merely because slivers of land remain between two large lots. An undersized polygon is **unbuildable** and should appear as such in the zoning overlay.
+- Homes may have varying capacity and lot sizes by future density/policy; the first milestone uses a low-density cottage archetype. A *later* townhouse/higher-density unlock can deliberately change lot/frontage rules rather than silently increasing packing.
+- Sloped lots can use small foundations and grading within a threshold; no cliffside foundations. Full site/yard and safe route are considered, not only the building center.
+
+### Main roads vs emergent residential paths
+
+**Player-controlled road hierarchy:** Players draw the **arterials and collectors** that form the overall town framework. The settlement should *not* require the player to hand-place every subdivision street or short path.
+
+**Engine-generated neighborhood hierarchy:** Committed Residential land creates demand for **local access** as actual houses and travel destinations develop. The engine can trace narrow **walkable dirt local lanes/footpaths** inside the zone from a collector/arterial, weave around existing plots and terrain, and progressively organize small neighborhood clusters. Desire paths record where actual household trips cut between homes, roads, markets, jobs and parks. A local lane consumes land, affects access and can later be formalized or upgraded by player policy—it is not a free gravel/stone road. Developers must not build a model house without a feasible approach to its entrance.
+
+**Disconnected player road grids:** The same pathfinder may grow route desire lines between isolated grid components and the wider settlement when real pedestrian trips justify them, using safe terrain and permitted crossings. A footpath does not magically make disconnected industry freight routes fully connected. Logs distinguish "neighborhood lane needed", "pedestrian shortcut to disconnected road" and "road network disconnected".
+
+**Important separation:** Desire paths exist because of **movement and road topology**, **not** because the housing shortage timer expired. Homelessness never triggers automatic off-zone sprawl or arbitrary shortcuts. A shortage can increase travel demand indirectly, but the path system is its own subsystem.
+
+Deterministic seed, stable parcel IDs, plausible parcel subdivision, safe grade, landscaping and road proximity all matter. Residential material costs, build delays and allocation policies must be visible in the journal; never consume resources invisibly.
 
 ## D. Working farms and labor economics
 
@@ -68,7 +109,7 @@ The initial neighborhood generator should optimize for natural variation without
 
 ## E. Desire paths, traffic, material wear and visual walkers
 
-**Desire paths:** Generated by actual or estimated household-to-job/market/recreation journeys. Aggregate monthly footfall on a topographic routing graph; avoid buildings, protected habitat (unless walking allowed), cliffs and lakes. Prefer near-direct, safely graded routes. Smooth routing points into organic gentle curves without allowing the smooth curve to cut through blocked cells. Persist paths, footfall and cause in the save/journal.
+**Desire paths:** Generated by actual or estimated household-to-job/market/recreation journeys. Aggregate monthly footfall on a topographic routing graph; avoid buildings, protected habitat (unless walking allowed), cliffs and lakes. Prefer near-direct, safely graded routes within and between emergent residential neighborhoods, across player-authored collectors/arterials and, when real trips justify it, between otherwise disconnected grids. Smooth routing points into organic gentle curves without allowing the smooth curve to cut through blocked cells. Paths are **not** created as a penalty for housing shortages. Persist paths, footfall and cause in the save/journal.
 
 **Visual agents:** Draw a representative subset of sims moving on the same routes during the turn's visual interval. They illustrate monthly traffic; their animation does not change game resources, employment or traffic statistics. Support reduced motion and low-power culling.
 
@@ -100,26 +141,29 @@ Before schema-heavy world changes:
 | --- | --- |
 | WORLD-01 | One-finger strokes edit preview zone geometry; two-finger navigation continues; Cancel makes no persistent changes; Commit persists shape after reload. |
 | WORLD-02 | Four zone types have distinguishable overlays, editable boundaries and deterministic overlap rules. |
-| WORLD-03 | Committed vacant Residential land does not spontaneously create homes without qualified housing demand. |
+| WORLD-03 | Committed vacant Residential land does not spontaneously create homes without qualified housing demand; the housing dashboard distinguishes vacant dwellings from viable undeveloped lots. |
 | WORLD-04 | A proposed cliff/water/preserve house is rejected; a gentle-hill house gets a seated foundation/grade treatment. |
-| WORLD-05 | Families facing shortages receive a 3-turn escalation; additional housing, informal settlement or departure has journaled reasons; immigration attractiveness responds. |
+| WORLD-05 | Households first use vacant existing homes, then viable zoned parcels; when unsheltered, they get exactly **two further monthly turns** to find housing, otherwise leave and reduce immigration attractiveness. No off-zone informal housing. |
 | WORLD-06 | A farm without eligible linked field emits a prominent actionable alert and zero crop production. |
 | WORLD-07 | Farm output responds to valid area, staffing and internal traversal; evaluate 2 small vs 1 large at equal total area, workforce and soil. |
 | WORLD-08 | Labor shortage and job shortage are distinguished; auto-staff doesn't fabricate employees; pinned manual overrides survive turns/reload. |
-| WORLD-09 | Desire paths route around blocked water, cliffs, structures and restricted preserves while respecting grade; optional smoothing never reintroduces collision. |
+| WORLD-09 | Desire paths connect household destinations, emergent local lanes off player-drawn collectors/arterials, and justified isolated-grid crossings; route around blocked water, cliffs, structures and restricted preserves, respecting grade. Shortage timers never create paths by themselves. |
 | WORLD-10 | Representative walking sims use the persisted route without advancing monthly state or changing output at different FPS. |
 | WORLD-11 | Dirt walking paths persist under use; gravel can degrade to dirt; neglected stone becomes damaged, incurs reduced travel preference and permits safe bypass. |
 | WORLD-12 | Road maintenance consumes real labor, budget/materials, respects priorities, and does not repair disconnected/unauthorized segments for free. |
 | WORLD-13 | Three slots are isolated and safely migrate one legacy settlement per environment; no accidental stable-preview cross-save. |
 | WORLD-14 | All procedural results are deterministic for a given seed, action stream and turn; event log explains each material effect. |
 | WORLD-15 | Complete Node + Playwright suite (mobile portrait, offline startup and reload) remains green; no change is promoted to main without owner PR merge. |
+| WORLD-16 | Procedural cottage construction reserves non-overlapping **full parcel polygons** with road frontage, minimum lot dimensions, house footprints, setbacks and valid grade; rejected leftover slivers stay unbuildable. |
+| WORLD-17 | The housing chart reports vacancies, viable vacant lots, zoned-but-unbuildable area and homeless households with independent countdowns; a family housed before its second additional turn does not leave. |
+| WORLD-18 | Local residential dirt lanes can self-form from main roads based on travel/terrain and consume corridor space; player's arterial/collector hierarchy remains unchanged without their command. |
 
 ## I. Implementation slices (working order, not feature priority dictated by graphics)
 
 0. **SAVE-001 safety rail:** three slots, event log, import/export and legacy migration; prove reproducibility.
 1. **WORLD-001 terrain and painting prototype:** height/slope/obstacle authoritative data, contour + suitability visualization, touch zone brush and commit, safe region storage. Preserve existing SVG gameplay while prototyping.
 2. **WORLD-002 organic routes + visual vertical slice:** seeded terrain/river/trees/first GLB scene, grade-aware collision-free desire paths and a few walking sims; use existing road graph and UI Kit.
-3. **WORLD-003 household and housing agency:** vacancy/household simulation, zoned development, three-turn pressure and informal paths.
+3. **WORLD-003 household and housing agency:** real vacancies vs zoned buildable parcels, physical lot subdivision, two-additional-turn homelessness expiry and residential development constrained to player-painted zones.
 4. **WORLD-004 workforce + farm fields:** plot linking, crop production, smart auto-staff, manual priorities and efficiency/commute trade-offs.
 5. **WORLD-005 material infrastructure:** quarry, gravel-to-dirt decay, damaged stone, repair staffing and road upgrades.
 6. **WORLD-006 progression + balancing:** clear milestone unlocks, preserve attractiveness, longer-form season/year simulation tests.
@@ -128,11 +172,11 @@ Before schema-heavy world changes:
 
 ## J. Open tuning decisions (not blockers for terrain/painting prototype)
 
-- Whether informal settler houses can appear outside Residential zones under an explicitly permitted crisis policy. **Default proposal: no**, except unzoned permissive land; never in nature preserves or unsafe terrain.
-- Whether organic local roads are drawn by the engine automatically or only formed as pedestrian paths unless the player approves a streets policy. **Default: pedestrian/dirt paths can self-form; durable roads are player-authored.**
+- Whether housing may appear outside Residential zones during a shortage: **Decided: no.** Residential houses belong in painted Residential zones only; homelessness does not override player land-use intent.
+- Whether organic local roads are drawn by the engine automatically or only formed as pedestrian paths unless the player approves a streets policy. **Decision:** local residential dirt access lanes and pedestrian paths can self-form along actual travel demand, while arterials/collectors and durable gravel/stone roads are player-authored or explicitly authorized by policy.
 - Which early farm specializations are needed for the first economic balance pass. **Default: grain first**, others as progression content.
 - Exact seasonal yield, zoning brush radius, grade thresholds, traffic rates and upkeep values are tunable parameters after playtesting, not hard-coded product truths.
 
 ## Existing system baseline (verified on develop)
 
-The current `simulation.mjs` has fixed 12-food farms and 7-wood lumber outputs and automatically places a house/+3 people under happiness and food conditions. It has no worker assignment, field area or household occupancy. `desire-paths.mjs` currently connects orphan roads with straight interpolated lines, without terrain or trip-driven movement. `config.mjs` keeps separate `willow-valley:main:v1` and `willow-valley:dev:v1` saves. We should **evolve these modules with migration/tests**, not erase the road-network work or rewrite the entire economy at once.
+The current `simulation.mjs` has fixed 12-food farms and 7-wood lumber outputs and automatically places a house/+3 people under happiness and food conditions. Its `housingSite()` samples road-adjacent points and `occupied()` only enforces an approximately 57-unit center-distance exclusion; this is **not a valid parcel-size or frontage model**. It has no worker assignment, field area or household occupancy. `desire-paths.mjs` currently connects orphan roads with straight interpolated lines, without terrain or trip-driven movement. `config.mjs` keeps separate `willow-valley:main:v1` and `willow-valley:dev:v1` saves. We should **evolve these modules with migration/tests**, not erase the road-network work or rewrite the entire economy at once.
