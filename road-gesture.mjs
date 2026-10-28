@@ -24,3 +24,22 @@ export function gestureSegment(start,down,end,trace=[]){
  const curve=bowed?{x:Math.max(0,Math.min(1200,control.x)),y:Math.max(0,Math.min(900,control.y))}:null;
  return{start:p(start),end:p(end),control:curve};
 }
+
+// Anchored radial editor: touch-down is ALWAYS the node. The finger manipulates
+// the curve control on the opposite side of that fixed anchor.
+// Moving the finger farther increases radius without moving the endpoint.
+export function radialCurveGesture(anchor,finger,{strength=1}={}){
+ if(!anchor||!finger)return null;
+ const dx=finger.x-anchor.x,dy=finger.y-anchor.y;
+ const handle={x:Math.max(0,Math.min(1200,anchor.x-strength*dx)),
+               y:Math.max(0,Math.min(900,anchor.y-strength*dy))};
+ return{anchor:p(anchor),control:handle,radius:Math.hypot(handle.x-anchor.x,handle.y-anchor.y)};
+}
+// Starting a road with hold-drag sets the outgoing handle for its NEXT edge;
+// holding at a later node shapes the incoming edge, without moving that node.
+export function anchoredSegment(start,anchor,finger){
+ const gesture=radialCurveGesture(anchor,finger);
+ if(!gesture)return null;
+ if(!start||distance(start,anchor)<12)return{anchor:gesture.anchor,control:gesture.control,pending:true};
+ return{start:p(start),end:gesture.anchor,control:gesture.radius>8?gesture.control:null,pending:false};
+}
