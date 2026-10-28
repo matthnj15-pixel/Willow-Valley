@@ -124,3 +124,28 @@ export function renderGameToast(target,message){
  target.replaceChildren(icon("info",{size:22}),el("span","",message));
  target.hidden=false;return target;
 }
+
+export function createAdvanceButton({id="nextBtn",onClick}={}){
+ const b=el("button","advance wv-advance");
+ b.type="button";b.id=id;b.append(el("small","", "END MONTH"),el("b","","Advance →"));
+ if(onClick)b.addEventListener("click",onClick);return b;
+}
+export function mountGameDock(target){
+ target.replaceChildren(
+  createNavTool({id:"exploreBtn",label:"Explore",iconName:"map",active:true}),
+  createNavTool({id:"roadsBtn",label:"Roads",iconName:"roads"}),
+  createNavTool({id:"buildBtn",label:"Build",iconName:"house"}),
+  createAdvanceButton()
+ );
+ return target;
+}
+export function createSheetPreview({title="Construction",body}={}){
+ const sheet=el("section","sheet wv-sheet-preview");
+ sheet.setAttribute("role","dialog");sheet.setAttribute("aria-label",title);
+ sheet.append(el("div","sheet-grip"));
+ const header=el("div","sheet-head");header.append(el("h2","",title));
+ const exit=el("button","icon-button","×");exit.setAttribute("aria-label","Close");
+ exit.addEventListener("click",()=>sheet.remove());header.append(exit);sheet.append(header);
+ const content=el("div","sheet-body");
+ if(body)content.append(body);sheet.append(content);return sheet;
+}
