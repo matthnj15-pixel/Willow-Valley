@@ -105,3 +105,32 @@ settlement JSON before removing an installed web app.** To see the new icon,
 open the updated game in Safari, wait for **OFFLINE READY**, then use
 Share → Add to Home Screen. Confirm the preview shows the artwork before
 removing any older shortcut.
+
+## Living UI Kit — WV-UI-002
+
+Use [the Development UI catalog](https://matthnj15-pixel.github.io/Willow-Valley/dev/ui-kit/) to see **the exact coded UI components used by the game**.
+
+The visual source of truth is `styles.css` (brand tokens and shared component classes).
+`ui-components.mjs` creates the shared DOM elements. Both `app.mjs` and
+`ui-kit/catalog.mjs` import those same functions. The catalog includes the
+actual running Development game in an embedded frame, not a mockup.
+Changes to canonical components are reflected in both surfaces after publishing.
+
+The original Figma artboard and generated artwork are design references, not
+pixel guarantees. The catalog shows real, interactive browser components that
+run on the iPhone and work offline after caching the app.
+
+**Contract:** resource chips, game dock, build rows, buttons, and toast renderer
+are mounted from shared modules. The build catalog, modal preview, tabs,
+status indicators, and inputs share the same CSS. No separate screenshot
+mockups or duplicated component implementations are accepted as source of truth.
+
+- `ui-kit/index.html`: standalone catalog route
+- `ui-kit/catalog.mjs`: interactive preview instances
+- `ui-kit/catalog.css`: surrounding catalog layout only
+- `styles.css` and `ui-components.mjs`: authoritative shared design system
+- `tests/ui-kit.test.mjs` and `tests/browser/ui-kit.spec.mjs`: token, parity,
+  real-game embedding, interaction and offline regression tests
+
+Your Development game and catalog share the same browser save: the embedded
+preview can advance the actual game. Always export JSON before risky tests.
