@@ -49,7 +49,7 @@ test("WV-UI-002: installed local UI kit can reopen while disconnected",async({pa
 });
 
 test("WV-UI-002: Development game links directly to its living UI catalog",async({page})=>{
- await page.goto("/");
+ await page.goto("/?preview=1");
  await page.locator("#menuBtn").click();
  await expect(page.getByRole("link",{name:"Open the interactive Willow Valley design system"})).toBeVisible();
  await page.getByRole("link",{name:"Open the interactive Willow Valley design system"}).click();
