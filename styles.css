@@ -161,7 +161,7 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
  padding:0 0 9px;border-bottom:1px solid var(--wv-parchment-edge);
 }
 .wv-sheet-preview .sheet-head h2{
- font:normal 24px/1.12 Georgia,"Times New Roman",serif;
+ font:normal 20px/1.12 Georgia,"Times New Roman",serif;
  font-weight:500;letter-spacing:-.4px;
  color:var(--wv-teal);margin:0;min-width:0;
 }
@@ -172,7 +172,7 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
  background:#eadbad;color:var(--wv-teal);padding:0;
 }
 .wv-sheet-preview .sheet-body{display:block}
-.wv-sheet-preview .sheet-body>p{
+.wv-sheet-preview .sheet-body p{
  color:#405b4d;opacity:1;
  font:400 13px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
  margin:6px 0 14px;
