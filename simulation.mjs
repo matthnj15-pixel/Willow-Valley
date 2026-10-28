@@ -27,7 +27,7 @@ export function validState(x){return !!x&&x.version===VERSION&&Number.isInteger(
  ["people","gold","food","wood","tools","happiness"].every(k=>Number.isFinite(x[k]))&&
  Array.isArray(x.roads)&&x.roads.length<500&&x.roads.every(r=>Array.isArray(r)&&r.length>=2&&r.length<=100&&r.every(validPoint))&&
  Array.isArray(x.buildings)&&x.buildings.length<300&&x.buildings.every(b=>BUILDINGS[b.type]&&validPoint(b))&&
- Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(validPoint)&&Array.isArray(x.logs));}
+ Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(validPoint)&&Array.isArray(x.logs);}
 function validPoint(p){return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=WORLD.w&&p.y>=0&&p.y<=WORLD.h;}
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
 function onRiver(p){return Math.abs(p.x-riverX(p.y))<69;}
