@@ -51,7 +51,7 @@ advisor, AI integration, cloud requirement, API token, or service charge.
 
 1. Open the **Development** URL while on Wi-Fi/cellular.
 2. Wait until the game displays **OFFLINE READY** at the top.
-3. Use the browser's Share menu → **Add to Home Screen**.
+3. Use the browser's Share menu → **Add to Home Screen**. The game now has a dedicated Willow Valley PNG icon for iOS.
 4. Before a flight, activate Airplane Mode and open the installed game to verify.
 5. The game continues locally in airplane mode. The settlement save stays on
    this device and installation; **Export save as JSON** frequently.
@@ -91,3 +91,17 @@ use Export/Import Save to transfer them.
 - `.github/workflows/pages.yml`: tests and dual-path Pages deployment.
 
 The prototype uses HTML, CSS, SVG, and JavaScript without external dependencies. Save files carry a version and require future migration when the schema changes. The game's economy and map visuals are early mechanics that will be refined through playtesting.
+
+
+## App icon (WV-ICON-001)
+
+The project uses the cottage-and-valley `icon.svg` artwork as the single source of truth.
+`npm run build:icons` creates `apple-touch-icon.png` (180px) and modern PWA icons
+(192px and 512px). The Pages workflow generates them for each deployed build,
+and the service worker caches them for offline use.
+
+On iPhone, existing Home Screen installations may keep the old icon. **Back up the
+settlement JSON before removing an installed web app.** To see the new icon,
+open the updated game in Safari, wait for **OFFLINE READY**, then use
+Share → Add to Home Screen. Confirm the preview shows the artwork before
+removing any older shortcut.
