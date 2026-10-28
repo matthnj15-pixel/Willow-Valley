@@ -78,16 +78,16 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
 .game-page .topbar .calendar{font-size:11px;color:var(--wv-yellow)}
 .game-page .topbar .icon-button{background:var(--wv-yellow);color:var(--wv-teal);border-color:#ffffff2b;min-height:40px;min-width:40px}
 .game-page .stats{display:flex;gap:4px;padding:6px;background:var(--wv-teal);border-bottom:1px solid #ffffff25;min-height:57px}
-.game-page .stats>.wv-resource{padding:6px 3px;border:0;border-radius:10px;background:var(--wv-yellow);box-shadow:none}
-.game-page .stats .wv-resource>.wv-icon svg{width:18px;height:18px}
-.game-page .stats .wv-resource__value{font-size:13px;color:var(--wv-teal);margin-top:2px}
-.game-page .stats .wv-resource__label{font-size:7px;letter-spacing:.1px}
+.wv-resource--compact{padding:6px 3px;border:0;border-radius:10px;background:var(--wv-yellow);box-shadow:none}
+.wv-resource--compact>.wv-icon svg{width:18px;height:18px}
+.wv-resource--compact .wv-resource__value{font-size:13px;color:var(--wv-teal);margin-top:2px}
+.wv-resource--compact .wv-resource__label{font-size:7px;letter-spacing:.1px}
 .game-page .dispatch{background:var(--wv-teal);min-height:46px;padding:6px 12px;color:var(--wv-paper)}
 .game-page .dispatch p{font-size:11px;margin-top:1px}
 .game-page .dispatch .eyebrow{font-size:8px;color:var(--wv-yellow)}
 .game-page .dispatch button{background:#006663;border-radius:10px;min-height:36px;min-width:36px}
 .game-page .dock{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(100px,1.2fr);background:var(--wv-yellow);padding:5px 7px calc(env(safe-area-inset-bottom) + 6px);gap:4px}
-.game-page .dock .wv-nav-tool{font-size:10px;min-height:52px}
+.wv-nav-tool--compact{font-size:10px;min-height:52px}
 .game-page .dock .wv-advance{min-height:54px}
 .game-page .dock .wv-advance small{font-size:8px}.game-page .dock .wv-advance b{font-size:12px}
 .game-page .sheet{background:var(--wv-paper);color:var(--wv-charcoal)}
@@ -106,5 +106,5 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
 .game-page .road-controls button{background:var(--wv-yellow);border-color:var(--wv-border);color:var(--wv-teal)}
 .game-page .road-controls .primary{background:var(--wv-teal);color:var(--wv-paper)}
 .game-page .map-info,.game-page .zoom button{background:#035352e8;color:var(--wv-yellow);border-color:#f3e8bc88}
-@media(max-width:380px){.game-page .stats .wv-resource>.wv-icon svg{width:16px;height:16px}.game-page .stats .wv-resource__label{font-size:7px}.game-page .stats .wv-resource__value{font-size:12px}.game-page .topbar h1{font-size:21px}}
-@media(max-height:680px){.game-page .topbar{padding-top:calc(env(safe-area-inset-top) + 3px);padding-bottom:3px}.game-page .stats{padding:3px}.game-page .stats>.wv-resource{padding:3px 2px}.game-page .dispatch{min-height:40px}.game-page .dock .wv-nav-tool,.game-page .dock .wv-advance{min-height:47px}}
+@media(max-width:380px){.wv-resource--compact>.wv-icon svg{width:16px;height:16px}.wv-resource--compact .wv-resource__label{font-size:7px}.wv-resource--compact .wv-resource__value{font-size:12px}.game-page .topbar h1{font-size:21px}}
+@media(max-height:680px){.game-page .topbar{padding-top:calc(env(safe-area-inset-top) + 3px);padding-bottom:3px}.game-page .stats{padding:3px}.wv-resource--compact{padding:3px 2px}.game-page .dispatch{min-height:40px}.game-page .dock .wv-nav-tool,.game-page .dock .wv-advance{min-height:47px}}
