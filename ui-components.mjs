@@ -60,8 +60,8 @@ export function createButton({label="Build",variant="primary",iconName,disabled=
  if(typeof onClick==="function")b.addEventListener("click",onClick);
  return b;
 }
-export function createResourceChip({label="Gold",value="1,240",iconName="gold",delta,id}={}){
- const c=el("div","wv-resource");c.dataset.resource=label.toLowerCase();
+export function createResourceChip({label="Gold",value="1,240",iconName="gold",delta,id,compact=false}={}){
+ const c=el("div","wv-resource"+(compact?" wv-resource--compact":""));c.dataset.resource=label.toLowerCase();
  c.append(icon(iconName,{size:25}));
  const body=el("span","wv-resource__body");
  body.append(el("small","wv-resource__label",label));
@@ -69,12 +69,12 @@ export function createResourceChip({label="Gold",value="1,240",iconName="gold",d
  c.append(body);if(delta!==undefined)c.append(el("small","wv-resource__delta",delta));
  return c;
 }
-export function mountResourceBar(target,items){
- target.replaceChildren(...items.map(item=>createResourceChip(item)));
+export function mountResourceBar(target,items,{compact=false}={}){
+ target.replaceChildren(...items.map(item=>createResourceChip({...item,compact})));
  return target;
 }
-export function createNavTool({label="Build",iconName="house",active=false,id,onClick}={}){
- const b=el("button","dock-tool wv-nav-tool"+(active?" active":""));b.type="button";
+export function createNavTool({label="Build",iconName="house",active=false,id,onClick,compact=false}={}){
+ const b=el("button","dock-tool wv-nav-tool"+(compact?" wv-nav-tool--compact":"")+(active?" active":""));b.type="button";
  if(id)b.id=id;b.setAttribute("aria-label",label);b.setAttribute("aria-pressed",String(active));
  b.append(icon(iconName,{size:25}),el("span","wv-nav-tool__label",label));
  if(onClick)b.addEventListener("click",onClick);
@@ -132,9 +132,9 @@ export function createAdvanceButton({id="nextBtn",onClick}={}){
 }
 export function mountGameDock(target){
  target.replaceChildren(
-  createNavTool({id:"exploreBtn",label:"Explore",iconName:"map",active:true}),
-  createNavTool({id:"roadsBtn",label:"Roads",iconName:"roads"}),
-  createNavTool({id:"buildBtn",label:"Build",iconName:"house"}),
+  createNavTool({id:"exploreBtn",label:"Explore",iconName:"map",active:true,compact:true}),
+  createNavTool({id:"roadsBtn",label:"Roads",iconName:"roads",compact:true}),
+  createNavTool({id:"buildBtn",label:"Build",iconName:"house",compact:true}),
   createAdvanceButton()
  );
  return target;
