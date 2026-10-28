@@ -18,6 +18,8 @@ jobs:
       - name: Check syntax and simulation
         run: |
           node --check app.mjs
+          node --check ui-components.mjs
+          node --check ui-kit/catalog.mjs
           node --check simulation.mjs
           node --check road-editor.mjs
           node --check road-network.mjs
