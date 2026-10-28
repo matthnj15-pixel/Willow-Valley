@@ -30,7 +30,9 @@ test("WV-UI-002: catalog and embedded live game share actual resource and naviga
  await expect(game.locator("#gameDock .wv-nav-tool")).toHaveCount(3);
  const bg=await game.locator("#resourceBar .wv-resource").first().evaluate(el=>getComputedStyle(el).backgroundColor);
  const swatch=await page.locator("#resourceGallery .wv-resource").first().evaluate(el=>getComputedStyle(el).backgroundColor);
- expect(bg).toBeTruthy();expect(swatch).toBeTruthy();
+ expect(bg).toBe(swatch);
+ const heights=await Promise.all([game.locator("#roadsBtn").evaluate(el=>getComputedStyle(el).minHeight),page.locator("#navigationGallery .wv-nav-tool").nth(1).evaluate(el=>getComputedStyle(el).minHeight)]);
+ expect(heights[0]).toBe(heights[1]);
  await game.locator("#roadsBtn").click();
  await expect(game.locator("#roadControls")).toBeVisible();
  await game.locator("#buildBtn").click();
