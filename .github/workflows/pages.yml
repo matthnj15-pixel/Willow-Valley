@@ -1,0 +1,47 @@
+name: Publish Willow Valley
+on:
+  workflow_run:
+    workflows: ["Test Willow Valley"]
+    types: [completed]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: willow-valley-pages
+  cancel-in-progress: true
+jobs:
+  deploy:
+    if: ${{ github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout stable branch
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: stable
+      - name: Checkout development branch
+        uses: actions/checkout@v4
+        with:
+          ref: develop
+          path: preview
+      - name: Build isolated stable and preview sites
+        run: |
+          set -eu
+          mkdir -p _site/dev
+          for file in index.html styles.css app.mjs simulation.mjs config.mjs; do
+            cp "stable/$file" "_site/$file"
+            cp "preview/$file" "_site/dev/$file"
+          done
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
