@@ -1,7 +1,7 @@
 import {
  UI_VERSION,PALETTE,icon,createButton,createResourceChip,createNavTool,
  createStatusPill,createAlert,createBuildRow,createToggle,createTabs,
- createPanel,createToast,createSheetPreview,createAdvanceButton,mountResourceBar
+ createPanel,createToast,createSheetPreview,createDialogActions,createAdvanceButton,mountResourceBar
 } from "../ui-components.mjs";
 const $=id=>document.getElementById(id);
 const color=value=>value.trim().replace(/\s/g,"");
@@ -87,9 +87,11 @@ function openSheet(title,description){
  const content=document.createElement("div");
  const p=document.createElement("p");p.textContent=description||"Every building contributes to your settlement.";
  content.append(p);
- content.append(createButton({label:"Build",iconName:"house",onClick:()=>{closeSheet();showToast();}}));
- content.append(createButton({label:"Cancel",variant:"secondary",onClick:closeSheet}));
- const sheet=createSheetPreview({title,body:content});
+ const actions=createDialogActions({
+  primaryLabel:"Build",secondaryLabel:"Cancel",primaryIcon:"house",
+  onPrimary:()=>{closeSheet();showToast();},onSecondary:closeSheet
+ });
+ const sheet=createSheetPreview({title,body:content,footer:actions});
  backdrop.replaceChildren(sheet);
  sheet.querySelector('[aria-label="Close"]').addEventListener("click",closeSheet);
 }

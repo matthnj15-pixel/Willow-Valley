@@ -108,3 +108,142 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
 .game-page .map-info,.game-page .zoom button{background:#035352e8;color:var(--wv-yellow);border-color:#f3e8bc88}
 @media(max-width:380px){.wv-resource--compact>.wv-icon svg{width:16px;height:16px}.wv-resource--compact .wv-resource__label{font-size:7px}.wv-resource--compact .wv-resource__value{font-size:12px}.game-page .topbar h1{font-size:21px}}
 @media(max-height:680px){.game-page .topbar{padding-top:calc(env(safe-area-inset-top) + 3px);padding-bottom:3px}.game-page .stats{padding:3px}.wv-resource--compact{padding:3px 2px}.game-page .dispatch{min-height:40px}.game-page .dock .wv-nav-tool,.game-page .dock .wv-advance{min-height:47px}}
+
+
+/* WV-UI-003 • Compact cartography language.
+   World models keep original colors; only interface surfaces are restyled.
+   Density targets ~80% of the old catalog dialog while touch targets stay 44px. */
+:root{
+ --wv-ink-warm:#3d4838;
+ --wv-parchment:#f3e8bc;
+ --wv-parchment-light:#fff7df;
+ --wv-parchment-edge:#bda777;
+ --wv-wood:#82603e;
+ --wv-decorative-ink:#72694a;
+ --wv-dialog-width:344px;
+ --wv-dialog-compact-scale:.8;
+}
+.wv-sheet-preview{
+ position:relative;isolation:isolate;
+ width:min(80vw,var(--wv-dialog-width));
+ max-width:calc(100vw - 30px);
+ max-height:min(72dvh,460px);
+ margin:0;overflow:auto;
+ padding:11px 17px 18px;
+ background-color:var(--wv-parchment-light);
+ background-image:
+   radial-gradient(ellipse at 13% 9%,#d4bb8522,transparent 50%),
+   radial-gradient(ellipse at 92% 100%,#ad875829,transparent 46%),
+   repeating-linear-gradient(0deg,#8e775207 0 1px,transparent 1px 6px);
+ color:var(--wv-ink-warm);
+ border:2px solid var(--wv-parchment-edge);
+ border-radius:15px 15px 21px 21px;
+ box-shadow:inset 0 0 0 4px #fff7e4,0 12px 27px #0d16174d;
+}
+.wv-sheet-preview::after{
+ content:"";position:absolute;pointer-events:none;inset:5px;
+ border:1px solid #bfa97c6a;border-radius:10px 10px 16px 16px;
+ z-index:-1;
+}
+.wv-sheet-preview .sheet-grip{
+ width:33px;height:3px;border-radius:99px;margin:0 auto 8px;
+ background:#758e77;
+}
+.wv-sheet-kicker{
+ display:flex;align-items:center;gap:7px;
+ color:var(--wv-decorative-ink);font:700 9px/1.3 Georgia,serif;
+ letter-spacing:1.4px;text-transform:uppercase;margin:4px 0 3px;
+}
+.wv-sheet-kicker .wv-icon svg{width:16px;height:16px}
+.wv-sheet-preview .sheet-head{
+ display:flex;align-items:center;justify-content:space-between;
+ gap:12px;min-height:43px;margin:0 0 9px;
+ padding:0 0 9px;border-bottom:1px solid var(--wv-parchment-edge);
+}
+.wv-sheet-preview .sheet-head h2{
+ font:normal 20px/1.12 Georgia,"Times New Roman",serif;
+ font-weight:500;letter-spacing:-.4px;
+ color:var(--wv-teal);margin:0;min-width:0;
+}
+.wv-sheet-preview .wv-dialog-close{
+ display:grid;place-items:center;flex:none;
+ width:44px;height:44px;min-width:44px;min-height:44px;
+ border:1px solid var(--wv-parchment-edge);border-radius:9px;
+ background:#eadbad;color:var(--wv-teal);padding:0;
+}
+.wv-sheet-preview .sheet-body{display:block}
+.wv-sheet-preview .sheet-body p{
+ color:#405b4d;opacity:1;
+ font:400 13px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;
+ margin:6px 0 14px;
+}
+.wv-dialog-actions{
+ display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+ align-items:stretch;gap:12px;width:100%;min-width:0;
+ padding-top:11px;
+ border-top:1px dashed #b49a6f;
+}
+.wv-dialog-actions .wv-btn{
+ width:100%;min-width:0;min-height:44px;max-height:none;
+ border-radius:8px;padding:8px 7px;
+ font-size:13px;font-weight:750;line-height:1.15;
+ box-shadow:inset 0 1px 0 #fff5c64d,0 2px 0 #624c3230;
+}
+.wv-dialog-actions .wv-btn svg{width:19px;height:19px}
+.wv-dialog-actions .wv-btn--secondary{
+ background:var(--wv-parchment);color:var(--wv-teal);
+ border:1px solid #a8956b;
+}
+.wv-dialog-actions .wv-btn--primary{
+ background:var(--wv-teal);color:var(--wv-yellow);
+ border:1px solid #0c4441;
+}
+.wv-dialog-actions .wv-btn--primary:hover{background:#006663}
+/* The same rustic material treatment applies to playable game controls. */
+.game-page .sheet{
+ background-color:var(--wv-parchment-light);
+ background-image:radial-gradient(ellipse at 12% 12%,#d0aa6620,transparent 55%);
+ border:1px solid var(--wv-parchment-edge);
+ border-bottom:0;
+ color:var(--wv-ink-warm);
+ border-radius:18px 18px 0 0;
+ padding:9px 15px calc(env(safe-area-inset-bottom) + 15px);
+ box-shadow:inset 0 3px 0 #fff9e8,0 -8px 24px #0d161747;
+}
+.game-page .sheet h2{
+ font:normal 22px/1.15 Georgia,serif;
+ color:var(--wv-teal);
+}
+.game-page .sheet .sheet-head{margin-bottom:10px}
+.game-page .sheet p{font-size:13px;line-height:1.45;color:#405b4d}
+.game-page .sheet .item.wv-build-row{
+ min-height:55px;padding:9px 11px;margin:6px 0;
+ border-radius:9px;
+ background-color:#fbf2d6;border:1px solid #c8b789;
+}
+.game-page .sheet .item.wv-build-row:active{
+ background:#f3e8bc;
+}
+.game-page .sheet .item.wv-build-row .wv-icon svg{width:23px;height:23px}
+.game-page .sheet .wide.wv-btn{
+ border-radius:9px;min-height:44px;
+ box-shadow:inset 0 1px 0 #fff9de,0 2px 0 #87745230;
+}
+/* A slightly more hand-inked component family instead of pill-shaped SaaS UI. */
+.wv-btn{border-radius:9px;box-shadow:inset 0 1px 0 #fff5df31,0 2px 0 #192a2433}
+.wv-resource{border-radius:9px;border-color:var(--wv-parchment-edge)}
+.wv-status{border:1px solid #baa781;border-radius:8px}
+.wv-alert{border-radius:9px;border-color:#cbb88a}
+.wv-build-row{border-radius:9px;border-color:#cbb88a}
+.wv-panel{border-radius:11px;border-color:#bba782;background:var(--wv-parchment-light)}
+.wv-toast{border-radius:9px}
+.wv-tabs{border-radius:9px}
+.wv-nav-tool{border-radius:9px}
+.wv-icon{filter:drop-shadow(0 .45px .2px #53493635)}
+@media(max-width:350px){
+ .wv-sheet-preview{padding:9px 12px 14px}
+ .wv-dialog-actions{gap:9px}
+ .wv-dialog-actions .wv-btn{font-size:12px}
+ .wv-dialog-actions .wv-btn svg{width:16px;height:16px}
+ .wv-sheet-preview .sheet-head h2{font-size:22px}
+}
