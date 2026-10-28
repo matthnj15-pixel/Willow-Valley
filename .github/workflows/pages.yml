@@ -37,6 +37,9 @@ jobs:
             cp "stable/$file" "_site/$file"
             cp "preview/$file" "_site/dev/$file"
           done
+          # A preview feature can add a module before it exists on stable.
+          if [ -f stable/road-editor.mjs ]; then cp stable/road-editor.mjs _site/road-editor.mjs; fi
+          if [ -f preview/road-editor.mjs ]; then cp preview/road-editor.mjs _site/dev/road-editor.mjs; fi
           touch _site/.nojekyll
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
