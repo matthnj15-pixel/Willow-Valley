@@ -42,6 +42,15 @@ jobs:
               [ -f "$module" ] || continue
               cp "$module" "$dest/"
             done
+            # Publish authored UI component galleries beside their matching branch.
+            # Each catalog imports the exact UI module and styles from its own
+            # branch, so previews never bleed into stable.
+            if [ -d "$branch/ui-kit" ]; then
+              mkdir -p "$dest/ui-kit"
+              cp "$branch/ui-kit/"*.html "$dest/ui-kit/"
+              cp "$branch/ui-kit/"*.mjs "$dest/ui-kit/"
+              cp "$branch/ui-kit/"*.css "$dest/ui-kit/"
+            fi
             # Offline assets are per-environment, like the saved game itself.
             for asset in sw.js manifest.webmanifest icon.svg; do
               if [ -f "$branch/$asset" ]; then cp "$branch/$asset" "$dest/$asset"; fi
