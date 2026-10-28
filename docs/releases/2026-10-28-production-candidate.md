@@ -1,6 +1,6 @@
 # Willow Valley — Production candidate 2026-10-28
 
-**State:** prepared for review, **not yet promoted** to `main`.
+**State:** prepared for review on `release/2026-10-28-prod-ready`, **not yet promoted** to `main`. The release was rebuilt as a single, reviewed snapshot based on the current production commit because the original `develop` → `main` PR had a history/merge conflict. No force-push or production changes were made.
 
 ## What is included
 
@@ -31,7 +31,7 @@
 - [ ] Test old `main` save migration in a separate browser context; do not clear real player data.
 - [ ] Confirm critical existing roads, shops, homes, resource counters, income and monthly advances.
 - [ ] Review changes to player-facing road behavior before release.
-- [ ] Merge PR to `main` using **merge commit** (not squash) to retain the Development branch ancestry; do not force-push.
+- [ ] Merge the conflict-free **main-based** release PR to `main` with a normal merge commit, not a force-push. This commit carries a snapshot of `develop`; Development history is retained on `develop`, and the follow-up `main` → `develop` sync PR will join the histories cleanly.
 - [ ] After merge, validate GitHub Pages production URL, `/ui-kit/`, `/offline.html`, PNG app icon and offline reopen.
 - [ ] Only after production smoke tests, sync `main` back into `develop` using a follow-up PR and preserve branch history.
 
