@@ -151,7 +151,7 @@ test("WV-ROAD-003 disconnected homes show red warning and lower taxes",async({pa
  await tapMap(page,{x:330,y:417});
  page.once("dialog",dialog=>dialog.accept());
  await page.getByRole("button",{name:/Destroy this junction/}).click();
- await expect(page.locator('#map circle[fill="#d6e4ce"]')).toHaveCount(2);
+ await expect(page.locator('#map circle[fill="#d6e4ce"]')).toHaveCount(3);
  expect(await page.locator('#map rect[stroke="#c54f43"]').count()).toBeGreaterThan(0);
  await page.locator("#nextBtn").click();
  const s=await saved(page);
