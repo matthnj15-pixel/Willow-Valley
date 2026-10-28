@@ -132,6 +132,13 @@ function buildPanel(){setMode("build");const el=document.createElement("div");el
 function menuPanel(){const el=document.createElement("div");el.append(textNode("p",IS_PREVIEW?"Development environment. Your save is isolated from the stable game.":"Stable environment. Your progress is stored locally on this device and browser."));
  sheetButton(el,"Export save as JSON",()=>{const blob=new Blob([JSON.stringify(game,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="willow-valley-"+(IS_PREVIEW?"dev":"stable")+"-turn-"+game.turn+".json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);notify("Save export started.");});
  sheetButton(el,"Import a saved game",()=>{$("importSave").click();});
+ if(IS_PREVIEW&&location.protocol!=="file:"){
+   const kit=document.createElement("a");
+   kit.href="./ui-kit/";kit.className="download-link";
+   kit.textContent="View the living UI kit";
+   kit.setAttribute("aria-label","Open the interactive Willow Valley design system");
+   el.append(kit);
+ }
  if(location.protocol!=="file:"){
    const link=document.createElement("a");
    link.href="./offline.html";link.download="Willow-Valley-Offline.html";
