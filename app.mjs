@@ -1,20 +1,21 @@
 import {IS_PREVIEW,FLAGS,SAVE_KEY} from "./config.mjs";
-import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,advance,advice} from "./simulation.mjs";
+import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance,advice} from "./simulation.mjs";
 import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,SNAP_RADIUS} from "./road-network.mjs";
-import {gestureSegment} from "./road-gesture.mjs";
+import {radialCurveGesture} from "./road-gesture.mjs";
+import {visibleDesirePaths} from "./desire-paths.mjs";
 import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
-let game=readSave(),mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null;
+let game=readSave(),mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
 function readSave(){try{const v=JSON.parse(localStorage.getItem(SAVE_KEY));if(validState(v)){ensureGraph(v);return v;}}catch(e){console.warn("Save unavailable",e);}return startGame();}
 function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(game));}catch(e){notify("Storage unavailable. Use Export Save to preserve progress.");}}
 function num(v){return Math.round(v).toLocaleString();}
 function notify(message){$("toast").textContent=message;$("toast").hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").hidden=true,3300);}
-function setMode(next){mode=next;draft=createRoadDraft();selectedBuild=null;for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"}))$(id).classList.toggle("active",m===next);
- $("roadControls").hidden=next!=="road";$("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",road:"Roads · tap a node or hold and drag to draw",build:"Construction · tap clear ground to place"}[next];
+function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;selectedBuild=null;for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"}))$(id).classList.toggle("active",m===next);
+ $("roadControls").hidden=next!=="road";$("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",road:"Roads · tap for straight; hold and drag to shape a fixed node",build:"Construction · tap clear ground to place"}[next];
  updateRoadInfo();renderMap();}
 function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
- $("roadInfo").textContent=draft.anchors.length<2?"Tap an existing node to branch, or hold and drag to draw a road.":draft.anchors.length+" nodes · "+num(cost)+" gold · tap for straight, hold and drag for a curve.";
+ $("roadInfo").textContent=draft.anchors.length<2?"Tap an existing node to branch; touch and hold a point to shape its curve.":draft.anchors.length+" nodes · "+num(cost)+" gold · held nodes stay fixed; finger shapes curve.";
  $("confirmRoad").disabled=draft.anchors.length<2;}
 function setStats(){for(const id of ["people","gold","food","wood","tools"])$(id).textContent=num(game[id]);$("calendar").textContent=monthLabel(game.turn);$("environment").textContent=IS_PREVIEW?"DEVELOPMENT":"STABLE";$("report").textContent=game.report;}
 function node(tag,attrs){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,String(v));return n;}
@@ -111,14 +112,14 @@ function advisorPanel(){const [headline,detail]=advice(game),el=document.createE
  el.append(textNode("p","This is a rule-based advisor. Live AI conversation is planned for a secure, authenticated backend. There is no OpenAI API key in the game.","note"));
  openSheet("The council advisor",el);}
 function historyPanel(){const el=document.createElement("div");el.append(textNode("p","Significant milestones and monthly decisions in the life of Willow Valley."));const list=document.createElement("ol");for(const message of game.logs.slice(0,25))list.append(textNode("li",message));el.append(list);openSheet("Valley history",el);}
-function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=nearestRoad(item,accessibleRoads(game));const detail=item.kind==="house"?"Residents live here and need access to jobs and food.":BUILDINGS[item.type].description+" Road access: "+(access<=125?"Connected to the village, full production.":"DISCONNECTED: no production until you restore a connected road within reach.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
+function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=structureAccess(game,item);const detail=item.kind==="house"?"Household access: "+(access==="road"?"Connected to the town road network.":access==="footpath"?"Only a walking desire path connects this home; services and tax revenue are limited.":"DISCONNECTED. The household cannot receive normal services or contribute full taxes."):"Structure access: "+(access==="road"?"Connected to the road network.":access==="footpath"?"Footpath access only. This does not support full service or deliveries.":"DISCONNECTED: no road service or industrial deliveries.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
 const roadPixelRadius=()=>{const r=svg.getBoundingClientRect();return HIT_RADIUS_PX*(920/camera.scale)/r.width;};
 function nodePanel(n){
  const el=document.createElement("div");
  const attached=game.roadGraph.segments.filter(e=>e.a===n.id||e.b===n.id).length;
  el.append(textNode("p","Existing road junction. "+attached+" connected segment(s). Roads can be extended or removed without refund."));
  sheetButton(el,"Extend road from here",()=>{
-  draft=createRoadDraft();addRoadAnchor(draft,{x:n.x,y:n.y});
+  draft=createRoadDraft();pendingControl=null;addRoadAnchor(draft,{x:n.x,y:n.y});
   closeSheet();updateRoadInfo();renderMap();notify("Tap to create straight segments, or hold and drag for a curve.");
  });
  if(n.id===game.roadGraph.hubId)el.append(textNode("p","The original village gateway is protected as the connection origin.","note"));
@@ -126,7 +127,7 @@ function nodePanel(n){
   if(!confirm("Remove this road node and all "+attached+" attached segments? Industries may lose access. No refund."))return;
   const result=removeRoadNode(game,n.id);closeSheet();
   if(!result.ok){notify(result.reason);return;}
-  draft=createRoadDraft();refresh();notify("Road junction removed, with no refund.");
+  draft=createRoadDraft();pendingControl=null;refresh();notify("Road junction removed, with no refund.");
  });
  openSheet("Existing road junction",el);
 }
@@ -181,7 +182,10 @@ function handleTap(p){if(p.x<0||p.y<0||p.x>WORLD.w||p.y>WORLD.h)return;
   }
   if(draft.anchors.length>=MAX_ANCHORS){notify("Road has reached its node limit.");return;}
   const chosen=near||p;
+  if(draft.anchors.length&&distance(draft.anchors.at(-1),chosen)<8){notify("Choose a new location for the next road node.");return;}
   if(!addRoadAnchor(draft,{x:Math.round(chosen.x),y:Math.round(chosen.y)})){notify("Tap inside the map.");return;}
+  if(pendingControl&&draft.controls.length)draft.controls[draft.controls.length-1]=pendingControl;
+  pendingControl=null;
   updateRoadInfo();renderMap();return;
  }
  if(mode==="build"){if(!selectedBuild){buildPanel();return;}const r=placeBuilding(game,selectedBuild,p);if(!r.ok){notify(r.reason);return;}refresh();notify(BUILDINGS[selectedBuild].label+" constructed.");selectedBuild=null;setMode("explore");return;}
@@ -230,10 +234,12 @@ function movePointer(e){
      const c={x:clamp(initial.x+2*(current.x-p.down.x),0,WORLD.w),y:clamp(initial.y+2*(current.y-p.down.y),0,WORLD.h)};
      liveCurve={id:eId,control:c};p.curveActive=true;
    }else{
-     const origin=draft.anchors.length?draft.anchors.at(-1):(p.hit.node||p.down);
-     const current=mapPoint(e.clientX,e.clientY);
-     p.trail.push(current);
-     liveGesture=gestureSegment(origin,p.down,current,p.trail);
+     // The node is fixed at touch-down. Finger motion only sets its opposite
+     // radial curve control, never the endpoint position.
+     const anchor=p.hit.node||p.down;
+     const radial=radialCurveGesture(anchor,mapPoint(e.clientX,e.clientY));
+     const previous=draft.anchors.at(-1)||anchor;
+     liveGesture={start:previous,end:anchor,control:radial.control,radius:radial.radius};
      p.gestureActive=true;
    }
    updateRoadInfo();renderMap();return;
@@ -254,18 +260,25 @@ function endPointer(e){
    if(!outcome.ok)notify(outcome.reason);else refresh();
  }else if(p.gestureActive&&liveGesture&&mode==="road"){
    const geometry=liveGesture;
-   const startCount=draft.anchors.length;
-   if(!startCount)addRoadAnchor(draft,{x:Math.round(geometry.start.x),y:Math.round(geometry.start.y)});
-   const near=nearestNode(game.roadGraph,geometry.end,roadPixelRadius()),endpoint=near||geometry.end;
-   if(addRoadAnchor(draft,{x:Math.round(endpoint.x),y:Math.round(endpoint.y)})){
-     const i=draft.controls.length-1;
-     if(geometry.control)draft.controls[i]=geometry.control;
-     if(!startCount&&draft.history.length>=2)draft.history.splice(draft.history.length-2,1);
+   const anchor=geometry.end;
+   if(!draft.anchors.length){
+     // First held point becomes the starting node. Its radial handle shapes
+     // the NEXT road segment when a second node is subsequently tapped.
+     addRoadAnchor(draft,{x:Math.round(anchor.x),y:Math.round(anchor.y)});
+     pendingControl=geometry.radius>8?geometry.control:null;
+   }else if(distance(draft.anchors.at(-1),anchor)>8){
+     if(addRoadAnchor(draft,{x:Math.round(anchor.x),y:Math.round(anchor.y)})){
+       draft.controls[draft.controls.length-1]=geometry.radius>8?geometry.control:null;
+       pendingControl=null;
+     }
+   }else{
+     // Holding the latest node is an outgoing curve-handle edit.
+     pendingControl=geometry.radius>8?geometry.control:null;
    }
    updateRoadInfo();
  }
  liveGesture=null;liveCurve=null;
- if(mode==="road")$("modeLabel").textContent="Roads · tap a node or hold and drag to draw";
+ if(mode==="road")$("modeLabel").textContent="Roads · tap for straight; hold and drag to shape a fixed node";
  if(tap)handleTap(mapPoint(e.clientX,e.clientY));
  renderMap();
 }
@@ -283,9 +296,9 @@ $("advisorBtn").onclick=()=>advisorPanel();
 $("menuBtn").onclick=()=>menuPanel();
 $("historyBtn").onclick=()=>historyPanel();
 $("closeSheet").onclick=closeSheet;$("backdrop").onclick=closeSheet;
-$("undoRoad").onclick=()=>{undoRoadAction(draft);updateRoadInfo();renderMap();};
-$("cancelRoad").onclick=()=>{draft=createRoadDraft();updateRoadInfo();renderMap();};
-$("confirmRoad").onclick=()=>{const r=buildRoad(game,draft.anchors,draft.controls);if(!r.ok){notify(r.reason);return;}draft=createRoadDraft();refresh();notify("Road built for "+r.cost+" gold.");};
+$("undoRoad").onclick=()=>{pendingControl=null;undoRoadAction(draft);updateRoadInfo();renderMap();};
+$("cancelRoad").onclick=()=>{draft=createRoadDraft();pendingControl=null;updateRoadInfo();renderMap();};
+$("confirmRoad").onclick=()=>{const r=buildRoad(game,draft.anchors,draft.controls);if(!r.ok){notify(r.reason);return;}draft=createRoadDraft();pendingControl=null;refresh();notify(r.isolated?"Isolated street built. Sims will begin forming walking desire paths next month.":"Road built for "+r.cost+" gold"+(r.intersections?". "+r.intersections+" new intersection(s).":"."));};
 $("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents});refresh();notify(monthLabel(game.turn)+": "+(result.populationDelta>=0?"+":"")+result.populationDelta+" residents, "+(result.balance>=0?"+":"")+result.balance+" gold.");};
 $("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;closeSheet();refresh();notify("Save imported successfully.");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
 window.addEventListener("resize",renderMap);
