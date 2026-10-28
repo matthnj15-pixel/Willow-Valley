@@ -1,3 +1,4 @@
+import {ensureGraph,validGraph,graphLines,addGeometry,deleteNode,deleteSegment,setSegmentCurve,saveGraphRoads,splitSegment} from "./road-network.mjs";
 export const VERSION=1;
 export const WORLD={w:1200,h:900};
 export const BUILDINGS={
@@ -14,7 +15,7 @@ export function nearestRoad(p,roads){let best=Infinity;for(const r of roads)for(
 export function roadLength(points){let sum=0;for(let i=1;i<points.length;i++)sum+=distance(points[i-1],points[i]);return sum;}
 export function roadCost(points){return Math.ceil(roadLength(points)*0.18);}
 export function seedValue(n){const x=Math.sin(n*38.217+14.57)*43758.5453;return x-Math.floor(x);}
-export function startGame(){return {
+export function startGame(){const state={
   version:VERSION,turn:0,people:32,gold:740,food:66,wood:20,tools:9,
   roads:[[{x:172,y:472},{x:330,y:417},{x:460,y:454},{x:656,y:383}]],
   buildings:[{type:"lumber",x:288,y:340},{type:"farm",x:530,y:553}],
@@ -22,12 +23,12 @@ export function startGame(){return {
   happiness:76,
   logs:["The first families establish Willow Valley beside an old forest road."],
   report:"Your town has supplies for its first expansion. Design a new road or develop another industry."
-};}
+};ensureGraph(state);return state;}
 export function validState(x){return !!x&&x.version===VERSION&&Number.isInteger(x.turn)&&x.turn>=0&&x.turn<200000&&
  ["people","gold","food","wood","tools","happiness"].every(k=>Number.isFinite(x[k]))&&
  Array.isArray(x.roads)&&x.roads.length<500&&x.roads.every(r=>Array.isArray(r)&&r.length>=2&&r.length<=512&&r.every(validPoint))&&
  Array.isArray(x.buildings)&&x.buildings.length<300&&x.buildings.every(b=>BUILDINGS[b.type]&&validPoint(b))&&
- Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(validPoint)&&Array.isArray(x.logs);}
+ Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(validPoint)&&Array.isArray(x.logs)&&(!x.roadGraph||validGraph(x.roadGraph));}
 function validPoint(p){return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=WORLD.w&&p.y>=0&&p.y<=WORLD.h;}
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
 function onRiver(p){return Math.abs(p.x-riverX(p.y))<69;}
@@ -38,19 +39,52 @@ export function placeBuilding(s,type,p){const b=BUILDINGS[type];if(!b)return{ok:
  if(s.gold<b.gold||s.wood<b.wood||s.tools<b.tools)return{ok:false,reason:"Insufficient treasury, wood, or tools."};
  s.gold-=b.gold;s.wood-=b.wood;s.tools-=b.tools;s.buildings.push({type,x:Math.round(p.x),y:Math.round(p.y)});
  s.report=b.label+" established. Road access affects monthly production.";s.logs.unshift(monthLabel(s.turn)+": "+b.label+" built.");return{ok:true};}
-export function addRoad(s,points){if(points.length<2||points.length>512||!points.every(validPoint))return{ok:false,reason:"Choose at least two valid road points."};
- if(roadLength(points)<28)return{ok:false,reason:"Road must be at least 28 map units long."};
- if(nearestRoad(points[0],s.roads)>65&&nearestRoad(points.at(-1),s.roads)>65)return{ok:false,reason:"Connect one end to your existing road network."};
- const price=roadCost(points);if(s.gold<price)return{ok:false,reason:"You need "+price+" gold to build this road."};
- s.gold-=price;s.roads.push(points.map(p=>({x:Math.round(p.x),y:Math.round(p.y)})));s.report="New road completed. It can improve industry access and attract housing.";s.logs.unshift(monthLabel(s.turn)+": New road built for "+price+" gold.");return{ok:true,cost:price};}
-function productionAccess(s,b){return nearestRoad(b,s.roads)<=84?1:0.5;}
-function housingSite(s){for(let k=0;k<130;k++){const i=(s.turn*13+k*23)%997,r=s.roads[i%s.roads.length],seg=i%(r.length-1),a=r[seg],b=r[seg+1],t=.17+seedValue(i+800)*.66;
+// Legacy polyline entry point and new authored-geometry entry point.
+export function addRoad(s,points){return buildRoad(s,points,points.slice(1).map(()=>null));}
+export function buildRoad(s,anchors,controls){
+ if(!Array.isArray(anchors)||anchors.length<2||anchors.length>512||!Array.isArray(controls)||controls.length!==anchors.length-1||!anchors.every(validPoint)||controls.some(c=>c!==null&&!validPoint(c)))return{ok:false,reason:"Choose valid road nodes."};
+ const graph=structuredClone(ensureGraph(s));const result=addGeometry(graph,anchors,controls);
+ if(!result.ok)return result;
+ const newLines=graphLines(graph);
+ const oldLength=s.roads.reduce((n,r)=>n+roadLength(r),0),newLength=newLines.reduce((n,r)=>n+roadLength(r),0)-oldLength;
+ if(newLength<28)return{ok:false,reason:"Road must be at least 28 map units long."};
+ const cost=Math.ceil(newLength*.18);
+ if(s.gold<cost)return{ok:false,reason:"You need "+cost+" gold to build this road."};
+ s.gold-=cost;s.roadGraph=graph;saveGraphRoads(s);
+ s.report="Road completed. New intersections may improve your industries' access.";
+ s.logs.unshift(monthLabel(s.turn)+": Road built for "+cost+" gold.");
+ return{ok:true,cost};
+}
+export function removeRoadNode(s,id){
+ const outcome=deleteNode(ensureGraph(s),id);if(!outcome.ok)return outcome;
+ saveGraphRoads(s);s.report="Road junction removed. Industries without a connected road cannot produce.";
+ s.logs.unshift(monthLabel(s.turn)+": Road node removed with "+outcome.removed+" segments. No refund.");return outcome;
+}
+export function removeRoadSegment(s,id){
+ const outcome=deleteSegment(ensureGraph(s),id);if(!outcome.ok)return outcome;
+ saveGraphRoads(s);s.report="Road segment removed. Check whether your industries remain connected.";
+ s.logs.unshift(monthLabel(s.turn)+": Road segment removed. No refund.");return outcome;
+}
+export function reshapeRoadSegment(s,id,control){
+ if(!setSegmentCurve(ensureGraph(s),id,control))return{ok:false,reason:"Could not reshape the road."};
+ saveGraphRoads(s);s.report="Road shape updated without direct charge or refund.";
+ s.logs.unshift(monthLabel(s.turn)+": Road curve adjusted.");return{ok:true};
+}
+export function makeRoadIntersection(s,id,t){
+ const node=splitSegment(ensureGraph(s),id,t);
+ if(!node)return{ok:false,reason:"Choose a location away from the road's ends."};
+ saveGraphRoads(s);return{ok:true,node};
+}
+export function accessibleRoads(s){return s.roadGraph?graphLines(s.roadGraph,true):s.roads;}
+function productionAccess(s,b){return nearestRoad(b,accessibleRoads(s))<=125?1:0;}
+function housingSite(s){for(let k=0;k<130;k++){const lines=accessibleRoads(s);if(!lines.length)return null;const i=(s.turn*13+k*23)%997,r=lines[i%lines.length],seg=i%(r.length-1),a=r[seg],b=r[seg+1],t=.17+seedValue(i+800)*.66;
  const x=a.x+(b.x-a.x)*t,y=a.y+(b.y-a.y)*t,n=Math.hypot(b.y-a.y,b.x-a.x)||1,sgn=seedValue(i+40)<.5?-1:1;
  const p={x:Math.round(x+(b.y-a.y)/n*sgn*49),y:Math.round(y-(b.x-a.x)/n*sgn*49)};
  if(canPlace(s,p))return p;}return null;}
 export function advance(s,{events=true}={}){s.turn++;const notices=[],oldPeople=s.people;
  let foodProduction=0,woodProduction=0,toolProduction=0,upkeep=0,smiths=[];
  for(const b of s.buildings){const access=productionAccess(s,b),v=BUILDINGS[b.type];upkeep+=v.upkeep;
+  if(!access)notices.push(v.label+" has no reachable road connection.");
   if(b.type==="farm")foodProduction+=Math.round(12*access);
   if(b.type==="lumber")woodProduction+=Math.round(7*access);
   if(b.type==="smith")smiths.push(access);}
@@ -72,5 +106,5 @@ export function advice(s){if(s.food<22)return["Food security needs attention.","
  if(s.wood<10)return["Your wood supply is tight.","Add a lumber camp with access to an existing road. Tool production also consumes wood each month."];
  if(s.tools<3)return["Construction tools are scarce.","A toolsmith can replenish tools, but it consumes wood. Check the entire chain before expanding."];
  if(s.gold<220)return["Protect the treasury.","Building costs and monthly upkeep will restrict your next expansion. Advance cautiously or improve tax revenue through population growth."];
- if(s.buildings.some(b=>nearestRoad(b,s.roads)>84))return["One of your industries lacks road access.","Poor road connectivity halves that industry's output. Draw a road near it to improve production."];
+ if(s.buildings.some(b=>nearestRoad(b,accessibleRoads(s))>125))return["One of your industries lacks road access.","A disconnected industry produces nothing. Reconnect its road to the original village road network."];
  return["The settlement can expand.","Your reserves are currently reasonable. Consider planning a new road, adding a production building, or advancing a month to observe development."];}
