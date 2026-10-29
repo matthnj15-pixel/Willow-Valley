@@ -78,9 +78,10 @@
   <div class="actions">
    <button id="generate" type="button" class="primary">Generate new world</button><button id="applySettings" type="button" class="secondary">Update preview</button>
    <button id="saveBlueprint" type="button" class="secondary">Save world blueprint</button>
+   <div class="founding-controls"><label for="settlementSlot">Settlement slot</label><select id="settlementSlot" aria-label="Settlement slot"><option value="1">Slot 1</option><option value="2">Slot 2</option><option value="3">Slot 3</option></select><button id="foundSettlement" type="button" class="primary">Found settlement in this world</button></div>
   </div>
   <p class="status" id="worldStatus" role="status" aria-live="polite"></p>
-  <p class="prototype-note"><strong>Terrain art:</strong> Kenney Nature Kit ground-grass, river, riverbank, beach and cliff meshes now follow the generated terrain, and their authored geometric details are color-graded to Willow Valley’s original muted meadow, blue-water and layered rock palette. Organic shoreline geometry is generated rather than forced into square tiles. Models load online; the map retains a procedural fallback offline. Fantasy Town and Survival Kit buildings are not imported yet. This first 3D milestone lets you generate, explore, and save a world blueprint. It does not replace your existing settlements. Building roads, zoning, and cottages directly on generated 3D terrain comes in the next integration milestone.</p>
+  <p class="prototype-note"><strong>Terrain art:</strong> Kenney Nature Kit ground-grass, river, riverbank, beach and cliff meshes now follow the generated terrain, and their authored geometric details are color-graded to Willow Valley’s original muted meadow, blue-water and layered rock palette. Organic shoreline geometry is generated rather than forced into square tiles. Models load online; the map retains a procedural fallback offline. Fantasy Town and Survival Kit buildings are not imported yet. Founding a settlement now launches the playable 3D game with this seed, terrain and map size. Existing slots are never replaced without your confirmation. Earlier flat-map saves remain available.</p>
  </section>
 </main>
 <script type="module" src="./world-lab.mjs"></script>
