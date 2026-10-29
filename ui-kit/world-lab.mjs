@@ -42,7 +42,7 @@ function foundSettlement(){
   const selected=selectSlot(localStorage,SAVE_BASE,slot,validState);
   if(!selected.ok){setStatus(selected.reason);return;}
   // The world blueprint remains separate; this creates the playable state.
-  location.assign("../");
+  location.assign("../"+(/\/dev\//.test(location.pathname)?"":"?preview=1"));
  }catch(error){setStatus("Cannot found here: "+error.message);}
 }
 function readControls(){
