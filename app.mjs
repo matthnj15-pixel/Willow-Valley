@@ -176,6 +176,28 @@ function buildPanel(){setMode("build");const el=document.createElement("div");el
  onClick:()=>{selectedBuild=key;closeSheet();$("modeLabel").textContent="Place "+b.label+" · tap clear land";notify("Tap the map to place "+b.label+".");}});
  el.append(button);}
  openSheet("Construction",el);}
+function zoningPanel(){const el=document.createElement("div");
+ el.append(textNode("p","Paint where development is permitted; the town builds only when a household needs a home. Unused painted areas stay natural. One finger paints, two fingers navigate."));
+ for(const type of [...ZONE_TYPES,"erase"]){
+  sheetButton(el,(type==="erase"?"Erase zoning":"Paint "+type.charAt(0).toUpperCase()+type.slice(1)),()=>{
+   zoneType=type;zoneStrokes=[];setMode("zone");closeSheet();
+   notify("Brush "+type+": draw an area and tap Commit zone.");
+  });
+ }
+ el.append(textNode("p","Commercial and farmland brushes are planning reservations in this prototype; farms still use their existing production rules. Preserves exclude residential sites.","note"));
+ openSheet("Paint the landscape",el);}
+function housingPanel(){const el=document.createElement("div"),h=housingOutlook(game);
+ el.append(textNode("p","Homes grow inside committed Residential land only when a family needs one. Homeless households leave after two additional monthly turns."));
+ for(const [label,value] of [
+  ["Residents housed",h.occupied],["Existing dwelling capacity",h.capacity],
+  ["Vacant housing spaces",h.vacancies],["Viable new cottage sites (estimate)",viableLotEstimate(game,8)],
+  ["Homeless residents",h.homeless],["Households waiting",h.homelessHouseholds],
+  ["Immigration attractiveness",Math.round(h.attractiveness)+" / 100"]]){
+  const row=document.createElement("div");row.className="housing-metric";row.append(textNode("span",label),textNode("strong",String(value)));el.append(row);
+ }
+ if(h.homelessHouseholds)el.append(textNode("p",game.housing.pending.map(g=>"Family "+g.id+": "+(2-g.wait)+" turn(s) before departure").join(" · "),"note"));
+ sheetButton(el,"Paint residential zoning",()=>{zoneType="residential";zoneStrokes=[];setMode("zone");closeSheet();});
+ openSheet("Housing demand",el);}
 function slotPanel(){const el=document.createElement("div");
  el.append(textNode("p","Three independent local settlements. Each slot saves automatically. Your original pre-slot save remains untouched as a backup."));
  for(const entry of listSlots(localStorage,SAVE_KEY,validState)){
@@ -215,6 +237,8 @@ function slotPanel(){const el=document.createElement("div");
 function menuPanel(){const el=document.createElement("div");
  el.append(textNode("p",IS_PREVIEW?"Development environment. Your saves are isolated from the stable game.":"Stable environment. Your settlements are stored locally on this device and browser."));
  sheetButton(el,"Manage 3 settlement slots",()=>slotPanel());
+ sheetButton(el,"Paint zoning · residential, commercial, farming, preserves",()=>zoningPanel());
+ sheetButton(el,"Housing demand · vacancies and homelessness",()=>housingPanel());
  sheetButton(el,"Export current slot as JSON",()=>{
   downloadJSON(game,"willow-valley-"+(IS_PREVIEW?"dev":"stable")+"-slot-"+activeSlot+"-turn-"+game.turn+".json");
   notify("Save export started.");
@@ -298,6 +322,7 @@ function hitBuiltCurve(p,radius){
  return best;
 }
 function handleTap(p){if(p.x<0||p.y<0||p.x>WORLD.w||p.y>WORLD.h)return;
+ if(mode==="zone")return;
  if(mode==="road"){
   const radius=roadPixelRadius(),near=nearestNode(game.roadGraph,p,radius);
   if(draft.anchors.length===0){
@@ -332,7 +357,11 @@ function downPointer(e){
  pointers.set(e.pointerId,p);
  if(pointers.size===2){
    for(const entry of pointers.values()){clearHold(entry);entry.holdReady=false;entry.moved=true;}
+   if(mode==="zone"&&zoneStrokes.length)zoneStrokes.pop();
    const [a,b]=[...pointers.values()];gesture={distance:distance(a,b),scale:camera.scale};
+ }else if(mode==="zone"){
+   zoneStrokes.push([{x:Math.round(down.x),y:Math.round(down.y)}]);
+   updateZoneInfo();renderMap();
  }else if(mode==="road"){
    p.holdTimer=setTimeout(()=>{
     if(pointers.size===1&&pointers.get(e.pointerId)===p&&!p.moved&&mode==="road"){
@@ -349,6 +378,13 @@ function movePointer(e){
    const [a,b]=[...pointers.values()];
    if(gesture)camera.scale=clamp(gesture.scale*distance(a,b)/Math.max(gesture.distance,10),.75,3.8);
    renderMap();return;
+ }
+ if(mode==="zone"&&pointers.size===1){
+   const at=mapPoint(e.clientX,e.clientY),stroke=zoneStrokes.at(-1),last=stroke?.at(-1);
+   if(stroke&&last&&distance(at,last)>9&&stroke.length<180&&at.x>=0&&at.y>=0&&at.x<=WORLD.w&&at.y<=WORLD.h){
+    stroke.push({x:Math.round(at.x),y:Math.round(at.y)});
+   }
+   p.moved=true;renderMap();return;
  }
  if(mode==="road"&&p.holdReady&&travel>=MOVE_SLOP_PX){
    p.moved=true;clearHold(p);
@@ -425,6 +461,15 @@ $("closeSheet").onclick=closeSheet;$("backdrop").onclick=closeSheet;
 $("undoRoad").onclick=()=>{pendingControl=null;undoRoadAction(draft);updateRoadInfo();renderMap();};
 $("cancelRoad").onclick=()=>{draft=createRoadDraft();pendingControl=null;updateRoadInfo();renderMap();};
 $("confirmRoad").onclick=()=>{const r=buildRoad(game,draft.anchors,draft.controls);if(!r.ok){notify(r.reason);return;}record("road_constructed","Cost "+r.cost+" gold; isolated="+r.isolated+"; intersections="+r.intersections);draft=createRoadDraft();pendingControl=null;refresh();notify(r.isolated?"Isolated street built. Sims will begin forming walking desire paths next month.":"Road built for "+r.cost+" gold"+(r.intersections?". "+r.intersections+" new intersection(s).":"."));};
+$("zoneUndo").onclick=()=>{zoneStrokes.pop();updateZoneInfo();renderMap();};
+$("zoneCancel").onclick=()=>{zoneStrokes=[];updateZoneInfo();renderMap();};
+$("zoneCommit").onclick=()=>{
+ const result=paintZones(game,zoneType,zoneStrokes,zoneRadius);
+ if(!result.ok){notify(result.reason);return;}
+ record("zone_committed",zoneType+" · "+result.count+" stroke(s)");
+ zoneStrokes=[];setMode("explore");refresh();
+ notify(zoneType==="erase"?"Zoning erased.":"Zone committed. The town will respond when there is real demand.");
+};
 $("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents});record("turn_resolved","Residents "+result.populationDelta+"; food "+result.foodProduction+"; wood "+result.woodProduction+"; tools "+result.toolProduction+"; treasury "+result.balance);refresh();notify(monthLabel(game.turn)+": "+(result.populationDelta>=0?"+":"")+result.populationDelta+" residents, "+(result.balance>=0?"+":"")+result.balance+" gold.");};
 $("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;ensureGraph(game);record("save_imported","Imported user-provided save into slot "+activeSlot);closeSheet();refresh();notify("Save imported into Slot "+activeSlot+".");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
 window.addEventListener("resize",renderMap);
