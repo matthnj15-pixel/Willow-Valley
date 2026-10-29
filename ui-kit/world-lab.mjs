@@ -54,7 +54,9 @@ function generate(){
   current=createWorld(options);
   if(renderer)renderer.setWorld(current);
   else if(!renderError){
-   try{renderer=mountWorld3D($("worldCanvas"),current);}
+   try{renderer=mountWorld3D($("worldCanvas"),current,{onAssets:info=>{
+     $("assetStatus").textContent=info.loaded?("Kenney models loaded: "+info.loaded+"/"+info.total):"Kit models unavailable. Internet required for these assets.";
+    },showReference:$("showReference").checked});}
    catch(err){renderError=true;$("rendererError").hidden=false;$("rendererError").textContent=err.message;}
   }
   drawStats(current);
@@ -106,7 +108,9 @@ $("profile").addEventListener("change",event=>{
   size:$("size").value,seed:$("seed").value});
 });
 $("newSeed").addEventListener("click",()=>{$("seed").value=randomSeed();generate();});
-$("generate").addEventListener("click",generate);
+$("generate").addEventListener("click",()=>{$("seed").value=randomSeed();generate();});
+$("applySettings").addEventListener("click",generate);
+$("showReference").addEventListener("change",event=>renderer?.setReference(event.target.checked));
 $("saveBlueprint").addEventListener("click",save);
 $("zoomIn").addEventListener("click",()=>renderer?.zoomBy(.8));
 $("zoomOut").addEventListener("click",()=>renderer?.zoomBy(1.25));

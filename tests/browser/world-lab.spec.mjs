@@ -73,3 +73,21 @@ test("WORLD-3D-UI-04: World Builder is available through the existing Pages-publ
  await expect(page).toHaveURL(/\/$/);
  await expect(page.locator("#gameDock")).toBeVisible();
 });
+
+test("WORLD-3D-UI-06: generate new changes seed while updating preview keeps the seed",async({page})=>{
+ await page.goto("/ui-kit/world-lab.html");
+ const before=await page.locator("#seed").inputValue();
+ await page.locator("#generate").click();
+ const next=await page.locator("#seed").inputValue();
+ expect(next).not.toBe(before);
+ await page.locator("#applySettings").click();
+ expect(await page.locator("#seed").inputValue()).toBe(next);
+ await page.locator("#showReference").check();
+ await expect(page.locator("#showReference")).toBeChecked();
+});
+test("WORLD-3D-UI-07: Development shows a direct World Builder link",async({page})=>{
+ await page.goto("/?preview=1");
+ await expect(page.locator("#worldBuilderLink")).toBeVisible();
+ await page.locator("#worldBuilderLink").click();
+ await expect(page).toHaveURL(/\/ui-kit\/world-lab\.html$/);
+});

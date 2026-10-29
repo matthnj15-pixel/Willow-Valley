@@ -40,7 +40,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .seed-row{display:flex;gap:7px}
 .seed-row input{flex:1;font-family:ui-monospace,Menlo,monospace;font-size:13px}
 .seed-row button{background:#e3eadc;border:1px solid #c7c7ad;border-radius:9px;font-size:12px;color:var(--teal);padding:0 12px;font-weight:760}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;padding:9px 17px 0}
+.actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;padding:9px 17px 0}
 .actions button{min-height:50px;padding:10px;border-radius:12px;font-weight:800;font-size:13px}
 .actions .primary{background:var(--gold);color:#233933;border:1px solid #bb7733}
 .actions .secondary{background:var(--teal);color:var(--paper);border:1px solid #004746}
@@ -49,3 +49,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 @media(max-width:820px){.layout{grid-template-columns:1fr;padding:0 0 18px;gap:10px}.preview-panel,.settings-panel{border-radius:0;box-shadow:none}.preview-panel{position:relative;top:0}.viewport{height:clamp(310px,43vh,510px)}.preview-heading,.settings-heading{padding:13px 14px 11px}.preview-heading h2,.settings-heading h2{font-size:22px}.world-stats{padding:10px}.stat{min-width:70px}.controls{padding:0 14px 8px}.actions{padding:9px 14px 0}.prototype-note{margin:10px 14px}.header{padding:calc(env(safe-area-inset-top) + 9px) 15px 11px}.brand h1{font-size:27px}}
 @media(max-width:390px){.two-col{grid-template-columns:1fr}.slider-grid{gap:10px 13px}.range-field{font-size:11px}.live-dot{padding:7px 8px}.preview-heading h2{font-size:19px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+
+.asset-strip{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap;padding:10px 15px;border-top:1px solid #e2dfce;background:#faf6e8;color:#315348;font-size:11px}
+.asset-strip label{display:flex;align-items:center;gap:7px;font-weight:730}.asset-strip input{width:17px;height:17px;accent-color:#035352}.asset-strip #assetStatus{font-size:10px;color:#4b6f5a}
+@media(max-width:430px){.actions{grid-template-columns:1fr 1fr}.actions .primary{grid-column:1/-1}.asset-strip{align-items:start}}
