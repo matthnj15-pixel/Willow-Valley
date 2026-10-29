@@ -269,9 +269,17 @@ export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null,treeL
   for(let i=1;i+1<result.length;i++)
    triangle(water,vertex(result[0]),vertex(result[i]),vertex(result[i+1]),color);
  }
+ // Share corner samples between adjacent cells. Large saved worlds used to
+ // re-evaluate these costly height/noise/river calculations four times per
+ // vertex, blocking Safari during restore.
+ const rowLength=nx+1;
+ const sampled=Array.from({length:(nz+1)*rowLength},(_,i)=>
+  world.sample(i%rowLength/nx*width,Math.floor(i/rowLength)/nz*depth));
  for(let z=0;z<nz;z++)for(let x=0;x<nx;x++){
   const x0=x/nx*width,x1=(x+1)/nx*width,z0=z/nz*depth,z1=(z+1)/nz*depth;
-  const a=world.sample(x0,z0),b=world.sample(x1,z0),c=world.sample(x1,z1),d=world.sample(x0,z1);
+  const index=z*rowLength+x;
+  const a=sampled[index],b=sampled[index+1],
+   c=sampled[index+rowLength+1],d=sampled[index+rowLength];
   const cells=[[x0,z0,a],[x1,z0,b],[x1,z1,c],[x0,z1,d]];
   const mid=world.sample((x0+x1)/2,(z0+z1)/2),rock=world.slope((x0+x1)/2,(z0+z1)/2);
   const variation=rand(x,z);
