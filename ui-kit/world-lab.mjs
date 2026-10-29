@@ -1,6 +1,8 @@
 import {DEFAULT_WORLD,WORLD_PRESET_VERSION,WORLD_SIZES,
  normalizeWorldSettings,validWorldSettings,createWorld} from "../world-gen.mjs";
 import {mountWorld3D} from "./render-3d.mjs";
+import {startWorldGame,validState} from "../simulation.mjs";
+import {listSlots,newSlot,selectSlot} from "../save-slots.mjs";
 const $=id=>document.getElementById(id);
 const KEY="willow-valley:dev:world-blueprint-v1";
 const profiles={
@@ -10,6 +12,39 @@ const profiles={
  lake:{...DEFAULT_WORLD,lakes:4,rivers:1,flatness:65,rolling:43,hills:25,cliffs:18,forest:75,waterLevel:85}
 };
 const settings=Object.keys(DEFAULT_WORLD);
+const SAVE_BASE="willow-valley:dev:v1";
+function populateSlots(){
+ const options=listSlots(localStorage,SAVE_BASE,validState);
+ const select=$("settlementSlot"),firstEmpty=options.find(o=>o.status==="empty");
+ select.replaceChildren();
+ for(const item of options){
+  const opt=document.createElement("option");
+  opt.value=String(item.slot);
+  opt.textContent="Slot "+item.slot+" · "+(item.status==="ready"?item.name:item.status==="corrupt"?"Unreadable—protected":"Empty");
+  opt.disabled=item.status==="corrupt";
+  select.append(opt);
+ }
+ select.value=String(firstEmpty?.slot||options.find(o=>o.status==="ready")?.slot||1);
+}
+function foundSettlement(){
+ const slot=Number($("settlementSlot").value);
+ const existing=listSlots(localStorage,SAVE_BASE,validState).find(x=>x.slot===slot);
+ if(!existing||existing.status==="corrupt"){
+  setStatus("That slot is unreadable and remains protected. Choose another.");
+  return;
+ }
+ if(existing.status==="ready"&&!confirm("Replace Slot "+slot+" ("+existing.name+") with a new 3D settlement? All progress in that slot will be lost. Other slots remain unchanged."))return;
+ try{
+  const state=startWorldGame(readControls());
+  const result=newSlot(localStorage,SAVE_BASE,slot,state,validState,
+   "Willow Valley · "+state.worldOptions.seed,{overwrite:existing.status==="ready"});
+  if(!result.ok){setStatus(result.reason);return;}
+  const selected=selectSlot(localStorage,SAVE_BASE,slot,validState);
+  if(!selected.ok){setStatus(selected.reason);return;}
+  // The world blueprint remains separate; this creates the playable state.
+  location.assign("../");
+ }catch(error){setStatus("Cannot found here: "+error.message);}
+}
 function readControls(){
  const values={};
  for(const k of settings){
@@ -117,9 +152,11 @@ $("generate").addEventListener("click",()=>{$("seed").value=randomSeed();generat
 $("applySettings").addEventListener("click",generate);
 $("showReference").addEventListener("change",event=>renderer?.setReference(event.target.checked));
 $("saveBlueprint").addEventListener("click",save);
+$("foundSettlement").addEventListener("click",foundSettlement);
 $("zoomIn").addEventListener("click",()=>renderer?.zoomBy(.8));
 $("zoomOut").addEventListener("click",()=>renderer?.zoomBy(1.25));
 $("resetCamera").addEventListener("click",()=>renderer?.resetCamera());
+populateSlots();
 const recovered=restore();
 generate();
 if(recovered)setStatus("Restored your saved world blueprint. You can edit it and regenerate.");
