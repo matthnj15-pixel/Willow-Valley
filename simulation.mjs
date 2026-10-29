@@ -90,7 +90,7 @@ export function validState(x){const bounds=worldDimensions(x);return !!x&&
  Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(h=>validPoint(h,bounds)&&
  (!h.parcel||Array.isArray(h.parcel.vertices)&&h.parcel.vertices.length>=5&&h.parcel.vertices.length<=10&&h.parcel.vertices.every(p=>validPoint(p,bounds))))&&
  Array.isArray(x.logs)&&(!x.roadGraph||validGraph(x.roadGraph,bounds))&&
- validDesirePaths(x.desirePaths)&&validZones(x.zones,bounds)&&validHousing(x.housing)&&
+ validDesirePaths(x.desirePaths,bounds)&&validZones(x.zones,bounds)&&validHousing(x.housing)&&
  (x.localLanes===undefined||Array.isArray(x.localLanes)&&x.localLanes.length<=2000&&x.localLanes.every(l=>
  Array.isArray(l.points)&&l.points.length>=2&&l.points.length<=12&&l.points.every(p=>validPoint(p,bounds))));}
 function validPoint(p,bounds=WORLD){return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=bounds.w&&p.y>=0&&p.y<=bounds.h;}
