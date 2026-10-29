@@ -120,6 +120,21 @@ export function parcelFits(s,p,parcel){
   if(old&&intersects(parcel.vertices,old))return false;
   if(dist(p,house)<Math.max(parcel.rx,parcel.ry)+(old?11:31))return false;
  }
+ // A vacant strip is not a lot if its footprint would erase an existing
+ // neighborhood lane or overlap a major road's physical corridor.
+ const corridors=[...(s.roads||[]).map(points=>({points,buffer:16})),
+   ...(s.localLanes||[]).map(lane=>({points:lane.points,buffer:7}))];
+ for(const {points,buffer} of corridors)for(const v of parcel.vertices){
+  const near=distanceToRoad(v,[points]);
+  if(near&&near.distance<buffer)return false;
+ }
+ for(const {points} of corridors)for(let i=1;i<points.length;i++){
+  const a=points[i-1],b=points[i],steps=Math.ceil(dist(a,b)/9);
+  for(let j=0;j<=steps;j++){
+   const t=j/Math.max(steps,1),q={x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t};
+   if(insidePoly(q,parcel.vertices))return false;
+  }
+ }
  return true;
 }
 // Pedestrian routes follow a fixed, reproducible terrain grid. The search cost
@@ -197,13 +212,58 @@ export function routeFootpath(s,start,end){
  path.reverse();
  return smoothWalk(s,path);
 }
-function accessLane(s,p,nearest){
- const result=routeFootpath(s,p,nearest.point);
- return result&&result.length<=24?result:null;
+// Existing tracks and footpaths guide new cottages. Settlement growth follows
+// where people already walk, but never overwrites the player's main roads.
+function neighborhoodDestinations(s,center){
+ const targets=[],road=distanceToRoad(center,s.roads);
+ if(road&&road.distance<=180)targets.push({...road,kind:"road"});
+ for(const lane of s.localLanes||[]){
+  // The first point of older saves may be underneath its own house. Choose
+  // accessible points on the public walking lane, never a private doorstep.
+  if(!Array.isArray(lane.points)||lane.points.length<2)continue;
+  const near=distanceToRoad(center,[lane.points]);
+  if(near&&near.distance<=145&&canWalkAt(s,near.point))
+   targets.push({...near,kind:"lane"});
+ }
+ return targets.sort((a,b)=>a.distance-b.distance||
+  (a.kind==="lane"?-1:1));
+}
+function parcelEntranceCandidates(center,parcel,target){
+ const gates=[];
+ for(let i=0;i<parcel.vertices.length;i++){
+  const a=parcel.vertices[i],b=parcel.vertices[(i+1)%parcel.vertices.length];
+  // Exit at the middle of a real irregular plot edge; not from the house
+  // center, since the public path must remain usable AFTER the cottage exists.
+  const midpoint={x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+  const vx=midpoint.x-center.x,vy=midpoint.y-center.y;
+  const d=Math.hypot(vx,vy)||1;
+  const point={x:Math.round(midpoint.x+vx/d*9),y:Math.round(midpoint.y+vy/d*9)};
+  if(!insidePoly(point,parcel.vertices))gates.push(point);
+ }
+ return gates.sort((a,b)=>dist(a,target)-dist(b,target));
+}
+function cottageApproach(s,center,parcel){
+ const virtualHome={x:center.x,y:center.y,parcel:{vertices:parcel.vertices}};
+ const blocked={...s,houses:[...(s.houses||[]),virtualHome]};
+ for(const destination of neighborhoodDestinations(s,center)){
+  for(const entrance of parcelEntranceCandidates(center,parcel,destination.point).slice(0,4)){
+   if(!canWalkAt(blocked,entrance))continue;
+   const route=routeFootpath(blocked,entrance,destination.point);
+   if(route&&route.length>=2&&route.length<=24)
+    return{lane:{points:route,houseX:center.x,houseY:center.y,
+      entrance,connectsTo:destination.kind},entrance,kind:destination.kind};
+  }
+ }
+ return null;
+}
+function establishedNeighborDistance(s,p){
+ let nearest=Infinity;
+ for(const h of s.houses||[])nearest=Math.min(nearest,dist(p,h));
+ return nearest;
 }
 export function findCottageSite(s){
  const residential=(s.zones||[]).filter(z=>z.type==="residential");
- let attempt=0;
+ const viable=[];let attempt=0;
  for(const zone of residential)for(const point of zone.points){
   for(let i=0;i<72;i++){
    const key=s.turn*991+zone.id*187+attempt++*43;
@@ -212,13 +272,28 @@ export function findCottageSite(s){
    const parcel=candidateParcel(p,key);
    if(!parcelFits(s,p,parcel))continue;
    const road=distanceToRoad(p,s.roads);
-   if(!road||road.distance>165)continue;
-   const lane=accessLane(s,p,road);
-   if(!lane)continue;
-   return{house:{x:p.x,y:p.y,orientation:parcel.orientation,
-    parcel:{vertices:parcel.vertices,orientation:parcel.orientation}},
-    lane:{points:lane,houseX:p.x,houseY:p.y},distanceToRoad:road.distance};
+   if(!road||road.distance>180)continue;
+   // Historical accretion: favour sensible loose clusters and established
+   // walking corridors, not the first arbitrary legal site or a lot grid.
+   const neighbor=establishedNeighborDistance(s,p);
+   const lane=distanceToRoad(p,(s.localLanes||[]).map(l=>l.points));
+   const pathDistance=Math.min(road.distance,lane?.distance??Infinity);
+   const score=Math.abs(Math.min(neighbor,300)-125)*.42+
+     pathDistance*.33+slopeAt(p.x,p.y)*28+rnd(key+18)*18;
+   viable.push({p,parcel,key,score});
   }
+ }
+ viable.sort((a,b)=>a.score-b.score||a.key-b.key);
+ // Test several distinct good sites; paths can fail around steep ground,
+ // protected features or existing parcel corners.
+ for(const {p,parcel} of viable.slice(0,30)){
+  const approach=cottageApproach(s,p,parcel);
+  if(!approach)continue;
+  return{house:{x:p.x,y:p.y,orientation:parcel.orientation,
+    foundedTurn:s.turn,entrance:approach.entrance,
+    parcel:{vertices:parcel.vertices,orientation:parcel.orientation}},
+    lane:approach.lane,distanceToRoad:distanceToRoad(p,s.roads)?.distance??Infinity,
+    growthReason:approach.kind==="lane"?"Along an established village footpath":"Near a town collector"};
  }
  return null;
 }

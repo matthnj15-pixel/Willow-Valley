@@ -6,6 +6,7 @@ import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,S
 import {radialCurveGesture} from "./road-gesture.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {ZONE_TYPES,BRUSH_RADIUS,paintZones,elevationAt,slopeAt,viableLotEstimate} from "./organic-world.mjs";
+import {terrainContours} from "./terrain-contours.mjs";
 import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
 mountResourceBar($("resourceBar"),[
@@ -60,6 +61,7 @@ function path(points){return points.map((p,i)=>(i===0?"M ":" L ")+p.x+" "+p.y).j
 function roadGraphic(parent,pts,preview=false,explicitPath=null){if(pts.length<2)return;const d=explicitPath||path(pts);
  parent.append(node("path",{d,fill:"none",stroke:preview?"#ffe5ae":"#738267","stroke-width":preview?27:32,"stroke-linejoin":"round","stroke-linecap":"round",opacity:preview?.76:1}));
  parent.append(node("path",{d,fill:"none",stroke:preview?"#fbd18d":"#d4c395","stroke-width":preview?15:19,"stroke-linejoin":"round","stroke-linecap":"round","stroke-dasharray":preview?"15 12":"none"}));}
+const CONTOURS=terrainContours();
 const ZONE_COLORS={residential:"#d7a669",commercial:"#81a7ae",farmland:"#b4a650",preserve:"#6e9a67",erase:"#c85a4b"};
 function drawZoneStrokes(strokes,type,radius,preview=false){
  const shade=ZONE_COLORS[type]||ZONE_COLORS.residential;
@@ -84,6 +86,11 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
  svg.append(node("rect",{x:0,y:0,width:WORLD.w,height:WORLD.h,fill:"url(#ground)"}));
  for(let i=0;i<22;i++){const x=seedValue(i+5)*WORLD.w,y=seedValue(i+107)*WORLD.h;
  svg.append(node("ellipse",{cx:x,cy:y,rx:60+seedValue(i+30)*95,ry:35+seedValue(i+44)*65,fill:i%2?"#a1bb85":"#b7c996",opacity:".48",transform:"rotate("+Math.round(seededAngle(i))+" "+x+" "+y+")"}));}
+ // Contours make terrain slopes legible before the full 3D renderer ships.
+ // Cached paths are intentionally subtle and never regenerated while panning.
+ for(const contour of CONTOURS)svg.append(node("path",{
+  d:contour.d,fill:"none",stroke:"#5a7457","stroke-width":contour.level===0?1.9:1.2,
+  opacity:contour.level===0?".24":".15","pointer-events":"none"}));
  // Shaded meadows and forest boundary.
  svg.append(node("path",{d:"M 0 0 L 710 0 Q 640 170 730 240 Q 690 300 800 310 L 670 300 Q 400 210 60 315 L 0 410 Z",fill:"#759e70",opacity:".21"}));
  let river="";for(let y=-30;y<=950;y+=15)river+=(y===-30?"M ":" L ")+riverX(y)+" "+y;
@@ -97,10 +104,20 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
  svg.append(node("circle",{cx:x,cy:y,r:r,fill:i%4?"#527c55":"#456b4c",opacity:".88"}));
  svg.append(node("circle",{cx:x-r*.27,cy:y-r*.28,r:r*.72,fill:"#759869",opacity:".86"}));}
  for(const b of game.buildings)if(b.type==="farm"){svg.append(node("rect",{x:b.x-63,y:b.y-50,width:126,height:100,rx:5,fill:"#d9c58b",stroke:"#bea770","stroke-width":3,opacity:".81"}));for(let i=0;i<7;i++)svg.append(node("path",{d:"M "+(b.x-55)+" "+(b.y-38+i*12)+" l 110 0",stroke:"#a79d66","stroke-width":5,opacity:".65"}));}
- // Self-organized local dirt footpaths provide walking access, not industrial freight.
- for(const lane of game.localLanes||[])svg.append(node("path",{
-  d:path(lane.points),fill:"none",stroke:"#987d51","stroke-width":9,
-  "stroke-dasharray":"8 6","stroke-linecap":"round",opacity:".88"}));
+ // Existing footpaths are historic artifacts: new cottages join their
+ // public ends rather than drawing an impassable shortcut through a house.
+ for(const lane of game.localLanes||[]){
+  if(!Array.isArray(lane.points)||lane.points.length<2)continue;
+  svg.append(node("path",{d:path(lane.points),fill:"none",stroke:"#735a3b",
+   "stroke-width":11,"stroke-linejoin":"round","stroke-linecap":"round",opacity:".20"}));
+  svg.append(node("path",{d:path(lane.points),fill:"none",stroke:"#ab8a58",
+   "stroke-width":5,"stroke-linejoin":"round","stroke-linecap":"round",
+   "stroke-dasharray":"12 5",opacity:".90"}));
+  if(lane.entrance)svg.append(node("path",{
+   d:path([{x:lane.houseX,y:lane.houseY},lane.entrance]),
+   fill:"none",stroke:"#c7a878","stroke-width":4,"stroke-linecap":"round",
+   "stroke-dasharray":"3 4",opacity:".9"}));
+ }
  // Committed roads show persistent, editable nodes and curve handles.
  const graph=ensureGraph(game);
  // Pedestrian shortcuts grow after the month advances. They are not roads.
@@ -145,9 +162,12 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
  }
  for(const p of draft.anchors)svg.append(node("circle",{cx:p.x,cy:p.y,r:11,fill:"#fff1c2",stroke:"#53664b","stroke-width":3}));
  for(const h of game.houses){const access=structureAccess(game,h);
- if(h.parcel&&mode==="zone"){svg.append(node("polygon",{
-  points:h.parcel.vertices.map(p=>p.x+","+p.y).join(" "),fill:"#e9d4ad",
-  "fill-opacity":".09",stroke:"#6a835e","stroke-width":1.5,"stroke-dasharray":"7 5"}));}
+ if(h.parcel){
+  svg.append(node("polygon",{points:h.parcel.vertices.map(p=>p.x+","+p.y).join(" "),
+   fill:"#bfd49c","fill-opacity":mode==="zone"?".10":".16",
+   stroke:mode==="zone"?"#607d5b":"none","stroke-width":1.5,
+   "stroke-dasharray":"7 5"}));
+ }
 svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".25"}));
  const homeLayer=node("g",{transform:h.orientation?"rotate("+Math.round(h.orientation*180/Math.PI)+" "+h.x+" "+h.y+")":""});svg.append(homeLayer);
  homeLayer.append(node("rect",{x:h.x-11,y:h.y-9,width:22,height:22,rx:2,fill:"#f2e2bc",stroke:access==="road"?"#aa9a78":access==="footpath"?"#e6a34d":"#c54f43","stroke-width":access==="road"?1.3:4}));
