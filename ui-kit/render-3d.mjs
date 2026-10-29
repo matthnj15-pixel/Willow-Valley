@@ -1,5 +1,5 @@
 import {createWorldMesh,clamp} from "../world-gen.mjs";
-import {fetchKenneyModel,instantiateKenney,instantiateKenneyTerrain} from "./kenney-models.mjs";
+import {fetchKenneyModel,instantiateKenney,instantiateKenneyTerrain,kenneyLandscapePalette} from "./kenney-models.mjs";
 
 // Native WebGL terrain and actual Kenney CC0 asset meshes.
 const VERTEX=[
@@ -70,7 +70,10 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
  }
  function upload(newWorld,reset=true){
   world=newWorld;
-  const geometry=createWorldMesh(world,68,52,{trees:!["oak","pine","birch"].some(key=>kenney[key])});
+  const geometry=createWorldMesh(world,92,72,{
+   trees:!["oak","pine","birch"].some(key=>kenney[key]),
+   palette:kenneyLandscapePalette(kenney)
+  });
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[0]);
   gl.bufferData(gl.ARRAY_BUFFER,geometry.ground,gl.STATIC_DRAW);
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[1]);
