@@ -1,6 +1,7 @@
 import {createWorldMesh,clamp} from "../world-gen.mjs";
+import {fetchKenneyModel,instantiateKenney} from "./kenney-models.mjs";
 
-// Native WebGL preview, with no CDN dependencies.
+// Native WebGL terrain and actual Kenney CC0 asset meshes.
 const VERTEX=[
  "attribute vec3 aPosition; attribute vec3 aColor; attribute vec3 aNormal;",
  "uniform vec3 uFocus; uniform float uYaw; uniform float uPitch;",
@@ -38,7 +39,7 @@ function makeProgram(gl){
   throw new Error(gl.getProgramInfoLog(p)||"3D unavailable");
  return p;
 }
-export function mountWorld3D(canvas,initialWorld){
+export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=false}={}){
  const gl=canvas.getContext("webgl",{antialias:true,alpha:false,depth:true,
   powerPreference:"low-power",preserveDrawingBuffer:false});
  if(!gl)throw new Error("3D preview requires WebGL support in your browser.");
@@ -53,8 +54,10 @@ export function mountWorld3D(canvas,initialWorld){
   zoom:gl.getUniformLocation(program,"uZoom"),
   aspect:gl.getUniformLocation(program,"uAspect")
  };
- const buffers=[gl.createBuffer(),gl.createBuffer()];
- let counts=[0,0],world=initialWorld;
+ const buffers=[gl.createBuffer(),gl.createBuffer(),gl.createBuffer()];
+ const kenney={},kitNames=["oak","pine","birch","rock","tower"];
+ let loadedAssets=0,showcase=showReference,disposed=false;
+ let counts=[0,0,0],world=initialWorld;
  const camera={yaw:.71,pitch:.86,zoom:650,focusX:0,focusZ:0};
  const pointers=new Map();
  let gesture=null,frame=0;
@@ -65,15 +68,33 @@ export function mountWorld3D(canvas,initialWorld){
   camera.zoom=Math.max(world.width/aspect,world.depth)*.71;
   render();
  }
- function upload(newWorld){
+ function upload(newWorld,reset=true){
   world=newWorld;
-  const geometry=createWorldMesh(world);
+  const geometry=createWorldMesh(world,68,52,{trees:!["oak","pine","birch"].some(key=>kenney[key])});
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[0]);
   gl.bufferData(gl.ARRAY_BUFFER,geometry.ground,gl.STATIC_DRAW);
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[1]);
   gl.bufferData(gl.ARRAY_BUFFER,geometry.water,gl.STATIC_DRAW);
-  counts=[geometry.ground.length/9,geometry.water.length/9];
-  resetCamera();
+  counts=[geometry.ground.length/9,geometry.water.length/9,0];
+  updateKenney();
+  if(reset)resetCamera();else render();
+ }
+ function updateKenney(){
+  if(!loadedAssets||disposed)return;
+  const data=instantiateKenney(world,kenney,{showReference:showcase});
+  gl.bindBuffer(gl.ARRAY_BUFFER,buffers[2]);
+  gl.bufferData(gl.ARRAY_BUFFER,data.vertices,gl.STATIC_DRAW);
+  counts[2]=data.vertices.length/9;
+  render();
+ }
+ async function loadModels(){
+  const results=await Promise.allSettled(kitNames.map(key=>fetchKenneyModel(key)));
+  if(disposed)return;
+  results.forEach((r,i)=>{if(r.status==="fulfilled"){kenney[kitNames[i]]=r.value;loadedAssets++;}});
+  if(loadedAssets)upload(world,false);
+  onAssets({loaded:loadedAssets,total:kitNames.length,
+   treeModels:["oak","pine","birch"].filter(k=>kenney[k]).length,
+   reference:!!kenney.tower,online:loadedAssets>0});
  }
  function drawBuffer(buffer,count){
   if(!count)return;
@@ -100,7 +121,7 @@ export function mountWorld3D(canvas,initialWorld){
   gl.uniform1f(loc.yaw,camera.yaw);gl.uniform1f(loc.pitch,camera.pitch);
   gl.uniform1f(loc.zoom,camera.zoom);
   gl.uniform1f(loc.aspect,Math.max(.1,width/height));
-  drawBuffer(buffers[0],counts[0]);drawBuffer(buffers[1],counts[1]);
+  drawBuffer(buffers[0],counts[0]);drawBuffer(buffers[1],counts[1]);drawBuffer(buffers[2],counts[2]);
  }
  function render(){if(!frame)frame=requestAnimationFrame(draw);}
  function zoomBy(factor){
@@ -149,8 +170,13 @@ export function mountWorld3D(canvas,initialWorld){
  canvas.addEventListener("wheel",e=>{e.preventDefault();zoomBy(e.deltaY>0?1.12:1/1.12);},{passive:false});
  window.addEventListener("resize",render);
  upload(world);
- return{setWorld:upload,resetCamera,zoomBy,getCamera:()=>({...camera}),
+ void loadModels();
+ return{setWorld:upload,resetCamera,zoomBy,
+  setReference(value){showcase=Boolean(value);updateKenney();},
+  assetStatus:()=>({loaded:loadedAssets,total:kitNames.length}),
+  getCamera:()=>({...camera}),
   dispose(){
+   disposed=true;
    canvas.removeEventListener("pointerdown",onDown);
    canvas.removeEventListener("pointermove",onMove);
    canvas.removeEventListener("pointerup",onUp);

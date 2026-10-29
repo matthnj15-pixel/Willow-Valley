@@ -32,6 +32,7 @@ jobs:
           node --check world-gen.mjs
           node --check world-lab/world-lab.mjs
           node --check world-lab/render-3d.mjs
+          node --check ui-kit/kenney-models.mjs
           node --check scripts/build-offline.mjs
           node --check scripts/build-icons.mjs
           node --check sw.js
