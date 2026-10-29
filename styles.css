@@ -273,3 +273,9 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
 .zone-controls .zone-actions{display:flex;gap:6px}
 .game-page .dock .wv-nav-tool--compact{min-width:0;padding:1px}
 @media(max-width:390px){.game-page .dock{grid-template-columns:repeat(4,minmax(0,1fr)) minmax(88px,1.25fr);gap:2px}}
+
+/* WV-ZONE-004: precision eraser lives beside the brush, without another row. */
+.zone-controls .zone-settings .zone-land-use{display:flex;gap:6px;align-items:end;min-width:0}
+.zone-controls .zone-land-use label{flex:1;min-width:0}
+.zone-controls .zone-land-use button{flex:0 0 auto;min-height:39px;padding:0 9px;white-space:nowrap}
+.zone-controls .zone-land-use button.active{background:#f3e8bc;color:#263334;border-color:#d7c9a7;font-weight:750}
