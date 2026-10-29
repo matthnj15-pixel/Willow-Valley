@@ -37,20 +37,53 @@ ensureGraph(game);
 let mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
 let zoneType="residential",lastZonePaintType="residential",zoneStrokes=[],zoneRadius=BRUSH_RADIUS;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
-let active3D=null,last3DKey="";
-function bootGameWorld(){
+let active3D=null,last3DKey="",worldLoadGeneration=0;
+function showTerrainFailure(error){
+ console.warn("3D world render failed; saved game preserved",error);
+ $("terrainLoad").hidden=false;
+ $("terrainLoadTitle").textContent="This 3D map could not load.";
+ $("terrainLoadDetail").textContent=
+  "Your settlement and Save Slot "+activeSlot+" are unchanged. Try lighter graphics.";
+ $("retry3D").hidden=false;
+}
+function bootGameWorld({lite=false}={}){
+ const sequence=++worldLoadGeneration;
  configureWorldState(game);
- const world=generatedWorld(game);
  if(active3D){active3D.dispose();active3D=null;}
  last3DKey="";
+ $("terrainLoad").hidden=true;
+ $("retry3D").hidden=true;
+ $("reset3DCamera").hidden=true;
+ $("cameraAngle").hidden=true;
+ let world=null;
+ try{world=generatedWorld(game);}
+ catch(error){
+  $("stage").classList.toggle("is-3d",!!game.worldOptions);
+  $("game3D").hidden=!game.worldOptions;
+  showTerrainFailure(error);return;
+ }
  $("stage").classList.toggle("is-3d",!!world);
  $("game3D").hidden=!world;
  $("reset3DCamera").hidden=!world;
  $("cameraAngle").hidden=!world;
  if(!world)return;
+ $("terrainLoad").hidden=false;
+ $("terrainLoadTitle").textContent=lite?"Opening with lightweight graphics…":"Opening your 3D settlement…";
+ $("terrainLoadDetail").textContent="Save Slot "+activeSlot+" is preserved.";
+ let canvas=$("game3D");
+ if(lite){
+  // A lost WebGL context cannot be restored by requesting getContext again
+  // on the same element; rebuild only the canvas, never the saved state.
+  const replacement=canvas.cloneNode(false);
+  canvas.replaceWith(replacement);canvas=replacement;
+ }
  try{
-  active3D=mountWorld3D($("game3D"),world,{interactive:false,
+  active3D=mountWorld3D(canvas,world,{
+   interactive:false,quality:lite?"lite":"game",
+   onReady:()=>{if(sequence===worldLoadGeneration)$("terrainLoad").hidden=true;},
+   onError:error=>{if(sequence===worldLoadGeneration)showTerrainFailure(error);},
    onCamera:view=>{
+    if(sequence!==worldLoadGeneration)return;
     $("cameraAngle").textContent=Math.round(view.pitch*180/Math.PI)+"°";
     $("stage").dataset.cameraYaw=String(view.yaw);
     $("stage").dataset.cameraPitch=String(view.pitch);
@@ -62,9 +95,7 @@ function bootGameWorld(){
   const center=game.houses?.[0]||{x:world.width/2,y:world.depth/2};
   active3D.homeView(center.x+115,center.y,Math.min(500,world.depth*.42));
  }catch(error){
-  $("stage").classList.remove("is-3d");$("game3D").hidden=true;
-  notify("3D graphics unavailable. The fallback map remains playable.");
-  console.warn("3D scene failed",error);
+  showTerrainFailure(error);
  }
 }
 function save(){const result=saveSlot(localStorage,SAVE_KEY,activeSlot,game,journal,validState,slotName);
@@ -596,6 +627,7 @@ svg.addEventListener("pointermove",movePointer);
 svg.addEventListener("pointerup",endPointer);
 svg.addEventListener("pointercancel",cancelPointer);
 $("zoomIn").onclick=()=>zoom(1.32);$("zoomOut").onclick=()=>zoom(1/1.32);
+$("retry3D").onclick=()=>{bootGameWorld({lite:true});setMode("explore");};
 $("reset3DCamera").onclick=()=>{
  if(!active3D)return;
  const center=game.houses?.[0]||{x:WORLD.w/2,y:WORLD.h/2};
