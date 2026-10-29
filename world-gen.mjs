@@ -212,7 +212,7 @@ export function createWorld(raw={}){
   ":"+lakes.map(l=>l.type).join(",")+":"+rivers.length+":"+trees.length;
  return{options,width,depth,lakes,rivers,trees,sample,slope,signature};
 }
-export function createWorldMesh(world,nx=68,nz=52,{trees=true}={}){
+export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null}={}){
  const {width,depth}=world,ground=[],water=[];
  const rand=(i,j)=>hash2(i,j,hashSeed(world.options.seed)+901);
  function triangle(to,a,b,c,color){
@@ -243,7 +243,8 @@ export function createWorldMesh(world,nx=68,nz=52,{trees=true}={}){
    result.push(pt);
   }
   if(result.length<3)return;
-  const color=corners.some(p=>p.kind==="river")?[.26,.56,.66]:[.30,.61,.70];
+  const color=palette?.water||
+   (corners.some(p=>p.kind==="river")?[.26,.56,.66]:[.30,.61,.70]);
   const vertex=p=>[p.x-width/2,p.level+.5,p.z-depth/2];
   for(let i=1;i+1<result.length;i++)
    triangle(water,vertex(result[0]),vertex(result[i]),vertex(result[i+1]),color);
@@ -254,8 +255,10 @@ export function createWorldMesh(world,nx=68,nz=52,{trees=true}={}){
   const cells=[[x0,z0,a],[x1,z0,b],[x1,z1,c],[x0,z1,d]];
   const mid=world.sample((x0+x1)/2,(z0+z1)/2),rock=world.slope((x0+x1)/2,(z0+z1)/2);
   const variation=rand(x,z),rocky=clamp(rock*.55+(mid.height>75?.27:0),0,1);
-  const green=[.36+variation*.09,.54+variation*.11,.31+variation*.08];
-  const stone=[.51+variation*.05,.50+variation*.06,.43+variation*.05];
+  const green=palette?.land?palette.land.map(v=>v*(.92+variation*.16)):
+   [.36+variation*.09,.54+variation*.11,.31+variation*.08];
+  const stone=palette?.stone?palette.stone.map(v=>v*(.96+variation*.08)):
+   [.51+variation*.05,.50+variation*.06,.43+variation*.05];
   const color=green.map((v,i)=>mix(v,stone[i],rocky));
   const verts=cells.map(q=>[q[0]-width/2,q[2].height,q[1]-depth/2]);
   triangle(ground,verts[0],verts[3],verts[1],color);
