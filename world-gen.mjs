@@ -54,13 +54,65 @@ export function createWorld(raw={}){
  const options=normalizeWorldSettings(raw),size=WORLD_SIZES[options.size];
  const width=size.width,depth=size.depth,seed=hashSeed(options.seed);
  const rand=i=>hash2(i,17,seed);
- const lakeRadius=(.062+options.waterLevel*.00067)*Math.min(width,depth);
- const lakes=Array.from({length:options.lakes},(_,i)=>{
-  const px=.22+rand(i*31+3)*.56,pz=.19+rand(i*31+6)*.62;
-  return{x:px*width,z:pz*depth,rx:lakeRadius*(.88+rand(i*31+8)*.42),
-   rz:lakeRadius*(.72+rand(i*31+14)*.65),
-   level:8+options.waterLevel*.09};
- });
+ // Choose low-lying natural valley sites instead of throwing elliptical lakes
+ // onto arbitrary hills. A fixed seed produces the same valleys every time.
+ const lakes=[];
+ const lakeMin=Math.min(width,depth);
+ const lakeTypes=["ribbon","branched","lowland"];
+ for(let i=0;i<options.lakes;i++){
+  let best=null;
+  for(let j=0;j<22;j++){
+   const x=(.12+.76*rand(900+i*97+j*3))*width;
+   const z=(.12+.76*rand(901+i*97+j*3))*depth;
+   const h=baseHeight(x,z);
+   const dx=(baseHeight(x+12,z)-baseHeight(x-12,z))/24;
+   const dz=(baseHeight(x,z+12)-baseHeight(x,z-12))/24;
+   const closest=lakes.length?Math.min(...lakes.map(l=>Math.hypot(x-l.x,z-l.z))):Infinity;
+   const score=h+Math.hypot(dx,dz)*12+Math.max(0,240-closest)*.3+rand(902+i*97+j*3)*4;
+   if(!best||score<best.score)best={x,z,score,h,dx,dz};
+  }
+  const type=lakeTypes[(i+Math.floor(rand(700+i)*3))%lakeTypes.length];
+  const length=lakeMin*(type==="ribbon"?.35:type==="branched"?.24:.18)*
+   (.84+rand(530+i*37)*.4)*(0.7+options.waterLevel*.005);
+  const halfWidth=lakeMin*(type==="ribbon"?.028:type==="branched"?.041:.072)*
+   (.8+rand(531+i*37)*.48)*(0.6+options.waterLevel*.008);
+  // Valley shape supplies orientation; glacial channels follow the lower
+  // gradient or its longitudinal contour when the valley is nearly flat.
+  const direction=Math.atan2(best.dz,best.dx)+
+   (type==="ribbon"?.12:1.08)+rand(535+i*37)*.42;
+  const ux=Math.cos(direction),uz=Math.sin(direction);
+  const vx=-uz,vz=ux;
+  const wobble=rand(533+i*37)*Math.PI*2;
+  const spine=Array.from({length:17},(_,j)=>{
+   const t=j/16,u=(t-.5)*length;
+   const side=(Math.sin(t*Math.PI*2.4+wobble)-Math.sin(wobble))*
+     halfWidth*(type==="ribbon"?.65:.8);
+   const x=clamp(best.x+ux*u+vx*side,5,width-5);
+   const z=clamp(best.z+uz*u+vz*side,5,depth-5);
+   return{x,z,r:halfWidth*(.52+.48*Math.pow(Math.max(0,1-Math.abs(t-.5)*1.8),.7))*
+      (.85+.18*Math.sin(t*23+wobble))};
+  });
+  const arms=[];
+  if(type==="branched"||type==="lowland"){
+   const count=type==="branched"?3:2;
+   for(let j=0;j<count;j++){
+    const idx=3+Math.floor(rand(610+i*37+j)*11),origin=spine[idx];
+    const side=j%2?1:-1;
+    const span=length*(.28+rand(630+i*37+j)*.27);
+    const shift=side*span;
+    arms.push(Array.from({length:7},(_,k)=>{
+     const t=k/6;
+     return{x:clamp(origin.x+vx*shift*t+ux*span*t*.23*Math.sin(t*2+floatHash(i,j)),5,width-5),
+      z:clamp(origin.z+vz*shift*t+uz*span*t*.23*Math.sin(t*2+floatHash(i,j)),5,depth-5),
+      r:halfWidth*(.63-.54*t)};
+    }));
+   }
+  }
+  const level=Math.max(6,best.h+2.5+rand(511+i*37)*2);
+  lakes.push({x:best.x,z:best.z,rx:length/2,rz:halfWidth,
+   level,type,spine,arms});
+ }
+ function floatHash(a,b){return rand(776+a*31+b);}
  const rivers=Array.from({length:options.rivers},(_,i)=>{
   const phase=rand(70+i*23)*Math.PI*2,offset=(i+1)/(options.rivers+1);
   const points=Array.from({length:61},(_,j)=>{
@@ -93,15 +145,40 @@ export function createWorld(raw={}){
   return Math.max(1,11+(broad*85*rolling+detail*23*rolling+
    ridge*90*hills+cliff)*flatFactor);
  }
+ function lakeDistance(lake,x,z){
+  // Domain-warp sampling adds organic embayments, while the long axis and
+  // branches come from the terrain-oriented valley centreline.
+  const warp=lake.rz*.34;
+  const xx=x+(fbm(x/width*23,z/depth*23,seed+lake.x%100+451)-.5)*warp;
+  const zz=z+(fbm(x/width*21+9,z/depth*21-7,seed+lake.z%100+452)-.5)*warp;
+  let best=Infinity;
+  for(const path of [lake.spine,...lake.arms])for(let i=1;i<path.length;i++){
+   const a=path[i-1],b=path[i],dx=b.x-a.x,dz=b.z-a.z;
+   const t=clamp(((xx-a.x)*dx+(zz-a.z)*dz)/(dx*dx+dz*dz||1),0,1);
+   const r=Math.max(1,mix(a.r,b.r,t));
+   const d=Math.hypot(xx-(a.x+t*dx),zz-(a.z+t*dz))/r;
+   best=Math.min(best,d);
+  }
+  return best;
+ }
  function sample(x,z){
   x=clamp(x,0,width);z=clamp(z,0,depth);
   let height=baseHeight(x,z),water=-Infinity,kind="land";
   for(const lake of lakes){
-   const d=Math.hypot((x-lake.x)/lake.rx,(z-lake.z)/lake.rz);
-   if(d<1.32){
-    // A broad beach above each basin eases into a flat-water lake surface.
-    height=Math.min(height,lake.level+(d-1)*42);
-    if(d<1){height=Math.min(height,lake.level-5);if(lake.level>water){water=lake.level;kind="lake";}}
+   // Only sample basins in a generously clipped bounding area.
+   const far=Math.hypot(x-lake.x,z-lake.z);
+   if(far>lake.rx+lake.rz*6)continue;
+   const d=lakeDistance(lake,x,z);
+   if(d<1.5){
+    const rim=clamp((d-.78)/.72,0,1);
+    const basin=lake.level-8+Math.pow(Math.min(d,1),1.7)*7;
+    // The shore blends back into the terrain without an artificial raised
+    // oval berm; cliffs and rolling hills remain as the parent topography.
+    height=mix(Math.min(height,basin),height,smooth(rim));
+    if(d<1){
+     height=Math.min(height,lake.level-1.5);
+     if(lake.level>water){water=lake.level;kind="lake";}
+    }
    }
   }
   for(const river of rivers){
@@ -132,10 +209,10 @@ export function createWorld(raw={}){
  // independent of camera, device pixel ratio, and simulation turn timing.
  const anchors=[[.1,.1],[.25,.8],[.5,.5],[.8,.25],[.9,.9]];
  const signature=anchors.map(([x,z])=>sample(x*width,z*depth).height.toFixed(3)).join("|")+
-  ":"+lakes.length+":"+rivers.length+":"+trees.length;
+  ":"+lakes.map(l=>l.type).join(",")+":"+rivers.length+":"+trees.length;
  return{options,width,depth,lakes,rivers,trees,sample,slope,signature};
 }
-export function createWorldMesh(world,nx=68,nz=52,{trees=true}={}){
+export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null}={}){
  const {width,depth}=world,ground=[],water=[];
  const rand=(i,j)=>hash2(i,j,hashSeed(world.options.seed)+901);
  function triangle(to,a,b,c,color){
@@ -145,25 +222,54 @@ export function createWorldMesh(world,nx=68,nz=52,{trees=true}={}){
   const len=Math.hypot(...normal)||1;normal=normal.map(v=>v/len);
   for(const p of [a,b,c])to.push(...p,...color,...normal);
  }
+ function waterPolygon(corners){
+  // Clip each water triangle against the actual basin/river mask. Previous
+  // rendering painted an entire square when its centre was wet, yielding
+  // blocky, circular-looking shorelines even for complex heightfields.
+  const result=[];
+  for(let i=0;i<3;i++){
+   const a=corners[i],b=corners[(i+1)%3];
+   if(a.wet)result.push(a);
+   if(a.wet===b.wet)continue;
+   let lo=a,hi=b;
+   for(let step=0;step<7;step++){
+    const mid={x:(lo.x+hi.x)*.5,z:(lo.z+hi.z)*.5};
+    const value=world.sample(mid.x,mid.z);
+    mid.wet=value.water!==null;mid.level=value.water;
+    if(mid.wet===a.wet)lo=mid;else hi=mid;
+   }
+   const pt={x:(lo.x+hi.x)*.5,z:(lo.z+hi.z)*.5,
+    level:a.wet?a.level:b.level,wet:true};
+   result.push(pt);
+  }
+  if(result.length<3)return;
+  const color=palette?.water||
+   (corners.some(p=>p.kind==="river")?[.26,.56,.66]:[.30,.61,.70]);
+  const vertex=p=>[p.x-width/2,p.level+.5,p.z-depth/2];
+  for(let i=1;i+1<result.length;i++)
+   triangle(water,vertex(result[0]),vertex(result[i]),vertex(result[i+1]),color);
+ }
  for(let z=0;z<nz;z++)for(let x=0;x<nx;x++){
   const x0=x/nx*width,x1=(x+1)/nx*width,z0=z/nz*depth,z1=(z+1)/nz*depth;
   const a=world.sample(x0,z0),b=world.sample(x1,z0),c=world.sample(x1,z1),d=world.sample(x0,z1);
   const cells=[[x0,z0,a],[x1,z0,b],[x1,z1,c],[x0,z1,d]];
   const mid=world.sample((x0+x1)/2,(z0+z1)/2),rock=world.slope((x0+x1)/2,(z0+z1)/2);
   const variation=rand(x,z),rocky=clamp(rock*.55+(mid.height>75?.27:0),0,1);
-  const green=[.36+variation*.09,.54+variation*.11,.31+variation*.08];
-  const stone=[.51+variation*.05,.50+variation*.06,.43+variation*.05];
+  const green=palette?.land?palette.land.map(v=>v*(.92+variation*.16)):
+   [.36+variation*.09,.54+variation*.11,.31+variation*.08];
+  const stone=palette?.stone?palette.stone.map(v=>v*(.96+variation*.08)):
+   [.51+variation*.05,.50+variation*.06,.43+variation*.05];
   const color=green.map((v,i)=>mix(v,stone[i],rocky));
   const verts=cells.map(q=>[q[0]-width/2,q[2].height,q[1]-depth/2]);
   triangle(ground,verts[0],verts[3],verts[1],color);
   triangle(ground,verts[1],verts[3],verts[2],color);
-  if(mid.water!==null){
-   const surface=mid.water+.5;
-   const wverts=cells.map(q=>[q[0]-width/2,surface,q[1]-depth/2]);
-   const blue=mid.kind==="river"?[.25,.57,.67]:[.29,.61,.72];
-   triangle(water,wverts[0],wverts[3],wverts[1],blue);
-   triangle(water,wverts[1],wverts[3],wverts[2],blue);
-  }
+  const surface=cells.map(q=>({
+   x:q[0],z:q[1],wet:q[2].water!==null,
+   level:q[2].water,kind:q[2].kind
+  }));
+  // Subdivide only wet boundary cells. Open water remains two triangles.
+  waterPolygon([surface[0],surface[3],surface[1]]);
+  waterPolygon([surface[1],surface[3],surface[2]]);
  }
  // Low-poly conifers remain inexpensive enough for a mobile browser.
  for(const t of trees?world.trees:[]){

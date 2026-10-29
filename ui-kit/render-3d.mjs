@@ -1,5 +1,5 @@
 import {createWorldMesh,clamp} from "../world-gen.mjs";
-import {fetchKenneyModel,instantiateKenney} from "./kenney-models.mjs";
+import {fetchKenneyModel,instantiateKenney,instantiateKenneyTerrain,kenneyLandscapePalette} from "./kenney-models.mjs";
 
 // Native WebGL terrain and actual Kenney CC0 asset meshes.
 const VERTEX=[
@@ -54,10 +54,10 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   zoom:gl.getUniformLocation(program,"uZoom"),
   aspect:gl.getUniformLocation(program,"uAspect")
  };
- const buffers=[gl.createBuffer(),gl.createBuffer(),gl.createBuffer()];
- const kenney={},kitNames=["oak","pine","birch","rock","tower"];
+ const buffers=Array.from({length:5},()=>gl.createBuffer());
+ const kenney={},kitNames=["oak","pine","birch","rock","tower","ground","waterTile","bank","cliff","beach"];
  let loadedAssets=0,showcase=showReference,disposed=false;
- let counts=[0,0,0],world=initialWorld;
+ let counts=[0,0,0,0,0],world=initialWorld;
  const camera={yaw:.71,pitch:.86,zoom:650,focusX:0,focusZ:0};
  const pointers=new Map();
  let gesture=null,frame=0;
@@ -70,21 +70,27 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
  }
  function upload(newWorld,reset=true){
   world=newWorld;
-  const geometry=createWorldMesh(world,68,52,{trees:!["oak","pine","birch"].some(key=>kenney[key])});
+  const geometry=createWorldMesh(world,92,72,{
+   trees:!["oak","pine","birch"].some(key=>kenney[key]),
+   palette:kenneyLandscapePalette(kenney)
+  });
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[0]);
   gl.bufferData(gl.ARRAY_BUFFER,geometry.ground,gl.STATIC_DRAW);
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[1]);
   gl.bufferData(gl.ARRAY_BUFFER,geometry.water,gl.STATIC_DRAW);
-  counts=[geometry.ground.length/9,geometry.water.length/9,0];
+  counts=[geometry.ground.length/9,geometry.water.length/9,0,0,0];
   updateKenney();
   if(reset)resetCamera();else render();
  }
  function updateKenney(){
   if(!loadedAssets||disposed)return;
-  const data=instantiateKenney(world,kenney,{showReference:showcase});
-  gl.bindBuffer(gl.ARRAY_BUFFER,buffers[2]);
-  gl.bufferData(gl.ARRAY_BUFFER,data.vertices,gl.STATIC_DRAW);
-  counts[2]=data.vertices.length/9;
+  const props=instantiateKenney(world,kenney,{showReference:showcase});
+  const terrain=instantiateKenneyTerrain(world,kenney);
+  for(const [index,data] of [[2,props.vertices],[3,terrain.land],[4,terrain.water]]){
+   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[index]);
+   gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);
+   counts[index]=data.length/9;
+  }
   render();
  }
  async function loadModels(){
@@ -94,7 +100,9 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   if(loadedAssets)upload(world,false);
   onAssets({loaded:loadedAssets,total:kitNames.length,
    treeModels:["oak","pine","birch"].filter(k=>kenney[k]).length,
-   reference:!!kenney.tower,online:loadedAssets>0});
+   reference:!!kenney.tower,
+   terrain:!!kenney.ground,river:!!kenney.waterTile,bank:!!kenney.bank,
+   online:loadedAssets>0});
  }
  function drawBuffer(buffer,count){
   if(!count)return;
@@ -121,7 +129,9 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   gl.uniform1f(loc.yaw,camera.yaw);gl.uniform1f(loc.pitch,camera.pitch);
   gl.uniform1f(loc.zoom,camera.zoom);
   gl.uniform1f(loc.aspect,Math.max(.1,width/height));
-  drawBuffer(buffers[0],counts[0]);drawBuffer(buffers[1],counts[1]);drawBuffer(buffers[2],counts[2]);
+  drawBuffer(buffers[0],counts[0]);drawBuffer(buffers[3],counts[3]);
+  drawBuffer(buffers[1],counts[1]);drawBuffer(buffers[4],counts[4]);
+  drawBuffer(buffers[2],counts[2]);
  }
  function render(){if(!frame)frame=requestAnimationFrame(draw);}
  function zoomBy(factor){

@@ -10,7 +10,12 @@ export const KENNEY_MODELS=Object.freeze({
  rock:HOST+"nature-kit/rock-largea.glb",
  shrub:HOST+"nature-kit/plant-bush.glb",
  bridge:HOST+"nature-kit/bridge-wood.glb",
- tower:HOST+"castle-kit/tower-square.glb"
+ tower:HOST+"castle-kit/tower-square.glb",
+ ground:HOST+"nature-kit/ground-grass.glb",
+ waterTile:HOST+"nature-kit/ground-rivertile.glb",
+ bank:HOST+"nature-kit/ground-riverside.glb",
+ cliff:HOST+"nature-kit/cliff-rock.glb",
+ beach:HOST+"nature-kit/platform-beach.glb"
 });
 const loaded=new Map();
 function parseGLB(buffer){
@@ -170,4 +175,83 @@ export function instantiateKenney(world,models,{showReference=false}={}){
   if(world.sample(x,z).water===null)put("tower",x,z,34,.48);
  }
  return{vertices:new Float32Array(output),treeModels};
+}
+
+// Real Kenney Nature Kit terrain tiles blended onto a continuous topographic
+// heightfield. A fully tiled grid would destroy organic lake edges; these
+// material/mesh patches follow the generated elevation and water mask instead.
+export function instantiateKenneyTerrain(world,models){
+ const land=[],water=[];
+ const size=Math.min(world.width,world.depth);
+ const hash=i=>{let v=(i*1664525+1013904223+world.options.seed.length*374761393)>>>0;
+  v=Math.imul(v^(v>>>13),1274126177);return ((v^(v>>>16))>>>0)/4294967295;};
+ function instance(key,x,z,footprint,rotation,category="land"){
+  const model=models[key];if(!model)return;
+  const destination=category==="water"?water:land;
+  const span=Math.max(.0001,model.max[0]-model.min[0],model.max[2]-model.min[2]);
+  const scale=footprint/span,cs=Math.cos(rotation),sn=Math.sin(rotation);
+  const centerX=(model.min[0]+model.max[0])/2,centerZ=(model.min[2]+model.max[2])/2;
+  const reference=world.sample(x,z),level=reference.water;
+  if(category==="water"&&level===null)return;
+  const input=model.vertices;
+  for(let i=0;i<input.length;i+=9){
+   const dx=(input[i]-centerX)*scale,dz=(input[i+2]-centerZ)*scale;
+   const X=x+dx*cs-dz*sn,Z=z+dx*sn+dz*cs;
+   // Never drop a single vertex: WebGL triangles require complete triplets.
+   // A little spill beyond the world edge is safer than malformed geometry.
+   const surface=world.sample(X,Z);
+   // Terrain blocks are flattened vertically and draped over local topology;
+   // water pieces stay at lake/river level to avoid hill-shaped water.
+   const y=category==="water"?(level+.65):
+    surface.height+.22+Math.max(0,input[i+1]-model.min[1])*Math.min(1.5,scale*.13);
+   const nx=input[i+6],ny=input[i+7],nz=input[i+8];
+   destination.push(X-world.width/2,y,Z-world.depth/2,
+    input[i+3],input[i+4],input[i+5],
+    nx*cs-nz*sn,ny,nx*sn+nz*cs);
+  }
+ }
+ // Deterministic clumps of actual grass-tile mesh, never a uniform quilt.
+ if(models.ground)for(let i=0;i<210;i++){
+  const x=(.025+.95*hash(i*19+3))*world.width;
+  const z=(.025+.95*hash(i*19+7))*world.depth;
+  const sample=world.sample(x,z);
+  if(sample.water!==null||world.slope(x,z)>.55)continue;
+  instance("ground",x,z,17+hash(i*19+11)*size*.037,hash(i*19+17)*Math.PI*2);
+ }
+ // River sections and banks use Kenney's authored land/water geometry.
+ if(models.waterTile)for(const stream of world.rivers)for(let i=2;i<stream.points.length-2;i+=3){
+  const point=stream.points[i],a=stream.points[i-1],b=stream.points[i+1];
+  if(world.sample(point.x,point.z).kind!=="river")continue;
+  instance("waterTile",point.x,point.z,stream.width*1.45,
+   Math.atan2(b.z-a.z,b.x-a.x),"water");
+ }
+ if(models.bank||models.beach)for(const lake of world.lakes)for(let i=0;i<lake.spine.length;i+=2){
+  const p=lake.spine[i],angle=(i+lake.x)*2.4;
+  const x=p.x+Math.cos(angle)*p.r*1.12,z=p.z+Math.sin(angle)*p.r*1.12;
+  if(world.sample(x,z).water!==null)continue;
+  instance(i%3===0&&models.beach?"beach":"bank",x,z,10+hash(i*17+Math.round(lake.x))*8,angle);
+ }
+ if(models.cliff)for(let i=0;i<80;i++){
+  const x=(.055+.89*hash(1400+i*23))*world.width;
+  const z=(.055+.89*hash(1401+i*23))*world.depth;
+  const sample=world.sample(x,z);
+  if(sample.water!==null||world.slope(x,z)<.5)continue;
+  instance("cliff",x,z,12+hash(1402+i*23)*20,hash(1403+i*23)*Math.PI*2);
+ }
+ return{land:new Float32Array(land),water:new Float32Array(water)};
+}
+
+export function kenneyLandscapePalette(models){
+ const average=model=>{
+  if(!model)return null;
+  const data=model.vertices,step=Math.max(9,Math.floor(data.length/10000)*9);
+  const sum=[0,0,0];let count=0;
+  for(let i=0;i<data.length;i+=step){
+   for(let j=0;j<3;j++)sum[j]+=data[i+3+j];
+   count++;
+  }
+  return sum.map(v=>Math.max(.07,Math.min(.9,v/count)));
+ };
+ return{land:average(models.ground),water:average(models.waterTile),
+  stone:average(models.cliff)};
 }
