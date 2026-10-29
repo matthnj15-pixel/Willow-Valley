@@ -33,7 +33,7 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 - Tap **Undo** to reverse the last node or curve, **Cancel** to discard the draft, or **Build road** to commit. Cost updates with the real road length.
 - Select **Build** and pick an industry, then tap a location on the map to place it.
 - Advance a month to resolve production, food consumption, taxes, upkeep, and residential growth.
-- Open the menu to export/import a JSON save.
+- Open the menu to manage three independent local settlement slots, safely migrate an existing single-save game, export/import a slot, and download a structured diagnostic event log. Each slot auto-saves; Stable and Development remain isolated.
 
 ## Development
 
