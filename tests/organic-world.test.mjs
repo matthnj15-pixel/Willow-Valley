@@ -14,7 +14,9 @@ test("WORLD-01: distinct paint categories commit, persist and erase as explicit 
  assert.equal(other.ok,false);
  const json=JSON.parse(JSON.stringify(s));assert.equal(validState(json),true);
  assert.equal(paintZones(s,"erase",[[{x:705,y:425}]],54).ok,true);
- assert.equal(s.zones.length,0);
+ assert.equal(s.zones.at(-1).type,"erase");
+ assert.equal(zoneAt(s,{x:705,y:425}),null);
+ assert.equal(validZones(s.zones),true);
 });
 test("WORLD-02: topography rejects river banks and unsuitable land, but permits some rolling land",()=>{
  assert.equal(terrainSuitable({x:880,y:450}),false);
@@ -110,4 +112,39 @@ test("WORLD-09: nature preserve is not silently cut through by a desire route",(
    assert.notEqual(zoneAt(s,p),"preserve");
   }
  }
+});
+
+test("WORLD-ZONE-04: a collector road stops zoning exactly at its carriageway",()=>{
+ const s=startGame(),stamp={x:400,y:405};
+ assert.equal(paintZones(s,"residential",[[stamp]],80).ok,true);
+ assert.equal(zoneAt(s,stamp),"residential");
+ assert.equal(zoneAt(s,{x:400,y:415}),"residential","paint may touch the road edge");
+ assert.equal(zoneAt(s,{x:400,y:437}),null,"the road itself is never zoned");
+ assert.equal(zoneAt(s,{x:400,y:470}),null,"a brush may not leak across a road");
+ const other=paintZones(s,"commercial",[[{x:400,y:470}]],48);
+ assert.equal(other.ok,true,"different zones can meet on opposite sides of a collector");
+ assert.equal(zoneAt(s,{x:400,y:470}),"commercial");
+ assert.equal(zoneAt(s,{x:400,y:405}),"residential");
+});
+test("WORLD-ZONE-05: riverbanks clip zoning, including old saves and brush edges",()=>{
+ const s=startGame();
+ const bankY=420,river=875-90*Math.sin((bankY+80)/145)+35*Math.sin(bankY/66);
+ const stamp={x:river-80,y:bankY};
+ assert.equal(paintZones(s,"residential",[[stamp]],85).ok,true);
+ assert.equal(zoneAt(s,stamp),"residential");
+ assert.equal(zoneAt(s,{x:river-66,y:bankY}),"residential");
+ assert.equal(zoneAt(s,{x:river-45,y:bankY}),null,"water must never become residential");
+ assert.equal(zoneAt(s,{x:river,y:bankY}),null,"the whole river is excluded");
+});
+test("WORLD-ZONE-06: small eraser makes a hole without deleting the surrounding area",()=>{
+ const s=startGame(),center={x:600,y:600};
+ assert.equal(paintZones(s,"residential",[[center]],80).ok,true);
+ assert.equal(zoneAt(s,center),"residential");
+ const erased=paintZones(s,"erase",[[{x:620,y:600}]],24);
+ assert.equal(erased.ok,true);
+ assert.equal(zoneAt(s,{x:620,y:600}),null);
+ assert.equal(zoneAt(s,{x:555,y:600}),"residential");
+ assert.equal(validState(JSON.parse(JSON.stringify(s))),true,"eraser layers must persist");
+ assert.equal(paintZones(s,"residential",[[{x:620,y:600}]],24).ok,true);
+ assert.equal(zoneAt(s,{x:620,y:600}),"residential","repainting the cutout restores land use");
 });
