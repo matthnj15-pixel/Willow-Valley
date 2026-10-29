@@ -120,7 +120,7 @@ test("WORLD-3D-UI-08: actual glTF asset importer renders a mocked valid GLB with
   headers:{"access-control-allow-origin":"*"},body:model
  }));
  await page.goto("/ui-kit/world-lab.html");
- await expect(page.locator("#assetStatus")).toContainText("Kenney models loaded: 5/5",{timeout:15000});
+ await expect(page.locator("#assetStatus")).toContainText("Kenney models loaded: 10/10",{timeout:15000});
  await expect(page.locator("#rendererError")).toBeHidden();
  const stamp=await page.locator("#seed").inputValue();
  await page.locator("#applySettings").click();

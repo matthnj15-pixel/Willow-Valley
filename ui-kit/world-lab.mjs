@@ -55,7 +55,12 @@ function generate(){
   if(renderer)renderer.setWorld(current);
   else if(!renderError){
    try{renderer=mountWorld3D($("worldCanvas"),current,{onAssets:info=>{
-     $("assetStatus").textContent=info.loaded?("Kenney models loaded: "+info.loaded+"/"+info.total):"Kit models unavailable. Internet required for these assets.";
+     $("assetStatus").textContent=info.loaded?
+      ("Kenney models loaded: "+info.loaded+"/"+info.total+
+       " · Ground "+(info.terrain?"✓":"pending")+
+       " · Water "+(info.river?"✓":"pending")+
+       " · Shore "+(info.bank?"✓":"pending")):
+      "Kenney ground/water models not loaded; showing topographic fallback.";
     },showReference:$("showReference").checked});}
    catch(err){renderError=true;$("rendererError").hidden=false;$("rendererError").textContent=err.message;}
   }
