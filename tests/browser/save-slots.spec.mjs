@@ -12,7 +12,7 @@ test("WV-SAVE-001: create independent settlement slots, switch and resume after 
  await expect(page.locator("#calendar")).toContainText("April");
  await page.locator("#menuBtn").click();
  await page.getByRole("button",{name:"Manage 3 settlement slots"}).click();
- await page.getByRole("button",{name:/Slot 1.*current/}).toHaveCount(0);
+ await expect(page.getByRole("button",{name:/Slot 1.*current/})).toHaveCount(0);
  await page.getByRole("button",{name:/Slot 1.*Year 1/}).click();
  await expect(page.locator("#calendar")).toContainText("March");
  await expect(page.locator("#calendar")).toContainText("Slot 1");
