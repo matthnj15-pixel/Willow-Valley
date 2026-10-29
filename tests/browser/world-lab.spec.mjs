@@ -4,13 +4,13 @@ test("WORLD-3D-UI-01: Development menu opens the standalone World Builder",async
  await page.goto("/?preview=1");
  await page.locator("#menuBtn").click();
  await page.getByRole("button",{name:/New World · 3D terrain generator/}).click();
- await expect(page).toHaveURL(/\/world-lab\/$/);
+ await expect(page).toHaveURL(/\/ui-kit\/world-lab\.html$/);
  await expect(page.getByRole("heading",{name:"Design the terrain"})).toBeVisible();
  await expect(page.locator("#worldCanvas")).toBeVisible();
  await expect(page.locator("#worldStats .stat")).toHaveCount(6);
 });
 test("WORLD-3D-UI-02: map size, water settings and seed survive blueprint save without replacing settlement",async({page})=>{
- await page.goto("/world-lab/");
+ await page.goto("/ui-kit/world-lab.html");
  await expect(page.locator("#worldStats")).toContainText("1,200 × 900");
  await page.locator("#size").selectOption("large");
  await page.locator("#lakes").evaluate(el=>{
@@ -46,7 +46,7 @@ test("WORLD-3D-UI-02: map size, water settings and seed survive blueprint save w
  await expect(page.locator("#lakes")).toHaveValue("4");
 });
 test("WORLD-3D-UI-03: controls generate an explorable WebGL terrain where supported",async({page})=>{
- await page.goto("/world-lab/");
+ await page.goto("/ui-kit/world-lab.html");
  await expect(page.locator("#worldStats .stat")).toHaveCount(6);
  await expect(page.locator("#worldStatus")).toContainText("Generated");
  const info=await page.locator("#worldCanvas").evaluate(canvas=>{
@@ -60,4 +60,16 @@ test("WORLD-3D-UI-03: controls generate an explorable WebGL terrain where suppor
   await page.locator("#resetCamera").click();
   await expect(page.locator("#rendererError")).toBeHidden();
  }else await expect(page.locator("#rendererError")).toBeVisible();
+});
+
+test("WORLD-3D-UI-04: World Builder is available through the existing Pages-published UI Kit path",async({page})=>{
+ const response=await page.goto("/ui-kit/world-lab.html");
+ expect(response.status()).toBe(200);
+ await expect(page.getByRole("heading",{name:"Design the terrain"})).toBeVisible();
+ await expect(page.locator("#worldStats .stat")).toHaveCount(6);
+ const scripts=await page.locator("script[src]").evaluateAll(nodes=>nodes.map(n=>n.getAttribute("src")));
+ expect(scripts).toContain("./world-lab.mjs");
+ await page.getByRole("link",{name:"Back to valley"}).click();
+ await expect(page).toHaveURL(/\/$/);
+ await expect(page.locator("#gameDock")).toBeVisible();
 });
