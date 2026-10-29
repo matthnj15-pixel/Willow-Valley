@@ -21,6 +21,12 @@ test("WORLD-UI-01: mobile zoning brush previews, commits and survives reload",as
  expect(slot.state.zones.some(z=>z.type==="residential")).toBe(true);
  await page.reload();
  await expect(page.locator("#map .zone-committed").first()).toBeVisible();
+ await page.locator("#nextBtn").click();
+ await page.locator("#nextBtn").click();
+ const after=await page.evaluate(()=>JSON.parse(localStorage.getItem("willow-valley:main:v1:slot:1")).state);
+ expect(after.houses.length).toBeGreaterThan(4);
+ expect(after.houses.at(-1).parcel.vertices.length).toBe(7);
+ expect(after.localLanes.length).toBeGreaterThan(0);
 });
 test("WORLD-UI-02: housing outlook shows vacancy, unsheltered demand and attractiveness",async({page})=>{
  await page.goto("/");
