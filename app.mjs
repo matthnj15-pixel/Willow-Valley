@@ -111,6 +111,7 @@ function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;sel
  for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn",zone:"zoneBtn"})){
   $(id).classList.toggle("active",m===next);$(id).setAttribute("aria-pressed",String(m===next));}
  $("roadControls").hidden=next!=="road";$("zoneControls").hidden=next!=="zone";
+ $("stage").classList.toggle("is-zoning",next==="zone");
  $("modeLabel").textContent={explore:active3D?"3D · One finger pans · Two fingers roll the invisible trackball · Pinch zoom":"Explore · drag to pan · pinch to zoom",
   road:"Roads · tap for straight; hold and drag to shape a fixed node",
   build:"Construction · tap clear ground to place",
