@@ -15,7 +15,7 @@ async function stored(page){
 }
 
 test("WORLD-002: a committed painted residential area grows a nonuniform cottage with a safe footpath and survives reload",async({page})=>{
- await page.goto("/?preview=1");
+ await page.goto("/?preview=1&legacy=1");
  const original=await stored(page);
  expect(original.houses).toHaveLength(4);
  await page.locator("#menuBtn").click();
@@ -43,7 +43,7 @@ test("WORLD-002: a committed painted residential area grows a nonuniform cottage
 });
 
 test("WORLD-002: pending zone painting can be cancelled without modifying the save",async({page})=>{
- await page.goto("/?preview=1");
+ await page.goto("/?preview=1&legacy=1");
  const before=await stored(page);
  await page.locator("#menuBtn").click();
  await page.getByRole("button",{name:/Paint zoning/}).click();
