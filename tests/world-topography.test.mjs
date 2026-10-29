@@ -48,7 +48,13 @@ test("WORLD-ART-04: authored Kenney ground and water mesh triangles are rendered
  assert.equal(result.water.length%9,0);
  assert.ok(result.land.every(Number.isFinite));
  const palette=kenneyLandscapePalette({ground:model,waterTile:model,cliff:model});
- assert.ok(palette.land.every((v,i)=>Math.abs(v-[.2,.5,.25][i])<1e-5));
+ assert.ok(palette.land[1]>palette.land[0]&&palette.land[1]>palette.land[2],
+  "Meadow greens remain natural after importing Kenney models");
+ assert.ok(palette.land[1]-palette.land[2]<.23,"Ground must not become cyan");
+ assert.ok(palette.water[2]>palette.water[1]&&palette.water[1]>palette.water[0],
+  "Water remains muted blue, not a muddy or turquoise imported material");
+ assert.ok(Math.abs(palette.stone[0]-palette.stone[1])<.05,
+  "Cliff faces stay neutral grey instead of orange");
  const mesh=createWorldMesh(world,25,18,{trees:false,palette});
  assert.ok(mesh.groundTriangles>0);
  assert.ok(mesh.waterTriangles>0);
