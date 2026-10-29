@@ -119,7 +119,7 @@ export function createWorld(raw={}){
    (sample(x,z+d).height-sample(x,z-d).height)/(2*d));
  }
  // Seeded forests avoid steep cliffs and floodplains; no frame-time random calls.
- const treeCount=Math.round((width*depth)/(1200*900)*(35+options.forest*3.1));
+ const treeCount=Math.round((width*depth)/(1200*900)*(35+options.forest*2.8)*options.forest/100);
  const trees=[];
  for(let i=0;i<treeCount*5&&trees.length<treeCount;i++){
   const x=22+rand(1000+i*5)*(width-44),z=22+rand(1002+i*5)*(depth-44);
