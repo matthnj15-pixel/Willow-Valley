@@ -1,12 +1,21 @@
 // WV-WORLD-001 early organic settlement: paint permissions and deterministic site choice.
 // World coordinates are renderer-independent. Full terrain mesh is a later slice.
+import {createWorld,normalizeWorldSettings} from "./world-gen.mjs";
+const worldModels=new Map();
+function modelFor(s){
+ if(!s?.worldOptions)return null;
+ const opts=normalizeWorldSettings(s.worldOptions),key=JSON.stringify(opts);
+ if(!worldModels.has(key))worldModels.set(key,createWorld(opts));
+ return worldModels.get(key);
+}
 export const ZONE_TYPES=["residential","commercial","farmland","preserve"];
 export const BRUSH_RADIUS=54;
-const WIDTH=1200,HEIGHT=900;
+let WIDTH=1200,HEIGHT=900;
+export function configureOrganicBounds(w,h){WIDTH=w;HEIGHT=h;}
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const rnd=n=>{const v=Math.sin(n*38.217+14.57)*43758.5453;return v-Math.floor(v);};
-const pointOK=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=WIDTH&&p.y>=0&&p.y<=HEIGHT;
+const pointOK=(p,bounds={w:WIDTH,h:HEIGHT})=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=bounds.w&&p.y>=0&&p.y<=bounds.h;
 // Built streets have a 32-unit cartographic right-of-way. The watercourse
 // has a 122-unit bank-to-bank band. Paint permissions use these same edges.
 export const ROAD_PAINT_HALF_WIDTH=17;
@@ -22,7 +31,10 @@ function crossesRoad(a,b,roads){
  return false;
 }
 function paintOnLand(s,p){
- if(!pointOK(p)||Math.abs(p.x-riverX(p.y))<RIVER_PAINT_HALF_WIDTH)return false;
+ if(!pointOK(p))return false;
+ const model=modelFor(s);
+ if(model){if(model.sample(p.x,p.y).water!==null||model.slope(p.x,p.y)>1.1)return false;}
+ else if(Math.abs(p.x-riverX(p.y))<RIVER_PAINT_HALF_WIDTH)return false;
  if((s.roads||[]).length){
   const road=distanceToRoad(p,s.roads);
   if(road&&road.distance<ROAD_PAINT_HALF_WIDTH)return false;
@@ -32,15 +44,22 @@ function paintOnLand(s,p){
 export function paintCellReachable(s,stamp,cell){
  if(!paintOnLand(s,cell)||!paintOnLand(s,stamp))return false;
  // Stop a brush footprint at the water's bank instead of leaking across.
- if((stamp.x-riverX(stamp.y))*(cell.x-riverX(cell.y))<0)return false;
+ const model=modelFor(s);
+ if(model){
+  const steps=Math.ceil(dist(stamp,cell)/10);
+  for(let i=1;i<steps;i++){
+   const p={x:stamp.x+(cell.x-stamp.x)*i/steps,y:stamp.y+(cell.y-stamp.y)*i/steps};
+   if(model.sample(p.x,p.y).water!==null)return false;
+  }
+ }else if((stamp.x-riverX(stamp.y))*(cell.x-riverX(cell.y))<0)return false;
  // The actual road centerline divides each brush dab into separate sides.
  if(crossesRoad(stamp,cell,s.roads))return false;
  return true;
 }
-export function validZones(zones){return zones===undefined||Array.isArray(zones)&&zones.length<=120&&zones.every(z=>
+export function validZones(zones,bounds={w:WIDTH,h:HEIGHT}){return zones===undefined||Array.isArray(zones)&&zones.length<=120&&zones.every(z=>
  Number.isSafeInteger(z.id)&&z.id>0&&(ZONE_TYPES.includes(z.type)||z.type==="erase")&&
  Number.isFinite(z.radius)&&z.radius>=24&&z.radius<=90&&
- Array.isArray(z.points)&&z.points.length>=1&&z.points.length<=180&&z.points.every(pointOK)
+ Array.isArray(z.points)&&z.points.length>=1&&z.points.length<=180&&z.points.every(p=>pointOK(p,bounds))
 );}
 export function zoneAt(s,p){
  if(!paintOnLand(s,p))return null;
@@ -100,8 +119,15 @@ export function treeSites(){
  return out;
 }
 const TREES=treeSites();
-export function terrainSuitable(p,buffer=0){
+export function terrainSuitable(p,buffer=0,s=null){
  if(!pointOK(p)||p.x<25+buffer||p.y<30+buffer||p.x>WIDTH-25-buffer||p.y>HEIGHT-30-buffer)return false;
+ const model=modelFor(s);
+ if(model){
+  const samples=[[0,0],[buffer,0],[-buffer,0],[0,buffer],[0,-buffer]];
+  if(samples.some(([dx,dy])=>model.sample(p.x+dx,p.y+dy).water!==null))return false;
+  if(model.slope(p.x,p.y)>.55)return false;
+  return true;
+ }
  if(Math.abs(p.x-riverX(p.y))<76+buffer)return false;
  if(slopeAt(p.x,p.y)>.46)return false;
  if(TREES.some(tree=>dist(p,tree)<tree.r+buffer*.55))return false;
@@ -142,7 +168,7 @@ function intersects(a,b){
  return insidePoly(a[0],b)||insidePoly(b[0],a);
 }
 export function parcelFits(s,p,parcel){
- if(!isInZone(s,p,"residential")||!terrainSuitable(p,15))return false;
+ if(!isInZone(s,p,"residential")||!terrainSuitable(p,15,s))return false;
  // Check the entire perimeter. Checking vertices alone lets long polygon
  // edges bridge lakes, steep ground or unpainted parcels.
  for(let i=0;i<parcel.vertices.length;i++){
@@ -150,7 +176,7 @@ export function parcelFits(s,p,parcel){
   for(let t=0;t<=Math.ceil(d/8);t++){
    const q={x:a.x+(b.x-a.x)*t/Math.max(1,Math.ceil(d/8)),
     y:a.y+(b.y-a.y)*t/Math.max(1,Math.ceil(d/8))};
-   if(!isInZone(s,q,"residential")||!terrainSuitable(q,2))return false;
+   if(!isInZone(s,q,"residential")||!terrainSuitable(q,2,s))return false;
   }
  }
  if((s.buildings||[]).some(b=>dist(p,b)<Math.max(parcel.rx,parcel.ry)+39))return false;
@@ -181,7 +207,9 @@ export function parcelFits(s,p,parcel){
 const FOOT_STEP=15;
 export function canWalkAt(s,p){
  if(!pointOK(p)||p.x<8||p.y<8||p.x>WIDTH-8||p.y>HEIGHT-8)return false;
- if(Math.abs(p.x-riverX(p.y))<72||slopeAt(p.x,p.y)>.55)return false;
+ const model=modelFor(s);
+ if(model){if(model.sample(p.x,p.y).water!==null||model.slope(p.x,p.y)>.75)return false;}
+ else if(Math.abs(p.x-riverX(p.y))<72||slopeAt(p.x,p.y)>.55)return false;
  if(zoneAt(s,p)==="preserve")return false;
  if(TREES.some(tree=>dist(p,tree)<tree.r+4))return false;
  if((s.buildings||[]).some(b=>dist(p,b)<28))return false;
@@ -198,7 +226,9 @@ function walkSegment(s,a,b){
   const p={x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t};
   if(!canWalkAt(s,p))return false;
  }
- return Math.abs(elevationAt(a.x,a.y)-elevationAt(b.x,b.y))/Math.max(len,1)<=.55;
+ const model=modelFor(s);
+ return model?Math.abs(model.sample(a.x,a.y).height-model.sample(b.x,b.y).height)/Math.max(len,1)<=.55:
+ Math.abs(elevationAt(a.x,a.y)-elevationAt(b.x,b.y))/Math.max(len,1)<=.55;
 }
 function smoothWalk(s,points){
  const out=[points[0]];
@@ -318,7 +348,7 @@ export function findCottageSite(s){
    const lane=distanceToRoad(p,(s.localLanes||[]).map(l=>l.points));
    const pathDistance=Math.min(road.distance,lane?.distance??Infinity);
    const score=Math.abs(Math.min(neighbor,300)-125)*.42+
-     pathDistance*.33+slopeAt(p.x,p.y)*28+rnd(key+18)*18;
+     pathDistance*.33+(modelFor(s)?.slope(p.x,p.y)??slopeAt(p.x,p.y))*28+rnd(key+18)*18;
    viable.push({p,parcel,key,score});
   }
  }
