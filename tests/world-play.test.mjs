@@ -5,6 +5,7 @@ import {startGame,startWorldGame,worldDimensions,configureWorldState,
  generatedWorld,validState,WORLD,placeBuilding,buildRoad,advance} from "../simulation.mjs";
 import {paintZones,zoneAt} from "../organic-world.mjs";
 import {settlementGeometry} from "../game-3d-mesh.mjs";
+import {validDesirePaths,visibleDesirePaths} from "../desire-paths.mjs";
 
 test("WORLD-PLAY-01: new worlds are playable states with real generated size and saved seed",()=>{
  const params={...DEFAULT_WORLD,size:"medium",seed:"PLAYABLE-MEADOW",lakes:1,rivers:1,flatness:80,hills:15,cliffs:5};
@@ -69,4 +70,22 @@ test("WORLD-PLAY-04: terrain forbids building in actual lake water",()=>{
  const z=paintZones(s,"residential",[[lakePoint]],45);
  assert.equal(z.ok,true);
  assert.equal(zoneAt(s,lakePoint),null);
+});
+
+test("WORLD-PLAY-05: saves accept long terrain-aware pedestrian routes anywhere on a large world",()=>{
+ const state=startWorldGame({...DEFAULT_WORLD,size:"large",
+  seed:"EXTENDED-FOOTPATHS",flatness:100,hills:0,rolling:0,cliffs:0,lakes:0,rivers:0,forest:0});
+ const via=Array.from({length:56},(_,i)=>({x:1675+i*22,y:1750+Math.sin(i*.11)*30}));
+ state.desirePaths=[{nodeId:state.roadGraph.hubId,from:via[0],to:via.at(-1),
+  via,length:1300,progress:.56}];
+ assert.ok(validDesirePaths(state.desirePaths,worldDimensions(state)));
+ assert.ok(validState(state),"Stored route coordinates must validate on reload");
+ const visible=visibleDesirePaths(state)[0];
+ assert.ok(visible.points.length>=2);
+ assert.ok(visible.points.at(-1).x<via.at(-1).x);
+ assert.ok(settlementGeometry(generatedWorld(state),state).surfaces.length>0);
+ configureWorldState(state);
+ const result=advance(state);
+ assert.ok(Number.isFinite(result.balance));
+ assert.ok(validState(state),"Advancing a world with walking paths remains saveable");
 });
