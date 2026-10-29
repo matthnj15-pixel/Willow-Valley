@@ -20,7 +20,7 @@ mountResourceBar($("resourceBar"),[
 ],{compact:true});
 mountGameDock($("gameDock"));
 $("worldBuilderLink").hidden=!IS_PREVIEW;
-$("worldBuilderLink").href=worldBuilderUrl(import.meta.url);
+$("worldBuilderLink").href=worldBuilderUrl(location.href);
 
 const restored=initializeSlots(localStorage,SAVE_KEY,validState,startGame);
 let activeSlot=restored.ok?restored.active.slot:1;
@@ -296,7 +296,7 @@ function slotPanel(){const el=document.createElement("div");
 function menuPanel(){const el=document.createElement("div");
  el.append(textNode("p",IS_PREVIEW?"Development environment. Your saves are isolated from the stable game.":"Stable environment. Your settlements are stored locally on this device and browser."));
  sheetButton(el,"Manage 3 settlement slots",()=>slotPanel());
- if(IS_PREVIEW)sheetButton(el,"New World · 3D terrain generator",()=>{location.assign(worldBuilderUrl(import.meta.url));});
+ if(IS_PREVIEW)sheetButton(el,"New World · 3D terrain generator",()=>{location.assign(worldBuilderUrl(location.href));});
  sheetButton(el,"Paint zoning · residential, commercial, farming, preserves",()=>zoningPanel());
  sheetButton(el,"Housing demand · vacancies and homelessness",()=>housingPanel());
  sheetButton(el,"Export current slot as JSON",()=>{
