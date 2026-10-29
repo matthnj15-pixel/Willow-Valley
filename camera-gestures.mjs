@@ -24,6 +24,12 @@ export function advanceCameraGesture(gesture,points){
   const bothVertical=Math.sign(ay)===Math.sign(by)&&Math.abs(ay)>12&&Math.abs(by)>12&&
    Math.abs(ax)<Math.abs(ay)*.52&&Math.abs(bx)<Math.abs(by)*.52;
   const clearlyVertical=Math.abs(totalDY)>Math.abs(totalDX)*1.6;
+  const awaitingOtherFinger=Math.abs(totalDY)>8&&Math.abs(totalDX)<Math.abs(totalDY)*.7&&
+   ((Math.abs(ay)>9&&Math.abs(by)<6)||(Math.abs(by)>9&&Math.abs(ay)<6))&&
+   Math.abs(totalDY)<55;
+  // Pointer events arrive one finger at a time. Don't misclassify a
+  // coordinated two-finger tilt as rotation on the first finger's move.
+  if(awaitingOtherFinger)return null;
   if(bothVertical&&clearlyVertical&&pinch<.075&&twist<.10)
    gesture.mode="tilt";
   else if(Math.hypot(totalDX,totalDY)>10||pinch>.045||twist>.055)
