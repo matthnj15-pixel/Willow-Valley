@@ -1,5 +1,5 @@
 // Merge round brush samples into one cartographic boundary without changing saved data.
-export function zoneSilhouette(zones,step=5){
+export function zoneSilhouette(zones,step=5,include=()=>true){
  const filled=new Set(),key=(x,y)=>x+","+y;
  for(const z of zones){
   const r=z.radius;if(!Number.isFinite(r)||!Array.isArray(z.points))continue;
@@ -11,6 +11,12 @@ export function zoneSilhouette(zones,step=5){
     if(dx*dx+dy*dy<=r*r)filled.add(key(x,y));
    }
   }
+ }
+ // Crop the silhouette to authoritative zoning rules, including water,
+ // built-road corridors and any precise eraser strokes.
+ for(const k of filled){
+  const [x,y]=k.split(",").map(Number);
+  if(!include({x:(x+.5)*step,y:(y+.5)*step}))filled.delete(k);
  }
  if(!filled.size)return "";
  const edges=[],starts=new Map();
