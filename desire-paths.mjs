@@ -104,6 +104,6 @@ export function validDesirePaths(paths,bounds={w:1200,h:900}){
   q.x>=0&&q.x<=bounds.w&&q.y>=0&&q.y<=bounds.h;
  return paths===undefined||Array.isArray(paths)&&paths.length<=200&&paths.every(p=>
   Number.isInteger(p.nodeId)&&[p.from,p.to].every(point)&&
-  (p.via===undefined||Array.isArray(p.via)&&p.via.length>=2&&p.via.length<=24&&p.via.every(point))&&
+  (p.via===undefined||Array.isArray(p.via)&&p.via.length>=2&&p.via.length<=180&&p.via.every(point))&&
   Number.isFinite(p.length)&&p.length>=0&&Number.isFinite(p.progress)&&p.progress>=0&&p.progress<=1);
 }
