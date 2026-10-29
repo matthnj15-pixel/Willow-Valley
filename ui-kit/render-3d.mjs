@@ -201,6 +201,9 @@ function updateSettlement(){
   gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.DYNAMIC_DRAW);
   counts[index]=vertices.length/9;
  }
+ // Read-only UAT diagnostics for touch editing. Never persisted to a save.
+ canvas.dataset.roadGuideTriangles=String(data.counts.guideTriangles||0);
+ canvas.dataset.pendingZoning=String(settlementEdits?.length||0);
  render();
 }
 function screenToWorld(clientX,clientY){
