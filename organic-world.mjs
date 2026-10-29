@@ -12,11 +12,11 @@ const pointOK=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=WID
 export const ROAD_PAINT_HALF_WIDTH=17;
 export const RIVER_PAINT_HALF_WIDTH=61;
 export function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
-const cross=(a,b,c)=>(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+const paintCross=(a,b,c)=>(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
 function crossesRoad(a,b,roads){
  for(const line of roads||[])for(let i=1;i<line.length;i++){
   const c=line[i-1],d=line[i];
-  const ab1=cross(a,b,c),ab2=cross(a,b,d),cd1=cross(c,d,a),cd2=cross(c,d,b);
+  const ab1=paintCross(a,b,c),ab2=paintCross(a,b,d),cd1=paintCross(c,d,a),cd2=paintCross(c,d,b);
   if(ab1*ab2<0&&cd1*cd2<0)return true;
  }
  return false;
