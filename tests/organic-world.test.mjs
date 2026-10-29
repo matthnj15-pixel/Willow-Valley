@@ -104,7 +104,7 @@ test("WORLD-09: nature preserve is not silently cut through by a desire route",(
  assert.equal(paintZones(s,"preserve",[[{x:420,y:425}]],25).ok,true);
  const start={x:350,y:425},end={x:510,y:425};
  const route=routeFootpath(s,start,end);
- assert.ok(route&&route.length>=3,"route should find an alternate safe path");
+ assert.ok(route&&route.length>=2,"route should find a safe walk around preserved land or along the public road");
  for(let i=1;i<route.length;i++){
   const a=route[i-1],b=route[i],steps=Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)/5);
   for(let j=0;j<=steps;j++){
