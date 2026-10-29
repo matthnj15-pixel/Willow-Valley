@@ -29,6 +29,7 @@ const GLYPHS={
  house:'<path d="m2.5 10 9.5-7 9.5 7" fill="none" stroke="#384c42" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M4.5 10v10.5h15V10L12 4.7Z" fill="#F3E8BC" stroke="#4a5845" stroke-width="1.2"/><path d="M10 20.5v-6h4v6M6.8 12.5h2v2h-2zm8.2 0h2v2h-2" fill="#D98C3F" stroke="#4a5845" stroke-width=".8"/><path d="m5.5 18 2 2m-1-5 2 2m7-4 2 2m-1 2 2 2" stroke="#8C897A" stroke-width=".65"/>',
  roads:'<path d="M1.5 15.8C5 16 5.3 5 11.8 6s5.2 12.2 11 10.8" fill="none" stroke="#594e3d" stroke-width="5" stroke-linecap="round"/><path d="M1.5 15.8C5 16 5.3 5 11.8 6s5.2 12.2 11 10.8" fill="none" stroke="#e4c993" stroke-width="3.2" stroke-linecap="round"/><path d="M2 19.8c3 .5 3-9.4 5.5-11.2M15.7 7.7c3.7 3.1 2.5 7.2 6.8 6.2" fill="none" stroke="#8a7655" stroke-width=".8" stroke-linecap="round" stroke-dasharray="1.4 2"/>',
  map:'<path d="m2 5.5 7-2.7 6.3 3 6.7-2.5v15.5l-6.7 2.4-6.3-3-7 2.5Z" fill="#F3E8BC" stroke="#4a5943" stroke-width="1.3"/><path d="M9 2.8v15.4m6.3-12.4v15.4" fill="none" stroke="#9e885b" stroke-width="1" stroke-dasharray="1.5 1.2"/><path d="m4.4 13 1.6-3.4 1.6 3.4m-1.6-5v6.5M17.4 15.2l2.7-2.8M19.9 15l-2.2-2.5" stroke="#035352" stroke-width="1" fill="none"/>',
+ zone:'<path d="M4 4h7l3 3h6v13H4Z" fill="#A4C39A" stroke="#035352" stroke-width="1.4"/><path d="M4 13h16M11 4v16" stroke="#035352" stroke-width="1.4" stroke-dasharray="2 2"/>',
  build:'<path d="m6 19 12-12" stroke="#035352" stroke-width="3" stroke-linecap="round"/><path d="m13 5 5-3 4 4-5 5Z" fill="#D98C3F" stroke="#83532f"/><path d="m3 17 4-4 4 4-4 4Z" fill="#8C897A"/>',
  tasks:'<rect x="4" y="3" width="16" height="19" rx="3" fill="#F3E8BC" stroke="#035352" stroke-width="1.4"/><path d="m8 11 2 2 4-4m-6 8h8" fill="none" stroke="#035352" stroke-width="1.6"/>',
  tree:'<path d="M11 16v6h3v-6" fill="#8d704e" stroke="#594d3c" stroke-width=".8"/><path d="m12.5 1.5-8 10.2h3L3 17.4h19l-4.5-5.7h3Z" fill="#8e9f72" stroke="#385c50" stroke-width="1.25" stroke-linejoin="round"/><path d="m12.5 5-3 6m5-5 2 6m-8 2 2 2m6-1 2 2" fill="none" stroke="#f0e4bc" stroke-width=".75" stroke-linecap="round"/>',
@@ -136,6 +137,7 @@ export function mountGameDock(target){
   createNavTool({id:"exploreBtn",label:"Explore",iconName:"map",active:true,compact:true}),
   createNavTool({id:"roadsBtn",label:"Roads",iconName:"roads",compact:true}),
   createNavTool({id:"buildBtn",label:"Build",iconName:"house",compact:true}),
+   createNavTool({id:"zoneBtn",label:"Zone",iconName:"zone",compact:true}),
   createAdvanceButton()
  );
  return target;

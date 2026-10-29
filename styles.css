@@ -86,7 +86,7 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
 .game-page .dispatch p{font-size:11px;margin-top:1px}
 .game-page .dispatch .eyebrow{font-size:8px;color:var(--wv-yellow)}
 .game-page .dispatch button{background:#006663;border-radius:10px;min-height:36px;min-width:36px}
-.game-page .dock{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(100px,1.2fr);background:var(--wv-yellow);padding:5px 7px calc(env(safe-area-inset-bottom) + 6px);gap:4px}
+.game-page .dock{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) minmax(90px,1.2fr);background:var(--wv-yellow);padding:5px 7px calc(env(safe-area-inset-bottom) + 6px);gap:4px}
 .wv-nav-tool--compact{font-size:10px;min-height:52px}
 .game-page .dock .wv-advance{min-height:54px}
 .game-page .dock .wv-advance small{font-size:8px}.game-page .dock .wv-advance b{font-size:12px}
@@ -263,3 +263,13 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
 .housing-metric{display:grid;grid-template-columns:1fr auto;gap:9px;padding:8px 0;
  border-bottom:1px solid #fff3d529;font-size:13px}
 .housing-metric strong{font-variant-numeric:tabular-nums}
+
+/* WV-ZONE-003: one-tap land use and brush size. */
+.zone-controls .zone-settings{display:grid;grid-template-columns:1fr 1.15fr;gap:12px;align-items:end}
+.zone-controls .zone-settings label{display:flex;flex-direction:column;gap:3px;color:#fff3d5;font-size:12px;font-weight:650;min-width:0}
+.zone-controls .zone-settings select{width:100%;min-height:39px;border:1px solid #e0cfa766;border-radius:8px;background:#285248;color:#fff8e9;padding:6px;font:inherit;font-size:13px}
+.zone-controls .zone-settings input[type="range"]{width:100%;min-height:39px;accent-color:#eecb8a}
+.zone-controls .zone-settings output{font-variant-numeric:tabular-nums}
+.zone-controls .zone-actions{display:flex;gap:6px}
+.game-page .dock .wv-nav-tool--compact{min-width:0;padding:1px}
+@media(max-width:390px){.game-page .dock{grid-template-columns:repeat(4,minmax(0,1fr)) minmax(88px,1.25fr);gap:2px}}

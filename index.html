@@ -26,7 +26,13 @@
   <div class="map-info" id="modeLabel">Explore · drag to pan · pinch to zoom</div>
   <div class="zoom" aria-label="Zoom controls"><button id="zoomIn" aria-label="Zoom in">+</button><button id="zoomOut" aria-label="Zoom out">−</button></div>
   <div class="road-controls" id="roadControls" hidden><span id="roadInfo">Tap the map to trace your road.</span><div><button id="undoRoad">Undo</button><button id="cancelRoad">Cancel</button><button id="confirmRoad" class="primary">Build road</button></div></div>
-  <div class="zone-controls" id="zoneControls" hidden><span id="zoneInfo">Brush zoning — draw within the valley</span><div><button id="zoneUndo">Undo</button><button id="zoneCancel">Cancel</button><button id="zoneCommit" class="primary">Commit zone</button></div></div>
+  <div class="zone-controls" id="zoneControls" hidden>
+   <div class="zone-settings">
+    <label for="zoneType">Land use<select id="zoneType" aria-label="Land use"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="farmland">Farmland</option><option value="preserve">Preserve</option><option value="erase">Erase</option></select></label>
+    <label for="zoneRadius">Brush size <output id="zoneRadiusValue" for="zoneRadius">54</output><input id="zoneRadius" type="range" min="24" max="90" step="1" value="54" aria-label="Brush size"></label>
+   </div><span id="zoneInfo">Paint a connected land area</span>
+   <div class="zone-actions"><button id="zoneUndo">Undo</button><button id="zoneCancel">Cancel</button><button id="zoneCommit" class="primary">Commit zone</button></div>
+  </div>
 </main>
 <div class="dispatch"><div class="dispatch-copy"><span class="eyebrow">THE VALLEY REPORT</span><p id="report"></p></div><button id="historyBtn" aria-label="Settlement history">↗</button></div>
 <nav class="dock" id="gameDock" aria-label="Game actions"></nav>
