@@ -53,7 +53,10 @@ function makeProgram(gl){
   throw new Error(gl.getProgramInfoLog(p)||"3D unavailable");
  return p;
 }
-export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},onCamera=()=>{},showReference=false,interactive=true}={}){
+export function mountWorld3D(canvas,initialWorld,{
+  onAssets=()=>{},onCamera=()=>{},onReady=()=>{},onError=()=>{},
+  showReference=false,interactive=true,quality="standard"
+ }={}){
  const gl=canvas.getContext("webgl",{antialias:true,alpha:false,depth:true,
   powerPreference:"low-power",preserveDrawingBuffer:false});
  if(!gl)throw new Error("3D preview requires WebGL support in your browser.");
@@ -72,7 +75,8 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},onCamera=()=>{
  };
  const buffers=Array.from({length:8},()=>gl.createBuffer());
  const kenney={},kitNames=["oak","pine","birch","rock","tower","ground","waterTile","bank","cliff","beach"];
- let loadedAssets=0,showcase=showReference,disposed=false;
+ let loadedAssets=0,showcase=showReference,disposed=false,firstDraw=false;
+ const lite=quality==="lite",gameplay=quality==="game"||lite;
  let counts=[0,0,0,0,0,0,0,0],world=initialWorld;
  let settlement=null,settlementDraft=null,settlementZoneStrokes=[],settlementZoneType="residential",settlementRadius=54;
  const camera={yaw:.71,pitch:.86,zoom:650,focusX:0,focusZ:0};
@@ -90,10 +94,13 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},onCamera=()=>{
   // The buildable terrain grows with the map size; preview geometry grows
   // modestly to retain recognizable rivers and ridges without multiplying
   // mobile GPU work by four.
-  const resolution={small:[96,72],medium:[112,84],large:[128,96]}[world.options.size]||[112,84];
+  const resolution=lite?[48,36]:gameplay?
+   ({small:[62,46],medium:[76,56],large:[88,66]}[world.options.size]||[76,56]):
+   ({small:[96,72],medium:[112,84],large:[128,96]}[world.options.size]||[112,84]);
   const geometry=createWorldMesh(world,...resolution,{
    trees:!["oak","pine","birch"].some(key=>kenney[key]),
-   palette:kenneyLandscapePalette(kenney)
+   palette:kenneyLandscapePalette(kenney),
+   treeLimit:lite?95:gameplay?300:650
   });
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[0]);
   gl.bufferData(gl.ARRAY_BUFFER,geometry.ground,gl.STATIC_DRAW);
@@ -106,8 +113,12 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},onCamera=()=>{
  }
  function updateKenney(){
   if(!loadedAssets||disposed)return;
-  const props=instantiateKenney(world,kenney,{showReference:showcase});
-  const terrain=instantiateKenneyTerrain(world,kenney);
+  const props=instantiateKenney(world,kenney,{
+   showReference:showcase,maxTrees:gameplay?260:650
+  });
+  const terrain=instantiateKenneyTerrain(world,kenney,{
+   density:gameplay?.32:1
+  });
   for(const [index,data] of [[2,props.vertices],[3,terrain.land],[4,terrain.water]]){
    gl.bindBuffer(gl.ARRAY_BUFFER,buffers[index]);
    gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);
@@ -116,10 +127,12 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},onCamera=()=>{
   render();
  }
  async function loadModels(){
+  if(lite)return;
   const results=await Promise.allSettled(kitNames.map(key=>fetchKenneyModel(key)));
   if(disposed)return;
   results.forEach((r,i)=>{if(r.status==="fulfilled"){kenney[kitNames[i]]=r.value;loadedAssets++;}});
-  if(loadedAssets)upload(world,false);
+  if(loadedAssets)try{upload(world,false);}
+  catch(error){onError(error);}
   onAssets({loaded:loadedAssets,total:kitNames.length,
    treeModels:["oak","pine","birch"].filter(k=>kenney[k]).length,
    reference:!!kenney.tower,
@@ -140,6 +153,7 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},onCamera=()=>{
  }
  function draw(){
   frame=0;
+  try{
   const rect=canvas.getBoundingClientRect();
   if(!rect.width||!rect.height)return;
   const density=Math.min(window.devicePixelRatio||1,1.75);
@@ -160,6 +174,8 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},onCamera=()=>{
   drawBuffer(buffers[5],counts[5]);
   drawBuffer(buffers[6],counts[6],false,.52);
   drawBuffer(buffers[7],counts[7]);
+  if(!firstDraw){firstDraw=true;onReady();}
+  }catch(error){onError(error);}
  }
  function render(){
   onCamera({...camera});
@@ -228,7 +244,7 @@ function navigateTouches(change){
  const before=screenToWorld(change.previous.x,change.previous.y);
  camera.zoom=clamp(camera.zoom*change.zoomRatio,Math.max(world.width,world.depth)*.035,
   Math.max(world.width,world.depth)*2.4);
- camera.yaw+=change.angleRadians;
+ camera.yaw-=change.angleRadians;
  const after=screenToWorld(change.current.x,change.current.y);
  if(before&&after){
   camera.focusX=clamp(camera.focusX+before.x-after.x,-world.width/2,world.width/2);
@@ -262,7 +278,7 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
    navigateTouches(advanceCameraGesture(gesture,[...pointers.values()]));
   }else if(pointers.size===1){
    const rect=canvas.getBoundingClientRect();
-   camera.yaw+=dx/Math.max(120,rect.width)*Math.PI*1.5;
+   camera.yaw-=dx/Math.max(120,rect.width)*Math.PI*1.5;
    camera.pitch=clamp(camera.pitch+dy/Math.max(180,rect.height)*1.8,.32,1.47);
    render();
   }
@@ -293,5 +309,6 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
    if(frame)cancelAnimationFrame(frame);
    for(const b of buffers)gl.deleteBuffer(b);
    gl.deleteProgram(program);
+   gl.getExtension("WEBGL_lose_context")?.loseContext();
   }};
 }
