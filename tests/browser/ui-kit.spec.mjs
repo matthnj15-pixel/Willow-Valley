@@ -27,7 +27,8 @@ test("WV-UI-002: catalog and embedded live game share actual resource and naviga
  const game=page.frameLocator('iframe[title="Live Willow Valley Development game"]');
  await expect(game.locator("#people")).toHaveText("32");
  await expect(game.locator("#resourceBar .wv-resource")).toHaveCount(5);
- await expect(game.locator("#gameDock .wv-nav-tool")).toHaveCount(3);
+ await expect(game.locator("#gameDock .wv-nav-tool")).toHaveCount(4);
+ await expect(game.locator("#zoneBtn")).toBeVisible();
  const bg=await game.locator("#resourceBar .wv-resource").first().evaluate(el=>getComputedStyle(el).backgroundColor);
  const swatch=await page.locator("#resourceGallery .wv-resource").first().evaluate(el=>getComputedStyle(el).backgroundColor);
  expect(bg).toBe(swatch);
