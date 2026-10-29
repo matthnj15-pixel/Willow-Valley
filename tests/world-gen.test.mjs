@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {DEFAULT_WORLD,WORLD_SIZES,normalizeWorldSettings,validWorldSettings,
- createWorld,createWorldMesh} from "../world-gen.mjs";
+ createWorld,createWorldMesh,previewTrees} from "../world-gen.mjs";
 
 test("WORLD-3D-01: a seed and parameters reproduce exactly the same landscape",()=>{
  const first=createWorld(DEFAULT_WORLD),second=createWorld(DEFAULT_WORLD);
@@ -56,4 +56,41 @@ test("WORLD-3D-04: generated terrain responds to landscape style and seed bounds
  assert.equal(invalid.forest,0);
  assert.equal(validWorldSettings(DEFAULT_WORLD),true);
  assert.equal(validWorldSettings({...DEFAULT_WORLD,rivers:99}),false);
+});
+
+test("WORLD-SIZE-005: every map doubles its original linear dimensions",()=>{
+ const expected={
+  small:{width:1600,depth:1200,area:1920000},
+  medium:{width:2400,depth:1800,area:4320000},
+  large:{width:3600,depth:2700,area:9720000}
+ };
+ for(const [key,target] of Object.entries(expected)){
+  const size=WORLD_SIZES[key];
+  assert.equal(size.width,target.width);
+  assert.equal(size.depth,target.depth);
+  assert.equal(size.width*size.depth,target.area);
+  // Save slots still store preset names; generating a restored blueprint
+  // uses the new dimensions without changing its seed or other settings.
+  const saved={...DEFAULT_WORLD,size:key,seed:"SAVED-VALLEY"};
+  const created=createWorld(saved);
+  assert.equal(created.options.seed,saved.seed);
+  assert.equal(created.width,target.width);
+  assert.equal(created.depth,target.depth);
+  assert.equal(validWorldSettings(created.options),true);
+ }
+});
+test("WORLD-SIZE-006: larger terrain keeps full forest data but limits preview detail",()=>{
+ const map=createWorld({...DEFAULT_WORLD,size:"large",seed:"FOREST-BUDGET",
+  forest:100,lakes:0,rivers:0});
+ assert.ok(map.trees.length>650,"Full large-map forest remains generated");
+ const preview=previewTrees(map,650);
+ assert.equal(preview.length,650);
+ assert.ok(preview.every(tree=>map.trees.includes(tree)));
+ assert.deepEqual(preview,previewTrees(map,650),"Preview subset must be deterministic");
+ const mesh=createWorldMesh(map,26,20,{trees:true,treeLimit:40});
+ const noTrees=createWorldMesh(map,26,20,{trees:false});
+ assert.ok(mesh.groundTriangles>noTrees.groundTriangles);
+ assert.equal(mesh.groundTriangles-noTrees.groundTriangles,40*10,
+  "Fallback conifers use the exact 40-tree preview budget");
+ assert.ok(mesh.ground.every(Number.isFinite));
 });

@@ -1,9 +1,9 @@
 // WORLD-3D-001. Deterministic terrain generation, independent of the legacy 2D simulation.
 // A saved world stores the seed and settings, never a heavyweight mesh or a random stream.
 export const WORLD_SIZES=Object.freeze({
- small:{width:800,depth:600,label:"Small valley"},
- medium:{width:1200,depth:900,label:"Medium landscape"},
- large:{width:1800,depth:1350,label:"Large region"}
+ small:{width:1600,depth:1200,label:"Small valley"},
+ medium:{width:2400,depth:1800,label:"Medium landscape"},
+ large:{width:3600,depth:2700,label:"Large region"}
 });
 export const DEFAULT_WORLD=Object.freeze({
  seed:"WILLOW-1048",size:"medium",lakes:2,rivers:1,waterLevel:45,
@@ -219,7 +219,16 @@ export function createWorld(raw={}){
   ":"+lakes.map(l=>l.type).join(",")+":"+rivers.length+":"+trees.length;
  return{options,width,depth,lakes,rivers,trees,sample,slope,signature};
 }
-export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null}={}){
+// The generated world retains all forest locations, while the 3D preview
+// draws a deterministic, evenly distributed subset to keep mobile rendering
+// costs bounded after map dimensions expand. Gameplay data is not reduced.
+export function previewTrees(world,maxCount=650){
+ const trees=world.trees||[];
+ if(trees.length<=maxCount)return trees;
+ const stride=trees.length/maxCount;
+ return Array.from({length:maxCount},(_,i)=>trees[Math.floor((i+.5)*stride)]);
+}
+export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null,treeLimit=650}={}){
  const {width,depth}=world,ground=[],water=[];
  const rand=(i,j)=>hash2(i,j,hashSeed(world.options.seed)+901);
  function triangle(to,a,b,c,color){
@@ -289,7 +298,7 @@ export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null}={}){
   waterPolygon([surface[1],surface[3],surface[2]]);
  }
  // Low-poly conifers remain inexpensive enough for a mobile browser.
- for(const t of trees?world.trees:[]){
+ for(const t of trees?previewTrees(world,treeLimit):[]){
   const x=t.x-width/2,z=t.z-depth/2,n=5,base=t.y+1;
   const pine=[.16+rand(Math.round(t.x),Math.round(t.z))*.09,.36+rand(Math.round(t.z),Math.round(t.x))*.1,.22];
   for(let i=0;i<n;i++){

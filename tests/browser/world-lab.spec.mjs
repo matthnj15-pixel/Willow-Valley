@@ -11,7 +11,7 @@ test("WORLD-3D-UI-01: Development menu opens the standalone World Builder",async
 });
 test("WORLD-3D-UI-02: map size, water settings and seed survive blueprint save without replacing settlement",async({page})=>{
  await page.goto("/ui-kit/world-lab.html");
- await expect(page.locator("#worldStats")).toContainText("1,200 × 900");
+ await expect(page.locator("#worldStats")).toContainText("2,400 × 1,800");
  await page.locator("#size").selectOption("large");
  await page.locator("#lakes").evaluate(el=>{
   el.value="4";el.dispatchEvent(new Event("input",{bubbles:true}));
@@ -24,7 +24,7 @@ test("WORLD-3D-UI-02: map size, water settings and seed survive blueprint save w
  });
  await page.locator("#seed").fill("A-TEST-VALLEY");
  await page.locator("#applySettings").click();
- await expect(page.locator("#worldStats")).toContainText("1,800 × 1,350");
+ await expect(page.locator("#worldStats")).toContainText("3,600 × 2,700");
  await expect(page.locator("#worldStats")).toContainText("Rivers");
  await expect(page.locator("#worldStats")).toContainText("Lakes");
  await expect(page.locator("#worldStats")).toContainText("Trees");
@@ -148,4 +148,19 @@ test("WORLD-3D-UI-10: old World Builder location redirects to the working publis
  await page.goto("/world-lab/");
  await expect(page).toHaveURL(/\/ui-kit\/world-lab\.html$/);
  await expect(page.getByRole("heading",{name:"Design the terrain"})).toBeVisible();
+});
+
+test("WORLD-SIZE-007: all three options show expanded playable dimensions",async({page})=>{
+ await page.goto("/ui-kit/world-lab.html");
+ const options=await page.locator("#size option").evaluateAll(items=>items.map(x=>({
+  value:x.value,label:x.textContent.trim()
+ })));
+ expect(options).toEqual([
+  {value:"small",label:"Small valley · 1,600 × 1,200"},
+  {value:"medium",label:"Medium · 2,400 × 1,800"},
+  {value:"large",label:"Large region · 3,600 × 2,700"}
+ ]);
+ await page.locator("#size").selectOption("small");
+ await page.locator("#applySettings").click();
+ await expect(page.locator("#worldStats")).toContainText("1,600 × 1,200");
 });

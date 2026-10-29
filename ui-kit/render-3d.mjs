@@ -83,7 +83,11 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
  }
  function upload(newWorld,reset=true){
   world=newWorld;
-  const geometry=createWorldMesh(world,92,72,{
+  // The buildable terrain grows with the map size; preview geometry grows
+  // modestly to retain recognizable rivers and ridges without multiplying
+  // mobile GPU work by four.
+  const resolution={small:[96,72],medium:[112,84],large:[128,96]}[world.options.size]||[112,84];
+  const geometry=createWorldMesh(world,...resolution,{
    trees:!["oak","pine","birch"].some(key=>kenney[key]),
    palette:kenneyLandscapePalette(kenney)
   });

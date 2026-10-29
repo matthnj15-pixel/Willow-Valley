@@ -1,3 +1,4 @@
+import {previewTrees} from "../world-gen.mjs";
 // WORLD-3D-002: genuine Kenney CC0 GLB meshes from the Nature and Castle Kits.
 // UAT source: https://github.com/Hidencod/tge-assets
 // Pack licensing: https://kenney.nl/assets/nature-kit and /castle-kit
@@ -153,7 +154,7 @@ export async function fetchKenneyModel(name){
 }
 // Creates a single draw batch with the actual loaded asset triangles, never
 // a replacement cone or stylized approximation.
-export function instantiateKenney(world,models,{showReference=false}={}){
+export function instantiateKenney(world,models,{showReference=false,maxTrees=650}={}){
  const output=[];
  function put(name,x,z,height,yaw){
   const model=models[name];if(!model)return;
@@ -175,8 +176,9 @@ export function instantiateKenney(world,models,{showReference=false}={}){
  }
  const mix=["oak","pine","birch"];
  let treeModels=0;
- for(let i=0;i<world.trees.length;i++){
-  const t=world.trees[i],which=mix[i%mix.length];
+ const drawnTrees=previewTrees(world,maxTrees);
+ for(let i=0;i<drawnTrees.length;i++){
+  const t=drawnTrees[i],which=mix[i%mix.length];
   if(!models[which])continue;
   put(which,t.x,t.z,t.h,(i*1.61803398875)%6.283);
   treeModels++;
