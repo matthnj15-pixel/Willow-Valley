@@ -225,11 +225,11 @@ export function instantiateKenneyTerrain(world,models){
   instance("waterTile",point.x,point.z,stream.width*1.45,
    Math.atan2(b.z-a.z,b.x-a.x),"water");
  }
- if(models.bank)for(const lake of world.lakes)for(let i=0;i<lake.spine.length;i+=2){
+ if(models.bank||models.beach)for(const lake of world.lakes)for(let i=0;i<lake.spine.length;i+=2){
   const p=lake.spine[i],angle=(i+lake.x)*2.4;
   const x=p.x+Math.cos(angle)*p.r*1.12,z=p.z+Math.sin(angle)*p.r*1.12;
   if(world.sample(x,z).water!==null)continue;
-  instance("bank",x,z,10+hash(i*17+Math.round(lake.x))*8,angle);
+  instance(i%3===0&&models.beach?"beach":"bank",x,z,10+hash(i*17+Math.round(lake.x))*8,angle);
  }
  if(models.cliff)for(let i=0;i<80;i++){
   const x=(.055+.89*hash(1400+i*23))*world.width;
