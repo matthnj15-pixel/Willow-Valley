@@ -293,7 +293,8 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
  if(interactive)canvas.addEventListener("pointermove",onMove);
  if(interactive)canvas.addEventListener("pointerup",onUp);
  if(interactive)canvas.addEventListener("pointercancel",onUp);
- canvas.addEventListener("wheel",e=>{e.preventDefault();zoomBy(e.deltaY>0?1.12:1/1.12);},{passive:false});
+ const onWheel=e=>{e.preventDefault();zoomBy(e.deltaY>0?1.12:1/1.12);};
+ canvas.addEventListener("wheel",onWheel,{passive:false});
  window.addEventListener("resize",render);
  upload(world);
  void loadModels();
@@ -304,6 +305,7 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
   dispose(){
    disposed=true;
    canvas.removeEventListener("webglcontextlost",lost);
+   canvas.removeEventListener("wheel",onWheel);
    canvas.removeEventListener("pointerdown",onDown);
    canvas.removeEventListener("pointermove",onMove);
    canvas.removeEventListener("pointerup",onUp);
