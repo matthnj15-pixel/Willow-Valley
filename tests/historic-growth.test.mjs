@@ -49,3 +49,25 @@ test("WORLD-20: subsequent housing preserves original cottages and their path ge
  assert.ok(s.houses.every(h=>!h.parcel||h.parcel.vertices.length>=5));
  assert.equal(validState(s),true);
 });
+
+test("WORLD-ACCESS-01: cottage lane at parcel edge provides reachable road service",async()=>{
+ const {structureAccess,housingAccess}=await import("../simulation.mjs");
+ const s=startGame(),house={x:700,y:610};
+ s.houses.push(house);s.localLanes.push({houseX:700,houseY:610,
+  connectsTo:"road",entrance:{x:675,y:582},points:[{x:675,y:582},{x:460,y:454}]});
+ assert.equal(structureAccess(s,house),"road");
+ assert.equal(housingAccess(s).at(-1),"road");
+ const disconnected={...s,roadGraph:undefined,roads:[[{x:1000,y:70},{x:1100,y:70}]]};
+ assert.equal(structureAccess(disconnected,house),"footpath");
+});
+test("WORLD-ACCESS-02: inherited paths connect homes without inventing road access",async()=>{
+ const {structureAccess}=await import("../simulation.mjs");
+ const s=startGame(),house={x:720,y:610};s.houses.push(house);
+ s.localLanes=[
+  {houseX:660,houseY:530,connectsTo:"road",points:[{x:660,y:530},{x:460,y:454}]},
+  {houseX:720,houseY:610,connectsTo:"lane",points:[{x:695,y:590},{x:660,y:530}]}
+ ];
+ assert.equal(structureAccess(s,house),"road");
+ s.localLanes[0].connectsTo="lane";
+ assert.equal(structureAccess(s,house),"footpath");
+});

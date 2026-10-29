@@ -185,7 +185,9 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
    "stroke-dasharray":"7 5"}));
  }
 svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".25"}));
- const homeLayer=node("g",{transform:h.orientation?"rotate("+Math.round(h.orientation*180/Math.PI)+" "+h.x+" "+h.y+")":""});svg.append(homeLayer);
+ // Keep 2D cottage roofs upright while retaining true lot orientation for 3D.
+ const tilt=clamp(Math.atan(Math.tan(h.orientation||0)),-Math.PI/8,Math.PI/8);
+ const homeLayer=node("g",{transform:"rotate("+Math.round(tilt*180/Math.PI)+" "+h.x+" "+h.y+")"});svg.append(homeLayer);
  homeLayer.append(node("rect",{x:h.x-11,y:h.y-9,width:22,height:22,rx:2,fill:"#f2e2bc",stroke:access==="road"?"#aa9a78":access==="footpath"?"#e6a34d":"#c54f43","stroke-width":access==="road"?1.3:4}));
  homeLayer.append(node("path",{d:"M "+(h.x-16)+" "+(h.y-10)+" L "+h.x+" "+(h.y-23)+" L "+(h.x+16)+" "+(h.y-10)+" Z",fill:"#a67353",stroke:"#7e654b","stroke-width":1.4}));
  homeLayer.append(node("rect",{x:h.x+2,y:h.y,width:4,height:13,fill:"#826c52"}));
