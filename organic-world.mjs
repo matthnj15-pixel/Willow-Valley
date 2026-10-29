@@ -7,13 +7,49 @@ const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const rnd=n=>{const v=Math.sin(n*38.217+14.57)*43758.5453;return v-Math.floor(v);};
 const pointOK=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=WIDTH&&p.y>=0&&p.y<=HEIGHT;
+// Built streets have a 32-unit cartographic right-of-way. The watercourse
+// has a 122-unit bank-to-bank band. Paint permissions use these same edges.
+export const ROAD_PAINT_HALF_WIDTH=17;
+export const RIVER_PAINT_HALF_WIDTH=61;
+export function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
+const paintCross=(a,b,c)=>(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
+function crossesRoad(a,b,roads){
+ for(const line of roads||[])for(let i=1;i<line.length;i++){
+  const c=line[i-1],d=line[i];
+  const ab1=paintCross(a,b,c),ab2=paintCross(a,b,d),cd1=paintCross(c,d,a),cd2=paintCross(c,d,b);
+  if(ab1*ab2<0&&cd1*cd2<0)return true;
+ }
+ return false;
+}
+function paintOnLand(s,p){
+ if(!pointOK(p)||Math.abs(p.x-riverX(p.y))<RIVER_PAINT_HALF_WIDTH)return false;
+ if((s.roads||[]).length){
+  const road=distanceToRoad(p,s.roads);
+  if(road&&road.distance<ROAD_PAINT_HALF_WIDTH)return false;
+ }
+ return true;
+}
+export function paintCellReachable(s,stamp,cell){
+ if(!paintOnLand(s,cell)||!paintOnLand(s,stamp))return false;
+ // Stop a brush footprint at the water's bank instead of leaking across.
+ if((stamp.x-riverX(stamp.y))*(cell.x-riverX(cell.y))<0)return false;
+ // The actual road centerline divides each brush dab into separate sides.
+ if(crossesRoad(stamp,cell,s.roads))return false;
+ return true;
+}
 export function validZones(zones){return zones===undefined||Array.isArray(zones)&&zones.length<=120&&zones.every(z=>
- Number.isSafeInteger(z.id)&&z.id>0&&ZONE_TYPES.includes(z.type)&&Number.isFinite(z.radius)&&z.radius>=24&&z.radius<=90&&
+ Number.isSafeInteger(z.id)&&z.id>0&&(ZONE_TYPES.includes(z.type)||z.type==="erase")&&
+ Number.isFinite(z.radius)&&z.radius>=24&&z.radius<=90&&
  Array.isArray(z.points)&&z.points.length>=1&&z.points.length<=180&&z.points.every(pointOK)
 );}
 export function zoneAt(s,p){
+ if(!paintOnLand(s,p))return null;
  let latest=null;
- for(const z of s.zones||[])if(z.points.some(q=>dist(p,q)<=z.radius))latest=z.type;
+ for(const z of s.zones||[])for(const q of z.points){
+  if(dist(p,q)>z.radius||!paintCellReachable(s,q,p))continue;
+  latest=z.type==="erase"?null:z.type;
+  break;
+ }
  return latest;
 }
 export function isInZone(s,p,type){return zoneAt(s,p)===type;}
@@ -24,24 +60,27 @@ export function paintZones(s,type,strokes,radius=BRUSH_RADIUS){
  if(strokes.some(line=>!Array.isArray(line)||!line.length||line.length>180||line.some(p=>!pointOK(p))))
   return{ok:false,reason:"Brush path must stay inside the valley."};
  const next=(s.zones||[]).slice();
- if(type==="erase"){
-  const before=next.length;
-  for(let k=next.length-1;k>=0;k--)if(next[k].points.some(q=>strokes.some(line=>line.some(p=>dist(p,q)<radius+next[k].radius))))next.splice(k,1);
-  s.zones=next;return{ok:true,count:before-next.length};
- }
- if(next.length+strokes.length>120)return{ok:false,reason:"Too many zoning strokes. Erase or combine regions."};
- // Nature preserves take precedence; overlapping incompatible zones are not accepted silently.
- for(const line of strokes)for(const p of line)for(const old of next){
-  if(old.type===type)continue;
-  if(old.points.some(q=>dist(p,q)<radius+old.radius-4))
-   return{ok:false,reason:"This stroke overlaps another land use. Erase that zone first."};
+ if(next.length+strokes.length>120)return{ok:false,reason:"Zoning history is full. Use fewer, longer strokes or export your settlement."};
+ if(type!=="erase"){
+  // Compare the actual painted land, not circular bounding boxes. Different
+  // land uses may meet cleanly on opposite sides of a street or river.
+  const fractions=[[0,0],[.5,0],[-.5,0],[0,.5],[0,-.5],
+   [.7,.7],[-.7,.7],[.7,-.7],[-.7,-.7]];
+  for(const line of strokes)for(const stamp of line)for(const [fx,fy] of fractions){
+   const p={x:stamp.x+fx*radius,y:stamp.y+fy*radius};
+   if(dist(p,stamp)>radius||!paintCellReachable(s,stamp,p))continue;
+   const existing=zoneAt(s,p);
+   if(existing&&existing!==type)
+    return{ok:false,reason:"This area has a different land use. Erase its edge first."};
+  }
  }
  let id=next.reduce((n,z)=>Math.max(n,z.id),0);
  for(const line of strokes)next.push({id:++id,type,radius,points:line.map(p=>({x:Math.round(p.x),y:Math.round(p.y)}))});
- s.zones=next;return{ok:true,count:strokes.length};
+ s.zones=next;
+ return{ok:true,count:strokes.length};
 }
 // Terrain is an analytic heightfield. It drives suitability and will drive 3D vertex elevations.
-export function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
+
 export function elevationAt(x,y){
  const hills=18*Math.sin(x/165)*Math.cos(y/210)+9*Math.sin((x+y)/93)+7*Math.cos((x-y)/125);
  const ridge= y<235 ? 52*Math.pow((235-y)/235,2)*(.65+.35*Math.sin(x/95)**2):0;

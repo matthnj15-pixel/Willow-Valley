@@ -28,7 +28,7 @@
   <div class="road-controls" id="roadControls" hidden><span id="roadInfo">Tap the map to trace your road.</span><div><button id="undoRoad">Undo</button><button id="cancelRoad">Cancel</button><button id="confirmRoad" class="primary">Build road</button></div></div>
   <div class="zone-controls" id="zoneControls" hidden>
    <div class="zone-settings">
-    <label for="zoneType">Land use<select id="zoneType" aria-label="Land use"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="farmland">Farmland</option><option value="preserve">Preserve</option><option value="erase">Erase</option></select></label>
+    <div class="zone-land-use"><label for="zoneType">Land use<select id="zoneType" aria-label="Land use"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="farmland">Farmland</option><option value="preserve">Preserve</option><option value="erase">Erase</option></select></label><button id="zoneEraser" type="button" aria-label="Toggle zoning eraser" aria-pressed="false">Eraser</button></div>
     <label for="zoneRadius">Brush size <output id="zoneRadiusValue" for="zoneRadius">54</output><input id="zoneRadius" type="range" min="24" max="90" step="1" value="54" aria-label="Brush size"></label>
    </div><span id="zoneInfo">Paint a connected land area</span>
    <div class="zone-actions"><button id="zoneUndo">Undo</button><button id="zoneCancel">Cancel</button><button id="zoneCommit" class="primary">Commit zone</button></div>
