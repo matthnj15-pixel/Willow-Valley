@@ -408,13 +408,19 @@ function downPointer(e){
  const bend=mode==="road"&&!n&&draft.anchors.length===0?hitBuiltCurve(down,radius):null;
  const draftIndex=mode==="road"&&!n&&!bend?hitRoadSegment(draft,down,radius): -1;
  const hit={node:n,builtCurve:bend,segmentIndex:draftIndex};
- const p={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,down,moved:false,
+ const p={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,down,moved:false,zoneBlocked:false,
   holdReady:false,holdTimer:null,curveActive:false,gestureActive:false,initialControl:null,hit,trail:[]};
  pointers.set(e.pointerId,p);
  if(pointers.size===2){
-   for(const entry of pointers.values()){clearHold(entry);entry.holdReady=false;entry.moved=true;}
-   if(mode==="zone"&&zoneStrokes.length)zoneStrokes.pop();
-   const [a,b]=[...pointers.values()];gesture={distance:distance(a,b),scale:camera.scale};
+  for(const entry of pointers.values()){
+   clearHold(entry);entry.holdReady=false;entry.moved=true;entry.zoneBlocked=true;
+  }
+  // A lone tentative tap is navigation; preserve completed paint portions.
+  if(mode==="zone"&&zoneStrokes.at(-1)?.length===1){
+   zoneStrokes.pop();updateZoneInfo();
+  }
+  const [a,b]=[...pointers.values()],midX=(a.x+b.x)/2,midY=(a.y+b.y)/2;
+  gesture={distance:distance(a,b),scale:camera.scale,anchor:mapPoint(midX,midY)};
  }else if(mode==="zone"){
    zoneStrokes.push([{x:Math.round(down.x),y:Math.round(down.y)}]);
    updateZoneInfo();renderMap();
@@ -431,16 +437,25 @@ function movePointer(e){
  const dx=e.clientX-p.x,dy=e.clientY-p.y,travel=Math.hypot(e.clientX-p.startX,e.clientY-p.startY);
  p.x=e.clientX;p.y=e.clientY;
  if(pointers.size===2){
-   const [a,b]=[...pointers.values()];
-   if(gesture)camera.scale=clamp(gesture.scale*distance(a,b)/Math.max(gesture.distance,10),.75,3.8);
-   renderMap();return;
+  const [a,b]=[...pointers.values()];
+  if(gesture){
+   camera.scale=clamp(gesture.scale*distance(a,b)/Math.max(gesture.distance,10),.75,3.8);
+   const rect=svg.getBoundingClientRect(),w=920/camera.scale,h=w*rect.height/rect.width;
+   const midX=(a.x+b.x)/2,midY=(a.y+b.y)/2;
+   // Anchor the same world coordinate to the moving pinch centroid. This
+   // supports two-finger translation and zoom in one uninterrupted gesture.
+   camera.cx=gesture.anchor.x+(0.5-(midX-rect.left)/rect.width)*w;
+   camera.cy=gesture.anchor.y+(0.5-(midY-rect.top)/rect.height)*h;
+  }
+  renderMap();return;
  }
  if(mode==="zone"&&pointers.size===1){
-   const at=mapPoint(e.clientX,e.clientY),stroke=zoneStrokes.at(-1),last=stroke?.at(-1);
-   if(stroke&&last&&distance(at,last)>9&&stroke.length<180&&at.x>=0&&at.y>=0&&at.x<=WORLD.w&&at.y<=WORLD.h){
-    stroke.push({x:Math.round(at.x),y:Math.round(at.y)});
-   }
-   p.moved=true;renderMap();return;
+  if(p.zoneBlocked)return;
+  const at=mapPoint(e.clientX,e.clientY),stroke=zoneStrokes.at(-1),last=stroke?.at(-1);
+  if(stroke&&last&&distance(at,last)>9&&stroke.length<180&&at.x>=0&&at.y>=0&&at.x<=WORLD.w&&at.y<=WORLD.h){
+   stroke.push({x:Math.round(at.x),y:Math.round(at.y)});
+  }
+  p.moved=true;renderMap();return;
  }
  if(mode==="road"&&p.holdReady&&travel>=MOVE_SLOP_PX){
    p.moved=true;clearHold(p);
