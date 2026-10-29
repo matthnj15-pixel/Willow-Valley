@@ -1,4 +1,5 @@
 import {createWorldMesh,clamp} from "../world-gen.mjs";
+import {settlementGeometry} from "../game-3d-mesh.mjs";
 import {fetchKenneyModel,instantiateKenney,instantiateKenneyTerrain,kenneyLandscapePalette} from "./kenney-models.mjs";
 
 // Native WebGL terrain and actual Kenney CC0 asset meshes.
@@ -22,7 +23,7 @@ const VERTEX=[
 ].join("\n");
 const FRAGMENT=[
  "precision mediump float; varying vec3 vColor; varying float vLight;",
- "varying vec3 vWorld; uniform float uWater;",
+ "varying vec3 vWorld; uniform float uWater; uniform float uOpacity;",
  "void main(){",
  " vec3 color=vColor*vLight;",
  " if(uWater>0.5){",
@@ -33,7 +34,7 @@ const FRAGMENT=[
  "   float glint=pow(max(0.0,wave),5.0)*0.085;",
  "   color+=vec3(glint*0.64,glint*0.88,glint);",
  " }",
- " gl_FragColor=vec4(clamp(color,0.0,1.0),1.0);",
+ " gl_FragColor=vec4(clamp(color,0.0,1.0),uOpacity);",
  "}"
 ].join("\n");
 function makeShader(gl,type,source){
@@ -51,7 +52,7 @@ function makeProgram(gl){
   throw new Error(gl.getProgramInfoLog(p)||"3D unavailable");
  return p;
 }
-export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=false}={}){
+export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=false,interactive=true}={}){
  const gl=canvas.getContext("webgl",{antialias:true,alpha:false,depth:true,
   powerPreference:"low-power",preserveDrawingBuffer:false});
  if(!gl)throw new Error("3D preview requires WebGL support in your browser.");
@@ -65,12 +66,14 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   pitch:gl.getUniformLocation(program,"uPitch"),
   zoom:gl.getUniformLocation(program,"uZoom"),
   aspect:gl.getUniformLocation(program,"uAspect"),
-  water:gl.getUniformLocation(program,"uWater")
+  water:gl.getUniformLocation(program,"uWater"),
+  opacity:gl.getUniformLocation(program,"uOpacity")
  };
- const buffers=Array.from({length:5},()=>gl.createBuffer());
+ const buffers=Array.from({length:8},()=>gl.createBuffer());
  const kenney={},kitNames=["oak","pine","birch","rock","tower","ground","waterTile","bank","cliff","beach"];
  let loadedAssets=0,showcase=showReference,disposed=false;
- let counts=[0,0,0,0,0],world=initialWorld;
+ let counts=[0,0,0,0,0,0,0,0],world=initialWorld;
+ let settlement=null,settlementDraft=null,settlementZoneStrokes=[],settlementZoneType="residential",settlementRadius=54;
  const camera={yaw:.71,pitch:.86,zoom:650,focusX:0,focusZ:0};
  const pointers=new Map();
  let gesture=null,frame=0;
@@ -95,8 +98,9 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   gl.bufferData(gl.ARRAY_BUFFER,geometry.ground,gl.STATIC_DRAW);
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[1]);
   gl.bufferData(gl.ARRAY_BUFFER,geometry.water,gl.STATIC_DRAW);
-  counts=[geometry.ground.length/9,geometry.water.length/9,0,0,0];
+  counts=[geometry.ground.length/9,geometry.water.length/9,0,0,0,0,0,0];
   updateKenney();
+  if(settlement)updateSettlement();
   if(reset)resetCamera();else render();
  }
  function updateKenney(){
@@ -121,9 +125,10 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
    terrain:!!kenney.ground,river:!!kenney.waterTile,bank:!!kenney.bank,
    online:loadedAssets>0});
  }
- function drawBuffer(buffer,count,isWater=false){
+ function drawBuffer(buffer,count,isWater=false,opacity=1){
   if(!count)return;
   gl.uniform1f(loc.water,isWater?1:0);
+  gl.uniform1f(loc.opacity,opacity);
   gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
   for(const [location,offset] of [
    [loc.position,0],[loc.color,3],[loc.normal,6]]){
@@ -142,6 +147,7 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   gl.viewport(0,0,width,height);
   gl.clearColor(.71,.80,.74,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
   gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);
+  gl.enable(gl.BLEND);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);
   gl.useProgram(program);
   gl.uniform3f(loc.focus,camera.focusX,17,camera.focusZ);
   gl.uniform1f(loc.yaw,camera.yaw);gl.uniform1f(loc.pitch,camera.pitch);
@@ -150,6 +156,9 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   drawBuffer(buffers[0],counts[0]);drawBuffer(buffers[3],counts[3]);
   drawBuffer(buffers[1],counts[1],true);drawBuffer(buffers[4],counts[4],true);
   drawBuffer(buffers[2],counts[2]);
+  drawBuffer(buffers[5],counts[5]);
+  drawBuffer(buffers[6],counts[6],false,.52);
+  drawBuffer(buffers[7],counts[7]);
  }
  function render(){if(!frame)frame=requestAnimationFrame(draw);}
  function zoomBy(factor){
@@ -157,6 +166,47 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
    Math.max(world.width,world.depth)*2.4);
   render();
  }
+function updateSettlement(){
+ if(!settlement)return;
+ const data=settlementGeometry(world,settlement,{draft:settlementDraft,
+  zoneStrokes:settlementZoneStrokes,zoneType:settlementZoneType,zoneRadius:settlementRadius});
+ for(const [index,vertices] of [[5,data.surfaces],[6,data.zones],[7,data.structures]]){
+  gl.bindBuffer(gl.ARRAY_BUFFER,buffers[index]);
+  gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.DYNAMIC_DRAW);
+  counts[index]=vertices.length/9;
+ }
+ render();
+}
+function screenToWorld(clientX,clientY){
+ const rect=canvas.getBoundingClientRect();
+ if(rect.width<1||rect.height<1)return null;
+ const sx=(clientX-rect.left)/rect.width*2-1,sy=1-(clientY-rect.top)/rect.height*2;
+ const xx=sx*camera.zoom*rect.width/rect.height,yy=sy*camera.zoom;
+ const cs=Math.cos(camera.yaw),sn=Math.sin(camera.yaw);
+ let depth=(Math.cos(camera.pitch)*(15-17)-yy)/Math.max(.2,Math.sin(camera.pitch));
+ let x=camera.focusX+xx*cs-depth*sn,z=camera.focusZ+xx*sn+depth*cs;
+ for(let i=0;i<7;i++){
+  const ground=world.sample(x+world.width/2,z+world.depth/2).height;
+  depth=(Math.cos(camera.pitch)*(ground-17)-yy)/Math.max(.2,Math.sin(camera.pitch));
+  x=camera.focusX+xx*cs-depth*sn;
+  z=camera.focusZ+xx*sn+depth*cs;
+ }
+ return{x:x+world.width/2,y:z+world.depth/2};
+}
+function panBy(dx,dy){
+ const rect=canvas.getBoundingClientRect();
+ const u=-dx/Math.max(1,rect.height)*2*camera.zoom;
+ const v=dy/Math.max(1,rect.height)*2*camera.zoom/Math.max(.2,Math.sin(camera.pitch));
+ const cs=Math.cos(camera.yaw),sn=Math.sin(camera.yaw);
+ camera.focusX=clamp(camera.focusX+u*cs-v*sn,-world.width/2,world.width/2);
+ camera.focusZ=clamp(camera.focusZ+u*sn+v*cs,-world.depth/2,world.depth/2);
+ render();
+}
+function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54}={}){
+ settlement=state;settlementDraft=draft;settlementZoneStrokes=zoneStrokes;
+ settlementZoneType=zoneType;settlementRadius=zoneRadius;
+ updateSettlement();
+}
  function onDown(e){
   if(e.pointerType==="mouse"&&e.button!==0)return;
   e.preventDefault();canvas.setPointerCapture(e.pointerId);
@@ -191,15 +241,15 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   render();
  }
  function onUp(e){pointers.delete(e.pointerId);if(pointers.size<2)gesture=null;}
- canvas.addEventListener("pointerdown",onDown);
- canvas.addEventListener("pointermove",onMove);
- canvas.addEventListener("pointerup",onUp);
- canvas.addEventListener("pointercancel",onUp);
+ if(interactive)canvas.addEventListener("pointerdown",onDown);
+ if(interactive)canvas.addEventListener("pointermove",onMove);
+ if(interactive)canvas.addEventListener("pointerup",onUp);
+ if(interactive)canvas.addEventListener("pointercancel",onUp);
  canvas.addEventListener("wheel",e=>{e.preventDefault();zoomBy(e.deltaY>0?1.12:1/1.12);},{passive:false});
  window.addEventListener("resize",render);
  upload(world);
  void loadModels();
- return{setWorld:upload,resetCamera,zoomBy,
+ return{setWorld:upload,resetCamera,zoomBy,panBy,screenToWorld,setSettlement,render,
   setReference(value){showcase=Boolean(value);updateKenney();},
   assetStatus:()=>({loaded:loadedAssets,total:kitNames.length}),
   getCamera:()=>({...camera}),
