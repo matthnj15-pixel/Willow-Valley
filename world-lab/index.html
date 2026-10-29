@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#035352">
+<title>Willow Valley | New World</title>
+<link rel="stylesheet" href="./world-lab.css">
+</head>
+<body>
+<header class="header">
+ <div class="brand">
+  <span class="eyebrow">DEVELOPMENT · WORLD BUILDER</span>
+  <h1>Willow Valley</h1>
+  <p>Shape your next landscape</p>
+ </div>
+ <a class="back" href="../">Back to valley</a>
+</header>
+<main class="layout">
+ <section class="preview-panel" aria-labelledby="previewTitle">
+  <div class="preview-heading">
+   <div><span class="eyebrow">WORLD PREVIEW</span><h2 id="previewTitle">A world of your making</h2></div>
+   <span class="live-dot">3D TERRAIN</span>
+  </div>
+  <div class="viewport" id="viewport">
+   <canvas id="worldCanvas" aria-label="Interactive three-dimensional terrain. Drag to orbit and use two fingers to pan or zoom."></canvas>
+   <div class="viewport-overlay">Drag to orbit · Two fingers move · Pinch to zoom</div>
+   <div class="camera-tools">
+    <button id="zoomIn" type="button" aria-label="Zoom in">+</button>
+    <button id="zoomOut" type="button" aria-label="Zoom out">−</button>
+    <button id="resetCamera" type="button" aria-label="Reset 3D camera">↻</button>
+   </div>
+   <p id="rendererError" class="renderer-error" hidden></p>
+  </div>
+  <div id="worldStats" class="world-stats" aria-live="polite"></div>
+ </section>
+ <section class="settings-panel" aria-labelledby="settingsTitle">
+  <div class="settings-heading">
+   <div><span class="eyebrow">MAP CREATION</span><h2 id="settingsTitle">Design the terrain</h2></div>
+   <span class="experimental">WORLD-3D-001</span>
+  </div>
+  <div class="controls">
+   <div class="two-col">
+    <label class="field"><span>Map size</span>
+     <select id="size" data-setting="size">
+      <option value="small">Small valley · 800 × 600</option>
+      <option value="medium" selected>Medium · 1,200 × 900</option>
+      <option value="large">Large region · 1,800 × 1,350</option>
+     </select>
+    </label>
+    <label class="field"><span>Landscape profile</span>
+     <select id="profile"><option value="custom">Custom</option>
+      <option value="balanced" selected>Balanced valley</option>
+      <option value="pastoral">Pastoral lowlands</option>
+      <option value="alpine">Rugged highlands</option>
+      <option value="lake">Lake country</option>
+     </select>
+    </label>
+   </div>
+   <div class="section-label">Terrain character</div>
+   <div class="slider-grid">
+    <label class="range-field"><span>Flat open land <output for="flatness" id="flatnessValue">40</output></span><input id="flatness" data-setting="flatness" type="range" min="0" max="100" step="5" value="40"></label>
+    <label class="range-field"><span>Rolling hills <output for="rolling" id="rollingValue">58</output></span><input id="rolling" data-setting="rolling" type="range" min="0" max="100" step="5" value="58"></label>
+    <label class="range-field"><span>High hills <output for="hills" id="hillsValue">48</output></span><input id="hills" data-setting="hills" type="range" min="0" max="100" step="5" value="48"></label>
+    <label class="range-field"><span>Cliffs and ridges <output for="cliffs" id="cliffsValue">25</output></span><input id="cliffs" data-setting="cliffs" type="range" min="0" max="100" step="5" value="25"></label>
+   </div>
+   <div class="section-label">Water and wilderness</div>
+   <div class="slider-grid">
+    <label class="range-field"><span>Lakes <output for="lakes" id="lakesValue">2</output></span><input id="lakes" data-setting="lakes" type="range" min="0" max="4" step="1" value="2"></label>
+    <label class="range-field"><span>Rivers <output for="rivers" id="riversValue">1</output></span><input id="rivers" data-setting="rivers" type="range" min="0" max="3" step="1" value="1"></label>
+    <label class="range-field"><span>Water level <output for="waterLevel" id="waterLevelValue">45</output></span><input id="waterLevel" data-setting="waterLevel" type="range" min="0" max="100" step="5" value="45"></label>
+    <label class="range-field"><span>Forest coverage <output for="forest" id="forestValue">65</output></span><input id="forest" data-setting="forest" type="range" min="0" max="100" step="5" value="65"></label>
+   </div>
+   <label class="field seed-field"><span>World seed</span>
+    <div class="seed-row"><input type="text" id="seed" data-setting="seed" maxlength="40" spellcheck="false" value="WILLOW-1048"><button type="button" id="newSeed">Randomize</button></div>
+   </label>
+  </div>
+  <div class="actions">
+   <button id="generate" type="button" class="primary">Generate world</button>
+   <button id="saveBlueprint" type="button" class="secondary">Save world blueprint</button>
+  </div>
+  <p class="status" id="worldStatus" role="status" aria-live="polite"></p>
+  <p class="prototype-note">This first 3D milestone lets you generate, explore, and save a world blueprint. It does not replace your existing settlements. Building roads, zoning, and cottages directly on generated 3D terrain comes in the next integration milestone.</p>
+ </section>
+</main>
+<script type="module" src="./world-lab.mjs"></script>
+</body>
+</html>
