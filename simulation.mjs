@@ -1,8 +1,62 @@
-import {ensureGraph,validGraph,graphLines,addGeometry,deleteNode,deleteSegment,setSegmentCurve,saveGraphRoads,splitSegment} from "./road-network.mjs";
+import {setRoadBounds,ensureGraph,validGraph,graphLines,addGeometry,deleteNode,deleteSegment,setSegmentCurve,saveGraphRoads,splitSegment} from "./road-network.mjs";
 import {advanceDesirePaths,visibleDesirePaths,validDesirePaths} from "./desire-paths.mjs";
-import {validZones,findCottageSite} from "./organic-world.mjs";
+import {validZones,findCottageSite,configureOrganicBounds} from "./organic-world.mjs";
+import {createWorld,normalizeWorldSettings,validWorldSettings,WORLD_SIZES,DEFAULT_WORLD} from "./world-gen.mjs";
 export const VERSION=1;
 export const WORLD={w:1200,h:900};
+const modelCache=new Map();
+export function worldDimensions(state){
+ const size=state?.worldOptions?.size;
+ const preset=WORLD_SIZES[size];
+ return preset?{w:preset.width,h:preset.depth}:{w:1200,h:900};
+}
+export function configureWorldState(state){
+ const bounds=worldDimensions(state);
+ WORLD.w=bounds.w;WORLD.h=bounds.h;
+ setRoadBounds(bounds.w,bounds.h);
+ configureOrganicBounds(bounds.w,bounds.h);
+ return bounds;
+}
+export function generatedWorld(state){
+ if(!state?.worldOptions)return null;
+ const options=normalizeWorldSettings(state.worldOptions);
+ const key=JSON.stringify(options);
+ if(!modelCache.has(key))modelCache.set(key,createWorld(options));
+ return modelCache.get(key);
+}
+function drySite(world,x,z){
+ for(const [dx,dz] of [[0,0],[-180,0],[180,0],[0,-180],[0,180],[-115,-85],[90,95]]){
+  const p={x:x+dx,z:z+dz};
+  if(p.x<35||p.z<35||p.x>world.width-35||p.z>world.depth-35)return false;
+  if(world.sample(p.x,p.z).water!==null||world.slope(p.x,p.z)>.42)return false;
+ }
+ return true;
+}
+export function startWorldGame(raw=DEFAULT_WORLD){
+ const options=normalizeWorldSettings(raw),world=createWorld(options);
+ let center={x:world.width/2,z:world.depth/2},best=Infinity;
+ // Found the village on a broad, gentle meadow instead of in a lake or
+ // on a mountain ridge. The selection is deterministic for a saved seed.
+ for(let z=240;z<world.depth-240;z+=65)
+  for(let x=240;x<world.width-240;x+=65){
+   if(!drySite(world,x,z))continue;
+   const score=Math.hypot((x-world.width*.47)/world.width,(z-world.depth*.49)/world.depth)+world.slope(x,z)*.3;
+   if(score<best){best=score;center={x,z};}
+  }
+ if(!Number.isFinite(best))throw Error("No suitable founding meadow. Choose flatter terrain or another seed.");
+ const state=startGame(),shiftX=center.x-440,shiftY=center.z-450;
+ const shift=p=>({x:Math.round(p.x+shiftX),y:Math.round(p.y+shiftY)});
+ state.worldOptions=options;
+ state.roads=state.roads.map(line=>line.map(shift));
+ state.houses=state.houses.map(shift);
+ state.buildings=state.buildings.map(b=>({...b,...shift(b)}));
+ delete state.roadGraph;
+ state.logs=["The founding families arrived in "+options.size+" landscape, seed "+options.seed+"."];
+ state.report="The first village has been established on a natural meadow. Expand roads and paint residential land.";
+ configureWorldState(state);
+ ensureGraph(state);
+ return state;
+}
 export const BUILDINGS={
   lumber:{label:"Lumber camp",gold:110,wood:4,tools:1,upkeep:7,description:"Produces 7 wood per month."},
   farm:{label:"Farm",gold:120,wood:5,tools:1,upkeep:8,description:"Produces 12 food per month."},
@@ -28,17 +82,18 @@ export function startGame(){const state={
   logs:["The first families establish Willow Valley beside an old forest road."],
   report:"Your town has supplies for its first expansion. Design a new road or develop another industry."
 };ensureGraph(state);return state;}
-export function validState(x){return !!x&&x.version===VERSION&&Number.isInteger(x.turn)&&x.turn>=0&&x.turn<200000&&
+export function validState(x){const bounds=worldDimensions(x);return !!x&&
+ (x.worldOptions===undefined||validWorldSettings(x.worldOptions))&&x.version===VERSION&&Number.isInteger(x.turn)&&x.turn>=0&&x.turn<200000&&
  ["people","gold","food","wood","tools","happiness"].every(k=>Number.isFinite(x[k]))&&
- Array.isArray(x.roads)&&x.roads.length<500&&x.roads.every(r=>Array.isArray(r)&&r.length>=2&&r.length<=512&&r.every(validPoint))&&
- Array.isArray(x.buildings)&&x.buildings.length<300&&x.buildings.every(b=>BUILDINGS[b.type]&&validPoint(b))&&
- Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(h=>validPoint(h)&&
- (!h.parcel||Array.isArray(h.parcel.vertices)&&h.parcel.vertices.length>=5&&h.parcel.vertices.length<=10&&h.parcel.vertices.every(validPoint)))&&
- Array.isArray(x.logs)&&(!x.roadGraph||validGraph(x.roadGraph))&&
- validDesirePaths(x.desirePaths)&&validZones(x.zones)&&validHousing(x.housing)&&
+ Array.isArray(x.roads)&&x.roads.length<500&&x.roads.every(r=>Array.isArray(r)&&r.length>=2&&r.length<=512&&r.every(p=>validPoint(p,bounds)))&&
+ Array.isArray(x.buildings)&&x.buildings.length<300&&x.buildings.every(b=>BUILDINGS[b.type]&&validPoint(b,bounds))&&
+ Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(h=>validPoint(h,bounds)&&
+ (!h.parcel||Array.isArray(h.parcel.vertices)&&h.parcel.vertices.length>=5&&h.parcel.vertices.length<=10&&h.parcel.vertices.every(p=>validPoint(p,bounds))))&&
+ Array.isArray(x.logs)&&(!x.roadGraph||validGraph(x.roadGraph,bounds))&&
+ validDesirePaths(x.desirePaths)&&validZones(x.zones,bounds)&&validHousing(x.housing)&&
  (x.localLanes===undefined||Array.isArray(x.localLanes)&&x.localLanes.length<=2000&&x.localLanes.every(l=>
- Array.isArray(l.points)&&l.points.length>=2&&l.points.length<=12&&l.points.every(validPoint)));}
-function validPoint(p){return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=WORLD.w&&p.y>=0&&p.y<=WORLD.h;}
+ Array.isArray(l.points)&&l.points.length>=2&&l.points.length<=12&&l.points.every(p=>validPoint(p,bounds))));}
+function validPoint(p,bounds=WORLD){return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=bounds.w&&p.y>=0&&p.y<=bounds.h;}
 function validHousing(h){return h===undefined||!!h&&Number.isInteger(h.housed)&&h.housed>=0&&
  Number.isFinite(h.attractiveness)&&h.attractiveness>=0&&h.attractiveness<=100&&
  Number.isSafeInteger(h.nextId)&&h.nextId>=1&&Array.isArray(h.pending)&&h.pending.length<=300&&
@@ -59,7 +114,13 @@ export function housingOutlook(s){const h=ensureHousing(s);
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
 function onRiver(p){return Math.abs(p.x-riverX(p.y))<69;}
 function occupied(s,p){return [...s.buildings,...s.houses].some(b=>distance(b,p)<57);}
-export function canPlace(s,p){return validPoint(p)&&!onRiver(p)&&!occupied(s,p)&&p.x>25&&p.y>30&&p.x<WORLD.w-25&&p.y<WORLD.h-30;}
+export function canPlace(s,p){
+ const map=generatedWorld(s),dims=worldDimensions(s);
+ if(!validPoint(p,dims)||occupied(s,p))return false;
+ if(p.x<=25||p.y<=30||p.x>=dims.w-25||p.y>=dims.h-30)return false;
+ if(!map)return !onRiver(p);
+ return map.sample(p.x,p.y).water===null&&map.slope(p.x,p.y)<.6;
+}
 export function placeBuilding(s,type,p){const b=BUILDINGS[type];if(!b)return{ok:false,reason:"Unknown building type."};
  if(!canPlace(s,p))return{ok:false,reason:"Choose clear land away from buildings and the river."};
  if(s.gold<b.gold||s.wood<b.wood||s.tools<b.tools)return{ok:false,reason:"Insufficient treasury, wood, or tools."};
@@ -68,7 +129,18 @@ export function placeBuilding(s,type,p){const b=BUILDINGS[type];if(!b)return{ok:
 // Legacy polyline entry point and new authored-geometry entry point.
 export function addRoad(s,points){return buildRoad(s,points,points.slice(1).map(()=>null));}
 export function buildRoad(s,anchors,controls){
- if(!Array.isArray(anchors)||anchors.length<2||anchors.length>512||!Array.isArray(controls)||controls.length!==anchors.length-1||!anchors.every(validPoint)||controls.some(c=>c!==null&&!validPoint(c)))return{ok:false,reason:"Choose valid road nodes."};
+ if(!Array.isArray(anchors)||anchors.length<2||anchors.length>512||!Array.isArray(controls)||controls.length!==anchors.length-1||!anchors.every(p=>validPoint(p,worldDimensions(s)))||controls.some(c=>c!==null&&!validPoint(c,worldDimensions(s))))return{ok:false,reason:"Choose valid road nodes."};
+ const terrain=generatedWorld(s);
+ if(terrain){
+  for(let i=1;i<anchors.length;i++){
+   const a=anchors[i-1],b=anchors[i],length=distance(a,b),steps=Math.ceil(length/12);
+   for(let j=0;j<=steps;j++){
+    const p={x:a.x+(b.x-a.x)*j/steps,y:a.y+(b.y-a.y)*j/steps};
+    if(terrain.sample(p.x,p.y).water!==null||terrain.slope(p.x,p.y)>1.55)
+     return{ok:false,reason:"Roads must stay on land. Avoid water and sheer cliffs."};
+   }
+  }
+ }
  const graph=structuredClone(ensureGraph(s));const result=addGeometry(graph,anchors,controls);
  if(!result.ok)return result;
  const newLines=graphLines(graph);
