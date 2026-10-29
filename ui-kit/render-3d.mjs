@@ -287,7 +287,9 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
   pointers.delete(e.pointerId);
   if(pointers.size!==2)gesture=null;
  }
- if(interactive)canvas.addEventListener("pointerdown",onDown);
+ const lost=e=>{e.preventDefault();onError(new Error("3D graphics context was lost. Retry the scene in lighter mode."));};
+ canvas.addEventListener("webglcontextlost",lost);
+  if(interactive)canvas.addEventListener("pointerdown",onDown);
  if(interactive)canvas.addEventListener("pointermove",onMove);
  if(interactive)canvas.addEventListener("pointerup",onUp);
  if(interactive)canvas.addEventListener("pointercancel",onUp);
@@ -301,6 +303,7 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
   getCamera:()=>({...camera}),
   dispose(){
    disposed=true;
+   canvas.removeEventListener("webglcontextlost",lost);
    canvas.removeEventListener("pointerdown",onDown);
    canvas.removeEventListener("pointermove",onMove);
    canvas.removeEventListener("pointerup",onUp);
@@ -309,6 +312,6 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
    if(frame)cancelAnimationFrame(frame);
    for(const b of buffers)gl.deleteBuffer(b);
    gl.deleteProgram(program);
-   gl.getExtension("WEBGL_lose_context")?.loseContext();
+   // Keep this canvas context alive for switching between the three slots.
   }};
 }
