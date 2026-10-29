@@ -315,6 +315,7 @@ function slotPanel(){const el=document.createElement("div");
    const selected=selectSlot(localStorage,SAVE_KEY,entry.slot,validState);
    if(!selected.ok){notify(selected.reason);return;}
    activeSlot=entry.slot;game=chosen.state;slotName=chosen.name;journal=chosen.events;
+    bootGameWorld();
    ensureGraph(game);setMode("explore");closeSheet();refresh();notify("Opened "+slotName+".");
   });
  }
