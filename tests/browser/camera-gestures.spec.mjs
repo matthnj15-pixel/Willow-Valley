@@ -47,7 +47,9 @@ test("WORLD-CAMERA-UI-02: pinch zoom anchors scene in place",async({page})=>{
 test("WORLD-CAMERA-UI-03: twisting rotates the view without changing the simulation",async({page})=>{
  await page.goto("/?preview=1");
  const r=await touchPair(page,[[[-70,0],[70,0]],[[-70,25],[70,-25]],[[-70,38],[70,-38]]]);
- expect(Math.abs(r.after.yaw-r.original.yaw)).toBeGreaterThan(.25);
+ expect(r.after.yaw-r.original.yaw).toBeGreaterThan(.25);
+ // Push-style direction: twisting fingers clockwise moves the terrain in
+ // the opposite direction from the previous pull-style camera orbit.
  expect(r.after.pitch).toBeCloseTo(r.original.pitch,3);
  expect(r.unchanged).toBe(true);
 });
