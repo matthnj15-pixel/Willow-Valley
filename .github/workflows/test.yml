@@ -29,6 +29,9 @@ jobs:
           node --check save-slots.mjs
           node --check organic-world.mjs
           node --check zone-silhouette.mjs
+          node --check world-gen.mjs
+          node --check world-lab/world-lab.mjs
+          node --check world-lab/render-3d.mjs
           node --check scripts/build-offline.mjs
           node --check scripts/build-icons.mjs
           node --check sw.js

@@ -6,7 +6,7 @@ const VERSION="__BUILD_VERSION__";
 const PREFIX="willow-valley:"+new URL(self.registration.scope).pathname+":";
 const CACHE=PREFIX+VERSION;
 const REQUIRED=["./","./index.html","./styles.css","./app.mjs","./config.mjs","./save-slots.mjs","./organic-world.mjs","./zone-silhouette.mjs","./terrain-contours.mjs","./simulation.mjs","./ui-components.mjs"];
-const OPTIONAL=["./road-editor.mjs","./road-network.mjs","./road-gesture.mjs","./desire-paths.mjs","./manifest.webmanifest","./icon.svg","./apple-touch-icon.png","./icon-192.png","./icon-512.png","./offline.html","./ui-kit/index.html","./ui-kit/catalog.mjs","./ui-kit/catalog.css"];
+const OPTIONAL=["./world-gen.mjs","./world-lab/index.html","./world-lab/world-lab.mjs","./world-lab/render-3d.mjs","./world-lab/world-lab.css","./road-editor.mjs","./road-network.mjs","./road-gesture.mjs","./desire-paths.mjs","./manifest.webmanifest","./icon.svg","./apple-touch-icon.png","./icon-192.png","./icon-512.png","./offline.html","./ui-kit/index.html","./ui-kit/catalog.mjs","./ui-kit/catalog.css"];
 self.addEventListener("install",event=>{
   event.waitUntil((async()=>{
     const cache=await caches.open(CACHE);
@@ -34,7 +34,10 @@ self.addEventListener("fetch",event=>{
  event.respondWith((async()=>{
    const cache=await caches.open(CACHE);
    // A directory URL and its index.html must both work in airplane mode.
-   if(url.pathname.endsWith("/ui-kit/")||url.pathname.endsWith("/ui-kit")){
+   if(url.pathname.endsWith("/world-lab/")||url.pathname.endsWith("/world-lab")){
+      const lab=await cache.match("./world-lab/index.html");if(lab)return lab;
+    }
+    if(url.pathname.endsWith("/ui-kit/")||url.pathname.endsWith("/ui-kit")){
      const kit=await cache.match("./ui-kit/index.html");if(kit)return kit;
    }
    const matched=await cache.match(request,{ignoreSearch:true});

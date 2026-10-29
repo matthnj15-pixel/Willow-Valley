@@ -51,6 +51,13 @@ jobs:
               cp "$branch/ui-kit/"*.mjs "$dest/ui-kit/"
               cp "$branch/ui-kit/"*.css "$dest/ui-kit/"
             fi
+            # Publish a branch-local 3D preview only when it exists.
+            if [ -d "$branch/world-lab" ]; then
+              mkdir -p "$dest/world-lab"
+              cp "$branch/world-lab/"*.html "$dest/world-lab/"
+              cp "$branch/world-lab/"*.mjs "$dest/world-lab/"
+              cp "$branch/world-lab/"*.css "$dest/world-lab/"
+            fi
             # Offline assets are per-environment, like the saved game itself.
             for asset in sw.js manifest.webmanifest icon.svg; do
               if [ -f "$branch/$asset" ]; then cp "$branch/$asset" "$dest/$asset"; fi
