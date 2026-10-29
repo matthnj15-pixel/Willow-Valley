@@ -72,3 +72,44 @@ test("WORLD-PLAY-UI-04: 3D zoning and road tools are accessible in the main game
  await expect(page.locator("#roadControls")).toBeVisible();
  await expect(page.locator("#game3D")).toBeVisible();
 });
+
+test("WORLD-PLAY-UI-05: reopen Save Slot 2 3D map after switching from Slot 1",async({page})=>{
+ const errors=[];page.on("pageerror",e=>errors.push(e.message));
+ await page.goto("/ui-kit/world-lab.html");
+ await page.locator("#size").selectOption("large");
+ await page.locator("#profile").selectOption("pastoral");
+ await page.locator("#seed").fill("SLOT-2-REOPEN-3D");
+ await page.locator("#settlementSlot").selectOption("2");
+ await page.locator("#foundSettlement").click();
+ await expect(page.locator("#stage")).toHaveClass(/is-3d/);
+ await expect(page.locator("#terrainLoad")).toBeHidden({timeout:20000});
+ const before=await page.evaluate(()=>localStorage.getItem("willow-valley:dev:v1:slot:2"));
+ await page.locator("#menuBtn").click();
+ await page.getByRole("button",{name:/Manage 3 settlement slots/}).click();
+ await page.getByRole("button",{name:/Slot 1 .* Empty/}).click();
+ await expect(page.locator("#stage")).toHaveClass(/is-3d/);
+ await page.locator("#menuBtn").click();
+ await page.getByRole("button",{name:/Manage 3 settlement slots/}).click();
+ await page.getByRole("button",{name:/Slot 2 .* SLOT-2-REOPEN-3D/}).click();
+ await expect(page.locator("#stage")).toHaveClass(/is-3d/);
+ await expect(page.locator("#terrainLoad")).toBeHidden({timeout:20000});
+ await page.reload();
+ await expect(page.locator("#stage")).toHaveClass(/is-3d/);
+ await expect(page.locator("#terrainLoad")).toBeHidden({timeout:20000});
+ const after=await page.evaluate(()=>localStorage.getItem("willow-valley:dev:v1:slot:2"));
+ expect(JSON.parse(after).state).toEqual(JSON.parse(before).state);
+ expect(errors).toEqual([]);
+});
+test("WORLD-PLAY-UI-06: WebGL failure offers a lightweight retry without changing Slot 2",async({page})=>{
+ await page.goto("/?preview=1");
+ await expect(page.locator("#terrainLoad")).toBeHidden({timeout:20000});
+ const before=await page.evaluate(()=>localStorage.getItem("willow-valley:dev:v1:slot:1"));
+ await page.locator("#game3D").evaluate(canvas=>
+  canvas.dispatchEvent(new Event("webglcontextlost",{cancelable:true})));
+ await expect(page.locator("#terrainLoad")).toBeVisible();
+ await expect(page.locator("#retry3D")).toBeVisible();
+ await page.locator("#retry3D").click();
+ await expect(page.locator("#terrainLoad")).toBeHidden({timeout:20000});
+ expect(await page.evaluate(()=>localStorage.getItem("willow-valley:dev:v1:slot:1"))).toBe(before);
+ await expect(page.locator("#game3D")).toBeVisible();
+});
