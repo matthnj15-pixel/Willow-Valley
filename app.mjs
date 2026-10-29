@@ -5,7 +5,7 @@ import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue
 import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,SNAP_RADIUS} from "./road-network.mjs";
 import {radialCurveGesture} from "./road-gesture.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
-import {ZONE_TYPES,BRUSH_RADIUS,paintZones,elevationAt,slopeAt,viableLotEstimate} from "./organic-world.mjs";
+import {ZONE_TYPES,BRUSH_RADIUS,paintZones,zoneAt,elevationAt,slopeAt,viableLotEstimate} from "./organic-world.mjs";
 import {terrainContours} from "./terrain-contours.mjs";
 import {zoneSilhouette} from "./zone-silhouette.mjs";
 import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
@@ -26,7 +26,7 @@ let slotName=restored.ok?restored.active.name:"Unsaved settlement";
 let journal=restored.ok?restored.active.events:[];
 ensureGraph(game);
 let mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
-let zoneType="residential",zoneStrokes=[],zoneRadius=BRUSH_RADIUS;
+let zoneType="residential",lastZonePaintType="residential",zoneStrokes=[],zoneRadius=BRUSH_RADIUS;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
 function save(){const result=saveSlot(localStorage,SAVE_KEY,activeSlot,game,journal,validState,slotName);
  if(!result.ok)notify(result.reason);return result.ok;}
@@ -44,7 +44,7 @@ function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;sel
  $("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",
   road:"Roads · tap for straight; hold and drag to shape a fixed node",
   build:"Construction · tap clear ground to place",
-  zone:"Paint "+zoneType+" · one finger paints · two fingers zoom"}[next];
+  zone:"Paint "+zoneType+" · one finger paints · two fingers pan and zoom"}[next];
  updateRoadInfo();updateZoneInfo();renderMap();}
 function updateZoneInfo(){
  $("zoneInfo").textContent=zoneType.charAt(0).toUpperCase()+zoneType.slice(1)+
@@ -52,6 +52,9 @@ function updateZoneInfo(){
  $("zoneType").value=zoneType;$("zoneRadius").value=String(zoneRadius);
  $("zoneRadiusValue").textContent=String(zoneRadius);
  $("zoneCommit").disabled=!zoneStrokes.length;
+ $("zoneEraser").classList.toggle("active",zoneType==="erase");
+ $("zoneEraser").setAttribute("aria-pressed",String(zoneType==="erase"));
+ $("zoneEraser").textContent=zoneType==="erase"?"Resume brush":"Eraser";
 }
 function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
  $("roadInfo").textContent=draft.anchors.length<2?"Tap an existing node to branch; touch and hold a point to shape its curve.":draft.anchors.length+" nodes · "+num(cost)+" gold · held nodes stay fixed; finger shapes curve.";
@@ -67,7 +70,7 @@ function roadGraphic(parent,pts,preview=false,explicitPath=null){if(pts.length<2
  parent.append(node("path",{d,fill:"none",stroke:preview?"#fbd18d":"#d4c395","stroke-width":preview?15:19,"stroke-linejoin":"round","stroke-linecap":"round","stroke-dasharray":preview?"15 12":"none"}));}
 const CONTOURS=terrainContours();
 const ZONE_COLORS={residential:"#d7a669",commercial:"#81a7ae",farmland:"#b4a650",preserve:"#6e9a67",erase:"#c85a4b"};
-const zoneCache={source:null,shapes:[]};
+const zoneCache={source:null,roads:null,shapes:[]};
 function zoneShape(d,type,preview=false){
  if(!d)return;
  svg.append(node("path",{d,fill:ZONE_COLORS[type]||ZONE_COLORS.residential,
@@ -78,18 +81,27 @@ function zoneShape(d,type,preview=false){
   "class":preview?"zone-pending":"zone-committed"}));
 }
 function drawZones(){
- if(zoneCache.source!==game.zones){
+ if(zoneCache.source!==game.zones||zoneCache.roads!==game.roads){
   const groups=new Map();
   for(const z of game.zones||[]){
+   if(z.type==="erase")continue;
    if(!groups.has(z.type))groups.set(z.type,[]);
    groups.get(z.type).push(z);
   }
-  zoneCache.shapes=[...groups].map(([type,zones])=>({type,d:zoneSilhouette(zones)}));
-  zoneCache.source=game.zones;
+  zoneCache.shapes=[...groups].map(([type,zones])=>({
+   type,d:zoneSilhouette(zones,5,p=>zoneAt(game,p)===type)
+  }));
+  zoneCache.source=game.zones;zoneCache.roads=game.roads;
  }
  for(const shape of zoneCache.shapes)zoneShape(shape.d,shape.type);
- if(mode==="zone"&&zoneStrokes.length)
-  zoneShape(zoneSilhouette(zoneStrokes.map(points=>({points,radius:zoneRadius}))),zoneType,true);
+ if(mode!=="zone"||!zoneStrokes.length)return;
+ const pending=zoneStrokes.map(points=>({points,radius:zoneRadius,type:zoneType}));
+ if(zoneType==="erase"){
+  zoneShape(zoneSilhouette(pending,5,p=>zoneAt(game,p)!==null),zoneType,true);
+ }else{
+  const proposed={...game,zones:[...(game.zones||[]),...pending]};
+  zoneShape(zoneSilhouette(pending,5,p=>zoneAt(proposed,p)===zoneType),zoneType,true);
+ }
 }
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
 function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rect.height)return;
@@ -203,6 +215,10 @@ svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".
 function seededAngle(i){return seedValue(i+60)*160;}
 function zoom(factor){camera.scale=clamp(camera.scale*factor,.75,3.8);renderMap();}
 function mapPoint(clientX,clientY){const r=svg.getBoundingClientRect(),w=920/camera.scale,h=w*(r.height/r.width);return{x:camera.cx-w/2+(clientX-r.left)/r.width*w,y:camera.cy-h/2+(clientY-r.top)/r.height*h};}
+function chooseZoneType(type){
+ if(type!=="erase")lastZonePaintType=type;
+ zoneType=type;zoneStrokes=[];setMode("zone");
+}
 function refresh(){setStats();renderMap();updateRoadInfo();save();}
 function openSheet(title,content){$("sheetTitle").textContent=title;const body=$("sheetBody");body.replaceChildren();if(typeof content==="string")body.innerHTML=content;else body.append(content);$("sheet").hidden=false;$("backdrop").hidden=false;}
 function closeSheet(){$("sheet").hidden=true;$("backdrop").hidden=true;}
@@ -495,7 +511,8 @@ $("zoomIn").onclick=()=>zoom(1.32);$("zoomOut").onclick=()=>zoom(1/1.32);
 $("exploreBtn").onclick=()=>setMode("explore");
 $("roadsBtn").onclick=()=>setMode("road");
 $("zoneBtn").onclick=()=>{zoneStrokes=[];setMode("zone");};
-$("zoneType").onchange=e=>{zoneType=e.target.value;zoneStrokes=[];setMode("zone");};
+$("zoneType").onchange=e=>chooseZoneType(e.target.value);
+$("zoneEraser").onclick=()=>chooseZoneType(zoneType==="erase"?lastZonePaintType:"erase");
 $("zoneRadius").oninput=e=>{zoneRadius=Number(e.target.value);updateZoneInfo();renderMap();};
 $("buildBtn").onclick=()=>buildPanel();
 $("menuBtn").onclick=()=>menuPanel();
