@@ -17,6 +17,27 @@ export const KENNEY_MODELS=Object.freeze({
  cliff:HOST+"nature-kit/cliff-rock.glb",
  beach:HOST+"nature-kit/platform-beach.glb"
 });
+// Shared Willow Valley art direction: natural grass, cool slate-blue water
+// and warm-grey rock. Kenney geometry and material detail are preserved, but
+// saturated demo-kit hues must never recolor the entire terrain.
+export const WILLOW_PALETTE=Object.freeze({
+ land:[.393,.535,.358],water:[.290,.510,.604],stone:[.493,.483,.443],
+ cliff:[.493,.483,.443],rock:[.510,.490,.446],
+ ground:[.410,.548,.372],bank:[.55,.553,.471],
+ beach:[.675,.645,.526],waterTile:[.31,.527,.615],
+ oak:[.30,.485,.345],pine:[.25,.426,.325],birch:[.345,.520,.385],
+ shrub:[.39,.53,.34],tower:[.58,.56,.49]
+});
+// Retain light/dark authored detail while correcting the raw color cast.
+export function harmonizeKenneyColor(type,source){
+ const raw=source.map(v=>Math.max(0,Math.min(1,Number(v)||0)));
+ const tree=["oak","pine","birch","shrub"].includes(type);
+ const bark=tree&&raw[0]>raw[1]*1.065&&raw[0]>raw[2]*1.18;
+ const target=bark?[.48,.365,.265]:(WILLOW_PALETTE[type]||WILLOW_PALETTE.rock);
+ const luminance=.25*raw[0]+.62*raw[1]+.13*raw[2];
+ const detail=Math.max(.78,Math.min(1.13,.79+luminance*.48));
+ return target.map(v=>Math.min(.91,Math.max(.03,v*detail)));
+}
 const loaded=new Map();
 function parseGLB(buffer){
  const v=new DataView(buffer);
@@ -148,7 +169,7 @@ export function instantiateKenney(world,models,{showReference=false}={}){
    const nx=data[i+6],ny=data[i+7],nz=data[i+8];
    output.push(x-world.width/2+px*cs-pz*sn,base+py,
     z-world.depth/2+px*sn+pz*cs,
-    data[i+3],data[i+4],data[i+5],
+    ...harmonizeKenneyColor(name,[data[i+3],data[i+4],data[i+5]]),
     nx*cs-nz*sn,ny,nx*sn+nz*cs);
   }
  }
@@ -242,16 +263,23 @@ export function instantiateKenneyTerrain(world,models){
 }
 
 export function kenneyLandscapePalette(models){
- const average=model=>{
-  if(!model)return null;
-  const data=model.vertices,step=Math.max(9,Math.floor(data.length/10000)*9);
-  const sum=[0,0,0];let count=0;
-  for(let i=0;i<data.length;i+=step){
-   for(let j=0;j<3;j++)sum[j]+=data[i+3+j];
+ // The old averaging algorithm turned the entire world cyan/orange. Keep
+ // ground and water hues locked, but use the kits' average luminance to make
+ // a subtle lightness adjustment when each mesh is available.
+ const brightness=model=>{
+  if(!model)return 1;
+  const data=model.vertices,stride=Math.max(9,Math.floor(data.length/5000)*9);
+  let total=0,count=0;
+  for(let i=0;i<data.length;i+=stride){
+   total+=.25*data[i+3]+.62*data[i+4]+.13*data[i+5];
    count++;
   }
-  return sum.map(v=>Math.max(.07,Math.min(.9,v/count)));
+  const mean=count?total/count:.5;
+  return Math.max(.965,Math.min(1.035,1+(mean-.5)*.085));
  };
- return{land:average(models.ground),water:average(models.waterTile),
-  stone:average(models.cliff)};
+ return{
+  land:WILLOW_PALETTE.land.map(v=>v*brightness(models.ground)),
+  water:WILLOW_PALETTE.water.map(v=>v*brightness(models.waterTile)),
+  stone:WILLOW_PALETTE.stone.map(v=>v*brightness(models.cliff))
+ };
 }
