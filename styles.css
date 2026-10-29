@@ -322,3 +322,14 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
  .stage.is-zoning .zone-controls{top:39px;max-height:calc(100% - 45px);padding:7px;gap:5px}
  .stage.is-zoning .zone-controls button{min-height:39px}
 }
+
+/* The zoning palette is a separate flex row between map and report. Never
+   float it over the buildable terrain: every visible pixel remains tappable. */
+#app > #zoneControls{position:relative;inset:auto;bottom:auto;top:auto;left:auto;right:auto;
+ flex:none;z-index:2;display:grid;gap:5px;margin:0;padding:7px 10px 8px;
+ border-radius:0;border-left:0;border-right:0;box-shadow:none;max-height:none;overflow:visible}
+#app > #zoneControls .zone-settings{gap:9px}
+#app > #zoneControls .zone-settings select{min-height:35px}
+#app > #zoneControls .zone-tool-picker button{min-height:40px}
+#app > #zoneControls .zone-actions button{min-height:40px}
+#app > #zoneControls #zoneInfo{font-size:11px;min-height:14px}
