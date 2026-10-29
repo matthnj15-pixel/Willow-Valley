@@ -104,10 +104,25 @@ export function makeRoadIntersection(s,id,t){
 export function accessibleRoads(s){return s.roadGraph?graphLines(s.roadGraph,true):s.roads;}
 // Every structure requires access. Footpaths support some pedestrians but
 // do not substitute for built roads needed by industry.
+// Follow a new cottage's lane from its exterior parcel entrance to the actual
+// connected collector, including established intermediate lanes.
+function laneReachesRoad(s,lane,connected,visited=new Set()){
+ if(visited.has(lane)||!Array.isArray(lane.points)||lane.points.length<2)return false;
+ visited.add(lane);
+ const end=lane.points.at(-1);
+ if(lane.connectsTo==="road")return nearestRoad(end,connected)<=24;
+ if(lane.connectsTo!=="lane")return false;
+ return (s.localLanes||[]).some(other=>other!==lane&&Array.isArray(other.points)&&
+  nearestRoad(end,[other.points])<=16&&laneReachesRoad(s,other,connected,visited));
+}
 export function structureAccess(s,p){
  const connected=accessibleRoads(s);
  if(nearestRoad(p,connected)<=125)return"road";
  const trails=visibleDesirePaths(s).filter(t=>t.complete);
+ const ownLane=(s.localLanes||[]).find(l=>Number.isFinite(l.houseX)&&Number.isFinite(l.houseY)&&
+  distance(p,{x:l.houseX,y:l.houseY})<=3);
+ if(ownLane)return laneReachesRoad(s,ownLane,connected)?"road":"footpath";
+ // Preserve legacy saves with proximity-only pedestrian tracks.
  if((s.localLanes||[]).some(l=>nearestRoad(p,[l.points])<=22))return"footpath";
  if(!trails.length)return"none";
  const nearTrail=nearestRoad(p,trails.map(t=>[t.from,t.to]))<=66;

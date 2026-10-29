@@ -7,6 +7,7 @@ import {radialCurveGesture} from "./road-gesture.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {ZONE_TYPES,BRUSH_RADIUS,paintZones,elevationAt,slopeAt,viableLotEstimate} from "./organic-world.mjs";
 import {terrainContours} from "./terrain-contours.mjs";
+import {zoneSilhouette} from "./zone-silhouette.mjs";
 import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
 mountResourceBar($("resourceBar"),[
@@ -37,7 +38,7 @@ function downloadJSON(data,filename){const blob=new Blob([JSON.stringify(data,nu
 function num(v){return Math.round(v).toLocaleString();}
 function notify(message){renderGameToast($("toast"),message);clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").hidden=true,3300);}
 function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;selectedBuild=null;
- for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"})){
+ for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn",zone:"zoneBtn"})){
   $(id).classList.toggle("active",m===next);$(id).setAttribute("aria-pressed",String(m===next));}
  $("roadControls").hidden=next!=="road";$("zoneControls").hidden=next!=="zone";
  $("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",
@@ -45,10 +46,13 @@ function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;sel
   build:"Construction · tap clear ground to place",
   zone:"Paint "+zoneType+" · one finger paints · two fingers zoom"}[next];
  updateRoadInfo();updateZoneInfo();renderMap();}
-function updateZoneInfo(){$("zoneInfo").textContent=zoneType.charAt(0).toUpperCase()+zoneType.slice(1)+
- " · "+zoneStrokes.length+" stroke(s) · "+(zoneType==="erase"?"remove painted zones":"brush radius "+zoneRadius);
- $("zoneCommit").disabled=!zoneStrokes.length;}
-
+function updateZoneInfo(){
+ $("zoneInfo").textContent=zoneType.charAt(0).toUpperCase()+zoneType.slice(1)+
+  " · "+zoneStrokes.length+" stroke(s) · "+(zoneType==="erase"?"erase painted land":"paint a connected area");
+ $("zoneType").value=zoneType;$("zoneRadius").value=String(zoneRadius);
+ $("zoneRadiusValue").textContent=String(zoneRadius);
+ $("zoneCommit").disabled=!zoneStrokes.length;
+}
 function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
  $("roadInfo").textContent=draft.anchors.length<2?"Tap an existing node to branch; touch and hold a point to shape its curve.":draft.anchors.length+" nodes · "+num(cost)+" gold · held nodes stay fixed; finger shapes curve.";
  $("confirmRoad").disabled=draft.anchors.length<2;}
@@ -63,17 +67,29 @@ function roadGraphic(parent,pts,preview=false,explicitPath=null){if(pts.length<2
  parent.append(node("path",{d,fill:"none",stroke:preview?"#fbd18d":"#d4c395","stroke-width":preview?15:19,"stroke-linejoin":"round","stroke-linecap":"round","stroke-dasharray":preview?"15 12":"none"}));}
 const CONTOURS=terrainContours();
 const ZONE_COLORS={residential:"#d7a669",commercial:"#81a7ae",farmland:"#b4a650",preserve:"#6e9a67",erase:"#c85a4b"};
-function drawZoneStrokes(strokes,type,radius,preview=false){
- const shade=ZONE_COLORS[type]||ZONE_COLORS.residential;
- for(const line of strokes)for(const p of line){
-  svg.append(node("circle",{cx:p.x,cy:p.y,r:radius,fill:shade,
-   opacity:preview?".35":".20",stroke:preview?"#fff5d6":"none",
-   "stroke-width":preview?1.5:0,"class":preview?"zone-pending":"zone-committed"}));
- }
+const zoneCache={source:null,shapes:[]};
+function zoneShape(d,type,preview=false){
+ if(!d)return;
+ svg.append(node("path",{d,fill:ZONE_COLORS[type]||ZONE_COLORS.residential,
+  "fill-rule":"evenodd","fill-opacity":preview?".36":".24",
+  stroke:preview?"#fff4d3":"#587354","stroke-opacity":preview?".98":".75",
+  "stroke-width":preview?2.2:1.7,"stroke-dasharray":"7 6",
+  "stroke-linecap":"round","stroke-linejoin":"round",
+  "class":preview?"zone-pending":"zone-committed"}));
 }
 function drawZones(){
- for(const z of game.zones||[])drawZoneStrokes([z.points],z.type,z.radius);
- if(mode==="zone")drawZoneStrokes(zoneStrokes,zoneType,zoneRadius,true);
+ if(zoneCache.source!==game.zones){
+  const groups=new Map();
+  for(const z of game.zones||[]){
+   if(!groups.has(z.type))groups.set(z.type,[]);
+   groups.get(z.type).push(z);
+  }
+  zoneCache.shapes=[...groups].map(([type,zones])=>({type,d:zoneSilhouette(zones)}));
+  zoneCache.source=game.zones;
+ }
+ for(const shape of zoneCache.shapes)zoneShape(shape.d,shape.type);
+ if(mode==="zone"&&zoneStrokes.length)
+  zoneShape(zoneSilhouette(zoneStrokes.map(points=>({points,radius:zoneRadius}))),zoneType,true);
 }
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
 function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rect.height)return;
@@ -169,7 +185,9 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
    "stroke-dasharray":"7 5"}));
  }
 svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".25"}));
- const homeLayer=node("g",{transform:h.orientation?"rotate("+Math.round(h.orientation*180/Math.PI)+" "+h.x+" "+h.y+")":""});svg.append(homeLayer);
+ // Keep 2D cottage roofs upright while retaining true lot orientation for 3D.
+ const tilt=clamp(Math.atan(Math.tan(h.orientation||0)),-Math.PI/8,Math.PI/8);
+ const homeLayer=node("g",{transform:"rotate("+Math.round(tilt*180/Math.PI)+" "+h.x+" "+h.y+")"});svg.append(homeLayer);
  homeLayer.append(node("rect",{x:h.x-11,y:h.y-9,width:22,height:22,rx:2,fill:"#f2e2bc",stroke:access==="road"?"#aa9a78":access==="footpath"?"#e6a34d":"#c54f43","stroke-width":access==="road"?1.3:4}));
  homeLayer.append(node("path",{d:"M "+(h.x-16)+" "+(h.y-10)+" L "+h.x+" "+(h.y-23)+" L "+(h.x+16)+" "+(h.y-10)+" Z",fill:"#a67353",stroke:"#7e654b","stroke-width":1.4}));
  homeLayer.append(node("rect",{x:h.x+2,y:h.y,width:4,height:13,fill:"#826c52"}));
@@ -476,6 +494,9 @@ svg.addEventListener("pointercancel",cancelPointer);
 $("zoomIn").onclick=()=>zoom(1.32);$("zoomOut").onclick=()=>zoom(1/1.32);
 $("exploreBtn").onclick=()=>setMode("explore");
 $("roadsBtn").onclick=()=>setMode("road");
+$("zoneBtn").onclick=()=>{zoneStrokes=[];setMode("zone");};
+$("zoneType").onchange=e=>{zoneType=e.target.value;zoneStrokes=[];setMode("zone");};
+$("zoneRadius").oninput=e=>{zoneRadius=Number(e.target.value);updateZoneInfo();renderMap();};
 $("buildBtn").onclick=()=>buildPanel();
 $("menuBtn").onclick=()=>menuPanel();
 $("historyBtn").onclick=()=>historyPanel();
