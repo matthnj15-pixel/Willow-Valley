@@ -79,10 +79,11 @@ export function distanceToRoad(p,roads){
  return best;
 }
 export function candidateParcel(center,key){
- const orientation=rnd(key+2)*Math.PI*2,rx=34+rnd(key+3)*15,ry=35+rnd(key+4)*18;
- const vertices=Array.from({length:7},(_,i)=>{
-  const a=orientation+i*Math.PI*2/7;
-  const variation=.90+rnd(key+11+i*19)*.20;
+ const orientation=rnd(key+2)*Math.PI*2,rx=31+rnd(key+3)*27,ry=30+rnd(key+4)*26;
+ const sides=5+Math.floor(rnd(key+9)*4);
+ const vertices=Array.from({length:sides},(_,i)=>{
+  const a=orientation+i*Math.PI*2/sides;
+  const variation=.80+rnd(key+11+i*19)*.42;
   const vx=Math.cos(a)*rx*variation,vy=Math.sin(a)*ry*variation;
   return{x:Math.round(center.x+vx),y:Math.round(center.y+vy)};
  });
@@ -103,7 +104,16 @@ function intersects(a,b){
 }
 export function parcelFits(s,p,parcel){
  if(!isInZone(s,p,"residential")||!terrainSuitable(p,15))return false;
- for(const v of parcel.vertices)if(!isInZone(s,v,"residential")||!terrainSuitable(v,2))return false;
+ // Check the entire perimeter. Checking vertices alone lets long polygon
+ // edges bridge lakes, steep ground or unpainted parcels.
+ for(let i=0;i<parcel.vertices.length;i++){
+  const a=parcel.vertices[i],b=parcel.vertices[(i+1)%parcel.vertices.length],d=dist(a,b);
+  for(let t=0;t<=Math.ceil(d/8);t++){
+   const q={x:a.x+(b.x-a.x)*t/Math.max(1,Math.ceil(d/8)),
+    y:a.y+(b.y-a.y)*t/Math.max(1,Math.ceil(d/8))};
+   if(!isInZone(s,q,"residential")||!terrainSuitable(q,2))return false;
+  }
+ }
  if((s.buildings||[]).some(b=>dist(p,b)<Math.max(parcel.rx,parcel.ry)+39))return false;
  for(const house of s.houses||[]){
   const old=house.parcel?.vertices;
@@ -112,40 +122,98 @@ export function parcelFits(s,p,parcel){
  }
  return true;
 }
-function routeSafe(points){
- for(let k=1;k<points.length;k++){
-  const a=points[k-1],b=points[k];
-  for(let j=1;j<=14;j++){
-   const q={x:a.x+(b.x-a.x)*j/14,y:a.y+(b.y-a.y)*j/14};
-   if(!pointOK(q)||Math.abs(q.x-riverX(q.y))<68||slopeAt(q.x,q.y)>.55)return false;
-  }
+// Pedestrian routes follow a fixed, reproducible terrain grid. The search cost
+// affects the chosen path, not turn timing or any renderer frame rate.
+const FOOT_STEP=15;
+export function canWalkAt(s,p){
+ if(!pointOK(p)||p.x<8||p.y<8||p.x>WIDTH-8||p.y>HEIGHT-8)return false;
+ if(Math.abs(p.x-riverX(p.y))<72||slopeAt(p.x,p.y)>.55)return false;
+ if(zoneAt(s,p)==="preserve")return false;
+ if(TREES.some(tree=>dist(p,tree)<tree.r+4))return false;
+ if((s.buildings||[]).some(b=>dist(p,b)<28))return false;
+ for(const h of s.houses||[]){
+  if(dist(p,h)<24)return false;
+  if(h.parcel?.vertices&&insidePoly(p,h.parcel.vertices))return false;
  }
  return true;
 }
-function accessLane(p,nearest,key){
- const end=nearest.point;
- for(let k=0;k<7;k++){
-  const t=(k===0?0:(k%2?1:-1)*8*Math.ceil(k/2)),mid={x:(p.x+end.x)/2,y:(p.y+end.y)/2};
-  const delta={x:end.x-p.x,y:end.y-p.y},length=Math.hypot(delta.x,delta.y)||1;
-  const elbow={x:mid.x-delta.y/length*t,y:mid.y+delta.x/length*t};
-  const points=[{x:p.x,y:p.y},elbow,{x:end.x,y:end.y}];
-  if(routeSafe(points))return points.map(q=>({x:Math.round(q.x),y:Math.round(q.y)}));
+function walkSegment(s,a,b){
+ const len=dist(a,b);
+ for(let i=0;i<=Math.ceil(len/7);i++){
+  const t=i/Math.max(1,Math.ceil(len/7));
+  const p={x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t};
+  if(!canWalkAt(s,p))return false;
  }
- return null;
+ return Math.abs(elevationAt(a.x,a.y)-elevationAt(b.x,b.y))/Math.max(len,1)<=.55;
+}
+function smoothWalk(s,points){
+ const out=[points[0]];
+ for(let i=0;i<points.length-1;){
+  let j=points.length-1;
+  while(j>i+1&&!walkSegment(s,points[i],points[j]))j--;
+  if(!walkSegment(s,points[i],points[j]))return null;
+  out.push(points[j]);i=j;
+ }
+ return out.map(p=>({x:Math.round(p.x),y:Math.round(p.y)}));
+}
+// The search is bounded near the trip, avoids diagonal corner-cutting and
+// never smooths a detour back through an obstacle. Returns null if unsafe.
+export function routeFootpath(s,start,end){
+ if(!canWalkAt(s,start)||!canWalkAt(s,end))return null;
+ if(walkSegment(s,start,end))return smoothWalk(s,[start,end]);
+ const buffer=Math.max(110,Math.min(250,dist(start,end)*.55));
+ const minX=Math.max(0,Math.min(start.x,end.x)-buffer),maxX=Math.min(WIDTH,Math.max(start.x,end.x)+buffer);
+ const minY=Math.max(0,Math.min(start.y,end.y)-buffer),maxY=Math.min(HEIGHT,Math.max(start.y,end.y)+buffer);
+ const sx=Math.round(start.x/FOOT_STEP),sy=Math.round(start.y/FOOT_STEP),root=sx+","+sy;
+ const open=[root],nodes=new Map([[root,{x:start.x,y:start.y,g:0,
+  f:dist(start,end),parent:null,gx:sx,gy:sy}]]),closed=new Set();
+ const offsets=[[1,0],[0,1],[-1,0],[0,-1],[1,1],[-1,1],[-1,-1],[1,-1]];
+ let found=null;
+ for(let expanded=0;open.length&&expanded<2600;expanded++){
+  let best=0;
+  for(let i=1;i<open.length;i++){
+   const a=nodes.get(open[i]),b=nodes.get(open[best]);
+   if(a.f<b.f-1e-8||Math.abs(a.f-b.f)<1e-8&&open[i]<open[best])best=i;
+  }
+  const id=open.splice(best,1)[0],current=nodes.get(id);
+  if(closed.has(id))continue;
+  closed.add(id);
+  if(dist(current,end)<=FOOT_STEP*2&&walkSegment(s,current,end)){found=id;break;}
+  for(const [dx,dy]of offsets){
+   const gx=current.gx+dx,gy=current.gy+dy,key=gx+","+gy;
+   if(closed.has(key))continue;
+   const next={x:gx*FOOT_STEP,y:gy*FOOT_STEP};
+   if(next.x<minX||next.x>maxX||next.y<minY||next.y>maxY)continue;
+   if(!walkSegment(s,current,next))continue;
+   const g=current.g+dist(current,next)+Math.max(0,elevationAt(next.x,next.y)-elevationAt(current.x,current.y))*.5;
+   if(g>=(nodes.get(key)?.g??Infinity))continue;
+   nodes.set(key,{...next,g,f:g+dist(next,end),parent:id,gx,gy});
+   open.push(key);
+  }
+ }
+ if(!found)return null;
+ const path=[end];let key=found;
+ while(key!==null){const step=nodes.get(key);path.push({x:step.x,y:step.y});key=step.parent;}
+ path.reverse();
+ return smoothWalk(s,path);
+}
+function accessLane(s,p,nearest){
+ const result=routeFootpath(s,p,nearest.point);
+ return result&&result.length<=24?result:null;
 }
 export function findCottageSite(s){
  const residential=(s.zones||[]).filter(z=>z.type==="residential");
  let attempt=0;
  for(const zone of residential)for(const point of zone.points){
-  for(let i=0;i<55;i++){
+  for(let i=0;i<72;i++){
    const key=s.turn*991+zone.id*187+attempt++*43;
-   const angle=rnd(key+1)*Math.PI*2,spread=zone.radius*.23*rnd(key+5);
+   const angle=rnd(key+1)*Math.PI*2,spread=zone.radius*.88*Math.sqrt(rnd(key+5));
    const p={x:Math.round(point.x+Math.cos(angle)*spread),y:Math.round(point.y+Math.sin(angle)*spread)};
    const parcel=candidateParcel(p,key);
    if(!parcelFits(s,p,parcel))continue;
    const road=distanceToRoad(p,s.roads);
    if(!road||road.distance>165)continue;
-   const lane=accessLane(p,road,key);
+   const lane=accessLane(s,p,road);
    if(!lane)continue;
    return{house:{x:p.x,y:p.y,orientation:parcel.orientation,
     parcel:{vertices:parcel.vertices,orientation:parcel.orientation}},
