@@ -1,7 +1,7 @@
 import {test,expect} from "@playwright/test";
 
 test("WV-SAVE-001: create independent settlement slots, switch and resume after reload",async({page})=>{
- await page.goto("/");
+ await page.goto("/?legacy=1");
  await expect(page.locator("#calendar")).toContainText("Slot 1");
  await page.locator("#menuBtn").click();
  await page.getByRole("button",{name:"Manage 3 settlement slots"}).click();
@@ -27,7 +27,7 @@ test("WV-SAVE-001: create independent settlement slots, switch and resume after 
  expect(states.second.events.some(e=>e.type==="turn_resolved")).toBe(true);
 });
 test("WV-SAVE-002: on reload original legacy save is copied into Slot 1 and preserved",async({page})=>{
- await page.goto("/");
+ await page.goto("/?legacy=1");
  const old=await page.evaluate(()=>{
   const base="willow-valley:main:v1",slot=JSON.parse(localStorage.getItem(base+":slot:1"));
   slot.state.turn=24;slot.state.people=58;

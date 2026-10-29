@@ -2,6 +2,7 @@
 // Future footfall/terrain systems can replace these estimates without changing
 // the authored road graph.
 import {connectedEdgeIds,edgePoints,nodeAt} from "./road-network.mjs";
+import {routeFootpath} from "./organic-world.mjs";
 
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const lerp=(a,b,t)=>({x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t});
@@ -63,18 +64,46 @@ export function plannedDesirePaths(g){
 export function advanceDesirePaths(state){
  const targets=plannedDesirePaths(state.roadGraph),previous=state.desirePaths||[],trails=[];
  for(const target of targets){
+  let via=null;
+  if(state.worldOptions){
+   // Only real, terrain-traversable pedestrian paths may appear across the
+   // large 3D map. Direct lines across lakes or cliff walls are forbidden.
+   via=routeFootpath(state,target.from,target.to);
+   if(!via||via.length<2)continue;
+  }
   const old=previous.find(path=>path.nodeId===target.nodeId);
   const progress=old?Math.min(1,old.progress+0.28):0.28;
-  trails.push({...target,progress:Number(progress.toFixed(2))});
+  trails.push({...target,...(via?{via}:{}),progress:Number(progress.toFixed(2))});
  }
  state.desirePaths=trails;
  return trails;
 }
 export function visibleDesirePaths(state){
- return (state.desirePaths||[]).map(path=>({from:path.from,to:lerp(path.from,path.to,path.progress),complete:path.progress>=1,nodeId:path.nodeId}));
+ return (state.desirePaths||[]).map(path=>{
+  if(!Array.isArray(path.via)||path.via.length<2)
+   return{from:path.from,to:lerp(path.from,path.to,path.progress),
+    complete:path.progress>=1,nodeId:path.nodeId};
+  const segments=path.via.slice(1).map((p,i)=>({
+   a:path.via[i],b:p,length:distance(path.via[i],p)
+  }));
+  const total=segments.reduce((n,e)=>n+e.length,0);
+  let remaining=total*path.progress;
+  const visible=[path.via[0]];
+  for(const part of segments){
+   if(remaining<=0)break;
+   const t=Math.min(1,remaining/Math.max(.001,part.length));
+   visible.push(lerp(part.a,part.b,t));
+   remaining-=part.length;
+  }
+  return{from:visible[0],to:visible.at(-1),points:visible,
+   complete:path.progress>=1,nodeId:path.nodeId};
+ });
 }
-export function validDesirePaths(paths){
+export function validDesirePaths(paths,bounds={w:1200,h:900}){
+ const point=q=>q&&Number.isFinite(q.x)&&Number.isFinite(q.y)&&
+  q.x>=0&&q.x<=bounds.w&&q.y>=0&&q.y<=bounds.h;
  return paths===undefined||Array.isArray(paths)&&paths.length<=200&&paths.every(p=>
-  Number.isInteger(p.nodeId)&&[p.from,p.to].every(q=>q&&Number.isFinite(q.x)&&Number.isFinite(q.y)&&q.x>=0&&q.x<=1200&&q.y>=0&&q.y<=900)&&
+  Number.isInteger(p.nodeId)&&[p.from,p.to].every(point)&&
+  (p.via===undefined||Array.isArray(p.via)&&p.via.length>=2&&p.via.length<=180&&p.via.every(point))&&
   Number.isFinite(p.length)&&p.length>=0&&Number.isFinite(p.progress)&&p.progress>=0&&p.progress<=1);
 }

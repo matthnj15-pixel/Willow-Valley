@@ -23,7 +23,7 @@ const preview=page=>page.locator('#map path[stroke="#fbd18d"]');
 const saved=page=>page.evaluate(()=>{const base="willow-valley:main:v1";const n=Number(JSON.parse(localStorage.getItem(base+":active-slot"))||1);return JSON.parse(localStorage.getItem(base+":slot:"+n))?.state;});
 
 test.beforeEach(async({page})=>{
- await page.goto("/");
+ await page.goto("/?legacy=1");
  await page.locator("#roadsBtn").click();
 });
 test("WV-ROAD-002 AC-01: original road exposes persistent junction nodes",async({page})=>{

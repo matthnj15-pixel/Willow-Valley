@@ -53,3 +53,10 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 .asset-strip{display:flex;align-items:center;justify-content:space-between;gap:7px;flex-wrap:wrap;padding:10px 15px;border-top:1px solid #e2dfce;background:#faf6e8;color:#315348;font-size:11px}
 .asset-strip label{display:flex;align-items:center;gap:7px;font-weight:730}.asset-strip input{width:17px;height:17px;accent-color:#035352}.asset-strip #assetStatus{font-size:10px;color:#4b6f5a}
 @media(max-width:430px){.actions{grid-template-columns:1fr 1fr}.actions .primary{grid-column:1/-1}.asset-strip{align-items:start}}
+
+/* First-class 3D game creation occupies the full controls width. */
+.founding-controls{grid-column:1/-1;display:grid;grid-template-columns:auto minmax(90px,1fr) minmax(170px,2.1fr);align-items:center;gap:9px;padding:12px;background:#e3eadc;border:1px solid #c7d4bc;border-radius:12px}
+.founding-controls label{font-size:11px;font-weight:800;color:#23594d}
+.founding-controls select{min-width:0;min-height:45px;border:1px solid #c7c7ad;background:#fff9eb;color:#163b33;border-radius:9px;padding:7px;font-size:12px}
+.founding-controls button{min-height:48px;background:#035352;border:0;color:#fff9eb;border-radius:9px;font-weight:800;font-size:12px}
+@media(max-width:540px){.founding-controls{grid-template-columns:1fr 1fr}.founding-controls button{grid-column:1/-1}.founding-controls label{font-size:12px}}

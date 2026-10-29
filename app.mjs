@@ -2,12 +2,14 @@ import {IS_PREVIEW,FLAGS,SAVE_KEY} from "./config.mjs";
 import {worldBuilderUrl} from "./world-route.mjs";
 import {initializeSlots,listSlots,readSlot,newSlot,saveSlot,selectSlot,renameSlot,appendJournal,diagnostics} from "./save-slots.mjs";
 import {mountResourceBar,mountGameDock,createBuildRow,createButton,renderGameToast} from "./ui-components.mjs";
-import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance,housingOutlook} from "./simulation.mjs";
+import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,startWorldGame,configureWorldState,generatedWorld,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance,housingOutlook} from "./simulation.mjs";
 import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,SNAP_RADIUS} from "./road-network.mjs";
 import {radialCurveGesture} from "./road-gesture.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {ZONE_TYPES,BRUSH_RADIUS,paintZones,zoneAt,elevationAt,slopeAt,viableLotEstimate} from "./organic-world.mjs";
 import {terrainContours} from "./terrain-contours.mjs";
+import {DEFAULT_WORLD} from "./world-gen.mjs";
+import {mountWorld3D} from "./ui-kit/render-3d.mjs";
 import {zoneSilhouette} from "./zone-silhouette.mjs";
 import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
@@ -22,15 +24,37 @@ mountGameDock($("gameDock"));
 $("worldBuilderLink").hidden=!IS_PREVIEW;
 $("worldBuilderLink").href=worldBuilderUrl(location.href);
 
-const restored=initializeSlots(localStorage,SAVE_KEY,validState,startGame);
+const legacyRequested=new URLSearchParams(location.search).get("legacy")==="1";
+const freshGame=()=>IS_PREVIEW&&!legacyRequested?startWorldGame(DEFAULT_WORLD):startGame();
+const restored=initializeSlots(localStorage,SAVE_KEY,validState,freshGame);
 let activeSlot=restored.ok?restored.active.slot:1;
-let game=restored.ok?restored.active.state:startGame();
+let game=restored.ok?restored.active.state:freshGame();
 let slotName=restored.ok?restored.active.name:"Unsaved settlement";
 let journal=restored.ok?restored.active.events:[];
+configureWorldState(game);
 ensureGraph(game);
 let mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
 let zoneType="residential",lastZonePaintType="residential",zoneStrokes=[],zoneRadius=BRUSH_RADIUS;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
+let active3D=null,last3DKey="";
+function bootGameWorld(){
+ configureWorldState(game);
+ const world=generatedWorld(game);
+ if(active3D){active3D.dispose();active3D=null;}
+ last3DKey="";
+ $("stage").classList.toggle("is-3d",!!world);
+ $("game3D").hidden=!world;
+ if(!world)return;
+ try{
+  active3D=mountWorld3D($("game3D"),world,{interactive:false});
+  const center=game.houses?.[0]||{x:world.width/2,y:world.depth/2};
+  active3D.focusOn(center.x+115,center.y,Math.min(500,world.depth*.42));
+ }catch(error){
+  $("stage").classList.remove("is-3d");$("game3D").hidden=true;
+  notify("3D graphics unavailable. The fallback map remains playable.");
+  console.warn("3D scene failed",error);
+ }
+}
 function save(){const result=saveSlot(localStorage,SAVE_KEY,activeSlot,game,journal,validState,slotName);
  if(!result.ok)notify(result.reason);return result.ok;}
 function record(type,detail){journal=appendJournal(journal,type,game.turn,detail);save();}
@@ -107,7 +131,17 @@ function drawZones(){
  }
 }
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
-function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rect.height)return;
+function renderMap(){
+ if(active3D){
+  const key=JSON.stringify([game.turn,game.roads,game.houses,game.buildings,game.zones,
+   game.localLanes,draft.anchors,draft.controls,zoneStrokes,zoneType,zoneRadius]);
+  if(last3DKey!==key){
+   last3DKey=key;active3D.setSettlement(game,{draft,zoneStrokes,zoneType,zoneRadius});
+  }else active3D.render();
+  svg.setAttribute("viewBox",[0,0,WORLD.w,WORLD.h].join(" "));svg.replaceChildren();
+  return;
+ }
+ const rect=svg.getBoundingClientRect();if(!rect.width||!rect.height)return;
  const w=920/camera.scale,h=w*(rect.height/rect.width);
  camera.cx=w>=WORLD.w?WORLD.w/2:clamp(camera.cx,w/2,WORLD.w-w/2);
  camera.cy=h>=WORLD.h?WORLD.h/2:clamp(camera.cy,h/2,WORLD.h-h/2);
@@ -216,8 +250,13 @@ svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".
  const marker=node("circle",{cx:475,cy:286,r:3,fill:"#416347",opacity:".7"});svg.append(marker);
 }
 function seededAngle(i){return seedValue(i+60)*160;}
-function zoom(factor){camera.scale=clamp(camera.scale*factor,.75,3.8);renderMap();}
-function mapPoint(clientX,clientY){const r=svg.getBoundingClientRect(),w=920/camera.scale,h=w*(r.height/r.width);return{x:camera.cx-w/2+(clientX-r.left)/r.width*w,y:camera.cy-h/2+(clientY-r.top)/r.height*h};}
+function zoom(factor){if(active3D){active3D.zoomBy(1/factor);return;}
+ camera.scale=clamp(camera.scale*factor,.75,3.8);renderMap();}
+function mapPoint(clientX,clientY){
+ if(active3D)return active3D.screenToWorld(clientX,clientY)||{x:-1,y:-1};
+ const r=svg.getBoundingClientRect(),w=920/camera.scale,h=w*(r.height/r.width);
+ return{x:camera.cx-w/2+(clientX-r.left)/r.width*w,y:camera.cy-h/2+(clientY-r.top)/r.height*h};
+}
 function chooseZoneType(type){
  if(type!=="erase")lastZonePaintType=type;
  zoneType=type;zoneStrokes=[];setMode("zone");
@@ -268,7 +307,7 @@ function slotPanel(){const el=document.createElement("div");
    if(entry.slot===activeSlot&&entry.status==="ready"){closeSheet();return;}
    if(!save())return;
    if(entry.status==="empty"){
-    const created=newSlot(localStorage,SAVE_KEY,entry.slot,startGame(),validState);
+    const created=newSlot(localStorage,SAVE_KEY,entry.slot,freshGame(),validState);
     if(!created.ok){notify(created.reason);return;}
    }
    const chosen=readSlot(localStorage,SAVE_KEY,entry.slot,validState);
@@ -276,6 +315,7 @@ function slotPanel(){const el=document.createElement("div");
    const selected=selectSlot(localStorage,SAVE_KEY,entry.slot,validState);
    if(!selected.ok){notify(selected.reason);return;}
    activeSlot=entry.slot;game=chosen.state;slotName=chosen.name;journal=chosen.events;
+    bootGameWorld();
    ensureGraph(game);setMode("explore");closeSheet();refresh();notify("Opened "+slotName+".");
   });
  }
@@ -315,16 +355,22 @@ function menuPanel(){const el=document.createElement("div");
  }
  sheetButton(el,"Restart current settlement",()=>{
   if(!confirm("Replace only Slot "+activeSlot+"? Its current progress will be lost unless you export it first. Other slots are safe."))return;
-  const fresh=startGame(),created=newSlot(localStorage,SAVE_KEY,activeSlot,fresh,validState,slotName,{overwrite:true});
+  const fresh=freshGame(),created=newSlot(localStorage,SAVE_KEY,activeSlot,fresh,validState,slotName,{overwrite:true});
   if(!created.ok){notify(created.reason);return;}
   game=fresh;journal=readSlot(localStorage,SAVE_KEY,activeSlot,validState).events;
+   bootGameWorld();
   closeSheet();setMode("explore");refresh();notify("A new Willow Valley begins in Slot "+activeSlot+".");
  });
  el.append(textNode("p","All settlements and diagnostics remain offline on this device. Export files for backups or when reporting bugs.","note"));
  openSheet("Your settlement",el);}
 function historyPanel(){const el=document.createElement("div");el.append(textNode("p","Significant milestones and monthly decisions in the life of Willow Valley."));const list=document.createElement("ol");for(const message of game.logs.slice(0,25))list.append(textNode("li",message));el.append(list);openSheet("Valley history",el);}
 function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=structureAccess(game,item);const detail=item.kind==="house"?"Household access: "+(access==="road"?"Connected to the town road network.":access==="footpath"?"Only a walking desire path connects this home; services and tax revenue are limited.":"DISCONNECTED. The household cannot receive normal services or contribute full taxes."):"Structure access: "+(access==="road"?"Connected to the road network.":access==="footpath"?"Footpath access only. This does not support full service or deliveries.":"DISCONNECTED: no road service or industrial deliveries.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
-const roadPixelRadius=()=>{const r=svg.getBoundingClientRect();return HIT_RADIUS_PX*(920/camera.scale)/r.width;};
+const roadPixelRadius=()=>{
+ if(active3D){const r=svg.getBoundingClientRect(),center=mapPoint(r.left+r.width/2,r.top+r.height/2);
+  const other=mapPoint(r.left+r.width/2+HIT_RADIUS_PX,r.top+r.height/2);
+  return distance(center,other);}
+ const r=svg.getBoundingClientRect();return HIT_RADIUS_PX*(920/camera.scale)/r.width;
+};
 function nodePanel(n){
  const el=document.createElement("div");
  const attached=game.roadGraph.segments.filter(e=>e.a===n.id||e.b===n.id).length;
@@ -424,7 +470,7 @@ function downPointer(e){
    zoneStrokes.pop();updateZoneInfo();
   }
   const [a,b]=[...pointers.values()],midX=(a.x+b.x)/2,midY=(a.y+b.y)/2;
-  gesture={distance:distance(a,b),scale:camera.scale,anchor:mapPoint(midX,midY)};
+  gesture={distance:distance(a,b),scale:camera.scale,anchor:mapPoint(midX,midY),midX,midY};
  }else if(mode==="zone"){
    zoneStrokes.push([{x:Math.round(down.x),y:Math.round(down.y)}]);
    updateZoneInfo();renderMap();
@@ -443,7 +489,14 @@ function movePointer(e){
  if(pointers.size===2){
   const [a,b]=[...pointers.values()];
   if(gesture){
-   camera.scale=clamp(gesture.scale*distance(a,b)/Math.max(gesture.distance,10),.75,3.8);
+   if(active3D){
+     const midX=(a.x+b.x)/2,midY=(a.y+b.y)/2,nextDistance=distance(a,b);
+     active3D.zoomBy(gesture.distance/Math.max(10,nextDistance));
+     active3D.panBy(midX-gesture.midX,midY-gesture.midY);
+     gesture.distance=nextDistance;gesture.midX=midX;gesture.midY=midY;
+     renderMap();return;
+    }
+    camera.scale=clamp(gesture.scale*distance(a,b)/Math.max(gesture.distance,10),.75,3.8);
    const rect=svg.getBoundingClientRect(),w=920/camera.scale,h=w*rect.height/rect.width;
    const midX=(a.x+b.x)/2,midY=(a.y+b.y)/2;
    // Anchor the same world coordinate to the moving pinch centroid. This
@@ -485,7 +538,8 @@ function movePointer(e){
  if(travel>MOVE_SLOP_PX&&!p.holdReady){
    p.moved=true;clearHold(p);
    const rect=svg.getBoundingClientRect(),w=920/camera.scale;
-   camera.cx-=dx/rect.width*w;camera.cy-=dy/rect.width*w*(rect.height/rect.width);
+   if(active3D)active3D.panBy(dx,dy);
+    else {camera.cx-=dx/rect.width*w;camera.cy-=dy/rect.width*w*(rect.height/rect.width);}
    renderMap();
  }
 }
@@ -550,10 +604,10 @@ $("zoneCommit").onclick=()=>{
  notify(zoneType==="erase"?"Zoning erased.":"Zone committed. The town will respond when there is real demand.");
 };
 $("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents});record("turn_resolved","Residents "+result.populationDelta+"; food "+result.foodProduction+"; wood "+result.woodProduction+"; tools "+result.toolProduction+"; treasury "+result.balance);refresh();notify(monthLabel(game.turn)+": "+(result.populationDelta>=0?"+":"")+result.populationDelta+" residents, "+(result.balance>=0?"+":"")+result.balance+" gold.");};
-$("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;ensureGraph(game);record("save_imported","Imported user-provided save into slot "+activeSlot);closeSheet();refresh();notify("Save imported into Slot "+activeSlot+".");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
+$("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;bootGameWorld();ensureGraph(game);record("save_imported","Imported user-provided save into slot "+activeSlot);closeSheet();refresh();notify("Save imported into Slot "+activeSlot+".");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
 window.addEventListener("resize",renderMap);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet();});
-setStats();if(restored.warning)notify(restored.warning);if(!restored.ok)notify(restored.reason);else if(restored.migrated)notify("Your original settlement was safely copied into Slot 1.");save();requestAnimationFrame(renderMap);
+bootGameWorld();setStats();if(restored.warning)notify(restored.warning);if(!restored.ok)notify(restored.reason);else if(restored.migrated)notify("Your original settlement was safely copied into Slot 1.");save();requestAnimationFrame(renderMap);
 
 // Cache the complete game shell while connected, then play offline in flight mode.
 // A standalone downloaded HTML file skips the worker and uses its embedded assets.

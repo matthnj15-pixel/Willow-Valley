@@ -1,10 +1,11 @@
 // Persistent, editable road topology. Compatible with original v1 polygonal saves.
 // Each edge connects node IDs, with an optional quadratic curve control point.
 const BOUNDS={w:1200,h:900};
+export function setRoadBounds(w,h){BOUNDS.w=w;BOUNDS.h=h;}
 export const SNAP_RADIUS=22, CURVE_SAMPLES=14;
 export const nodeAt=(g,id)=>g.nodes.find(n=>n.id===id)||null;
 export const segmentAt=(g,id)=>g.segments.find(e=>e.id===id)||null;
-const pointOk=p=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=BOUNDS.w&&p.y>=0&&p.y<=BOUNDS.h;
+const pointOk=(p,bounds=BOUNDS)=>p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=bounds.w&&p.y>=0&&p.y<=bounds.h;
 const dist=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const lerp=(a,b,t)=>({x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t});
 export function quadraticPoint(a,c,b,t){return lerp(lerp(a,c,t),lerp(c,b,t),t);}
@@ -30,15 +31,15 @@ export function createGraph(roads){
  return g;
 }
 export function ensureGraph(state){if(!state.roadGraph){state.roadGraph=createGraph(state.roads);state.roads=graphLines(state.roadGraph);}return state.roadGraph;}
-export function validGraph(g){
+export function validGraph(g,bounds=BOUNDS){
  if(!g||!Number.isSafeInteger(g.nextId)||g.nextId<1||!Array.isArray(g.nodes)||!Array.isArray(g.segments))return false;
  if(g.nodes.length>10000||g.segments.length>12000)return false;
  const seen=new Set();
- for(const n of g.nodes){if(!Number.isSafeInteger(n.id)||seen.has(n.id)||!pointOk(n))return false;seen.add(n.id);}
+ for(const n of g.nodes){if(!Number.isSafeInteger(n.id)||seen.has(n.id)||!pointOk(n,bounds))return false;seen.add(n.id);}
  if(!seen.has(g.hubId))return false;
  const edges=new Set();
  for(const e of g.segments){
-  if(!Number.isSafeInteger(e.id)||edges.has(e.id)||seen.has(e.id)||!seen.has(e.a)||!seen.has(e.b)||e.a===e.b||!(e.control===null||pointOk(e.control)))return false;
+  if(!Number.isSafeInteger(e.id)||edges.has(e.id)||seen.has(e.id)||!seen.has(e.a)||!seen.has(e.b)||e.a===e.b||!(e.control===null||pointOk(e.control,bounds)))return false;
   edges.add(e.id);
  }
  return true;

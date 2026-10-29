@@ -6,7 +6,7 @@ async function screenPoint(page,p){
  },p);
 }
 test("WORLD-UI-01: mobile zoning brush previews, commits and survives reload",async({page})=>{
- await page.goto("/");
+ await page.goto("/?legacy=1");
  await page.locator("#zoneBtn").click();
  await expect(page.locator("#zoneBtn")).toHaveAttribute("aria-pressed","true");
  await expect(page.locator("#zoneType")).toHaveValue("residential");
@@ -36,7 +36,7 @@ test("WORLD-UI-01: mobile zoning brush previews, commits and survives reload",as
  expect(after.localLanes.length).toBeGreaterThan(0);
 });
 test("WORLD-UI-02: housing outlook shows vacancy, unsheltered demand and attractiveness",async({page})=>{
- await page.goto("/");
+ await page.goto("/?legacy=1");
  for(let i=0;i<2;i++)await page.locator("#nextBtn").click();
  await page.locator("#menuBtn").click();
  await page.getByRole("button",{name:/Housing demand/}).click();
@@ -46,7 +46,7 @@ test("WORLD-UI-02: housing outlook shows vacancy, unsheltered demand and attract
 });
 
 test("WORLD-UI-04: Eraser shortcut cuts a small saved stroke, then resumes brush",async({page})=>{
- await page.goto("/");
+ await page.goto("/?legacy=1");
  await page.locator("#zoneBtn").click();
  let pos=await screenPoint(page,{x:610,y:605});
  await page.mouse.click(pos.x,pos.y);
@@ -72,7 +72,7 @@ test("WORLD-UI-04: Eraser shortcut cuts a small saved stroke, then resumes brush
  await expect(page.locator("#zoneType")).toHaveValue("residential");
 });
 test("WORLD-UI-05: two-finger navigation pans and pinches without paint",async({page})=>{
- await page.goto("/");
+ await page.goto("/?legacy=1");
  await page.locator("#zoneBtn").click();
  await page.locator("#zoomIn").click();
  const data=await page.locator("#map").evaluate(svg=>{
