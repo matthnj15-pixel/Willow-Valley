@@ -1,3 +1,4 @@
+import {visibleDesirePaths} from "./desire-paths.mjs";
 // Gameplay geometry shares the exact seeded world elevation and water mask.
 // Every vertex is in the same WebGL coordinates as the World Builder.
 // The temporary structural shapes will be replaced with Kenney Fantasy Town
@@ -83,6 +84,10 @@ export function settlementGeometry(world,state,{draft=null,zoneStrokes=[],zoneTy
   quad(zones,...corners,zonePalette[p.type]||colors.residential);
  }
  for(const lane of state.localLanes||[])if(lane.points?.length>1)ribbon(surfaces,world,lane.points,5,colors.path,2.2);
+ for(const trail of visibleDesirePaths(state)){
+  const line=trail.points||[trail.from,trail.to];
+  if(line.length>1)ribbon(surfaces,world,line,4,colors.path,1.8);
+ }
  for(const road of state.roads||[]){
   if(road.length<2)continue;
   ribbon(surfaces,world,road,34,colors.roadEdge,2.7);
