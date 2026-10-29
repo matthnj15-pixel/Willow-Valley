@@ -1,4 +1,5 @@
 import {IS_PREVIEW,FLAGS,SAVE_KEY} from "./config.mjs";
+import {worldBuilderUrl} from "./world-route.mjs";
 import {initializeSlots,listSlots,readSlot,newSlot,saveSlot,selectSlot,renameSlot,appendJournal,diagnostics} from "./save-slots.mjs";
 import {mountResourceBar,mountGameDock,createBuildRow,createButton,renderGameToast} from "./ui-components.mjs";
 import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance,housingOutlook} from "./simulation.mjs";
@@ -19,6 +20,7 @@ mountResourceBar($("resourceBar"),[
 ],{compact:true});
 mountGameDock($("gameDock"));
 $("worldBuilderLink").hidden=!IS_PREVIEW;
+$("worldBuilderLink").href=worldBuilderUrl(location.href);
 
 const restored=initializeSlots(localStorage,SAVE_KEY,validState,startGame);
 let activeSlot=restored.ok?restored.active.slot:1;
@@ -294,7 +296,7 @@ function slotPanel(){const el=document.createElement("div");
 function menuPanel(){const el=document.createElement("div");
  el.append(textNode("p",IS_PREVIEW?"Development environment. Your saves are isolated from the stable game.":"Stable environment. Your settlements are stored locally on this device and browser."));
  sheetButton(el,"Manage 3 settlement slots",()=>slotPanel());
- if(IS_PREVIEW)sheetButton(el,"New World · 3D terrain generator",()=>{location.assign("./ui-kit/world-lab.html");});
+ if(IS_PREVIEW)sheetButton(el,"New World · 3D terrain generator",()=>{location.assign(worldBuilderUrl(location.href));});
  sheetButton(el,"Paint zoning · residential, commercial, farming, preserves",()=>zoningPanel());
  sheetButton(el,"Housing demand · vacancies and homelessness",()=>housingPanel());
  sheetButton(el,"Export current slot as JSON",()=>{

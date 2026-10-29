@@ -8,6 +8,9 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 
 - Stable: https://matthnj15-pixel.github.io/Willow-Valley/
 - Preview: https://matthnj15-pixel.github.io/Willow-Valley/dev/
+- **3D World Builder (Development):** https://matthnj15-pixel.github.io/Willow-Valley/dev/ui-kit/world-lab.html
+  - Published under `dev/ui-kit/`, not `dev/world-lab/`. The source `world-lab/` folder is not the deployed route.
+  - Open through the **3D World** header link in Development or the **New World** menu item.
 - **Living UI Kit (Stable, after release):** https://matthnj15-pixel.github.io/Willow-Valley/ui-kit/\n- **Living UI Kit (Development):** https://matthnj15-pixel.github.io/Willow-Valley/dev/ui-kit/ (interactive components and real game preview)
 
 **The production build uses the `main` branch.** The preview build uses `develop`. Both are deployed together to one Pages site. Game data uses separate browser storage namespaces; the preview cannot overwrite your production save.

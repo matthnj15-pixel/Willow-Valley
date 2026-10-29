@@ -126,3 +126,26 @@ test("WORLD-3D-UI-08: actual glTF asset importer renders a mocked valid GLB with
  await page.locator("#applySettings").click();
  expect(await page.locator("#seed").inputValue()).toBe(stamp);
 });
+
+test("WORLD-3D-UI-09: Development's menu and header use the identical canonical World Builder destination",async({page})=>{
+ await page.goto("/?preview=1");
+ const href=await page.locator("#worldBuilderLink").getAttribute("href");
+ expect(href).toContain("/ui-kit/world-lab.html");
+ await page.locator("#menuBtn").click();
+ await page.getByRole("button",{name:/New World · 3D terrain generator/}).click();
+ await expect(page).toHaveURL(href);
+ await expect(page.getByRole("heading",{name:"Design the terrain"})).toBeVisible();
+});
+test("WORLD-3D-UI-10: old World Builder location redirects to the working published route under a service worker",async({page})=>{
+ await page.goto("/");
+ await page.evaluate(async()=>{
+  await navigator.serviceWorker.register("./sw.js",{scope:"./"});
+  await navigator.serviceWorker.ready;
+  if(!navigator.serviceWorker.controller)await new Promise(resolve=>{
+   navigator.serviceWorker.addEventListener("controllerchange",resolve,{once:true});
+  });
+ });
+ await page.goto("/world-lab/");
+ await expect(page).toHaveURL(/\/ui-kit\/world-lab\.html$/);
+ await expect(page.getByRole("heading",{name:"Design the terrain"})).toBeVisible();
+});
