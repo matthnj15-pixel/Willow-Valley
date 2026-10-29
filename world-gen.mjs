@@ -11,6 +11,13 @@ export const DEFAULT_WORLD=Object.freeze({
 });
 export const WORLD_PRESET_VERSION=1;
 export const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
+// Expose real rock where a slope is steep AND the cliff face has height.
+// A high but gently rolling meadow remains grass.
+export function rockExposure(grade,faceRise){
+ const steep=smooth(clamp((grade-.27)/.78,0,1));
+ const height=smooth(clamp((faceRise-4)/24,0,1));
+ return steep*(.12+.88*height);
+}
 const smooth=t=>t*t*(3-2*t);
 function mix(a,b,t){return a+(b-a)*t;}
 export function hashSeed(input){
@@ -243,8 +250,12 @@ export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null}={}){
    result.push(pt);
   }
   if(result.length<3)return;
-  const color=palette?.water||
-   (corners.some(p=>p.kind==="river")?[.26,.56,.66]:[.30,.61,.70]);
+  const deep=palette?.water||[.29,.52,.61];
+  const isRiver=corners.some(p=>p.kind==="river");
+  const shore=corners.some(p=>!p.wet);
+  const color=deep.map((c,i)=>clamp(c+
+   (isRiver?[.025,.055,.043][i]:0)+
+   (shore?[.072,.078,.054][i]:0),0,1));
   const vertex=p=>[p.x-width/2,p.level+.5,p.z-depth/2];
   for(let i=1;i+1<result.length;i++)
    triangle(water,vertex(result[0]),vertex(result[i]),vertex(result[i+1]),color);
@@ -254,12 +265,18 @@ export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null}={}){
   const a=world.sample(x0,z0),b=world.sample(x1,z0),c=world.sample(x1,z1),d=world.sample(x0,z1);
   const cells=[[x0,z0,a],[x1,z0,b],[x1,z1,c],[x0,z1,d]];
   const mid=world.sample((x0+x1)/2,(z0+z1)/2),rock=world.slope((x0+x1)/2,(z0+z1)/2);
-  const variation=rand(x,z),rocky=clamp(rock*.55+(mid.height>75?.27:0),0,1);
-  const green=palette?.land?palette.land.map(v=>v*(.92+variation*.16)):
-   [.36+variation*.09,.54+variation*.11,.31+variation*.08];
-  const stone=palette?.stone?palette.stone.map(v=>v*(.96+variation*.08)):
-   [.51+variation*.05,.50+variation*.06,.43+variation*.05];
-  const color=green.map((v,i)=>mix(v,stone[i],rocky));
+  const variation=rand(x,z);
+  const heights=[a.height,b.height,c.height,d.height];
+  const verticalRise=Math.max(...heights)-Math.min(...heights);
+  const rocky=rockExposure(rock,verticalRise);
+  // The meadow palette is stable; genuine Kenney terrain meshes add visual
+  // geometry and detail rather than redefining all surfaces as raw cyan.
+  const green=palette?.land||[.39,.54,.36];
+  const stone=palette?.stone||[.49,.49,.45];
+  const stratum=Math.sin(mid.height*.38+1.3)*.045+
+   Math.sin(mid.height*.95+.7)*.022;
+  const meadowShade=.955+variation*.095,rockShade=.94+variation*.09+stratum;
+  const color=green.map((v,i)=>clamp(mix(v*meadowShade,stone[i]*rockShade,rocky),.03,.93));
   const verts=cells.map(q=>[q[0]-width/2,q[2].height,q[1]-depth/2]);
   triangle(ground,verts[0],verts[3],verts[1],color);
   triangle(ground,verts[1],verts[3],verts[2],color);

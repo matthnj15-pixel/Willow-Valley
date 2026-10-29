@@ -17,6 +17,27 @@ export const KENNEY_MODELS=Object.freeze({
  cliff:HOST+"nature-kit/cliff-rock.glb",
  beach:HOST+"nature-kit/platform-beach.glb"
 });
+// Shared Willow Valley art direction: natural grass, cool slate-blue water
+// and warm-grey rock. Kenney geometry and material detail are preserved, but
+// saturated demo-kit hues must never recolor the entire terrain.
+export const WILLOW_PALETTE=Object.freeze({
+ land:[.393,.535,.358],water:[.290,.510,.604],stone:[.493,.483,.443],
+ cliff:[.493,.483,.443],rock:[.510,.490,.446],
+ ground:[.410,.548,.372],bank:[.55,.553,.471],
+ beach:[.675,.645,.526],waterTile:[.31,.527,.615],
+ oak:[.30,.485,.345],pine:[.25,.426,.325],birch:[.345,.520,.385],
+ shrub:[.39,.53,.34],tower:[.58,.56,.49]
+});
+// Retain light/dark authored detail while correcting the raw color cast.
+export function harmonizeKenneyColor(type,source){
+ const raw=source.map(v=>Math.max(0,Math.min(1,Number(v)||0)));
+ const tree=["oak","pine","birch","shrub"].includes(type);
+ const bark=tree&&raw[0]>raw[1]*1.065&&raw[0]>raw[2]*1.18;
+ const target=bark?[.48,.365,.265]:(WILLOW_PALETTE[type]||WILLOW_PALETTE.rock);
+ const luminance=.25*raw[0]+.62*raw[1]+.13*raw[2];
+ const detail=Math.max(.78,Math.min(1.13,.79+luminance*.48));
+ return target.map(v=>Math.min(.91,Math.max(.03,v*detail)));
+}
 const loaded=new Map();
 function parseGLB(buffer){
  const v=new DataView(buffer);
@@ -148,7 +169,7 @@ export function instantiateKenney(world,models,{showReference=false}={}){
    const nx=data[i+6],ny=data[i+7],nz=data[i+8];
    output.push(x-world.width/2+px*cs-pz*sn,base+py,
     z-world.depth/2+px*sn+pz*cs,
-    data[i+3],data[i+4],data[i+5],
+    ...harmonizeKenneyColor(name,[data[i+3],data[i+4],data[i+5]]),
     nx*cs-nz*sn,ny,nx*sn+nz*cs);
   }
  }
@@ -185,44 +206,58 @@ export function instantiateKenneyTerrain(world,models){
  const size=Math.min(world.width,world.depth);
  const hash=i=>{let v=(i*1664525+1013904223+world.options.seed.length*374761393)>>>0;
   v=Math.imul(v^(v>>>13),1274126177);return ((v^(v>>>16))>>>0)/4294967295;};
- function instance(key,x,z,footprint,rotation,category="land"){
+ function instance(key,x,z,footprint,rotation,category="land",faceRise=0){
   const model=models[key];if(!model)return;
   const destination=category==="water"?water:land;
   const span=Math.max(.0001,model.max[0]-model.min[0],model.max[2]-model.min[2]);
+  const verticalSpan=Math.max(.001,model.max[1]-model.min[1]);
   const scale=footprint/span,cs=Math.cos(rotation),sn=Math.sin(rotation);
   const centerX=(model.min[0]+model.max[0])/2,centerZ=(model.min[2]+model.max[2])/2;
   const reference=world.sample(x,z),level=reference.water;
   if(category==="water"&&level===null)return;
   const input=model.vertices;
-  for(let i=0;i<input.length;i+=9){
-   const dx=(input[i]-centerX)*scale,dz=(input[i+2]-centerZ)*scale;
-   const X=x+dx*cs-dz*sn,Z=z+dx*sn+dz*cs;
-   // Never drop a single vertex: WebGL triangles require complete triplets.
-   // A little spill beyond the world edge is safer than malformed geometry.
-   const surface=world.sample(X,Z);
-   // Terrain blocks are flattened vertically and draped over local topology;
-   // water pieces stay at lake/river level to avoid hill-shaped water.
-   const y=category==="water"?(level+.65):
-    surface.height+.22+Math.max(0,input[i+1]-model.min[1])*Math.min(1.5,scale*.13);
-   const nx=input[i+6],ny=input[i+7],nz=input[i+8];
-   destination.push(X-world.width/2,y,Z-world.depth/2,
-    input[i+3],input[i+4],input[i+5],
-    nx*cs-nz*sn,ny,nx*sn+nz*cs);
+  // Evaluate whole GLB triangles, not individual vertices. This maintains
+  // valid winding and keeps meadow and river art outside the opposite biome.
+  for(let i=0;i+26<input.length;i+=27){
+   const triangle=[],terrain=[];
+   for(let j=0;j<3;j++){
+    const v=i+j*9;
+    const dx=(input[v]-centerX)*scale,dz=(input[v+2]-centerZ)*scale;
+    const X=x+dx*cs-dz*sn,Z=z+dx*sn+dz*cs;
+    const surface=world.sample(X,Z);
+    const up=Math.max(0,input[v+1]-model.min[1]);
+    let y=surface.height+.11+up*Math.min(.33,scale*.042);
+    if(category==="water")y=level+.74;
+    if(category==="cliff"){
+     // The authored cliff mesh spans the actual local vertical face.
+     y=reference.height-faceRise*.42+up/verticalSpan*faceRise;
+    }
+    const nx=input[v+6],ny=input[v+7],nz=input[v+8];
+    const rgb=harmonizeKenneyColor(key,[input[v+3],input[v+4],input[v+5]]);
+    triangle.push(X-world.width/2,y,Z-world.depth/2,...rgb,
+     nx*cs-nz*sn,ny,nx*sn+nz*cs);
+    terrain.push(surface);
+   }
+   if(category==="water"&&terrain.some(p=>p.water===null))continue;
+   if(category==="land"&&terrain.some(p=>p.water!==null))continue;
+   destination.push(...triangle);
   }
  }
  // Deterministic clumps of actual grass-tile mesh, never a uniform quilt.
- if(models.ground)for(let i=0;i<210;i++){
-  const x=(.025+.95*hash(i*19+3))*world.width;
-  const z=(.025+.95*hash(i*19+7))*world.depth;
-  const sample=world.sample(x,z);
-  if(sample.water!==null||world.slope(x,z)>.55)continue;
-  instance("ground",x,z,17+hash(i*19+11)*size*.037,hash(i*19+17)*Math.PI*2);
+ if(models.ground)for(let i=0;i<100;i++){
+  const x=(.035+.93*hash(i*19+3))*world.width;
+  const z=(.035+.93*hash(i*19+7))*world.depth;
+  const local=world.sample(x,z);
+  // Keep the authored grass details on walkable meadows, not crisscrossing
+  // hillsides in a patchwork of cyan model tiles.
+  if(local.water!==null||world.slope(x,z)>.24)continue;
+  instance("ground",x,z,9+hash(i*19+11)*9,hash(i*19+17)*Math.PI*2);
  }
  // River sections and banks use Kenney's authored land/water geometry.
  if(models.waterTile)for(const stream of world.rivers)for(let i=2;i<stream.points.length-2;i+=3){
   const point=stream.points[i],a=stream.points[i-1],b=stream.points[i+1];
   if(world.sample(point.x,point.z).kind!=="river")continue;
-  instance("waterTile",point.x,point.z,stream.width*1.45,
+  instance("waterTile",point.x,point.z,stream.width*.90,
    Math.atan2(b.z-a.z,b.x-a.x),"water");
  }
  if(models.bank||models.beach)for(const lake of world.lakes)for(let i=0;i<lake.spine.length;i+=2){
@@ -231,27 +266,43 @@ export function instantiateKenneyTerrain(world,models){
   if(world.sample(x,z).water!==null)continue;
   instance(i%3===0&&models.beach?"beach":"bank",x,z,10+hash(i*17+Math.round(lake.x))*8,angle);
  }
- if(models.cliff)for(let i=0;i<80;i++){
-  const x=(.055+.89*hash(1400+i*23))*world.width;
-  const z=(.055+.89*hash(1401+i*23))*world.depth;
+ if(models.cliff)for(let i=0;i<260;i++){
+  const x=(.045+.91*hash(1400+i*23))*world.width;
+  const z=(.045+.91*hash(1401+i*23))*world.depth;
   const sample=world.sample(x,z);
-  if(sample.water!==null||world.slope(x,z)<.5)continue;
-  instance("cliff",x,z,12+hash(1402+i*23)*20,hash(1403+i*23)*Math.PI*2);
+  if(sample.water!==null)continue;
+  const d=9,west=world.sample(x-d,z).height,east=world.sample(x+d,z).height;
+  const north=world.sample(x,z-d).height,south=world.sample(x,z+d).height;
+  const rise=Math.max(west,east,north,south)-Math.min(west,east,north,south);
+  const grade=world.slope(x,z);
+  // Natural rock only where a genuine steep escarpment has enough vertical
+  // face height. A randomly high meadow or gentle mound stays grassy.
+  if(grade<.64||rise<12)continue;
+  const angle=Math.atan2(south-north,east-west);
+  const height=Math.min(36,Math.max(10,rise*.89));
+  instance("cliff",x,z,Math.min(23,Math.max(12,height*.7)),angle,"cliff",height);
  }
  return{land:new Float32Array(land),water:new Float32Array(water)};
 }
 
 export function kenneyLandscapePalette(models){
- const average=model=>{
-  if(!model)return null;
-  const data=model.vertices,step=Math.max(9,Math.floor(data.length/10000)*9);
-  const sum=[0,0,0];let count=0;
-  for(let i=0;i<data.length;i+=step){
-   for(let j=0;j<3;j++)sum[j]+=data[i+3+j];
+ // The old averaging algorithm turned the entire world cyan/orange. Keep
+ // ground and water hues locked, but use the kits' average luminance to make
+ // a subtle lightness adjustment when each mesh is available.
+ const brightness=model=>{
+  if(!model)return 1;
+  const data=model.vertices,stride=Math.max(9,Math.floor(data.length/5000)*9);
+  let total=0,count=0;
+  for(let i=0;i<data.length;i+=stride){
+   total+=.25*data[i+3]+.62*data[i+4]+.13*data[i+5];
    count++;
   }
-  return sum.map(v=>Math.max(.07,Math.min(.9,v/count)));
+  const mean=count?total/count:.5;
+  return Math.max(.965,Math.min(1.035,1+(mean-.5)*.085));
  };
- return{land:average(models.ground),water:average(models.waterTile),
-  stone:average(models.cliff)};
+ return{
+  land:WILLOW_PALETTE.land.map(v=>v*brightness(models.ground)),
+  water:WILLOW_PALETTE.water.map(v=>v*brightness(models.waterTile)),
+  stone:WILLOW_PALETTE.stone.map(v=>v*brightness(models.cliff))
+ };
 }

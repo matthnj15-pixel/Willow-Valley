@@ -6,9 +6,9 @@ const VERTEX=[
  "attribute vec3 aPosition; attribute vec3 aColor; attribute vec3 aNormal;",
  "uniform vec3 uFocus; uniform float uYaw; uniform float uPitch;",
  "uniform float uZoom; uniform float uAspect;",
- "varying vec3 vColor; varying float vLight;",
+ "varying vec3 vColor; varying float vLight; varying vec3 vWorld;",
  "void main(){",
- " vec3 p=aPosition-uFocus;",
+ " vec3 p=aPosition-uFocus; vWorld=aPosition;",
  " float co=cos(uYaw),si=sin(uYaw);",
  " float xx=co*p.x+si*p.z;",
  " float zz=-si*p.x+co*p.z;",
@@ -22,7 +22,19 @@ const VERTEX=[
 ].join("\n");
 const FRAGMENT=[
  "precision mediump float; varying vec3 vColor; varying float vLight;",
- "void main(){gl_FragColor=vec4(vColor*vLight,1.0);}"
+ "varying vec3 vWorld; uniform float uWater;",
+ "void main(){",
+ " vec3 color=vColor*vLight;",
+ " if(uWater>0.5){",
+ "   // Subtle sunlight glints across calm water; no saturated cyan or",
+ "   // time-dependent noise that would shimmer while the camera moves.",
+ "   float wave=sin(vWorld.x*0.105+vWorld.z*0.052)*",
+ "              sin(vWorld.z*0.089-vWorld.x*0.036);",
+ "   float glint=pow(max(0.0,wave),5.0)*0.085;",
+ "   color+=vec3(glint*0.64,glint*0.88,glint);",
+ " }",
+ " gl_FragColor=vec4(clamp(color,0.0,1.0),1.0);",
+ "}"
 ].join("\n");
 function makeShader(gl,type,source){
  const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);
@@ -52,7 +64,8 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   yaw:gl.getUniformLocation(program,"uYaw"),
   pitch:gl.getUniformLocation(program,"uPitch"),
   zoom:gl.getUniformLocation(program,"uZoom"),
-  aspect:gl.getUniformLocation(program,"uAspect")
+  aspect:gl.getUniformLocation(program,"uAspect"),
+  water:gl.getUniformLocation(program,"uWater")
  };
  const buffers=Array.from({length:5},()=>gl.createBuffer());
  const kenney={},kitNames=["oak","pine","birch","rock","tower","ground","waterTile","bank","cliff","beach"];
@@ -104,8 +117,9 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
    terrain:!!kenney.ground,river:!!kenney.waterTile,bank:!!kenney.bank,
    online:loadedAssets>0});
  }
- function drawBuffer(buffer,count){
+ function drawBuffer(buffer,count,isWater=false){
   if(!count)return;
+  gl.uniform1f(loc.water,isWater?1:0);
   gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
   for(const [location,offset] of [
    [loc.position,0],[loc.color,3],[loc.normal,6]]){
@@ -130,7 +144,7 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   gl.uniform1f(loc.zoom,camera.zoom);
   gl.uniform1f(loc.aspect,Math.max(.1,width/height));
   drawBuffer(buffers[0],counts[0]);drawBuffer(buffers[3],counts[3]);
-  drawBuffer(buffers[1],counts[1]);drawBuffer(buffers[4],counts[4]);
+  drawBuffer(buffers[1],counts[1],true);drawBuffer(buffers[4],counts[4],true);
   drawBuffer(buffers[2],counts[2]);
  }
  function render(){if(!frame)frame=requestAnimationFrame(draw);}
