@@ -203,7 +203,7 @@ export function instantiateKenney(world,models,{showReference=false,maxTrees=650
 // Real Kenney Nature Kit terrain tiles blended onto a continuous topographic
 // heightfield. A fully tiled grid would destroy organic lake edges; these
 // material/mesh patches follow the generated elevation and water mask instead.
-export function instantiateKenneyTerrain(world,models){
+export function instantiateKenneyTerrain(world,models,{density=1}={}){
  const land=[],water=[];
  const size=Math.min(world.width,world.depth);
  const hash=i=>{let v=(i*1664525+1013904223+world.options.seed.length*374761393)>>>0;
@@ -246,7 +246,7 @@ export function instantiateKenneyTerrain(world,models){
   }
  }
  // Deterministic clumps of actual grass-tile mesh, never a uniform quilt.
- if(models.ground)for(let i=0;i<100;i++){
+ if(models.ground)for(let i=0;i<Math.max(8,Math.round(100*density));i++){
   const x=(.035+.93*hash(i*19+3))*world.width;
   const z=(.035+.93*hash(i*19+7))*world.depth;
   const local=world.sample(x,z);
@@ -262,13 +262,13 @@ export function instantiateKenneyTerrain(world,models){
   instance("waterTile",point.x,point.z,stream.width*.90,
    Math.atan2(b.z-a.z,b.x-a.x),"water");
  }
- if(models.bank||models.beach)for(const lake of world.lakes)for(let i=0;i<lake.spine.length;i+=2){
+ if(models.bank||models.beach)for(const lake of world.lakes)for(let i=0;i<lake.spine.length;i+=density<.5?4:2){
   const p=lake.spine[i],angle=(i+lake.x)*2.4;
   const x=p.x+Math.cos(angle)*p.r*1.12,z=p.z+Math.sin(angle)*p.r*1.12;
   if(world.sample(x,z).water!==null)continue;
   instance(i%3===0&&models.beach?"beach":"bank",x,z,10+hash(i*17+Math.round(lake.x))*8,angle);
  }
- if(models.cliff)for(let i=0;i<260;i++){
+ if(models.cliff)for(let i=0;i<Math.max(20,Math.round(260*density));i++){
   const x=(.045+.91*hash(1400+i*23))*world.width;
   const z=(.045+.91*hash(1401+i*23))*world.depth;
   const sample=world.sample(x,z);

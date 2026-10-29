@@ -23,6 +23,11 @@
 <section class="stats" id="resourceBar" aria-label="Settlement resources"></section>
 <main id="stage" class="stage">
   <canvas id="game3D" hidden aria-label="3D settlement landscape"></canvas>
+  <div id="terrainLoad" class="terrain-load" role="status" aria-live="polite" hidden>
+   <strong id="terrainLoadTitle">Preparing 3D terrain…</strong>
+   <span id="terrainLoadDetail">Your saved settlement is safe.</span>
+   <button id="retry3D" type="button" hidden>Retry with lighter graphics</button>
+  </div>
   <svg id="map" aria-label="Interactive map. Drag to pan, pinch to zoom, tap to build." role="img"></svg>
   <div class="map-info" id="modeLabel">Explore · drag to pan · pinch to zoom</div>
   <div class="zoom" aria-label="Camera controls"><button id="zoomIn" aria-label="Zoom in">+</button><button id="zoomOut" aria-label="Zoom out">−</button><button id="reset3DCamera" aria-label="Reset 3D camera to settlement" title="Reset view" hidden>⟳</button><output id="cameraAngle" class="camera-angle" aria-label="Camera viewing angle" hidden></output></div>
