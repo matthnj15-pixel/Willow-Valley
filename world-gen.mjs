@@ -222,6 +222,32 @@ export function createWorldMesh(world,nx=68,nz=52,{trees=true}={}){
   const len=Math.hypot(...normal)||1;normal=normal.map(v=>v/len);
   for(const p of [a,b,c])to.push(...p,...color,...normal);
  }
+ function waterPolygon(corners){
+  // Clip each water triangle against the actual basin/river mask. Previous
+  // rendering painted an entire square when its centre was wet, yielding
+  // blocky, circular-looking shorelines even for complex heightfields.
+  const result=[];
+  for(let i=0;i<3;i++){
+   const a=corners[i],b=corners[(i+1)%3];
+   if(a.wet)result.push(a);
+   if(a.wet===b.wet)continue;
+   let lo=a,hi=b;
+   for(let step=0;step<7;step++){
+    const mid={x:(lo.x+hi.x)*.5,z:(lo.z+hi.z)*.5};
+    const value=world.sample(mid.x,mid.z);
+    mid.wet=value.water!==null;mid.level=value.water;
+    if(mid.wet===a.wet)lo=mid;else hi=mid;
+   }
+   const pt={x:(lo.x+hi.x)*.5,z:(lo.z+hi.z)*.5,
+    level:a.wet?a.level:b.level,wet:true};
+   result.push(pt);
+  }
+  if(result.length<3)return;
+  const color=corners.some(p=>p.kind==="river")?[.26,.56,.66]:[.30,.61,.70];
+  const vertex=p=>[p.x-width/2,p.level+.5,p.z-depth/2];
+  for(let i=1;i+1<result.length;i++)
+   triangle(water,vertex(result[0]),vertex(result[i]),vertex(result[i+1]),color);
+ }
  for(let z=0;z<nz;z++)for(let x=0;x<nx;x++){
   const x0=x/nx*width,x1=(x+1)/nx*width,z0=z/nz*depth,z1=(z+1)/nz*depth;
   const a=world.sample(x0,z0),b=world.sample(x1,z0),c=world.sample(x1,z1),d=world.sample(x0,z1);
@@ -234,13 +260,13 @@ export function createWorldMesh(world,nx=68,nz=52,{trees=true}={}){
   const verts=cells.map(q=>[q[0]-width/2,q[2].height,q[1]-depth/2]);
   triangle(ground,verts[0],verts[3],verts[1],color);
   triangle(ground,verts[1],verts[3],verts[2],color);
-  if(mid.water!==null){
-   const surface=mid.water+.5;
-   const wverts=cells.map(q=>[q[0]-width/2,surface,q[1]-depth/2]);
-   const blue=mid.kind==="river"?[.25,.57,.67]:[.29,.61,.72];
-   triangle(water,wverts[0],wverts[3],wverts[1],blue);
-   triangle(water,wverts[1],wverts[3],wverts[2],blue);
-  }
+  const surface=cells.map(q=>({
+   x:q[0],z:q[1],wet:q[2].water!==null,
+   level:q[2].water,kind:q[2].kind
+  }));
+  // Subdivide only wet boundary cells. Open water remains two triangles.
+  waterPolygon([surface[0],surface[3],surface[1]]);
+  waterPolygon([surface[1],surface[3],surface[2]]);
  }
  // Low-poly conifers remain inexpensive enough for a mobile browser.
  for(const t of trees?world.trees:[]){
