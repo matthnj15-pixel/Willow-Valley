@@ -73,12 +73,13 @@ export function mountWorld3D(canvas,initialWorld,{
   water:gl.getUniformLocation(program,"uWater"),
   opacity:gl.getUniformLocation(program,"uOpacity")
  };
- const buffers=Array.from({length:8},()=>gl.createBuffer());
+ const buffers=Array.from({length:9},()=>gl.createBuffer());
  const kenney={},kitNames=["oak","pine","birch","rock","tower","ground","waterTile","bank","cliff","beach"];
  let loadedAssets=0,showcase=showReference,disposed=false,firstDraw=false;
  const lite=quality==="lite",gameplay=quality==="game"||lite;
- let counts=[0,0,0,0,0,0,0,0],world=initialWorld;
+ let counts=[0,0,0,0,0,0,0,0,0],world=initialWorld;
  let settlement=null,settlementDraft=null,settlementZoneStrokes=[],settlementZoneType="residential",settlementRadius=54;
+ let settlementEdits=null,settlementMode="explore",settlementLiveCurve=null,settlementLiveGesture=null,settlementPendingControl=null;
  const camera={yaw:.71,pitch:.86,zoom:650,focusX:0,focusZ:0};
  const pointers=new Map();
  let gesture=null,frame=0;
@@ -106,7 +107,7 @@ export function mountWorld3D(canvas,initialWorld,{
   gl.bufferData(gl.ARRAY_BUFFER,geometry.ground,gl.STATIC_DRAW);
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[1]);
   gl.bufferData(gl.ARRAY_BUFFER,geometry.water,gl.STATIC_DRAW);
-  counts=[geometry.ground.length/9,geometry.water.length/9,0,0,0,0,0,0];
+  counts=[geometry.ground.length/9,geometry.water.length/9,0,0,0,0,0,0,0];
   updateKenney();
   if(settlement)updateSettlement();
   if(reset)resetCamera();else render();
@@ -174,6 +175,9 @@ export function mountWorld3D(canvas,initialWorld,{
   drawBuffer(buffers[5],counts[5]);
   drawBuffer(buffers[6],counts[6],false,.52);
   drawBuffer(buffers[7],counts[7]);
+  gl.disable(gl.DEPTH_TEST);
+  drawBuffer(buffers[8],counts[8]);
+  gl.enable(gl.DEPTH_TEST);
   if(!firstDraw){firstDraw=true;onReady();}
   }catch(error){onError(error);}
  }
@@ -189,8 +193,10 @@ export function mountWorld3D(canvas,initialWorld,{
 function updateSettlement(){
  if(!settlement)return;
  const data=settlementGeometry(world,settlement,{draft:settlementDraft,
-  zoneStrokes:settlementZoneStrokes,zoneType:settlementZoneType,zoneRadius:settlementRadius});
- for(const [index,vertices] of [[5,data.surfaces],[6,data.zones],[7,data.structures]]){
+  zoneStrokes:settlementZoneStrokes,zoneType:settlementZoneType,zoneRadius:settlementRadius,
+  zoneEdits:settlementEdits,mode:settlementMode,liveCurve:settlementLiveCurve,
+  liveGesture:settlementLiveGesture,pendingControl:settlementPendingControl});
+ for(const [index,vertices] of [[5,data.surfaces],[6,data.zones],[7,data.structures],[8,data.guides]]){
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[index]);
   gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.DYNAMIC_DRAW);
   counts[index]=vertices.length/9;
@@ -248,9 +254,14 @@ function homeView(x,z,zoom=null){
  camera.yaw=.71;camera.pitch=.86;
  focusOn(x,z,zoom);
 }
-function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54}={}){
+function setSettlement(state,{
+  draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,zoneEdits=null,
+  mode="explore",liveCurve=null,liveGesture=null,pendingControl=null
+ }={}){
  settlement=state;settlementDraft=draft;settlementZoneStrokes=zoneStrokes;
- settlementZoneType=zoneType;settlementRadius=zoneRadius;
+ settlementZoneType=zoneType;settlementRadius=zoneRadius;settlementEdits=zoneEdits;
+ settlementMode=mode;settlementLiveCurve=liveCurve;
+ settlementLiveGesture=liveGesture;settlementPendingControl=pendingControl;
  updateSettlement();
 }
  function onDown(e){
