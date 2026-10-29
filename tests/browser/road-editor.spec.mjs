@@ -20,7 +20,7 @@ async function extendFrom(page,p){
  await page.getByRole("button",{name:"Extend road from here"}).click();
 }
 const preview=page=>page.locator('#map path[stroke="#fbd18d"]');
-const saved=page=>page.evaluate(()=>JSON.parse(localStorage.getItem("willow-valley:main:v1")));
+const saved=page=>page.evaluate(()=>{const base="willow-valley:main:v1";const n=Number(JSON.parse(localStorage.getItem(base+":active-slot"))||1);return JSON.parse(localStorage.getItem(base+":slot:"+n))?.state;});
 
 test.beforeEach(async({page})=>{
  await page.goto("/");

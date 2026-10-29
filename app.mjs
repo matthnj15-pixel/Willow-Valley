@@ -1,4 +1,5 @@
 import {IS_PREVIEW,FLAGS,SAVE_KEY} from "./config.mjs";
+import {initializeSlots,listSlots,readSlot,newSlot,saveSlot,selectSlot,renameSlot,appendJournal,diagnostics} from "./save-slots.mjs";
 import {mountResourceBar,mountGameDock,createBuildRow,createButton,renderGameToast} from "./ui-components.mjs";
 import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance} from "./simulation.mjs";
 import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,SNAP_RADIUS} from "./road-network.mjs";
@@ -15,10 +16,21 @@ mountResourceBar($("resourceBar"),[
 ],{compact:true});
 mountGameDock($("gameDock"));
 
-let game=readSave(),mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
+const restored=initializeSlots(localStorage,SAVE_KEY,validState,startGame);
+let activeSlot=restored.ok?restored.active.slot:1;
+let game=restored.ok?restored.active.state:startGame();
+let slotName=restored.ok?restored.active.name:"Unsaved settlement";
+let journal=restored.ok?restored.active.events:[];
+ensureGraph(game);
+let mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
-function readSave(){try{const v=JSON.parse(localStorage.getItem(SAVE_KEY));if(validState(v)){ensureGraph(v);return v;}}catch(e){console.warn("Save unavailable",e);}return startGame();}
-function save(){try{localStorage.setItem(SAVE_KEY,JSON.stringify(game));}catch(e){notify("Storage unavailable. Use Export Save to preserve progress.");}}
+function save(){const result=saveSlot(localStorage,SAVE_KEY,activeSlot,game,journal,validState,slotName);
+ if(!result.ok)notify(result.reason);return result.ok;}
+function record(type,detail){journal=appendJournal(journal,type,game.turn,detail);save();}
+function downloadJSON(data,filename){const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=filename;
+ document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);}
+
 function num(v){return Math.round(v).toLocaleString();}
 function notify(message){renderGameToast($("toast"),message);clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").hidden=true,3300);}
 function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;selectedBuild=null;for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"})){$(id).classList.toggle("active",m===next);$(id).setAttribute("aria-pressed",String(m===next));}
@@ -27,7 +39,7 @@ function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;sel
 function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
  $("roadInfo").textContent=draft.anchors.length<2?"Tap an existing node to branch; touch and hold a point to shape its curve.":draft.anchors.length+" nodes · "+num(cost)+" gold · held nodes stay fixed; finger shapes curve.";
  $("confirmRoad").disabled=draft.anchors.length<2;}
-function setStats(){for(const id of ["people","gold","food","wood","tools"])$(id).textContent=num(game[id]);$("calendar").textContent=monthLabel(game.turn);$("environment").textContent=IS_PREVIEW?"DEVELOPMENT":"STABLE";$("report").textContent=game.report;}
+function setStats(){for(const id of ["people","gold","food","wood","tools"])$(id).textContent=num(game[id]);$("calendar").textContent=monthLabel(game.turn)+" · Slot "+activeSlot;$("environment").textContent=IS_PREVIEW?"DEVELOPMENT":"STABLE";$("report").textContent=game.report;}
 function node(tag,attrs){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,String(v));return n;}
 function appendText(parent,text,x,y,size,fill="#fff",extras={}){const e=node("text",{x,y,"text-anchor":"middle",fill,"font-size":size,...extras});e.textContent=text;parent.append(e);return e;}
 // Committed roads are polylines; explicit curves are previewed with SVG Q segments.
@@ -129,25 +141,67 @@ function buildPanel(){setMode("build");const el=document.createElement("div");el
  onClick:()=>{selectedBuild=key;closeSheet();$("modeLabel").textContent="Place "+b.label+" · tap clear land";notify("Tap the map to place "+b.label+".");}});
  el.append(button);}
  openSheet("Construction",el);}
-function menuPanel(){const el=document.createElement("div");el.append(textNode("p",IS_PREVIEW?"Development environment. Your save is isolated from the stable game.":"Stable environment. Your progress is stored locally on this device and browser."));
- sheetButton(el,"Export save as JSON",()=>{const blob=new Blob([JSON.stringify(game,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="willow-valley-"+(IS_PREVIEW?"dev":"stable")+"-turn-"+game.turn+".json";document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000);notify("Save export started.");});
+function slotPanel(){const el=document.createElement("div");
+ el.append(textNode("p","Three independent local settlements. Each slot saves automatically. Your original pre-slot save remains untouched as a backup."));
+ for(const entry of listSlots(localStorage,SAVE_KEY,validState)){
+  if(entry.status==="corrupt"){el.append(textNode("p","Slot "+entry.slot+": unreadable. Original data preserved; export browser storage before repair.","note"));continue;}
+  const label=entry.status==="ready"?
+   "Slot "+entry.slot+" · "+entry.name+" · Year "+(1+Math.floor(entry.state.turn/12))+" · "+entry.state.people+" residents"+(entry.slot===activeSlot?" (current)":""):
+   "Slot "+entry.slot+" · Empty — start a settlement";
+  sheetButton(el,label,()=>{
+   if(entry.slot===activeSlot&&entry.status==="ready"){closeSheet();return;}
+   if(!save())return;
+   if(entry.status==="empty"){
+    const created=newSlot(localStorage,SAVE_KEY,entry.slot,startGame(),validState);
+    if(!created.ok){notify(created.reason);return;}
+   }
+   const chosen=readSlot(localStorage,SAVE_KEY,entry.slot,validState);
+   if(chosen.status!=="ready"){notify("Could not open this settlement.");return;}
+   const selected=selectSlot(localStorage,SAVE_KEY,entry.slot,validState);
+   if(!selected.ok){notify(selected.reason);return;}
+   activeSlot=entry.slot;game=chosen.state;slotName=chosen.name;journal=chosen.events;
+   ensureGraph(game);setMode("explore");closeSheet();refresh();notify("Opened "+slotName+".");
+  });
+ }
+ sheetButton(el,"Rename active settlement",()=>{
+  const requested=prompt("Settlement name",slotName);
+  if(requested===null||!requested.trim())return;
+  const result=renameSlot(localStorage,SAVE_KEY,activeSlot,requested,validState);
+  if(!result.ok){notify(result.reason);return;}
+  slotName=requested.trim().slice(0,48);record("settlement_renamed","Changed name to "+slotName);slotPanel();
+ });
+ sheetButton(el,"Export diagnostic journal",()=>{
+  downloadJSON(diagnostics(game,journal,activeSlot,IS_PREVIEW?"development":"stable"),
+  "willow-valley-"+(IS_PREVIEW?"dev":"stable")+"-slot-"+activeSlot+"-diagnostics.json");
+  notify("Diagnostic export started. Your data stays local unless you share it.");
+ });
+ openSheet("Settlement slots",el);
+}
+function menuPanel(){const el=document.createElement("div");
+ el.append(textNode("p",IS_PREVIEW?"Development environment. Your saves are isolated from the stable game.":"Stable environment. Your settlements are stored locally on this device and browser."));
+ sheetButton(el,"Manage 3 settlement slots",()=>slotPanel());
+ sheetButton(el,"Export current slot as JSON",()=>{
+  downloadJSON(game,"willow-valley-"+(IS_PREVIEW?"dev":"stable")+"-slot-"+activeSlot+"-turn-"+game.turn+".json");
+  notify("Save export started.");
+ });
  sheetButton(el,"Import a saved game",()=>{$("importSave").click();});
  if(IS_PREVIEW&&location.protocol!=="file:"){
-   const kit=document.createElement("a");
-   kit.href="./ui-kit/";kit.className="download-link";
-   kit.textContent="View the living UI kit";
-   kit.setAttribute("aria-label","Open the interactive Willow Valley design system");
-   el.append(kit);
+   const kit=document.createElement("a");kit.href="./ui-kit/";kit.className="download-link";
+   kit.textContent="View the living UI kit";kit.setAttribute("aria-label","Open the interactive Willow Valley design system");el.append(kit);
  }
  if(location.protocol!=="file:"){
-   const link=document.createElement("a");
-   link.href="./offline.html";link.download="Willow-Valley-Offline.html";
+   const link=document.createElement("a");link.href="./offline.html";link.download="Willow-Valley-Offline.html";
    link.className="download-link";link.textContent="Download offline HTML edition";
-   link.setAttribute("aria-label","Download the standalone HTML game for offline use");
-   el.append(link);
+   link.setAttribute("aria-label","Download the standalone HTML game for offline use");el.append(link);
  }
- sheetButton(el,"Restart settlement",()=>{if(confirm("Start a new settlement in this environment? Export your save first if you want to keep it.")){game=startGame();refresh();closeSheet();notify("A new Willow Valley begins.");}});
- el.append(textNode("p","Willow Valley is an offline-first strategy game. All simulation turns run on your device, without accounts or cloud AI.","note"));
+ sheetButton(el,"Restart current settlement",()=>{
+  if(!confirm("Replace only Slot "+activeSlot+"? Its current progress will be lost unless you export it first. Other slots are safe."))return;
+  const fresh=startGame(),created=newSlot(localStorage,SAVE_KEY,activeSlot,fresh,validState,slotName,{overwrite:true});
+  if(!created.ok){notify(created.reason);return;}
+  game=fresh;journal=readSlot(localStorage,SAVE_KEY,activeSlot,validState).events;
+  closeSheet();setMode("explore");refresh();notify("A new Willow Valley begins in Slot "+activeSlot+".");
+ });
+ el.append(textNode("p","All settlements and diagnostics remain offline on this device. Export files for backups or when reporting bugs.","note"));
  openSheet("Your settlement",el);}
 function historyPanel(){const el=document.createElement("div");el.append(textNode("p","Significant milestones and monthly decisions in the life of Willow Valley."));const list=document.createElement("ol");for(const message of game.logs.slice(0,25))list.append(textNode("li",message));el.append(list);openSheet("Valley history",el);}
 function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=structureAccess(game,item);const detail=item.kind==="house"?"Household access: "+(access==="road"?"Connected to the town road network.":access==="footpath"?"Only a walking desire path connects this home; services and tax revenue are limited.":"DISCONNECTED. The household cannot receive normal services or contribute full taxes."):"Structure access: "+(access==="road"?"Connected to the road network.":access==="footpath"?"Footpath access only. This does not support full service or deliveries.":"DISCONNECTED: no road service or industrial deliveries.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
@@ -226,7 +280,7 @@ function handleTap(p){if(p.x<0||p.y<0||p.x>WORLD.w||p.y>WORLD.h)return;
   pendingControl=null;
   updateRoadInfo();renderMap();return;
  }
- if(mode==="build"){if(!selectedBuild){buildPanel();return;}const r=placeBuilding(game,selectedBuild,p);if(!r.ok){notify(r.reason);return;}refresh();notify(BUILDINGS[selectedBuild].label+" constructed.");selectedBuild=null;setMode("explore");return;}
+ if(mode==="build"){if(!selectedBuild){buildPanel();return;}const r=placeBuilding(game,selectedBuild,p);if(!r.ok){notify(r.reason);return;}record("building_constructed",selectedBuild+" at "+Math.round(p.x)+","+Math.round(p.y));refresh();notify(BUILDINGS[selectedBuild].label+" constructed.");selectedBuild=null;setMode("explore");return;}
  inspectPoint(p);
 }
 function clearHold(p){if(p.holdTimer!==null){clearTimeout(p.holdTimer);p.holdTimer=null;}}
@@ -335,12 +389,12 @@ $("historyBtn").onclick=()=>historyPanel();
 $("closeSheet").onclick=closeSheet;$("backdrop").onclick=closeSheet;
 $("undoRoad").onclick=()=>{pendingControl=null;undoRoadAction(draft);updateRoadInfo();renderMap();};
 $("cancelRoad").onclick=()=>{draft=createRoadDraft();pendingControl=null;updateRoadInfo();renderMap();};
-$("confirmRoad").onclick=()=>{const r=buildRoad(game,draft.anchors,draft.controls);if(!r.ok){notify(r.reason);return;}draft=createRoadDraft();pendingControl=null;refresh();notify(r.isolated?"Isolated street built. Sims will begin forming walking desire paths next month.":"Road built for "+r.cost+" gold"+(r.intersections?". "+r.intersections+" new intersection(s).":"."));};
-$("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents});refresh();notify(monthLabel(game.turn)+": "+(result.populationDelta>=0?"+":"")+result.populationDelta+" residents, "+(result.balance>=0?"+":"")+result.balance+" gold.");};
-$("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;closeSheet();refresh();notify("Save imported successfully.");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
+$("confirmRoad").onclick=()=>{const r=buildRoad(game,draft.anchors,draft.controls);if(!r.ok){notify(r.reason);return;}record("road_constructed","Cost "+r.cost+" gold; isolated="+r.isolated+"; intersections="+r.intersections);draft=createRoadDraft();pendingControl=null;refresh();notify(r.isolated?"Isolated street built. Sims will begin forming walking desire paths next month.":"Road built for "+r.cost+" gold"+(r.intersections?". "+r.intersections+" new intersection(s).":"."));};
+$("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents});record("turn_resolved","Residents "+result.populationDelta+"; food "+result.foodProduction+"; wood "+result.woodProduction+"; tools "+result.toolProduction+"; treasury "+result.balance);refresh();notify(monthLabel(game.turn)+": "+(result.populationDelta>=0?"+":"")+result.populationDelta+" residents, "+(result.balance>=0?"+":"")+result.balance+" gold.");};
+$("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;ensureGraph(game);record("save_imported","Imported user-provided save into slot "+activeSlot);closeSheet();refresh();notify("Save imported into Slot "+activeSlot+".");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
 window.addEventListener("resize",renderMap);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet();});
-setStats();save();requestAnimationFrame(renderMap);
+setStats();if(restored.warning)notify(restored.warning);if(!restored.ok)notify(restored.reason);else if(restored.migrated)notify("Your original settlement was safely copied into Slot 1.");save();requestAnimationFrame(renderMap);
 
 // Cache the complete game shell while connected, then play offline in flight mode.
 // A standalone downloaded HTML file skips the worker and uses its embedded assets.

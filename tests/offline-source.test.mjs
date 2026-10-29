@@ -20,9 +20,12 @@ test("WV-OFFLINE-002: offline shell keeps app assets and distinct caches per pat
  assert.match(sw,/desire-paths\.mjs/);
 });
 test("WV-OFFLINE-003: game retains local save export and import",()=>{
- const app=read("app.mjs");
- assert.match(app,/localStorage\.setItem\(SAVE_KEY/);
- assert.match(app,/Export save as JSON/);
+ const app=read("app.mjs"),storage=read("save-slots.mjs"),sw=read("sw.js");
+ assert.match(app,/saveSlot\(localStorage,SAVE_KEY/);
+ assert.match(storage,/storage\.setItem\(key/);
+ assert.match(storage,/save_migration/);
+ assert.match(sw,/save-slots\.mjs/);
+ assert.match(app,/Export current slot as JSON/);
  assert.match(app,/Import a saved game/);
 });
 
