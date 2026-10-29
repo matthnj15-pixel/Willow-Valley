@@ -98,6 +98,23 @@ export function paintZones(s,type,strokes,radius=BRUSH_RADIUS){
  s.zones=next;
  return{ok:true,count:strokes.length};
 }
+// A zoning session can freely mix brushes, erasers and land-use changes.
+// Evaluate operations against a disposable copy, then commit exactly once.
+// A failed operation must never partially change an existing save slot.
+export function applyZoneEdits(state,edits,{commit=false}={}){
+ if(!Array.isArray(edits)||!edits.length)return{ok:false,reason:"Paint or erase an area first."};
+ const pending={...state,zones:(state.zones||[]).slice()};
+ let count=0;
+ for(const edit of edits){
+  if(!edit||!Array.isArray(edit.points)||!edit.points.length)
+   return{ok:false,reason:"Invalid pending zoning stroke."};
+  const result=paintZones(pending,edit.type,[edit.points],edit.radius);
+  if(!result.ok)return result;
+  count++;
+ }
+ if(commit)state.zones=pending.zones;
+ return{ok:true,count,zones:pending.zones};
+}
 // Terrain is an analytic heightfield. It drives suitability and will drive 3D vertex elevations.
 
 export function elevationAt(x,y){

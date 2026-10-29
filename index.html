@@ -32,14 +32,19 @@
   <div class="map-info" id="modeLabel">Explore · drag to pan · pinch to zoom</div>
   <div class="zoom" aria-label="Camera controls"><button id="zoomIn" aria-label="Zoom in">+</button><button id="zoomOut" aria-label="Zoom out">−</button><button id="reset3DCamera" aria-label="Reset 3D camera to settlement" title="Reset view" hidden>⟳</button><output id="cameraAngle" class="camera-angle" aria-label="Camera viewing angle" hidden></output></div>
   <div class="road-controls" id="roadControls" hidden><span id="roadInfo">Tap the map to trace your road.</span><div><button id="undoRoad">Undo</button><button id="cancelRoad">Cancel</button><button id="confirmRoad" class="primary">Build road</button></div></div>
+
+</main>
   <div class="zone-controls" id="zoneControls" hidden>
    <div class="zone-settings">
-    <div class="zone-land-use"><label for="zoneType">Land use<select id="zoneType" aria-label="Land use"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="farmland">Farmland</option><option value="preserve">Preserve</option><option value="erase">Erase</option></select></label><button id="zoneEraser" type="button" aria-label="Toggle zoning eraser" aria-pressed="false">Eraser</button></div>
+    <div class="zone-land-use"><label for="zoneType">Land use<select id="zoneType" aria-label="Land use"><option value="residential">Residential</option><option value="commercial">Commercial</option><option value="farmland">Farmland</option><option value="preserve">Preserve</option><option value="erase">Erase</option></select></label></div>
     <label for="zoneRadius">Brush size <output id="zoneRadiusValue" for="zoneRadius">54</output><input id="zoneRadius" type="range" min="24" max="90" step="1" value="54" aria-label="Brush size"></label>
+   </div><div class="zone-tool-picker" role="group" aria-label="Zoning tools">
+    <button id="zoneMove" type="button" aria-label="Move map" aria-pressed="false"><span aria-hidden="true">☝</span> Move</button>
+    <button id="zonePaint" type="button" aria-label="Paint zoning" aria-pressed="true"><span aria-hidden="true">✎</span> Paint</button>
+    <button id="zoneEraser" type="button" aria-label="Erase zoning" aria-pressed="false"><span aria-hidden="true">⌫</span> Erase</button>
    </div><span id="zoneInfo">Paint a connected land area</span>
-   <div class="zone-actions"><button id="zoneUndo">Undo</button><button id="zoneCancel">Cancel</button><button id="zoneCommit" class="primary">Commit zone</button></div>
+   <div class="zone-actions"><button id="zoneUndo">Undo</button><button id="zoneCancel">Cancel</button><button id="zoneCommit" class="primary">Commit changes</button></div>
   </div>
-</main>
 <div class="dispatch"><div class="dispatch-copy"><span class="eyebrow">THE VALLEY REPORT</span><p id="report"></p></div><button id="historyBtn" aria-label="Settlement history">↗</button></div>
 <nav class="dock" id="gameDock" aria-label="Game actions"></nav>
 </div>

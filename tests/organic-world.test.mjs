@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {startGame,advance,validState,housingOutlook} from "../simulation.mjs";
-import {paintZones,validZones,zoneAt,terrainSuitable,elevationAt,slopeAt,candidateParcel,
+import {paintZones,applyZoneEdits,validZones,zoneAt,terrainSuitable,elevationAt,slopeAt,candidateParcel,
  findCottageSite,viableLotEstimate,routeFootpath,canWalkAt} from "../organic-world.mjs";
 
 const zone=[{x:685,y:419},{x:705,y:425},{x:728,y:421}];
@@ -147,4 +147,33 @@ test("WORLD-ZONE-06: small eraser makes a hole without deleting the surrounding 
  assert.equal(validState(JSON.parse(JSON.stringify(s))),true,"eraser layers must persist");
  assert.equal(paintZones(s,"residential",[[{x:620,y:600}]],24).ok,true);
  assert.equal(zoneAt(s,{x:620,y:600}),"residential","repainting the cutout restores land use");
+});
+
+test("ZONE-3D-010: alternating Paint, Erase and land use commits atomically",()=>{
+ const state=startGame(),p={x:705,y:425};
+ const edits=[
+  {type:"residential",radius:54,points:[p]},
+  {type:"erase",radius:24,points:[p]},
+  {type:"preserve",radius:24,points:[p]}
+ ];
+ const before=structuredClone(state.zones);
+ const preview=applyZoneEdits(state,edits);
+ assert.equal(preview.ok,true,preview.reason);
+ assert.deepEqual(state.zones,before,"Preview cannot mutate the save");
+ assert.deepEqual(preview.zones.map(x=>x.type),["residential","erase","preserve"]);
+ assert.equal(applyZoneEdits(state,edits,{commit:true}).ok,true);
+ assert.equal(zoneAt(state,p),"preserve");
+ assert.ok(validState(state));
+});
+test("ZONE-3D-011: invalid later stroke rolls back an entire mixed batch",()=>{
+ const state=startGame(),p={x:705,y:425};
+ const edits=[
+  {type:"residential",radius:54,points:[p]},
+  {type:"preserve",radius:54,points:[p]}
+ ];
+ const before=structuredClone(state.zones);
+ const failed=applyZoneEdits(state,edits,{commit:true});
+ assert.equal(failed.ok,false);
+ assert.deepEqual(state.zones,before);
+ assert.ok(validState(state));
 });

@@ -5,6 +5,8 @@ import {startGame,startWorldGame,worldDimensions,configureWorldState,
  generatedWorld,validState,WORLD,placeBuilding,buildRoad,advance} from "../simulation.mjs";
 import {paintZones,zoneAt} from "../organic-world.mjs";
 import {settlementGeometry} from "../game-3d-mesh.mjs";
+import {addRoadAnchor,createRoadDraft} from "../road-editor.mjs";
+import {quadraticPoint} from "../road-network.mjs";
 import {validDesirePaths,visibleDesirePaths} from "../desire-paths.mjs";
 
 test("WORLD-PLAY-01: new worlds are playable states with real generated size and saved seed",()=>{
@@ -88,4 +90,55 @@ test("WORLD-PLAY-05: saves accept long terrain-aware pedestrian routes anywhere 
  const result=advance(state);
  assert.ok(Number.isFinite(result.balance));
  assert.ok(validState(state),"Advancing a world with walking paths remains saveable");
+});
+
+test("ROAD-3D-010: 3D editor exposes existing nodes and curve handles",()=>{
+ const state=startWorldGame({...DEFAULT_WORLD,size:"small",
+  seed:"ROAD-CURVE-VISIBILITY",flatness:100,hills:0,lakes:0,rivers:0});
+ const world=generatedWorld(state);
+ const bare=settlementGeometry(world,state,{mode:"explore"});
+ const edit=settlementGeometry(world,state,{mode:"road"});
+ assert.equal(bare.guides.length,0);
+ assert.ok(edit.guides.length>0,"Junction beacons must exist in Road mode");
+ assert.ok(edit.counts.guideTriangles>0);
+ const edge=state.roadGraph.segments[0];
+ const a=state.roadGraph.nodes.find(n=>n.id===edge.a);
+ const b=state.roadGraph.nodes.find(n=>n.id===edge.b);
+ edge.control={x:(a.x+b.x)/2+22,y:(a.y+b.y)/2+32};
+ const now=settlementGeometry(world,state,{mode:"road"});
+ assert.ok(now.guides.length>edit.guides.length,"Curved built road exposes a handle");
+ const live={id:edge.id,control:{x:edge.control.x+30,y:edge.control.y+55}};
+ const dragging=settlementGeometry(world,state,{mode:"road",liveCurve:live});
+ assert.ok(dragging.guides.length>now.guides.length,"Live curve must render a highlighted 3D preview");
+ assert.notDeepEqual(dragging.surfaces,now.surfaces,"Road ribbon follows the dragged handle");
+ assert.ok(dragging.guides.every(Number.isFinite));
+});
+test("ROAD-3D-011: curved draft and radial gesture have raised 3D markers",()=>{
+ const state=startWorldGame({...DEFAULT_WORLD,size:"small",
+  seed:"ROAD-DRAFT-PREVIEW",flatness:95,lakes:0,rivers:0});
+ const world=generatedWorld(state);
+ const draft=createRoadDraft(),p=state.roads[0][0];
+ addRoadAnchor(draft,p);
+ addRoadAnchor(draft,{x:p.x+135,y:p.y+25});
+ draft.controls[0]={x:p.x+65,y:p.y+110};
+ const base=settlementGeometry(world,state,{mode:"road",draft});
+ const preview=settlementGeometry(world,state,{mode:"road",draft,
+  liveGesture:{start:draft.anchors[1],end:draft.anchors[1],
+   control:{x:p.x+210,y:p.y+120},radius:110},
+  pendingControl:{x:p.x+150,y:p.y+70}});
+ assert.ok(preview.guides.length>base.guides.length);
+ assert.equal(preview.guides.length%9,0);
+ assert.ok(preview.guides.every(Number.isFinite));
+});
+test("ZONE-3D-012: preview obeys the chronological order of mixed zone operations",()=>{
+ const state=startWorldGame({...DEFAULT_WORLD,size:"small",
+  seed:"ZONE-PREVIEW-ORDER",flatness:95,lakes:0,rivers:0});
+ const world=generatedWorld(state),point={x:world.width*.64,y:world.depth*.64};
+ const paint={type:"residential",radius:54,points:[point]};
+ const erase={type:"erase",radius:54,points:[point]};
+ const before=structuredClone(state.zones);
+ const painted=settlementGeometry(world,state,{mode:"zone",zoneEdits:[paint]});
+ const erased=settlementGeometry(world,state,{mode:"zone",zoneEdits:[paint,erase]});
+ assert.ok(painted.zones.length>erased.zones.length,"Erase removes pending paint in 3D");
+ assert.deepEqual(state.zones,before,"Editor previews may not alter saved zones");
 });
