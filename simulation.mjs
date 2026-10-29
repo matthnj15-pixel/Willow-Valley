@@ -1,5 +1,6 @@
 import {ensureGraph,validGraph,graphLines,addGeometry,deleteNode,deleteSegment,setSegmentCurve,saveGraphRoads,splitSegment} from "./road-network.mjs";
 import {advanceDesirePaths,visibleDesirePaths,validDesirePaths} from "./desire-paths.mjs";
+import {validZones,findCottageSite} from "./organic-world.mjs";
 export const VERSION=1;
 export const WORLD={w:1200,h:900};
 export const BUILDINGS={
@@ -23,7 +24,7 @@ export function startGame(){const state={
   roads:[[{x:172,y:472},{x:330,y:417},{x:460,y:454},{x:656,y:383}]],
   buildings:[{type:"lumber",x:288,y:340},{type:"farm",x:530,y:553}],
   houses:[{x:242,y:505},{x:350,y:374},{x:418,y:497},{x:545,y:400}],
-  happiness:76,desirePaths:[],
+  happiness:76,desirePaths:[],zones:[],localLanes:[],housing:{housed:32,pending:[],attractiveness:75,nextId:1},
   logs:["The first families establish Willow Valley beside an old forest road."],
   report:"Your town has supplies for its first expansion. Design a new road or develop another industry."
 };ensureGraph(state);return state;}
@@ -31,8 +32,30 @@ export function validState(x){return !!x&&x.version===VERSION&&Number.isInteger(
  ["people","gold","food","wood","tools","happiness"].every(k=>Number.isFinite(x[k]))&&
  Array.isArray(x.roads)&&x.roads.length<500&&x.roads.every(r=>Array.isArray(r)&&r.length>=2&&r.length<=512&&r.every(validPoint))&&
  Array.isArray(x.buildings)&&x.buildings.length<300&&x.buildings.every(b=>BUILDINGS[b.type]&&validPoint(b))&&
- Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(validPoint)&&Array.isArray(x.logs)&&(!x.roadGraph||validGraph(x.roadGraph))&&validDesirePaths(x.desirePaths);}
+ Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(h=>validPoint(h)&&
+ (!h.parcel||Array.isArray(h.parcel.vertices)&&h.parcel.vertices.length>=5&&h.parcel.vertices.length<=10&&h.parcel.vertices.every(validPoint)))&&
+ Array.isArray(x.logs)&&(!x.roadGraph||validGraph(x.roadGraph))&&
+ validDesirePaths(x.desirePaths)&&validZones(x.zones)&&validHousing(x.housing)&&
+ (x.localLanes===undefined||Array.isArray(x.localLanes)&&x.localLanes.length<=2000&&x.localLanes.every(l=>
+ Array.isArray(l.points)&&l.points.length>=2&&l.points.length<=12&&l.points.every(validPoint)));}
 function validPoint(p){return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=WORLD.w&&p.y>=0&&p.y<=WORLD.h;}
+function validHousing(h){return h===undefined||!!h&&Number.isInteger(h.housed)&&h.housed>=0&&
+ Number.isFinite(h.attractiveness)&&h.attractiveness>=0&&h.attractiveness<=100&&
+ Number.isSafeInteger(h.nextId)&&h.nextId>=1&&Array.isArray(h.pending)&&h.pending.length<=300&&
+ h.pending.every(g=>Number.isSafeInteger(g.id)&&g.id>0&&Number.isInteger(g.people)&&g.people>0&&g.people<=200000&&
+ Number.isInteger(g.wait)&&g.wait>=0&&g.wait<=2);}
+export function ensureHousing(s){
+ if(!s.housing){
+  const housed=Math.min(s.people,s.houses.length*8),extra=s.people-housed;
+  s.housing={housed,pending:extra?[{id:1,people:extra,wait:0}]:[],attractiveness:75,nextId:extra?2:1};
+ }
+ return s.housing;
+}
+export function housingOutlook(s){const h=ensureHousing(s);
+ return{capacity:s.houses.length*8,occupied:h.housed,vacancies:Math.max(0,s.houses.length*8-h.housed),
+ homeless:h.pending.reduce((n,g)=>n+g.people,0),homelessHouseholds:h.pending.length,
+ attractiveness:h.attractiveness,availableZones:(s.zones||[]).filter(z=>z.type==="residential").length};
+}
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
 function onRiver(p){return Math.abs(p.x-riverX(p.y))<69;}
 function occupied(s,p){return [...s.buildings,...s.houses].some(b=>distance(b,p)<57);}
@@ -85,6 +108,7 @@ export function structureAccess(s,p){
  const connected=accessibleRoads(s);
  if(nearestRoad(p,connected)<=125)return"road";
  const trails=visibleDesirePaths(s).filter(t=>t.complete);
+ if((s.localLanes||[]).some(l=>nearestRoad(p,[l.points])<=22))return"footpath";
  if(!trails.length)return"none";
  const nearTrail=nearestRoad(p,trails.map(t=>[t.from,t.to]))<=66;
  const isolatedRoads=s.roadGraph?graphLines(s.roadGraph).filter(line=>!connected.includes(line)&&nearestRoad(line[0],connected)>125):[];
@@ -93,10 +117,52 @@ export function structureAccess(s,p){
 }
 function productionAccess(s,b){return structureAccess(s,b)==="road"?1:0;}
 export function housingAccess(s){return s.houses.map(h=>structureAccess(s,h));}
-function housingSite(s){for(let k=0;k<130;k++){const lines=accessibleRoads(s);if(!lines.length)return null;const i=(s.turn*13+k*23)%997,r=lines[i%lines.length],seg=i%(r.length-1),a=r[seg],b=r[seg+1],t=.17+seedValue(i+800)*.66;
- const x=a.x+(b.x-a.x)*t,y=a.y+(b.y-a.y)*t,n=Math.hypot(b.y-a.y,b.x-a.x)||1,sgn=seedValue(i+40)<.5?-1:1;
- const p={x:Math.round(x+(b.y-a.y)/n*sgn*49),y:Math.round(y-(b.x-a.x)/n*sgn*49)};
- if(canPlace(s,p))return p;}return null;}
+// Existing homes have eight-person capacity. Houses only appear when households
+// require accommodation AND a complete, suitable parcel exists inside painted land.
+function reconcileHousing(s){const h=ensureHousing(s);
+ const pending=h.pending.reduce((n,g)=>n+g.people,0),tracked=h.housed+pending;
+ if(tracked<s.people)h.pending.push({id:h.nextId++,people:s.people-tracked,wait:0});
+ else if(tracked>s.people){
+  let excess=tracked-s.people;
+  for(let i=h.pending.length-1;i>=0&&excess>0;i--){
+   const n=Math.min(excess,h.pending[i].people);h.pending[i].people-=n;excess-=n;
+   if(!h.pending[i].people)h.pending.splice(i,1);
+  }
+  if(excess)h.housed=Math.max(0,h.housed-excess);
+ }
+}
+export function resolveHousing(s,notices,allowArrivals=true){
+ reconcileHousing(s);const h=s.housing,arriving=[];
+ if(allowArrivals&&s.turn%2===0&&s.food>=8&&s.happiness>=42&&h.attractiveness>=35){
+  const family={id:h.nextId++,people:3,wait:0};s.people+=3;h.pending.push(family);arriving.push(family.id);
+ }
+ const still=[];
+ for(const family of h.pending){
+  const free=s.houses.length*8-h.housed;
+  if(free>=family.people){h.housed+=family.people;notices.push("A household settled into an existing vacant home.");continue;}
+  const site=findCottageSite(s);
+  if(site&&s.gold>=45&&s.wood>=4){
+   s.gold-=45;s.wood-=4;s.houses.push(site.house);
+   if(!s.localLanes)s.localLanes=[];
+   s.localLanes.push(site.lane);h.housed+=family.people;
+   notices.push("A cottage grew on an irregular residential parcel; a dirt approach formed.");
+   s.logs.unshift(monthLabel(s.turn)+": A new cottage was built for a household, using 4 wood and 45 gold.");
+   continue;
+  }
+  if(!arriving.includes(family.id))family.wait++;
+  if(family.wait>=2){
+   s.people=Math.max(0,s.people-family.people);
+   h.attractiveness=clamp(h.attractiveness-6,0,100);
+   notices.push("A homeless household left after two further months; immigration attractiveness fell.");
+  }else{
+   still.push(family);
+   notices.push("Housing needed: "+(site?"Construction materials are insufficient.":"No suitable vacant residential parcel. Paint an accessible area.")+
+     " Household may leave in "+(2-family.wait)+" month(s).");
+  }
+ }
+ h.pending=still;
+ return{homeless:still.length,attractiveness:h.attractiveness};
+}
 export function advance(s,{events=true}={}){s.turn++;const notices=[],oldPeople=s.people;
  advanceDesirePaths(s);
  let foodProduction=0,woodProduction=0,toolProduction=0,upkeep=0,smiths=[];
@@ -115,7 +181,7 @@ export function advance(s,{events=true}={}){s.turn++;const notices=[],oldPeople=
  const taxes=Math.round(s.people*1.5*serviceRate),roadUpkeep=Math.ceil(s.roads.reduce((v,r)=>v+roadLength(r),0)*.018);s.gold+=taxes-upkeep-roadUpkeep;
  if(events&&s.turn%6===0){s.food+=8;notices.push("A seasonal harvest added 8 food.");}
  if(s.food<0){s.food=0;s.people=Math.max(8,s.people-3);s.happiness=clamp(s.happiness-8,0,100);notices.push("A food shortage drove three residents away.");}
- else if(s.food>=8&&s.happiness>=42){const site=housingSite(s);if(site){s.houses.push(site);s.people+=3;s.happiness=clamp(s.happiness+1,0,100);notices.push("A new home appeared along your road network.");}}
+ resolveHousing(s,notices,s.food>=8);
  if(s.food<12){s.happiness=clamp(s.happiness-3,0,100);notices.push("Food reserves are running low.");}
  if(s.gold<0){s.happiness=clamp(s.happiness-4,0,100);notices.push("The treasury is in deficit.");}
  const net=s.people-oldPeople,balance=taxes-upkeep-roadUpkeep;
