@@ -111,10 +111,10 @@ function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;sel
  for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn",zone:"zoneBtn"})){
   $(id).classList.toggle("active",m===next);$(id).setAttribute("aria-pressed",String(m===next));}
  $("roadControls").hidden=next!=="road";$("zoneControls").hidden=next!=="zone";
- $("modeLabel").textContent={explore:active3D?"3D · Drag to pan · Pinch zoom · Twist rotate · Two-finger swipe ↑↓ to tilt":"Explore · drag to pan · pinch to zoom",
+ $("modeLabel").textContent={explore:active3D?"3D · One finger pans · Two fingers roll the invisible trackball · Pinch zoom":"Explore · drag to pan · pinch to zoom",
   road:"Roads · tap for straight; hold and drag to shape a fixed node",
   build:"Construction · tap clear ground to place",
-  zone:active3D?"Paint "+zoneType+" · one finger paints · two fingers navigate":"Paint "+zoneType+" · one finger paints · two fingers pan and zoom"}[next];
+  zone:active3D?"Paint "+zoneType+" · one finger paints · two fingers roll / zoom":"Paint "+zoneType+" · one finger paints · two fingers pan and zoom"}[next];
  updateRoadInfo();updateZoneInfo();renderMap();}
 function updateZoneInfo(){
  $("zoneInfo").textContent=zoneType.charAt(0).toUpperCase()+zoneType.slice(1)+
@@ -502,18 +502,24 @@ function downPointer(e){
  const draftIndex=mode==="road"&&!n&&!bend?hitRoadSegment(draft,down,radius): -1;
  const hit={node:n,builtCurve:bend,segmentIndex:draftIndex};
  const p={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,down,moved:false,zoneBlocked:false,
-  holdReady:false,holdTimer:null,curveActive:false,gestureActive:false,initialControl:null,hit,trail:[]};
+  holdReady:false,holdTimer:null,curveActive:false,gestureActive:false,initialControl:null,hit,trail:[],zoneStroke:null};
  pointers.set(e.pointerId,p);
  if(pointers.size===2){
   for(const entry of pointers.values()){
    clearHold(entry);entry.holdReady=false;entry.moved=true;entry.zoneBlocked=true;
   }
-  // A lone tentative tap is navigation; preserve completed paint portions.
-  if(mode==="zone"&&zoneStrokes.at(-1)?.length===1){
-   zoneStrokes.pop();updateZoneInfo();
+  // When a second finger lands, roll the camera instead of keeping the
+  // active paint stroke (including any dots made before the second touch).
+  if(mode==="zone"){
+   for(const entry of pointers.values()){
+    const index=zoneStrokes.indexOf(entry.zoneStroke);
+    if(index>=0)zoneStrokes.splice(index,1);
+    entry.zoneStroke=null;
+   }
+   updateZoneInfo();renderMap();
   }
   const [a,b]=[...pointers.values()],midX=(a.x+b.x)/2,midY=(a.y+b.y)/2;
-  gesture=active3D?beginCameraGesture([a,b]):
+  gesture=active3D?beginCameraGesture([a,b],svg.getBoundingClientRect()):
    {distance:distance(a,b),scale:camera.scale,anchor:mapPoint(midX,midY),midX,midY};
  }else if(pointers.size>2){
    gesture=null;
@@ -521,7 +527,8 @@ function downPointer(e){
     clearHold(entry);entry.holdReady=false;entry.moved=true;entry.zoneBlocked=true;
    }
  }else if(mode==="zone"){
-   zoneStrokes.push([{x:Math.round(down.x),y:Math.round(down.y)}]);
+   p.zoneStroke=[{x:Math.round(down.x),y:Math.round(down.y)}];
+   zoneStrokes.push(p.zoneStroke);
    updateZoneInfo();renderMap();
  }else if(mode==="road"){
    p.holdTimer=setTimeout(()=>{
