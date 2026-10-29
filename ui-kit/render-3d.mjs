@@ -233,23 +233,15 @@ function panBy(dx,dy){
 }
 function navigateTouches(change){
  if(!change)return;
- const rect=canvas.getBoundingClientRect();
- if(change.kind==="tilt"){
-  camera.pitch=clamp(camera.pitch+change.verticalPixels/Math.max(160,rect.height)*2.15,.32,1.47);
-  render();
-  return;
- }
- // Pinch, rotate and pan all orbit a point beneath the user's two fingers.
- // Holding this point stable prevents the map from jumping at high zoom.
- const before=screenToWorld(change.previous.x,change.previous.y);
- camera.zoom=clamp(camera.zoom*change.zoomRatio,Math.max(world.width,world.depth)*.035,
+ // The two fingers act as one virtual sphere: yaw, pitch, twist and pinch
+ // combine on every event. There is no tilt-vs-rotate mode to become stuck in.
+ camera.yaw+=change.yawDelta;
+ camera.pitch=clamp(camera.pitch+change.pitchDelta,.32,1.47);
+ camera.zoom=clamp(camera.zoom*change.zoomRatio,
+  Math.max(world.width,world.depth)*.035,
   Math.max(world.width,world.depth)*2.4);
- camera.yaw-=change.angleRadians;
- const after=screenToWorld(change.current.x,change.current.y);
- if(before&&after){
-  camera.focusX=clamp(camera.focusX+before.x-after.x,-world.width/2,world.width/2);
-  camera.focusZ=clamp(camera.focusZ+before.y-after.y,-world.depth/2,world.depth/2);
- }
+ // The camera orbits the current settlement focus. Unlike screen-anchored
+ // panning, this lets the landscape roll around a stable imaginary ball.
  render();
 }
 function homeView(x,z,zoom=null){
@@ -266,7 +258,7 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
   e.preventDefault();
   canvas.setPointerCapture(e.pointerId);
   pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
-  if(pointers.size===2)gesture=beginCameraGesture([...pointers.values()]);
+  if(pointers.size===2)gesture=beginCameraGesture([...pointers.values()],canvas.getBoundingClientRect());
   else if(pointers.size>2)gesture=null;
  }
  function onMove(e){
