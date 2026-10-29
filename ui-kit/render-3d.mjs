@@ -1,0 +1,163 @@
+import {createWorldMesh,clamp} from "../world-gen.mjs";
+
+// Native WebGL preview, with no CDN dependencies.
+const VERTEX=[
+ "attribute vec3 aPosition; attribute vec3 aColor; attribute vec3 aNormal;",
+ "uniform vec3 uFocus; uniform float uYaw; uniform float uPitch;",
+ "uniform float uZoom; uniform float uAspect;",
+ "varying vec3 vColor; varying float vLight;",
+ "void main(){",
+ " vec3 p=aPosition-uFocus;",
+ " float co=cos(uYaw),si=sin(uYaw);",
+ " float xx=co*p.x+si*p.z;",
+ " float zz=-si*p.x+co*p.z;",
+ " float yy=cos(uPitch)*p.y-sin(uPitch)*zz;",
+ " float depth=sin(uPitch)*p.y+cos(uPitch)*zz;",
+ " gl_Position=vec4(xx/(uZoom*uAspect),yy/uZoom,-depth/2700.0,1.0);",
+ " vec3 sun=normalize(vec3(-0.40,0.86,0.25));",
+ " vLight=0.70+0.30*max(0.0,dot(normalize(aNormal),sun));",
+ " vColor=aColor;",
+ "}"
+].join("\n");
+const FRAGMENT=[
+ "precision mediump float; varying vec3 vColor; varying float vLight;",
+ "void main(){gl_FragColor=vec4(vColor*vLight,1.0);}"
+].join("\n");
+function makeShader(gl,type,source){
+ const s=gl.createShader(type);gl.shaderSource(s,source);gl.compileShader(s);
+ if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))
+  throw new Error(gl.getShaderInfoLog(s)||"Shader error");
+ return s;
+}
+function makeProgram(gl){
+ const p=gl.createProgram();
+ gl.attachShader(p,makeShader(gl,gl.VERTEX_SHADER,VERTEX));
+ gl.attachShader(p,makeShader(gl,gl.FRAGMENT_SHADER,FRAGMENT));
+ gl.linkProgram(p);
+ if(!gl.getProgramParameter(p,gl.LINK_STATUS))
+  throw new Error(gl.getProgramInfoLog(p)||"3D unavailable");
+ return p;
+}
+export function mountWorld3D(canvas,initialWorld){
+ const gl=canvas.getContext("webgl",{antialias:true,alpha:false,depth:true,
+  powerPreference:"low-power",preserveDrawingBuffer:false});
+ if(!gl)throw new Error("3D preview requires WebGL support in your browser.");
+ const program=makeProgram(gl);
+ const loc={
+  position:gl.getAttribLocation(program,"aPosition"),
+  color:gl.getAttribLocation(program,"aColor"),
+  normal:gl.getAttribLocation(program,"aNormal"),
+  focus:gl.getUniformLocation(program,"uFocus"),
+  yaw:gl.getUniformLocation(program,"uYaw"),
+  pitch:gl.getUniformLocation(program,"uPitch"),
+  zoom:gl.getUniformLocation(program,"uZoom"),
+  aspect:gl.getUniformLocation(program,"uAspect")
+ };
+ const buffers=[gl.createBuffer(),gl.createBuffer()];
+ let counts=[0,0],world=initialWorld;
+ const camera={yaw:.71,pitch:.86,zoom:650,focusX:0,focusZ:0};
+ const pointers=new Map();
+ let gesture=null,frame=0;
+ function resetCamera(){
+  camera.yaw=.71;camera.pitch=.86;camera.focusX=0;camera.focusZ=0;
+  const aspect=Math.max(.4,canvas.getBoundingClientRect().width/
+   Math.max(1,canvas.getBoundingClientRect().height));
+  camera.zoom=Math.max(world.width/aspect,world.depth)*.71;
+  render();
+ }
+ function upload(newWorld){
+  world=newWorld;
+  const geometry=createWorldMesh(world);
+  gl.bindBuffer(gl.ARRAY_BUFFER,buffers[0]);
+  gl.bufferData(gl.ARRAY_BUFFER,geometry.ground,gl.STATIC_DRAW);
+  gl.bindBuffer(gl.ARRAY_BUFFER,buffers[1]);
+  gl.bufferData(gl.ARRAY_BUFFER,geometry.water,gl.STATIC_DRAW);
+  counts=[geometry.ground.length/9,geometry.water.length/9];
+  resetCamera();
+ }
+ function drawBuffer(buffer,count){
+  if(!count)return;
+  gl.bindBuffer(gl.ARRAY_BUFFER,buffer);
+  for(const [location,offset] of [
+   [loc.position,0],[loc.color,3],[loc.normal,6]]){
+   gl.enableVertexAttribArray(location);
+   gl.vertexAttribPointer(location,3,gl.FLOAT,false,36,offset*4);
+  }
+  gl.drawArrays(gl.TRIANGLES,0,count);
+ }
+ function draw(){
+  frame=0;
+  const rect=canvas.getBoundingClientRect();
+  if(!rect.width||!rect.height)return;
+  const density=Math.min(window.devicePixelRatio||1,1.75);
+  const width=Math.round(rect.width*density),height=Math.round(rect.height*density);
+  if(canvas.width!==width||canvas.height!==height){canvas.width=width;canvas.height=height;}
+  gl.viewport(0,0,width,height);
+  gl.clearColor(.71,.80,.74,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);
+  gl.enable(gl.DEPTH_TEST);gl.depthFunc(gl.LEQUAL);
+  gl.useProgram(program);
+  gl.uniform3f(loc.focus,camera.focusX,17,camera.focusZ);
+  gl.uniform1f(loc.yaw,camera.yaw);gl.uniform1f(loc.pitch,camera.pitch);
+  gl.uniform1f(loc.zoom,camera.zoom);
+  gl.uniform1f(loc.aspect,Math.max(.1,width/height));
+  drawBuffer(buffers[0],counts[0]);drawBuffer(buffers[1],counts[1]);
+ }
+ function render(){if(!frame)frame=requestAnimationFrame(draw);}
+ function zoomBy(factor){
+  camera.zoom=clamp(camera.zoom*factor,Math.max(world.width,world.depth)*.08,
+   Math.max(world.width,world.depth)*2.4);
+  render();
+ }
+ function onDown(e){
+  if(e.pointerType==="mouse"&&e.button!==0)return;
+  e.preventDefault();canvas.setPointerCapture(e.pointerId);
+  pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
+  if(pointers.size===2){
+   const [a,b]=[...pointers.values()];
+   gesture={distance:Math.hypot(a.x-b.x,a.y-b.y),
+    midX:(a.x+b.x)/2,midY:(a.y+b.y)/2,zoom:camera.zoom,
+    focusX:camera.focusX,focusZ:camera.focusZ};
+  }
+ }
+ function onMove(e){
+  const last=pointers.get(e.pointerId);if(!last)return;
+  e.preventDefault();
+  const dx=e.clientX-last.x,dy=e.clientY-last.y;
+  last.x=e.clientX;last.y=e.clientY;
+  const rect=canvas.getBoundingClientRect();
+  if(pointers.size===2&&gesture){
+   const [a,b]=[...pointers.values()];
+   camera.zoom=clamp(gesture.zoom*gesture.distance/
+    Math.max(18,Math.hypot(a.x-b.x,a.y-b.y)),
+    Math.max(world.width,world.depth)*.08,Math.max(world.width,world.depth)*2.4);
+   const movedX=(a.x+b.x)/2-gesture.midX,movedY=(a.y+b.y)/2-gesture.midY;
+   const wx=movedX/Math.max(1,rect.width)*2*camera.zoom*(rect.width/Math.max(1,rect.height));
+   const wz=movedY/Math.max(1,rect.height)*2*camera.zoom/Math.max(.3,Math.sin(camera.pitch));
+   camera.focusX=clamp(gesture.focusX-wx*Math.cos(camera.yaw)-wz*Math.sin(camera.yaw),-world.width/2,world.width/2);
+   camera.focusZ=clamp(gesture.focusZ-wx*Math.sin(camera.yaw)+wz*Math.cos(camera.yaw),-world.depth/2,world.depth/2);
+  }else if(pointers.size===1){
+   camera.yaw+=dx/Math.max(120,rect.width)*Math.PI*1.5;
+   camera.pitch=clamp(camera.pitch+dy/Math.max(180,rect.height)*1.8,.34,1.42);
+  }
+  render();
+ }
+ function onUp(e){pointers.delete(e.pointerId);if(pointers.size<2)gesture=null;}
+ canvas.addEventListener("pointerdown",onDown);
+ canvas.addEventListener("pointermove",onMove);
+ canvas.addEventListener("pointerup",onUp);
+ canvas.addEventListener("pointercancel",onUp);
+ canvas.addEventListener("wheel",e=>{e.preventDefault();zoomBy(e.deltaY>0?1.12:1/1.12);},{passive:false});
+ window.addEventListener("resize",render);
+ upload(world);
+ return{setWorld:upload,resetCamera,zoomBy,getCamera:()=>({...camera}),
+  dispose(){
+   canvas.removeEventListener("pointerdown",onDown);
+   canvas.removeEventListener("pointermove",onMove);
+   canvas.removeEventListener("pointerup",onUp);
+   canvas.removeEventListener("pointercancel",onUp);
+   window.removeEventListener("resize",render);
+   if(frame)cancelAnimationFrame(frame);
+   for(const b of buffers)gl.deleteBuffer(b);
+   gl.deleteProgram(program);
+  }};
+}
