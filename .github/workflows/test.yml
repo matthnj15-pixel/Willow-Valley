@@ -27,6 +27,7 @@ jobs:
           node --check desire-paths.mjs
           node --check config.mjs
           node --check save-slots.mjs
+          node --check organic-world.mjs
           node --check scripts/build-offline.mjs
           node --check scripts/build-icons.mjs
           node --check sw.js

@@ -32,7 +32,10 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 - Drag empty map space to pan, or pinch with two fingers to zoom. A quick swipe over a road also pans instead of bending it.
 - Tap **Undo** to reverse the last node or curve, **Cancel** to discard the draft, or **Build road** to commit. Cost updates with the real road length.
 - Select **Build** and pick an industry, then tap a location on the map to place it.
-- Advance a month to resolve production, food consumption, taxes, upkeep, and residential growth.
+- Use **Menu → Paint zoning** to brush and commit Residential, Commercial, Farmland, or Preserve land. Painted ground authorizes development but does not instantly place houses; use **Housing demand** for existing vacancy, viable plot estimates, homelessness and immigration appeal.
+- The early residential engine chooses irregular cottage sites only within committed suitable Residential land when a family needs a home, creates local dirt footpaths, and rejects steep ground, rivers and conflicting parcels. Households without a home have two further monthly turns before departure.
+- **Prototype boundary:** Commercial/Farmland brushes currently reserve territory visually; crop assignment, staffing, 3D models and higher-density planning are later slices.
+- Advance a month to resolve production, food consumption, taxes, upkeep, immigration and demand-led residential growth.
 - Open the menu to manage three independent local settlement slots, safely migrate an existing single-save game, export/import a slot, and download a structured diagnostic event log. Each slot auto-saves; Stable and Development remain isolated.
 
 ## Development

@@ -1,10 +1,11 @@
 import {IS_PREVIEW,FLAGS,SAVE_KEY} from "./config.mjs";
 import {initializeSlots,listSlots,readSlot,newSlot,saveSlot,selectSlot,renameSlot,appendJournal,diagnostics} from "./save-slots.mjs";
 import {mountResourceBar,mountGameDock,createBuildRow,createButton,renderGameToast} from "./ui-components.mjs";
-import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance} from "./simulation.mjs";
+import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance,housingOutlook} from "./simulation.mjs";
 import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,SNAP_RADIUS} from "./road-network.mjs";
 import {radialCurveGesture} from "./road-gesture.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
+import {ZONE_TYPES,BRUSH_RADIUS,paintZones,elevationAt,slopeAt,viableLotEstimate} from "./organic-world.mjs";
 import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
 mountResourceBar($("resourceBar"),[
@@ -23,6 +24,7 @@ let slotName=restored.ok?restored.active.name:"Unsaved settlement";
 let journal=restored.ok?restored.active.events:[];
 ensureGraph(game);
 let mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
+let zoneType="residential",zoneStrokes=[],zoneRadius=BRUSH_RADIUS;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
 function save(){const result=saveSlot(localStorage,SAVE_KEY,activeSlot,game,journal,validState,slotName);
  if(!result.ok)notify(result.reason);return result.ok;}
@@ -33,13 +35,24 @@ function downloadJSON(data,filename){const blob=new Blob([JSON.stringify(data,nu
 
 function num(v){return Math.round(v).toLocaleString();}
 function notify(message){renderGameToast($("toast"),message);clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").hidden=true,3300);}
-function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;selectedBuild=null;for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"})){$(id).classList.toggle("active",m===next);$(id).setAttribute("aria-pressed",String(m===next));}
- $("roadControls").hidden=next!=="road";$("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",road:"Roads · tap for straight; hold and drag to shape a fixed node",build:"Construction · tap clear ground to place"}[next];
- updateRoadInfo();renderMap();}
+function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;selectedBuild=null;
+ for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn"})){
+  $(id).classList.toggle("active",m===next);$(id).setAttribute("aria-pressed",String(m===next));}
+ $("roadControls").hidden=next!=="road";$("zoneControls").hidden=next!=="zone";
+ $("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",
+  road:"Roads · tap for straight; hold and drag to shape a fixed node",
+  build:"Construction · tap clear ground to place",
+  zone:"Paint "+zoneType+" · one finger paints · two fingers zoom"}[next];
+ updateRoadInfo();updateZoneInfo();renderMap();}
+function updateZoneInfo(){$("zoneInfo").textContent=zoneType.charAt(0).toUpperCase()+zoneType.slice(1)+
+ " · "+zoneStrokes.length+" stroke(s) · "+(zoneType==="erase"?"remove painted zones":"brush radius "+zoneRadius);
+ $("zoneCommit").disabled=!zoneStrokes.length;}
+
 function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
  $("roadInfo").textContent=draft.anchors.length<2?"Tap an existing node to branch; touch and hold a point to shape its curve.":draft.anchors.length+" nodes · "+num(cost)+" gold · held nodes stay fixed; finger shapes curve.";
  $("confirmRoad").disabled=draft.anchors.length<2;}
-function setStats(){for(const id of ["people","gold","food","wood","tools"])$(id).textContent=num(game[id]);$("calendar").textContent=monthLabel(game.turn)+" · Slot "+activeSlot;$("environment").textContent=IS_PREVIEW?"DEVELOPMENT":"STABLE";$("report").textContent=game.report;}
+function setStats(){for(const id of ["people","gold","food","wood","tools"])$(id).textContent=num(game[id]);$("calendar").textContent=monthLabel(game.turn)+" · Slot "+activeSlot;$("environment").textContent=IS_PREVIEW?"DEVELOPMENT":"STABLE";$("report").textContent=game.report;const housing=housingOutlook(game);
+ $("housingSummary").textContent="Homes "+housing.occupied+"/"+housing.capacity+" · Homeless "+housing.homeless+" · Appeal "+Math.round(housing.attractiveness);}
 function node(tag,attrs){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,String(v));return n;}
 function appendText(parent,text,x,y,size,fill="#fff",extras={}){const e=node("text",{x,y,"text-anchor":"middle",fill,"font-size":size,...extras});e.textContent=text;parent.append(e);return e;}
 // Committed roads are polylines; explicit curves are previewed with SVG Q segments.
@@ -47,6 +60,19 @@ function path(points){return points.map((p,i)=>(i===0?"M ":" L ")+p.x+" "+p.y).j
 function roadGraphic(parent,pts,preview=false,explicitPath=null){if(pts.length<2)return;const d=explicitPath||path(pts);
  parent.append(node("path",{d,fill:"none",stroke:preview?"#ffe5ae":"#738267","stroke-width":preview?27:32,"stroke-linejoin":"round","stroke-linecap":"round",opacity:preview?.76:1}));
  parent.append(node("path",{d,fill:"none",stroke:preview?"#fbd18d":"#d4c395","stroke-width":preview?15:19,"stroke-linejoin":"round","stroke-linecap":"round","stroke-dasharray":preview?"15 12":"none"}));}
+const ZONE_COLORS={residential:"#d7a669",commercial:"#81a7ae",farmland:"#b4a650",preserve:"#6e9a67",erase:"#c85a4b"};
+function drawZoneStrokes(strokes,type,radius,preview=false){
+ const shade=ZONE_COLORS[type]||ZONE_COLORS.residential;
+ for(const line of strokes)for(const p of line){
+  svg.append(node("circle",{cx:p.x,cy:p.y,r:radius,fill:shade,
+   opacity:preview?".35":".20",stroke:preview?"#fff5d6":"none",
+   "stroke-width":preview?1.5:0,"class":preview?"zone-pending":"zone-committed"}));
+ }
+}
+function drawZones(){
+ for(const z of game.zones||[])drawZoneStrokes([z.points],z.type,z.radius);
+ if(mode==="zone")drawZoneStrokes(zoneStrokes,zoneType,zoneRadius,true);
+}
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
 function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rect.height)return;
  const w=920/camera.scale,h=w*(rect.height/rect.width);
@@ -64,12 +90,17 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
  svg.append(node("path",{d:river,fill:"none",stroke:"#6a9b95","stroke-width":122,"stroke-linejoin":"round","stroke-linecap":"round",opacity:".45"}));
  svg.append(node("path",{d:river,fill:"none",stroke:"#88bec4","stroke-width":91,"stroke-linejoin":"round","stroke-linecap":"round"}));
  svg.append(node("path",{d:river,fill:"none",stroke:"#c0dfd5","stroke-width":4,"stroke-linejoin":"round",opacity:".65","stroke-dasharray":"18 29"}));
+ drawZones();
  for(let i=0;i<190;i++){const x=18+seedValue(i+200)*1160,y=10+seedValue(i+510)*875;
  if((x>135&&x<730&&y>275&&y<660)||Math.abs(x-riverX(y))<77)continue;
  const r=8+seedValue(i+840)*12;
  svg.append(node("circle",{cx:x,cy:y,r:r,fill:i%4?"#527c55":"#456b4c",opacity:".88"}));
  svg.append(node("circle",{cx:x-r*.27,cy:y-r*.28,r:r*.72,fill:"#759869",opacity:".86"}));}
  for(const b of game.buildings)if(b.type==="farm"){svg.append(node("rect",{x:b.x-63,y:b.y-50,width:126,height:100,rx:5,fill:"#d9c58b",stroke:"#bea770","stroke-width":3,opacity:".81"}));for(let i=0;i<7;i++)svg.append(node("path",{d:"M "+(b.x-55)+" "+(b.y-38+i*12)+" l 110 0",stroke:"#a79d66","stroke-width":5,opacity:".65"}));}
+ // Self-organized local dirt footpaths provide walking access, not industrial freight.
+ for(const lane of game.localLanes||[])svg.append(node("path",{
+  d:path(lane.points),fill:"none",stroke:"#987d51","stroke-width":9,
+  "stroke-dasharray":"8 6","stroke-linecap":"round",opacity:".88"}));
  // Committed roads show persistent, editable nodes and curve handles.
  const graph=ensureGraph(game);
  // Pedestrian shortcuts grow after the month advances. They are not roads.
@@ -113,10 +144,16 @@ function renderMap(){const rect=svg.getBoundingClientRect();if(!rect.width||!rec
    for(const n of graph.nodes)svg.append(node("circle",{cx:n.x,cy:n.y,r:11,fill:"#d6e4ce",stroke:n.id===graph.hubId?"#bc783d":"#345840","stroke-width":3}));
  }
  for(const p of draft.anchors)svg.append(node("circle",{cx:p.x,cy:p.y,r:11,fill:"#fff1c2",stroke:"#53664b","stroke-width":3}));
- for(const h of game.houses){const access=structureAccess(game,h);svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".25"}));
- svg.append(node("rect",{x:h.x-11,y:h.y-9,width:22,height:22,rx:2,fill:"#f2e2bc",stroke:access==="road"?"#aa9a78":access==="footpath"?"#e6a34d":"#c54f43","stroke-width":access==="road"?1.3:4}));
- svg.append(node("path",{d:"M "+(h.x-16)+" "+(h.y-10)+" L "+h.x+" "+(h.y-23)+" L "+(h.x+16)+" "+(h.y-10)+" Z",fill:"#a67353",stroke:"#7e654b","stroke-width":1.4}));
- svg.append(node("rect",{x:h.x+2,y:h.y,width:4,height:13,fill:"#826c52"}));if(access!=="road")appendText(svg,access==="footpath"?"~":"!",h.x+18,h.y-21,27,access==="footpath"?"#e4a34e":"#b93434",{"font-weight":"bold"});}
+ for(const h of game.houses){const access=structureAccess(game,h);
+ if(h.parcel&&mode==="zone"){svg.append(node("polygon",{
+  points:h.parcel.vertices.map(p=>p.x+","+p.y).join(" "),fill:"#e9d4ad",
+  "fill-opacity":".09",stroke:"#6a835e","stroke-width":1.5,"stroke-dasharray":"7 5"}));}
+svg.append(node("ellipse",{cx:h.x,cy:h.y+11,rx:20,ry:9,fill:"#445e3d",opacity:".25"}));
+ const homeLayer=node("g",{transform:h.orientation?"rotate("+Math.round(h.orientation*180/Math.PI)+" "+h.x+" "+h.y+")":""});svg.append(homeLayer);
+ homeLayer.append(node("rect",{x:h.x-11,y:h.y-9,width:22,height:22,rx:2,fill:"#f2e2bc",stroke:access==="road"?"#aa9a78":access==="footpath"?"#e6a34d":"#c54f43","stroke-width":access==="road"?1.3:4}));
+ homeLayer.append(node("path",{d:"M "+(h.x-16)+" "+(h.y-10)+" L "+h.x+" "+(h.y-23)+" L "+(h.x+16)+" "+(h.y-10)+" Z",fill:"#a67353",stroke:"#7e654b","stroke-width":1.4}));
+ homeLayer.append(node("rect",{x:h.x+2,y:h.y,width:4,height:13,fill:"#826c52"}));
+ if(access!=="road")appendText(svg,access==="footpath"?"~":"!",h.x+18,h.y-21,27,access==="footpath"?"#e4a34e":"#b93434",{"font-weight":"bold"});}
  for(const b of game.buildings){const shade={lumber:"#8f623c",farm:"#b98d49",smith:"#677777",park:"#658c57",plaza:"#b6a77d"}[b.type]||"#a18b68";const access=structureAccess(game,b),disconnected=access!=="road";
  svg.append(node("ellipse",{cx:b.x,cy:b.y+18,rx:28,ry:9,fill:"#455f3d",opacity:".33"}));
  svg.append(node("rect",{x:b.x-22,y:b.y-17,width:44,height:36,rx:3,fill:shade,stroke:access==="road"?"#fff1bb":access==="footpath"?"#e5a14b":"#cf614c","stroke-width":disconnected?5:3}));
@@ -141,6 +178,28 @@ function buildPanel(){setMode("build");const el=document.createElement("div");el
  onClick:()=>{selectedBuild=key;closeSheet();$("modeLabel").textContent="Place "+b.label+" · tap clear land";notify("Tap the map to place "+b.label+".");}});
  el.append(button);}
  openSheet("Construction",el);}
+function zoningPanel(){const el=document.createElement("div");
+ el.append(textNode("p","Paint where development is permitted; the town builds only when a household needs a home. Unused painted areas stay natural. One finger paints, two fingers navigate."));
+ for(const type of [...ZONE_TYPES,"erase"]){
+  sheetButton(el,(type==="erase"?"Erase zoning":"Paint "+type.charAt(0).toUpperCase()+type.slice(1)),()=>{
+   zoneType=type;zoneStrokes=[];setMode("zone");closeSheet();
+   notify("Brush "+type+": draw an area and tap Commit zone.");
+  });
+ }
+ el.append(textNode("p","Commercial and farmland brushes are planning reservations in this prototype; farms still use their existing production rules. Preserves exclude residential sites.","note"));
+ openSheet("Paint the landscape",el);}
+function housingPanel(){const el=document.createElement("div"),h=housingOutlook(game);
+ el.append(textNode("p","Homes grow inside committed Residential land only when a family needs one. Homeless households leave after two additional monthly turns."));
+ for(const [label,value] of [
+  ["Residents housed",h.occupied],["Existing dwelling capacity",h.capacity],
+  ["Vacant housing spaces",h.vacancies],["Viable new cottage sites (estimate)",viableLotEstimate(game,8)],
+  ["Homeless residents",h.homeless],["Households waiting",h.homelessHouseholds],
+  ["Immigration attractiveness",Math.round(h.attractiveness)+" / 100"]]){
+  const row=document.createElement("div");row.className="housing-metric";row.append(textNode("span",label),textNode("strong",String(value)));el.append(row);
+ }
+ if(h.homelessHouseholds)el.append(textNode("p",game.housing.pending.map(g=>"Family "+g.id+": "+(2-g.wait)+" turn(s) before departure").join(" · "),"note"));
+ sheetButton(el,"Paint residential zoning",()=>{zoneType="residential";zoneStrokes=[];setMode("zone");closeSheet();});
+ openSheet("Housing demand",el);}
 function slotPanel(){const el=document.createElement("div");
  el.append(textNode("p","Three independent local settlements. Each slot saves automatically. Your original pre-slot save remains untouched as a backup."));
  for(const entry of listSlots(localStorage,SAVE_KEY,validState)){
@@ -180,6 +239,8 @@ function slotPanel(){const el=document.createElement("div");
 function menuPanel(){const el=document.createElement("div");
  el.append(textNode("p",IS_PREVIEW?"Development environment. Your saves are isolated from the stable game.":"Stable environment. Your settlements are stored locally on this device and browser."));
  sheetButton(el,"Manage 3 settlement slots",()=>slotPanel());
+ sheetButton(el,"Paint zoning · residential, commercial, farming, preserves",()=>zoningPanel());
+ sheetButton(el,"Housing demand · vacancies and homelessness",()=>housingPanel());
  sheetButton(el,"Export current slot as JSON",()=>{
   downloadJSON(game,"willow-valley-"+(IS_PREVIEW?"dev":"stable")+"-slot-"+activeSlot+"-turn-"+game.turn+".json");
   notify("Save export started.");
@@ -263,6 +324,7 @@ function hitBuiltCurve(p,radius){
  return best;
 }
 function handleTap(p){if(p.x<0||p.y<0||p.x>WORLD.w||p.y>WORLD.h)return;
+ if(mode==="zone")return;
  if(mode==="road"){
   const radius=roadPixelRadius(),near=nearestNode(game.roadGraph,p,radius);
   if(draft.anchors.length===0){
@@ -297,7 +359,11 @@ function downPointer(e){
  pointers.set(e.pointerId,p);
  if(pointers.size===2){
    for(const entry of pointers.values()){clearHold(entry);entry.holdReady=false;entry.moved=true;}
+   if(mode==="zone"&&zoneStrokes.length)zoneStrokes.pop();
    const [a,b]=[...pointers.values()];gesture={distance:distance(a,b),scale:camera.scale};
+ }else if(mode==="zone"){
+   zoneStrokes.push([{x:Math.round(down.x),y:Math.round(down.y)}]);
+   updateZoneInfo();renderMap();
  }else if(mode==="road"){
    p.holdTimer=setTimeout(()=>{
     if(pointers.size===1&&pointers.get(e.pointerId)===p&&!p.moved&&mode==="road"){
@@ -314,6 +380,13 @@ function movePointer(e){
    const [a,b]=[...pointers.values()];
    if(gesture)camera.scale=clamp(gesture.scale*distance(a,b)/Math.max(gesture.distance,10),.75,3.8);
    renderMap();return;
+ }
+ if(mode==="zone"&&pointers.size===1){
+   const at=mapPoint(e.clientX,e.clientY),stroke=zoneStrokes.at(-1),last=stroke?.at(-1);
+   if(stroke&&last&&distance(at,last)>9&&stroke.length<180&&at.x>=0&&at.y>=0&&at.x<=WORLD.w&&at.y<=WORLD.h){
+    stroke.push({x:Math.round(at.x),y:Math.round(at.y)});
+   }
+   p.moved=true;renderMap();return;
  }
  if(mode==="road"&&p.holdReady&&travel>=MOVE_SLOP_PX){
    p.moved=true;clearHold(p);
@@ -390,6 +463,15 @@ $("closeSheet").onclick=closeSheet;$("backdrop").onclick=closeSheet;
 $("undoRoad").onclick=()=>{pendingControl=null;undoRoadAction(draft);updateRoadInfo();renderMap();};
 $("cancelRoad").onclick=()=>{draft=createRoadDraft();pendingControl=null;updateRoadInfo();renderMap();};
 $("confirmRoad").onclick=()=>{const r=buildRoad(game,draft.anchors,draft.controls);if(!r.ok){notify(r.reason);return;}record("road_constructed","Cost "+r.cost+" gold; isolated="+r.isolated+"; intersections="+r.intersections);draft=createRoadDraft();pendingControl=null;refresh();notify(r.isolated?"Isolated street built. Sims will begin forming walking desire paths next month.":"Road built for "+r.cost+" gold"+(r.intersections?". "+r.intersections+" new intersection(s).":"."));};
+$("zoneUndo").onclick=()=>{zoneStrokes.pop();updateZoneInfo();renderMap();};
+$("zoneCancel").onclick=()=>{zoneStrokes=[];updateZoneInfo();renderMap();};
+$("zoneCommit").onclick=()=>{
+ const result=paintZones(game,zoneType,zoneStrokes,zoneRadius);
+ if(!result.ok){notify(result.reason);return;}
+ record("zone_committed",zoneType+" · "+result.count+" stroke(s)");
+ zoneStrokes=[];setMode("explore");refresh();
+ notify(zoneType==="erase"?"Zoning erased.":"Zone committed. The town will respond when there is real demand.");
+};
 $("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents});record("turn_resolved","Residents "+result.populationDelta+"; food "+result.foodProduction+"; wood "+result.woodProduction+"; tools "+result.toolProduction+"; treasury "+result.balance);refresh();notify(monthLabel(game.turn)+": "+(result.populationDelta>=0?"+":"")+result.populationDelta+" residents, "+(result.balance>=0?"+":"")+result.balance+" gold.");};
 $("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;ensureGraph(game);record("save_imported","Imported user-provided save into slot "+activeSlot);closeSheet();refresh();notify("Save imported into Slot "+activeSlot+".");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
 window.addEventListener("resize",renderMap);
