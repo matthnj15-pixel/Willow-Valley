@@ -257,7 +257,7 @@ export function instantiateKenneyTerrain(world,models){
  if(models.waterTile)for(const stream of world.rivers)for(let i=2;i<stream.points.length-2;i+=3){
   const point=stream.points[i],a=stream.points[i-1],b=stream.points[i+1];
   if(world.sample(point.x,point.z).kind!=="river")continue;
-  instance("waterTile",point.x,point.z,stream.width*1.45,
+  instance("waterTile",point.x,point.z,stream.width*.90,
    Math.atan2(b.z-a.z,b.x-a.x),"water");
  }
  if(models.bank||models.beach)for(const lake of world.lakes)for(let i=0;i<lake.spine.length;i+=2){
