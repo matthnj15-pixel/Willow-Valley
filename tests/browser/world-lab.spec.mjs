@@ -24,7 +24,7 @@ test("WORLD-3D-UI-02: map size, water settings and seed survive blueprint save w
  });
  await page.locator("#seed").fill("A-TEST-VALLEY");
  await page.locator("#generate").click();
- await expect(page.locator("#worldStats")).toContainText("1,800 × 1350");
+ await expect(page.locator("#worldStats")).toContainText("1,800 × 1,350");
  await expect(page.locator("#worldStats")).toContainText("Rivers");
  await expect(page.locator("#worldStats")).toContainText("Lakes");
  await expect(page.locator("#worldStats")).toContainText("Trees");

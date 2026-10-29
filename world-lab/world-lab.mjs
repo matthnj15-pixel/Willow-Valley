@@ -40,7 +40,7 @@ function drawStats(world){
   if(s.water!==null)wet++;
  }
  $("worldStats").replaceChildren(
-  stat("Map",world.width+" × "+world.depth),
+  stat("Map",world.width.toLocaleString()+" × "+world.depth.toLocaleString()),
   stat("Relief",Math.round(high-low)+" m"),
   stat("Water",Math.round(wet/(21*26)*100)+"%"),
   stat("Lakes",world.lakes.length),
