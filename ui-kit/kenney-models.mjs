@@ -240,3 +240,18 @@ export function instantiateKenneyTerrain(world,models){
  }
  return{land:new Float32Array(land),water:new Float32Array(water)};
 }
+
+export function kenneyLandscapePalette(models){
+ const average=model=>{
+  if(!model)return null;
+  const data=model.vertices,step=Math.max(9,Math.floor(data.length/10000)*9);
+  const sum=[0,0,0];let count=0;
+  for(let i=0;i<data.length;i+=step){
+   for(let j=0;j<3;j++)sum[j]+=data[i+3+j];
+   count++;
+  }
+  return sum.map(v=>Math.max(.07,Math.min(.9,v/count)));
+ };
+ return{land:average(models.ground),water:average(models.waterTile),
+  stone:average(models.cliff)};
+}
