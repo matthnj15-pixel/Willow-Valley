@@ -247,3 +247,19 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
  .wv-dialog-actions .wv-btn svg{width:16px;height:16px}
  .wv-sheet-preview .sheet-head h2{font-size:22px}
 }
+
+/* WV-WORLD-001 first playable brush: subdued organic cartography overlay. */
+.housing-summary{font-size:10px;line-height:1.2;color:#e8d3a6;margin-top:3px;letter-spacing:.1px}
+.zone-controls{position:absolute;bottom:12px;left:12px;right:12px;display:grid;gap:9px;
+ padding:11px;border-radius:14px;background:#153f38ed;border:1px solid #d7c9a7;
+ box-shadow:0 7px 28px #0005;z-index:2}
+.zone-controls[hidden]{display:none}
+.zone-controls span{font-size:12px;color:#fff3d5}
+.zone-controls>div{display:flex;gap:6px}
+.zone-controls button{min-height:46px;flex:1;border-radius:10px;background:#285248;
+ border:1px solid #e0cfa766;color:#fff8e9;font-size:12px}
+.zone-controls .primary{background:#f3e8bc;color:#263334;border:1px solid #d7c9a7;font-weight:750}
+.zone-controls button:disabled{opacity:.45}
+.housing-metric{display:grid;grid-template-columns:1fr auto;gap:9px;padding:8px 0;
+ border-bottom:1px solid #fff3d529;font-size:13px}
+.housing-metric strong{font-variant-numeric:tabular-nums}
