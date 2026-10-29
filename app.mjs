@@ -6,7 +6,7 @@ import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue
 import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,SNAP_RADIUS} from "./road-network.mjs";
 import {radialCurveGesture} from "./road-gesture.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
-import {ZONE_TYPES,BRUSH_RADIUS,paintZones,zoneAt,elevationAt,slopeAt,viableLotEstimate} from "./organic-world.mjs";
+import {ZONE_TYPES,BRUSH_RADIUS,applyZoneEdits,zoneAt,elevationAt,slopeAt,viableLotEstimate} from "./organic-world.mjs";
 import {terrainContours} from "./terrain-contours.mjs";
 import {DEFAULT_WORLD} from "./world-gen.mjs";
 import {mountWorld3D} from "./ui-kit/render-3d.mjs";
@@ -35,7 +35,7 @@ let journal=restored.ok?restored.active.events:[];
 configureWorldState(game);
 ensureGraph(game);
 let mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
-let zoneType="residential",lastZonePaintType="residential",zoneStrokes=[],zoneRadius=BRUSH_RADIUS;
+let zoneType="residential",lastZonePaintType="residential",zoneTool="paint",zoneEdits=[],zoneRadius=BRUSH_RADIUS;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
 let active3D=null,last3DKey="",worldLoadGeneration=0;
 function showTerrainFailure(error){
@@ -114,17 +114,30 @@ function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;sel
  $("modeLabel").textContent={explore:active3D?"3D · One finger pans · Two fingers roll the invisible trackball · Pinch zoom":"Explore · drag to pan · pinch to zoom",
   road:"Roads · tap for straight; hold and drag to shape a fixed node",
   build:"Construction · tap clear ground to place",
-  zone:active3D?"Paint "+zoneType+" · one finger paints · two fingers roll / zoom":"Paint "+zoneType+" · one finger paints · two fingers pan and zoom"}[next];
+  zone:"Zoning · Move / Paint / Erase · Commit saves all changes"}[next];
  updateRoadInfo();updateZoneInfo();renderMap();}
 function updateZoneInfo(){
- $("zoneInfo").textContent=zoneType.charAt(0).toUpperCase()+zoneType.slice(1)+
-  " · "+zoneStrokes.length+" stroke(s) · "+(zoneType==="erase"?"erase painted land":"paint a connected area");
- $("zoneType").value=zoneType;$("zoneRadius").value=String(zoneRadius);
+ const label=zoneTool==="move"?"Move · drag with one finger to pan":
+  zoneTool==="erase"?"Erase · remove zoning with one finger":
+  "Paint "+lastZonePaintType+" · draw with one finger";
+ $("zoneInfo").textContent=label+" · "+zoneEdits.length+" pending change(s)";
+ $("zoneType").value=zoneTool==="erase"?"erase":lastZonePaintType;
+ $("zoneRadius").value=String(zoneRadius);
  $("zoneRadiusValue").textContent=String(zoneRadius);
- $("zoneCommit").disabled=!zoneStrokes.length;
- $("zoneEraser").classList.toggle("active",zoneType==="erase");
- $("zoneEraser").setAttribute("aria-pressed",String(zoneType==="erase"));
- $("zoneEraser").textContent=zoneType==="erase"?"Resume brush":"Eraser";
+ $("zoneCommit").disabled=!zoneEdits.length;
+ for(const [tool,id] of [["move","zoneMove"],["paint","zonePaint"],["erase","zoneEraser"]]){
+  $(id).classList.toggle("active",zoneTool===tool);
+  $(id).setAttribute("aria-pressed",String(zoneTool===tool));
+ }
+}
+function setZoneTool(next){
+ if(!["move","paint","erase"].includes(next))return;
+ zoneTool=next;
+ zoneType=next==="erase"?"erase":lastZonePaintType;
+ $("modeLabel").textContent=next==="move"?"Zoning · drag to move the map":
+  next==="erase"?"Zoning · erase · all changes pending until Commit":
+  "Zoning · paint "+lastZonePaintType+" · all changes pending until Commit";
+ updateZoneInfo();renderMap();
 }
 function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
  $("roadInfo").textContent=draft.anchors.length<2?"Tap an existing node to branch; touch and hold a point to shape its curve.":draft.anchors.length+" nodes · "+num(cost)+" gold · held nodes stay fixed; finger shapes curve.";
@@ -164,22 +177,29 @@ function drawZones(){
   zoneCache.source=game.zones;zoneCache.roads=game.roads;
  }
  for(const shape of zoneCache.shapes)zoneShape(shape.d,shape.type);
- if(mode!=="zone"||!zoneStrokes.length)return;
- const pending=zoneStrokes.map(points=>({points,radius:zoneRadius,type:zoneType}));
- if(zoneType==="erase"){
-  zoneShape(zoneSilhouette(pending,5,p=>zoneAt(game,p)!==null),zoneType,true);
- }else{
-  const proposed={...game,zones:[...(game.zones||[]),...pending]};
-  zoneShape(zoneSilhouette(pending,5,p=>zoneAt(proposed,p)===zoneType),zoneType,true);
+ if(mode!=="zone"||!zoneEdits.length)return;
+ // Preview the entire transaction in draw order. The committed state remains
+ // unchanged while the user switches between Paint, Move and Erase.
+ for(let i=0;i<zoneEdits.length;i++){
+  const edit=zoneEdits[i],before=applyZoneEdits(game,zoneEdits.slice(0,i));
+  const current=before.ok?{...game,zones:before.zones}:game;
+  const after=applyZoneEdits(game,zoneEdits.slice(0,i+1));
+  const proposed=after.ok?{...game,zones:after.zones}:current;
+  const match=edit.type==="erase"?p=>zoneAt(current,p)!==null:
+   p=>zoneAt(proposed,p)===edit.type;
+  zoneShape(zoneSilhouette([edit],5,match),edit.type,true);
  }
 }
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
 function renderMap(){
  if(active3D){
   const key=JSON.stringify([game.turn,game.roads,game.houses,game.buildings,game.zones,
-   game.localLanes,draft.anchors,draft.controls,zoneStrokes,zoneType,zoneRadius]);
+   game.localLanes,draft.anchors,draft.controls,zoneEdits,zoneType,zoneRadius,
+   mode,liveCurve,liveGesture,pendingControl]);
   if(last3DKey!==key){
-   last3DKey=key;active3D.setSettlement(game,{draft,zoneStrokes,zoneType,zoneRadius});
+   last3DKey=key;active3D.setSettlement(game,{
+    draft,zoneEdits,zoneType,zoneRadius,mode,liveCurve,liveGesture,pendingControl
+   });
   }else active3D.render();
   svg.setAttribute("viewBox",[0,0,WORLD.w,WORLD.h].join(" "));svg.replaceChildren();
   return;
@@ -301,8 +321,10 @@ function mapPoint(clientX,clientY){
  return{x:camera.cx-w/2+(clientX-r.left)/r.width*w,y:camera.cy-h/2+(clientY-r.top)/r.height*h};
 }
 function chooseZoneType(type){
+ if(type!=="erase"&&!ZONE_TYPES.includes(type))return;
  if(type!=="erase")lastZonePaintType=type;
- zoneType=type;zoneStrokes=[];setMode("zone");
+ if(mode!=="zone")setMode("zone");
+ setZoneTool(type==="erase"?"erase":"paint");
 }
 function refresh(){setStats();renderMap();updateRoadInfo();save();}
 function openSheet(title,content){$("sheetTitle").textContent=title;const body=$("sheetBody");body.replaceChildren();if(typeof content==="string")body.innerHTML=content;else body.append(content);$("sheet").hidden=false;$("backdrop").hidden=false;}
@@ -318,11 +340,11 @@ function buildPanel(){setMode("build");const el=document.createElement("div");el
  el.append(button);}
  openSheet("Construction",el);}
 function zoningPanel(){const el=document.createElement("div");
- el.append(textNode("p","Paint where development is permitted; the town builds only when a household needs a home. Unused painted areas stay natural. One finger paints, two fingers navigate."));
+ el.append(textNode("p","Use Move to drag the map, Paint to fill land, and Erase to remove zoning. Switch freely; Commit saves the entire batch."));
  for(const type of [...ZONE_TYPES,"erase"]){
   sheetButton(el,(type==="erase"?"Erase zoning":"Paint "+type.charAt(0).toUpperCase()+type.slice(1)),()=>{
-   zoneType=type;zoneStrokes=[];setMode("zone");closeSheet();
-   notify("Brush "+type+": draw an area and tap Commit zone.");
+   chooseZoneType(type);closeSheet();
+   notify("Zoning "+type+": edit the map, then Commit all changes.");
   });
  }
  el.append(textNode("p","Commercial and farmland brushes are planning reservations in this prototype; farms still use their existing production rules. Preserves exclude residential sites.","note"));
@@ -337,7 +359,7 @@ function housingPanel(){const el=document.createElement("div"),h=housingOutlook(
   const row=document.createElement("div");row.className="housing-metric";row.append(textNode("span",label),textNode("strong",String(value)));el.append(row);
  }
  if(h.homelessHouseholds)el.append(textNode("p",game.housing.pending.map(g=>"Family "+g.id+": "+(2-g.wait)+" turn(s) before departure").join(" · "),"note"));
- sheetButton(el,"Paint residential zoning",()=>{zoneType="residential";zoneStrokes=[];setMode("zone");closeSheet();});
+ sheetButton(el,"Paint residential zoning",()=>{chooseZoneType("residential");closeSheet();});
  openSheet("Housing demand",el);}
 function slotPanel(){const el=document.createElement("div");
  el.append(textNode("p","Three independent local settlements. Each slot saves automatically. Your original pre-slot save remains untouched as a backup."));
@@ -508,12 +530,12 @@ function downPointer(e){
   for(const entry of pointers.values()){
    clearHold(entry);entry.holdReady=false;entry.moved=true;entry.zoneBlocked=true;
   }
-  // When a second finger lands, roll the camera instead of keeping the
-  // active paint stroke (including any dots made before the second touch).
+  // A second finger cancels only the unfinished editing stroke. Earlier
+  // staged Paint and Erase operations stay pending until Commit.
   if(mode==="zone"){
    for(const entry of pointers.values()){
-    const index=zoneStrokes.indexOf(entry.zoneStroke);
-    if(index>=0)zoneStrokes.splice(index,1);
+    const index=zoneEdits.indexOf(entry.zoneStroke);
+    if(index>=0)zoneEdits.splice(index,1);
     entry.zoneStroke=null;
    }
    updateZoneInfo();renderMap();
@@ -526,9 +548,10 @@ function downPointer(e){
    for(const entry of pointers.values()){
     clearHold(entry);entry.holdReady=false;entry.moved=true;entry.zoneBlocked=true;
    }
- }else if(mode==="zone"){
-   p.zoneStroke=[{x:Math.round(down.x),y:Math.round(down.y)}];
-   zoneStrokes.push(p.zoneStroke);
+ }else if(mode==="zone"&&zoneTool!=="move"){
+   p.zoneStroke={type:zoneTool==="erase"?"erase":lastZonePaintType,radius:zoneRadius,
+    points:[{x:Math.round(down.x),y:Math.round(down.y)}]};
+   zoneEdits.push(p.zoneStroke);
    updateZoneInfo();renderMap();
  }else if(mode==="road"){
    p.holdTimer=setTimeout(()=>{
@@ -561,13 +584,24 @@ function movePointer(e){
  }
  if(mode==="zone"&&pointers.size===1){
   if(p.zoneBlocked)return;
-  const at=mapPoint(e.clientX,e.clientY),stroke=zoneStrokes.at(-1),last=stroke?.at(-1);
-  if(stroke&&last&&distance(at,last)>9&&stroke.length<180&&at.x>=0&&at.y>=0&&at.x<=WORLD.w&&at.y<=WORLD.h){
-   stroke.push({x:Math.round(at.x),y:Math.round(at.y)});
+  if(zoneTool==="move"){
+   p.moved=true;
+   if(active3D)active3D.panBy(dx,dy);
+   else{
+    const rect=svg.getBoundingClientRect(),w=920/camera.scale;
+    camera.cx-=dx/rect.width*w;
+    camera.cy-=dy/rect.width*w*(rect.height/rect.width);
+   }
+   renderMap();return;
   }
+  const at=mapPoint(e.clientX,e.clientY);
+  const edit=p.zoneStroke,last=edit?.points.at(-1);
+  if(edit&&last&&distance(at,last)>9&&edit.points.length<180&&
+   at.x>=0&&at.y>=0&&at.x<=WORLD.w&&at.y<=WORLD.h)
+   edit.points.push({x:Math.round(at.x),y:Math.round(at.y)});
   p.moved=true;renderMap();return;
  }
- if(mode==="road"&&p.holdReady&&travel>=MOVE_SLOP_PX){
+ if(mode==="road"&&(p.holdReady||(active3D&&(p.hit.builtCurve||p.hit.segmentIndex>=0)))&&travel>=MOVE_SLOP_PX){
    p.moved=true;clearHold(p);
    if(p.hit.segmentIndex>=0){
      if(!p.curveActive){p.initialControl=beginRoadBend(draft,p.hit.segmentIndex);p.curveActive=true;}
@@ -642,9 +676,11 @@ $("reset3DCamera").onclick=()=>{
 };
 $("exploreBtn").onclick=()=>setMode("explore");
 $("roadsBtn").onclick=()=>setMode("road");
-$("zoneBtn").onclick=()=>{zoneStrokes=[];setMode("zone");};
+$("zoneBtn").onclick=()=>{if(mode!=="zone")zoneEdits=[];setMode("zone");setZoneTool("paint");};
 $("zoneType").onchange=e=>chooseZoneType(e.target.value);
-$("zoneEraser").onclick=()=>chooseZoneType(zoneType==="erase"?lastZonePaintType:"erase");
+$("zoneMove").onclick=()=>setZoneTool("move");
+$("zonePaint").onclick=()=>setZoneTool("paint");
+$("zoneEraser").onclick=()=>setZoneTool(zoneTool==="erase"?"paint":"erase");
 $("zoneRadius").oninput=e=>{zoneRadius=Number(e.target.value);updateZoneInfo();renderMap();};
 $("buildBtn").onclick=()=>buildPanel();
 $("menuBtn").onclick=()=>menuPanel();
@@ -653,14 +689,14 @@ $("closeSheet").onclick=closeSheet;$("backdrop").onclick=closeSheet;
 $("undoRoad").onclick=()=>{pendingControl=null;undoRoadAction(draft);updateRoadInfo();renderMap();};
 $("cancelRoad").onclick=()=>{draft=createRoadDraft();pendingControl=null;updateRoadInfo();renderMap();};
 $("confirmRoad").onclick=()=>{const r=buildRoad(game,draft.anchors,draft.controls);if(!r.ok){notify(r.reason);return;}record("road_constructed","Cost "+r.cost+" gold; isolated="+r.isolated+"; intersections="+r.intersections);draft=createRoadDraft();pendingControl=null;refresh();notify(r.isolated?"Isolated street built. Sims will begin forming walking desire paths next month.":"Road built for "+r.cost+" gold"+(r.intersections?". "+r.intersections+" new intersection(s).":"."));};
-$("zoneUndo").onclick=()=>{zoneStrokes.pop();updateZoneInfo();renderMap();};
-$("zoneCancel").onclick=()=>{zoneStrokes=[];updateZoneInfo();renderMap();};
+$("zoneUndo").onclick=()=>{zoneEdits.pop();updateZoneInfo();renderMap();};
+$("zoneCancel").onclick=()=>{zoneEdits=[];updateZoneInfo();renderMap();};
 $("zoneCommit").onclick=()=>{
- const result=paintZones(game,zoneType,zoneStrokes,zoneRadius);
+ const result=applyZoneEdits(game,zoneEdits,{commit:true});
  if(!result.ok){notify(result.reason);return;}
- record("zone_committed",zoneType+" · "+result.count+" stroke(s)");
- zoneStrokes=[];setMode("explore");refresh();
- notify(zoneType==="erase"?"Zoning erased.":"Zone committed. The town will respond when there is real demand.");
+ record("zone_committed",result.count+" mixed zoning operation(s)");
+ zoneEdits=[];setMode("explore");refresh();
+ notify("Zoning changes committed. The town will respond to demand.");
 };
 $("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents});record("turn_resolved","Residents "+result.populationDelta+"; food "+result.foodProduction+"; wood "+result.woodProduction+"; tools "+result.toolProduction+"; treasury "+result.balance);refresh();notify(monthLabel(game.turn)+": "+(result.populationDelta>=0?"+":"")+result.populationDelta+" residents, "+(result.balance>=0?"+":"")+result.balance+" gold.");};
 $("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;bootGameWorld();ensureGraph(game);record("save_imported","Imported user-provided save into slot "+activeSlot);closeSheet();refresh();notify("Save imported into Slot "+activeSlot+".");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
