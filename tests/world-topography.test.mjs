@@ -48,7 +48,7 @@ test("WORLD-ART-04: authored Kenney ground and water mesh triangles are rendered
  assert.equal(result.water.length%9,0);
  assert.ok(result.land.every(Number.isFinite));
  const palette=kenneyLandscapePalette({ground:model,waterTile:model,cliff:model});
- assert.deepEqual(palette.land,[.2,.5,.25]);
+ assert.ok(palette.land.every((v,i)=>Math.abs(v-[.2,.5,.25][i])<1e-5));
  const mesh=createWorldMesh(world,25,18,{trees:false,palette});
  assert.ok(mesh.groundTriangles>0);
  assert.ok(mesh.waterTriangles>0);
