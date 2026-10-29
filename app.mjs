@@ -10,6 +10,7 @@ import {ZONE_TYPES,BRUSH_RADIUS,paintZones,zoneAt,elevationAt,slopeAt,viableLotE
 import {terrainContours} from "./terrain-contours.mjs";
 import {DEFAULT_WORLD} from "./world-gen.mjs";
 import {mountWorld3D} from "./ui-kit/render-3d.mjs";
+import {beginCameraGesture,advanceCameraGesture} from "./camera-gestures.mjs";
 import {zoneSilhouette} from "./zone-silhouette.mjs";
 import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
@@ -44,11 +45,22 @@ function bootGameWorld(){
  last3DKey="";
  $("stage").classList.toggle("is-3d",!!world);
  $("game3D").hidden=!world;
+ $("reset3DCamera").hidden=!world;
+ $("cameraAngle").hidden=!world;
  if(!world)return;
  try{
-  active3D=mountWorld3D($("game3D"),world,{interactive:false});
+  active3D=mountWorld3D($("game3D"),world,{interactive:false,
+   onCamera:view=>{
+    $("cameraAngle").textContent=Math.round(view.pitch*180/Math.PI)+"°";
+    $("stage").dataset.cameraYaw=String(view.yaw);
+    $("stage").dataset.cameraPitch=String(view.pitch);
+    $("stage").dataset.cameraZoom=String(view.zoom);
+    $("stage").dataset.cameraFocusX=String(view.focusX);
+    $("stage").dataset.cameraFocusZ=String(view.focusZ);
+   }
+  });
   const center=game.houses?.[0]||{x:world.width/2,y:world.depth/2};
-  active3D.focusOn(center.x+115,center.y,Math.min(500,world.depth*.42));
+  active3D.homeView(center.x+115,center.y,Math.min(500,world.depth*.42));
  }catch(error){
   $("stage").classList.remove("is-3d");$("game3D").hidden=true;
   notify("3D graphics unavailable. The fallback map remains playable.");
@@ -68,10 +80,10 @@ function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;sel
  for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn",zone:"zoneBtn"})){
   $(id).classList.toggle("active",m===next);$(id).setAttribute("aria-pressed",String(m===next));}
  $("roadControls").hidden=next!=="road";$("zoneControls").hidden=next!=="zone";
- $("modeLabel").textContent={explore:"Explore · drag to pan · pinch to zoom",
+ $("modeLabel").textContent={explore:active3D?"3D · Drag to pan · Pinch zoom · Twist rotate · Two-finger swipe ↑↓ to tilt":"Explore · drag to pan · pinch to zoom",
   road:"Roads · tap for straight; hold and drag to shape a fixed node",
   build:"Construction · tap clear ground to place",
-  zone:"Paint "+zoneType+" · one finger paints · two fingers pan and zoom"}[next];
+  zone:active3D?"Paint "+zoneType+" · one finger paints · two fingers navigate":"Paint "+zoneType+" · one finger paints · two fingers pan and zoom"}[next];
  updateRoadInfo();updateZoneInfo();renderMap();}
 function updateZoneInfo(){
  $("zoneInfo").textContent=zoneType.charAt(0).toUpperCase()+zoneType.slice(1)+
@@ -470,7 +482,13 @@ function downPointer(e){
    zoneStrokes.pop();updateZoneInfo();
   }
   const [a,b]=[...pointers.values()],midX=(a.x+b.x)/2,midY=(a.y+b.y)/2;
-  gesture={distance:distance(a,b),scale:camera.scale,anchor:mapPoint(midX,midY),midX,midY};
+  gesture=active3D?beginCameraGesture([a,b]):
+   {distance:distance(a,b),scale:camera.scale,anchor:mapPoint(midX,midY),midX,midY};
+ }else if(pointers.size>2){
+   gesture=null;
+   for(const entry of pointers.values()){
+    clearHold(entry);entry.holdReady=false;entry.moved=true;entry.zoneBlocked=true;
+   }
  }else if(mode==="zone"){
    zoneStrokes.push([{x:Math.round(down.x),y:Math.round(down.y)}]);
    updateZoneInfo();renderMap();
@@ -490,12 +508,9 @@ function movePointer(e){
   const [a,b]=[...pointers.values()];
   if(gesture){
    if(active3D){
-     const midX=(a.x+b.x)/2,midY=(a.y+b.y)/2,nextDistance=distance(a,b);
-     active3D.zoomBy(gesture.distance/Math.max(10,nextDistance));
-     active3D.panBy(midX-gesture.midX,midY-gesture.midY);
-     gesture.distance=nextDistance;gesture.midX=midX;gesture.midY=midY;
-     renderMap();return;
-    }
+    active3D.navigateTouches(advanceCameraGesture(gesture,[a,b]));
+    renderMap();return;
+   }
     camera.scale=clamp(gesture.scale*distance(a,b)/Math.max(gesture.distance,10),.75,3.8);
    const rect=svg.getBoundingClientRect(),w=920/camera.scale,h=w*rect.height/rect.width;
    const midX=(a.x+b.x)/2,midY=(a.y+b.y)/2;
@@ -581,6 +596,11 @@ svg.addEventListener("pointermove",movePointer);
 svg.addEventListener("pointerup",endPointer);
 svg.addEventListener("pointercancel",cancelPointer);
 $("zoomIn").onclick=()=>zoom(1.32);$("zoomOut").onclick=()=>zoom(1/1.32);
+$("reset3DCamera").onclick=()=>{
+ if(!active3D)return;
+ const center=game.houses?.[0]||{x:WORLD.w/2,y:WORLD.h/2};
+ active3D.homeView(center.x+115,center.y,Math.min(500,WORLD.h*.42));
+};
 $("exploreBtn").onclick=()=>setMode("explore");
 $("roadsBtn").onclick=()=>setMode("road");
 $("zoneBtn").onclick=()=>{zoneStrokes=[];setMode("zone");};
@@ -607,7 +627,7 @@ $("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents}
 $("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;bootGameWorld();ensureGraph(game);record("save_imported","Imported user-provided save into slot "+activeSlot);closeSheet();refresh();notify("Save imported into Slot "+activeSlot+".");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
 window.addEventListener("resize",renderMap);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet();});
-bootGameWorld();setStats();if(restored.warning)notify(restored.warning);if(!restored.ok)notify(restored.reason);else if(restored.migrated)notify("Your original settlement was safely copied into Slot 1.");save();requestAnimationFrame(renderMap);
+bootGameWorld();setStats();setMode("explore");if(restored.warning)notify(restored.warning);if(!restored.ok)notify(restored.reason);else if(restored.migrated)notify("Your original settlement was safely copied into Slot 1.");save();requestAnimationFrame(renderMap);
 
 // Cache the complete game shell while connected, then play offline in flight mode.
 // A standalone downloaded HTML file skips the worker and uses its embedded assets.

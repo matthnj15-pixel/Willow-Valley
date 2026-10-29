@@ -25,7 +25,7 @@
   <canvas id="game3D" hidden aria-label="3D settlement landscape"></canvas>
   <svg id="map" aria-label="Interactive map. Drag to pan, pinch to zoom, tap to build." role="img"></svg>
   <div class="map-info" id="modeLabel">Explore · drag to pan · pinch to zoom</div>
-  <div class="zoom" aria-label="Zoom controls"><button id="zoomIn" aria-label="Zoom in">+</button><button id="zoomOut" aria-label="Zoom out">−</button></div>
+  <div class="zoom" aria-label="Camera controls"><button id="zoomIn" aria-label="Zoom in">+</button><button id="zoomOut" aria-label="Zoom out">−</button><button id="reset3DCamera" aria-label="Reset 3D camera to settlement" title="Reset view" hidden>⟳</button><output id="cameraAngle" class="camera-angle" aria-label="Camera viewing angle" hidden></output></div>
   <div class="road-controls" id="roadControls" hidden><span id="roadInfo">Tap the map to trace your road.</span><div><button id="undoRoad">Undo</button><button id="cancelRoad">Cancel</button><button id="confirmRoad" class="primary">Build road</button></div></div>
   <div class="zone-controls" id="zoneControls" hidden>
    <div class="zone-settings">

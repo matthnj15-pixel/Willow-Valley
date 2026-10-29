@@ -1,5 +1,6 @@
 import {createWorldMesh,clamp} from "../world-gen.mjs";
 import {settlementGeometry} from "../game-3d-mesh.mjs";
+import {beginCameraGesture,advanceCameraGesture} from "../camera-gestures.mjs";
 import {fetchKenneyModel,instantiateKenney,instantiateKenneyTerrain,kenneyLandscapePalette} from "./kenney-models.mjs";
 
 // Native WebGL terrain and actual Kenney CC0 asset meshes.
@@ -52,7 +53,7 @@ function makeProgram(gl){
   throw new Error(gl.getProgramInfoLog(p)||"3D unavailable");
  return p;
 }
-export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=false,interactive=true}={}){
+export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},onCamera=()=>{},showReference=false,interactive=true}={}){
  const gl=canvas.getContext("webgl",{antialias:true,alpha:false,depth:true,
   powerPreference:"low-power",preserveDrawingBuffer:false});
  if(!gl)throw new Error("3D preview requires WebGL support in your browser.");
@@ -160,7 +161,10 @@ export function mountWorld3D(canvas,initialWorld,{onAssets=()=>{},showReference=
   drawBuffer(buffers[6],counts[6],false,.52);
   drawBuffer(buffers[7],counts[7]);
  }
- function render(){if(!frame)frame=requestAnimationFrame(draw);}
+ function render(){
+  onCamera({...camera});
+  if(!frame)frame=requestAnimationFrame(draw);
+ }
  function zoomBy(factor){
   camera.zoom=clamp(camera.zoom*factor,Math.max(world.width,world.depth)*.08,
    Math.max(world.width,world.depth)*2.4);
@@ -201,13 +205,40 @@ function focusOn(x,z,zoom=null){
  render();
 }
 function panBy(dx,dy){
+ // Translate in the camera's projected ground-plane axes. The sign is
+ // deliberate: moving fingers right/down moves the world right/down.
  const rect=canvas.getBoundingClientRect();
- const u=-dx/Math.max(1,rect.height)*2*camera.zoom;
- const v=dy/Math.max(1,rect.height)*2*camera.zoom/Math.max(.2,Math.sin(camera.pitch));
+ const horizontal=-dx/Math.max(1,rect.height)*2*camera.zoom;
+ const vertical=-dy/Math.max(1,rect.height)*2*camera.zoom/Math.max(.22,Math.sin(camera.pitch));
  const cs=Math.cos(camera.yaw),sn=Math.sin(camera.yaw);
- camera.focusX=clamp(camera.focusX+u*cs-v*sn,-world.width/2,world.width/2);
- camera.focusZ=clamp(camera.focusZ+u*sn+v*cs,-world.depth/2,world.depth/2);
+ camera.focusX=clamp(camera.focusX+horizontal*cs-vertical*sn,-world.width/2,world.width/2);
+ camera.focusZ=clamp(camera.focusZ+horizontal*sn+vertical*cs,-world.depth/2,world.depth/2);
  render();
+}
+function navigateTouches(change){
+ if(!change)return;
+ const rect=canvas.getBoundingClientRect();
+ if(change.kind==="tilt"){
+  camera.pitch=clamp(camera.pitch+change.verticalPixels/Math.max(160,rect.height)*2.15,.32,1.47);
+  render();
+  return;
+ }
+ // Pinch, rotate and pan all orbit a point beneath the user's two fingers.
+ // Holding this point stable prevents the map from jumping at high zoom.
+ const before=screenToWorld(change.previous.x,change.previous.y);
+ camera.zoom=clamp(camera.zoom*change.zoomRatio,Math.max(world.width,world.depth)*.035,
+  Math.max(world.width,world.depth)*2.4);
+ camera.yaw+=change.angleRadians;
+ const after=screenToWorld(change.current.x,change.current.y);
+ if(before&&after){
+  camera.focusX=clamp(camera.focusX+before.x-after.x,-world.width/2,world.width/2);
+  camera.focusZ=clamp(camera.focusZ+before.y-after.y,-world.depth/2,world.depth/2);
+ }
+ render();
+}
+function homeView(x,z,zoom=null){
+ camera.yaw=.71;camera.pitch=.86;
+ focusOn(x,z,zoom);
 }
 function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54}={}){
  settlement=state;settlementDraft=draft;settlementZoneStrokes=zoneStrokes;
@@ -216,38 +247,30 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
 }
  function onDown(e){
   if(e.pointerType==="mouse"&&e.button!==0)return;
-  e.preventDefault();canvas.setPointerCapture(e.pointerId);
+  e.preventDefault();
+  canvas.setPointerCapture(e.pointerId);
   pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});
-  if(pointers.size===2){
-   const [a,b]=[...pointers.values()];
-   gesture={distance:Math.hypot(a.x-b.x,a.y-b.y),
-    midX:(a.x+b.x)/2,midY:(a.y+b.y)/2,zoom:camera.zoom,
-    focusX:camera.focusX,focusZ:camera.focusZ};
-  }
+  if(pointers.size===2)gesture=beginCameraGesture([...pointers.values()]);
+  else if(pointers.size>2)gesture=null;
  }
  function onMove(e){
   const last=pointers.get(e.pointerId);if(!last)return;
   e.preventDefault();
   const dx=e.clientX-last.x,dy=e.clientY-last.y;
   last.x=e.clientX;last.y=e.clientY;
-  const rect=canvas.getBoundingClientRect();
   if(pointers.size===2&&gesture){
-   const [a,b]=[...pointers.values()];
-   camera.zoom=clamp(gesture.zoom*gesture.distance/
-    Math.max(18,Math.hypot(a.x-b.x,a.y-b.y)),
-    Math.max(world.width,world.depth)*.08,Math.max(world.width,world.depth)*2.4);
-   const movedX=(a.x+b.x)/2-gesture.midX,movedY=(a.y+b.y)/2-gesture.midY;
-   const wx=movedX/Math.max(1,rect.width)*2*camera.zoom*(rect.width/Math.max(1,rect.height));
-   const wz=movedY/Math.max(1,rect.height)*2*camera.zoom/Math.max(.3,Math.sin(camera.pitch));
-   camera.focusX=clamp(gesture.focusX-wx*Math.cos(camera.yaw)-wz*Math.sin(camera.yaw),-world.width/2,world.width/2);
-   camera.focusZ=clamp(gesture.focusZ-wx*Math.sin(camera.yaw)+wz*Math.cos(camera.yaw),-world.depth/2,world.depth/2);
+   navigateTouches(advanceCameraGesture(gesture,[...pointers.values()]));
   }else if(pointers.size===1){
+   const rect=canvas.getBoundingClientRect();
    camera.yaw+=dx/Math.max(120,rect.width)*Math.PI*1.5;
-   camera.pitch=clamp(camera.pitch+dy/Math.max(180,rect.height)*1.8,.34,1.42);
+   camera.pitch=clamp(camera.pitch+dy/Math.max(180,rect.height)*1.8,.32,1.47);
+   render();
   }
-  render();
  }
- function onUp(e){pointers.delete(e.pointerId);if(pointers.size<2)gesture=null;}
+ function onUp(e){
+  pointers.delete(e.pointerId);
+  if(pointers.size!==2)gesture=null;
+ }
  if(interactive)canvas.addEventListener("pointerdown",onDown);
  if(interactive)canvas.addEventListener("pointermove",onMove);
  if(interactive)canvas.addEventListener("pointerup",onUp);
@@ -256,7 +279,7 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
  window.addEventListener("resize",render);
  upload(world);
  void loadModels();
- return{setWorld:upload,resetCamera,zoomBy,panBy,focusOn,screenToWorld,setSettlement,render,
+ return{setWorld:upload,resetCamera,zoomBy,panBy,focusOn,homeView,navigateTouches,screenToWorld,setSettlement,render,
   setReference(value){showcase=Boolean(value);updateKenney();},
   assetStatus:()=>({loaded:loadedAssets,total:kitNames.length}),
   getCamera:()=>({...camera}),
