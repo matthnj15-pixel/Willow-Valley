@@ -197,7 +197,8 @@ export function instantiateKenneyTerrain(world,models){
   for(let i=0;i<input.length;i+=9){
    const dx=(input[i]-centerX)*scale,dz=(input[i+2]-centerZ)*scale;
    const X=x+dx*cs-dz*sn,Z=z+dx*sn+dz*cs;
-   if(X<1||X>world.width-1||Z<1||Z>world.depth-1)continue;
+   // Never drop a single vertex: WebGL triangles require complete triplets.
+   // A little spill beyond the world edge is safer than malformed geometry.
    const surface=world.sample(X,Z);
    // Terrain blocks are flattened vertically and draped over local topology;
    // water pieces stay at lake/river level to avoid hill-shaped water.
