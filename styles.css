@@ -110,6 +110,9 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
 @media(max-height:680px){.game-page .topbar{padding-top:calc(env(safe-area-inset-top) + 3px);padding-bottom:3px}.game-page .stats{padding:3px}.wv-resource--compact{padding:3px 2px}.game-page .dispatch{min-height:40px}.game-page .dock .wv-nav-tool,.game-page .dock .wv-advance{min-height:47px}}
 
 
+/* Native multitouch camera affordances, available only with a 3D settlement. */
+.stage .zoom .camera-angle{display:block;padding:4px 2px;border-radius:8px;background:#035352e8;color:#fff5ce;text-align:center;font-size:12px;letter-spacing:.2px;font-variant-numeric:tabular-nums;pointer-events:none}
+.stage .zoom button[hidden],.stage .zoom .camera-angle[hidden]{display:none!important}
 /* 3D settlement is the standard for new worlds; 2D legacy saves stay intact. */
 .stage.is-3d #game3D{display:block!important;position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .stage.is-3d #map{position:absolute;inset:0;opacity:0;pointer-events:auto}
