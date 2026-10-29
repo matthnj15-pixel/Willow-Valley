@@ -135,7 +135,7 @@ export function createWorld(raw={}){
   ":"+lakes.length+":"+rivers.length+":"+trees.length;
  return{options,width,depth,lakes,rivers,trees,sample,slope,signature};
 }
-export function createWorldMesh(world,nx=68,nz=52){
+export function createWorldMesh(world,nx=68,nz=52,{trees=true}={}){
  const {width,depth}=world,ground=[],water=[];
  const rand=(i,j)=>hash2(i,j,hashSeed(world.options.seed)+901);
  function triangle(to,a,b,c,color){
@@ -166,7 +166,7 @@ export function createWorldMesh(world,nx=68,nz=52){
   }
  }
  // Low-poly conifers remain inexpensive enough for a mobile browser.
- for(const t of world.trees){
+ for(const t of trees?world.trees:[]){
   const x=t.x-width/2,z=t.z-depth/2,n=5,base=t.y+1;
   const pine=[.16+rand(Math.round(t.x),Math.round(t.z))*.09,.36+rand(Math.round(t.z),Math.round(t.x))*.1,.22];
   for(let i=0;i<n;i++){

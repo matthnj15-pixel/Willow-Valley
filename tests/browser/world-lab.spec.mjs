@@ -23,7 +23,7 @@ test("WORLD-3D-UI-02: map size, water settings and seed survive blueprint save w
   el.value="0";el.dispatchEvent(new Event("input",{bubbles:true}));
  });
  await page.locator("#seed").fill("A-TEST-VALLEY");
- await page.locator("#generate").click();
+ await page.locator("#applySettings").click();
  await expect(page.locator("#worldStats")).toContainText("1,800 × 1,350");
  await expect(page.locator("#worldStats")).toContainText("Rivers");
  await expect(page.locator("#worldStats")).toContainText("Lakes");
@@ -72,4 +72,57 @@ test("WORLD-3D-UI-04: World Builder is available through the existing Pages-publ
  await page.getByRole("link",{name:"Back to valley"}).click();
  await expect(page).toHaveURL(/\/$/);
  await expect(page.locator("#gameDock")).toBeVisible();
+});
+
+test("WORLD-3D-UI-06: generate new changes seed while updating preview keeps the seed",async({page})=>{
+ await page.goto("/ui-kit/world-lab.html");
+ const before=await page.locator("#seed").inputValue();
+ await page.locator("#generate").click();
+ const next=await page.locator("#seed").inputValue();
+ expect(next).not.toBe(before);
+ await page.locator("#applySettings").click();
+ expect(await page.locator("#seed").inputValue()).toBe(next);
+ await page.locator("#showReference").check();
+ await expect(page.locator("#showReference")).toBeChecked();
+});
+test("WORLD-3D-UI-07: Development shows a direct World Builder link",async({page})=>{
+ await page.goto("/?preview=1");
+ await expect(page.locator("#worldBuilderLink")).toBeVisible();
+ await page.locator("#worldBuilderLink").click();
+ await expect(page).toHaveURL(/\/ui-kit\/world-lab\.html$/);
+});
+
+test("WORLD-3D-UI-08: actual glTF asset importer renders a mocked valid GLB without affecting seed",async({page})=>{
+ const model=(()=>{
+  const json={asset:{version:"2.0"},scene:0,scenes:[{nodes:[0]}],
+   nodes:[{mesh:0}],meshes:[{primitives:[{attributes:{POSITION:0},indices:1,material:0}]}],
+   materials:[{pbrMetallicRoughness:{baseColorFactor:[.3,.8,.4,1]}}],
+   accessors:[
+    {bufferView:0,componentType:5126,count:3,type:"VEC3"},
+    {bufferView:1,componentType:5123,count:3,type:"SCALAR"}],
+   bufferViews:[{buffer:0,byteOffset:0,byteLength:36},{buffer:0,byteOffset:36,byteLength:6}],
+   buffers:[{byteLength:44}]};
+  const text=Buffer.from(JSON.stringify(json));
+  const jsonChunk=Buffer.concat([text,Buffer.alloc((4-text.length%4)%4,32)]);
+  const binary=Buffer.alloc(44);
+  const positions=[0,0,0,1,0,0,0,2,0];
+  positions.forEach((v,i)=>binary.writeFloatLE(v,i*4));
+  [0,1,2].forEach((v,i)=>binary.writeUInt16LE(v,36+i*2));
+  const header=Buffer.alloc(12),chunkA=Buffer.alloc(8),chunkB=Buffer.alloc(8);
+  header.writeUInt32LE(0x46546c67,0);header.writeUInt32LE(2,4);
+  header.writeUInt32LE(12+8+jsonChunk.length+8+binary.length,8);
+  chunkA.writeUInt32LE(jsonChunk.length,0);chunkA.writeUInt32LE(0x4E4F534A,4);
+  chunkB.writeUInt32LE(binary.length,0);chunkB.writeUInt32LE(0x004E4942,4);
+  return Buffer.concat([header,chunkA,jsonChunk,chunkB,binary]);
+ })();
+ await page.route("**/packs/**/*.glb",route=>route.fulfill({
+  status:200,contentType:"model/gltf-binary",
+  headers:{"access-control-allow-origin":"*"},body:model
+ }));
+ await page.goto("/ui-kit/world-lab.html");
+ await expect(page.locator("#assetStatus")).toContainText("Kenney models loaded: 5/5",{timeout:15000});
+ await expect(page.locator("#rendererError")).toBeHidden();
+ const stamp=await page.locator("#seed").inputValue();
+ await page.locator("#applySettings").click();
+ expect(await page.locator("#seed").inputValue()).toBe(stamp);
 });

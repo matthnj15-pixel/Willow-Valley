@@ -18,6 +18,7 @@ mountResourceBar($("resourceBar"),[
  {label:"Tools",value:"9",iconName:"tools",id:"tools"}
 ],{compact:true});
 mountGameDock($("gameDock"));
+$("worldBuilderLink").hidden=!IS_PREVIEW;
 
 const restored=initializeSlots(localStorage,SAVE_KEY,validState,startGame);
 let activeSlot=restored.ok?restored.active.slot:1;
