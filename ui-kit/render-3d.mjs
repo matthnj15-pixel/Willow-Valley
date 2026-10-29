@@ -193,6 +193,13 @@ function screenToWorld(clientX,clientY){
  }
  return{x:x+world.width/2,y:z+world.depth/2};
 }
+function focusOn(x,z,zoom=null){
+ camera.focusX=clamp(x-world.width/2,-world.width/2,world.width/2);
+ camera.focusZ=clamp(z-world.depth/2,-world.depth/2,world.depth/2);
+ if(zoom!==null)camera.zoom=clamp(zoom,Math.max(world.width,world.depth)*.08,
+  Math.max(world.width,world.depth)*2.4);
+ render();
+}
 function panBy(dx,dy){
  const rect=canvas.getBoundingClientRect();
  const u=-dx/Math.max(1,rect.height)*2*camera.zoom;
@@ -249,7 +256,7 @@ function setSettlement(state,{draft=null,zoneStrokes=[],zoneType="residential",z
  window.addEventListener("resize",render);
  upload(world);
  void loadModels();
- return{setWorld:upload,resetCamera,zoomBy,panBy,screenToWorld,setSettlement,render,
+ return{setWorld:upload,resetCamera,zoomBy,panBy,focusOn,screenToWorld,setSettlement,render,
   setReference(value){showcase=Boolean(value);updateKenney();},
   assetStatus:()=>({loaded:loadedAssets,total:kitNames.length}),
   getCamera:()=>({...camera}),
