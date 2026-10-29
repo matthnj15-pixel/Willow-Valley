@@ -3,14 +3,14 @@ import {test,expect} from "@playwright/test";
 test("WV-OFFLINE-001: no advisor control, no external network dependency",async({page})=>{
  const requests=[];
  page.on("request",request=>requests.push(request.url()));
- await page.goto("/");
+ await page.goto("/?legacy=1");
  await expect(page.locator("#advisorBtn")).toHaveCount(0);
  await page.locator("#nextBtn").click();
  await expect(page.locator("#calendar")).toContainText("April");
  expect(requests.filter(url=>!url.startsWith("http://127.0.0.1:4173/"))).toEqual([]);
 });
 test("WV-OFFLINE-002: install assets and continue a turn after the network is disabled",async({page,context})=>{
- await page.goto("/");
+ await page.goto("/?legacy=1");
  await page.evaluate(async()=>{
    if(!("serviceWorker" in navigator))throw Error("Service workers not supported in test browser");
    const registration=await navigator.serviceWorker.register("./sw.js",{scope:"./"});
@@ -38,7 +38,7 @@ test("WV-OFFLINE-004: packaged HTML is a usable single-file game",async({page})=
 });
 
 test("WV-ICON-003: installed iPhone touch icon and PWA icons are valid PNG resources",async({page,request})=>{
- await page.goto("/");
+ await page.goto("/?legacy=1");
  const touch=page.locator('link[rel="apple-touch-icon"]');
  await expect(touch).toHaveAttribute("sizes","180x180");
  for(const [name,size] of [["apple-touch-icon.png",180],["icon-192.png",192],["icon-512.png",512]]){
