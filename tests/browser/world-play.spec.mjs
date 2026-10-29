@@ -19,13 +19,13 @@ test("WORLD-PLAY-UI-01: fresh Development opens a playable 3D settlement",async(
 test("WORLD-PLAY-UI-02: founding in World Builder opens same seeded game in a chosen slot",async({page})=>{
  await page.goto("/ui-kit/world-lab.html");
  await page.locator("#size").selectOption("large");
+ await page.locator("#profile").selectOption("pastoral");
  await page.locator("#lakes").evaluate(el=>{
   el.value="0";el.dispatchEvent(new Event("input",{bubbles:true}));
  });
  await page.locator("#rivers").evaluate(el=>{
   el.value="0";el.dispatchEvent(new Event("input",{bubbles:true}));
  });
- await page.locator("#profile").selectOption("pastoral");
  await page.locator("#seed").fill("FOUNDING-3D-VALLEY");
  await page.locator("#settlementSlot").selectOption("2");
  await page.locator("#foundSettlement").click();
