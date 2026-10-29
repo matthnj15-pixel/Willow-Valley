@@ -17,7 +17,7 @@
 <body class="game-page">
 <div id="app">
 <header class="topbar">
-  <div><div class="eyebrow"><span id="environment">DEVELOPMENT</span> · <span id="offlineStatus">LOCAL GAME</span></div><h1>Willow Valley</h1><div id="calendar" class="calendar"></div></div>
+  <div><div class="eyebrow"><span id="environment">DEVELOPMENT</span> · <span id="offlineStatus">LOCAL GAME</span></div><h1>Willow Valley</h1><div id="calendar" class="calendar"></div><div id="housingSummary" class="housing-summary" aria-live="polite"></div></div>
   <button class="icon-button" id="menuBtn" aria-label="Game menu">☰</button>
 </header>
 <section class="stats" id="resourceBar" aria-label="Settlement resources"></section>
@@ -26,6 +26,7 @@
   <div class="map-info" id="modeLabel">Explore · drag to pan · pinch to zoom</div>
   <div class="zoom" aria-label="Zoom controls"><button id="zoomIn" aria-label="Zoom in">+</button><button id="zoomOut" aria-label="Zoom out">−</button></div>
   <div class="road-controls" id="roadControls" hidden><span id="roadInfo">Tap the map to trace your road.</span><div><button id="undoRoad">Undo</button><button id="cancelRoad">Cancel</button><button id="confirmRoad" class="primary">Build road</button></div></div>
+  <div class="zone-controls" id="zoneControls" hidden><span id="zoneInfo">Brush zoning — draw within the valley</span><div><button id="zoneUndo">Undo</button><button id="zoneCancel">Cancel</button><button id="zoneCommit" class="primary">Commit zone</button></div></div>
 </main>
 <div class="dispatch"><div class="dispatch-copy"><span class="eyebrow">THE VALLEY REPORT</span><p id="report"></p></div><button id="historyBtn" aria-label="Settlement history">↗</button></div>
 <nav class="dock" id="gameDock" aria-label="Game actions"></nav>
