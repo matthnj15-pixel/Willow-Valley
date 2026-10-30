@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {startGame,advance,placeBuilding,validState} from "../simulation.mjs";
-import {paintZones} from "../organic-world.mjs";
+import {paintZones,zoneAt} from "../organic-world.mjs";
 import {ensureCivic,objectives,claimCharter,setPolicy,trade,pendingPetition,answerPetition,fieldCoverage} from "../settlement-play.mjs";
 
 test("GAME-001: legacy save migrates without resetting houses or roads",()=>{
@@ -17,7 +17,7 @@ test("GAME-002: farmland improves yield of a nearby farm",()=>{
  const old=fieldCoverage(s,farm,()=>null);
  assert.equal(old,0);
  assert.equal(paintZones(s,"farmland",[[{x:530,y:620},{x:580,y:610}]],65).ok,true);
- const {zoneAt}=await import("../organic-world.mjs");
+
  assert.ok(fieldCoverage(s,farm,zoneAt)>old);
  const copy=startGame();const farmed=advance(s,{events:false}),unpainted=advance(copy,{events:false});
  assert.ok(farmed.foodProduction>unpainted.foodProduction);
