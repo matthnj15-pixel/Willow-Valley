@@ -1,4 +1,5 @@
 // WV-GAME-001: deterministic settlement gameplay, independent of rendering.
+import {zoneAt} from "./organic-world.mjs";
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 export const POLICIES={
  tax:[["gentle","Gentle levy","70% revenue, +1 morale/month"],["balanced","Balanced levy","Normal revenue"],["high","Heavy levy","145% revenue, -3 morale/month"]],
@@ -47,7 +48,7 @@ export function unlocked(s,type){return type==="market"?ensureCivic(s).chapter>=
 export function objectives(s){
  const c=ensureCivic(s),chapter=c.chapter;
  if(chapter===0)return[["Reach 38 residents",s.people>=38],["Reserve 25 food",s.food>=25],
-  ["Paint a working farmland zone",(s.zones||[]).some(z=>z.type==="farmland")],["Keep morale at 55+",s.happiness>=55]];
+  ["Tend fields beside an operating farm",s.buildings.some(b=>b.type==="farm"&&fieldCoverage(s,b,zoneAt)>=.08)],["Keep morale at 55+",s.happiness>=55]];
  if(chapter===1)return[["Reach 54 residents",s.people>=54],
   ["Establish a marketplace",s.buildings.some(b=>b.type==="market")],["Maintain 2 stable months",c.steadyMonths>=2],
   ["Reserve 40 food",s.food>=40]];
@@ -162,7 +163,8 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
   s.wood-=cost;const made=Math.max(1,Math.round((c.charters.includes("craft")?4:3)*portion));s.tools+=made;toolProduction+=made;
  }
  const wasteSavings=activeGranaries?Math.min(.18,activeGranaries*.09):0;
- const foodRequired=Math.ceil(s.people*.22*({careful:.8,normal:1,generous:1.25}[c.rations])*(1-wasteSavings));s.food-=foodRequired;
+ const foodRequired=Math.ceil(s.people*.22*({careful:.8,normal:1,generous:1.25}[c.rations])*(1-wasteSavings));
+ const foodReserveMonths=Math.round(s.food/Math.max(1,foodRequired)*10)/10;s.food-=foodRequired;
  const accessList=homeAccess(s),connected=accessList.filter(x=>x==="road").length,walking=accessList.filter(x=>x==="footpath").length;
  const taxRate=accessList.length?(connected+walking*.4)/accessList.length:0;
  const taxes=Math.round(s.people*1.5*taxRate*({gentle:.7,balanced:1,high:1.45}[c.tax]));
@@ -178,7 +180,7 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
  if(s.gold<0){s.happiness=clamp(s.happiness-4,0,100);notices.push("Treasury deficit is reducing morale.");}
  c.steadyMonths=s.food>=foodRequired*3&&balance>=0&&s.happiness>=60?c.steadyMonths+1:0;
  c.ledger={foodProduction,woodProduction,toolProduction,foodRequired,balance,taxes,upkeep:upkeep+roadUpkeep,
-  marketBonus,granarySavings:wasteSavings,workers:plan.available,employed:plan.employed,required:plan.required,season,fieldsMissing,laborMissing,
+  marketBonus,granarySavings:wasteSavings,foodReserveMonths,workers:plan.available,employed:plan.employed,required:plan.required,season,fieldsMissing,laborMissing,
   foodForecast:s.food+foodProduction-foodRequired,goldForecast:s.gold+balance,notices:notices.slice(0,12)};
  return{foodProduction,woodProduction,toolProduction,foodRequired,balance,notices};
 }
