@@ -50,3 +50,22 @@ test("BAL-004: surviving turns provide numeric food reserve runway",()=>{
  assert.ok(["Spring","Summer","Autumn","Winter"].includes(s.civic.ledger.season));
  assert.equal(validState(s),true);
 });
+
+test("BAL-005: all three chapters unlock sequentially and preserve permanent choices",()=>{
+ const s=startGame();
+ s.people=38;s.food=90;
+ assert.equal(paintZones(s,"farmland",[[{x:530,y:615}]],65).ok,true);
+ assert.equal(claimCharter(s,"enterprise").ok,true);
+ s.people=54;s.civic.steadyMonths=2;s.food=110;
+ s.buildings.push({type:"market",x:540,y:420});
+ assert.equal(claimCharter(s,"exchange").ok,true);
+ s.people=75;s.civic.steadyMonths=3;s.happiness=85;
+ s.buildings.push({type:"plaza",x:690,y:515},{type:"granary",x:800,y:580});
+ assert.ok(objectives(s).every(([,met])=>met));
+ const before=s.housing.attractiveness;
+ assert.equal(claimCharter(s,"neighbors").ok,true);
+ assert.equal(ensureCivic(s).chapter,3);
+ assert.deepEqual(ensureCivic(s).charters,["enterprise","exchange","neighbors"]);
+ assert.equal(s.housing.attractiveness,Math.min(100,before+12));
+ assert.equal(validState(s),true);
+});
