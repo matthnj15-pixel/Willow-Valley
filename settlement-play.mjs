@@ -1,5 +1,6 @@
 // WV-GAME-001: deterministic settlement gameplay, independent of rendering.
 import {zoneAt} from "./organic-world.mjs";
+import {graphLines} from "./road-network.mjs";
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 export const POLICIES={
  tax:[["gentle","Gentle levy","70% revenue, +1 morale/month"],["balanced","Balanced levy","Normal revenue"],["high","Heavy levy","145% revenue, -3 morale/month"]],
@@ -45,12 +46,22 @@ export function validCivic(c){return c===undefined||!!c&&
  Array.isArray(c.petitions)&&c.petitions.length<=PETITIONS.length&&Number.isInteger(c.lastTrade)&&c.lastTrade>=-1&&
  Number.isInteger(c.steadyMonths)&&c.steadyMonths>=0&&typeof c.changed==="object"&&typeof c.ledger==="object";}
 export function unlocked(s,type){return type==="market"?ensureCivic(s).chapter>=1:type==="granary"?ensureCivic(s).chapter>=2:true;}
+// Charter requirements use the same reachable road network as workplace production.
+function connectedToCollector(s,p){
+ const lines=s.roadGraph?graphLines(s.roadGraph,true):s.roads||[];
+ for(const points of lines)for(let i=1;i<points.length;i++){
+  const a=points[i-1],b=points[i],dx=b.x-a.x,dy=b.y-a.y,
+   divisor=dx*dx+dy*dy,t=divisor?Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/divisor)):0;
+  if(Math.hypot(p.x-(a.x+dx*t),p.y-(a.y+dy*t))<=125)return true;
+ }
+ return false;
+}
 export function objectives(s){
  const c=ensureCivic(s),chapter=c.chapter;
  if(chapter===0)return[["Reach 38 residents",s.people>=38],["Reserve 25 food",s.food>=25],
   ["Tend fields beside an operating farm",s.buildings.some(b=>b.type==="farm"&&fieldCoverage(s,b,zoneAt)>=.08)],["Keep morale at 55+",s.happiness>=55]];
  if(chapter===1)return[["Reach 54 residents",s.people>=54],
-  ["Establish a marketplace",s.buildings.some(b=>b.type==="market")],["Maintain 2 stable months",c.steadyMonths>=2],
+  ["Establish a connected marketplace",s.buildings.some(b=>b.type==="market"&&connectedToCollector(s,b))],["Maintain 2 stable months",c.steadyMonths>=2],
   ["Reserve 40 food",s.food>=40]];
  if(chapter===2)return[["Reach 75 residents",s.people>=75],
   ["Build a plaza and granary",["plaza","granary"].every(t=>s.buildings.some(b=>b.type===t))],
