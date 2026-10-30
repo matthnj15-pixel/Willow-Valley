@@ -41,7 +41,7 @@ export function renderCouncil(game,tab,navigate,decide){
   metric("Jobs needed",ledger.required??0);
   metric("Food produced last turn",ledger.foodProduction??"Not yet");
   metric("Food consumed last turn",ledger.foodRequired??"Not yet");
-  metric("Food reserves without harvest",(ledger.foodReserveMonths??"Not yet")+" months");
+  metric("Food reserves without harvest",ledger.foodReserveMonths===undefined?"Awaiting first turn":ledger.foodReserveMonths+" months");
   metric("Gold per month",ledger.balance??"Not yet");
   metric("Tax revenue",ledger.taxes??"Not yet");
   metric("Building + road upkeep",ledger.upkeep??"Not yet");
