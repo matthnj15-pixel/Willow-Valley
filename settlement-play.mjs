@@ -141,7 +141,7 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
  for(const job of plan.jobs){
   const b=s.buildings[job.index],meta=BUILDINGS[b.type];if(!meta)continue;
   upkeep+=meta.upkeep;
-  if(!job.access){notices.push(meta.label+" has no road deliveries.");continue;}
+  if(!job.access){notices.push(meta.label+" has no road connection for deliveries.");continue;}
   const portion=job.staffed/job.need;
   if(portion<1)laborMissing++;
   if(b.type==="farm"){
