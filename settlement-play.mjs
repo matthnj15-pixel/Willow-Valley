@@ -164,7 +164,7 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
  }
  const wasteSavings=activeGranaries?Math.min(.18,activeGranaries*.09):0;
  const foodRequired=Math.ceil(s.people*.22*({careful:.8,normal:1,generous:1.25}[c.rations])*(1-wasteSavings));
- const foodReserveMonths=Math.round(s.food/Math.max(1,foodRequired)*10)/10;s.food-=foodRequired;
+ s.food-=foodRequired;
  const accessList=homeAccess(s),connected=accessList.filter(x=>x==="road").length,walking=accessList.filter(x=>x==="footpath").length;
  const taxRate=accessList.length?(connected+walking*.4)/accessList.length:0;
  const taxes=Math.round(s.people*1.5*taxRate*({gentle:.7,balanced:1,high:1.45}[c.tax]));
@@ -174,6 +174,7 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
  if(connected<accessList.length){s.happiness=clamp(s.happiness-2,0,100);notices.push("Homes lack full road access, reducing taxes and morale.");}
  if(events&&s.turn%6===0){s.food+=8;notices.push("Seasonal gathering added 8 food.");}
  if(s.food<0){s.food=0;s.people=Math.max(8,s.people-3);s.happiness=clamp(s.happiness-8,0,100);notices.push("A food shortage drove three residents away.");}
+ const foodReserveMonths=Math.round(s.food/Math.max(1,foodRequired)*10)/10;
  if(s.food<foodRequired*2)notices.push("Less than two months of food. Paint farm fields, adjust rations, or import provisions.");
  if(fieldsMissing)notices.push(fieldsMissing+" farm(s) need painted farmland to improve output.");
  if(laborMissing)notices.push(laborMissing+" workplace(s) have unfilled jobs. Reassign labor or grow the settlement.");
