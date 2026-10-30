@@ -1,6 +1,7 @@
 import {setRoadBounds,ensureGraph,validGraph,graphLines,addGeometry,deleteNode,deleteSegment,setSegmentCurve,saveGraphRoads,splitSegment} from "./road-network.mjs";
 import {advanceDesirePaths,visibleDesirePaths,validDesirePaths} from "./desire-paths.mjs";
-import {validZones,findCottageSite,configureOrganicBounds} from "./organic-world.mjs";
+import {validZones,findCottageSite,configureOrganicBounds,zoneAt} from "./organic-world.mjs";
+import {ensureCivic,validCivic,unlocked,livelihood,pendingPetition} from "./settlement-play.mjs";
 import {createWorld,normalizeWorldSettings,validWorldSettings,WORLD_SIZES,DEFAULT_WORLD} from "./world-gen.mjs";
 export const VERSION=1;
 export const WORLD={w:1200,h:900};
@@ -62,7 +63,9 @@ export const BUILDINGS={
   farm:{label:"Farm",gold:120,wood:5,tools:1,upkeep:8,description:"Produces 12 food per month."},
   smith:{label:"Toolsmith",gold:175,wood:8,tools:3,upkeep:15,description:"Consumes 4 wood to produce 3 tools."},
   park:{label:"Park",gold:85,wood:3,tools:0,upkeep:5,description:"Improves happiness when connected to a road."},
-  plaza:{label:"Plaza",gold:135,wood:6,tools:1,upkeep:9,description:"A gathering place that improves happiness when accessible."}
+  plaza:{label:"Plaza",gold:135,wood:6,tools:1,upkeep:9,description:"A gathering place that improves happiness when accessible."},
+  market:{label:"Marketplace",gold:160,wood:9,tools:2,upkeep:11,description:"Founding Charter unlock. Staff 4 workers to earn market income."},
+  granary:{label:"Granary",gold:190,wood:12,tools:3,upkeep:7,description:"Market Charter unlock. Organizes food reserves."}
 };
 export const MONTHS=["March","April","May","June","July","August","September","October","November","December","January","February"];
 export function monthLabel(turn){return MONTHS[turn%12]+" · Year "+(1+Math.floor(turn/12));}
@@ -81,7 +84,7 @@ export function startGame(){const state={
   happiness:76,desirePaths:[],zones:[],localLanes:[],housing:{housed:32,pending:[],attractiveness:75,nextId:1},
   logs:["The first families establish Willow Valley beside an old forest road."],
   report:"Your town has supplies for its first expansion. Design a new road or develop another industry."
-};ensureGraph(state);return state;}
+};ensureGraph(state);ensureCivic(state);return state;}
 export function validState(x){const bounds=worldDimensions(x);return !!x&&
  (x.worldOptions===undefined||validWorldSettings(x.worldOptions))&&x.version===VERSION&&Number.isInteger(x.turn)&&x.turn>=0&&x.turn<200000&&
  ["people","gold","food","wood","tools","happiness"].every(k=>Number.isFinite(x[k]))&&
@@ -90,7 +93,7 @@ export function validState(x){const bounds=worldDimensions(x);return !!x&&
  Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(h=>validPoint(h,bounds)&&
  (!h.parcel||Array.isArray(h.parcel.vertices)&&h.parcel.vertices.length>=5&&h.parcel.vertices.length<=10&&h.parcel.vertices.every(p=>validPoint(p,bounds))))&&
  Array.isArray(x.logs)&&(!x.roadGraph||validGraph(x.roadGraph,bounds))&&
- validDesirePaths(x.desirePaths,bounds)&&validZones(x.zones,bounds)&&validHousing(x.housing)&&
+ validDesirePaths(x.desirePaths,bounds)&&validZones(x.zones,bounds)&&validHousing(x.housing)&&validCivic(x.civic)&&
  (x.localLanes===undefined||Array.isArray(x.localLanes)&&x.localLanes.length<=2000&&x.localLanes.every(l=>
  Array.isArray(l.points)&&l.points.length>=2&&l.points.length<=12&&l.points.every(p=>validPoint(p,bounds))));}
 function validPoint(p,bounds=WORLD){return p&&Number.isFinite(p.x)&&Number.isFinite(p.y)&&p.x>=0&&p.x<=bounds.w&&p.y>=0&&p.y<=bounds.h;}
@@ -122,6 +125,8 @@ export function canPlace(s,p){
  return map.sample(p.x,p.y).water===null&&map.slope(p.x,p.y)<.6;
 }
 export function placeBuilding(s,type,p){const b=BUILDINGS[type];if(!b)return{ok:false,reason:"Unknown building type."};
+  if(!unlocked(s,type))return{ok:false,reason:"Earn the next charter to unlock "+b.label+"."};
+  if(type==="market"&&zoneAt(s,p)!=="commercial")return{ok:false,reason:"Paint Commercial zoning here before placing a marketplace."};
  if(!canPlace(s,p))return{ok:false,reason:"Choose clear land away from buildings and the river."};
  if(s.gold<b.gold||s.wood<b.wood||s.tools<b.tools)return{ok:false,reason:"Insufficient treasury, wood, or tools."};
  s.gold-=b.gold;s.wood-=b.wood;s.tools-=b.tools;s.buildings.push({type,x:Math.round(p.x),y:Math.round(p.y)});
@@ -228,12 +233,13 @@ export function resolveHousing(s,notices,allowArrivals=true){
   const free=s.houses.length*8-h.housed;
   if(free>=family.people){h.housed+=family.people;notices.push("A household settled into an existing vacant home.");continue;}
   const site=findCottageSite(s);
-  if(site&&s.gold>=45&&s.wood>=4){
-   s.gold-=45;s.wood-=4;s.houses.push(site.house);
+  const cottageGold=ensureCivic(s).charters.includes("neighbors")?35:45;
+   if(site&&s.gold>=cottageGold&&s.wood>=4){
+   s.gold-=cottageGold;s.wood-=4;s.houses.push(site.house);
    if(!s.localLanes)s.localLanes=[];
    s.localLanes.push(site.lane);h.housed+=family.people;
    notices.push("A cottage grew on an irregular residential parcel; a dirt approach formed.");
-   s.logs.unshift(monthLabel(s.turn)+": A new cottage was built for a household, using 4 wood and 45 gold.");
+   s.logs.unshift(monthLabel(s.turn)+": A new cottage was built for a household, using 4 wood and "+cottageGold+" gold.");
    continue;
   }
   if(!arriving.includes(family.id))family.wait++;
@@ -250,30 +256,19 @@ export function resolveHousing(s,notices,allowArrivals=true){
  h.pending=still;
  return{homeless:still.length,attractiveness:h.attractiveness};
 }
-export function advance(s,{events=true}={}){s.turn++;const notices=[],oldPeople=s.people;
- advanceDesirePaths(s);
- let foodProduction=0,woodProduction=0,toolProduction=0,upkeep=0,smiths=[];
- for(const b of s.buildings){const access=productionAccess(s,b),v=BUILDINGS[b.type];upkeep+=v.upkeep;
-  if(!access)notices.push(v.label+" has no reachable road connection.");
-  if(b.type==="farm")foodProduction+=Math.round(12*access);
-  if(b.type==="lumber")woodProduction+=Math.round(7*access);
-  if(b.type==="smith")smiths.push(access);
-  if((b.type==="park"||b.type==="plaza")&&access)s.happiness=clamp(s.happiness+1,0,100);}
- s.food+=foodProduction;s.wood+=woodProduction;
- for(const access of smiths){if(!access){notices.push("Toolsmith cannot receive supplies without road access.");continue;}if(s.wood>=4){s.wood-=4;const n=Math.max(1,Math.round(3*access));s.tools+=n;toolProduction+=n;}else notices.push("The toolsmith could not obtain enough wood.");}
- const foodRequired=Math.ceil(s.people*.22);s.food-=foodRequired;
- const houseStatuses=housingAccess(s),servedHomes=houseStatuses.filter(x=>x==="road").length,walkingHomes=houseStatuses.filter(x=>x==="footpath").length;
- const serviceRate=s.houses.length?(servedHomes+walkingHomes*.4)/s.houses.length:0;
- if(servedHomes<s.houses.length){s.happiness=clamp(s.happiness-2,0,100);notices.push("Some homes have lost road access. Household taxes and happiness have fallen.");}
- const taxes=Math.round(s.people*1.5*serviceRate),roadUpkeep=Math.ceil(s.roads.reduce((v,r)=>v+roadLength(r),0)*.018);s.gold+=taxes-upkeep-roadUpkeep;
- if(events&&s.turn%6===0){s.food+=8;notices.push("A seasonal harvest added 8 food.");}
- if(s.food<0){s.food=0;s.people=Math.max(8,s.people-3);s.happiness=clamp(s.happiness-8,0,100);notices.push("A food shortage drove three residents away.");}
- resolveHousing(s,notices,s.food>=8);
- if(s.food<12){s.happiness=clamp(s.happiness-3,0,100);notices.push("Food reserves are running low.");}
- if(s.gold<0){s.happiness=clamp(s.happiness-4,0,100);notices.push("The treasury is in deficit.");}
- const net=s.people-oldPeople,balance=taxes-upkeep-roadUpkeep;
- if(s.desirePaths.some(p=>p.progress>=1))notices.push("Residents have established walking desire paths to isolated roads.");
- s.report="+"+foodProduction+" food, +"+woodProduction+" wood, +"+toolProduction+" tools. "+(balance>=0?"+":"")+balance+" gold net. "+(net>=0?"+":"")+net+" residents."+ (notices.length?" "+notices[0]:"");
+export function advance(s,{events=true}={}){
+ s.turn++;advanceDesirePaths(s);
+ const oldPeople=s.people;
+ const result=livelihood(s,{BUILDINGS,access:b=>productionAccess(s,b),homeAccess:housingAccess,roadLength,zoneAt,events});
+ resolveHousing(s,result.notices,s.food>=8);
+ const net=s.people-oldPeople;
+ if(s.desirePaths.some(p=>p.progress>=1))result.notices.push("Residents established walking desire paths.");
+ const petition=pendingPetition(s);
+ if(petition)result.notices.unshift("Council petition: "+petition.title+". Open the Council to respond.");
+ s.report="["+ensureCivic(s).ledger.season+"] +"+result.foodProduction+" food, +"+result.woodProduction+
+  " wood, +"+result.toolProduction+" tools. "+(result.balance>=0?"+":"")+result.balance+
+  " gold net. "+(net>=0?"+":"")+net+" residents."+(result.notices.length?" "+result.notices[0]:"");
  s.logs.unshift(monthLabel(s.turn)+": "+s.report);
  if(s.logs.length>60)s.logs.length=60;
- return{foodProduction,woodProduction,toolProduction,foodRequired,balance,populationDelta:net,notices};}
+ return{...result,populationDelta:net};
+}

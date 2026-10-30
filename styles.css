@@ -333,3 +333,15 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
 #app > #zoneControls .zone-tool-picker button{min-height:40px}
 #app > #zoneControls .zone-actions button{min-height:40px}
 #app > #zoneControls #zoneInfo{font-size:11px;min-height:14px}
+
+/* Settlement Council: compact touch controls and legible decisions. */
+.council-entry{border:1px solid rgba(234,219,179,.42);border-radius:12px;background:#d9c293;color:#1b3025;padding:10px 13px;font-weight:750;cursor:pointer;min-height:44px}
+.civic-status{font-size:11px;opacity:.81;margin-top:3px;letter-spacing:.02em}
+.council-tabs{display:flex;gap:8px;position:sticky;top:0;padding:5px 0 12px;background:inherit;z-index:1}
+.council-tab{min-width:0;flex:1;padding:10px 5px!important}
+.council-heading{font-size:17px;margin:20px 0 4px;font-weight:750}
+.council-copy{font-size:13px;line-height:1.55;opacity:.87;margin:4px 0 12px}
+.council-goal{font-size:13px;border-bottom:1px solid rgba(128,128,128,.13);padding:7px 2px;margin:0}
+.council-goal.met{color:#54946b}
+#sheetBody .wv-btn:disabled,#sheetBody button:disabled{opacity:.48;cursor:not-allowed}
+@media(max-width:390px){.council-entry{padding:7px 9px;font-size:12px}.council-tab{font-size:12px!important}}
