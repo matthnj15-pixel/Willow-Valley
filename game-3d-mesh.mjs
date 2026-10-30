@@ -11,7 +11,7 @@ const colors={
  farmland:[.70,.68,.38],preserve:[.40,.59,.39],erase:[.71,.37,.29],
  wall:[.86,.78,.62],roof:[.50,.32,.25],
  farm:[.69,.58,.38],lumber:[.56,.38,.26],smith:[.39,.48,.48],
- park:[.39,.59,.40],plaza:[.70,.65,.51]
+ park:[.39,.59,.40],plaza:[.70,.65,.51],market:[.78,.57,.35],granary:[.62,.46,.31]
 };
 const len=v=>Math.hypot(...v)||1;
 function addTri(out,a,b,c,color){
@@ -131,8 +131,9 @@ export function settlementGeometry(world,state,{
  for(const house of state.houses||[])block(markers,world,house,25,27,19,colors.wall,colors.roof,house.orientation||0);
  for(const building of state.buildings||[]){
   const material=colors[building.type]||colors.wall;
-  const size=building.type==="farm"?48:35;
-  block(markers,world,building,size,size*.9,building.type==="lumber"?27:24,material,colors.roof);
+  const size=building.type==="farm"?48:building.type==="market"?48:building.type==="granary"?32:35;
+  const height=building.type==="granary"?40:building.type==="market"?29:building.type==="lumber"?27:24;
+  block(markers,world,building,size,size*.9,height,material,colors.roof);
  }
  if(mode==="road"){
   if(graph){
