@@ -137,7 +137,7 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
  let foodProduction=0,woodProduction=0,toolProduction=0,upkeep=0,marketBonus=0;
  const month=s.turn%12,season=month>=9?"Winter":month>=6?"Autumn":month>=3?"Summer":"Spring";
  const harvest=month>=9?.52:month>=6?1.28:month>=3?1.12:.95;
- let fieldsMissing=0,laborMissing=0;
+ let fieldsMissing=0,laborMissing=0,activeGranaries=0;
  for(const job of plan.jobs){
   const b=s.buildings[job.index],meta=BUILDINGS[b.type];if(!meta)continue;
   upkeep+=meta.upkeep;
@@ -151,6 +151,7 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
    foodProduction+=Math.round(14*harvest*portion*fieldFactor*(c.charters.includes("breadbasket")?1.2:1));
   }
   if(b.type==="lumber")woodProduction+=Math.round(8*portion*(c.charters.includes("enterprise")?1.2:1));
+  if(b.type==="granary"&&job.staffed>=2)activeGranaries++;
   if(b.type==="market"&&job.staffed>=2){marketBonus+=c.charters.includes("exchange")?15:8;if(s.food>15)s.happiness=clamp(s.happiness+1,0,100);}
   if(["plaza","park"].includes(b.type)&&job.staffed>=1)s.happiness=clamp(s.happiness+(b.type==="plaza"?2:1)+(c.charters.includes("commons")?1:0),0,100);
  }
@@ -160,7 +161,8 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
   if(s.wood<cost){notices.push("The toolsmith has no wood.");continue;}
   s.wood-=cost;const made=Math.max(1,Math.round((c.charters.includes("craft")?4:3)*portion));s.tools+=made;toolProduction+=made;
  }
- const foodRequired=Math.ceil(s.people*.22*({careful:.8,normal:1,generous:1.25}[c.rations]));s.food-=foodRequired;
+ const wasteSavings=activeGranaries?Math.min(.18,activeGranaries*.09):0;
+ const foodRequired=Math.ceil(s.people*.22*({careful:.8,normal:1,generous:1.25}[c.rations])*(1-wasteSavings));s.food-=foodRequired;
  const accessList=homeAccess(s),connected=accessList.filter(x=>x==="road").length,walking=accessList.filter(x=>x==="footpath").length;
  const taxRate=accessList.length?(connected+walking*.4)/accessList.length:0;
  const taxes=Math.round(s.people*1.5*taxRate*({gentle:.7,balanced:1,high:1.45}[c.tax]));
@@ -176,7 +178,7 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
  if(s.gold<0){s.happiness=clamp(s.happiness-4,0,100);notices.push("Treasury deficit is reducing morale.");}
  c.steadyMonths=s.food>=foodRequired*3&&balance>=0&&s.happiness>=60?c.steadyMonths+1:0;
  c.ledger={foodProduction,woodProduction,toolProduction,foodRequired,balance,taxes,upkeep:upkeep+roadUpkeep,
-  marketBonus,workers:plan.available,employed:plan.employed,required:plan.required,season,fieldsMissing,laborMissing,
+  marketBonus,granarySavings:wasteSavings,workers:plan.available,employed:plan.employed,required:plan.required,season,fieldsMissing,laborMissing,
   foodForecast:s.food+foodProduction-foodRequired,goldForecast:s.gold+balance,notices:notices.slice(0,12)};
  return{foodProduction,woodProduction,toolProduction,foodRequired,balance,notices};
 }
