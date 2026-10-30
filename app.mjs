@@ -360,7 +360,9 @@ function housingPanel(){const el=document.createElement("div"),h=housingOutlook(
   ["Residents housed",h.occupied],["Existing dwelling capacity",h.capacity],
   ["Vacant housing spaces",h.vacancies],["Viable new cottage sites (estimate)",viableLotEstimate(game,8)],
   ["Homeless residents",h.homeless],["Households waiting",h.homelessHouseholds],
-  ["Immigration attractiveness",Math.round(h.attractiveness)+" / 100"]]){
+  ["Immigration attractiveness",Math.round(h.attractiveness)+" / 100"],
+  ["Expected next household",h.nextArrival===null?"Immigration paused":monthLabel(h.nextArrival)+" (if supplied)"],
+  ["Arrival cadence",h.arrivalInterval?h.arrivalInterval+" month(s)":"Paused until appeal and morale recover"]]){
   const row=document.createElement("div");row.className="housing-metric";row.append(textNode("span",label),textNode("strong",String(value)));el.append(row);
  }
  if(h.homelessHouseholds)el.append(textNode("p",game.housing.pending.map(g=>"Family "+g.id+": "+(2-g.wait)+" turn(s) before departure").join(" · "),"note"));
