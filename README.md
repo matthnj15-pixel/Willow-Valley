@@ -15,6 +15,20 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 
 **The production build uses the `main` branch.** The preview build uses `develop`. Both are deployed together to one Pages site. Game data uses separate browser storage namespaces; the preview cannot overwrite your production save.
 
+## WV-GAME-001: The Living Settlement (Development)
+
+The first longer-form gameplay loop adds meaningful pressure, recovery options, and progression to the organic world. Tap **Council** at the top to explore three tabs:
+
+- **Progress:** Secure the Founding, Market, and Civic Charters. Each charter provides a meaningful permanent choice and new abilities.
+- **Economy:** Review worker demand, real output, food use, treasury balance, and winter pressure. Change priorities for workers, taxation, and rations once per month.
+- **Decisions:** Answer consequential petitions, and buy or sell supplies with the monthly trading caravan.
+
+A recommended first session is to paint **Farmland** beside your founding farm, advance a few months, reserve **Residential** land, observe organic homes as families arrive, and choose a Founding Charter. Use Commercial zoning for the new marketplace, and prepare food before the first winter. Different charters and civic priorities change subsequent production and available options.
+
+The game still runs one deterministic monthly turn when you tap **Advance**. No economic simulation happens in the background. Original roads, homes, zoning, and save slots remain valid.
+
+See [WV-GAME-001 design and UAT guide](docs/design/WV-GAME-001-living-settlement.md).
+
 ## WV-ROAD-003 development changes
 
 - Press and hold at the exact intended **new road node**, then drag: the node stays fixed and the curve handle moves to the **opposite** side of the finger, with radial distance determining curvature. Tap as usual for a straight segment.
@@ -37,7 +51,7 @@ After GitHub Pages is enabled with **GitHub Actions** as its source:
 - Select **Build** and pick an industry, then tap a location on the map to place it.
 - Use **Menu → Paint zoning** to brush and commit Residential, Commercial, Farmland, or Preserve land. Painted ground authorizes development but does not instantly place houses; use **Housing demand** for existing vacancy, viable plot estimates, homelessness and immigration appeal.
 - The early residential engine chooses irregular cottage sites only within committed suitable Residential land when a family needs a home, creates local dirt footpaths, and rejects steep ground, rivers and conflicting parcels. Households without a home have two further monthly turns before departure.
-- **Prototype boundary:** Commercial/Farmland brushes currently reserve territory visually; crop assignment, staffing, 3D models and higher-density planning are later slices.
+- **Living Settlement gameplay:** Farmland increases nearby farm yield, commercial zoning permits new marketplaces after the Founding Charter, and available workers staff workplaces by Council priority. Roads, season, staffing, and fields all affect production. Higher-density planning remains a later progression feature.
 - Advance a month to resolve production, food consumption, taxes, upkeep, immigration and demand-led residential growth.
 - Open the menu to manage three independent local settlement slots, safely migrate an existing single-save game, export/import a slot, and download a structured diagnostic event log. Each slot auto-saves; Stable and Development remain isolated.
 
@@ -86,7 +100,9 @@ use Export/Import Save to transfer them.
 
 ## Architecture
 
-- `simulation.mjs`: pure deterministic simulation, save validation, construction and road rules.
+- `simulation.mjs`: deterministic turn orchestration, housing, save validation, construction and road rules.
+- `settlement-play.mjs`: deterministic labor, seasonal economy, trade, policy, charters and petitions.
+- `council-ui.mjs`: mobile Council panels, decision controls, and planning feedback.
 - `road-editor.mjs`: draft road geometry and undo logic.
 - `road-network.mjs`: persistent junction IDs, editable edges, connected road access, and legacy save compatibility.
 - `road-gesture.mjs`: interprets a hold-and-drag into an optional curve.
