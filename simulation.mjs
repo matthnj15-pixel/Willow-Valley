@@ -109,10 +109,17 @@ export function ensureHousing(s){
  }
  return s.housing;
 }
-export function housingOutlook(s){const h=ensureHousing(s);
+export function immigrationInterval(s){
+ const h=ensureHousing(s);
+ if(h.attractiveness<35||s.happiness<42)return null;
+ if(h.attractiveness>=82&&s.happiness>=72)return 1;
+ if(h.attractiveness>=65&&s.happiness>=55)return 2;
+ return 3;
+}
+export function housingOutlook(s){const h=ensureHousing(s),interval=immigrationInterval(s);
  return{capacity:s.houses.length*8,occupied:h.housed,vacancies:Math.max(0,s.houses.length*8-h.housed),
  homeless:h.pending.reduce((n,g)=>n+g.people,0),homelessHouseholds:h.pending.length,
- attractiveness:h.attractiveness,availableZones:(s.zones||[]).filter(z=>z.type==="residential").length};
+ attractiveness:h.attractiveness,arrivalInterval:interval,nextArrival:interval?s.turn+interval-s.turn%interval:null,availableZones:(s.zones||[]).filter(z=>z.type==="residential").length};
 }
 function riverX(y){return 875-90*Math.sin((y+80)/145)+35*Math.sin(y/66);}
 function onRiver(p){return Math.abs(p.x-riverX(p.y))<69;}
@@ -225,7 +232,8 @@ function reconcileHousing(s){const h=ensureHousing(s);
 }
 export function resolveHousing(s,notices,allowArrivals=true){
  reconcileHousing(s);const h=s.housing,arriving=[];
- if(allowArrivals&&s.turn%2===0&&s.food>=8&&s.happiness>=42&&h.attractiveness>=35){
+ const interval=immigrationInterval(s);
+  if(allowArrivals&&interval&&s.turn%interval===0&&s.food>=8){
   const family={id:h.nextId++,people:3,wait:0};s.people+=3;h.pending.push(family);arriving.push(family.id);
  }
  const still=[];
