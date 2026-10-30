@@ -35,3 +35,20 @@ test("WV-GAME-002: Council petition appears after four monthly turns",async({pag
  const state=await page.evaluate(()=>JSON.parse(localStorage.getItem("willow-valley:main:v1:slot:1")).state);
  expect(state.civic.petitions).toContain("travelers");
 });
+
+test("WV-GAME-003: Council remains operable on a narrow phone without obscuring game dock",async({page})=>{
+ await page.setViewportSize({width:375,height:760});
+ await page.goto("/?legacy=1");
+ const council=page.locator("#councilBtn"),menu=page.locator("#menuBtn");
+ await expect(council).toBeVisible();
+ const rect=await council.boundingBox(),menuRect=await menu.boundingBox();
+ expect(rect.x).toBeGreaterThanOrEqual(0);
+ expect(rect.x+rect.width).toBeLessThanOrEqual(375);
+ expect(menuRect.x+menuRect.width).toBeLessThanOrEqual(375);
+ await council.click();
+ await expect(page.getByRole("heading",{name:"The Founding Charter"})).toBeVisible();
+ await page.getByRole("button",{name:"Economy"}).click();
+ await expect(page.getByText("Working farmland coverage",{exact:true})).toBeVisible();
+ await page.locator("#closeSheet").click();
+ await expect(page.locator("#nextBtn")).toBeVisible();
+});

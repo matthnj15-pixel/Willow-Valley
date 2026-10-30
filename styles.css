@@ -345,3 +345,13 @@ body.game-page{background:#0f241c;color:var(--wv-charcoal)}
 .council-goal.met{color:#54946b}
 #sheetBody .wv-btn:disabled,#sheetBody button:disabled{opacity:.48;cursor:not-allowed}
 @media(max-width:390px){.council-entry{padding:7px 9px;font-size:12px}.council-tab{font-size:12px!important}}
+
+/* Keep council, world builder and menu accessible at narrow phone widths. */
+@media(max-width:420px){
+ .game-page .topbar{gap:5px;padding-left:8px;padding-right:8px}
+ .game-page .topbar>div:first-child{min-width:0}
+ .game-page .topbar h1{font-size:20px}
+ .header-actions{gap:4px;flex-shrink:0}
+ .council-entry{font-size:11px;padding:0 7px;min-height:40px}
+ .world-builder-entry{font-size:10px;padding:0 6px;min-height:40px}
+}

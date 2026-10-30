@@ -1,4 +1,6 @@
 import {createButton} from "./ui-components.mjs";
+import {fieldCoverage} from "./settlement-play.mjs";
+import {zoneAt} from "./organic-world.mjs";
 import {ensureCivic,POLICIES,CHARTERS,TRADE,objectives,claimCharter,setPolicy,trade,pendingPetition,answerPetition,advice} from "./settlement-play.mjs";
 // Mobile council. Uses the existing sheet rather than a new modal/navigation system.
 export function renderCouncil(game,tab,navigate,decide){
@@ -22,6 +24,8 @@ export function renderCouncil(game,tab,navigate,decide){
    "You have secured all three charters. Continue guiding the town's development.");
   metric("Population",game.people);metric("Morale",Math.round(game.happiness)+"/100");
   metric("Appeal",Math.round(game.housing.attractiveness));metric("Steady months",c.steadyMonths);
+  metric("Vacant dwelling spaces",Math.max(0,game.houses.length*8-game.housing.housed));
+  metric("Homeless households",game.housing.pending.length);
   for(const [description,met] of objectives(game))root.append(el("p",(met?"✓  ":"○  ")+description,met?"council-goal met":"council-goal"));
   if(milestone&&objectives(game).every(x=>x[1])){
    section("Choose your charter","This choice permanently shapes future production, housing, or public life.");
@@ -37,10 +41,13 @@ export function renderCouncil(game,tab,navigate,decide){
   metric("Jobs needed",ledger.required??0);
   metric("Food produced last turn",ledger.foodProduction??"Not yet");
   metric("Food consumed last turn",ledger.foodRequired??"Not yet");
+  metric("Food reserves without harvest",ledger.foodReserveMonths===undefined?"Awaiting first turn":ledger.foodReserveMonths+" months");
   metric("Gold per month",ledger.balance??"Not yet");
   metric("Tax revenue",ledger.taxes??"Not yet");
   metric("Building + road upkeep",ledger.upkeep??"Not yet");
   metric("Next similar-month food estimate",ledger.foodForecast??"Not yet");
+  const farms=game.buildings.filter(b=>b.type==="farm");
+  if(farms.length)metric("Working farmland coverage",Math.round(farms.reduce((n,b)=>n+fieldCoverage(game,b,zoneAt),0)/farms.length*100)+"% of sample land");
   for(const note of (ledger.notices||[]).slice(0,5))root.append(el("p","• "+note,"council-goal"));
   for(const [key,title] of [["labor","Labor priority"],["tax","Taxation"],["rations","Food policy"]]){
    section(title,"You may change this policy once per month. The choice takes effect next turn.");

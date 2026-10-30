@@ -25,7 +25,7 @@ The first longer-form gameplay loop adds meaningful pressure, recovery options, 
 
 A recommended first session is to paint **Farmland** beside your founding farm, advance a few months, reserve **Residential** land, observe organic homes as families arrive, and choose a Founding Charter. Use Commercial zoning for the new marketplace, and prepare food before the first winter. Different charters and civic priorities change subsequent production and available options.
 
-The game still runs one deterministic monthly turn when you tap **Advance**. No economic simulation happens in the background. Original roads, homes, zoning, and save slots remain valid.
+Higher resident appeal and morale now attract newcomers more frequently, increasing housing demand. Council Economy displays food runway and actual field coverage; charter milestones require a farm's working fields and a connected marketplace. The game still runs one deterministic monthly turn when you tap **Advance**. No economic simulation happens in the background. Original roads, homes, zoning, and save slots remain valid.
 
 See [WV-GAME-001 design and UAT guide](docs/design/WV-GAME-001-living-settlement.md).
 

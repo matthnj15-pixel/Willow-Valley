@@ -1,4 +1,6 @@
 // WV-GAME-001: deterministic settlement gameplay, independent of rendering.
+import {zoneAt} from "./organic-world.mjs";
+import {graphLines} from "./road-network.mjs";
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 export const POLICIES={
  tax:[["gentle","Gentle levy","70% revenue, +1 morale/month"],["balanced","Balanced levy","Normal revenue"],["high","Heavy levy","145% revenue, -3 morale/month"]],
@@ -44,12 +46,22 @@ export function validCivic(c){return c===undefined||!!c&&
  Array.isArray(c.petitions)&&c.petitions.length<=PETITIONS.length&&Number.isInteger(c.lastTrade)&&c.lastTrade>=-1&&
  Number.isInteger(c.steadyMonths)&&c.steadyMonths>=0&&typeof c.changed==="object"&&typeof c.ledger==="object";}
 export function unlocked(s,type){return type==="market"?ensureCivic(s).chapter>=1:type==="granary"?ensureCivic(s).chapter>=2:true;}
+// Charter requirements use the same reachable road network as workplace production.
+function connectedToCollector(s,p){
+ const lines=s.roadGraph?graphLines(s.roadGraph,true):s.roads||[];
+ for(const points of lines)for(let i=1;i<points.length;i++){
+  const a=points[i-1],b=points[i],dx=b.x-a.x,dy=b.y-a.y,
+   divisor=dx*dx+dy*dy,t=divisor?Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/divisor)):0;
+  if(Math.hypot(p.x-(a.x+dx*t),p.y-(a.y+dy*t))<=125)return true;
+ }
+ return false;
+}
 export function objectives(s){
  const c=ensureCivic(s),chapter=c.chapter;
  if(chapter===0)return[["Reach 38 residents",s.people>=38],["Reserve 25 food",s.food>=25],
-  ["Paint a working farmland zone",(s.zones||[]).some(z=>z.type==="farmland")],["Keep morale at 55+",s.happiness>=55]];
+  ["Tend fields beside an operating farm",s.buildings.some(b=>b.type==="farm"&&fieldCoverage(s,b,zoneAt)>=.08)],["Keep morale at 55+",s.happiness>=55]];
  if(chapter===1)return[["Reach 54 residents",s.people>=54],
-  ["Establish a marketplace",s.buildings.some(b=>b.type==="market")],["Maintain 2 stable months",c.steadyMonths>=2],
+  ["Establish a connected marketplace",s.buildings.some(b=>b.type==="market"&&connectedToCollector(s,b))],["Maintain 2 stable months",c.steadyMonths>=2],
   ["Reserve 40 food",s.food>=40]];
  if(chapter===2)return[["Reach 75 residents",s.people>=75],
   ["Build a plaza and granary",["plaza","granary"].every(t=>s.buildings.some(b=>b.type===t))],
@@ -162,7 +174,8 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
   s.wood-=cost;const made=Math.max(1,Math.round((c.charters.includes("craft")?4:3)*portion));s.tools+=made;toolProduction+=made;
  }
  const wasteSavings=activeGranaries?Math.min(.18,activeGranaries*.09):0;
- const foodRequired=Math.ceil(s.people*.22*({careful:.8,normal:1,generous:1.25}[c.rations])*(1-wasteSavings));s.food-=foodRequired;
+ const foodRequired=Math.ceil(s.people*.22*({careful:.8,normal:1,generous:1.25}[c.rations])*(1-wasteSavings));
+ s.food-=foodRequired;
  const accessList=homeAccess(s),connected=accessList.filter(x=>x==="road").length,walking=accessList.filter(x=>x==="footpath").length;
  const taxRate=accessList.length?(connected+walking*.4)/accessList.length:0;
  const taxes=Math.round(s.people*1.5*taxRate*({gentle:.7,balanced:1,high:1.45}[c.tax]));
@@ -172,13 +185,14 @@ export function livelihood(s,{BUILDINGS,access,homeAccess,roadLength,zoneAt,even
  if(connected<accessList.length){s.happiness=clamp(s.happiness-2,0,100);notices.push("Homes lack full road access, reducing taxes and morale.");}
  if(events&&s.turn%6===0){s.food+=8;notices.push("Seasonal gathering added 8 food.");}
  if(s.food<0){s.food=0;s.people=Math.max(8,s.people-3);s.happiness=clamp(s.happiness-8,0,100);notices.push("A food shortage drove three residents away.");}
+ const foodReserveMonths=Math.round(s.food/Math.max(1,foodRequired)*10)/10;
  if(s.food<foodRequired*2)notices.push("Less than two months of food. Paint farm fields, adjust rations, or import provisions.");
  if(fieldsMissing)notices.push(fieldsMissing+" farm(s) need painted farmland to improve output.");
  if(laborMissing)notices.push(laborMissing+" workplace(s) have unfilled jobs. Reassign labor or grow the settlement.");
  if(s.gold<0){s.happiness=clamp(s.happiness-4,0,100);notices.push("Treasury deficit is reducing morale.");}
  c.steadyMonths=s.food>=foodRequired*3&&balance>=0&&s.happiness>=60?c.steadyMonths+1:0;
  c.ledger={foodProduction,woodProduction,toolProduction,foodRequired,balance,taxes,upkeep:upkeep+roadUpkeep,
-  marketBonus,granarySavings:wasteSavings,workers:plan.available,employed:plan.employed,required:plan.required,season,fieldsMissing,laborMissing,
+  marketBonus,granarySavings:wasteSavings,foodReserveMonths,workers:plan.available,employed:plan.employed,required:plan.required,season,fieldsMissing,laborMissing,
   foodForecast:s.food+foodProduction-foodRequired,goldForecast:s.gold+balance,notices:notices.slice(0,12)};
  return{foodProduction,woodProduction,toolProduction,foodRequired,balance,notices};
 }

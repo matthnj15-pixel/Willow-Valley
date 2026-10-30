@@ -17,7 +17,7 @@ The world remains persistent and gridless. Households occupy vacant housing firs
 
 ## Concrete mechanics
 
-- **Food:** Farm production depends on season, road deliveries, staffed workers, and nearby painted farmland. The founding farm can still forage before fields exist at a low yield, protecting existing save games. Subsequent farms produce poorly without zoned fields.
+- **Food:** Farm production depends on season, road deliveries, staffed workers, and nearby painted farmland. A charter only counts farmland that contributes to an actual farm. The Council displays stored food in months of consumption without new harvests. The founding farm can still forage before fields exist at a low yield, protecting existing save games. Subsequent farms produce poorly without zoned fields.
 - **Labor:** Each month 50% of residents are available workers; workplaces staff automatically according to Food, Balanced, or Materials priority. Extra buildings create real vacancy and upkeep risk.
 - **Taxation:** Gentle (0.70x and +1 morale), Balanced (1.0x), or Heavy (1.45x and -3 morale).
 - **Rations:** Careful (0.8x consumption and -2 morale), Normal, or Generous (1.25x consumption and +2 morale).
@@ -26,7 +26,7 @@ The world remains persistent and gridless. Households occupy vacant housing firs
 - **Milestones:** At ~38 residents and secure provisions/fields, choose the Founding Charter to unlock Commercial marketplaces. At ~54 residents and sustained stability, claim a Market Charter to unlock granaries. At ~75 residents and civic investment, secure a borough charter. Each time, choose an exclusive permanent specialization.
 - **Granary:** A staffed granary reduces food consumption/waste by 9%, up to an 18% cap, and requires workers and upkeep.
 - **Events:** Persistent petitions begin at month 4, 10, 18, and 28. Decisions visibly trade treasury and resources for morale, appeal, or future development.
-- **Housing:** Existing demand-first organic cottage and desire-path behavior stays intact. The Neighbors' Promise charter reduces future cottage costs from 45 to 35 gold.
+- **Housing:** Resident appeal and morale affect family arrival frequency: 1 family/month for high appeal and morale, 1 every 2 months for a healthy village, or 1 every 3 months for a struggling village. Immigration pauses below minimum thresholds. Arrival acceleration makes attractive towns harder to house and feed. Existing demand-first organic cottage and desire-path behavior stays intact. The Neighbors' Promise charter reduces future cottage costs from 45 to 35 gold.
 - **Saves:** Original version 1 remains; missing civic state gets deterministic defaults. Existing three slots, snapshots, import/export, and journal remain intact. All outcomes resolve per month, not per 3D animation frame.
 
 ## First-session playtest guide
