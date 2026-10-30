@@ -13,6 +13,8 @@ import {mountWorld3D} from "./ui-kit/render-3d.mjs";
 import {beginCameraGesture,advanceCameraGesture} from "./camera-gestures.mjs";
 import {zoneSilhouette} from "./zone-silhouette.mjs";
 import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBend,roadDraftPath,flattenRoadDraft,curvedSegments,hitRoadSegment,canBeginCurve,HOLD_MS,MOVE_SLOP_PX,HIT_RADIUS_PX,MAX_ANCHORS} from "./road-editor.mjs";
+import {renderCouncil} from "./council-ui.mjs";
+import {ensureCivic,CHARTERS,unlocked,pendingPetition} from "./settlement-play.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
 mountResourceBar($("resourceBar"),[
  {label:"People",value:"32",iconName:"people",id:"people"},
@@ -144,7 +146,8 @@ function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
  $("roadInfo").textContent=draft.anchors.length<2?"Tap an existing node to branch; touch and hold a point to shape its curve.":draft.anchors.length+" nodes · "+num(cost)+" gold · held nodes stay fixed; finger shapes curve.";
  $("confirmRoad").disabled=draft.anchors.length<2;}
 function setStats(){for(const id of ["people","gold","food","wood","tools"])$(id).textContent=num(game[id]);$("calendar").textContent=monthLabel(game.turn)+" · Slot "+activeSlot;$("environment").textContent=IS_PREVIEW?"DEVELOPMENT":"STABLE";$("report").textContent=game.report;const housing=housingOutlook(game);
- $("housingSummary").textContent="Homes "+housing.occupied+"/"+housing.capacity+" · Homeless "+housing.homeless+" · Appeal "+Math.round(housing.attractiveness);}
+ $("housingSummary").textContent="Homes "+housing.occupied+"/"+housing.capacity+" · Homeless "+housing.homeless+" · Appeal "+Math.round(housing.attractiveness);
+ const civic=ensureCivic(game),petition=pendingPetition(game);$("civicStatus").textContent=(civic.chapter<3?CHARTERS[civic.chapter].name:"Chartered Borough")+" · Morale "+Math.round(game.happiness)+(petition?" · Petition waiting":"");}
 function node(tag,attrs){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,String(v));return n;}
 function appendText(parent,text,x,y,size,fill="#fff",extras={}){const e=node("text",{x,y,"text-anchor":"middle",fill,"font-size":size,...extras});e.textContent=text;parent.append(e);return e;}
 // Committed roads are polylines; explicit curves are previewed with SVG Q segments.
@@ -334,11 +337,12 @@ function sheetButton(parent,label,callback,cls="wide"){const b=createButton({lab
 function textNode(tag,content,cls){const e=document.createElement(tag);e.textContent=content;if(cls)e.className=cls;return e;}
 function buildPanel(){setMode("build");const el=document.createElement("div");el.append(textNode("p","Choose an industry, then tap clear land on the map. Buildings near roads produce more efficiently."));
  for(const [key,b]of Object.entries(BUILDINGS)){
- const button=createBuildRow({title:b.label,description:b.description,
+ const locked=!unlocked(game,key);
+ const button=createBuildRow({title:b.label+(locked?" · Locked":""),description:b.description,
  cost:b.gold+" gold · "+b.wood+" wood · "+b.tools+" tools",
  iconName:key==="lumber"?"wood":key==="farm"?"food":key==="park"?"tree":key==="plaza"?"people":key==="smith"?"tools":"house",
  onClick:()=>{selectedBuild=key;closeSheet();$("modeLabel").textContent="Place "+b.label+" · tap clear land";notify("Tap the map to place "+b.label+".");}});
- el.append(button);}
+ button.disabled=locked;el.append(button);}
  openSheet("Construction",el);}
 function zoningPanel(){const el=document.createElement("div");
  el.append(textNode("p","Use Move to drag the map, Paint to fill land, and Erase to remove zoning. Switch freely; Commit saves the entire batch."));
@@ -348,7 +352,7 @@ function zoningPanel(){const el=document.createElement("div");
    notify("Zoning "+type+": edit the map, then Commit all changes.");
   });
  }
- el.append(textNode("p","Commercial and farmland brushes are planning reservations in this prototype; farms still use their existing production rules. Preserves exclude residential sites.","note"));
+ el.append(textNode("p","Paint fields near farms to improve harvests. Marketplaces require Commercial zoning and your first charter. Preserves protect organic village space.","note"));
  openSheet("Paint the landscape",el);}
 function housingPanel(){const el=document.createElement("div"),h=housingOutlook(game);
  el.append(textNode("p","Homes grow inside committed Residential land only when a family needs one. Homeless households leave after two additional monthly turns."));
@@ -362,6 +366,13 @@ function housingPanel(){const el=document.createElement("div"),h=housingOutlook(
  if(h.homelessHouseholds)el.append(textNode("p",game.housing.pending.map(g=>"Family "+g.id+": "+(2-g.wait)+" turn(s) before departure").join(" · "),"note"));
  sheetButton(el,"Paint residential zoning",()=>{chooseZoneType("residential");closeSheet();});
  openSheet("Housing demand",el);}
+function councilPanel(tab="progress"){
+ openSheet("Settlement Council",renderCouncil(game,tab,t=>councilPanel(t),(result,type,detail,returnTab)=>{
+  if(!result?.ok){notify(result?.reason||"The council could not complete that action.");return;}
+  record(type,detail);refresh();councilPanel(returnTab);
+  notify("Council decision saved.");
+ }));
+}
 function slotPanel(){const el=document.createElement("div");
  el.append(textNode("p","Three independent local settlements. Each slot saves automatically. Your original pre-slot save remains untouched as a backup."));
  for(const entry of listSlots(localStorage,SAVE_KEY,validState)){
@@ -405,6 +416,7 @@ function menuPanel(){const el=document.createElement("div");
  if(IS_PREVIEW)sheetButton(el,"New World · 3D terrain generator",()=>{location.assign(worldBuilderUrl(location.href));});
  sheetButton(el,"Paint zoning · residential, commercial, farming, preserves",()=>zoningPanel());
  sheetButton(el,"Housing demand · vacancies and homelessness",()=>housingPanel());
+ sheetButton(el,"Settlement Council · progression, economy, decisions",()=>councilPanel());
  sheetButton(el,"Export current slot as JSON",()=>{
   downloadJSON(game,"willow-valley-"+(IS_PREVIEW?"dev":"stable")+"-slot-"+activeSlot+"-turn-"+game.turn+".json");
   notify("Save export started.");
@@ -686,6 +698,7 @@ $("zoneRadius").oninput=e=>{zoneRadius=Number(e.target.value);updateZoneInfo();r
 $("buildBtn").onclick=()=>buildPanel();
 $("menuBtn").onclick=()=>menuPanel();
 $("historyBtn").onclick=()=>historyPanel();
+$("councilBtn").onclick=()=>councilPanel();
 $("closeSheet").onclick=closeSheet;$("backdrop").onclick=closeSheet;
 $("undoRoad").onclick=()=>{pendingControl=null;undoRoadAction(draft);updateRoadInfo();renderMap();};
 $("cancelRoad").onclick=()=>{draft=createRoadDraft();pendingControl=null;updateRoadInfo();renderMap();};
