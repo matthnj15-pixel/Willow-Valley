@@ -1,0 +1,9 @@
+# Issue #56 — displayed terrain contact slice
+
+The analytic heightfield and displayed triangle mesh disagree between mesh vertices. Subdividing road strips alone cannot fix this: their triangles may cross terrain creases. `terrain-surface.mjs` follows the exact b–d diagonal used by `createWorldMesh`, clips contact polygons to those planes, and traces perimeter contacts through grid and diagonal crossings. Quality changes rebuild the adapter. Analytic water and simulation suitability remain authoritative.
+
+`foundation-system.mjs` chooses one floor above all perimeter and interior contact heights, and supplies crease-aligned foundation wall contacts. Buildings, vegetation seats, landscape overlays, roads and screen picking use the displayed surface. The saved world and simulation are unchanged. Both modules are included in the offline install cache.
+
+Validation: `npm test` (23 test files), existing `npm run test:e2e` (66 tests), two additional terrain-contact browser tests, icon and standalone offline builds, syntax and diff checks. Contact tests compare road triangle interiors against actual ground triangles. Deterministic ridge/curve/three-way-junction/cottage scenes produce two screenshots retained in CI artifacts. Offline 3D relaunch checks both modules are cached. Existing browser suites cover three save slots, legacy saves, road/curve editing, camera gestures and mobile portrait interactions.
+
+This is a contact-geometry milestone, not completion of #56. Junctions still use radial fills over ribbons. Screen-space editor glyphs, full footprint placement rejection, curved-road water/grade authoring checks, natural shoulders, and physical-phone FPS/Safari checks remain for following slices. External Kenney requests still exist; local model integration is gated by #55's verified crosswalk.
