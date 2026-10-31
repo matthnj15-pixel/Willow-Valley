@@ -40,7 +40,9 @@ jobs:
       - name: Install browser test dependencies
         run: npm install --no-audit --no-fund --no-package-lock
       - name: Verify local architecture assets
-        run: npm run build:assets
+        run: |
+          npm run build:assets
+          git diff --exit-code -- assets/ asset-cache.js
       - name: Render iOS and PWA icons
         run: |
           npm run build:icons
