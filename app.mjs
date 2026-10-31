@@ -1,3 +1,4 @@
+import {renderPreferences} from "./render-preferences.mjs";
 import {IS_PREVIEW,FLAGS,SAVE_KEY} from "./config.mjs";
 import {worldBuilderUrl} from "./world-route.mjs";
 import {initializeSlots,listSlots,readSlot,newSlot,saveSlot,selectSlot,renameSlot,appendJournal,diagnostics} from "./save-slots.mjs";
@@ -28,6 +29,7 @@ mountGameDock($("gameDock"));
 $("worldBuilderLink").hidden=!IS_PREVIEW;
 $("worldBuilderLink").href=worldBuilderUrl(location.href);
 
+const graphics=location.protocol==="file:"?{renderer:"webgl",quality:"normal"}:renderPreferences(location.search,localStorage,SAVE_KEY+":graphics");
 const legacyRequested=new URLSearchParams(location.search).get("legacy")==="1";
 const freshGame=()=>IS_PREVIEW&&!legacyRequested?startWorldGame(DEFAULT_WORLD):startGame();
 const restored=initializeSlots(localStorage,SAVE_KEY,validState,freshGame);
@@ -86,14 +88,14 @@ async function bootGameWorld({lite=false,preserveCamera=null}={}){
  }
  try{
   let mount=mountWorld3D;
-  const threeRequested=!lite&&location.protocol!=="file:"&&new URLSearchParams(location.search).get("renderer")==="three";
+  const threeRequested=!lite&&location.protocol!=="file:"&&graphics.renderer==="three";
   if(threeRequested){
    try{mount=(await import('./world-renderer-three.mjs')).mountWorld3D;}
    catch(error){console.warn('Three.js unavailable; using native WebGL',error);void bootGameWorld({lite:true,preserveCamera});return;}
    if(sequence!==worldLoadGeneration)return;
   }
   active3D=mount(canvas,world,{
-   interactive:false,quality:lite||new URLSearchParams(location.search).get("quality")==="low"?"lite":"game",
+   interactive:false,quality:lite||graphics.quality==="low"?"lite":"game",
    onReady:()=>{if(sequence===worldLoadGeneration){$("terrainLoad").hidden=true;window.__wvBoot?.ready();}},
    onError:error=>{if(sequence===worldLoadGeneration){
     if(threeRequested){const view=active3D?.getCamera();void bootGameWorld({lite:true,preserveCamera:view});requestAnimationFrame(renderMap);}
@@ -115,7 +117,7 @@ async function bootGameWorld({lite=false,preserveCamera=null}={}){
   canvas.dataset.renderer=mount===mountWorld3D?'webgl':'three';
   requestAnimationFrame(renderMap);
  }catch(error){
-  if(!lite&&new URLSearchParams(location.search).get("renderer")==="three"){void bootGameWorld({lite:true,preserveCamera});return;}
+  if(!lite&&graphics.renderer==="three"){void bootGameWorld({lite:true,preserveCamera});return;}
   showTerrainFailure(error);
  }
 }

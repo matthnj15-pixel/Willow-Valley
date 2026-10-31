@@ -21,3 +21,9 @@ test('D1 engine import failure retains local-only playable fallback',async({page
  await page.route('**/world-renderer-three.mjs',r=>r.abort());await page.goto('/?preview=1&renderer=three');
  await expect(page.locator('#game3D')).toHaveAttribute('data-renderer','webgl');await page.locator('#nextBtn').click();await expect(page.locator('#calendar')).toContainText('April');expect(external).toEqual([]);
 });
+
+test('D1 low quality and renderer opt-in survive the normal PWA start URL and can be reversed',async({page})=>{
+ await page.goto('/?preview=1&renderer=three&quality=low');await expect(page.locator('#game3D')).toHaveAttribute('data-quality','low');
+ await page.goto('/?preview=1');await expect(page.locator('#game3D')).toHaveAttribute('data-renderer','three');await expect(page.locator('#game3D')).toHaveAttribute('data-quality','low');
+ await page.goto('/?preview=1&renderer=webgl&quality=normal');await expect(page.locator('#game3D')).toHaveAttribute('data-renderer','webgl');
+});

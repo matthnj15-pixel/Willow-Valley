@@ -1,0 +1,103 @@
+{
+  "deploymentCommit": "__BUILD_VERSION__",
+  "catalogHashes": [
+    {
+      "id": "home-long-ridge",
+      "sha256": "cef745d749c8dc8dcdc90de3e4816cf1752e436b1db99da591314f4cc4495051"
+    },
+    {
+      "id": "home-steep-gable",
+      "sha256": "4ec9fbca7418d07e2e52e7a908d704d35e51cc5a5c65de422142ea7ace2b7984"
+    },
+    {
+      "id": "home-low-hip",
+      "sha256": "0a1e498cb646ab8b62b314861fab93fb6a4510c45be7699545e0ad6d9eaa2b9f"
+    },
+    {
+      "id": "home-crooked-wing",
+      "sha256": "2eb5a8ca4b3079eee9111dd5817dcb10d98161c12f8bd7719bce65353dce6328"
+    },
+    {
+      "id": "home-offset-gables",
+      "sha256": "c074a5a3508d79dbca7f0d70d0a1764f851be69723eb99893dcb285701ece79a"
+    },
+    {
+      "id": "home-porch-cabin",
+      "sha256": "5dc7a3141a6ddfc70fe66d2b212a84d4f428b3cd21ad0982c6a1758e8076702d"
+    },
+    {
+      "id": "facility-farm",
+      "sha256": "343d3ef77e083a832b486c4a103cb7f7d3174c3218d41828e262af0be9ffde87"
+    },
+    {
+      "id": "facility-lumber",
+      "sha256": "b2448a401201d021e1e1e3f9792ac258981bb5423a490bd9bd0a35c71484dda9"
+    },
+    {
+      "id": "facility-smith",
+      "sha256": "82dabd72955b8d60e91173af41f289b9223d9d5d4badc8922860a4fc1a496033"
+    },
+    {
+      "id": "facility-granary",
+      "sha256": "59f82292bb3b75dd82105e3b76c790da65b4a34fab32d83fe195b9277656c50f"
+    },
+    {
+      "id": "facility-market",
+      "sha256": "09ef32fca99817413d4507095540310321b9a74d4991f3c433522d8363b9b7bc"
+    },
+    {
+      "id": "facility-plaza",
+      "sha256": "4043519e0de419ee1b2f75f32cca2ba6616d376a14c1af87bdc1d1c6b398b27a"
+    },
+    {
+      "id": "facility-park",
+      "sha256": "83dbe6d9fccb9add1311f7e762dc57b467ccb1917f9edc949674f0342a11941b"
+    },
+    {
+      "id": "tree-oak",
+      "sha256": "6dc71a8fe05f597833b9f92e9eee40a460c38b9f24c658c3151b39b6bd3275dc"
+    }
+  ],
+  "encodedAssetBytes": 1565831,
+  "transferBytes": 1740888,
+  "scene": "WV-D01-town100",
+  "cameraPath": "orbit-v1",
+  "initialCamera": {
+    "yaw": 0.71,
+    "pitch": 0.86,
+    "zoom": 798,
+    "focusX": -33,
+    "focusZ": -19
+  },
+  "count": 100,
+  "quality": "normal",
+  "engine": "Three.js 187",
+  "device": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "deviceNotes": "Automated desktop Chromium; physical phone and thermal conditions not measured",
+  "viewport": {
+    "width": 600,
+    "height": 850
+  },
+  "devicePixelRatio": 2,
+  "renderDPR": 1.5,
+  "warmupSeconds": 10,
+  "durationSeconds": 60,
+  "frameCount": 191,
+  "medianMs": 316.59999999999854,
+  "p95Ms": 366.7000000000007,
+  "p99Ms": 399.90000000000146,
+  "peakDrawCalls": 93,
+  "peakTriangles": 143404,
+  "estimatedGeometryBytes": 2735188,
+  "estimatedTextureBytes": 20971520,
+  "shadows": false,
+  "phonePerformanceVerified": false,
+  "thermalConditions": "not measured",
+  "recordedAt": "2026-10-31T18:10:08.125Z",
+  "sourceCommit": "ef29df8bb98d5d4ff9f48bd80ad0523dd67b97a2",
+  "fixtureSha256": "7000ebbb24197a854ee519c07267774e7f0c5269bd0710f4b5d10e0f0c20530f",
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "browserVersion": "141.0.7390.37",
+  "measurementClass": "desktop-software",
+  "physicalDevice": "not measured"
+}

@@ -2,7 +2,9 @@
 
 Depends on complete catalog C3 `6b7fbd0`. Development game:
 https://matthnj15-pixel.github.io/Willow-Valley/dev/?renderer=three .
-Low preset adds `&quality=low`. Native WebGL remains default/fallback.
+Low preset adds `&quality=low`. Explicit choices persist outside save slots so a
+normal PWA start URL retains the opted-in backend/preset. `?renderer=webgl&quality=normal`
+reverses them. First visits and standalone HTML remain native WebGL.
 
 ## What changed
 
@@ -15,7 +17,8 @@ owned. Camera movement does not rebuild terrain, buildings, crops or nature.
 Seeded local oaks replace the Three.js path's generated conifers. Tree placement
 uses displayed terrain and excludes water, committed farmland, houses, facility
 footprints, roads, lanes and entrance corridors. Low quality reduces nature and
-DPR (1 versus normal <=1.5); it changes no simulation values or model identities.
+DPR (1 versus normal <=1.5). Low also reuses the existing lite terrain
+resolution, rebuilding the displayed adapter and all contact surfaces together; it changes no simulation values or model identities.
 No runtime third-party asset fetch is added. Import failure also takes the
 local-only lightweight fallback.
 
@@ -45,7 +48,7 @@ The extra normal triangles are richer local oak geometry; both stay within the
 approved budgets. Normal estimates are 2,735,188 geometry bytes and 20,971,520
 texture bytes. These are buffer/image estimates, not driver-reported VRAM.
 
-The required install list is 59 files / 1,874,930 bytes; engine + model assets are
+The required install list is 60 files / 1,875,762 bytes; engine + model assets are
 1,542,739 bytes before HTTP compression. Counts/hashes can be reproduced with
 `npm run build:assets`. Node 22/24 produce identical outputs. Budget tests wait
 for all 100 homes and seven facilities to render, then enforce normal/low draw,
@@ -60,6 +63,25 @@ a distinct output directory to preserve full-suite visual artifacts. Existing
 20-world-rebuild tests protect resource lifetime; new tests protect pure nature
 selection, unchanged terrain contacts, strict 100-home budgets and engine-failure
 fallback.
+
+## Timed desktop recordings
+
+The committed JSON/image pairs under `wv-57-d1/` record source commit `ef29df8`,
+fixture hash, all model hashes and the actual SwiftShader renderer string. Run
+`node scripts/benchmark-settlement.mjs` against the local preview server to repeat
+three full-viewport runs (10-second warm-up + 60 seconds each).
+
+| Scene / preset | Median / p95 frame ms | Peak calls / triangles |
+| --- | --- | --- |
+| 30 / normal | 200 / 216.7 | 96 / 78,493 |
+| 100 / normal | 316.6 / 366.7 | 93 / 143,404 |
+| 100 / low | 216.7 / 250.1 | 91 / 121,476 |
+
+These software-renderer timings **miss the frame-pacing target**. They do not
+establish hardware-GPU phone behavior, and no 30 FPS phone claim is made. Static
+budgets and software correctness pass; physical frame pacing remains unverified.
+[Normal 100-home result](wv-57-d1/town100-normal.json) and
+[optimized scene](wv-57-d1/town100-normal.png) are retained with the baseline.
 
 ## Remaining release gates
 
