@@ -6,7 +6,7 @@ import {cottageBlueprint} from "../settlement-architecture.mjs";
 const world={
  width:400,depth:300,
  sample(x,y){
-  const ridge=16*Math.exp(-((x-205)/29)**2);
+  const ridge=16*Math.exp(-Math.pow((x-205)/29,2));
   return{height:9+ridge+.022*y,water:null};
  }
 };
