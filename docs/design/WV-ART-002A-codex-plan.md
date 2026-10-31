@@ -4,7 +4,7 @@ Read the [handoff](../handoffs/WV-3D-2026-10-31-work-codex.md), [art bible](WV-A
 
 ## Slice plan and dependencies
 
-Each row is a separately reviewable feature-branch PR from the latest `develop`. Refresh the audit before editing. Do not rewrite the application, simulation, save system, or completed terrain work. Existing #56/Track A can proceed independently, with shared geometry contracts.
+Each row is a separately reviewable feature-branch PR from the latest `develop`. Refresh the audit before editing. Do not rewrite the application, simulation, save system, or completed terrain work. Existing #56/Track A can proceed independently, with shared geometry contracts. #58, #59, and #60 already provide terrain contact, authored-road safety, trimmed junctions, and natural shoulder edges; reuse them.
 
 | Slice | Deliverable and touch points | Dependency and exit gate |
 | --- | --- | --- |
@@ -17,7 +17,7 @@ Each row is a separately reviewable feature-branch PR from the latest `develop`.
 | D1: coherence and optimization | Shared material palette, local nature replacements, instancing/chunks, LOD, culling, bounded shadow and quality presets | All catalog roles; meet recorded transfer/draw/triangle budgets, release all resources after repeated slot/world switches |
 | D2: device UAT | Physical iPhone portrait testing, 30/100-building benchmark, offline installation/upgrade, before/after captures, current deployed commit | D1; record actual device/OS/viewport and evidence; do not claim 30 FPS from desktop Playwright |
 
-**Parallel Track A remainder:** reuse `terrain-surface.mjs`/`foundation-system.mjs` from #58; improve junction unions/shoulders, authoring validation, and screen-space editor controls. Do not add duplicate samplers or a second road graph. New-site rejection policies belong in explicit authoring/simulation changes with tests. Existing saves retain a renderer fallback where a new visual cannot seat safely.
+**Parallel Track A remainder:** reuse `terrain-surface.mjs`/`foundation-system.mjs` from #58, `road-surface.mjs` authored-road safety from #59, and `road-junctions.mjs` trimmed mouths/natural shoulders from #60. Focus remaining work on screen-space controls, full building footprint validation, and observed acute/legacy-crossing edge cases. No general junction rewrite is assumed. Do not add duplicate samplers or a second road graph. New-site rejection policies belong in explicit authoring/simulation changes with tests. Existing saves retain a renderer fallback where a new visual cannot seat safely.
 
 ## Gallery specification
 
@@ -53,7 +53,7 @@ IDs below are **new planned tests/reviews**, not existing passing tests. Existin
 | ART-FIT-01 | Footprint and scale | Uniform scale only; footprint/overhang/props inside legal envelope; no door/window distortion; fallback when fit fails | `tests/organic-world.test.mjs`, historic-growth tests |
 | ART-DOOR-01 | Physical frontage | Cardinal and diagonal facing fixtures; canonical +Z entrance rotates toward real approach; continuous bounded path with no water/road/neighbor obstruction | Organic lane/zoning browser suites |
 | ART-SEAT-01 | Terrain seat | Floors/eaves level <=0.001 unit variation; contact error <=0.02 unit; all perimeter and interior ridges supported; no parcel-wide flattening | `terrain-contact.test.mjs`, `terrain-integrated-surfaces.test.mjs` |
-| ART-ROAD-01 | Clean roads and joins | Compare sampled triangle interiors to displayed terrain; filled trimmed junctions without gaps/flicker; existing topology unmodified | Terrain contact tests, road network/editor and 3D drag suites |
+| ART-ROAD-01 | Clean roads and joins | Compare sampled triangle interiors to displayed terrain; filled trimmed junctions without gaps/flicker; existing topology unmodified | Terrain contact, road-surface and road-junction unit tests, road network/editor and 3D drag suites |
 | ART-FIELD-01 | True farmland | No crops on previews, dry grass, water, roads, preserve, or uncommitted zones; shared fields rendered once; no fake seasonal growth or changed yields | Civic/living-settlement and organic-zoning tests |
 | ART-ROLE-01 | All seven facilities | Labels-off review identifies every role; no residential box substitute for plaza/park; existing costs/staff/unlocks unchanged | `BUILDINGS`, `unlocked`, `workforce`, browser living-settlement tests |
 | ART-INPUT-01 | Touch and picking | Current two-finger push/tilt/pinch behavior and paint/pan/erase pass; projected road handle hit areas >=44 CSS px; no input leakage after toggle/resize | Camera-gestures, road-editor, road-3d-drag-fix, organic-zoning browser suites |

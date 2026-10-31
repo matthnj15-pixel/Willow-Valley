@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "researchDate": "2026-10-31",
-  "baselineCommit": "ab5a1f6a87ee1163492d726271163af2ecd877a6",
+  "baselineCommit": "ae364169d7d3d3d30294fd8ce44c4c83dfc2b719",
   "purpose": "Research evidence, not a runtime asset registry. Source dimensions are authoring units, not asserted physical metres.",
   "archives": [
     {

@@ -1,6 +1,6 @@
 # WV-ART-002A: verified source inventory
 
-Research for [issue #55](https://github.com/matthnj15-pixel/Willow-Valley/issues/55), parent #53. Audited 2026-10-31 against `develop` commit `ab5a1f6a87ee1163492d726271163af2ecd877a6`. This directory is evidence for a later implementation PR. No runtime models, rendering behavior, economics, or save fields change here.
+Research for [issue #55](https://github.com/matthnj15-pixel/Willow-Valley/issues/55), parent #53. Audited 2026-10-31 against `develop` commit `ae364169d7d3d3d30294fd8ce44c4c83dfc2b719`. This directory is evidence for a later implementation PR. No runtime models, rendering behavior, economics, or save fields change here.
 
 ## Read in this order
 

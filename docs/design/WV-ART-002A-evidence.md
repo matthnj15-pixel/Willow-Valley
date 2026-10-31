@@ -1,6 +1,6 @@
 # WV-ART-002A: evidence, source decisions, and validation
 
-**Research date:** 2026-10-31. **Final audited develop baseline:** `ab5a1f6a87ee1163492d726271163af2ecd877a6`. Initial audit was `9b074fcd96015fe5f3896f9fad9f671159448b24`; #58 merged during research, so the branch rebased and the specifications now reuse its completed contact/foundation work.
+**Research date:** 2026-10-31. **Final audited develop baseline:** `ae364169d7d3d3d30294fd8ce44c4c83dfc2b719`. Initial audit was `9b074fcd96015fe5f3896f9fad9f671159448b24`; #58, #59, and #60 merged during research. The branch rebased again and the specifications reuse completed contact/foundation work, authored-road safety, and trimmed junctions with natural shoulders.
 
 ## Evidence levels
 
@@ -57,20 +57,20 @@ These references support API behavior. The proposed module boundaries, budgets, 
 
 ## Local validation of this research PR
 
-After rebasing onto `ab5a1f6`:
+After rebasing onto `ae36416`:
 
 | Check | Result |
 | --- | --- |
 | `python .../audit-kits.py --kits /tmp/wv-kits --out /tmp/wv-audit` | Inspected 652 GLBs with default-scene transforms; emitted inventory and measurements; all external image dependencies resolved |
 | Research integrity audit | 78 selected source files re-hashed; all 652 CSV rows matched measured data; archive/license hashes, all 13 role plans, and local Markdown links checked |
 | Study-board review | PNG visually inspected; source previews labeled separately from proposed diagrams; palette and text fit |
-| `npm test` | **133 passed, 1 skipped, 0 failed**; generated-icon opt-in test is the skip |
+| `npm test` | **138 passed, 1 skipped, 0 failed**; generated-icon opt-in test is the skip |
 | `npm run build:icons` and `CHECK_BUILT_ICONS=1 node --test tests/icon-artifacts.test.mjs` | Generated PWA icons; opt-in icon test **1 passed** |
 | `npm run build:offline` | Completed; produced existing self-contained game export. This does not prove future model-backed export |
 | `npm run test:e2e` | **68 passed** after installing repository-pinned Playwright Chromium; current mobile-emulated browser baseline |
 | Diff scope | New research files only under `docs/design/` and `docs/assets/`; no gameplay, runtime, dependency, workflow, or save changes |
 
-An initial browser attempt ran before Chromium installation completed and failed to launch the browser. The reported 68-pass result is the complete rerun after setup, on the rebased source. Generated local build/test artifacts and downloaded vendor binaries are excluded from this PR. No tests of hypothetical future models are claimed.
+An initial browser attempt ran before Chromium installation completed and failed to launch the browser. The reported 68-pass result is the complete rerun after setup, on the final rebased source. Generated local build/test artifacts and downloaded vendor binaries are excluded from this PR. No tests of hypothetical future models are claimed.
 
 GitHub CI status and run URL belong to the PR record after push. This branch is intentionally left as a PR targeting `develop`; no main merge or deployment is part of issue #55's research deliverable.
 

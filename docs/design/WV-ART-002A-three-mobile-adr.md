@@ -1,6 +1,6 @@
 # ADR WV-ART-002A: mobile Three.js presentation migration
 
-**Status:** implementation specification extending approved WV-ART-001. Research baseline `ab5a1f6a87ee1163492d726271163af2ecd877a6`, 2026-10-31. No runtime changes in this PR.
+**Status:** implementation specification extending approved WV-ART-001. Research baseline `ae364169d7d3d3d30294fd8ce44c4c83dfc2b719`, 2026-10-31. No runtime changes in this PR.
 
 ## Decision and alternatives
 
@@ -16,13 +16,14 @@ The current Three.js [WebGLRenderer](https://threejs.org/docs/pages/WebGLRendere
 
 ## Fresh baseline audit, including concurrently merged Track A
 
-`develop` advanced during research from `9b074fc` to `ab5a1f6` (#58). This branch rebased before finalizing its specifications. Read [the terrain contact note](../testing/WV-56-terrain-contact.md) and preserve these completed pieces:
+`develop` advanced during research from `9b074fc` through `ab5a1f6` (#58) to `ae36416` (#59 and #60). This branch rebased again before final delivery. Read the [terrain contact](../testing/WV-56-terrain-contact.md), [road authoring](../testing/WV-56-road-authoring.md), and [junction](../testing/WV-56-junctions.md) notes; preserve these completed pieces:
 
-- `terrain-surface.mjs` now exports `terrainResolution` and `createTerrainSurface`. It interpolates the **displayed b-d terrain triangles**, traces grid/diagonal crossings, and drapes convex polygons.
-- `foundation-system.mjs` now exports `resolveFoundation`. It samples perimeter and interior contacts, chooses `floor = max(height) + 0.8`, and returns corners, perimeter, relief, and flooded status.
-- `game-3d-mesh.mjs` already drapes ribbons, junction surfaces, zone geometry, and plinth contacts through that adapter. `ui-kit/render-3d.mjs` uses it for settlement/nature contact and screen picking.
-- `tests/terrain-contact.test.mjs` and browser `terrain-contact.spec.mjs` exercise triangle interiors, foundations, deterministic scenes, and offline availability. Do not recreate these modules or regress their triangulation to four-corner sampling.
-- Remaining work includes real junction unions, screen-space handles, new-placement footprint validation, grade/water policies at authoring time, and local model integration. Radial junction fills and overlapping ribbons still exist. Old saves must remain playable.
+- `terrain-surface.mjs` exports `terrainResolution` and `createTerrainSurface`. It interpolates the **displayed b-d terrain triangles**, traces grid/diagonal crossings, and drapes convex polygons.
+- `foundation-system.mjs` exports `resolveFoundation`. It samples perimeter and interior contacts, chooses `floor = max(height) + 0.8`, and returns corners, perimeter, relief, and flooded status.
+- `road-surface.mjs` now samples actual authored quadratics and validates centerline and both 17-unit shoulders against analytic bounds, water, and the existing 1.55 slope/longitudinal grade limit. Failed curve edits preserve saved geometry/cost/logs. Preserve that rule; no new bridge type.
+- `road-junctions.mjs` now trims road mouths into convex shared-node polygons and uses outward terminal semicircles. Pavement/shoulders share stations with deterministic edge variation. `game-3d-mesh.mjs` drapes these surfaces through the terrain adapter; old radial-overlap junctions have been superseded.
+- Terrain contact, road surface, and junction unit tests plus browser terrain-contact scenes protect the implementation. Do not recreate these modules or regress to corner-only/chord-only sampling.
+- Remaining work includes screen-space handles, full new-building footprint validation, extreme acute/self-intersecting curve UAT, legacy crossings without shared graph nodes, and local model integration. Existing saves remain playable. Review observed failures before further junction changes.
 
 Other audited contracts: seven `BUILDINGS` keys; houses separate; `cottageBlueprint` variant 0–4 and founded-era dimensions; `buildingBlueprint` can fall back to current chapter; `mountWorld3D` is custom WebGL with native camera gesture helpers; `sw.js` caches optional modules best-effort; Pages workflow explicitly copies modules/galleries but **does not recursively copy future `assets/` or engine vendor directories**. Current external TGE GLBs are not a verified offline bundle. `build-offline.mjs` bundles JS/CSS but does not automatically embed fetched model data.
 
@@ -78,7 +79,7 @@ type VisualPlacement = {
 };
 ```
 
-`asset-registry.mjs` validates entries, caches one parsed scene per URL/hash, tracks references, exposes async load status/errors, and owns disposal. `building-visuals.mjs` computes deterministic choices and placements from read-only state. `world-renderer-three.mjs` manages scenes and dirty updates. `editor-overlays.mjs` projects interaction targets independently. A later `road-surface.mjs` extracts and improves existing code instead of starting a parallel road graph. Extend `resolveFoundation` for composed footprints while keeping its current rectangular signature compatible.
+`asset-registry.mjs` validates entries, caches one parsed scene per URL/hash, tracks references, exposes async load status/errors, and owns disposal. `building-visuals.mjs` computes deterministic choices and placements from read-only state. `world-renderer-three.mjs` manages scenes and dirty updates. `editor-overlays.mjs` projects interaction targets independently. Reuse the existing `road-surface.mjs` authoring validator and `road-junctions.mjs` geometry builder instead of starting a parallel road graph. Extend `resolveFoundation` for composed footprints while keeping its current rectangular signature compatible.
 
 ### Normalize complete models
 
@@ -90,11 +91,11 @@ Store raw origin/bounds, normalization transform, canonical entrance, output SHA
 
 ### Roads, seats, and policy boundaries
 
-Use existing road graph nodes/curves/widths and `edgePoints`; no alternative connectivity graph. Adaptively tessellate by curvature/grade, then split/drape to displayed terrain triangles. Form the union of clipped road ends at each junction in plan, triangulate it, and drape the union. Trim segments to that boundary to eliminate overlap. Test acute joins with a bounded miter/round fallback. Never replace graph connectivity with visual overlap inference.
+Use existing road graph nodes/curves/widths and the current road-surface/junction modules. The current implementation samples curves by control-polygon length, trims mouths, fills a convex junction polygon, and drapes to displayed terrain triangles. Reuse it in Three.js. Verify acute joins, short segments, unequal widths, self-intersections, and legacy crossings before proposing a more general polygon union or adaptive sampler. Any improvement must preserve shared stations and topology and remain a focused geometry PR. Never replace graph connectivity with visual overlap inference.
 
 A foundation is one horizontal seat over all contacts, with lower walls following perimeter creases. For concave footprints, subdivide before interior sampling, and retain doorway/porch anchors at the same floor. Derive plinth versus stepped courses from relief with a bounded visual policy; original rules do not yet define a new maximum foundation height. Do not make up a simulation rejection threshold in the renderer. If an old legal site is visually difficult, retain a safe legacy fallback and log a development diagnostic.
 
-The approved water/grade and steep/wet/blocked placement requirements belong in **new authoring validation** using existing simulation policy, not silently introduced by asset selection. If a policy is absent (for example bridges), reject enabling that visual feature rather than inventing buildable bridge mechanics. Future validation changes require their own tests and legacy-save handling. No auto-bridge or road rerouting.
+Road water/grade validation is now implemented in `road-surface.mjs` and its simulation call sites. Preserve it. Remaining full building footprint checks belong in **new authoring validation** using existing simulation policy, not silently introduced by asset selection. If a policy is absent (for example bridges), reject enabling that visual feature rather than inventing buildable bridge mechanics. Future validation changes require their own tests and legacy-save handling. No auto-bridge or road rerouting.
 
 ### Public API and input parity
 
