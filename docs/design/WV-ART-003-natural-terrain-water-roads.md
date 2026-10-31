@@ -1,7 +1,7 @@
 # WV-ART-003 | Terrain, road, shore and water surface specification
 
 **Status:** implementation-ready research and visual specification, not shipped code.
-**Research and repository audit:** 2026-10-31. **Baseline:** \`develop\` at \`f1d5be6cd7590435e03eca4b0abdf6a979ffcca1\`.
+**Research and repository audit:** 2026-10-31. **Baseline:** `develop` at `f1d5be6cd7590435e03eca4b0abdf6a979ffcca1`.
 **Owner:** Codex environment rendering track. Independent of WV-ART-002C building asset licensing and architectural-scale work.
 **Review evidence:** user iPhone Safari 3D captures on October 31, 2026; current source code; primary engine documentation and texture publisher/license pages below.
 
@@ -17,22 +17,22 @@ The current Three.js playable settlement has viable world geometry, roads, build
 
 | Area | Actual code | Consequence |
 | --- | --- | --- |
-| Ground | \`world-gen.mjs::createWorldMesh\`, positions/normals/colors, nine floats per vertex. The \`coherentMeadow\` setting replaces cell checkerboard with modest smooth vertex tint. | No tiled albedo, macro variation material or believable ground relief at fine scale. Changing height generation is unnecessary. |
-| Water | \`world-gen.mjs::waterPolygon\` clips cell triangles to water masks; emits vertex color and water-surface height. \`world-renderer-three.mjs::material(index)\` renders water through the same color-only shader as the terrain. | Flat opaque cyan/blue with hard polygon boundaries and no translucent shallow zone. |
-| Roads | \`road-junctions.mjs::roadJunctionPolygons\` returns trimmed surface and shoulder polygons. \`game-3d-mesh.mjs\` passes them through \`groundPolygon\` / \`terrainRibbon\` with flat tan and olive colors. | Geometrically terrain-following, but not visually integrated with the surrounding ground. |
-| Water/world geometry contract | \`terrain-surface.mjs::createTerrainSurface\` recreates *exact* render mesh diagonals and exposes \`sample\`, \`contactTrace\`, \`drapePolygon\`. | The contact adapter is already correct and must be preserved; do not make an independent textured heightfield. |
-| Renderer | \`world-renderer-three.mjs\` has one generic \`ShaderMaterial\` factory for buffer indices, receives interleaved position/color/normal via \`presentation.upload\`. Index 0 = ground, 1 = generated water; 5 = ground-contact roads/paths/plaza, 6 = zone overlay, 7 structures, 8 editor guides. | **Material dispatch by index** is the natural integration seam. Keep the existing \`mountWorld3D\` controller and raycast terrain mesh. |
-| Native fallback and world lab | \`ui-kit/render-3d.mjs\` uses custom WebGL shader with color-only geometry and optional external Kenney references. The World Builder also mounts that renderer. | Three.js surface upgrade should remain opt-in initially. Legacy WebGL must remain playable and continue meeting save/offline expectations. Clearly distinguish paths in docs/UI. |
-| Asset cache | \`scripts/build-asset-cache.mjs\`, \`asset-cache.js\`, \`sw.js\` pinned SHA256/byte-checked installs and versioned cache. | Any approved texture must be local, explicitly bundled, hashed and available for airplane-mode cold launch. |
-| Performance | \`docs/testing/WV-57-environment-performance.md\` records ~98 draw calls / 144k triangles and ~21MB estimated texture bytes in the 100-home normal-quality fixture; desktop SwiftShader already misses target frame pacing. | Favor limited shader samples and shared atlases. Do not assume a desktop screenshot or GPU budget proves iPhone frame rate. |
+| Ground | `world-gen.mjs::createWorldMesh`, positions/normals/colors, nine floats per vertex. The `coherentMeadow` setting replaces cell checkerboard with modest smooth vertex tint. | No tiled albedo, macro variation material or believable ground relief at fine scale. Changing height generation is unnecessary. |
+| Water | `world-gen.mjs::waterPolygon` clips cell triangles to water masks; emits vertex color and water-surface height. `world-renderer-three.mjs::material(index)` renders water through the same color-only shader as the terrain. | Flat opaque cyan/blue with hard polygon boundaries and no translucent shallow zone. |
+| Roads | `road-junctions.mjs::roadJunctionPolygons` returns trimmed surface and shoulder polygons. `game-3d-mesh.mjs` passes them through `groundPolygon` / `terrainRibbon` with flat tan and olive colors. | Geometrically terrain-following, but not visually integrated with the surrounding ground. |
+| Water/world geometry contract | `terrain-surface.mjs::createTerrainSurface` recreates *exact* render mesh diagonals and exposes `sample`, `contactTrace`, `drapePolygon`. | The contact adapter is already correct and must be preserved; do not make an independent textured heightfield. |
+| Renderer | `world-renderer-three.mjs` has one generic `ShaderMaterial` factory for buffer indices, receives interleaved position/color/normal via `presentation.upload`. Index 0 = ground, 1 = generated water; 5 = ground-contact roads/paths/plaza, 6 = zone overlay, 7 structures, 8 editor guides. | **Material dispatch by index** is the natural integration seam. Keep the existing `mountWorld3D` controller and raycast terrain mesh. |
+| Native fallback and world lab | `ui-kit/render-3d.mjs` uses custom WebGL shader with color-only geometry and optional external Kenney references. The World Builder also mounts that renderer. | Three.js surface upgrade should remain opt-in initially. Legacy WebGL must remain playable and continue meeting save/offline expectations. Clearly distinguish paths in docs/UI. |
+| Asset cache | `scripts/build-asset-cache.mjs`, `asset-cache.js`, `sw.js` pinned SHA256/byte-checked installs and versioned cache. | Any approved texture must be local, explicitly bundled, hashed and available for airplane-mode cold launch. |
+| Performance | `docs/testing/WV-57-environment-performance.md` records ~98 draw calls / 144k triangles and ~21MB estimated texture bytes in the 100-home normal-quality fixture; desktop SwiftShader already misses target frame pacing. | Favor limited shader samples and shared atlases. Do not assume a desktop screenshot or GPU budget proves iPhone frame rate. |
 
-The screenshot's hard shapes have multiple causes: geometry from \`waterPolygon\`, solid vertex colors from both terrain/water materials, and the flat colors of \`roadJunctionPolygons\` contact polygons. Texture sampling alone cannot round shore geometry, but water-edge color/foam/vegetation can visually soften it without changing dry/wet topology.
+The screenshot's hard shapes have multiple causes: geometry from `waterPolygon`, solid vertex colors from both terrain/water materials, and the flat colors of `roadJunctionPolygons` contact polygons. Texture sampling alone cannot round shore geometry, but water-edge color/foam/vegetation can visually soften it without changing dry/wet topology.
 
 ### Strict separation of truth
 
-- \`world.sample(x,z)\` is authoritative for terrain height, lake/river water flags, building/road eligibility, and deterministic world-generation values.
-- \`createTerrainSurface\` is authoritative for the **displayed height** of every road, foundation, shoulder and terrain hit test.
-- New terrain classification, texture weights, shore-distance fields, flow direction and road wear patterns are **presentation-only derived data**. Never write them into \`state\`, save slots, road graph, world options or monthly simulation.
+- `world.sample(x,z)` is authoritative for terrain height, lake/river water flags, building/road eligibility, and deterministic world-generation values.
+- `createTerrainSurface` is authoritative for the **displayed height** of every road, foundation, shoulder and terrain hit test.
+- New terrain classification, texture weights, shore-distance fields, flow direction and road wear patterns are **presentation-only derived data**. Never write them into `state`, save slots, road graph, world options or monthly simulation.
 - Texture changes may not alter vertex position, world dimensions, terrain triangle diagonal, road footprint, lane path, site suitability, road cost or collider/picking.
 
 ## 3. Candidate techniques and selection
@@ -45,7 +45,7 @@ The screenshot's hard shapes have multiple causes: geometry from \`waterPolygon\
 | Triplanar projection for steep cliffs | Avoids obvious stretched texture on vertical faces | 3 projections/texture and more fragment work | **Selective optional cliff-only material**, low quality uses simpler projection |
 | Full terrain PBR with multiple 4K color/normal/AO maps | Detailed close-ups | Excessive texture memory and sampling for mobile | **Reject** as baseline |
 | MeshStandardMaterial per surface | Familiar PBR behavior, maps and lighting | Material overhead, UV/control preparation, more costly than basic | **Evaluate** for dirt/rock; custom shader likely needed for controlled blending |
-| Low-cost custom \`ShaderMaterial\` | Consistent art-directed blending and water tint | Shader/code complexity; explicit sRGB handling required | **Primary path**, feature-flagged |
+| Low-cost custom `ShaderMaterial` | Consistent art-directed blending and water tint | Shader/code complexity; explicit sRGB handling required | **Primary path**, feature-flagged |
 | Three.js Water.js / Water2 with real-time reflection/refraction | Shiny photoreal water | Render-target passes and extra samples; mismatch to cartographic style | **Not for mobile baseline**, revisit only with evidence |
 | Screen-space postprocessing or baked screenshot textures | Quick apparent richness | Touch/picking/world-scale mismatch and performance risk | **Reject** |
 
@@ -53,8 +53,8 @@ The screenshot's hard shapes have multiple causes: geometry from \`waterPolygon\
 
 ### Color management and filtering
 
-- Renderer output is already \`THREE.SRGBColorSpace\`. Label albedo/diffuse images with \`texture.colorSpace = THREE.SRGBColorSpace\`; leave normal, roughness, masks and height/control data with \`THREE.NoColorSpace\`. Current legacy vertex colors and authored GLBs have different origins. Test against actual captures before converting existing palette factors.
-- Use repeated seamless images with \`RepeatWrapping\`, mipmaps, measured world-space texel density and modest anisotropy (1–2 initial, conditionally 4 if useful). Keep texture coordinate resolution in **game world units**, not screen pixels, so zoom/pan/rotation never shifts patterns.
+- Renderer output is already `THREE.SRGBColorSpace`. Label albedo/diffuse images with `texture.colorSpace = THREE.SRGBColorSpace`; leave normal, roughness, masks and height/control data with `THREE.NoColorSpace`. Current legacy vertex colors and authored GLBs have different origins. Test against actual captures before converting existing palette factors.
+- Use repeated seamless images with `RepeatWrapping`, mipmaps, measured world-space texel density and modest anisotropy (1–2 initial, conditionally 4 if useful). Keep texture coordinate resolution in **game world units**, not screen pixels, so zoom/pan/rotation never shifts patterns.
 - Use a consistent neutral light and readable roughness, no emissive grass, neon water or mirror-shiny mud. Photograph-based inputs should be art-graded and downsampled to suit the existing stylized building models.
 
 ## 4. Surface art system
@@ -89,17 +89,17 @@ Start with 2 albedo samples and one control/macro sample per ground fragment, th
 
 ### 4.3 Roads, shoulders and desire paths
 
-- Keep **exact existing authored alignment**, curved centerline, junction polygons, shoulder dimensions and analytic water/grade rejection. Preserve \`road-junctions.mjs\` and \`road-surface.mjs\` as sources of truth.
+- Keep **exact existing authored alignment**, curved centerline, junction polygons, shoulder dimensions and analytic water/grade rejection. Preserve `road-junctions.mjs` and `road-surface.mjs` as sources of truth.
 - Apply worn compacted dirt with small embedded stones to main road surfaces, subtle ruts only if reliably aligned along the curve and clipped at intersections. Avoid directional tire tracks or modern lane markings in founding era.
 - Roads are high enough to remain readable, yet shoulders taper through grass/dirt mixtures with **irregular seeded boundaries**. Soft shoulder edges must not create depth-fighting transparent geometry or visual pavement widths that contradict road ownership/hit testing.
-- For first slice, shade the existing draped \`surfaces\` polygons by road/shoulder/path material semantics. A single all-purpose index-5 shader **cannot distinguish** roads from paths, plazas, and crops using only world positions; introduce a small, renderer-owned surface category/attribute or separate batches while keeping the old interleaved payload/test fixtures compatible.
+- For first slice, shade the existing draped `surfaces` polygons by road/shoulder/path material semantics. A single all-purpose index-5 shader **cannot distinguish** roads from paths, plazas, and crops using only world positions; introduce a small, renderer-owned surface category/attribute or separate batches while keeping the old interleaved payload/test fixtures compatible.
 - Apply less intense dirt to desire paths and house approach trails, preserving their narrower footprint and their existing simulation-driven existence.
 - Branches and junction centers must match road texture scale/tone, avoid visible seam lines and center overlays, and keep screen-space edit handles legible.
 - Road texturing changes appearance, not road connectivity, length, cost, slope policy, intersection topology or monthly behavior.
 
 ### 4.4 Water and shoreline
 
-**Do not substitute a giant flat water plane.** Preserve lake/river polygon coverage, levels and shore geometry generated by \`world-gen.mjs::waterPolygon\`; treat it as the same authoritative water footprint. If later geometric shoreline improvements are warranted, isolate them into separate regression-tested geometry work.
+**Do not substitute a giant flat water plane.** Preserve lake/river polygon coverage, levels and shore geometry generated by `world-gen.mjs::waterPolygon`; treat it as the same authoritative water footprint. If later geometric shoreline improvements are warranted, isolate them into separate regression-tested geometry work.
 
 Proposed fragment inputs: world X/Z, water type/lake-versus-river classification, rendered water height, optional precomputed local shore distance / depth class, deterministic low-frequency flow direction from the nearest existing river-segment tangent, shared normal/noise map and elapsed render time. No change to simulation water level.
 
@@ -114,15 +114,15 @@ Prioritize stable sampling at multiple camera pitches and at 1x to 3x zoom. Wate
 
 ## 5. Concrete integration plan
 
-Keep \`ui-kit/render-3d.mjs\` as shared input/controller and \`world-renderer-three.mjs\` as swappable presentation. Do not rewrite both engines or introduce unrelated Three.js physics.
+Keep `ui-kit/render-3d.mjs` as shared input/controller and `world-renderer-three.mjs` as swappable presentation. Do not rewrite both engines or introduce unrelated Three.js physics.
 
 Proposed presentation modules (names may be adapted):
-- \`environment-materials.mjs\`: local texture registry/lifetime, color-space, quality presets, material selection by surface semantic and water type.
-- \`terrain-classification.mjs\`: pure, deterministic world-aligned visual weights from existing world, displayed terrain, analytic wet mask and seeded tree proximity. No writes to input.
-- \`shoreline-material.mjs\` or integrated water shader: shallow/deep, river/lake direction and animation with seeded phase.
-- \`surface-geometry.mjs\` or focused extension to \`game-3d-mesh.mjs\`: carry road / shoulder / desire path / plaza surface metadata without breaking native WebGL or contact triangulation.
-- \`environment-asset-manifest.json\`: exact local texture URLs, publisher asset URLs, chosen map types, license, source SHA256 and processed SHA256/byte counts. No guessed or unverified download filenames.
-- \`ui-kit/environment-lab.html\`: controlled seeded screenshots at meadow/road/bend/3-way/shore/cliff with normal and low quality controls, not an alternate game mode.
+- `environment-materials.mjs`: local texture registry/lifetime, color-space, quality presets, material selection by surface semantic and water type.
+- `terrain-classification.mjs`: pure, deterministic world-aligned visual weights from existing world, displayed terrain, analytic wet mask and seeded tree proximity. No writes to input.
+- `shoreline-material.mjs` or integrated water shader: shallow/deep, river/lake direction and animation with seeded phase.
+- `surface-geometry.mjs` or focused extension to `game-3d-mesh.mjs`: carry road / shoulder / desire path / plaza surface metadata without breaking native WebGL or contact triangulation.
+- `environment-asset-manifest.json`: exact local texture URLs, publisher asset URLs, chosen map types, license, source SHA256 and processed SHA256/byte counts. No guessed or unverified download filenames.
+- `ui-kit/environment-lab.html`: controlled seeded screenshots at meadow/road/bend/3-way/shore/cliff with normal and low quality controls, not an alternate game mode.
 
 A feasible incremental path:
 1. New Three.js ground material with **one locally bundled, verified CC0 grass albedo**, correct UV scale/color space, proven offline and legacy fallback.
@@ -135,11 +135,11 @@ The screenshot can be used as the B0 review reference, but tests should also ins
 
 ### Internal coordinate and layering invariants
 
-- Game coordinate \`{x,y}\` maps to world-space \`{x-world.width/2, displayedHeight, y-world.depth/2}\`. Up is +Y, water level stays at original height. Any UV/control lookup must be independent of camera movement.
-- Preserve \`terrainResolution\` normal/low, \`createWorldMesh\` triangle split and \`createTerrainSurface\` contact. A new uniform or attribute cannot move any vertices.
+- Game coordinate `{x,y}` maps to world-space `{x-world.width/2, displayedHeight, y-world.depth/2}`. Up is +Y, water level stays at original height. Any UV/control lookup must be independent of camera movement.
+- Preserve `terrainResolution` normal/low, `createWorldMesh` triangle split and `createTerrainSurface` contact. A new uniform or attribute cannot move any vertices.
 - Existing surface layering is ground (0), water (1), all roads/paths/surface decorations (5), zoning overlay (6), buildings (7), editing (8). Change material dispatch by semantic and carry data through geometry batches, do not globally restyle every index-5 triangle as asphalt or dirt.
-- Preserve transparent zoning preview and input. If new \`ShaderMaterial\` is used, explicitly preserve opacity, depthTest, depthWrite, side, renderOrder and color output. Test iOS/WebGL2 (shader compilation, texture formats) and context loss to legacy.
-- Preserve \`screenToWorld\` raycasting against terrain buffer 0 and \`getCamera\` behavior.
+- Preserve transparent zoning preview and input. If new `ShaderMaterial` is used, explicitly preserve opacity, depthTest, depthWrite, side, renderOrder and color output. Test iOS/WebGL2 (shader compilation, texture formats) and context loss to legacy.
+- Preserve `screenToWorld` raycasting against terrain buffer 0 and `getCamera` behavior.
 - Avoid per-frame rebuilds of textures or control masks. Update only time uniforms for animation and do not trigger a continuous render loop when water is hidden or the tab is backgrounded. Mobile performance may require a quality-based maximum animation cadence.
 - One source texture can be shared by several material instances; the owning asset registry disposes once on scene teardown. Handle async cancellation across save-slot/world changes.
 
@@ -182,23 +182,23 @@ Source document references:
 - Normal/low quality must preserve shape, collision/picking and saved outcomes exactly. Graphic downgrade can reduce normal-map samples, water animation, vegetation detail and render DPR but never change water passability or road layout.
 
 **Automated checks:**
-- Pure deterministic masks on identical seed and resolution, independent of camera and turns. Different seeds produce different but stable broad material regions. No random \`Math.random\` in material classification.
+- Pure deterministic masks on identical seed and resolution, independent of camera and turns. Different seeds produce different but stable broad material regions. No random `Math.random` in material classification.
 - Tiny fixed world fixtures: dry hill, wet shoulder, steep cliff, lake edge, narrow river, T and X road intersections, curved road and desire path, near-shore plaza, and farmland with/without committed field.
 - Vertex position and triangle diagonal checks unchanged to <=1e-6 for material-only commits, existing terrain-contact error <=0.02 units, no regression in road/water/placement validators.
 - Screenshot comparisons for normal and low, high pitch/low pitch, close-up and full town, with eyes-on review for visible repetition, road halos, shimmer, jagged water and tiling seams.
-- Root and \`/dev/\` pre-cache/offline cold launch with zero third-party requests, hash corruption/incomplete-install rollback and an explicit WebGL fallback. Verify independent \`main\` vs \`develop\` caches.
-- \`npm run build:assets\`, \`npm test\`, \`npm run test:e2e\`, \`WV_RENDERER=three\` camera/road/zone/save parity tests, icons/offline packaging and GitHub Actions. Browser screenshots are not equivalent to real phone UAT.
+- Root and `/dev/` pre-cache/offline cold launch with zero third-party requests, hash corruption/incomplete-install rollback and an explicit WebGL fallback. Verify independent `main` vs `develop` caches.
+- `npm run build:assets`, `npm test`, `npm run test:e2e`, `WV_RENDERER=three` camera/road/zone/save parity tests, icons/offline packaging and GitHub Actions. Browser screenshots are not equivalent to real phone UAT.
 - Verify surface caches/geometry buffers do not leak across 20 world changes and save-slot switches, and that water animation pauses when backgrounded.
 
 **Human acceptance:** At typical close-zoom, show user a grassy meadow, mixed bare-earth trail, smooth road shoulder, sloping cliff with no stretched pattern, river with shaded banks and subtle flow, and a lake with natural shallow-to-deep color. It should look coherent beside **current and future** cottage models. User approves the art direction before any default-renderer rollout.
 
 ## 8. Parallel-work boundaries and Git procedure
 
-Architecture/asset worker: owns architecture GLBs, shared human scale, model lighting/materials, \`building-visuals.mjs\`, \`settlement-architecture.mjs\`, model GLB authoring/build and related docs.
+Architecture/asset worker: owns architecture GLBs, shared human scale, model lighting/materials, `building-visuals.mjs`, `settlement-architecture.mjs`, model GLB authoring/build and related docs.
 
-**This surface worker** owns terrain/water/road presentation shaders, terrain classification, local surface texture import, surface visual-gallery fixtures and corresponding tests. Minimal tightly scoped edits to \`world-renderer-three.mjs\`, \`world-gen.mjs\`, \`game-3d-mesh.mjs\`, \`ui-kit/render-3d.mjs\` only after rebasing/checking for concurrent changes. Do not modify the architecture import pipeline, \`assets/wv/architecture-v1/\`, building scale, asset GLB registry, game economy or save formats.
+**This surface worker** owns terrain/water/road presentation shaders, terrain classification, local surface texture import, surface visual-gallery fixtures and corresponding tests. Minimal tightly scoped edits to `world-renderer-three.mjs`, `world-gen.mjs`, `game-3d-mesh.mjs`, `ui-kit/render-3d.mjs` only after rebasing/checking for concurrent changes. Do not modify the architecture import pipeline, `assets/wv/architecture-v1/`, building scale, asset GLB registry, game economy or save formats.
 
-Both branches start at latest \`develop\`, pull/rebase before each PR, and do **not** edit the same central renderer concurrently without reconciling the latest diff. Prefer additive modules and stable interfaces. Feature flags/normal-low quality preserve native WebGL. PRs to \`develop\` with CI and evidence; Codex may self-merge passing development PRs. The user alone promotes \`develop\` to \`main\`.
+Both branches start at latest `develop`, pull/rebase before each PR, and do **not** edit the same central renderer concurrently without reconciling the latest diff. Prefer additive modules and stable interfaces. Feature flags/normal-low quality preserve native WebGL. PRs to `develop` with CI and evidence; Codex may self-merge passing development PRs. The user alone promotes `develop` to `main`.
 
 ## 9. Acceptance criteria and release gates
 
