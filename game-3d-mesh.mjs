@@ -3,7 +3,6 @@ import {resolveFoundation} from "./foundation-system.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {edgePoints,nodeAt,quadraticPoint} from "./road-network.mjs";
 import {flattenRoadDraft,curvedSegments} from "./road-editor.mjs";
-import {homeApproach} from "./building-visuals.mjs";
 import {cottageBlueprint,buildingBlueprint,buildingFootprint} from "./settlement-architecture.mjs";
 // Gameplay geometry shares the exact seeded world elevation and water mask.
 // Every vertex is in the same WebGL coordinates as the World Builder.
@@ -190,7 +189,7 @@ export function settlementGeometry(world,state,{
    const style=cottageBlueprint(house),model=modelHouses.get?.(house);
    block(markers,world,house,model?.width??style.width,model?.depth??style.depth,style.height,style.wall,style.roof,style.orientation,{...style,foundationOnly:modelHouses.has(house)});
    if(model){
-    const approach=homeApproach(world,house,model);
+    const approach=model.approach;
     if(approach){
      const {from,to,dx,dy,distance,floor}=approach;
      const stairLength=Math.min(distance,Math.max(3,(floor-world.sample(from.x,from.y).height)*1.8));

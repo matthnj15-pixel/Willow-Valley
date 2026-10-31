@@ -91,8 +91,8 @@
       "id": "home-low-hip",
       "role": "house",
       "url": "./assets/wv/architecture-v1/home-low-hip.glb",
-      "bytes": 47092,
-      "sha256": "6035f0a60654b66993dd1b9854061e909554506a6ba7948b694911eb339cc40b",
+      "bytes": 47060,
+      "sha256": "0a1e498cb646ab8b62b314861fab93fb6a4510c45be7699545e0ad6d9eaa2b9f",
       "boundsMin": [
         -0.5600000023841858,
         0,
@@ -136,8 +136,8 @@
       "id": "home-crooked-wing",
       "role": "house",
       "url": "./assets/wv/architecture-v1/home-crooked-wing.glb",
-      "bytes": 45336,
-      "sha256": "4d7d0cecce3a6a3a265b922feaf19338c0d4266a682207af21f865677b62c3b9",
+      "bytes": 45300,
+      "sha256": "2eb5a8ca4b3079eee9111dd5817dcb10d98161c12f8bd7719bce65353dce6328",
       "boundsMin": [
         -1.050000011920929,
         0,
@@ -181,8 +181,8 @@
       "id": "home-offset-gables",
       "role": "house",
       "url": "./assets/wv/architecture-v1/home-offset-gables.glb",
-      "bytes": 53528,
-      "sha256": "9e4fa4bad68ab810c0d1b563b4f9a40edbfcddd49a8eb267ef4087c02f2a8363",
+      "bytes": 53464,
+      "sha256": "c074a5a3508d79dbca7f0d70d0a1764f851be69723eb99893dcb285701ece79a",
       "boundsMin": [
         -0.5353553295135499,
         0,
@@ -227,8 +227,8 @@
       "id": "home-porch-cabin",
       "role": "house",
       "url": "./assets/wv/architecture-v1/home-porch-cabin.glb",
-      "bytes": 53028,
-      "sha256": "4f9c2c01c8d57d413201a8696d644e3f73e158420459b194750ceb64609018e7",
+      "bytes": 52936,
+      "sha256": "5dc7a3141a6ddfc70fe66d2b212a84d4f428b3cd21ad0982c6a1758e8076702d",
       "boundsMin": [
         -0.550000011920929,
         0,
@@ -237,7 +237,7 @@
       "boundsMax": [
         0.550000011920929,
         1.5712106599211693,
-        1.0723143112659455
+        1.0723140132427216
       ],
       "triangles": 650,
       "entrance": {

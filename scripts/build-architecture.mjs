@@ -52,10 +52,10 @@ async function build(id,role,recipe,entrance=null){
   g.rotateX(tilt);g.rotateY(yaw);
   const p=doc.createPrimitive();
   for(const [key,name] of [['POSITION','position'],['NORMAL','normal']]){
-   const a=g.getAttribute(name);p.setAttribute(key,doc.createAccessor().setType('VEC3').setArray(new Float32Array(a.array)));
+   const a=g.getAttribute(name);p.setAttribute(key,doc.createAccessor().setType('VEC3').setArray(new Float32Array(Array.from(a.array,v=>Number(v.toFixed(6))))));
   }
   if(g.index)p.setIndices(doc.createAccessor().setType('SCALAR').setArray(new Uint16Array(g.index.array)));
-  const c=new Color(color);p.setMaterial(doc.createMaterial('Original '+color).setBaseColorFactor([c.r,c.g,c.b,1]).setMetallicFactor(0).setRoughnessFactor(.95));
+  const c=new Color(color);p.setMaterial(doc.createMaterial('Original '+color).setBaseColorFactor([...c.toArray().map(v=>Number(v.toFixed(6))),1]).setMetallicFactor(0).setRoughnessFactor(.95));
   scene.addChild(doc.createNode('Original '+shape).setTranslation(position).setMesh(doc.createMesh().addPrimitive(p)));
   originalMeshes.push(shape);g.dispose();
  }

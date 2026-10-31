@@ -1,7 +1,7 @@
 import * as THREE from './assets/vendor/three.module.mjs';
 import {mountWorld3D as mountController} from './ui-kit/render-3d.mjs';
 import {createModelRegistry,manifestURL,HOME_IDS} from './asset-registry.mjs';
-import {homePlacement} from './building-visuals.mjs';
+import {homePlacement,homeApproach} from './building-visuals.mjs';
 
 export function mountWorld3D(canvas,world,options={}){
  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'low-power'});
@@ -45,6 +45,7 @@ export function mountWorld3D(canvas,world,options={}){
     // plot, only use a smaller approved shape; never change saved placement.
     if(!p)for(const id of HOME_IDS){p=homePlacement(surface,house,entries,id);if(p)break;}
     const source=p&&models.get(p.id);if(!source)continue;
+    p.approach=homeApproach(surface,house,p);
     const model=source.clone(true);model.position.set(...p.origin);model.scale.setScalar(p.scale);model.rotation.y=p.yaw;houses.add(model);represented.set(house,p);
    }
    canvas.dataset.modelHouses=String(represented.size);canvas.dataset.loadedModels=String(loaded);canvas.dataset.homeModels=[...new Set([...represented.values()].map(p=>p.id))].sort().join(',');
