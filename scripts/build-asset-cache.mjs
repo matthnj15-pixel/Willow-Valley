@@ -11,7 +11,7 @@ async function add(path){
 }
 for(const path of ['index.html','styles.css','app.mjs','ui-kit/world-lab.html','ui-kit/world-lab.css','ui-kit/world-lab.mjs',
  'assets/vendor/three.module.mjs','assets/wv/architecture-v1/manifest.json','asset-registry.mjs',
- 'ui-kit/asset-gallery.html','ui-kit/asset-gallery.css','ui-kit/asset-gallery.mjs',...manifest.entries.map(e=>e.url)])await add(path);
+ 'ui-kit/settlement-benchmark.html','ui-kit/settlement-benchmark.mjs','ui-kit/asset-gallery.html','ui-kit/asset-gallery.css','ui-kit/asset-gallery.mjs',...manifest.entries.map(e=>e.url)])await add(path);
 const entries=[];
 for(const path of [...files].sort()){
  const bytes=await readFile(path);entries.push({url:'./'+path,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')});

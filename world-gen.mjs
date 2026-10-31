@@ -228,7 +228,7 @@ export function previewTrees(world,maxCount=650){
  const stride=trees.length/maxCount;
  return Array.from({length:maxCount},(_,i)=>trees[Math.floor((i+.5)*stride)]);
 }
-export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null,treeLimit=650}={}){
+export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null,treeLimit=650,coherentMeadow=false}={}){
  const {width,depth}=world,ground=[],water=[];
  const rand=(i,j)=>hash2(i,j,hashSeed(world.options.seed)+901);
  function triangle(to,a,b,c,color){
@@ -236,7 +236,7 @@ export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null,treeL
   const vx=c[0]-a[0],vy=c[1]-a[1],vz=c[2]-a[2];
   let normal=[uy*vz-uz*vy,uz*vx-ux*vz,ux*vy-uy*vx];
   const len=Math.hypot(...normal)||1;normal=normal.map(v=>v/len);
-  for(const p of [a,b,c])to.push(...p,...color,...normal);
+  for(const [i,p] of [a,b,c].entries())to.push(...p,...(Array.isArray(color[0])?color[i]:color),...normal);
  }
  function waterPolygon(corners){
   // Clip each water triangle against the actual basin/river mask. Previous
@@ -295,8 +295,12 @@ export function createWorldMesh(world,nx=92,nz=72,{trees=true,palette=null,treeL
   const meadowShade=.955+variation*.095,rockShade=.94+variation*.09+stratum;
   const color=green.map((v,i)=>clamp(mix(v*meadowShade,stone[i]*rockShade,rocky),.03,.93));
   const verts=cells.map(q=>[q[0]-width/2,q[2].height,q[1]-depth/2]);
-  triangle(ground,verts[0],verts[3],verts[1],color);
-  triangle(ground,verts[1],verts[3],verts[2],color);
+  const vertexColors=coherentMeadow?cells.map(q=>{
+   const shade=.98+Math.sin(q[0]/75)*.015+Math.cos(q[1]/90)*.012+Math.sin((q[0]+q[1])/110)*.01;
+   return green.map((v,i)=>clamp(mix(v*shade,stone[i]*rockShade,rocky),.03,.93));
+  }):null;
+  triangle(ground,verts[0],verts[3],verts[1],vertexColors?[vertexColors[0],vertexColors[3],vertexColors[1]]:color);
+  triangle(ground,verts[1],verts[3],verts[2],vertexColors?[vertexColors[1],vertexColors[3],vertexColors[2]]:color);
   const surface=cells.map(q=>({
    x:q[0],z:q[1],wet:q[2].water!==null,
    level:q[2].water,kind:q[2].kind

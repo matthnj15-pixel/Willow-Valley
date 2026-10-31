@@ -19,3 +19,5 @@ icon-512.png
 # Browser test artifacts
 test-results/
 playwright-report/
+
+test-results-three-parity/

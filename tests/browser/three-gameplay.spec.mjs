@@ -8,7 +8,7 @@ for(const scope of ['/','/dev/'])test(`B3 playable Three.js cottages and cold of
  await page.screenshot({path:info.outputPath('playable-three-cottages.png')});
  await page.locator('#nextBtn').click();await expect(page.locator('#calendar')).toContainText('April');
  await page.evaluate(async()=>{await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;});
- await context.setOffline(true);await page.reload();
+ await context.setOffline(true);await page.goto(scope+'?preview=1');
  await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','13');
  await expect(page.locator('#calendar')).toContainText('April');
  expect(errors).toEqual([]);expect(external).toEqual([]);

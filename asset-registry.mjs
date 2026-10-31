@@ -1,4 +1,4 @@
-// Reviewed source assemblies stay gallery-only until their promotion gates pass.
+// The versioned catalog is available to opt-in gameplay; default rollout awaits UAT.
 export const ARCHITECTURE_VERSION='architecture-v1';
 export const HOME_IDS=Object.freeze(['home-long-ridge','home-steep-gable','home-low-hip','home-crooked-wing','home-offset-gables','home-porch-cabin']);
 const base=new URL('./assets/wv/architecture-v1/',import.meta.url);

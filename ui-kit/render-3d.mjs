@@ -103,8 +103,8 @@ export function mountWorld3D(canvas,initialWorld,{
   const resolution=terrainResolution(world,{lite,gameplay});
   contactWorld=createTerrainSurface(world,...resolution);
   const geometry=createWorldMesh(world,...resolution,{
-   trees:!["oak","pine","birch"].some(key=>kenney[key]),
-   palette:kenneyLandscapePalette(kenney),
+   trees:!presentation&&!["oak","pine","birch"].some(key=>kenney[key]),
+   coherentMeadow:!!presentation,palette:kenneyLandscapePalette(kenney),
    treeLimit:lite?95:gameplay?300:650
   });
   put(0,geometry.ground);put(1,geometry.water);
