@@ -3,6 +3,7 @@ import {advanceDesirePaths,visibleDesirePaths,validDesirePaths} from "./desire-p
 import {validZones,findCottageSite,configureOrganicBounds,zoneAt} from "./organic-world.mjs";
 import {ensureCivic,validCivic,unlocked,livelihood,pendingPetition} from "./settlement-play.mjs";
 import {createWorld,normalizeWorldSettings,validWorldSettings,WORLD_SIZES,DEFAULT_WORLD} from "./world-gen.mjs";
+import {beforeMonth,monthHighlights} from "./turn-highlights.mjs";
 export const VERSION=1;
 export const WORLD={w:1200,h:900};
 const modelCache=new Map();
@@ -92,7 +93,10 @@ export function validState(x){const bounds=worldDimensions(x);return !!x&&
  Array.isArray(x.buildings)&&x.buildings.length<300&&x.buildings.every(b=>BUILDINGS[b.type]&&validPoint(b,bounds))&&
  Array.isArray(x.houses)&&x.houses.length<2000&&x.houses.every(h=>validPoint(h,bounds)&&
  (!h.parcel||Array.isArray(h.parcel.vertices)&&h.parcel.vertices.length>=5&&h.parcel.vertices.length<=10&&h.parcel.vertices.every(p=>validPoint(p,bounds))))&&
- Array.isArray(x.logs)&&(!x.roadGraph||validGraph(x.roadGraph,bounds))&&
+ Array.isArray(x.logs)&&(!x.turnHighlights||Array.isArray(x.turnHighlights)&&x.turnHighlights.length<=6&&x.turnHighlights.every(e=>
+  ["home","lane","path","housing","charter","food","morale","labor","fields","steady"].includes(e.kind)&&
+  typeof e.text==="string"&&e.text.length<=180&&e.turn===x.turn&&
+  (e.x===undefined||validPoint(e,bounds))))&&(!x.roadGraph||validGraph(x.roadGraph,bounds))&&
  validDesirePaths(x.desirePaths,bounds)&&validZones(x.zones,bounds)&&validHousing(x.housing)&&validCivic(x.civic)&&
  (x.localLanes===undefined||Array.isArray(x.localLanes)&&x.localLanes.length<=2000&&x.localLanes.every(l=>
  Array.isArray(l.points)&&l.points.length>=2&&l.points.length<=12&&l.points.every(p=>validPoint(p,bounds))));}
@@ -136,7 +140,7 @@ export function placeBuilding(s,type,p){const b=BUILDINGS[type];if(!b)return{ok:
   if(type==="market"&&zoneAt(s,p)!=="commercial")return{ok:false,reason:"Paint Commercial zoning here before placing a marketplace."};
  if(!canPlace(s,p))return{ok:false,reason:"Choose clear land away from buildings and the river."};
  if(s.gold<b.gold||s.wood<b.wood||s.tools<b.tools)return{ok:false,reason:"Insufficient treasury, wood, or tools."};
- s.gold-=b.gold;s.wood-=b.wood;s.tools-=b.tools;s.buildings.push({type,x:Math.round(p.x),y:Math.round(p.y)});
+ s.gold-=b.gold;s.wood-=b.wood;s.tools-=b.tools;s.buildings.push({type,x:Math.round(p.x),y:Math.round(p.y),foundedEra:ensureCivic(s).chapter});
  s.report=b.label+" established. Road access affects monthly production.";s.logs.unshift(monthLabel(s.turn)+": "+b.label+" built.");return{ok:true};}
 // Legacy polyline entry point and new authored-geometry entry point.
 export function addRoad(s,points){return buildRoad(s,points,points.slice(1).map(()=>null));}
@@ -265,6 +269,7 @@ export function resolveHousing(s,notices,allowArrivals=true){
  return{homeless:still.length,attractiveness:h.attractiveness};
 }
 export function advance(s,{events=true}={}){
+ const before=beforeMonth(s);
  s.turn++;advanceDesirePaths(s);
  const oldPeople=s.people;
  const result=livelihood(s,{BUILDINGS,access:b=>productionAccess(s,b),homeAccess:housingAccess,roadLength,zoneAt,events});
@@ -278,5 +283,6 @@ export function advance(s,{events=true}={}){
   " gold net. "+(net>=0?"+":"")+net+" residents."+(result.notices.length?" "+result.notices[0]:"");
  s.logs.unshift(monthLabel(s.turn)+": "+s.report);
  if(s.logs.length>60)s.logs.length=60;
- return{...result,populationDelta:net};
+ s.turnHighlights=monthHighlights(s,before,{...result,...ensureCivic(s).ledger});
+ return{...result,populationDelta:net,highlights:s.turnHighlights};
 }

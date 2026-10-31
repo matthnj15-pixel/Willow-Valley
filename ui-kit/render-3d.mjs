@@ -79,7 +79,7 @@ export function mountWorld3D(canvas,initialWorld,{
  const lite=quality==="lite",gameplay=quality==="game"||lite;
  let counts=[0,0,0,0,0,0,0,0,0],world=initialWorld;
  let settlement=null,settlementDraft=null,settlementZoneStrokes=[],settlementZoneType="residential",settlementRadius=54;
- let settlementEdits=null,settlementMode="explore",settlementLiveCurve=null,settlementLiveGesture=null,settlementPendingControl=null;
+ let settlementEdits=null,settlementMode="explore",settlementLiveCurve=null,settlementLiveGesture=null,settlementPendingControl=null,settlementTouchFocus=null;
  const camera={yaw:.71,pitch:.86,zoom:650,focusX:0,focusZ:0};
  const pointers=new Map();
  let gesture=null,frame=0;
@@ -195,6 +195,7 @@ function updateSettlement(){
  const data=settlementGeometry(world,settlement,{draft:settlementDraft,
   zoneStrokes:settlementZoneStrokes,zoneType:settlementZoneType,zoneRadius:settlementRadius,
   zoneEdits:settlementEdits,mode:settlementMode,liveCurve:settlementLiveCurve,
+  touchFocus:settlementTouchFocus,
   liveGesture:settlementLiveGesture,pendingControl:settlementPendingControl});
  for(const [index,vertices] of [[5,data.surfaces],[6,data.zones],[7,data.structures],[8,data.guides]]){
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[index]);
@@ -259,12 +260,12 @@ function homeView(x,z,zoom=null){
 }
 function setSettlement(state,{
   draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,zoneEdits=null,
-  mode="explore",liveCurve=null,liveGesture=null,pendingControl=null
+  mode="explore",liveCurve=null,liveGesture=null,pendingControl=null,touchFocus=null
  }={}){
  settlement=state;settlementDraft=draft;settlementZoneStrokes=zoneStrokes;
  settlementZoneType=zoneType;settlementRadius=zoneRadius;settlementEdits=zoneEdits;
  settlementMode=mode;settlementLiveCurve=liveCurve;
- settlementLiveGesture=liveGesture;settlementPendingControl=pendingControl;
+ settlementLiveGesture=liveGesture;settlementPendingControl=pendingControl;settlementTouchFocus=touchFocus;
  updateSettlement();
 }
  function onDown(e){
