@@ -1,0 +1,5 @@
+# Issue #56 — trimmed road junctions
+
+`road-junctions.mjs` separates road mouths from shared junction polygons. At connected nodes, incoming ribbons stop at bounded stations; a convex polygon fills the mouths. Pavement and shoulders share alignment stations, with independent widths and clearances. Terminal caps are outward semicircles, rather than overlapping full discs. Curves subdivide by control-polygon length at six-unit intervals. The terrain adapter clips each polygon onto the displayed triangle grid.
+
+Tests probe a three-way junction for coverage and overlapping mouths, plus deterministic curved/short-edge geometry and state immutability. All 24 unit files and 68 browser tests pass; icon and offline builds pass. Ridge/junction/hill and downhill screenshots are retained in CI. This improves shared-node topology; extreme acute angles, self-intersecting authored curves and legacy crossings without graph nodes still merit UAT. No graph, save or gameplay state is changed by rendering.
