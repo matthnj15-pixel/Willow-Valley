@@ -94,6 +94,7 @@ function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
   quad(out,vertex(a,a.height-.4),vertex(b,b.height-.4),
    vertex(b,floor),vertex(a,floor),stone);
  }
+ if(style.foundationOnly){quad(out,vert(-x,0,-z),vert(x,0,-z),vert(x,0,z),vert(-x,0,z),stone);return;}
  const a=vert(-x,0,-z),b=vert(x,0,-z),c=vert(x,0,z),d=vert(-x,0,z);
  const at=vert(-x,height,-z),bt=vert(x,height,-z),ct=vert(x,height,z),dt=vert(-x,height,z);
  quad(out,a,b,bt,at,wall);quad(out,b,c,ct,bt,wall);
@@ -128,7 +129,7 @@ function beacon(out,world,p,radius,color){
 
 const curvePoints=(a,c,b,steps=18)=>Array.from({length:steps+1},(_,i)=>quadraticPoint(a,c,b,i/steps));
 export function settlementGeometry(world,state,{
- draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,
+ modelHouses=new Set(),draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,
  zoneEdits=null,mode="explore",liveCurve=null,liveGesture=null,pendingControl=null,touchFocus=null
 }={}){
  const surfaces=[],zones=[],markers=[],roadGuides=[];
@@ -185,8 +186,8 @@ export function settlementGeometry(world,state,{
   ribbon(surfaces,world,road,24,colors.road,1.3);
  }
  for(const house of state.houses||[]){
-   const style=cottageBlueprint(house);
-   block(markers,world,house,style.width,style.depth,style.height,style.wall,style.roof,style.orientation,style);
+   const style=cottageBlueprint(house),model=modelHouses.get?.(house);
+   block(markers,world,house,model?.width??style.width,model?.depth??style.depth,style.height,style.wall,style.roof,style.orientation,{...style,foundationOnly:modelHouses.has(house)});
    if(house.foundedTurn===state.turn&&house.parcel?.vertices?.length>2)
     ribbon(roadGuides,world,[...house.parcel.vertices,house.parcel.vertices[0]],2.5,[1,.80,.37],4);
   }

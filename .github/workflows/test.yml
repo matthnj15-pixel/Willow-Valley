@@ -53,6 +53,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Exercise mobile portrait road interactions
         run: npm run test:e2e
+      - name: Verify Three.js gameplay input and save parity
+        run: WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes
       - name: Preserve terrain contact screenshots
         if: always()
         uses: actions/upload-artifact@v4
@@ -61,4 +63,5 @@ jobs:
           path: |
             test-results/terrain-contact-*/**/*.png
             test-results/asset-gallery-*/**/*.png
+            test-results/three-gameplay-*/**/*.png
           if-no-files-found: ignore

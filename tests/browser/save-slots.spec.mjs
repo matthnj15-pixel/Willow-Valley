@@ -1,3 +1,4 @@
+const gameURL=process.env.WV_RENDERER==='three'?'/?preview=1&renderer=three':'/?preview=1';
 import {test,expect} from "@playwright/test";
 
 test("WV-SAVE-001: create independent settlement slots, switch and resume after reload",async({page})=>{

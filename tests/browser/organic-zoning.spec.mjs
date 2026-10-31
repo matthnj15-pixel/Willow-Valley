@@ -1,3 +1,4 @@
+const gameURL=process.env.WV_RENDERER==='three'?'/?preview=1&renderer=three':'/?preview=1';
 import {test,expect} from "@playwright/test";
 async function screenPoint(page,p){
  return page.locator("#map").evaluate((el,p)=>{

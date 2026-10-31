@@ -1,7 +1,8 @@
+const gameURL=process.env.WV_RENDERER==='three'?'/?preview=1&renderer=three':'/?preview=1';
 import {test,expect} from "@playwright/test";
 
 test("ROAD-3D-FIX-UI: hold and drag stays proportional at phone zoom and never launches a far control",async({page})=>{
- await page.goto("/?preview=1");
+ await page.goto(gameURL);
  await expect(page.locator("#stage")).toHaveClass(/is-3d/);
  await page.locator("#roadsBtn").click();
  const result=await page.locator("#map").evaluate(async svg=>{
