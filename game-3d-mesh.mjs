@@ -26,69 +26,126 @@ function worldPos(world,p,offset=2){
  const sample=world.sample(p.x,p.y);
  return[p.x-world.width/2,sample.height+offset,p.y-world.depth/2];
 }
-function ribbon(out,world,points,width,color,offset=2){
+// Build terrain-following ribbons from a regularly sampled centerline.
+// Sampling only the endpoint corners causes long straight roads to tunnel
+// beneath hills and warp at changes in the elevation model.
+export function terrainRibbon(out,world,points,width,color,offset=1.1,spacing=6){
+ if(!Array.isArray(points)||points.length<2)return;
+ const samples=[points[0]];
  for(let i=1;i<points.length;i++){
-  const a=points[i-1],b=points[i],dx=b.x-a.x,dy=b.y-a.y,l=Math.hypot(dx,dy);
-  if(l<.1)continue;
-  const px=-dy/l*width/2,py=dx/l*width/2;
-  const leftA={x:a.x+px,y:a.y+py},rightA={x:a.x-px,y:a.y-py};
-  const leftB={x:b.x+px,y:b.y+py},rightB={x:b.x-px,y:b.y-py};
-  const corner=[leftA,leftB,rightB,rightA].map(p=>worldPos(world,p,offset));
-  quad(out,...corner,color);
+  const a=points[i-1],b=points[i],length=Math.hypot(b.x-a.x,b.y-a.y);
+  if(length<.01)continue;
+  const count=Math.max(1,Math.ceil(length/spacing));
+  for(let k=1;k<=count;k++){
+   const t=k/count;
+   samples.push({x:a.x+(b.x-a.x)*t,y:a.y+(b.y-a.y)*t});
+  }
+ }
+ if(samples.length<2)return;
+ const cross=[];
+ for(let i=0;i<samples.length;i++){
+  const p=samples[i],before=samples[Math.max(0,i-1)],after=samples[Math.min(samples.length-1,i+1)];
+  const dx=after.x-before.x,dy=after.y-before.y,length=Math.hypot(dx,dy)||1;
+  const nx=-dy/length*width*.5,ny=dx/length*width*.5;
+  cross.push([
+   worldPos(world,{x:p.x+nx,y:p.y+ny},offset),
+   worldPos(world,{x:p.x-nx,y:p.y-ny},offset)
+  ]);
+ }
+ for(let i=1;i<cross.length;i++)
+  quad(out,cross[i-1][0],cross[i][0],cross[i][1],cross[i-1][1],color);
+}
+function ribbon(out,world,points,width,color,offset=1.1){
+ terrainRibbon(out,world,points,width,color,offset);
+}
+// A short, radial surface closes the road mesh at branch points and shared
+// intersections. Both the ring and center sample the same world heightfield.
+function junction(out,world,p,radius,color,offset){
+ const center=worldPos(world,p,offset),sides=20;
+ for(let i=0;i<sides;i++){
+  const a=i/sides*Math.PI*2,b=(i+1)/sides*Math.PI*2;
+  const edge=t=>worldPos(world,{
+   x:p.x+Math.cos(t)*radius,y:p.y+Math.sin(t)*radius
+  },offset);
+  addTri(out,center,edge(b),edge(a),color);
  }
 }
 function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
- const c=worldPos(world,p,0),angle=orientation,cs=Math.cos(angle),sn=Math.sin(angle);
- function vert(dx,y,dz){
-  const wx=c[0]+dx*cs-dz*sn,wz=c[2]+dx*sn+dz*cs;
-   // Sample the authoritative ground height at each rotated wall corner.
-   return[wx,world.sample(wx+world.width/2,wz+world.depth/2).height+y,wz];
+ const cs=Math.cos(orientation),sn=Math.sin(orientation),x=width/2,z=depth/2;
+ const position=(dx,dz)=>({
+  x:p.x+dx*cs-dz*sn,
+  y:p.y+dx*sn+dz*cs
+ });
+ const footprint=[[-x,-z],[x,-z],[x,z],[-x,z]];
+ const ground=footprint.map(([dx,dz])=>{
+  const xy=position(dx,dz);
+  return world.sample(xy.x,xy.y).height;
+ });
+ // A building stays level; its stone plinth reaches the hillside beneath it.
+ // Never apply the terrain height separately to roof or wall vertices.
+ const floor=Math.max(...ground)+.8;
+ const vert=(dx,y,dz)=>{
+  const xy=position(dx,dz);
+  return[xy.x-world.width/2,floor+y,xy.y-world.depth/2];
+ };
+ const bottom=(dx,dz)=>{
+  const xy=position(dx,dz);
+  return[xy.x-world.width/2,world.sample(xy.x,xy.y).height-.4,xy.y-world.depth/2];
+ };
+ const stone=[.50,.47,.40];
+ // Subdivide each foundation side so that the plinth does not hover above
+ // convex terrain between the four building corners.
+ for(let i=0;i<4;i++){
+  const a=footprint[i],b=footprint[(i+1)%4],steps=4;
+  for(let k=0;k<steps;k++){
+   const t=k/steps,u=(k+1)/steps;
+   const pt=v=>[a[0]+(b[0]-a[0])*v,a[1]+(b[1]-a[1])*v];
+   const l=pt(t),r=pt(u);
+   quad(out,bottom(...l),bottom(...r),vert(r[0],0,r[1]),vert(l[0],0,l[1]),stone);
+  }
  }
- const x=width/2,z=depth/2;
- const a=vert(-x,1,-z),b=vert(x,1,-z),cc=vert(x,1,z),d=vert(-x,1,z);
+ const a=vert(-x,0,-z),b=vert(x,0,-z),c=vert(x,0,z),d=vert(-x,0,z);
  const at=vert(-x,height,-z),bt=vert(x,height,-z),ct=vert(x,height,z),dt=vert(-x,height,z);
- quad(out,a,b,bt,at,wall);quad(out,b,cc,ct,bt,wall);
- quad(out,cc,d,dt,ct,wall);quad(out,d,a,at,dt,wall);
- const ridgeLeft=vert(0,height+Math.min(width,depth)*(style.roofRise??.62),-z);
- const ridgeRight=vert(0,height+Math.min(width,depth)*.62,z);
+ quad(out,a,b,bt,at,wall);quad(out,b,c,ct,bt,wall);
+ quad(out,c,d,dt,ct,wall);quad(out,d,a,at,dt,wall);
+ const rise=Math.min(width,depth)*(style.roofRise??.62);
+ const ridgeLeft=vert(0,height+rise,-z),ridgeRight=vert(0,height+rise,z);
  quad(out,at,bt,ridgeRight,ridgeLeft,roof);
  quad(out,dt,ct,ridgeRight,ridgeLeft,roof);
  addTri(out,at,ridgeLeft,bt,wall);addTri(out,dt,ct,ridgeRight,wall);
-  if(style.chimney){
-   const stone=[.44,.40,.35],p1=vert(width*.16,height+2,-depth*.23),
-    p2=vert(width*.32,height+2,-depth*.23),p3=vert(width*.32,height+2,-depth*.10),
-    p4=vert(width*.16,height+2,-depth*.10),lift=height+Math.min(width,depth)*.78+5,
-    u1=vert(width*.16,lift,-depth*.23),u2=vert(width*.32,lift,-depth*.23),
-    u3=vert(width*.32,lift,-depth*.10),u4=vert(width*.16,lift,-depth*.10);
-   quad(out,p1,p2,u2,u1,stone);quad(out,p2,p3,u3,u2,stone);
-   quad(out,p3,p4,u4,u3,stone);quad(out,p4,p1,u1,u4,stone);
-   quad(out,u1,u2,u3,u4,[.30,.29,.27]);
-  }
-  if(style.porch){
-   const wood=[.45,.33,.24],w=Math.min(6,width*.30);
-   quad(out,vert(-w,height*.47,depth/2),vert(w,height*.47,depth/2),
-    vert(w,height*.47,depth/2+6),vert(-w,height*.47,depth/2+6),wood);
-  }
+ if(style.chimney){
+  const chimneyStone=[.44,.40,.35],h=height+rise+5;
+  const c1=vert(width*.16,height+2,-depth*.23),
+   c2=vert(width*.32,height+2,-depth*.23),
+   c3=vert(width*.32,height+2,-depth*.10),
+   c4=vert(width*.16,height+2,-depth*.10),
+   u1=vert(width*.16,h,-depth*.23),u2=vert(width*.32,h,-depth*.23),
+   u3=vert(width*.32,h,-depth*.10),u4=vert(width*.16,h,-depth*.10);
+  quad(out,c1,c2,u2,u1,chimneyStone);quad(out,c2,c3,u3,u2,chimneyStone);
+  quad(out,c3,c4,u4,u3,chimneyStone);quad(out,c4,c1,u1,u4,chimneyStone);
+  quad(out,u1,u2,u3,u4,[.30,.29,.27]);
+ }
+ if(style.porch){
+  const wood=[.45,.33,.24],w=Math.min(6,width*.30);
+  quad(out,vert(-w,height*.47,depth/2),vert(w,height*.47,depth/2),
+   vert(w,height*.47,depth/2+6),vert(-w,height*.47,depth/2+6),wood);
+ }
 }
-// Road edit beacons are genuine 3D prisms above the terrain; the legacy
-// SVG nodes cannot be seen on top of the WebGL world.
+// Road handles are lightweight ground discs rather than towering 3D prisms.
+// They remain transient editor decorations, never persistent infrastructure.
 function beacon(out,world,p,radius,color,outline=[.17,.29,.25],height=11){
- const center=worldPos(world,p,4),N=10;
- function ring(r,y){
-  return Array.from({length:N},(_,i)=>{
-   const angle=2*Math.PI*i/N;
-   return[center[0]+Math.cos(angle)*r,center[1]+y,center[2]+Math.sin(angle)*r];
-  });
- }
- const floor=ring(radius*1.18,0),edge=ring(radius,height),
-  lip=ring(radius*.73,height+2),top=[center[0],center[1]+height+2,center[2]];
- for(let i=0;i<N;i++){
-  const j=(i+1)%N;
-  quad(out,floor[i],floor[j],edge[j],edge[i],outline);
-  quad(out,edge[i],edge[j],lip[j],lip[i],color);
-  addTri(out,lip[i],lip[j],top,color);
+ const n=16,outer=radius,inner=radius*.72;
+ const center=worldPos(world,p,3.2);
+ const point=(r,t)=>worldPos(world,{
+  x:p.x+Math.cos(t)*r,y:p.y+Math.sin(t)*r
+ },3.2);
+ for(let i=0;i<n;i++){
+  const a=i/n*Math.PI*2,b=(i+1)/n*Math.PI*2;
+  addTri(out,center,point(inner,b),point(inner,a),color);
+  quad(out,point(inner,b),point(outer,b),point(outer,a),point(inner,a),outline);
  }
 }
+
 const curvePoints=(a,c,b,steps=18)=>Array.from({length:steps+1},(_,i)=>quadraticPoint(a,c,b,i/steps));
 export function settlementGeometry(world,state,{
  draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,
@@ -121,16 +178,16 @@ export function settlementGeometry(world,state,{
   if(p.type==="erase"||drawn++>12000)continue;
   const x=p.x*step,y=p.y*step;
   const corners=[[x,y],[x+step,y],[x+step,y+step],[x,y+step]].map(([xx,yy])=>
-   worldPos(world,{x:xx,y:yy},2.3));
+   worldPos(world,{x:xx,y:yy},.35));
   quad(zones,...corners,zonePalette[p.type]||colors.residential);
  }
  for(const lane of state.localLanes||[])if(lane.points?.length>1){
-   ribbon(surfaces,world,lane.points,5,colors.path,2.2);
+   ribbon(surfaces,world,lane.points,5,colors.path,.85);
    if(lane.foundedTurn===state.turn)ribbon(roadGuides,world,lane.points,2.5,[.99,.77,.4],4);
   }
  for(const trail of visibleDesirePaths(state)){
   const line=trail.points||[trail.from,trail.to];
-  if(line.length>1)ribbon(surfaces,world,line,4,colors.path,1.8);
+  if(line.length>1)ribbon(surfaces,world,line,4,colors.path,.8);
  }
  const graph=state.roadGraph;
  if(graph?.segments?.length){
@@ -140,14 +197,19 @@ export function settlementGeometry(world,state,{
    const line=liveCurve?.id===e.id?
     curvePoints(a,liveCurve.control,b):edgePoints(graph,e);
    if(line.length<2)continue;
-   ribbon(surfaces,world,line,34,colors.roadEdge,2.7);
-   ribbon(surfaces,world,line,24,colors.road,3.1);
+   ribbon(surfaces,world,line,34,colors.roadEdge,.95);
+   ribbon(surfaces,world,line,24,colors.road,1.3);
    if(liveCurve?.id===e.id)ribbon(roadGuides,world,line,13,[.99,.77,.34],4.8);
+  }
+  for(const n of graph.nodes){
+   if(!graph.segments.some(e=>e.a===n.id||e.b===n.id))continue;
+   junction(surfaces,world,n,17,colors.roadEdge,.95);
+   junction(surfaces,world,n,12,colors.road,1.3);
   }
  }else for(const road of state.roads||[]){
   if(road.length<2)continue;
-  ribbon(surfaces,world,road,34,colors.roadEdge,2.7);
-  ribbon(surfaces,world,road,24,colors.road,3.1);
+  ribbon(surfaces,world,road,34,colors.roadEdge,.95);
+  ribbon(surfaces,world,road,24,colors.road,1.3);
  }
  for(const house of state.houses||[]){
    const style=cottageBlueprint(house);
@@ -164,15 +226,15 @@ export function settlementGeometry(world,state,{
  }
  if(mode==="road"){
   if(touchFocus&&Number.isFinite(touchFocus.x)&&Number.isFinite(touchFocus.y))
-   beacon(roadGuides,world,touchFocus,7,[1,.91,.61],[.32,.42,.30],7);
+   beacon(roadGuides,world,touchFocus,5,[1,.91,.61],[.32,.42,.30],7);
   if(graph){
-   for(const n of graph.nodes)beacon(roadGuides,world,n,n.id===graph.hubId?13:11,
+   for(const n of graph.nodes)beacon(roadGuides,world,n,n.id===graph.hubId?8:6,
     n.id===graph.hubId?[.97,.72,.37]:[.86,.94,.77]);
    for(const e of graph.segments){
     if(!e.control)continue;
     const a=nodeAt(graph,e.a),b=nodeAt(graph,e.b);
     if(a&&b)beacon(roadGuides,world,quadraticPoint(a,liveCurve?.id===e.id?liveCurve.control:e.control,b,.5),
-      14,[1,.58,.26],[.38,.24,.16],15);
+      7,[1,.58,.26],[.38,.24,.16],15);
    }
   }
   const draftLine=draft?.anchors?.length>1?flattenRoadDraft(draft):[];
@@ -180,13 +242,13 @@ export function settlementGeometry(world,state,{
    ribbon(roadGuides,world,draftLine,26,[.99,.72,.37],5);
    ribbon(roadGuides,world,draftLine,12,[1,.90,.58],5.7);
   }
-  for(const p of draft?.anchors||[])beacon(roadGuides,world,p,12,[1,.91,.60],[.36,.33,.22],13);
+  for(const p of draft?.anchors||[])beacon(roadGuides,world,p,7,[1,.91,.60],[.36,.33,.22],13);
   for(const bend of draft?curvedSegments(draft):[])
-   beacon(roadGuides,world,bend.anchor,12,[1,.67,.32],[.42,.25,.12],15);
+   beacon(roadGuides,world,bend.anchor,7,[1,.67,.32],[.42,.25,.12],15);
   if(pendingControl&&draft?.anchors?.length){
    const anchor=draft.anchors.at(-1);
    ribbon(roadGuides,world,[anchor,pendingControl],3,[1,.82,.48],10);
-   beacon(roadGuides,world,pendingControl,11,[1,.57,.21],[.4,.22,.1],16);
+   beacon(roadGuides,world,pendingControl,7,[1,.57,.21],[.4,.22,.1],16);
   }
   if(liveGesture){
    const {start,end,control}=liveGesture;
@@ -195,8 +257,8 @@ export function settlementGeometry(world,state,{
     if(Math.hypot(end.x-start.x,end.y-start.y)>8)
      ribbon(roadGuides,world,shape,14,[.99,.77,.37],6);
     ribbon(roadGuides,world,[end,control],3,[.99,.85,.55],11);
-    beacon(roadGuides,world,end,12,[1,.94,.66],[.31,.35,.22],16);
-    beacon(roadGuides,world,control,11,[1,.55,.22],[.39,.22,.12],16);
+    beacon(roadGuides,world,end,7,[1,.94,.66],[.31,.35,.22],16);
+    beacon(roadGuides,world,control,7,[1,.55,.22],[.39,.22,.12],16);
    }
   }
  }
