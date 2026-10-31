@@ -36,7 +36,7 @@ let slotName=restored.ok?restored.active.name:"Unsaved settlement";
 let journal=restored.ok?restored.active.events:[];
 configureWorldState(game);
 ensureGraph(game);
-let mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null;
+let mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,liveCurve=null,pendingControl=null,touchFocus=null;
 let zoneType="residential",lastZonePaintType="residential",zoneTool="paint",zoneEdits=[],zoneRadius=BRUSH_RADIUS;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
 let active3D=null,last3DKey="",worldLoadGeneration=0;
@@ -109,7 +109,7 @@ function downloadJSON(data,filename){const blob=new Blob([JSON.stringify(data,nu
 
 function num(v){return Math.round(v).toLocaleString();}
 function notify(message){renderGameToast($("toast"),message);clearTimeout(toastTimer);toastTimer=setTimeout(()=>$("toast").hidden=true,3300);}
-function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;selectedBuild=null;
+function setMode(next){mode=next;draft=createRoadDraft();pendingControl=null;touchFocus=null;selectedBuild=null;
  for(const [m,id] of Object.entries({explore:"exploreBtn",road:"roadsBtn",build:"buildBtn",zone:"zoneBtn"})){
   $(id).classList.toggle("active",m===next);$(id).setAttribute("aria-pressed",String(m===next));}
  $("roadControls").hidden=next!=="road";$("zoneControls").hidden=next!=="zone";
@@ -145,7 +145,8 @@ function setZoneTool(next){
 function updateRoadInfo(){const cost=roadCost(flattenRoadDraft(draft));
  $("roadInfo").textContent=draft.anchors.length<2?"Tap an existing node to branch; touch and hold a point to shape its curve.":draft.anchors.length+" nodes · "+num(cost)+" gold · held nodes stay fixed; finger shapes curve.";
  $("confirmRoad").disabled=draft.anchors.length<2;}
-function setStats(){for(const id of ["people","gold","food","wood","tools"])$(id).textContent=num(game[id]);$("calendar").textContent=monthLabel(game.turn)+" · Slot "+activeSlot;$("environment").textContent=IS_PREVIEW?"DEVELOPMENT":"STABLE";$("report").textContent=game.report;const housing=housingOutlook(game);
+function setStats(){$("monthHighlights").textContent=(game.turnHighlights||[]).filter(x=>x.kind!=="steady").slice(0,2).map(x=>x.text).join(" · ");
+ for(const id of ["people","gold","food","wood","tools"])$(id).textContent=num(game[id]);$("calendar").textContent=monthLabel(game.turn)+" · Slot "+activeSlot;$("environment").textContent=IS_PREVIEW?"DEVELOPMENT":"STABLE";$("report").textContent=game.report;const housing=housingOutlook(game);
  $("housingSummary").textContent="Homes "+housing.occupied+"/"+housing.capacity+" · Homeless "+housing.homeless+" · Appeal "+Math.round(housing.attractiveness);
  const civic=ensureCivic(game),petition=pendingPetition(game);$("civicStatus").textContent=(civic.chapter<3?CHARTERS[civic.chapter].name:"Chartered Borough")+" · Morale "+Math.round(game.happiness)+(petition?" · Petition waiting":"");}
 function node(tag,attrs){const n=document.createElementNS(NS,tag);for(const [k,v]of Object.entries(attrs))n.setAttribute(k,String(v));return n;}
@@ -199,10 +200,10 @@ function renderMap(){
  if(active3D){
   const key=JSON.stringify([game.turn,game.roads,game.houses,game.buildings,game.zones,
    game.localLanes,draft.anchors,draft.controls,zoneEdits,zoneType,zoneRadius,
-   mode,liveCurve,liveGesture,pendingControl]);
+   mode,liveCurve,liveGesture,pendingControl,touchFocus]);
   if(last3DKey!==key){
    last3DKey=key;active3D.setSettlement(game,{
-    draft,zoneEdits,zoneType,zoneRadius,mode,liveCurve,liveGesture,pendingControl
+    draft,zoneEdits,zoneType,zoneRadius,mode,liveCurve,liveGesture,pendingControl,touchFocus
    });
   }else active3D.render();
   svg.setAttribute("viewBox",[0,0,WORLD.w,WORLD.h].join(" "));svg.replaceChildren();
@@ -443,12 +444,14 @@ function menuPanel(){const el=document.createElement("div");
  });
  el.append(textNode("p","All settlements and diagnostics remain offline on this device. Export files for backups or when reporting bugs.","note"));
  openSheet("Your settlement",el);}
-function historyPanel(){const el=document.createElement("div");el.append(textNode("p","Significant milestones and monthly decisions in the life of Willow Valley."));const list=document.createElement("ol");for(const message of game.logs.slice(0,25))list.append(textNode("li",message));el.append(list);openSheet("Valley history",el);}
+function historyPanel(){const el=document.createElement("div");el.append(textNode("p","Significant milestones and monthly decisions in the life of Willow Valley."));
+ if(game.turnHighlights?.length){el.append(textNode("h3","This month"));const changes=document.createElement("ul");for(const item of game.turnHighlights)changes.append(textNode("li",item.text));el.append(changes);}
+ const list=document.createElement("ol");for(const message of game.logs.slice(0,25))list.append(textNode("li",message));el.append(list);openSheet("Valley history",el);}
 function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=structureAccess(game,item);const detail=item.kind==="house"?"Household access: "+(access==="road"?"Connected to the town road network.":access==="footpath"?"Only a walking desire path connects this home; services and tax revenue are limited.":"DISCONNECTED. The household cannot receive normal services or contribute full taxes."):"Structure access: "+(access==="road"?"Connected to the road network.":access==="footpath"?"Footpath access only. This does not support full service or deliveries.":"DISCONNECTED: no road service or industrial deliveries.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
-const roadPixelRadius=()=>{
- if(active3D){const r=svg.getBoundingClientRect(),center=mapPoint(r.left+r.width/2,r.top+r.height/2);
-  const other=mapPoint(r.left+r.width/2+HIT_RADIUS_PX,r.top+r.height/2);
-  return distance(center,other);}
+const roadPixelRadius=(clientX=null,clientY=null)=>{
+ if(active3D){const r=svg.getBoundingClientRect(),x=clientX??r.left+r.width/2,y=clientY??r.top+r.height/2;
+  const center=mapPoint(x,y),other=mapPoint(x+HIT_RADIUS_PX,y);
+  return clamp(distance(center,other),8,95);}
  const r=svg.getBoundingClientRect();return HIT_RADIUS_PX*(920/camera.scale)/r.width;
 };
 function nodePanel(n){
@@ -533,20 +536,24 @@ function clearHold(p){if(p.holdTimer!==null){clearTimeout(p.holdTimer);p.holdTim
 function downPointer(e){
  if(e.pointerType==="mouse"&&e.button!==0)return;
  e.preventDefault();svg.setPointerCapture(e.pointerId);
- const down=mapPoint(e.clientX,e.clientY),radius=roadPixelRadius(),g=game.roadGraph;
+ const down=mapPoint(e.clientX,e.clientY),radius=roadPixelRadius(e.clientX,e.clientY),g=game.roadGraph;
+ touchFocus=mode==="road"?down:null;
  const n=mode==="road"?nearestNode(g,down,radius):null;
  const bend=mode==="road"&&!n&&draft.anchors.length===0?hitBuiltCurve(down,radius):null;
  const draftIndex=mode==="road"&&!n&&!bend?hitRoadSegment(draft,down,radius): -1;
  const hit={node:n,builtCurve:bend,segmentIndex:draftIndex};
  const p={x:e.clientX,y:e.clientY,startX:e.clientX,startY:e.clientY,down,moved:false,zoneBlocked:false,
-  holdReady:false,holdTimer:null,curveActive:false,gestureActive:false,initialControl:null,hit,trail:[],zoneStroke:null};
+  holdReady:false,holdTimer:null,curveActive:false,gestureActive:false,cancelled:false,initialControl:null,hit,trail:[],zoneStroke:null};
  pointers.set(e.pointerId,p);
  if(pointers.size===2){
   for(const entry of pointers.values()){
-   clearHold(entry);entry.holdReady=false;entry.moved=true;entry.zoneBlocked=true;
+   clearHold(entry);entry.holdReady=false;entry.moved=true;entry.zoneBlocked=true;entry.cancelled=true;
+   if(entry.curveActive&&entry.hit.segmentIndex>=0)undoRoadAction(draft);
+   entry.curveActive=false;entry.gestureActive=false;
   }
   // A second finger cancels only the unfinished editing stroke. Earlier
   // staged Paint and Erase operations stay pending until Commit.
+  liveCurve=null;liveGesture=null;touchFocus=null;
   if(mode==="zone"){
    for(const entry of pointers.values()){
     const index=zoneEdits.indexOf(entry.zoneStroke);
@@ -580,6 +587,7 @@ function movePointer(e){
  const p=pointers.get(e.pointerId);if(!p)return;e.preventDefault();
  const dx=e.clientX-p.x,dy=e.clientY-p.y,travel=Math.hypot(e.clientX-p.startX,e.clientY-p.startY);
  p.x=e.clientX;p.y=e.clientY;
+ if(mode==="road"&&!p.cancelled&&pointers.size===1)touchFocus=mapPoint(e.clientX,e.clientY);
  if(pointers.size===2){
   const [a,b]=[...pointers.values()];
   if(gesture){
@@ -647,7 +655,7 @@ function movePointer(e){
 }
 function endPointer(e){
  const p=pointers.get(e.pointerId);if(!p)return;
- clearHold(p);const tap=!p.moved&&!p.holdReady&&pointers.size===1;
+ clearHold(p);const tap=!p.moved&&!p.holdReady&&!p.cancelled&&pointers.size===1;
  pointers.delete(e.pointerId);if(pointers.size<2)gesture=null;
  if(p.curveActive&&p.hit.builtCurve&&liveCurve){
    const outcome=reshapeRoadSegment(game,liveCurve.id,liveCurve.control);
@@ -671,13 +679,18 @@ function endPointer(e){
    }
    updateRoadInfo();
  }
- liveGesture=null;liveCurve=null;
+ liveGesture=null;liveCurve=null;touchFocus=null;
  if(mode==="road")$("modeLabel").textContent="Roads · tap for straight; hold and drag to shape a fixed node";
  if(tap)handleTap(mapPoint(e.clientX,e.clientY));
  renderMap();
 }
-function cancelPointer(e){const p=pointers.get(e.pointerId);if(p)clearHold(p);pointers.delete(e.pointerId);
- if(pointers.size<2)gesture=null;liveGesture=null;liveCurve=null;renderMap();}
+function cancelPointer(e){const p=pointers.get(e.pointerId);
+ if(p){clearHold(p);
+  if(p.curveActive&&p.hit.segmentIndex>=0)undoRoadAction(draft);
+  if(p.zoneStroke){const i=zoneEdits.indexOf(p.zoneStroke);if(i>=0)zoneEdits.splice(i,1);updateZoneInfo();}
+ }
+ pointers.delete(e.pointerId);
+ if(pointers.size<2)gesture=null;liveGesture=null;liveCurve=null;touchFocus=null;renderMap();}
 svg.addEventListener("pointerdown",downPointer);
 svg.addEventListener("pointermove",movePointer);
 svg.addEventListener("pointerup",endPointer);
