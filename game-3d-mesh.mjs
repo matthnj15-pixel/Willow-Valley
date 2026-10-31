@@ -1,3 +1,4 @@
+import {resolveFoundation} from "./foundation-system.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {edgePoints,nodeAt,quadraticPoint} from "./road-network.mjs";
 import {flattenRoadDraft,curvedSegments} from "./road-editor.mjs";
@@ -22,6 +23,18 @@ function addTri(out,a,b,c,color){
  for(const p of [a,b,c])out.push(...p,...color,...norm);
 }
 function quad(out,a,b,c,d,color){addTri(out,a,b,c,color);addTri(out,a,c,d,color);}
+function groundPolygon(out,world,points,color,offset){
+ if(world.drapePolygon){
+  for(const tri of world.drapePolygon(points)){
+   const vertices=tri.map(p=>worldPos(world,p,offset));
+   // All contact surfaces use upward normals, independent of path direction.
+   const [a,b,c]=vertices;
+   if((b[0]-a[0])*(c[2]-a[2])-(b[2]-a[2])*(c[0]-a[0])>0)vertices.reverse();
+   addTri(out,...vertices,color);
+  }
+ }else for(let i=1;i+1<points.length;i++)
+  addTri(out,worldPos(world,points[0],offset),worldPos(world,points[i],offset),worldPos(world,points[i+1],offset),color);
+}
 function worldPos(world,p,offset=2){
  const sample=world.sample(p.x,p.y);
  return[p.x-world.width/2,sample.height+offset,p.y-world.depth/2];
@@ -53,7 +66,8 @@ export function terrainRibbon(out,world,points,width,color,offset=1.1,spacing=6)
   ]);
  }
  for(let i=1;i<cross.length;i++)
-  quad(out,cross[i-1][0],cross[i][0],cross[i][1],cross[i-1][1],color);
+  groundPolygon(out,world,[cross[i-1][0],cross[i][0],cross[i][1],cross[i-1][1]]
+   .map(p=>({x:p[0]+world.width/2,y:p[2]+world.depth/2})),color,offset);
 }
 function ribbon(out,world,points,width,color,offset=1.1){
  terrainRibbon(out,world,points,width,color,offset);
@@ -67,7 +81,7 @@ function junction(out,world,p,radius,color,offset){
   const edge=t=>worldPos(world,{
    x:p.x+Math.cos(t)*radius,y:p.y+Math.sin(t)*radius
   },offset);
-  addTri(out,center,edge(b),edge(a),color);
+  groundPolygon(out,world,[center,edge(b),edge(a)].map(v=>({x:v[0]+world.width/2,y:v[2]+world.depth/2})),color,offset);
  }
 }
 function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
@@ -77,32 +91,19 @@ function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
   y:p.y+dx*sn+dz*cs
  });
  const footprint=[[-x,-z],[x,-z],[x,z],[-x,z]];
- const ground=footprint.map(([dx,dz])=>{
-  const xy=position(dx,dz);
-  return world.sample(xy.x,xy.y).height;
- });
- // A building stays level; its stone plinth reaches the hillside beneath it.
- // Never apply the terrain height separately to roof or wall vertices.
- const floor=Math.max(...ground)+.8;
+ const foundation=resolveFoundation(world,p,width,depth,orientation);
+ const floor=foundation.floor;
  const vert=(dx,y,dz)=>{
   const xy=position(dx,dz);
   return[xy.x-world.width/2,floor+y,xy.y-world.depth/2];
  };
- const bottom=(dx,dz)=>{
-  const xy=position(dx,dz);
-  return[xy.x-world.width/2,world.sample(xy.x,xy.y).height-.4,xy.y-world.depth/2];
- };
  const stone=[.50,.47,.40];
- // Subdivide each foundation side so that the plinth does not hover above
- // convex terrain between the four building corners.
- for(let i=0;i<4;i++){
-  const a=footprint[i],b=footprint[(i+1)%4],steps=4;
-  for(let k=0;k<steps;k++){
-   const t=k/steps,u=(k+1)/steps;
-   const pt=v=>[a[0]+(b[0]-a[0])*v,a[1]+(b[1]-a[1])*v];
-   const l=pt(t),r=pt(u);
-   quad(out,bottom(...l),bottom(...r),vert(r[0],0,r[1]),vert(l[0],0,l[1]),stone);
-  }
+ const contacts=foundation.perimeter;
+ for(let i=0;i<contacts.length;i++){
+  const a=contacts[i],b=contacts[(i+1)%contacts.length];
+  const vertex=(q,y)=>[q.x-world.width/2,y,q.y-world.depth/2];
+  quad(out,vertex(a,a.height-.4),vertex(b,b.height-.4),
+   vertex(b,floor),vertex(a,floor),stone);
  }
  const a=vert(-x,0,-z),b=vert(x,0,-z),c=vert(x,0,z),d=vert(-x,0,z);
  const at=vert(-x,height,-z),bt=vert(x,height,-z),ct=vert(x,height,z),dt=vert(-x,height,z);

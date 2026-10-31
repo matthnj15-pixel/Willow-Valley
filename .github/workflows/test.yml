@@ -49,3 +49,10 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Exercise mobile portrait road interactions
         run: npm run test:e2e
+      - name: Preserve terrain contact screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: terrain-contact-scenes
+          path: test-results/terrain-contact-*/**/*.png
+          if-no-files-found: ignore

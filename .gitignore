@@ -15,3 +15,7 @@ willow-valley-offline.zip
 apple-touch-icon.png
 icon-192.png
 icon-512.png
+
+# Browser test artifacts
+test-results/
+playwright-report/

@@ -1,3 +1,4 @@
+import {createTerrainSurface,terrainResolution} from "../terrain-surface.mjs";
 import {createWorldMesh,clamp} from "../world-gen.mjs";
 import {settlementGeometry} from "../game-3d-mesh.mjs";
 import {beginCameraGesture,advanceCameraGesture} from "../camera-gestures.mjs";
@@ -78,6 +79,7 @@ export function mountWorld3D(canvas,initialWorld,{
  let loadedAssets=0,showcase=showReference,disposed=false,firstDraw=false;
  const lite=quality==="lite",gameplay=quality==="game"||lite;
  let counts=[0,0,0,0,0,0,0,0,0],world=initialWorld;
+ let contactWorld=initialWorld;
  let settlement=null,settlementDraft=null,settlementZoneStrokes=[],settlementZoneType="residential",settlementRadius=54;
  let settlementEdits=null,settlementMode="explore",settlementLiveCurve=null,settlementLiveGesture=null,settlementPendingControl=null,settlementTouchFocus=null;
  const camera={yaw:.71,pitch:.86,zoom:650,focusX:0,focusZ:0};
@@ -95,9 +97,8 @@ export function mountWorld3D(canvas,initialWorld,{
   // The buildable terrain grows with the map size; preview geometry grows
   // modestly to retain recognizable rivers and ridges without multiplying
   // mobile GPU work by four.
-  const resolution=lite?[48,36]:gameplay?
-   ({small:[62,46],medium:[76,56],large:[88,66]}[world.options.size]||[76,56]):
-   ({small:[96,72],medium:[112,84],large:[128,96]}[world.options.size]||[112,84]);
+  const resolution=terrainResolution(world,{lite,gameplay});
+  contactWorld=createTerrainSurface(world,...resolution);
   const geometry=createWorldMesh(world,...resolution,{
    trees:!["oak","pine","birch"].some(key=>kenney[key]),
    palette:kenneyLandscapePalette(kenney),
@@ -114,10 +115,10 @@ export function mountWorld3D(canvas,initialWorld,{
  }
  function updateKenney(){
   if(!loadedAssets||disposed)return;
-  const props=instantiateKenney(world,kenney,{
+  const props=instantiateKenney(contactWorld,kenney,{
    showReference:showcase,maxTrees:gameplay?260:650
   });
-  const terrain=instantiateKenneyTerrain(world,kenney,{
+  const terrain=instantiateKenneyTerrain(contactWorld,kenney,{
    density:gameplay?.32:1
   });
   for(const [index,data] of [[2,props.vertices],[3,terrain.land],[4,terrain.water]]){
@@ -192,7 +193,7 @@ export function mountWorld3D(canvas,initialWorld,{
  }
 function updateSettlement(){
  if(!settlement)return;
- const data=settlementGeometry(world,settlement,{draft:settlementDraft,
+ const data=settlementGeometry(contactWorld,settlement,{draft:settlementDraft,
   zoneStrokes:settlementZoneStrokes,zoneType:settlementZoneType,zoneRadius:settlementRadius,
   zoneEdits:settlementEdits,mode:settlementMode,liveCurve:settlementLiveCurve,
   touchFocus:settlementTouchFocus,
@@ -203,6 +204,7 @@ function updateSettlement(){
   counts[index]=vertices.length/9;
  }
  // Read-only UAT diagnostics for touch editing. Never persisted to a save.
+ canvas.dataset.terrainContact="triangle-grid";
  canvas.dataset.roadGuideTriangles=String(data.counts.guideTriangles||0);
  // Read-only live diagnostic: screen drag may not throw a curve handle far
  // beyond its fixed endpoint. Never persisted to settlement save data.
@@ -219,7 +221,7 @@ function screenToWorld(clientX,clientY){
  let depth=(Math.cos(camera.pitch)*(15-17)-yy)/Math.max(.2,Math.sin(camera.pitch));
  let x=camera.focusX+xx*cs-depth*sn,z=camera.focusZ+xx*sn+depth*cs;
  for(let i=0;i<7;i++){
-  const ground=world.sample(x+world.width/2,z+world.depth/2).height;
+  const ground=contactWorld.sample(x+world.width/2,z+world.depth/2).height;
   depth=(Math.cos(camera.pitch)*(ground-17)-yy)/Math.max(.2,Math.sin(camera.pitch));
   x=camera.focusX+xx*cs-depth*sn;
   z=camera.focusZ+xx*sn+depth*cs;
