@@ -16,6 +16,7 @@ import {createRoadDraft,addRoadAnchor,undoRoadAction,beginRoadBend,updateRoadBen
 import {renderCouncil} from "./council-ui.mjs";
 import {ensureCivic,CHARTERS,unlocked,pendingPetition} from "./settlement-play.mjs";
 const $=id=>document.getElementById(id),NS="http://www.w3.org/2000/svg",svg=$("map");
+window.__wvBoot?.phase("Opening your saved settlement…");
 mountResourceBar($("resourceBar"),[
  {label:"People",value:"32",iconName:"people",id:"people"},
  {label:"Treasury",value:"740",iconName:"gold",id:"gold"},
@@ -47,9 +48,12 @@ function showTerrainFailure(error){
  $("terrainLoadDetail").textContent=
   "Your settlement and Save Slot "+activeSlot+" are unchanged. Try lighter graphics.";
  $("retry3D").hidden=false;
+ // The in-game lightweight-retry control stays available on 3D failure.
+ window.__wvBoot?.ready();
 }
 function bootGameWorld({lite=false}={}){
  const sequence=++worldLoadGeneration;
+ window.__wvBoot?.phase(lite?"Preparing a lighter landscape…":"Generating the 3D landscape…");
  configureWorldState(game);
  if(active3D){active3D.dispose();active3D=null;}
  last3DKey="";
@@ -68,7 +72,8 @@ function bootGameWorld({lite=false}={}){
  $("game3D").hidden=!world;
  $("reset3DCamera").hidden=!world;
  $("cameraAngle").hidden=!world;
- if(!world)return;
+ if(!world){window.__wvBoot?.ready();return;}
+ window.__wvBoot?.phase("Drawing your settlement…");
  $("terrainLoad").hidden=false;
  $("terrainLoadTitle").textContent=lite?"Opening with lightweight graphics…":"Opening your 3D settlement…";
  $("terrainLoadDetail").textContent="Save Slot "+activeSlot+" is preserved.";
@@ -82,7 +87,7 @@ function bootGameWorld({lite=false}={}){
  try{
   active3D=mountWorld3D(canvas,world,{
    interactive:false,quality:lite?"lite":"game",
-   onReady:()=>{if(sequence===worldLoadGeneration)$("terrainLoad").hidden=true;},
+   onReady:()=>{if(sequence===worldLoadGeneration){$("terrainLoad").hidden=true;window.__wvBoot?.ready();}},
    onError:error=>{if(sequence===worldLoadGeneration)showTerrainFailure(error);},
    onCamera:view=>{
     if(sequence!==worldLoadGeneration)return;
@@ -762,7 +767,7 @@ $("nextBtn").onclick=()=>{const result=advance(game,{events:FLAGS.monthlyEvents}
 $("importSave").addEventListener("change",async e=>{const f=e.target.files?.[0];if(!f)return;try{const imported=JSON.parse(await f.text());if(!validState(imported))throw Error("Unsupported or invalid save file.");if(!confirm("Replace this environment's current game with the imported save?"))return;game=imported;bootGameWorld();ensureGraph(game);record("save_imported","Imported user-provided save into slot "+activeSlot);closeSheet();refresh();notify("Save imported into Slot "+activeSlot+".");}catch(err){notify(err.message||"Could not import save.");}finally{e.target.value="";}});
 window.addEventListener("resize",renderMap);
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet();});
-bootGameWorld();setStats();setMode("explore");if(restored.warning)notify(restored.warning);if(!restored.ok)notify(restored.reason);else if(restored.migrated)notify("Your original settlement was safely copied into Slot 1.");save();requestAnimationFrame(renderMap);
+bootGameWorld({lite:new URLSearchParams(location.search).get("lite")==="1"});setStats();setMode("explore");if(restored.warning)notify(restored.warning);if(!restored.ok)notify(restored.reason);else if(restored.migrated)notify("Your original settlement was safely copied into Slot 1.");save();requestAnimationFrame(renderMap);
 
 // Cache the complete game shell while connected, then play offline in flight mode.
 // A standalone downloaded HTML file skips the worker and uses its embedded assets.

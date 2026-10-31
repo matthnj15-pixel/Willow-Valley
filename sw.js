@@ -45,9 +45,12 @@ self.addEventListener("fetch",event=>{
   }
   // Network-first for navigation and the game bootstrap, so Safari does not
   // stay on stale cached routes after a successful GitHub Pages deployment.
+  // All executable modules and styles must move together across deployments.
+  // Old Safari SWs could serve a new entrypoint with old cached dependencies.
+  // Network-first while online and cache fallback when offline keeps versions
+  // coherent without sacrificing offline play.
   const shouldRevalidate=request.mode==="navigate"||
-   url.pathname===new URL("./app.mjs",scope).pathname||
-   url.pathname===new URL("./world-route.mjs",scope).pathname;
+   /\.(?:mjs|js|css|html)$/.test(url.pathname);
   if(shouldRevalidate){
    try{
     const response=await fetch(request,{cache:"no-cache"});
