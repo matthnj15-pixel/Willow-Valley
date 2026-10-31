@@ -79,7 +79,7 @@ export function mountWorld3D(canvas,initialWorld,{
  const lite=quality==="lite",gameplay=quality==="game"||lite;
  let counts=[0,0,0,0,0,0,0,0,0],world=initialWorld;
  let settlement=null,settlementDraft=null,settlementZoneStrokes=[],settlementZoneType="residential",settlementRadius=54;
- let settlementEdits=null,settlementMode="explore",settlementLiveCurve=null,settlementLiveGesture=null,settlementPendingControl=null;
+ let settlementEdits=null,settlementMode="explore",settlementLiveCurve=null,settlementLiveGesture=null,settlementPendingControl=null,settlementTouchFocus=null;
  const camera={yaw:.71,pitch:.86,zoom:650,focusX:0,focusZ:0};
  const pointers=new Map();
  let gesture=null,frame=0;
@@ -265,7 +265,7 @@ function setSettlement(state,{
  settlement=state;settlementDraft=draft;settlementZoneStrokes=zoneStrokes;
  settlementZoneType=zoneType;settlementRadius=zoneRadius;settlementEdits=zoneEdits;
  settlementMode=mode;settlementLiveCurve=liveCurve;
- settlementLiveGesture=liveGesture;settlementPendingControl=pendingControl;
+ settlementLiveGesture=liveGesture;settlementPendingControl=pendingControl;settlementTouchFocus=touchFocus;
  updateSettlement();
 }
  function onDown(e){
