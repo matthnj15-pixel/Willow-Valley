@@ -30,3 +30,8 @@ export function buildingBlueprint(building,chapter=0){
  return{variant,era:clamp(building.foundedEra??chapter,0,3),
   orientation:noise(seed+15)*Math.PI*.4,roofRise:.45+noise(seed+2)*.22};
 }
+
+export function buildingFootprint(type){
+ const width=type==='farm'||type==='market'?48:type==='granary'?32:35;
+ return{width,depth:width*.9};
+}
