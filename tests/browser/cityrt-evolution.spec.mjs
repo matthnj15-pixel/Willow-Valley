@@ -28,7 +28,7 @@ test("CITYRT-UI-02: second touch cancels an unfinished road gesture without chan
   send("pointerup",2,100,28);
   send("pointerup",1,20,30);
   return{unchanged:before===localStorage.getItem("willow-valley:dev:v1:slot:1"),
-   guides:Number(document.querySelector("#game3D").dataset.roadGuideTriangles)};
+   guides:Number(document.querySelector("#game3D").dataset.roadEditorMarkers)};
  });
  expect(result.unchanged).toBe(true);
  expect(result.guides).toBeGreaterThan(0);
