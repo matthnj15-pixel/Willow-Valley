@@ -140,7 +140,7 @@ export function placeBuilding(s,type,p){const b=BUILDINGS[type];if(!b)return{ok:
   if(type==="market"&&zoneAt(s,p)!=="commercial")return{ok:false,reason:"Paint Commercial zoning here before placing a marketplace."};
  if(!canPlace(s,p))return{ok:false,reason:"Choose clear land away from buildings and the river."};
  if(s.gold<b.gold||s.wood<b.wood||s.tools<b.tools)return{ok:false,reason:"Insufficient treasury, wood, or tools."};
- s.gold-=b.gold;s.wood-=b.wood;s.tools-=b.tools;s.buildings.push({type,x:Math.round(p.x),y:Math.round(p.y)});
+ s.gold-=b.gold;s.wood-=b.wood;s.tools-=b.tools;s.buildings.push({type,x:Math.round(p.x),y:Math.round(p.y),foundedEra:ensureCivic(s).chapter});
  s.report=b.label+" established. Road access affects monthly production.";s.logs.unshift(monthLabel(s.turn)+": "+b.label+" built.");return{ok:true};}
 // Legacy polyline entry point and new authored-geometry entry point.
 export function addRoad(s,points){return buildRoad(s,points,points.slice(1).map(()=>null));}
