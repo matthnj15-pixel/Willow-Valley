@@ -160,8 +160,11 @@ export function distanceToRoad(p,roads){
  }
  return best;
 }
-export function candidateParcel(center,key){
- const orientation=rnd(key+2)*Math.PI*2,rx=31+rnd(key+3)*27,ry=30+rnd(key+4)*26;
+export function candidateParcel(center,key,frontageAngle=null){
+ // Plots loosely follow nearby streets, with individual offsets and widths.
+ const orientation=frontageAngle===null?rnd(key+2)*Math.PI*2:
+  frontageAngle+(rnd(key+2)-.5)*.72;
+ const rx=31+rnd(key+3)*27,ry=30+rnd(key+4)*26;
  const sides=5+Math.floor(rnd(key+9)*4);
  const vertices=Array.from({length:sides},(_,i)=>{
   const a=orientation+i*Math.PI*2/sides;
@@ -355,10 +358,11 @@ export function findCottageSite(s){
    const key=s.turn*991+zone.id*187+attempt++*43;
    const angle=rnd(key+1)*Math.PI*2,spread=zone.radius*.88*Math.sqrt(rnd(key+5));
    const p={x:Math.round(point.x+Math.cos(angle)*spread),y:Math.round(point.y+Math.sin(angle)*spread)};
-   const parcel=candidateParcel(p,key);
-   if(!parcelFits(s,p,parcel))continue;
    const road=distanceToRoad(p,s.roads);
    if(!road||road.distance>180)continue;
+   const roadAngle=Math.atan2(road.point.y-p.y,road.point.x-p.x)+Math.PI/2;
+   const parcel=candidateParcel(p,key,roadAngle);
+   if(!parcelFits(s,p,parcel))continue;
    // Historical accretion: favour sensible loose clusters and established
    // walking corridors, not the first arbitrary legal site or a lot grid.
    const neighbor=establishedNeighborDistance(s,p);
@@ -376,9 +380,9 @@ export function findCottageSite(s){
   const approach=cottageApproach(s,p,parcel);
   if(!approach)continue;
   return{house:{x:p.x,y:p.y,orientation:parcel.orientation,
-    foundedTurn:s.turn,entrance:approach.entrance,
+    foundedTurn:s.turn,foundedEra:s.civic?.chapter||0,entrance:approach.entrance,
     parcel:{vertices:parcel.vertices,orientation:parcel.orientation}},
-    lane:approach.lane,distanceToRoad:distanceToRoad(p,s.roads)?.distance??Infinity,
+    lane:{...approach.lane,foundedTurn:s.turn},distanceToRoad:distanceToRoad(p,s.roads)?.distance??Infinity,
     growthReason:approach.kind==="lane"?"Along an established village footpath":"Near a town collector"};
  }
  return null;
