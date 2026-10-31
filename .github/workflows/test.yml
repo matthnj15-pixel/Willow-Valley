@@ -39,6 +39,8 @@ jobs:
           node --test tests/*.test.mjs
       - name: Install browser test dependencies
         run: npm install --no-audit --no-fund --no-package-lock
+      - name: Verify local architecture assets
+        run: npm run build:assets
       - name: Render iOS and PWA icons
         run: |
           npm run build:icons
@@ -54,5 +56,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: terrain-contact-scenes
-          path: test-results/terrain-contact-*/**/*.png
+          path: |
+            test-results/terrain-contact-*/**/*.png
+            test-results/asset-gallery-*/**/*.png
           if-no-files-found: ignore

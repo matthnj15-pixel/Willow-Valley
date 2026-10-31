@@ -1,0 +1,116 @@
+{
+  "catalogVersion": "architecture-v1",
+  "recipeVersion": 1,
+  "entries": [
+    {
+      "id": "home-long-ridge",
+      "role": "house",
+      "url": "./assets/wv/architecture-v1/home-long-ridge.glb",
+      "bytes": 50380,
+      "sha256": "b841cf415cbe57ae80a4c4c07353ea6d148be3e7b48ad4796cea9da2afaa16bb",
+      "boundsMin": [
+        -0.5353553295135499,
+        0,
+        -1.050000011920929
+      ],
+      "boundsMax": [
+        0.5499999523162842,
+        1.5707106590270996,
+        1.050000011920929
+      ],
+      "triangles": 614,
+      "entrance": {
+        "position": [
+          0,
+          0,
+          1
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "fantasy/wall-wood-window-small",
+        "fantasy/wall-wood",
+        "fantasy/wall-wood-door",
+        "fantasy/roof-gable"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "3e2302be0a4aa05e31bddf21f575fb8acf5c6083b19040346812fc416784d4e9",
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "home-steep-gable",
+      "role": "house",
+      "url": "./assets/wv/architecture-v1/home-steep-gable.glb",
+      "bytes": 50728,
+      "sha256": "f2c5743db40424cfec844289b1249ea5208822634fff9960a0c25e3d57ebeeed",
+      "boundsMin": [
+        -0.550000011920929,
+        0,
+        -0.5670820474624634
+      ],
+      "boundsMax": [
+        0.550000011920929,
+        2.1118032932281494,
+        0.5670820474624634
+      ],
+      "triangles": 614,
+      "entrance": {
+        "position": [
+          0,
+          0,
+          0.5
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "fantasy/wall-window-small",
+        "fantasy/wall",
+        "fantasy/wall-door",
+        "fantasy/roof-high-gable",
+        "fantasy/chimney"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "3e2302be0a4aa05e31bddf21f575fb8acf5c6083b19040346812fc416784d4e9",
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "tree-oak",
+      "role": "vegetation",
+      "url": "./assets/wv/architecture-v1/tree-oak.glb",
+      "bytes": 10724,
+      "sha256": "40773861abbc7e37358064f91a9ad9a906eb9eb3b5187aae49001cf6f31d7e60",
+      "boundsMin": [
+        -0.32027706503868103,
+        1.602965340036949e-31,
+        -0.36982399225234985
+      ],
+      "boundsMax": [
+        0.3202769458293915,
+        1.2262399196624756,
+        0.36982399225234985
+      ],
+      "triangles": 196,
+      "entrance": null,
+      "sourceIds": [
+        "nature/tree_oak"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "3e2302be0a4aa05e31bddf21f575fb8acf5c6083b19040346812fc416784d4e9",
+      "status": "gallery-review",
+      "runtimeReady": false
+    }
+  ]
+}
