@@ -624,7 +624,7 @@ function movePointer(e){
    edit.points.push({x:Math.round(at.x),y:Math.round(at.y)});
   p.moved=true;renderMap();return;
  }
- if(mode==="road"&&(p.holdReady||(active3D&&(p.hit.builtCurve||p.hit.segmentIndex>=0)))&&travel>=MOVE_SLOP_PX){
+ if(mode==="road"&&!p.cancelled&&(p.holdReady||(active3D&&(p.hit.builtCurve||p.hit.segmentIndex>=0)))&&travel>=MOVE_SLOP_PX){
    p.moved=true;clearHold(p);
    if(p.hit.segmentIndex>=0){
      if(!p.curveActive){p.initialControl=beginRoadBend(draft,p.hit.segmentIndex);p.curveActive=true;}
