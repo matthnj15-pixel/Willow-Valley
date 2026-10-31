@@ -778,7 +778,7 @@ if(location.protocol==="file:"){
 }else if("serviceWorker" in navigator &&
  (location.protocol==="https:"||["localhost","127.0.0.1"].includes(location.hostname))){
  $("offlineStatus").textContent="PREPARING OFFLINE MODE";
- navigator.serviceWorker.register("./sw.js",{scope:"./"})
+ navigator.serviceWorker.register("./sw.js",{scope:"./",updateViaCache:"none"})
   .then(()=>navigator.serviceWorker.ready)
   .then(()=>{$("offlineStatus").textContent="OFFLINE READY";})
   .catch(error=>{$("offlineStatus").textContent="OFFLINE UNAVAILABLE";console.warn("Offline setup failed",error);});

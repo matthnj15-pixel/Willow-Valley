@@ -5,17 +5,38 @@ importScripts("./asset-cache.js");
  */
 const VERSION="__BUILD_VERSION__";
 const PREFIX="willow-valley:"+new URL(self.registration.scope).pathname+":";
-const CACHE=PREFIX+VERSION;
+const CACHE=PREFIX+VERSION+':'+self.WV_ASSET_VERSION;
+const PINNED=new Set(self.WV_ASSET_CACHE.map(url=>new URL(url,self.registration.scope).href));
 const REQUIRED=[...self.WV_ASSET_CACHE,"./foundation-system.mjs","./road-surface.mjs","./","./index.html","./styles.css","./app.mjs","./camera-gestures.mjs","./world-route.mjs","./config.mjs","./save-slots.mjs","./organic-world.mjs","./zone-silhouette.mjs","./terrain-contours.mjs","./simulation.mjs","./settlement-play.mjs","./turn-highlights.mjs","./settlement-architecture.mjs","./council-ui.mjs","./ui-components.mjs"];
 const OPTIONAL=["./editor-overlays.mjs","./road-junctions.mjs","./terrain-surface.mjs","./foundation-system.mjs","./world-gen.mjs","./game-3d-mesh.mjs","./ui-kit/world-lab.html","./ui-kit/world-lab.mjs","./ui-kit/render-3d.mjs","./ui-kit/world-lab.css","./world-lab/index.html","./world-lab/world-lab.mjs","./world-lab/render-3d.mjs","./world-lab/world-lab.css","./road-editor.mjs","./road-network.mjs","./road-gesture.mjs","./desire-paths.mjs","./manifest.webmanifest","./icon.svg","./apple-touch-icon.png","./icon-192.png","./icon-512.png","./offline.html","./ui-kit/index.html","./ui-kit/catalog.mjs","./ui-kit/catalog.css","./ui-kit/kenney-models.mjs"];
 self.addEventListener("install",event=>{
   event.waitUntil((async()=>{
     const cache=await caches.open(CACHE);
-    await cache.addAll(REQUIRED);
+    const completeURL=new URL('./__wv-install-complete__',self.registration.scope);
+    const wasComplete=await cache.match(completeURL);
+    try{
+     await cache.addAll(REQUIRED.filter(url=>!PINNED.has(new URL(url,self.registration.scope).href)));
+     const results=await Promise.allSettled(self.WV_ASSET_INTEGRITY.map(async entry=>{
+      const url=new URL(entry.url,self.registration.scope),response=await fetch(url,{cache:'reload'});
+      if(!response.ok)throw Error('Incomplete asset install: '+entry.url);
+      const bytes=await response.clone().arrayBuffer();
+      const hash=Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',bytes)),v=>v.toString(16).padStart(2,'0')).join('');
+      if(bytes.byteLength!==entry.bytes||hash!==entry.sha256)throw Error('Asset integrity mismatch: '+entry.url);
+      await cache.put(url,response);
+     }));
+     const failure=results.find(r=>r.status==='rejected');if(failure)throw failure.reason;
+    }catch(error){
+     // Wait for all writes before removing an incomplete candidate. A previously
+     // complete same-version cache remains available during a retry.
+     if(!wasComplete)await caches.delete(CACHE);
+     throw error;
+    }
     await Promise.all(OPTIONAL.map(async url=>{
+      if(PINNED.has(new URL(url,self.registration.scope).href))return;
       try{const response=await fetch(new URL(url,self.registration.scope),{cache:"reload"});if(response.ok)await cache.put(new URL(url,self.registration.scope),response);}
       catch(error){/* Older stable builds may not include optional modules. */}
     }));
+    await cache.put(completeURL,new Response(self.WV_ASSET_VERSION));
     await self.skipWaiting();
   })());
 });
@@ -33,6 +54,13 @@ self.addEventListener("fetch",event=>{
  if(url.origin!==scope.origin||!url.pathname.startsWith(scope.pathname))return;
  event.respondWith((async()=>{
   const cache=await caches.open(CACHE);
+  const installedURL=new URL(url);installedURL.search='';installedURL.hash='';
+  if(PINNED.has(installedURL.href)||installedURL.pathname===scope.pathname){
+   const key=installedURL.pathname===scope.pathname?new URL('./index.html',scope):request;
+   // Installed modules and models move together; a new network response cannot
+   // mix a new manifest with an older cached engine or game module.
+   return await cache.match(key,{ignoreSearch:true})||Response.error();
+  }
   const canonical=new URL("./ui-kit/world-lab.html",scope);
   // Redirect links created by the original World Builder prototype.
   if(request.mode==="navigate"&&

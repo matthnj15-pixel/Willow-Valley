@@ -40,7 +40,9 @@ jobs:
           node --check sw.js
           node --test tests/*.test.mjs
       - name: Verify local architecture assets
-        run: npm run build:assets
+        run: |
+          npm run build:assets
+          git diff --exit-code -- assets/ asset-cache.js
       - name: Render iOS and PWA icons
         run: |
           npm run build:icons
