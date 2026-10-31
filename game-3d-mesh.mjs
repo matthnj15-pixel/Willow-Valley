@@ -121,19 +121,9 @@ function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
    vert(w,height*.47,depth/2+6),vert(-w,height*.47,depth/2+6),wood);
  }
 }
-// Road handles are lightweight ground discs rather than towering 3D prisms.
-// They remain transient editor decorations, never persistent infrastructure.
-function beacon(out,world,p,radius,color,outline=[.17,.29,.25],height=11){
- const n=16,outer=radius,inner=radius*.72;
- const center=worldPos(world,p,3.2);
- const point=(r,t)=>worldPos(world,{
-  x:p.x+Math.cos(t)*r,y:p.y+Math.sin(t)*r
- },3.2);
- for(let i=0;i<n;i++){
-  const a=i/n*Math.PI*2,b=(i+1)/n*Math.PI*2;
-  addTri(out,center,point(inner,b),point(inner,a),color);
-  quad(out,point(inner,b),point(outer,b),point(outer,a),point(inner,a),outline);
- }
+// Small screen-space glyphs are independent of the scene mesh and save state.
+function beacon(out,world,p,radius,color){
+ (out.editorMarkers??=[]).push({point:{x:p.x,y:p.y},color});
 }
 
 const curvePoints=(a,c,b,steps=18)=>Array.from({length:steps+1},(_,i)=>quadraticPoint(a,c,b,i/steps));
@@ -245,7 +235,7 @@ export function settlementGeometry(world,state,{
    }
   }
  }
- return{surfaces:new Float32Array(surfaces),zones:new Float32Array(zones),
+ return{editorMarkers:roadGuides.editorMarkers||[],surfaces:new Float32Array(surfaces),zones:new Float32Array(zones),
   structures:new Float32Array(markers),guides:new Float32Array(roadGuides),
   counts:{roads:(state.roads||[]).length,houses:(state.houses||[]).length,
    buildings:(state.buildings||[]).length,zonedCells:drawn,guideTriangles:roadGuides.length/27}};

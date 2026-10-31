@@ -455,8 +455,10 @@ function historyPanel(){const el=document.createElement("div");el.append(textNod
 function inspectPoint(p){const objects=[...game.buildings.map(b=>({...b,kind:"building"})),...game.houses.map(h=>({...h,kind:"house"}))].sort((a,b)=>distance(p,a)-distance(p,b));const item=objects[0];if(item&&distance(p,item)<35){const access=structureAccess(game,item);const detail=item.kind==="house"?"Household access: "+(access==="road"?"Connected to the town road network.":access==="footpath"?"Only a walking desire path connects this home; services and tax revenue are limited.":"DISCONNECTED. The household cannot receive normal services or contribute full taxes."):"Structure access: "+(access==="road"?"Connected to the road network.":access==="footpath"?"Footpath access only. This does not support full service or deliveries.":"DISCONNECTED: no road service or industrial deliveries.");openSheet(item.kind==="house"?"Village home":BUILDINGS[item.type].label,"<p>"+detail+"</p>");}}
 const roadPixelRadius=(clientX=null,clientY=null)=>{
  if(active3D){const r=svg.getBoundingClientRect(),x=clientX??r.left+r.width/2,y=clientY??r.top+r.height/2;
-  const center=mapPoint(x,y),other=mapPoint(x+HIT_RADIUS_PX,y);
-  return clamp(distance(center,other),8,95);}
+  const center=mapPoint(x,y),across=mapPoint(x+HIT_RADIUS_PX,y),down=mapPoint(x,y+HIT_RADIUS_PX);
+  // Tilt foreshortens the ground vertically. Keep the full touch diameter
+  // in both screen axes instead of shrinking it to the horizontal scale.
+  return Math.max(8,distance(center,across),distance(center,down));}
  const r=svg.getBoundingClientRect();return HIT_RADIUS_PX*(920/camera.scale)/r.width;
 };
 function nodePanel(n){
