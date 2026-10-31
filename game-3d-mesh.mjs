@@ -81,7 +81,7 @@ function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
  });
  const footprint=[[-x,-z],[x,-z],[x,z],[-x,z]];
  const foundation=resolveFoundation(world,p,width,depth,orientation);
- const floor=foundation.floor;
+ const floor=style.floorY??foundation.floor;
  const vert=(dx,y,dz)=>{
   const xy=position(dx,dz);
   return[xy.x-world.width/2,floor+y,xy.y-world.depth/2];
@@ -122,6 +122,21 @@ function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
    vert(w,height*.47,depth/2+6),vert(-w,height*.47,depth/2+6),wood);
  }
 }
+function accessSteps(markers,surfaces,world,approach){
+ if(!approach)return;
+     const {from,to,dx,dy,distance,floor}=approach;
+     const stairLength=Math.min(distance,Math.max(3,(floor-world.sample(from.x,from.y).height)*1.8));
+     const n=Math.max(2,Math.ceil(stairLength/1.5));
+     const point=(along,side,y)=>[from.x+dx*along-dy*side-world.width/2,y,from.y+dy*along+dx*side-world.depth/2];
+     const end={x:from.x+dx*stairLength,y:from.y+dy*stairLength};
+     const bottom=world.sample(end.x,end.y).height+.85;
+     for(let i=0;i<n;i++){
+      const a=i/n*stairLength,b=(i+1)/n*stairLength,y=floor+(bottom-floor)*i/n,next=floor+(bottom-floor)*(i+1)/n;
+      quad(markers,point(a,-1.2,y),point(b,-1.2,y),point(b,1.2,y),point(a,1.2,y),[.5,.47,.4]);
+      quad(markers,point(b,-1.2,y),point(b,-1.2,next),point(b,1.2,next),point(b,1.2,y),[.46,.43,.37]);
+     }
+     ribbon(surfaces,world,[end,to],2.4,colors.path,.85);
+}
 // Small screen-space glyphs are independent of the scene mesh and save state.
 function beacon(out,world,p,radius,color){
  (out.editorMarkers??=[]).push({point:{x:p.x,y:p.y},color});
@@ -129,7 +144,7 @@ function beacon(out,world,p,radius,color){
 
 const curvePoints=(a,c,b,steps=18)=>Array.from({length:steps+1},(_,i)=>quadraticPoint(a,c,b,i/steps));
 export function settlementGeometry(world,state,{
- modelHouses=new Set(),draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,
+ modelHouses=new Map(),modelBuildings=new Map(),cropRows=[],draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,
  zoneEdits=null,mode="explore",liveCurve=null,liveGesture=null,pendingControl=null,touchFocus=null
 }={}){
  const surfaces=[],zones=[],markers=[],roadGuides=[];
@@ -188,23 +203,7 @@ export function settlementGeometry(world,state,{
  for(const house of state.houses||[]){
    const style=cottageBlueprint(house),model=modelHouses.get?.(house);
    block(markers,world,house,model?.width??style.width,model?.depth??style.depth,style.height,style.wall,style.roof,style.orientation,{...style,foundationOnly:modelHouses.has(house)});
-   if(model){
-    const approach=model.approach;
-    if(approach){
-     const {from,to,dx,dy,distance,floor}=approach;
-     const stairLength=Math.min(distance,Math.max(3,(floor-world.sample(from.x,from.y).height)*1.8));
-     const n=Math.max(2,Math.ceil(stairLength/1.5));
-     const point=(along,side,y)=>[from.x+dx*along-dy*side-world.width/2,y,from.y+dy*along+dx*side-world.depth/2];
-     const end={x:from.x+dx*stairLength,y:from.y+dy*stairLength};
-     const bottom=world.sample(end.x,end.y).height+.85;
-     for(let i=0;i<n;i++){
-      const a=i/n*stairLength,b=(i+1)/n*stairLength,y=floor+(bottom-floor)*i/n,next=floor+(bottom-floor)*(i+1)/n;
-      quad(markers,point(a,-1.2,y),point(b,-1.2,y),point(b,1.2,y),point(a,1.2,y),[.5,.47,.4]);
-      quad(markers,point(b,-1.2,y),point(b,-1.2,next),point(b,1.2,next),point(b,1.2,y),[.46,.43,.37]);
-     }
-     ribbon(surfaces,world,[end,to],2.4,colors.path,.85);
-    }
-   }
+   if(model)accessSteps(markers,surfaces,world,model.approach);
    if(house.foundedTurn===state.turn&&house.parcel?.vertices?.length>2)
     ribbon(roadGuides,world,[...house.parcel.vertices,house.parcel.vertices[0]],2.5,[1,.80,.37],4);
   }
@@ -213,7 +212,21 @@ export function settlementGeometry(world,state,{
   const {width:size,depth}=buildingFootprint(building.type);
   const height=building.type==="granary"?40:building.type==="market"?29:building.type==="lumber"?27:24;
   const style=buildingBlueprint(building,state.civic?.chapter||0);
-   block(markers,world,building,size,depth,height,material,colors.roof,style.orientation,style);
+   const model=modelBuildings.get(building);
+   if(model){
+    for(const rect of model.foundationRects||[{...building,width:model.width,depth:model.depth}])
+     block(markers,world,rect,rect.width,rect.depth,0,material,colors.roof,-model.yaw,{foundationOnly:true,floorY:model.origin[1]});
+    accessSteps(markers,surfaces,world,model.approach);
+   }else block(markers,world,building,size,depth,height,material,colors.roof,style.orientation,style);
+ }
+ for(const row of cropRows){
+  for(const dx of [-2,2]){
+   ribbon(surfaces,world,[{x:row.x+dx,y:row.y-4},{x:row.x+dx,y:row.y+4}],1.7,[.36,.29,.18],.9);
+   for(const dy of [-3,-1,1,3]){
+    const p=worldPos(world,{x:row.x+dx,y:row.y+dy},1);
+    addTri(markers,[p[0]-1,p[1],p[2]],[p[0]+1,p[1],p[2]],[p[0],p[1]+3,p[2]],[.64,.58,.30]);
+   }
+  }
  }
  if(mode==="road"){
   if(touchFocus&&Number.isFinite(touchFocus.x)&&Number.isFinite(touchFocus.y))

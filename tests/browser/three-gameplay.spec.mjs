@@ -3,18 +3,18 @@ for(const scope of ['/','/dev/'])test(`B3 playable Three.js cottages and cold of
  const errors=[],external=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url())&&new URL(r.url()).origin!=='http://127.0.0.1:4173')external.push(r.url());});
  await page.goto(scope+'?preview=1&renderer=three');
  await expect(page.locator('#game3D')).toHaveAttribute('data-renderer','three');
- await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','6');
+ await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','10');
  await expect.poll(()=>page.locator('#game3D').getAttribute('data-model-houses')).not.toBe('0');
  await page.screenshot({path:info.outputPath('playable-three-cottages.png')});
  await page.locator('#nextBtn').click();await expect(page.locator('#calendar')).toContainText('April');
  await page.evaluate(async()=>{await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;});
  await context.setOffline(true);await page.reload();
- await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','6');
+ await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','10');
  await expect(page.locator('#calendar')).toContainText('April');
  expect(errors).toEqual([]);expect(external).toEqual([]);
 });
 test('B3 context loss falls back to native WebGL and retains camera and settlement',async({page})=>{
- await page.goto('/?preview=1&renderer=three');await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','6');
+ await page.goto('/?preview=1&renderer=three');await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','10');
  const zoom=await page.locator('#stage').getAttribute('data-camera-zoom');
  await page.evaluate(()=>document.querySelector('#game3D').dispatchEvent(new Event('webglcontextlost',{cancelable:true})));
  await expect(page.locator('#game3D')).toHaveAttribute('data-renderer','webgl');
@@ -72,9 +72,26 @@ test('C1 seeded 30-house hamlet uses all six fitted local silhouettes',async({pa
   const canvas=document.createElement('canvas');canvas.id='hamlet30';canvas.style='position:fixed;inset:0;width:100vw;height:100vh;z-index:9999';document.body.append(canvas);
   const r=mountWorld3D(canvas,world,{quality:'game',interactive:false});r.setSettlement(state);r.focusOn(300,240,310);window.hamletRenderer=r;
  });
- await expect(page.locator('#hamlet30')).toHaveAttribute('data-loaded-models','6');
+ await expect(page.locator('#hamlet30')).toHaveAttribute('data-loaded-models','10');
  await expect(page.locator('#hamlet30')).toHaveAttribute('data-model-houses','30');
  expect((await page.locator('#hamlet30').getAttribute('data-home-models')).split(',')).toHaveLength(6);
  await page.screenshot({path:info.outputPath('hamlet30-six-homes.png')});
  await page.evaluate(()=>window.hamletRenderer.dispose());
+});
+
+test('C2 four working facility compositions and committed farmland on terrain',async({page},info)=>{
+ await page.goto('/?preview=1&renderer=three');
+ await page.evaluate(async()=>{
+  const {mountWorld3D}=await import('/world-renderer-three.mjs');
+  const world={width:600,depth:400,options:{seed:'WV-C2-facilities'},trees:[],slope:()=>.1,sample:(x,y)=>({height:10+x*.01+y*.01,water:null})};
+  const state={turn:1,houses:[],buildings:['farm','lumber','smith','granary'].map((type,i)=>({id:i,type,x:110+i*125,y:130})),roads:[[{x:40,y:190},{x:560,y:190}]],localLanes:[],zones:[{type:'farmland',radius:80,points:[{x:110,y:220}]}],desirePaths:[]};
+  const canvas=document.createElement('canvas');canvas.id='workingScene';canvas.style='position:fixed;inset:0;width:100vw;height:100vh;z-index:9999';document.body.append(canvas);
+  const r=mountWorld3D(canvas,world,{quality:'game',interactive:false});r.setSettlement(state);r.focusOn(300,155,280);window.facilityRenderer=r;window.facilityState=state;
+ });
+ await expect(page.locator('#workingScene')).toHaveAttribute('data-model-facilities','4');
+ await expect.poll(()=>page.locator('#workingScene').getAttribute('data-crop-rows')).not.toBe('0');
+ await page.screenshot({path:info.outputPath('working-facilities-and-fields.png')});
+ await page.evaluate(()=>window.facilityRenderer.setSettlement({...window.facilityState,zones:[]}));
+ await expect(page.locator('#workingScene')).toHaveAttribute('data-crop-rows','0');
+ await page.evaluate(()=>window.facilityRenderer.dispose());
 });

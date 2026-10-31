@@ -202,8 +202,9 @@ export function mountWorld3D(canvas,initialWorld,{
  }
 function updateSettlement(){
  if(!settlement)return;
- const modelHouses=presentation?.setSettlement(contactWorld,settlement,updateSettlement)||new Set();
- const data=settlementGeometry(contactWorld,settlement,{modelHouses,draft:settlementDraft,
+ const placements=presentation?.setSettlement(contactWorld,settlement,updateSettlement);
+ const modelHouses=placements?.houses||new Map(),modelBuildings=placements?.buildings||new Map();
+ const data=settlementGeometry(contactWorld,settlement,{modelHouses,modelBuildings,cropRows:placements?.cropRows||[],draft:settlementDraft,
   zoneStrokes:settlementZoneStrokes,zoneType:settlementZoneType,zoneRadius:settlementRadius,
   zoneEdits:settlementEdits,mode:settlementMode,liveCurve:settlementLiveCurve,
   touchFocus:settlementTouchFocus,

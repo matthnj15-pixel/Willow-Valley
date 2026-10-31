@@ -2,7 +2,7 @@ import {test,expect} from '@playwright/test';
 test('local architecture gallery loads both complete houses and tree with no external requests',async({page},testInfo)=>{
  const requests=[],errors=[];page.on('request',r=>requests.push(r.url()));page.on('pageerror',e=>errors.push(e.message));
  await page.goto('/ui-kit/asset-gallery.html');
- for(const id of ['home-long-ridge','home-steep-gable','home-low-hip','home-crooked-wing','home-offset-gables','home-porch-cabin','tree-oak']){
+ for(const id of ['home-long-ridge','home-steep-gable','home-low-hip','home-crooked-wing','home-offset-gables','home-porch-cabin','facility-farm','facility-lumber','facility-smith','facility-granary','tree-oak']){
   await page.locator('#asset').selectOption(id);
   await expect(page.locator('#gallery')).toHaveAttribute('data-loaded',id);
   await expect(page.locator('#record')).toContainText('CC0-1.0');
@@ -25,7 +25,7 @@ test('clean PWA install caches every gallery model before an offline cold relaun
  })).toBe(true);
  await context.setOffline(true);
  await page.goto('/ui-kit/asset-gallery.html');
- for(const id of ['home-long-ridge','home-steep-gable','home-low-hip','home-crooked-wing','home-offset-gables','home-porch-cabin','tree-oak']){
+ for(const id of ['home-long-ridge','home-steep-gable','home-low-hip','home-crooked-wing','home-offset-gables','home-porch-cabin','facility-farm','facility-lumber','facility-smith','facility-granary','tree-oak']){
   await page.locator('#asset').selectOption(id);
   await expect(page.locator('#gallery')).toHaveAttribute('data-loaded',id);
  }
