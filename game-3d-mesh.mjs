@@ -9,7 +9,7 @@ import {cottageBlueprint,buildingBlueprint} from "./settlement-architecture.mjs"
 // The temporary structural shapes will be replaced with Kenney Fantasy Town
 // model assets without changing roads, zoning or save data.
 const colors={
- road:[.73,.65,.49],roadEdge:[.40,.49,.39],path:[.60,.49,.34],
+ road:[.73,.65,.49],roadEdge:[.48,.51,.36],path:[.60,.49,.34],
  residential:[.76,.61,.41],commercial:[.48,.64,.69],
  farmland:[.70,.68,.38],preserve:[.40,.59,.39],erase:[.71,.37,.29],
  wall:[.86,.78,.62],roof:[.50,.32,.25],

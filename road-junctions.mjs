@@ -1,4 +1,5 @@
 import {nodeAt,quadraticPoint} from './road-network.mjs';
+const halfWidth=(p,width)=>width/2+(width===34?1.2:.45)*Math.sin(p.x*.11+p.y*.07)*Math.sin(p.y*.13-p.x*.04);
 const distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y);
 const cross=(a,b,c)=>(b.x-a.x)*(c.y-a.y)-(b.y-a.y)*(c.x-a.x);
 function hull(points){
@@ -39,7 +40,8 @@ export function roadJunctionPolygons(graph,liveCurve=null){
    const crossSections=points.map((p,i)=>{
     const before=points[Math.max(0,i-1)],after=points[Math.min(points.length-1,i+1)];
     const dx=after.x-before.x,dy=after.y-before.y,d=Math.hypot(dx,dy)||1;
-    return[{x:p.x-dy/d*width/2,y:p.y+dx/d*width/2},{x:p.x+dy/d*width/2,y:p.y-dx/d*width/2}];
+    const r=halfWidth(p,width);
+    return[{x:p.x-dy/d*r,y:p.y+dx/d*r},{x:p.x+dy/d*r,y:p.y-dx/d*r}];
    });
    for(let i=1;i<crossSections.length;i++)polygons.push([
     crossSections[i-1][0],crossSections[i][0],crossSections[i][1],crossSections[i-1][1]]);
@@ -48,8 +50,8 @@ export function roadJunctionPolygons(graph,liveCurve=null){
     if(incident.get(id).length!==1)continue;
     const p=points[index],q=points[other],angle=Math.atan2(p.y-q.y,p.x-q.x);
     polygons.push([p,...Array.from({length:13},(_,k)=>({
-     x:p.x+Math.cos(angle-Math.PI/2+k/12*Math.PI)*width/2,
-     y:p.y+Math.sin(angle-Math.PI/2+k/12*Math.PI)*width/2}))]);
+     x:p.x+Math.cos(angle-Math.PI/2+k/12*Math.PI)*halfWidth(p,width),
+     y:p.y+Math.sin(angle-Math.PI/2+k/12*Math.PI)*halfWidth(p,width)}))]);
    }
   }
   for(const [id,points] of mouths)if(incident.get(id).length>1){
