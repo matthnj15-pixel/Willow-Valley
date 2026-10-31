@@ -49,7 +49,7 @@ export function mountWorld3D(canvas,world,options={}){
    refresh=onRefresh;contact=surface;
    const key=JSON.stringify([surfaceVersion,models.size,state.houses,state.buildings,state.roads,state.localLanes,state.zones]);
    if(key===lastPlacementKey&&cached)return bind(state,cached);
-   clearBatches();const objects=[],represented=new Map();
+   clearBatches();let groundContactError=0;const objects=[],represented=new Map();
    for(const house of state.houses||[]){
     let p=homePlacement(surface,house,entries);
     // Keep a stable preferred identity. During loading or for an incompatible
@@ -74,7 +74,13 @@ export function mountWorld3D(canvas,world,options={}){
        const seat=resolveFoundation(surface,rect,rect.width,rect.depth,0);
        if(seat.flooded){node.visible=false;return;}
        node.position.y+=(seat.floor-box.min.y)/p.scale;p.propFoundations.push({...rect,floor:seat.floor});
-      }else node.position.y+=(surface.sample(point.x+surface.width/2,point.z+surface.depth/2).height+.8-p.origin[1])/p.scale;
+      }else{
+       const box=new THREE.Box3().setFromObject(node),ground=surface.sample(point.x+surface.width/2,point.z+surface.depth/2).height;
+       const stack=(node.userData.groundOffset||0)*p.scale;
+       node.position.y+=(ground+stack-.02-box.min.y)/p.scale;
+       const seated=new THREE.Box3().setFromObject(node);
+       groundContactError=Math.max(groundContactError,Math.abs(seated.min.y-ground-stack));
+      }
 
      }});
     }
@@ -87,7 +93,7 @@ export function mountWorld3D(canvas,world,options={}){
     objects.push({scene:model,entityKey:p.key});natureCount++;
    }
    for(const batch of buildSceneBatches(objects))houses.add(batch);
-   canvas.dataset.natureInstances=String(natureCount);canvas.dataset.quality=low?'low':'normal';
+   canvas.dataset.groundContactError=String(groundContactError);canvas.dataset.natureInstances=String(natureCount);canvas.dataset.quality=low?'low':'normal';
    canvas.dataset.modelFacilities=String(representedFacilities.size);
    canvas.dataset.modelHouses=String(represented.size);canvas.dataset.loadedModels=String(models.size-(models.has('tree-oak')?1:0));canvas.dataset.homeModels=[...new Set([...represented.values()].map(p=>p.id))].sort().join(',');
    const cropRows=farmlandRows(surface,state);canvas.dataset.cropRows=String(cropRows.length);

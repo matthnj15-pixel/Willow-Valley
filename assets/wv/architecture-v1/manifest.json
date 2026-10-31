@@ -1,27 +1,27 @@
 {
   "catalogVersion": "architecture-v1",
-  "recipeVersion": 2,
+  "recipeVersion": 3,
   "entries": [
     {
       "id": "home-long-ridge",
       "role": "house",
       "url": "./assets/wv/architecture-v1/home-long-ridge.glb",
-      "bytes": 49812,
-      "sha256": "cef745d749c8dc8dcdc90de3e4816cf1752e436b1db99da591314f4cc4495051",
+      "bytes": 49856,
+      "sha256": "2a36c70e36cf9a073901fcf7504673447192c39abef4374b575f92b563243b72",
       "boundsMin": [
-        -0.5353553295135499,
+        -0.542677640914917,
         0,
         -1.050000011920929
       ],
       "boundsMax": [
-        0.5499999523162842,
+        0.542677640914917,
         1.5707106590270996,
         1.050000011920929
       ],
       "triangles": 614,
       "entrance": {
         "position": [
-          0,
+          -0.007322311401367132,
           0,
           1
         ],
@@ -31,6 +31,26 @@
           1
         ]
       },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          -0.007322311401367132,
+          0,
+          0
+        ],
+        "sourceBoundsMin": [
+          -0.5353553295135499,
+          0,
+          -1.050000011920929
+        ],
+        "sourceBoundsMax": [
+          0.5499999523162842,
+          1.5707106590270996,
+          1.050000011920929
+        ]
+      },
       "sourceIds": [
         "fantasy/wall-wood-window-small",
         "fantasy/wall-wood",
@@ -38,7 +58,7 @@
         "fantasy/roof-gable"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -83,6 +103,26 @@
           1
         ]
       },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "sourceBoundsMin": [
+          -0.550000011920929,
+          0,
+          -0.5670820474624634
+        ],
+        "sourceBoundsMax": [
+          0.550000011920929,
+          2.1118032932281494,
+          0.5670820474624634
+        ]
+      },
       "sourceIds": [
         "fantasy/wall-window-small",
         "fantasy/wall",
@@ -91,7 +131,7 @@
         "fantasy/chimney"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -136,13 +176,33 @@
           1
         ]
       },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "sourceBoundsMin": [
+          -0.5600000023841858,
+          0,
+          -0.5600000023841858
+        ],
+        "sourceBoundsMax": [
+          0.5600000023841858,
+          1.4898799982666968,
+          0.5600000023841858
+        ]
+      },
       "sourceIds": [
         "fantasy/wall-wood-window-small",
         "fantasy/wall-wood",
         "fantasy/wall-wood-door"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -191,13 +251,33 @@
           1
         ]
       },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "sourceBoundsMin": [
+          -1.050000011920929,
+          0,
+          -1.050000011920929
+        ],
+        "sourceBoundsMax": [
+          1.050000011920929,
+          1.4697500032186508,
+          1.050000011920929
+        ]
+      },
       "sourceIds": [
         "fantasy/wall-window-small",
         "fantasy/wall",
         "fantasy/wall-door"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -221,22 +301,22 @@
       "id": "home-offset-gables",
       "role": "house",
       "url": "./assets/wv/architecture-v1/home-offset-gables.glb",
-      "bytes": 53464,
-      "sha256": "c074a5a3508d79dbca7f0d70d0a1764f851be69723eb99893dcb285701ece79a",
+      "bytes": 53504,
+      "sha256": "4a291778fa5b02b891d66b6c8e288f53345b208c67de350043a79df66c97e489",
       "boundsMin": [
-        -0.5353553295135499,
+        -0.8176776587963104,
         0,
         -1.050000011920929
       ],
       "boundsMax": [
-        1.099999988079071,
+        0.8176776587963106,
         2.1,
         1.050000011920929
       ],
       "triangles": 634,
       "entrance": {
         "position": [
-          0,
+          -0.2823223292827605,
           0,
           1
         ],
@@ -244,6 +324,26 @@
           0,
           0,
           1
+        ]
+      },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          -0.2823223292827605,
+          0,
+          0
+        ],
+        "sourceBoundsMin": [
+          -0.5353553295135499,
+          0,
+          -1.050000011920929
+        ],
+        "sourceBoundsMax": [
+          1.099999988079071,
+          2.1,
+          1.050000011920929
         ]
       },
       "sourceIds": [
@@ -254,7 +354,7 @@
         "fantasy/chimney"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -277,29 +377,49 @@
       "id": "home-porch-cabin",
       "role": "house",
       "url": "./assets/wv/architecture-v1/home-porch-cabin.glb",
-      "bytes": 52936,
-      "sha256": "5dc7a3141a6ddfc70fe66d2b212a84d4f428b3cd21ad0982c6a1758e8076702d",
+      "bytes": 52952,
+      "sha256": "7d87660f34cfc91ac340ef36791be46757ca876bc5f35d33906529090a2a24e0",
       "boundsMin": [
         -0.550000011920929,
         0,
-        -0.5500000119209291
+        -0.8111570125818253
       ],
       "boundsMax": [
         0.550000011920929,
         1.5712106599211693,
-        1.0723140132427216
+        0.8111570125818253
       ],
       "triangles": 650,
       "entrance": {
         "position": [
           0,
-          0,
-          1.05
+          0.0005000008940696729,
+          0.7888429993391037
         ],
         "forward": [
           0,
           0,
           1
+        ]
+      },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          0,
+          0.0005000008940696729,
+          -0.26115700066089625
+        ],
+        "sourceBoundsMin": [
+          -0.550000011920929,
+          -0.0005000008940696729,
+          -0.5500000119209291
+        ],
+        "sourceBoundsMax": [
+          0.550000011920929,
+          1.5707106590270996,
+          1.0723140132427216
         ]
       },
       "sourceIds": [
@@ -309,7 +429,7 @@
         "fantasy/roof-gable"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -334,29 +454,49 @@
       "id": "facility-farm",
       "role": "farm",
       "url": "./assets/wv/architecture-v1/facility-farm.glb",
-      "bytes": 53768,
-      "sha256": "343d3ef77e083a832b486c4a103cb7f7d3174c3218d41828e262af0be9ffde87",
+      "bytes": 53844,
+      "sha256": "694a9d82c8d35c5124b433b05b365374532fa65d091c94729caae2deb8c6900c",
       "boundsMin": [
-        -1.18535532951355,
+        -1.1176776707172396,
         0,
-        -0.9500000238418579
+        -0.8500000238418579
       ],
       "boundsMax": [
-        1.050000011920929,
+        1.1176776707172396,
         1.5707106649875642,
-        0.7500000238418579
+        0.8500000238418579
       ],
       "triangles": 658,
       "entrance": {
         "position": [
-          0,
-          0,
-          0.9
+          0.06767765879631049,
+          5.960464455334602e-9,
+          1
         ],
         "forward": [
           0,
           0,
           1
+        ]
+      },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          0.06767765879631049,
+          5.960464455334602e-9,
+          0.09999999999999998
+        ],
+        "sourceBoundsMin": [
+          -1.18535532951355,
+          -5.960464455334602e-9,
+          -0.9500000238418579
+        ],
+        "sourceBoundsMax": [
+          1.050000011920929,
+          1.5707106590270996,
+          0.7500000238418579
         ]
       },
       "sourceIds": [
@@ -366,7 +506,7 @@
         "fantasy/roof-gable"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -379,14 +519,14 @@
       "groundSpace": false,
       "foundationRects": [
         [
-          -0.65,
-          -0.25,
+          -0.5823223412036895,
+          -0.15000000000000002,
           1.1,
           1.1
         ],
         [
-          0.5,
-          -0.1,
+          0.5676776587963105,
+          -2.7755575615628914e-17,
           1.1,
           1.7
         ]
@@ -404,24 +544,24 @@
       "id": "facility-lumber",
       "role": "lumber",
       "url": "./assets/wv/architecture-v1/facility-lumber.glb",
-      "bytes": 41080,
-      "sha256": "b2448a401201d021e1e1e3f9792ac258981bb5423a490bd9bd0a35c71484dda9",
+      "bytes": 41268,
+      "sha256": "f681f0eeea83b3ce27a7512210607e1fb2a65e05ed8a786a91ff1dd7326ab5f4",
       "boundsMin": [
-        -0.8249999761581421,
+        -0.8599999895691872,
         0,
-        -0.850000011920929
+        -0.6827317561022936
       ],
       "boundsMax": [
-        0.8950000029802323,
+        0.8599999895691872,
         1.125000002980232,
-        0.5154635002836585
+        0.6827317561022938
       ],
       "triangles": 372,
       "entrance": {
         "position": [
-          -0.3,
-          0,
-          0.4
+          -0.33500001341104507,
+          5.960464455334602e-9,
+          0.5672682558186353
         ],
         "forward": [
           0,
@@ -429,12 +569,32 @@
           1
         ]
       },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          -0.03500001341104508,
+          5.960464455334602e-9,
+          0.16726825581863525
+        ],
+        "sourceBoundsMin": [
+          -0.8249999761581421,
+          -5.960464455334602e-9,
+          -0.850000011920929
+        ],
+        "sourceBoundsMax": [
+          0.8950000029802323,
+          1.1249999970197677,
+          0.5154635002836585
+        ]
+      },
       "sourceIds": [
         "survival/workbench",
         "survival/tool-axe"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "d87ac11679e7ed9ddcf13ad9417ab86b71871a689db8a04d5e1e196a68fb7a12",
       "textureDerivatives": [
         {
@@ -447,8 +607,8 @@
       "groundSpace": false,
       "foundationRects": [
         [
-          -0.3,
-          -0.3,
+          -0.33500001341104507,
+          -0.13273174418136474,
           1.05,
           1.1
         ]
@@ -473,29 +633,49 @@
       "id": "facility-smith",
       "role": "smith",
       "url": "./assets/wv/architecture-v1/facility-smith.glb",
-      "bytes": 99472,
-      "sha256": "82dabd72955b8d60e91173af41f289b9223d9d5d4badc8922860a4fc1a496033",
+      "bytes": 99548,
+      "sha256": "1fd511c6bf9ea9972f63870a52f8ac9a9d8d54f614c0a9dbadb47591ed62a057",
       "boundsMin": [
-        -0.8853553295135499,
+        -0.9176776677370072,
         0,
-        -0.850000011920929
+        -0.807256256043911
       ],
       "boundsMax": [
-        0.9500000059604645,
+        0.9176776677370072,
         1.8999999910593033,
-        0.764512500166893
+        0.8072562560439109
       ],
       "triangles": 1160,
       "entrance": {
         "position": [
-          0,
-          0,
-          0.9
+          -0.032322338223457314,
+          2.980232227667301e-9,
+          0.942743755877018
         ],
         "forward": [
           0,
           0,
           1
+        ]
+      },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          -0.032322338223457314,
+          2.980232227667301e-9,
+          0.04274375587701801
+        ],
+        "sourceBoundsMin": [
+          -0.8853553295135499,
+          -2.980232227667301e-9,
+          -0.850000011920929
+        ],
+        "sourceBoundsMax": [
+          0.9500000059604645,
+          1.899999988079071,
+          0.764512500166893
         ]
       },
       "sourceIds": [
@@ -507,7 +687,7 @@
         "survival/workbench-grind"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -537,24 +717,24 @@
       "id": "facility-granary",
       "role": "granary",
       "url": "./assets/wv/architecture-v1/facility-granary.glb",
-      "bytes": 42620,
-      "sha256": "59f82292bb3b75dd82105e3b76c790da65b4a34fab32d83fe195b9277656c50f",
+      "bytes": 42680,
+      "sha256": "bccaf700ba67fd63298543c04577590509bb117780b42a6ace9ab0c5c2eec406",
       "boundsMin": [
         -0.574999988079071,
         0,
-        -0.7750000119209289
+        -0.9000000089406968
       ],
       "boundsMax": [
         0.574999988079071,
         2.3500000089406967,
-        1.0250000059604645
+        0.9000000089406968
       ],
       "triangles": 480,
       "entrance": {
         "position": [
           0,
-          0.36,
-          1
+          0.3600000029802322,
+          0.8750000029802323
         ],
         "forward": [
           0,
@@ -562,11 +742,31 @@
           1
         ]
       },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          0,
+          2.980232227667301e-9,
+          -0.12499999701976777
+        ],
+        "sourceBoundsMin": [
+          -0.574999988079071,
+          -2.980232227667301e-9,
+          -0.7750000119209289
+        ],
+        "sourceBoundsMax": [
+          0.574999988079071,
+          2.3500000059604647,
+          1.0250000059604645
+        ]
+      },
       "sourceIds": [
         "survival/barrel"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "d87ac11679e7ed9ddcf13ad9417ab86b71871a689db8a04d5e1e196a68fb7a12",
       "textureDerivatives": [
         {
@@ -600,29 +800,49 @@
       "id": "facility-market",
       "role": "market",
       "url": "./assets/wv/architecture-v1/facility-market.glb",
-      "bytes": 104556,
-      "sha256": "09ef32fca99817413d4507095540310321b9a74d4991f3c433522d8363b9b7bc",
+      "bytes": 104612,
+      "sha256": "394de593a127014edfdff6f1c19efb73f9ca80d726c81f92c1b627affc1c7fdc",
       "boundsMin": [
-        -1.2999999523162842,
+        -1.3974999725818635,
         0,
         -1.2999999523162842
       ],
       "boundsMax": [
-        1.494999992847443,
+        1.3974999725818633,
         1.236982822418213,
         1.2999999523162842
       ],
       "triangles": 1250,
       "entrance": {
         "position": [
-          0,
-          0,
+          -0.09750002026557936,
+          1.12798658e-17,
           1.3
         ],
         "forward": [
           0,
           0,
           1
+        ]
+      },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          -0.09750002026557936,
+          1.12798658e-17,
+          0
+        ],
+        "sourceBoundsMin": [
+          -1.2999999523162842,
+          -1.12798658e-17,
+          -1.2999999523162842
+        ],
+        "sourceBoundsMax": [
+          1.494999992847443,
+          1.236982822418213,
+          1.2999999523162842
         ]
       },
       "sourceIds": [
@@ -633,7 +853,7 @@
         "survival/box"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -685,11 +905,31 @@
           1
         ]
       },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "sourceBoundsMin": [
+          -1.169999998807907,
+          0,
+          -1.100000023841858
+        ],
+        "sourceBoundsMax": [
+          1.169999998807907,
+          0.2255014181137085,
+          1.100000023841858
+        ]
+      },
       "sourceIds": [
         "fantasy/stall-bench"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -727,13 +967,33 @@
       "entrance": {
         "position": [
           0,
-          0,
+          0.05,
           1.15
         ],
         "forward": [
           0,
           0,
           1
+        ]
+      },
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          0,
+          0.05,
+          0
+        ],
+        "sourceBoundsMin": [
+          -1.149999976158142,
+          -0.05,
+          -1.149999976158142
+        ],
+        "sourceBoundsMax": [
+          1.149999976158142,
+          1.6578874111175537,
+          1.149999976158142
         ]
       },
       "sourceIds": [
@@ -743,7 +1003,7 @@
         "fantasy/stall-bench"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
       "textureDerivatives": [
         {
@@ -851,25 +1111,45 @@
       "id": "tree-oak",
       "role": "vegetation",
       "url": "./assets/wv/architecture-v1/tree-oak.glb",
-      "bytes": 10712,
-      "sha256": "6dc71a8fe05f597833b9f92e9eee40a460c38b9f24c658c3151b39b6bd3275dc",
+      "bytes": 10732,
+      "sha256": "ced2e01f169d53dd0270543500ae5f6889e1aa95125dbec2b0a2a3f977826e96",
       "boundsMin": [
-        -0.32027706503868103,
+        -0.32027700543403625,
         1.602965340036949e-31,
         -0.36982399225234985
       ],
       "boundsMax": [
-        0.3202769458293915,
+        0.32027700543403625,
         1.2262399196624756,
         0.36982399225234985
       ],
       "triangles": 196,
       "entrance": null,
+      "normalization": {
+        "pivot": "floor-center",
+        "up": "+Y",
+        "forward": "+Z",
+        "translation": [
+          5.960464477539063e-8,
+          0.05,
+          0
+        ],
+        "sourceBoundsMin": [
+          -0.32027706503868103,
+          -0.05,
+          -0.36982399225234985
+        ],
+        "sourceBoundsMax": [
+          0.3202769458293915,
+          1.1762399196624755,
+          0.36982399225234985
+        ]
+      },
       "sourceIds": [
         "nature/tree_oak"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 2,
+      "recipeVersion": 3,
       "derivativePaletteSha256": null,
       "textureDerivatives": [],
       "materialOverrides": [

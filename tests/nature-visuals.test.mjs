@@ -6,7 +6,7 @@ test('local nature selection is deterministic, avoids settlement access and neve
  const {world,state}=settlementRenderFixture(100),before=JSON.stringify(state);
  const normal=naturePlacements(world,state),low=naturePlacements(world,state,{low:true});
  assert.ok(normal.length>0);assert.ok(low.length<=95);assert.deepEqual(naturePlacements(world,state),normal);assert.equal(JSON.stringify(state),before);
- for(const p of normal){const x=p.origin[0]+world.width/2,z=p.origin[2]+world.depth/2;assert.equal(world.sample(x,z).water,null);assert.ok(state.houses.every(h=>Math.hypot(h.x-x,h.y-z)>18));}
+ for(const p of normal){const x=p.origin[0]+world.width/2,z=p.origin[2]+world.depth/2;assert.equal(world.sample(x,z).water,null);assert.ok(Math.abs(p.origin[1]-world.sample(x,z).height)<=.020001);assert.ok(state.houses.every(h=>Math.hypot(h.x-x,h.y-z)>18));}
 });
 test('coherent meadow changes colors while preserving every contact position and normal',()=>{
  const {world}=settlementRenderFixture(30),a=createWorldMesh(world,20,20,{trees:false}),b=createWorldMesh(world,20,20,{trees:false,coherentMeadow:true});
