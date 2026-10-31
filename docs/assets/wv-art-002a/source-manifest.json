@@ -1,0 +1,4770 @@
+{
+  "schemaVersion": 1,
+  "researchDate": "2026-10-31",
+  "baselineCommit": "ae364169d7d3d3d30294fd8ce44c4c83dfc2b719",
+  "purpose": "Research evidence, not a runtime asset registry. Source dimensions are authoring units, not asserted physical metres.",
+  "archives": [
+    {
+      "id": "fantasy",
+      "version": "2.0",
+      "acquiredURL": "https://opengameart.org/sites/default/files/kenney_fantasy-town-kit_2.0.zip",
+      "officialPage": "https://opengameart.org/content/fantasy-town-kit",
+      "bytes": 3854691,
+      "sha256": "1a7530c09f4d2fa2cdee259876f089334f8b1f27fa86a0c4f54ef86cdd8676ef",
+      "license": "CC0-1.0",
+      "licensePath": "licenses/kenney-fantasy-License.txt",
+      "licenseSha256": "fb8e4817197ef9f62215e95b4451a0f09c769c8e03e416e3a2ce108dfa6117e4",
+      "measuredModelCount": 167,
+      "formats": [
+        "FBX format",
+        "GLB format",
+        "OBJ format",
+        "Textures"
+      ],
+      "publisherPage": "https://kenney.nl/assets/fantasy-town-kit"
+    },
+    {
+      "id": "survival",
+      "version": "2.0",
+      "acquiredURL": "https://opengameart.org/sites/default/files/kenney_survival-kit.zip",
+      "officialPage": "https://opengameart.org/content/survival-kit",
+      "bytes": 1948174,
+      "sha256": "c3586341b5932c87eb43d75d915434f47daed168b17ed36a03e8ca9977c7443e",
+      "license": "CC0-1.0",
+      "licensePath": "licenses/kenney-survival-License.txt",
+      "licenseSha256": "62c8356876481204fa4d40dc59183dfed777adf987d7f2a1390fffe8a699f3ff",
+      "measuredModelCount": 80,
+      "formats": [
+        "FBX format",
+        "GLB format",
+        "OBJ format",
+        "Textures"
+      ],
+      "publisherPage": "https://kenney.nl/assets/survival-kit"
+    },
+    {
+      "id": "nature",
+      "version": "2.1",
+      "acquiredURL": "https://opengameart.org/sites/default/files/Nature%20Kit%20%282.1%29.zip",
+      "officialPage": "https://opengameart.org/content/nature-kit",
+      "bytes": 10537521,
+      "sha256": "fa7974a0d342bfe63c38664ba9f8ec1a4aab8ea25f099bdc56870e33588c4d9d",
+      "license": "CC0-1.0",
+      "licensePath": "licenses/kenney-nature-License.txt",
+      "licenseSha256": "cb96b75e3560ac78d7a53ce6f083f4cdb5c53faea6141b62d63458dcfe1e4b9d",
+      "measuredModelCount": 329,
+      "formats": [
+        "DAE format",
+        "FBX format",
+        "GLTF format",
+        "OBJ format",
+        "STL format"
+      ],
+      "publisherPage": "https://kenney.nl/assets/nature-kit"
+    },
+    {
+      "id": "castle",
+      "version": "2.0",
+      "acquiredURL": "https://opengameart.org/sites/default/files/kenney_castle-kit.zip",
+      "officialPage": "https://opengameart.org/content/castle-kit",
+      "bytes": 2232589,
+      "sha256": "921f3f73927bb23106cae34bc21d5ab4b033a9fc120475e96f714a406e3169df",
+      "license": "CC0-1.0",
+      "licensePath": "licenses/kenney-castle-License.txt",
+      "licenseSha256": "aac944f18106b3a3e29c6fdeec02523d4cab4c735abc01f5a8fa88a79ae173ef",
+      "measuredModelCount": 76,
+      "formats": [
+        "FBX format",
+        "GLB format",
+        "OBJ format",
+        "Textures"
+      ],
+      "publisherPage": "https://kenney.nl/assets/castle-kit"
+    }
+  ],
+  "assets": [
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/wall.glb",
+      "bytes": 4792,
+      "sha256": "cab1dff37610e2a214237cc62ec0b1506e8fd76bb66c29f6c585b4b643b569c4",
+      "boundsMin": [
+        0.4,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        0.1,
+        1.0,
+        1.0
+      ],
+      "sceneTriangles": 32,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "wall"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/wall",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/wall-wood.glb",
+      "bytes": 4808,
+      "sha256": "8699614fdbc99f565942709c0977c964e2c12f3b3c60098a6e2c397c973f08db",
+      "boundsMin": [
+        0.4,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        0.1,
+        1.0,
+        1.0
+      ],
+      "sceneTriangles": 32,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "wall-wood"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/wall-wood",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/wall-door.glb",
+      "bytes": 29276,
+      "sha256": "79b2d40db110ca96a6e77d4261da665fdf8c68f4c20c2afef5bce1c28ad72857",
+      "boundsMin": [
+        0.4,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        0.1,
+        1.0,
+        1.0
+      ],
+      "sceneTriangles": 376,
+      "scenePrimitives": 2,
+      "materials": 1,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1
+          ],
+          "mesh": 0,
+          "name": "wall-door"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/wall-door",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/wall-wood-door.glb",
+      "bytes": 30744,
+      "sha256": "2aa4e982fcb6434be4e6051fcee7972799ff5350a3f36ca8bf71530b84608123",
+      "boundsMin": [
+        0.4,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        0.1,
+        1.0,
+        1.0
+      ],
+      "sceneTriangles": 376,
+      "scenePrimitives": 2,
+      "materials": 1,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1
+          ],
+          "mesh": 0,
+          "name": "wall-wood-door"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/wall-wood-door",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/wall-window-small.glb",
+      "bytes": 9376,
+      "sha256": "44516aac3d06ee8d2694cfd57d0c6e1e27ca2d0bc45b738ea1f0d1821da10110",
+      "boundsMin": [
+        0.4,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        0.1,
+        1.0,
+        1.0
+      ],
+      "sceneTriangles": 102,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "wall-window-small"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/wall-window-small",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/wall-wood-window-small.glb",
+      "bytes": 11808,
+      "sha256": "3c9118d167d8e75ee78f884b9edb90101f9c1928d4fcc2afaedcc349bf8c672b",
+      "boundsMin": [
+        0.35,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.55,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        0.2,
+        1.0,
+        1.0
+      ],
+      "sceneTriangles": 134,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "wall-wood-window-small"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/wall-wood-window-small",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/wall-detail-cross.glb",
+      "bytes": 8464,
+      "sha256": "7af8fba9e7022c500289bee84fcbe02a1fdad0c2afc0276155a82c1021d6456d",
+      "boundsMin": [
+        0.4,
+        -0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        0.1,
+        1.0,
+        1.0
+      ],
+      "sceneTriangles": 80,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "wall-detail-cross"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/wall-detail-cross",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/wall-wood-detail-cross.glb",
+      "bytes": 8480,
+      "sha256": "0335f9f55d541a2c044d11242103d5de70359ca5758e6734c8936ec27ab58043",
+      "boundsMin": [
+        0.4,
+        -0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        0.1,
+        1.0,
+        1.0
+      ],
+      "sceneTriangles": 80,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "wall-wood-detail-cross"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/wall-wood-detail-cross",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/wall-corner.glb",
+      "bytes": 6788,
+      "sha256": "d67d4c6210d5e877ce24ccfb42cb3eab1576f7addb689924e7776d6b73e4165a",
+      "boundsMin": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sceneTriangles": 52,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "wall-corner"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/wall-corner",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/wall-wood-corner.glb",
+      "bytes": 6804,
+      "sha256": "f4c38de352c80c110874fabe7323577d985af191c25242887574238146dc7d82",
+      "boundsMin": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "sceneTriangles": 52,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "wall-wood-corner"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/wall-wood-corner",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof.glb",
+      "bytes": 9324,
+      "sha256": "8f245dfc04b8e76b2833081462f7530c2aea9114a703161c1d9a4a975927347d",
+      "boundsMin": [
+        -0.567082,
+        -0.022361,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.625902,
+        0.5
+      ],
+      "dimensions": [
+        1.067082,
+        0.648262,
+        1.0
+      ],
+      "sceneTriangles": 64,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-left.glb",
+      "bytes": 12904,
+      "sha256": "ff3fdc7d3572ee0f20746ae4d5b02a6ad26c185468b48fd0950852231cf81f15",
+      "boundsMin": [
+        -0.634164,
+        -0.044721,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.675902,
+        0.5
+      ],
+      "dimensions": [
+        1.134164,
+        0.720623,
+        1.0
+      ],
+      "sceneTriangles": 84,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-left"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-left",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-right.glb",
+      "bytes": 13004,
+      "sha256": "5f88d69d73a0beb5d74a69928adcb8aa6464c4ec3ad34b7c154c4ddcb17ad5f3",
+      "boundsMin": [
+        -0.634164,
+        -0.044721,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.675902,
+        0.5
+      ],
+      "dimensions": [
+        1.134164,
+        0.720623,
+        1.0
+      ],
+      "sceneTriangles": 84,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-right"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-right",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-gable.glb",
+      "bytes": 7632,
+      "sha256": "4bb6bdbcadbb8ebeb69d720e29f6c2e57c99d98966baa41fd86914d3c13d6039",
+      "boundsMin": [
+        -0.55,
+        -0.0,
+        -0.535355
+      ],
+      "boundsMax": [
+        0.55,
+        0.570711,
+        0.535355
+      ],
+      "dimensions": [
+        1.1,
+        0.570711,
+        1.070711
+      ],
+      "sceneTriangles": 72,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-gable"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-gable",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-gable-end.glb",
+      "bytes": 6056,
+      "sha256": "2ee635e8550180bb7840f7fdfff0b0835a34a425ffb903f19657cde65c261704",
+      "boundsMin": [
+        -0.535355,
+        -0.0,
+        -0.535355
+      ],
+      "boundsMax": [
+        0.55,
+        0.570711,
+        0.535355
+      ],
+      "dimensions": [
+        1.085355,
+        0.570711,
+        1.070711
+      ],
+      "sceneTriangles": 50,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-gable-end"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-gable-end",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-gable-top.glb",
+      "bytes": 6572,
+      "sha256": "584761438f511db6c0c36a602b0cb7a84484acaebf94b96c722d6c8f188d57e9",
+      "boundsMin": [
+        -0.5,
+        -0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.375902,
+        0.5
+      ],
+      "dimensions": [
+        1.0,
+        0.375902,
+        1.0
+      ],
+      "sceneTriangles": 56,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-gable-top"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-gable-top",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-high.glb",
+      "bytes": 8088,
+      "sha256": "7d39cd8fdcb8bd652d8a40f5f54e5e3d2c41bc1bb84691334f75bc411024cb12",
+      "boundsMin": [
+        -0.570711,
+        -0.035355,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.140711,
+        0.5
+      ],
+      "dimensions": [
+        1.070711,
+        1.176066,
+        1.0
+      ],
+      "sceneTriangles": 64,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-high"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-high",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-high-left.glb",
+      "bytes": 11376,
+      "sha256": "f4cf3fc08e5155015af7bd28dca8b2effe96fe3743276a5561119a3e7368cba4",
+      "boundsMin": [
+        -0.641421,
+        -0.070711,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.190711,
+        0.5
+      ],
+      "dimensions": [
+        1.141421,
+        1.261421,
+        1.0
+      ],
+      "sceneTriangles": 84,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-high-left"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-high-left",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-high-right.glb",
+      "bytes": 10996,
+      "sha256": "1c04bb5ecf61a660126cf28d64f2d06ddbf645a9e76598bb7af5828325968f79",
+      "boundsMin": [
+        -0.641421,
+        -0.070711,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.190711,
+        0.5
+      ],
+      "dimensions": [
+        1.141421,
+        1.261421,
+        1.0
+      ],
+      "sceneTriangles": 84,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-high-right"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-high-right",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-high-gable.glb",
+      "bytes": 7456,
+      "sha256": "21c54b2645ba33846f43410e6cef4d4f9239bc172bfb12f3227a6ec232977e2d",
+      "boundsMin": [
+        -0.55,
+        -0.044721,
+        -0.567082
+      ],
+      "boundsMax": [
+        0.55,
+        1.111803,
+        0.567082
+      ],
+      "dimensions": [
+        1.1,
+        1.156525,
+        1.134164
+      ],
+      "sceneTriangles": 72,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-high-gable"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-high-gable",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-high-gable-end.glb",
+      "bytes": 6268,
+      "sha256": "5f31970df848c6ffa95de3300f786bec2a331c63b1cb505ad893027ca67bf187",
+      "boundsMin": [
+        -0.567502,
+        -0.044721,
+        -0.567082
+      ],
+      "boundsMax": [
+        0.55,
+        1.111803,
+        0.567082
+      ],
+      "dimensions": [
+        1.117502,
+        1.156525,
+        1.134164
+      ],
+      "sceneTriangles": 52,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-high-gable-end"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-high-gable-end",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-corner.glb",
+      "bytes": 4996,
+      "sha256": "122d00bf873e5928eecf334785f1daf005c6f04033552258e97bf1cb1000b353",
+      "boundsMin": [
+        -0.567082,
+        -0.022361,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.625902,
+        0.567082
+      ],
+      "dimensions": [
+        1.067082,
+        0.648262,
+        1.067082
+      ],
+      "sceneTriangles": 36,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-corner"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-corner",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-corner-inner.glb",
+      "bytes": 4464,
+      "sha256": "2b2f61d1695b88acdef05f0263ed20fb3a4f8d5c6aee12d3f9e5cebe29e08d9c",
+      "boundsMin": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.625902,
+        0.5
+      ],
+      "dimensions": [
+        1.0,
+        0.625902,
+        1.0
+      ],
+      "sceneTriangles": 30,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-corner-inner"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-corner-inner",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/roof-point.glb",
+      "bytes": 6180,
+      "sha256": "a7dfd157128e04105e976d7a47f772e95e4bd9f3d73b87a00b43861f406b94f8",
+      "boundsMin": [
+        -0.55,
+        0.0,
+        -0.55
+      ],
+      "boundsMax": [
+        0.55,
+        0.5,
+        0.55
+      ],
+      "dimensions": [
+        1.1,
+        0.5,
+        1.1
+      ],
+      "sceneTriangles": 44,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "roof-point"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/roof-point",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/overhang.glb",
+      "bytes": 7648,
+      "sha256": "515edba27d8c6326cee6f5912b7270224672f9f3dd61e43e85e1d504913ef19c",
+      "boundsMin": [
+        0.14,
+        0.67,
+        -0.5
+      ],
+      "boundsMax": [
+        0.425,
+        1.0,
+        0.5
+      ],
+      "dimensions": [
+        0.285,
+        0.33,
+        1.0
+      ],
+      "sceneTriangles": 68,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "overhang"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/overhang",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/pillar-wood.glb",
+      "bytes": 5312,
+      "sha256": "569c83dade6063399576640e80db35c34e422817ec132419fc2e2695189be5cf",
+      "boundsMin": [
+        -0.08,
+        -0.0,
+        -0.08
+      ],
+      "boundsMax": [
+        0.08,
+        1.0,
+        0.08
+      ],
+      "dimensions": [
+        0.16,
+        1.0,
+        0.16
+      ],
+      "sceneTriangles": 44,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "pillar-wood"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/pillar-wood",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/planks.glb",
+      "bytes": 11148,
+      "sha256": "619705afa7ad290bfa499a701fd7ea07210ad535126cb3abc245b6f16e1420ab",
+      "boundsMin": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.06,
+        0.5
+      ],
+      "dimensions": [
+        1.0,
+        0.06,
+        1.0
+      ],
+      "sceneTriangles": 96,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "planks"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/planks",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/chimney.glb",
+      "bytes": 4656,
+      "sha256": "a15cdbd13860092f6d793e5b785043eb90a49cdaa725bb71df9fd154ca68dac6",
+      "boundsMin": [
+        0.213092,
+        0.0,
+        -0.17
+      ],
+      "boundsMax": [
+        0.425,
+        1.0,
+        0.17
+      ],
+      "dimensions": [
+        0.211908,
+        1.0,
+        0.34
+      ],
+      "sceneTriangles": 32,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "chimney"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/chimney",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/chimney-base.glb",
+      "bytes": 8408,
+      "sha256": "f7da0ca85be73a00f65aa297023e136e6bed93b7667ef49861a97ce89fd3a6e9",
+      "boundsMin": [
+        0.081183,
+        0.0,
+        -0.26
+      ],
+      "boundsMax": [
+        0.425,
+        1.0,
+        0.26
+      ],
+      "dimensions": [
+        0.343817,
+        1.0,
+        0.52
+      ],
+      "sceneTriangles": 78,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "chimney-base"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/chimney-base",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/chimney-top.glb",
+      "bytes": 7896,
+      "sha256": "639eb7e9add8e491aa64aac94bd4ecbf1e67f8c628f3e0173f029f1c667b7590",
+      "boundsMin": [
+        0.213092,
+        0.0,
+        -0.17
+      ],
+      "boundsMax": [
+        0.465,
+        0.625,
+        0.17
+      ],
+      "dimensions": [
+        0.251908,
+        0.625,
+        0.34
+      ],
+      "sceneTriangles": 78,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "chimney-top"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/chimney-top",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/stall.glb",
+      "bytes": 11500,
+      "sha256": "f0a636fccb7d57c38f5acd58881c468f4872f1bcda1e9fd9b1118e76110565a1",
+      "boundsMin": [
+        -0.325,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.325,
+        0.365501,
+        0.5
+      ],
+      "dimensions": [
+        0.65,
+        0.365501,
+        1.0
+      ],
+      "sceneTriangles": 106,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "stall"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/stall",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/stall-green.glb",
+      "bytes": 27120,
+      "sha256": "2da2f7b31cde5d943d7c08c457bbb39797ef0a607921fde0b8455f338ce40205",
+      "boundsMin": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.236983,
+        0.5
+      ],
+      "dimensions": [
+        1.0,
+        1.236983,
+        1.0
+      ],
+      "sceneTriangles": 322,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "stall-green"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/stall-green",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/stall-red.glb",
+      "bytes": 24304,
+      "sha256": "aa20a630f417032c46aaefbc779fd2b3355b451bf05d31acc36fd664146866b1",
+      "boundsMin": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.236983,
+        0.5
+      ],
+      "dimensions": [
+        1.0,
+        1.236983,
+        1.0
+      ],
+      "sceneTriangles": 270,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "stall-red"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/stall-red",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/stall-bench.glb",
+      "bytes": 14168,
+      "sha256": "5a4b379488241394916991c4b482ec4863c05bb548ca8751f5c3935f1f6e5b9c",
+      "boundsMin": [
+        -0.13,
+        0.0,
+        -0.47
+      ],
+      "boundsMax": [
+        0.13,
+        0.225501,
+        0.47
+      ],
+      "dimensions": [
+        0.26,
+        0.225501,
+        0.94
+      ],
+      "sceneTriangles": 180,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "stall-bench"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/stall-bench",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/stall-stool.glb",
+      "bytes": 14172,
+      "sha256": "50c6b512d810687f40e27c7a43b2864e5f7bc84f16ff7a4112cea4807676c336",
+      "boundsMin": [
+        -0.13,
+        0.0,
+        -0.13
+      ],
+      "boundsMax": [
+        0.13,
+        0.225501,
+        0.13
+      ],
+      "dimensions": [
+        0.26,
+        0.225501,
+        0.26
+      ],
+      "sceneTriangles": 180,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "stall-stool"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/stall-stool",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/cart.glb",
+      "bytes": 52920,
+      "sha256": "63503cd0a7398310e01aabc8e3663f711a7517394d23d179d0695157fee99d40",
+      "boundsMin": [
+        -0.446512,
+        -0.0,
+        -0.645
+      ],
+      "boundsMax": [
+        0.446512,
+        0.535501,
+        0.695
+      ],
+      "dimensions": [
+        0.893024,
+        0.535501,
+        1.34
+      ],
+      "sceneTriangles": 608,
+      "scenePrimitives": 3,
+      "materials": 1,
+      "nodes": 3,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1,
+            2
+          ],
+          "mesh": 0,
+          "name": "cart"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/cart",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/cart-high.glb",
+      "bytes": 88560,
+      "sha256": "4b0bce37e8645f3719a9032bf4d49048b7779ac891758ae6e2693238911c5eec",
+      "boundsMin": [
+        -0.446512,
+        -0.0,
+        -0.645
+      ],
+      "boundsMax": [
+        0.446512,
+        0.860501,
+        0.745
+      ],
+      "dimensions": [
+        0.893024,
+        0.860501,
+        1.39
+      ],
+      "sceneTriangles": 1028,
+      "scenePrimitives": 3,
+      "materials": 1,
+      "nodes": 3,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1,
+            2
+          ],
+          "mesh": 0,
+          "name": "cart-high"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/cart-high",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/fence.glb",
+      "bytes": 7672,
+      "sha256": "92261b9419108d84f3db0def5eadeffa783032029897562b1f512e4a7570ef48",
+      "boundsMin": [
+        0.425,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.38,
+        0.5
+      ],
+      "dimensions": [
+        0.075,
+        0.38,
+        1.0
+      ],
+      "sceneTriangles": 84,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "fence"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/fence",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/fence-gate.glb",
+      "bytes": 46340,
+      "sha256": "cee58694ea5fdcca18e01318b355bfcd38eac6fad21b83f860039c287b150cc6",
+      "boundsMin": [
+        0.425,
+        -0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.38,
+        0.5
+      ],
+      "dimensions": [
+        0.075,
+        0.38,
+        1.0
+      ],
+      "sceneTriangles": 560,
+      "scenePrimitives": 2,
+      "materials": 1,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1
+          ],
+          "mesh": 0,
+          "name": "fence-gate"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/fence-gate",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "fantasy",
+      "path": "Models/GLB format/fountain-round.glb",
+      "bytes": 84848,
+      "sha256": "8d19741e2cca6cbdce114b950b4aa12af625979bbc17b2910ef2366834af5565",
+      "boundsMin": [
+        -1.0,
+        0.0,
+        -1.0
+      ],
+      "boundsMax": [
+        1.0,
+        0.28,
+        1.0
+      ],
+      "dimensions": [
+        2.0,
+        0.28,
+        2.0
+      ],
+      "sceneTriangles": 1002,
+      "scenePrimitives": 2,
+      "materials": 2,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 11143,
+          "sha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1
+          ],
+          "mesh": 0,
+          "name": "fountain-round"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "fantasy/fountain-round",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "fantasy",
+      "sourceURL": "https://opengameart.org/content/fantasy-town-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/structure.glb",
+      "bytes": 9672,
+      "sha256": "2ff24b6e283bc687c04cd3e0341049e34ce10fe2394a9856af89226a72eebd9d",
+      "boundsMin": [
+        -0.25,
+        0.0,
+        -0.25
+      ],
+      "boundsMax": [
+        0.25,
+        0.5,
+        0.25
+      ],
+      "dimensions": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "sceneTriangles": 80,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "structure"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/structure",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/structure-roof.glb",
+      "bytes": 21740,
+      "sha256": "645e0454780d0b07084e3d5ffc6c5b164742f62b07b810e1cb838897c7ca83ac",
+      "boundsMin": [
+        -0.272255,
+        0.0,
+        -0.275927
+      ],
+      "boundsMax": [
+        0.263215,
+        0.657183,
+        0.275927
+      ],
+      "dimensions": [
+        0.535471,
+        0.657183,
+        0.551855
+      ],
+      "sceneTriangles": 188,
+      "scenePrimitives": 2,
+      "materials": 1,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1
+          ],
+          "mesh": 0,
+          "name": "structure-roof"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/structure-roof",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/structure-floor.glb",
+      "bytes": 19236,
+      "sha256": "43271d5b1f55c0c832408293454e49c04d8d5d2ed41acdfb9de7fc9d26a5a275",
+      "boundsMin": [
+        -0.25,
+        0.0,
+        -0.25
+      ],
+      "boundsMax": [
+        0.25,
+        0.548667,
+        0.25
+      ],
+      "dimensions": [
+        0.5,
+        0.548667,
+        0.5
+      ],
+      "sceneTriangles": 164,
+      "scenePrimitives": 2,
+      "materials": 1,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1
+          ],
+          "mesh": 0,
+          "name": "structure-floor"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/structure-floor",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/resource-wood.glb",
+      "bytes": 7272,
+      "sha256": "1d5f559da9432f89bd323731ef76b60372e0deb261a96d0da8d5af570c485d80",
+      "boundsMin": [
+        -0.102506,
+        0.0,
+        -0.043549
+      ],
+      "boundsMax": [
+        0.102506,
+        0.062436,
+        0.043549
+      ],
+      "dimensions": [
+        0.205012,
+        0.062436,
+        0.087099
+      ],
+      "sceneTriangles": 64,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "resource-wood"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/resource-wood",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/resource-planks.glb",
+      "bytes": 8884,
+      "sha256": "d3804257474a3baab7ac067be91de5c3d6d18d5803775dc876cb6d9442c30873",
+      "boundsMin": [
+        -0.186471,
+        0.0,
+        -0.312977
+      ],
+      "boundsMax": [
+        0.186471,
+        0.0936,
+        0.312977
+      ],
+      "dimensions": [
+        0.372941,
+        0.0936,
+        0.625954
+      ],
+      "sceneTriangles": 72,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "resource-planks"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/resource-planks",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/tree-log.glb",
+      "bytes": 9180,
+      "sha256": "bd358e55e63a75bd54bea1e4b40ed362baa937ce8e503f2aa2370a5a1d9da11c",
+      "boundsMin": [
+        -0.122082,
+        -0.105655,
+        -0.5
+      ],
+      "boundsMax": [
+        0.127405,
+        0.171482,
+        0.5
+      ],
+      "dimensions": [
+        0.249487,
+        0.277137,
+        1.0
+      ],
+      "sceneTriangles": 88,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "tree-log"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/tree-log",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/tree-log-small.glb",
+      "bytes": 9216,
+      "sha256": "5b416addc4cb01d9d6ad30ec282606a8fefb018043d3253d5e42c1e353aab3c8",
+      "boundsMin": [
+        -0.124744,
+        0.0,
+        -0.325
+      ],
+      "boundsMax": [
+        0.124744,
+        0.277137,
+        0.325
+      ],
+      "dimensions": [
+        0.249487,
+        0.277137,
+        0.65
+      ],
+      "sceneTriangles": 88,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "tree-log-small"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/tree-log-small",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/workbench.glb",
+      "bytes": 26104,
+      "sha256": "bf72d2d535fa29127e5078a6c4c2023a74fa5cd7d02d91ad550e897e088e1dc8",
+      "boundsMin": [
+        -0.147826,
+        0.0,
+        -0.147826
+      ],
+      "boundsMax": [
+        0.177826,
+        0.286591,
+        0.147826
+      ],
+      "dimensions": [
+        0.325652,
+        0.286591,
+        0.295652
+      ],
+      "sceneTriangles": 236,
+      "scenePrimitives": 3,
+      "materials": 1,
+      "nodes": 3,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1,
+            2
+          ],
+          "mesh": 0,
+          "name": "workbench"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/workbench",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/workbench-anvil.glb",
+      "bytes": 30084,
+      "sha256": "a6253df726c1eba7cbaddf7e31cd5a4adfac31309894bf647e4b803d9d75c275",
+      "boundsMin": [
+        -0.147826,
+        0.0,
+        -0.147826
+      ],
+      "boundsMax": [
+        0.174848,
+        0.33575,
+        0.147826
+      ],
+      "dimensions": [
+        0.322674,
+        0.33575,
+        0.295652
+      ],
+      "sceneTriangles": 298,
+      "scenePrimitives": 2,
+      "materials": 1,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1
+          ],
+          "mesh": 0,
+          "name": "workbench-anvil"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/workbench-anvil",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/workbench-grind.glb",
+      "bytes": 24704,
+      "sha256": "93aa1468ee12b16bd2a554e65eab2beebe7e14cf52ed5a35a9530c6123292773",
+      "boundsMin": [
+        -0.1302,
+        0.0,
+        -0.164513
+      ],
+      "boundsMax": [
+        0.1302,
+        0.281736,
+        0.164513
+      ],
+      "dimensions": [
+        0.2604,
+        0.281736,
+        0.329025
+      ],
+      "sceneTriangles": 232,
+      "scenePrimitives": 2,
+      "materials": 1,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1
+          ],
+          "mesh": 0,
+          "name": "workbench-grind"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/workbench-grind",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/tool-axe.glb",
+      "bytes": 8612,
+      "sha256": "de5c6cc51cdb5bcfad8bd7128b7ff0e37a34e6f4f8deddec82bb8634c25cc20d",
+      "boundsMin": [
+        -0.073316,
+        0.0,
+        -0.015464
+      ],
+      "boundsMax": [
+        0.041169,
+        0.256,
+        0.015464
+      ],
+      "dimensions": [
+        0.114486,
+        0.256,
+        0.030927
+      ],
+      "sceneTriangles": 84,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "tool-axe"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/tool-axe",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/tool-hammer.glb",
+      "bytes": 6520,
+      "sha256": "9b27f03c26dabd49a7ea358615e63fe65e1c3d0157887d4ee1ecdfa1f0e688f3",
+      "boundsMin": [
+        -0.045,
+        0.0,
+        -0.02
+      ],
+      "boundsMax": [
+        0.045,
+        0.15348,
+        0.02
+      ],
+      "dimensions": [
+        0.09,
+        0.15348,
+        0.04
+      ],
+      "sceneTriangles": 52,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "tool-hammer"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/tool-hammer",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/tool-hoe.glb",
+      "bytes": 6628,
+      "sha256": "5286bd677d5cf5266ac1a8f06ef034e1d30d442c4387bfc1b7e0dea6bcb34686",
+      "boundsMin": [
+        -0.069304,
+        0.0,
+        -0.035463
+      ],
+      "boundsMax": [
+        0.015464,
+        0.24,
+        0.035464
+      ],
+      "dimensions": [
+        0.084768,
+        0.24,
+        0.070927
+      ],
+      "sceneTriangles": 58,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "tool-hoe"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/tool-hoe",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/barrel.glb",
+      "bytes": 34256,
+      "sha256": "3a0d12f6bdd1badd361f64ce0fbbf878a4ccfc2de8ff1ac4ed4c1aea2a9ee04a",
+      "boundsMin": [
+        -0.11825,
+        0.0,
+        -0.11825
+      ],
+      "boundsMax": [
+        0.11825,
+        0.344,
+        0.11825
+      ],
+      "dimensions": [
+        0.2365,
+        0.344,
+        0.2365
+      ],
+      "sceneTriangles": 412,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "barrel"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/barrel",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/barrel-open.glb",
+      "bytes": 31772,
+      "sha256": "f24ab1c5ab3685fc758f7e7298bf4f255f039fc6dfc7463711fbe90c4c011a41",
+      "boundsMin": [
+        -0.11825,
+        0.0,
+        -0.11825
+      ],
+      "boundsMax": [
+        0.11825,
+        0.344,
+        0.11825
+      ],
+      "dimensions": [
+        0.2365,
+        0.344,
+        0.2365
+      ],
+      "sceneTriangles": 380,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "barrel-open"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/barrel-open",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/box.glb",
+      "bytes": 14056,
+      "sha256": "346eebd23986793b992ca6e05e9f98d6f5db96a9bfa3aa7c8360ac8b7920def8",
+      "boundsMin": [
+        -0.125,
+        0.0,
+        -0.125
+      ],
+      "boundsMax": [
+        0.125,
+        0.25,
+        0.125
+      ],
+      "dimensions": [
+        0.25,
+        0.25,
+        0.25
+      ],
+      "sceneTriangles": 124,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "box"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/box",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/box-open.glb",
+      "bytes": 17052,
+      "sha256": "2169e2291052ef9c378af4d6736df3fcff4ebca8fc39cbcdb4b7ad6accdff568",
+      "boundsMin": [
+        -0.125,
+        0.0,
+        -0.125
+      ],
+      "boundsMax": [
+        0.125,
+        0.30625,
+        0.125
+      ],
+      "dimensions": [
+        0.25,
+        0.30625,
+        0.25
+      ],
+      "sceneTriangles": 156,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "box-open"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/box-open",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/bucket.glb",
+      "bytes": 7816,
+      "sha256": "ff173908480929067cd634d5edfedba038428f1503db487521492975fa5c8274",
+      "boundsMin": [
+        -0.072063,
+        0.0,
+        -0.072063
+      ],
+      "boundsMax": [
+        0.072063,
+        0.192063,
+        0.072063
+      ],
+      "dimensions": [
+        0.144125,
+        0.192063,
+        0.144125
+      ],
+      "sceneTriangles": 68,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "bucket"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/bucket",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/fence.glb",
+      "bytes": 6428,
+      "sha256": "5d8050e39c8b83b5835ea38b9b17429b4a03e289b566a1db771b7e1d9c6e4050",
+      "boundsMin": [
+        -0.25,
+        0.0,
+        -0.25
+      ],
+      "boundsMax": [
+        0.25,
+        0.517467,
+        -0.20722
+      ],
+      "dimensions": [
+        0.5,
+        0.517467,
+        0.04278
+      ],
+      "sceneTriangles": 48,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "fence"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/fence",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "survival",
+      "path": "Models/GLB format/fence-doorway.glb",
+      "bytes": 13588,
+      "sha256": "f52756aa5150704dba49ef4d4d179a20dfd333e4ce9a914a5e9b0088cf2db933",
+      "boundsMin": [
+        -0.25,
+        0.0,
+        -0.252674
+      ],
+      "boundsMax": [
+        0.25,
+        0.517467,
+        -0.204546
+      ],
+      "dimensions": [
+        0.5,
+        0.517467,
+        0.048127
+      ],
+      "sceneTriangles": 108,
+      "scenePrimitives": 2,
+      "materials": 1,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7440,
+          "sha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            1
+          ],
+          "mesh": 0,
+          "name": "fence-doorway"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "survival/fence-doorway",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "survival",
+      "sourceURL": "https://opengameart.org/content/survival-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/tree_oak.glb",
+      "bytes": 14644,
+      "sha256": "d7fd8773674928c50c11b66d12c636d49bdcc15a8b1c7fbb98e6f63a3439a3f3",
+      "boundsMin": [
+        -0.320277,
+        -0.05,
+        -0.369824
+      ],
+      "boundsMax": [
+        0.320277,
+        1.17624,
+        0.369824
+      ],
+      "dimensions": [
+        0.640554,
+        1.22624,
+        0.739648
+      ],
+      "sceneTriangles": 196,
+      "scenePrimitives": 2,
+      "materials": 2,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "tree_oak",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/tree_oak",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/tree_pineDefaultA.glb",
+      "bytes": 17220,
+      "sha256": "60d8f352fa3659ed275e06cbddfecf8f92c8effe2977c2f2d7b29b6c9b582e46",
+      "boundsMin": [
+        -0.26598,
+        -0.05,
+        -0.26598
+      ],
+      "boundsMax": [
+        0.26598,
+        1.495836,
+        0.26598
+      ],
+      "dimensions": [
+        0.53196,
+        1.545836,
+        0.53196
+      ],
+      "sceneTriangles": 230,
+      "scenePrimitives": 2,
+      "materials": 2,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "tree_pineDefaultA",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/tree_pineDefaultA",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/tree_default.glb",
+      "bytes": 9428,
+      "sha256": "562d29638c902de3c7bee465d3a53bb77117efbc392ae04ed894faf6b5dc691d",
+      "boundsMin": [
+        -0.3775,
+        -0.05,
+        -0.326925
+      ],
+      "boundsMax": [
+        0.3775,
+        1.657887,
+        0.326925
+      ],
+      "dimensions": [
+        0.755,
+        1.707887,
+        0.653849
+      ],
+      "sceneTriangles": 114,
+      "scenePrimitives": 2,
+      "materials": 2,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "tree_default",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/tree_default",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/rock_largeA.glb",
+      "bytes": 7552,
+      "sha256": "6dd15390fd96501dcd1454765a17ba61dbbd8d47705dfe5149c8dd92b353ce25",
+      "boundsMin": [
+        -0.392453,
+        -0.05,
+        -0.507731
+      ],
+      "boundsMax": [
+        0.392453,
+        0.209776,
+        0.507731
+      ],
+      "dimensions": [
+        0.784907,
+        0.259776,
+        1.015461
+      ],
+      "sceneTriangles": 80,
+      "scenePrimitives": 2,
+      "materials": 2,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "rock_largeA",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/rock_largeA",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/plant_bush.glb",
+      "bytes": 4396,
+      "sha256": "ae7b1beb39e242b13f5f29e3ec23ef21034b814f82297b8aa00a9bf4e1b09590",
+      "boundsMin": [
+        -0.198,
+        -0.05,
+        -0.198
+      ],
+      "boundsMax": [
+        0.198,
+        0.194444,
+        0.198
+      ],
+      "dimensions": [
+        0.396,
+        0.244444,
+        0.396
+      ],
+      "sceneTriangles": 32,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "plant_bush",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/plant_bush",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/fence_simple.glb",
+      "bytes": 5712,
+      "sha256": "ecaf6c29532aa9fd305a8ef71df769d60748bd797f2eb1c63bdefc4edb8062a7",
+      "boundsMin": [
+        -0.5,
+        -0.05,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.295027,
+        -0.43
+      ],
+      "dimensions": [
+        1.0,
+        0.345027,
+        0.07
+      ],
+      "sceneTriangles": 64,
+      "scenePrimitives": 2,
+      "materials": 2,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "fence_simple",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/fence_simple",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/fence_gate.glb",
+      "bytes": 27652,
+      "sha256": "34d10d5620179b8a211a01eea837caa828c0782422f0b408e1a5838788888436",
+      "boundsMin": [
+        -0.5,
+        -0.05,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        0.295027,
+        -0.43
+      ],
+      "dimensions": [
+        1.0,
+        0.345027,
+        0.07
+      ],
+      "sceneTriangles": 524,
+      "scenePrimitives": 5,
+      "materials": 3,
+      "nodes": 3,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "children": [
+            2
+          ],
+          "name": "fence_gate",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/fence_gate",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/crops_wheatStageA.glb",
+      "bytes": 56228,
+      "sha256": "d8c690d473a230741cf4d03fa6a69a405f0ae6a246847a2a72e7f50dd5bebc08",
+      "boundsMin": [
+        -0.269804,
+        -0.05,
+        -0.22335
+      ],
+      "boundsMax": [
+        0.269804,
+        0.284936,
+        0.22335
+      ],
+      "dimensions": [
+        0.539608,
+        0.334936,
+        0.446699
+      ],
+      "sceneTriangles": 720,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "crops_wheatStageA",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/crops_wheatStageA",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/crops_wheatStageB.glb",
+      "bytes": 30040,
+      "sha256": "589db4d6fe0bd7616c1f1c2f10a335704b2dad5d24638dc08a5b2e5334c68852",
+      "boundsMin": [
+        -0.269804,
+        -0.05,
+        -0.22335
+      ],
+      "boundsMax": [
+        0.269804,
+        0.484936,
+        0.22335
+      ],
+      "dimensions": [
+        0.539608,
+        0.534936,
+        0.446699
+      ],
+      "sceneTriangles": 360,
+      "scenePrimitives": 2,
+      "materials": 2,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "crops_wheatStageB",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/crops_wheatStageB",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/crops_dirtRow.glb",
+      "bytes": 4712,
+      "sha256": "a36752160e42703c0539386bf07260984796dd07674d322ae18c1fc5201b59b2",
+      "boundsMin": [
+        -0.5,
+        -0.05,
+        -0.279
+      ],
+      "boundsMax": [
+        0.5,
+        0.0,
+        0.341
+      ],
+      "dimensions": [
+        1.0,
+        0.05,
+        0.62
+      ],
+      "sceneTriangles": 44,
+      "scenePrimitives": 2,
+      "materials": 2,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "crops_dirtRow",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/crops_dirtRow",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/crops_dirtRowEnd.glb",
+      "bytes": 4064,
+      "sha256": "9c65aac1b350fa3bb7a05d651ef1e21961cda0b71706f4d6882c03ba892eb62d",
+      "boundsMin": [
+        -0.1,
+        -0.05,
+        -0.279
+      ],
+      "boundsMax": [
+        0.5,
+        0.0,
+        0.341
+      ],
+      "dimensions": [
+        0.6,
+        0.05,
+        0.62
+      ],
+      "sceneTriangles": 32,
+      "scenePrimitives": 2,
+      "materials": 2,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "crops_dirtRowEnd",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/crops_dirtRowEnd",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "nature",
+      "path": "Models/GLTF format/bridge_wood.glb",
+      "bytes": 15692,
+      "sha256": "3da4c208b0f72b7f2ba42db521b62ec4b0278050c75256a6982c40d21aab5701",
+      "boundsMin": [
+        -0.52,
+        -0.05,
+        -0.52
+      ],
+      "boundsMax": [
+        0.52,
+        0.35,
+        0.52
+      ],
+      "dimensions": [
+        1.04,
+        0.4,
+        1.04
+      ],
+      "sceneTriangles": 220,
+      "scenePrimitives": 3,
+      "materials": 3,
+      "nodes": 2,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_materials_unlit"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [],
+      "embeddedImages": 0,
+      "rootNodes": [
+        1
+      ],
+      "rootTransforms": [
+        {
+          "name": "bridge_wood",
+          "translation": [
+            0,
+            -0.05,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "mesh": 0
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "nature/bridge_wood",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "nature",
+      "sourceURL": "https://opengameart.org/content/nature-kit"
+    },
+    {
+      "kit": "castle",
+      "path": "Models/GLB format/stairs-stone.glb",
+      "bytes": 9836,
+      "sha256": "ec21b1d65c04ba6384734c31ac542bb4015541e652c411796fd7bcf292e6413c",
+      "boundsMin": [
+        -0.11625,
+        0.0,
+        -0.4095
+      ],
+      "boundsMax": [
+        0.11625,
+        0.675,
+        0.4095
+      ],
+      "dimensions": [
+        0.2325,
+        0.675,
+        0.819
+      ],
+      "sceneTriangles": 104,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7529,
+          "sha256": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "stairs-stone"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "castle/stairs-stone",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "castle",
+      "sourceURL": "https://opengameart.org/content/castle-kit"
+    },
+    {
+      "kit": "castle",
+      "path": "Models/GLB format/tower-square.glb",
+      "bytes": 16564,
+      "sha256": "ae2e4f11247fef4e8e550011c20bc1862839cd4cfd21590aec9781ae0fbbbc7f",
+      "boundsMin": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.31,
+        0.5
+      ],
+      "dimensions": [
+        1.0,
+        1.31,
+        1.0
+      ],
+      "sceneTriangles": 176,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7529,
+          "sha256": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "tower-square"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "castle/tower-square",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "castle",
+      "sourceURL": "https://opengameart.org/content/castle-kit"
+    },
+    {
+      "kit": "castle",
+      "path": "Models/GLB format/tower-square-base.glb",
+      "bytes": 4456,
+      "sha256": "996887e98957eeea2ba7b5d14f0d17877c91e4e99e1c5b8ee57d87b7f7c9d5e8",
+      "boundsMin": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        1.01,
+        0.5
+      ],
+      "dimensions": [
+        1.0,
+        1.01,
+        1.0
+      ],
+      "sceneTriangles": 28,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7529,
+          "sha256": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "tower-square-base"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "castle/tower-square-base",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "castle",
+      "sourceURL": "https://opengameart.org/content/castle-kit"
+    },
+    {
+      "kit": "castle",
+      "path": "Models/GLB format/tower-square-mid-door.glb",
+      "bytes": 28996,
+      "sha256": "1a7d065cb548b73adcdd497cac10397247bd70377cb2f6b9d36b78b61087b35d",
+      "boundsMin": [
+        -0.465,
+        0.0,
+        -0.465
+      ],
+      "boundsMax": [
+        0.465,
+        1.01,
+        0.465
+      ],
+      "dimensions": [
+        0.93,
+        1.01,
+        0.93
+      ],
+      "sceneTriangles": 344,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7529,
+          "sha256": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "tower-square-mid-door"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "castle/tower-square-mid-door",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "castle",
+      "sourceURL": "https://opengameart.org/content/castle-kit"
+    },
+    {
+      "kit": "castle",
+      "path": "Models/GLB format/tower-square-roof.glb",
+      "bytes": 14036,
+      "sha256": "94215209b27f5274188d70906d2a4df357529abd878b6b916bfb61ac5e64d1c8",
+      "boundsMin": [
+        -0.5,
+        0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.5,
+        2.01,
+        0.5
+      ],
+      "dimensions": [
+        1.0,
+        2.01,
+        1.0
+      ],
+      "sceneTriangles": 144,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7529,
+          "sha256": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "tower-square-roof"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "castle/tower-square-roof",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "castle",
+      "sourceURL": "https://opengameart.org/content/castle-kit"
+    },
+    {
+      "kit": "castle",
+      "path": "Models/GLB format/wall-doorway.glb",
+      "bytes": 37560,
+      "sha256": "8daf5cccceace888d51d74b0e0254e192004faf926e07f1b28e94191879af3a6",
+      "boundsMin": [
+        -0.5,
+        -0.0,
+        -0.5
+      ],
+      "boundsMax": [
+        0.0,
+        1.31,
+        0.5
+      ],
+      "dimensions": [
+        0.5,
+        1.31,
+        1.0
+      ],
+      "sceneTriangles": 500,
+      "scenePrimitives": 1,
+      "materials": 1,
+      "nodes": 1,
+      "animations": 0,
+      "extensionsUsed": [
+        "KHR_texture_transform"
+      ],
+      "extensionsRequired": [],
+      "externalImages": [
+        {
+          "uri": "Textures/colormap.png",
+          "path": "Models/GLB format/Textures/colormap.png",
+          "bytes": 7529,
+          "sha256": "66fd49be148f32e88f6c8cace67120250d1943a7856601158ad0ff24651db0b0",
+          "pngSize": [
+            512,
+            512
+          ]
+        }
+      ],
+      "embeddedImages": 0,
+      "rootNodes": [
+        0
+      ],
+      "rootTransforms": [
+        {
+          "mesh": 0,
+          "name": "wall-doorway"
+        }
+      ],
+      "license": "CC0-1.0",
+      "entranceVerified": false,
+      "id": "castle/wall-doorway",
+      "status": "source-verified; normalization and gallery pending",
+      "sourceArchiveId": "castle",
+      "sourceURL": "https://opengameart.org/content/castle-kit"
+    }
+  ],
+  "promotionGate": [
+    "retain license and archive hashes",
+    "normalize full scene hierarchy to Y-up floor pivot and +Z entrance",
+    "confirm doorway and approach in gallery",
+    "produce output hash and dependencies",
+    "validate glTF and mobile/offline tests"
+  ],
+  "studyBoardSources": [
+    {
+      "archiveId": "fantasy",
+      "path": "Previews/wall-door.png",
+      "sha256": "9206cfb42df367c5ab368e12860912ffb7d4de22b2d81dd8cdba2ffb43b7571d",
+      "license": "CC0-1.0"
+    },
+    {
+      "archiveId": "fantasy",
+      "path": "Previews/roof-high-gable.png",
+      "sha256": "85825b4e8329ad28df0094a070d7b56aec8c01bdc8db8c16e2999c14287d59aa",
+      "license": "CC0-1.0"
+    },
+    {
+      "archiveId": "fantasy",
+      "path": "Previews/stall-green.png",
+      "sha256": "49025cb0115033b7fc41d58336b3eda452d0c37c8c13f324027d685ce50c16e7",
+      "license": "CC0-1.0"
+    },
+    {
+      "archiveId": "fantasy",
+      "path": "Previews/chimney.png",
+      "sha256": "77f405b35c3280463e91d7880af5cfdacb8f0970279c315c0139e46023d4eda3",
+      "license": "CC0-1.0"
+    },
+    {
+      "archiveId": "survival",
+      "path": "Previews/structure-roof.png",
+      "sha256": "0c7df130189edf3513e27303966f22a48cbe1244d500e414ca2cfb899464d7a5",
+      "license": "CC0-1.0"
+    },
+    {
+      "archiveId": "survival",
+      "path": "Previews/workbench-anvil.png",
+      "sha256": "8d40003563126023f795dcbba7ab67bc53230b83c8dbbd183c53ce1d8810284f",
+      "license": "CC0-1.0"
+    },
+    {
+      "archiveId": "survival",
+      "path": "Previews/resource-wood.png",
+      "sha256": "ebd1e6c5b776446dcce46d005432b2001eaf79150a3518493593fce94afcfa76",
+      "license": "CC0-1.0"
+    },
+    {
+      "archiveId": "survival",
+      "path": "Previews/tree-log.png",
+      "sha256": "652c9cb119d52232179a803704e47d4cda64f72ec7f5512ebddd8591e98f10df",
+      "license": "CC0-1.0"
+    }
+  ]
+}

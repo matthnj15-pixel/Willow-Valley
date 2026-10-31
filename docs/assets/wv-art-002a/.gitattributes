@@ -1,0 +1,2 @@
+# Preserve the exact acquired license bytes and their SHA-256 evidence.
+licenses/*.txt -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
