@@ -1,4 +1,5 @@
-import {setRoadBounds,ensureGraph,validGraph,graphLines,addGeometry,deleteNode,deleteSegment,setSegmentCurve,saveGraphRoads,splitSegment} from "./road-network.mjs";
+import {validateRoadAlignment} from "./road-surface.mjs";
+import {setRoadBounds,ensureGraph,nodeAt,segmentAt,validGraph,graphLines,addGeometry,deleteNode,deleteSegment,setSegmentCurve,saveGraphRoads,splitSegment} from "./road-network.mjs";
 import {advanceDesirePaths,visibleDesirePaths,validDesirePaths} from "./desire-paths.mjs";
 import {validZones,findCottageSite,configureOrganicBounds,zoneAt} from "./organic-world.mjs";
 import {ensureCivic,validCivic,unlocked,livelihood,pendingPetition} from "./settlement-play.mjs";
@@ -147,15 +148,9 @@ export function addRoad(s,points){return buildRoad(s,points,points.slice(1).map(
 export function buildRoad(s,anchors,controls){
  if(!Array.isArray(anchors)||anchors.length<2||anchors.length>512||!Array.isArray(controls)||controls.length!==anchors.length-1||!anchors.every(p=>validPoint(p,worldDimensions(s)))||controls.some(c=>c!==null&&!validPoint(c,worldDimensions(s))))return{ok:false,reason:"Choose valid road nodes."};
  const terrain=generatedWorld(s);
- if(terrain){
-  for(let i=1;i<anchors.length;i++){
-   const a=anchors[i-1],b=anchors[i],length=distance(a,b),steps=Math.ceil(length/12);
-   for(let j=0;j<=steps;j++){
-    const p={x:a.x+(b.x-a.x)*j/steps,y:a.y+(b.y-a.y)*j/steps};
-    if(terrain.sample(p.x,p.y).water!==null||terrain.slope(p.x,p.y)>1.55)
-     return{ok:false,reason:"Roads must stay on land. Avoid water and sheer cliffs."};
-   }
-  }
+ if(terrain)for(let i=1;i<anchors.length;i++){
+  const validation=validateRoadAlignment(terrain,anchors[i-1],controls[i-1],anchors[i]);
+  if(!validation.ok)return validation;
  }
  const graph=structuredClone(ensureGraph(s));const result=addGeometry(graph,anchors,controls);
  if(!result.ok)return result;
@@ -180,7 +175,12 @@ export function removeRoadSegment(s,id){
  s.logs.unshift(monthLabel(s.turn)+": Road segment removed. No refund.");return outcome;
 }
 export function reshapeRoadSegment(s,id,control){
- if(!setSegmentCurve(ensureGraph(s),id,control))return{ok:false,reason:"Could not reshape the road."};
+ const graph=structuredClone(ensureGraph(s));
+ if(!setSegmentCurve(graph,id,control))return{ok:false,reason:"Could not reshape the road."};
+ const edge=segmentAt(graph,id);
+ const validation=validateRoadAlignment(generatedWorld(s),nodeAt(graph,edge.a),edge.control,nodeAt(graph,edge.b));
+ if(!validation.ok)return validation;
+ s.roadGraph=graph;
  saveGraphRoads(s);s.report="Road shape updated without direct charge or refund.";
  s.logs.unshift(monthLabel(s.turn)+": Road curve adjusted.");return{ok:true};
 }
