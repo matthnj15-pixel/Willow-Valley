@@ -3,7 +3,7 @@ import {resolveFoundation} from "./foundation-system.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {edgePoints,nodeAt,quadraticPoint} from "./road-network.mjs";
 import {flattenRoadDraft,curvedSegments} from "./road-editor.mjs";
-import {cottageBlueprint,buildingBlueprint} from "./settlement-architecture.mjs";
+import {cottageBlueprint,buildingBlueprint,buildingFootprint} from "./settlement-architecture.mjs";
 // Gameplay geometry shares the exact seeded world elevation and water mask.
 // Every vertex is in the same WebGL coordinates as the World Builder.
 // The temporary structural shapes will be replaced with Kenney Fantasy Town
@@ -192,10 +192,10 @@ export function settlementGeometry(world,state,{
   }
  for(const building of state.buildings||[]){
   const material=colors[building.type]||colors.wall;
-  const size=building.type==="farm"?48:building.type==="market"?48:building.type==="granary"?32:35;
+  const {width:size,depth}=buildingFootprint(building.type);
   const height=building.type==="granary"?40:building.type==="market"?29:building.type==="lumber"?27:24;
   const style=buildingBlueprint(building,state.civic?.chapter||0);
-   block(markers,world,building,size,size*.9,height,material,colors.roof,style.orientation,style);
+   block(markers,world,building,size,depth,height,material,colors.roof,style.orientation,style);
  }
  if(mode==="road"){
   if(touchFocus&&Number.isFinite(touchFocus.x)&&Number.isFinite(touchFocus.y))

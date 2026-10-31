@@ -1,3 +1,5 @@
+import {validateFoundationSite} from "./foundation-system.mjs";
+import {cottageBlueprint} from "./settlement-architecture.mjs";
 // WV-WORLD-001 early organic settlement: paint permissions and deterministic site choice.
 // World coordinates are renderer-independent. Full terrain mesh is a later slice.
 import {createWorld,normalizeWorldSettings} from "./world-gen.mjs";
@@ -380,6 +382,9 @@ export function findCottageSite(s){
  for(const {p,parcel} of viable.slice(0,30)){
   const approach=cottageApproach(s,p,parcel);
   if(!approach)continue;
+  const style=cottageBlueprint({...p,orientation:parcel.orientation,foundedTurn:s.turn,
+   foundedEra:s.civic?.chapter||0,entrance:approach.entrance});
+  if(!validateFoundationSite(modelFor(s),p,style.width,style.depth,style.orientation,{maxSlope:.55}).ok)continue;
   return{house:{x:p.x,y:p.y,orientation:parcel.orientation,
     foundedTurn:s.turn,foundedEra:s.civic?.chapter||0,entrance:approach.entrance,
     parcel:{vertices:parcel.vertices,orientation:parcel.orientation}},
