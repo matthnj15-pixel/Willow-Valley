@@ -51,7 +51,7 @@ function showTerrainFailure(error){
  // The in-game lightweight-retry control stays available on 3D failure.
  window.__wvBoot?.ready();
 }
-function bootGameWorld({lite=false}={}){
+async function bootGameWorld({lite=false,preserveCamera=null}={}){
  const sequence=++worldLoadGeneration;
  window.__wvBoot?.phase(lite?"Preparing a lighter landscape…":"Generating the 3D landscape…");
  configureWorldState(game);
@@ -78,17 +78,27 @@ function bootGameWorld({lite=false}={}){
  $("terrainLoadTitle").textContent=lite?"Opening with lightweight graphics…":"Opening your 3D settlement…";
  $("terrainLoadDetail").textContent="Save Slot "+activeSlot+" is preserved.";
  let canvas=$("game3D");
- if(lite){
+ if(lite||canvas.dataset.renderer){
   // A lost WebGL context cannot be restored by requesting getContext again
   // on the same element; rebuild only the canvas, never the saved state.
   const replacement=canvas.cloneNode(false);
   canvas.replaceWith(replacement);canvas=replacement;
  }
  try{
-  active3D=mountWorld3D(canvas,world,{
+  let mount=mountWorld3D;
+  const threeRequested=!lite&&location.protocol!=="file:"&&new URLSearchParams(location.search).get("renderer")==="three";
+  if(threeRequested){
+   try{mount=(await import('./world-renderer-three.mjs')).mountWorld3D;}
+   catch(error){console.warn('Three.js unavailable; using native WebGL',error);}
+   if(sequence!==worldLoadGeneration)return;
+  }
+  active3D=mount(canvas,world,{
    interactive:false,quality:lite?"lite":"game",
    onReady:()=>{if(sequence===worldLoadGeneration){$("terrainLoad").hidden=true;window.__wvBoot?.ready();}},
-   onError:error=>{if(sequence===worldLoadGeneration)showTerrainFailure(error);},
+   onError:error=>{if(sequence===worldLoadGeneration){
+    if(threeRequested){const view=active3D?.getCamera();void bootGameWorld({lite:true,preserveCamera:view});requestAnimationFrame(renderMap);}
+    else showTerrainFailure(error);
+   }},
    onCamera:view=>{
     if(sequence!==worldLoadGeneration)return;
     $("cameraAngle").textContent=Math.round(view.pitch*180/Math.PI)+"°";
@@ -101,7 +111,11 @@ function bootGameWorld({lite=false}={}){
   });
   const center=game.houses?.[0]||{x:world.width/2,y:world.depth/2};
   active3D.homeView(center.x+115,center.y,Math.min(500,world.depth*.42));
+  if(preserveCamera)active3D.setCamera(preserveCamera);
+  canvas.dataset.renderer=mount===mountWorld3D?'webgl':'three';
+  requestAnimationFrame(renderMap);
  }catch(error){
+  if(!lite&&new URLSearchParams(location.search).get("renderer")==="three"){void bootGameWorld({lite:true,preserveCamera});return;}
   showTerrainFailure(error);
  }
 }

@@ -1,3 +1,4 @@
+const gameURL=process.env.WV_RENDERER==='three'?'/?preview=1&renderer=three':'/?preview=1';
 import {test,expect} from "@playwright/test";
 
 // Synthetic pointer sequences use actual game event listeners. Camera data
@@ -29,7 +30,7 @@ async function touchPair(page,steps){
  },steps);
 }
 test("WORLD-CAMERA-UI-01: horizontal two-finger motion rolls the trackball, not the camera focus",async({page})=>{
- await page.goto("/?preview=1");
+ await openGame(page);
  await expect(page.locator("#stage")).toHaveClass(/is-3d/);
  const r=await touchPair(page,[[[-70,0],[70,0]],[[-40,0],[100,0]],[[-15,0],[125,0]]]);
  expect(r.unchanged).toBe(true);
@@ -39,7 +40,7 @@ test("WORLD-CAMERA-UI-01: horizontal two-finger motion rolls the trackball, not 
  expect(r.after.z).toBeCloseTo(r.original.z,3);
 });
 test("WORLD-CAMERA-UI-02: symmetrical two-finger pinch still zooms around the settlement",async({page})=>{
- await page.goto("/?preview=1");
+ await openGame(page);
  const r=await touchPair(page,[[[-60,0],[60,0]],[[-90,0],[90,0]],[[-110,0],[110,0]]]);
  expect(r.after.zoom).toBeLessThan(r.original.zoom);
  expect(Math.abs(r.after.pitch-r.original.pitch)).toBeLessThan(.055);
@@ -47,13 +48,13 @@ test("WORLD-CAMERA-UI-02: symmetrical two-finger pinch still zooms around the se
  expect(r.unchanged).toBe(true);
 });
 test("WORLD-CAMERA-UI-03: twisting still rotates in the push direction",async({page})=>{
- await page.goto("/?preview=1");
+ await openGame(page);
  const r=await touchPair(page,[[[-70,0],[70,0]],[[-70,25],[70,-25]],[[-70,38],[70,-38]]]);
  expect(r.after.yaw-r.original.yaw).toBeGreaterThan(.24);
  expect(r.unchanged).toBe(true);
 });
 test("WORLD-CAMERA-UI-04: a diagonal two-finger swipe changes yaw and tilt together",async({page})=>{
- await page.goto("/?preview=1");
+ await openGame(page);
  const r=await touchPair(page,[[[-60,0],[60,0]],[[-40,20],[80,20]],[[-10,52],[110,52]]]);
  expect(r.after.yaw).toBeLessThan(r.original.yaw-.10);
  expect(r.after.pitch).toBeGreaterThan(r.original.pitch+.10);
@@ -61,7 +62,7 @@ test("WORLD-CAMERA-UI-04: a diagonal two-finger swipe changes yaw and tilt toget
  await expect(page.locator("#cameraAngle")).toBeVisible();
 });
 test("WORLD-CAMERA-UI-05: two-finger navigation cancels a started paint stroke",async({page})=>{
- await page.goto("/?preview=1");
+ await openGame(page);
  await page.locator("#zoneBtn").click();
  const r=await page.locator("#map").evaluate(svg=>{
   Object.defineProperty(svg,"setPointerCapture",{value:()=>{},configurable:true});
@@ -84,7 +85,7 @@ test("WORLD-CAMERA-UI-05: two-finger navigation cancels a started paint stroke",
  await expect(page.locator("#zoneCommit")).toBeDisabled();
 });
 test("WORLD-CAMERA-UI-06: reset camera restores settlement viewing angle",async({page})=>{
- await page.goto("/?preview=1");
+ await openGame(page);
  await touchPair(page,[[[-55,0],[55,0]],[[-35,25],[75,25]],[[-5,60],[105,60]]]);
  await page.locator("#reset3DCamera").click();
  const camera=await page.locator("#stage").evaluate(el=>el.dataset);
@@ -92,7 +93,7 @@ test("WORLD-CAMERA-UI-06: reset camera restores settlement viewing angle",async(
  expect(Number(camera.cameraYaw)).toBeCloseTo(.71,3);
 });
 test("WORLD-CAMERA-UI-07: one-finger exploring still pans the map",async({page})=>{
- await page.goto("/?preview=1");
+ await openGame(page);
  const original=await page.locator("#stage").evaluate(el=>({
   x:Number(el.dataset.cameraFocusX),z:Number(el.dataset.cameraFocusZ)}));
  await page.locator("#map").evaluate(svg=>{
@@ -107,3 +108,8 @@ test("WORLD-CAMERA-UI-07: one-finger exploring still pans the map",async({page})
   x:Number(el.dataset.cameraFocusX),z:Number(el.dataset.cameraFocusZ)}));
  expect(Math.hypot(after.x-original.x,after.z-original.z)).toBeGreaterThan(12);
 });
+
+async function openGame(page){
+ await page.goto(gameURL);
+ await expect(page.locator("#stage")).toHaveAttribute("data-camera-yaw", /[0-9]/);
+}
