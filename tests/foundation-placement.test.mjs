@@ -19,3 +19,22 @@ test('placement rejects excessive relief/bounds and preserves legacy compatibili
  assert.equal(validateFoundationSite(world,{x:3,y:3},40,36).ok,false);
  assert.equal(validateFoundationSite({...world,sample:x=>({height:x,water:null})},site,40,36).ok,false);
 });
+
+test('flooded facility footprint rejects before changing resources or saved structures',async()=>{
+ const {startWorldGame,generatedWorld,canPlace,placeBuilding}=await import('../simulation.mjs');
+ const {buildingFootprint,buildingBlueprint}=await import('../settlement-architecture.mjs');
+ const state=startWorldGame({seed:'FOUNDATION-FLOOD-56',size:'small',lakes:3,rivers:1});
+ state.houses=[];state.buildings=[];state.roads=[];state.localLanes=[];
+ const terrain=generatedWorld(state),footprint=buildingFootprint('lumber');
+ let site=null;
+ for(let y=40;y<terrain.depth-40&&!site;y+=12)for(let x=40;x<terrain.width-40;x+=12){
+  const candidate={x,y,type:'lumber'};
+  if(!canPlace(state,candidate))continue;
+  const result=validateFoundationSite(terrain,candidate,footprint.width,footprint.depth,buildingBlueprint(candidate).orientation);
+  if(!result.ok&&/flooded/.test(result.reason)){site=candidate;break;}
+ }
+ assert.ok(site,'fixture must have dry-centered shoreline land');
+ const before=structuredClone(state),result=placeBuilding(state,'lumber',site);
+ assert.equal(result.ok,false);assert.match(result.reason,/flooded/);
+ assert.deepEqual(state,before,'rejection must not consume resources or change saves');
+});
