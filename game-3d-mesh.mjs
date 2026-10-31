@@ -1,3 +1,4 @@
+import {roadJunctionPolygons} from "./road-junctions.mjs";
 import {resolveFoundation} from "./foundation-system.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {edgePoints,nodeAt,quadraticPoint} from "./road-network.mjs";
@@ -8,7 +9,7 @@ import {cottageBlueprint,buildingBlueprint,buildingFootprint} from "./settlement
 // The temporary structural shapes will be replaced with Kenney Fantasy Town
 // model assets without changing roads, zoning or save data.
 const colors={
- road:[.73,.65,.49],roadEdge:[.40,.49,.39],path:[.60,.49,.34],
+ road:[.73,.65,.49],roadEdge:[.48,.51,.36],path:[.60,.49,.34],
  residential:[.76,.61,.41],commercial:[.48,.64,.69],
  farmland:[.70,.68,.38],preserve:[.40,.59,.39],erase:[.71,.37,.29],
  wall:[.86,.78,.62],roof:[.50,.32,.25],
@@ -71,18 +72,6 @@ export function terrainRibbon(out,world,points,width,color,offset=1.1,spacing=6)
 }
 function ribbon(out,world,points,width,color,offset=1.1){
  terrainRibbon(out,world,points,width,color,offset);
-}
-// A short, radial surface closes the road mesh at branch points and shared
-// intersections. Both the ring and center sample the same world heightfield.
-function junction(out,world,p,radius,color,offset){
- const center=worldPos(world,p,offset),sides=20;
- for(let i=0;i<sides;i++){
-  const a=i/sides*Math.PI*2,b=(i+1)/sides*Math.PI*2;
-  const edge=t=>worldPos(world,{
-   x:p.x+Math.cos(t)*radius,y:p.y+Math.sin(t)*radius
-  },offset);
-  groundPolygon(out,world,[center,edge(b),edge(a)].map(v=>({x:v[0]+world.width/2,y:v[2]+world.depth/2})),color,offset);
- }
 }
 function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
  const cs=Math.cos(orientation),sn=Math.sin(orientation),x=width/2,z=depth/2;
@@ -192,20 +181,13 @@ export function settlementGeometry(world,state,{
  }
  const graph=state.roadGraph;
  if(graph?.segments?.length){
-  for(const e of graph.segments){
-   const a=nodeAt(graph,e.a),b=nodeAt(graph,e.b);
-   if(!a||!b)continue;
-   const line=liveCurve?.id===e.id?
-    curvePoints(a,liveCurve.control,b):edgePoints(graph,e);
-   if(line.length<2)continue;
-   ribbon(surfaces,world,line,34,colors.roadEdge,.95);
-   ribbon(surfaces,world,line,24,colors.road,1.3);
-   if(liveCurve?.id===e.id)ribbon(roadGuides,world,line,13,[.99,.77,.34],4.8);
-  }
-  for(const n of graph.nodes){
-   if(!graph.segments.some(e=>e.a===n.id||e.b===n.id))continue;
-   junction(surfaces,world,n,17,colors.roadEdge,.95);
-   junction(surfaces,world,n,12,colors.road,1.3);
+  const network=roadJunctionPolygons(graph,liveCurve);
+  for(const polygon of network.shoulders)groundPolygon(surfaces,world,polygon,colors.roadEdge,.95);
+  for(const polygon of network.pavement)groundPolygon(surfaces,world,polygon,colors.road,1.3);
+  if(liveCurve){
+   const e=graph.segments.find(e=>e.id===liveCurve.id);
+   const a=e&&nodeAt(graph,e.a),b=e&&nodeAt(graph,e.b);
+   if(a&&b)ribbon(roadGuides,world,curvePoints(a,liveCurve.control,b),13,[.99,.77,.34],4.8);
   }
  }else for(const road of state.roads||[]){
   if(road.length<2)continue;
