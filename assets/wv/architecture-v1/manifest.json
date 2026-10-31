@@ -6,8 +6,8 @@
       "id": "home-long-ridge",
       "role": "house",
       "url": "./assets/wv/architecture-v1/home-long-ridge.glb",
-      "bytes": 50380,
-      "sha256": "b841cf415cbe57ae80a4c4c07353ea6d148be3e7b48ad4796cea9da2afaa16bb",
+      "bytes": 49812,
+      "sha256": "cef745d749c8dc8dcdc90de3e4816cf1752e436b1db99da591314f4cc4495051",
       "boundsMin": [
         -0.5353553295135499,
         0,
@@ -39,7 +39,8 @@
       ],
       "license": "CC0-1.0",
       "recipeVersion": 1,
-      "derivativePaletteSha256": "3e2302be0a4aa05e31bddf21f575fb8acf5c6083b19040346812fc416784d4e9",
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "originalMeshes": [],
       "status": "gallery-review",
       "runtimeReady": false
     },
@@ -47,8 +48,8 @@
       "id": "home-steep-gable",
       "role": "house",
       "url": "./assets/wv/architecture-v1/home-steep-gable.glb",
-      "bytes": 50728,
-      "sha256": "f2c5743db40424cfec844289b1249ea5208822634fff9960a0c25e3d57ebeeed",
+      "bytes": 50160,
+      "sha256": "4ec9fbca7418d07e2e52e7a908d704d35e51cc5a5c65de422142ea7ace2b7984",
       "boundsMin": [
         -0.550000011920929,
         0,
@@ -81,7 +82,191 @@
       ],
       "license": "CC0-1.0",
       "recipeVersion": 1,
-      "derivativePaletteSha256": "3e2302be0a4aa05e31bddf21f575fb8acf5c6083b19040346812fc416784d4e9",
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "originalMeshes": [],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "home-low-hip",
+      "role": "house",
+      "url": "./assets/wv/architecture-v1/home-low-hip.glb",
+      "bytes": 47092,
+      "sha256": "6035f0a60654b66993dd1b9854061e909554506a6ba7948b694911eb339cc40b",
+      "boundsMin": [
+        -0.5600000023841858,
+        0,
+        -0.5600000023841858
+      ],
+      "boundsMax": [
+        0.5600000023841858,
+        1.4898799982666968,
+        0.5600000023841858
+      ],
+      "triangles": 566,
+      "entrance": {
+        "position": [
+          0,
+          0,
+          0.5
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "fantasy/wall-wood-window-small",
+        "fantasy/wall-wood",
+        "fantasy/wall-wood-door"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "originalMeshes": [
+        "hip",
+        "hip",
+        "hip"
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "home-crooked-wing",
+      "role": "house",
+      "url": "./assets/wv/architecture-v1/home-crooked-wing.glb",
+      "bytes": 45336,
+      "sha256": "4d7d0cecce3a6a3a265b922feaf19338c0d4266a682207af21f865677b62c3b9",
+      "boundsMin": [
+        -1.050000011920929,
+        0,
+        -1.050000011920929
+      ],
+      "boundsMax": [
+        1.050000011920929,
+        1.4697500032186508,
+        1.050000011920929
+      ],
+      "triangles": 518,
+      "entrance": {
+        "position": [
+          -0.5,
+          0,
+          1
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "fantasy/wall-window-small",
+        "fantasy/wall",
+        "fantasy/wall-door"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "originalMeshes": [
+        "hip",
+        "hip",
+        "hip"
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "home-offset-gables",
+      "role": "house",
+      "url": "./assets/wv/architecture-v1/home-offset-gables.glb",
+      "bytes": 53528,
+      "sha256": "9e4fa4bad68ab810c0d1b563b4f9a40edbfcddd49a8eb267ef4087c02f2a8363",
+      "boundsMin": [
+        -0.5353553295135499,
+        0,
+        -1.050000011920929
+      ],
+      "boundsMax": [
+        1.099999988079071,
+        2.1,
+        1.050000011920929
+      ],
+      "triangles": 634,
+      "entrance": {
+        "position": [
+          0,
+          0,
+          1
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "fantasy/wall-window-small",
+        "fantasy/wall",
+        "fantasy/wall-door",
+        "fantasy/roof-gable",
+        "fantasy/chimney"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "originalMeshes": [
+        "box",
+        "gable"
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "home-porch-cabin",
+      "role": "house",
+      "url": "./assets/wv/architecture-v1/home-porch-cabin.glb",
+      "bytes": 53028,
+      "sha256": "4f9c2c01c8d57d413201a8696d644e3f73e158420459b194750ceb64609018e7",
+      "boundsMin": [
+        -0.550000011920929,
+        0,
+        -0.5500000119209291
+      ],
+      "boundsMax": [
+        0.550000011920929,
+        1.5712106599211693,
+        1.0723143112659455
+      ],
+      "triangles": 650,
+      "entrance": {
+        "position": [
+          0,
+          0,
+          1.05
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "fantasy/wall-wood-window-small",
+        "fantasy/wall-wood",
+        "fantasy/wall-wood-door",
+        "fantasy/roof-gable"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "originalMeshes": [
+        "box",
+        "box",
+        "box",
+        "box"
+      ],
       "status": "gallery-review",
       "runtimeReady": false
     },
@@ -108,7 +293,8 @@
       ],
       "license": "CC0-1.0",
       "recipeVersion": 1,
-      "derivativePaletteSha256": "3e2302be0a4aa05e31bddf21f575fb8acf5c6083b19040346812fc416784d4e9",
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "originalMeshes": [],
       "status": "gallery-review",
       "runtimeReady": false
     }

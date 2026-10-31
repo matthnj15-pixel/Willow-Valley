@@ -17,7 +17,7 @@ for(const scope of ['/','/dev/'])test(`ART-OFFLINE-01: clean install at ${scope}
  await expect(page.locator('#gallery')).toHaveAttribute('data-loaded','home-long-ridge');
  await page.evaluate(()=>localStorage.setItem('willow-valley:integrity-sentinel','preserved'));
  await install(page);await context.setOffline(true);await page.reload();
- for(const id of ['home-long-ridge','home-steep-gable','tree-oak']){
+ for(const id of ['home-long-ridge','home-steep-gable','home-low-hip','home-crooked-wing','home-offset-gables','home-porch-cabin','tree-oak']){
   await page.locator('#asset').selectOption(id);await expect(page.locator('#gallery')).toHaveAttribute('data-loaded',id);
  }
  const measurements=await page.evaluate(async()=>{

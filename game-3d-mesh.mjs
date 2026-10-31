@@ -3,6 +3,7 @@ import {resolveFoundation} from "./foundation-system.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {edgePoints,nodeAt,quadraticPoint} from "./road-network.mjs";
 import {flattenRoadDraft,curvedSegments} from "./road-editor.mjs";
+import {homeApproach} from "./building-visuals.mjs";
 import {cottageBlueprint,buildingBlueprint,buildingFootprint} from "./settlement-architecture.mjs";
 // Gameplay geometry shares the exact seeded world elevation and water mask.
 // Every vertex is in the same WebGL coordinates as the World Builder.
@@ -188,6 +189,23 @@ export function settlementGeometry(world,state,{
  for(const house of state.houses||[]){
    const style=cottageBlueprint(house),model=modelHouses.get?.(house);
    block(markers,world,house,model?.width??style.width,model?.depth??style.depth,style.height,style.wall,style.roof,style.orientation,{...style,foundationOnly:modelHouses.has(house)});
+   if(model){
+    const approach=homeApproach(world,house,model);
+    if(approach){
+     const {from,to,dx,dy,distance,floor}=approach;
+     const stairLength=Math.min(distance,Math.max(3,(floor-world.sample(from.x,from.y).height)*1.8));
+     const n=Math.max(2,Math.ceil(stairLength/1.5));
+     const point=(along,side,y)=>[from.x+dx*along-dy*side-world.width/2,y,from.y+dy*along+dx*side-world.depth/2];
+     const end={x:from.x+dx*stairLength,y:from.y+dy*stairLength};
+     const bottom=world.sample(end.x,end.y).height+.85;
+     for(let i=0;i<n;i++){
+      const a=i/n*stairLength,b=(i+1)/n*stairLength,y=floor+(bottom-floor)*i/n,next=floor+(bottom-floor)*(i+1)/n;
+      quad(markers,point(a,-1.2,y),point(b,-1.2,y),point(b,1.2,y),point(a,1.2,y),[.5,.47,.4]);
+      quad(markers,point(b,-1.2,y),point(b,-1.2,next),point(b,1.2,next),point(b,1.2,y),[.46,.43,.37]);
+     }
+     ribbon(surfaces,world,[end,to],2.4,colors.path,.85);
+    }
+   }
    if(house.foundedTurn===state.turn&&house.parcel?.vertices?.length>2)
     ribbon(roadGuides,world,[...house.parcel.vertices,house.parcel.vertices[0]],2.5,[1,.80,.37],4);
   }
