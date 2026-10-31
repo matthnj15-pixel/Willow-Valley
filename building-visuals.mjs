@@ -41,6 +41,8 @@ export function homeApproach(world,house,placement){
 }
 
 export const WORKING_FACILITIES=['farm','lumber','smith','granary'];
+export const PUBLIC_FACILITIES=['market','plaza','park'];
+export const FACILITY_TYPES=[...WORKING_FACILITIES,...PUBLIC_FACILITIES];
 export function facilityPlacement(world,building,state,entries){
  const entry=entries.find(e=>e.id==='facility-'+building.type);if(!entry)return null;
  const envelope=buildingFootprint(building.type),extent=[0,1,2].map(i=>Math.max(Math.abs(entry.boundsMin[i]),Math.abs(entry.boundsMax[i]))*2);
@@ -57,7 +59,7 @@ export function facilityPlacement(world,building,state,entries){
  if(foundation.flooded||!Number.isFinite(scale)||scale<=0)return null;
  const [ex,,ez]=entry.entrance.position,cs=Math.cos(orientation),sn=Math.sin(orientation);
  const foundationRects=entry.foundationRects?.map(([x,z,w,d])=>({x:building.x+(x*cs-z*sn)*scale,y:building.y+(x*sn+z*cs)*scale,width:w*scale,depth:d*scale}));
- return{id:entry.id,type:building.type,scale,width,depth,foundationRects,entranceHeight:entry.entrance.position[1]*scale,yaw:-orientation,origin:[building.x-world.width/2,foundation.floor,building.y-world.depth/2],
+ return{id:entry.id,type:building.type,groundSpace:entry.groundSpace,scale,width,depth,foundationRects,entranceHeight:entry.entrance.position[1]*scale,yaw:-orientation,origin:[building.x-world.width/2,foundation.floor,building.y-world.depth/2],
   entrance:{x:building.x+(ex*cs-ez*sn)*scale,y:building.y+(ex*sn+ez*cs)*scale},approachTarget:approach};
 }
 

@@ -1,7 +1,8 @@
 import * as THREE from './assets/vendor/three.module.mjs';
 import {mountWorld3D as mountController} from './ui-kit/render-3d.mjs';
 import {createModelRegistry,manifestURL,HOME_IDS} from './asset-registry.mjs';
-import {homePlacement,homeApproach,facilityPlacement,WORKING_FACILITIES,farmlandRows} from './building-visuals.mjs';
+import {resolveFoundation} from './foundation-system.mjs';
+import {homePlacement,homeApproach,facilityPlacement,FACILITY_TYPES,farmlandRows} from './building-visuals.mjs';
 
 export function mountWorld3D(canvas,world,options={}){
  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'low-power'});
@@ -11,7 +12,7 @@ export function mountWorld3D(canvas,world,options={}){
  const light=new THREE.DirectionalLight('#fff1db',2);light.position.set(-400,860,250);
  scene.add(light,new THREE.HemisphereLight('#eff5ff','#61734e',2));
  const houses=new THREE.Group();scene.add(houses);
- const requiredIDs=[...HOME_IDS,...WORKING_FACILITIES.map(type=>'facility-'+type)];
+ const requiredIDs=[...HOME_IDS,...FACILITY_TYPES.map(type=>'facility-'+type)];
  const buffers=new Map(),registry=createModelRegistry(new THREE.GLTFLoader()),models=new Map();
  let entries=[],disposed=false,contact=world,terrain=null,refresh=()=>{},loaded=0;
  const raycaster=new THREE.Raycaster();
@@ -54,12 +55,21 @@ export function mountWorld3D(canvas,world,options={}){
     const p=facilityPlacement(surface,building,state,entries),source=p&&models.get(p.id);if(!source)continue;
     p.approach=homeApproach(surface,{...building,entrance:p.approachTarget},p);
     const model=source.clone(true);model.position.set(...p.origin);model.scale.setScalar(p.scale);model.rotation.y=p.yaw;
-    if(building.type==='lumber'){
+    if(building.type==='lumber'||p.groundSpace){
+     p.propFoundations=[];
      model.updateMatrixWorld(true);model.traverse(node=>{if(node.userData.terrainGrounded){
       const point=new THREE.Vector3();node.getWorldPosition(point);
-      node.position.y+=(surface.sample(point.x+surface.width/2,point.z+surface.depth/2).height+.8-p.origin[1])/p.scale;
+      if(node.userData.footing){
+       const box=new THREE.Box3().setFromObject(node),center=box.getCenter(new THREE.Vector3()),size=box.getSize(new THREE.Vector3());
+       const rect={x:center.x+surface.width/2,y:center.z+surface.depth/2,width:size.x,depth:size.z};
+       const seat=resolveFoundation(surface,rect,rect.width,rect.depth,0);
+       if(seat.flooded){node.visible=false;return;}
+       node.position.y+=(seat.floor-box.min.y)/p.scale;p.propFoundations.push({...rect,floor:seat.floor});
+      }else node.position.y+=(surface.sample(point.x+surface.width/2,point.z+surface.depth/2).height+.8-p.origin[1])/p.scale;
+
      }});
     }
+    model.traverse(node=>{if(node.userData.galleryOnly)node.visible=false;});
     houses.add(model);representedFacilities.set(building,p);
    }
    canvas.dataset.modelFacilities=String(representedFacilities.size);

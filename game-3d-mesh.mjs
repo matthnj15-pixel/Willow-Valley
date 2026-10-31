@@ -214,9 +214,28 @@ export function settlementGeometry(world,state,{
   const style=buildingBlueprint(building,state.civic?.chapter||0);
    const model=modelBuildings.get(building);
    if(model){
-    for(const rect of model.foundationRects||[{...building,width:model.width,depth:model.depth}])
-     block(markers,world,rect,rect.width,rect.depth,0,material,colors.roof,-model.yaw,{foundationOnly:true,floorY:model.origin[1]});
-    accessSteps(markers,surfaces,world,model.approach);
+    if(model.groundSpace){
+     const cs=Math.cos(-model.yaw),sn=Math.sin(-model.yaw);
+     const position=(x,y)=>({x:building.x+x*cs-y*sn,y:building.y+x*sn+y*cs});
+     const w=model.width/2,d=model.depth/2;
+     const polygon=[[-w*.7,-d],[w*.7,-d],[w,-d*.7],[w,d*.7],[w*.7,d],[-w*.7,d],[-w,d*.7],[-w,-d*.7]].map(([x,y])=>position(x,y));
+     if(building.type!=='park'){
+      const triangles=world.drapePolygon?world.drapePolygon(polygon):[polygon];
+      for(const tri of triangles){
+       const center={x:tri.reduce((n,p)=>n+p.x,0)/tri.length,y:tri.reduce((n,p)=>n+p.y,0)/tri.length};
+       if([...tri,center].every(p=>world.sample(p.x,p.y).water===null))groundPolygon(surfaces,world,tri,building.type==='plaza'?[.58,.55,.47]:colors.path,.65);
+      }
+     }else{
+      const points=[position(0,-d),position(-w*.25,-d*.3),position(w*.25,d*.3),position(0,d)];
+      if(points.every(p=>world.sample(p.x,p.y).water===null))ribbon(surfaces,world,points,3,colors.path,.65);
+     }
+     if(model.approach)ribbon(surfaces,world,[model.approach.from,model.approach.to],2.4,colors.path,.65);
+     for(const rect of model.propFoundations||[])block(markers,world,rect,rect.width,rect.depth,0,material,colors.roof,0,{foundationOnly:true,floorY:rect.floor});
+    }else{
+     for(const rect of model.foundationRects||[{...building,width:model.width,depth:model.depth}])
+      block(markers,world,rect,rect.width,rect.depth,0,material,colors.roof,-model.yaw,{foundationOnly:true,floorY:model.origin[1]});
+     accessSteps(markers,surfaces,world,model.approach);
+    }
    }else block(markers,world,building,size,depth,height,material,colors.roof,style.orientation,style);
  }
  for(const row of cropRows){

@@ -3,18 +3,18 @@ for(const scope of ['/','/dev/'])test(`B3 playable Three.js cottages and cold of
  const errors=[],external=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url())&&new URL(r.url()).origin!=='http://127.0.0.1:4173')external.push(r.url());});
  await page.goto(scope+'?preview=1&renderer=three');
  await expect(page.locator('#game3D')).toHaveAttribute('data-renderer','three');
- await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','10');
+ await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','13');
  await expect.poll(()=>page.locator('#game3D').getAttribute('data-model-houses')).not.toBe('0');
  await page.screenshot({path:info.outputPath('playable-three-cottages.png')});
  await page.locator('#nextBtn').click();await expect(page.locator('#calendar')).toContainText('April');
  await page.evaluate(async()=>{await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;});
  await context.setOffline(true);await page.reload();
- await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','10');
+ await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','13');
  await expect(page.locator('#calendar')).toContainText('April');
  expect(errors).toEqual([]);expect(external).toEqual([]);
 });
 test('B3 context loss falls back to native WebGL and retains camera and settlement',async({page})=>{
- await page.goto('/?preview=1&renderer=three');await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','10');
+ await page.goto('/?preview=1&renderer=three');await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','13');
  const zoom=await page.locator('#stage').getAttribute('data-camera-zoom');
  await page.evaluate(()=>document.querySelector('#game3D').dispatchEvent(new Event('webglcontextlost',{cancelable:true})));
  await expect(page.locator('#game3D')).toHaveAttribute('data-renderer','webgl');
@@ -68,14 +68,17 @@ test('C1 seeded 30-house hamlet uses all six fitted local silhouettes',async({pa
    const x=75+(i%6)*75+Math.sin(i*3)*13+Math.floor(i/6)*3,y=75+Math.floor(i/6)*75+Math.cos(i*2)*16;
    return {id:i,x,y,foundedEra:0,foundedTurn:0,entrance:{x:x+Math.sin(i)*10,y:y+25},parcel:{vertices:[{x:x-28,y:y-28},{x:x+28,y:y-28},{x:x+28,y:y+28},{x:x-28,y:y+28}]}};
   });
-  const state={turn:2,houses,roads:[],buildings:[],zones:[],desirePaths:[],localLanes:Array.from({length:5},(_,row)=>({points:houses.slice(row*6,row*6+6).map(h=>h.entrance)}))};
+  const state={turn:2,houses,roads:[[{x:30,y:425},{x:570,y:425}]],buildings:['farm','lumber','smith','granary','market','plaza','park'].map((type,i)=>({id:100+i,type,x:60+i*80,y:460})),zones:[],desirePaths:[],localLanes:Array.from({length:5},(_,row)=>({points:houses.slice(row*6,row*6+6).map(h=>h.entrance)}))};
   const canvas=document.createElement('canvas');canvas.id='hamlet30';canvas.style='position:fixed;inset:0;width:100vw;height:100vh;z-index:9999';document.body.append(canvas);
-  const r=mountWorld3D(canvas,world,{quality:'game',interactive:false});r.setSettlement(state);r.focusOn(300,240,310);window.hamletRenderer=r;
+  const r=mountWorld3D(canvas,world,{quality:'game',interactive:false});r.setSettlement(state);r.focusOn(300,250,500);window.hamletRenderer=r;
  });
- await expect(page.locator('#hamlet30')).toHaveAttribute('data-loaded-models','10');
+ await expect(page.locator('#hamlet30')).toHaveAttribute('data-loaded-models','13');
  await expect(page.locator('#hamlet30')).toHaveAttribute('data-model-houses','30');
  expect((await page.locator('#hamlet30').getAttribute('data-home-models')).split(',')).toHaveLength(6);
+ await expect(page.locator('#hamlet30')).toHaveAttribute('data-model-facilities','7');
  await page.screenshot({path:info.outputPath('hamlet30-six-homes.png')});
+ await page.evaluate(()=>window.hamletRenderer.navigateTouches({yawDelta:.4,pitchDelta:-.4,zoomRatio:.85}));
+ await page.screenshot({path:info.outputPath('hamlet30-all-seven-low-view.png')});
  await page.evaluate(()=>window.hamletRenderer.dispose());
 });
 
@@ -94,4 +97,18 @@ test('C2 four working facility compositions and committed farmland on terrain',a
  await page.evaluate(()=>window.facilityRenderer.setSettlement({...window.facilityState,zones:[]}));
  await expect(page.locator('#workingScene')).toHaveAttribute('data-crop-rows','0');
  await page.evaluate(()=>window.facilityRenderer.dispose());
+});
+
+test('C3 marketplace, plaza and park stay open on sloping terrain',async({page},info)=>{
+ await page.goto('/?preview=1&renderer=three');
+ await page.evaluate(async()=>{
+  const {mountWorld3D}=await import('/world-renderer-three.mjs');
+  const world={width:400,depth:300,options:{seed:'WV-C3-public'},trees:[],slope:()=>.1,sample:(x,y)=>({height:10+x*.05+y*.02,water:null})};
+  const state={turn:1,houses:[],buildings:['market','plaza','park'].map((type,i)=>({id:i,type,x:80+i*120,y:140})),roads:[[{x:30,y:195},{x:370,y:195}]],localLanes:[],zones:[],desirePaths:[]};
+  const canvas=document.createElement('canvas');canvas.id='publicScene';canvas.style='position:fixed;inset:0;width:100vw;height:100vh;z-index:9999';document.body.append(canvas);
+  const r=mountWorld3D(canvas,world,{quality:'game',interactive:false});r.setSettlement(state);r.focusOn(200,160,210);window.publicRenderer=r;
+ });
+ await expect(page.locator('#publicScene')).toHaveAttribute('data-model-facilities','3');
+ await page.screenshot({path:info.outputPath('market-plaza-park-slope.png')});
+ await page.evaluate(()=>window.publicRenderer.dispose());
 });
