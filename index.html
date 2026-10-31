@@ -15,6 +15,61 @@
 <link rel="stylesheet" href="./styles.css">
 </head>
 <body class="game-page">
+<!-- Rendered before loading modules, terrain, or saved-game state. -->
+<div id="startupScreen" class="startup-screen" role="status" aria-live="polite">
+ <div class="startup-panel">
+  <span class="startup-eyebrow">YOUR LIVING SETTLEMENT</span>
+  <h2>Willow Valley</h2>
+  <div class="startup-spinner" aria-hidden="true"></div>
+  <p id="startupStatus">Opening your valley and preparing the game…</p>
+  <p class="startup-note">Your saved settlement stays on this device.</p>
+  <div id="startupActions" class="startup-actions" hidden>
+   <button id="startupRetry" type="button">Try loading again</button>
+   <button id="startupLite" type="button">Use lighter graphics</button>
+  </div>
+ </div>
+</div>
+<script>
+(function(){
+ const splash=document.getElementById("startupScreen");
+ const status=document.getElementById("startupStatus");
+ const actions=document.getElementById("startupActions");
+ const button=document.getElementById("startupRetry");
+ const lite=document.getElementById("startupLite");
+ let done=false;
+ const watch=setTimeout(()=>{
+  if(done)return;
+  status.textContent="Opening the game is taking longer than expected. You can retry safely.";
+  actions.hidden=false;
+ },12000);
+ const boot={
+  phase(message){if(!done&&typeof message==="string")status.textContent=message;},
+  ready(){if(done)return;done=true;clearTimeout(watch);splash.hidden=true;},
+  fail(error){
+   if(done)return;
+   clearTimeout(watch);
+   status.textContent="The game could not finish loading. Your saved settlement is untouched.";
+   actions.hidden=false;
+   if(error)console.warn("Willow Valley startup",error);
+  }
+ };
+ window.__wvBoot=boot;
+ button.addEventListener("click",()=>location.reload());
+ lite.addEventListener("click",()=>{
+  const destination=new URL(location.href);
+  destination.searchParams.set("lite","1");
+  location.assign(destination.href);
+ });
+ // A failed module import otherwise leaves a silent, apparently broken page.
+ window.addEventListener("error",event=>{
+  if(done)return;
+  if(event.target?.tagName==="SCRIPT"||event instanceof ErrorEvent)boot.fail(event.message||"Module failed to load");
+ },true);
+ window.addEventListener("unhandledrejection",event=>{
+  if(!done)boot.fail(event.reason);
+ });
+})();
+</script>
 <div id="app">
 <header class="topbar">
   <div><div class="eyebrow"><span id="environment">DEVELOPMENT</span> · <span id="offlineStatus">LOCAL GAME</span></div><h1>Willow Valley</h1><div id="calendar" class="calendar"></div><div id="housingSummary" class="housing-summary" aria-live="polite"></div><div id="civicStatus" class="civic-status" aria-live="polite"></div></div>
