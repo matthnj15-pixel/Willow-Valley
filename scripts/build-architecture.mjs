@@ -1,5 +1,5 @@
 import sharp from "sharp";
-import {BoxGeometry,ConeGeometry,BufferGeometry,Float32BufferAttribute,Color} from "three";
+import {BoxGeometry,CylinderGeometry,ConeGeometry,BufferGeometry,Float32BufferAttribute,Color} from "three";
 import {Document,NodeIO} from '@gltf-transform/core';
 import {ALL_EXTENSIONS} from '@gltf-transform/extensions';
 import {copyToDocument,dedup,prune,weld,unpartition,getBounds} from '@gltf-transform/functions';
@@ -34,12 +34,14 @@ async function build(id,role,recipe,entrance=null){
    const texture=map.get(material)?.getBaseColorTexture();if(texture)texture.setImage(derivativePalette);
   }
   const group=doc.createNode(sourceID).setTranslation(position).setRotation([0,Math.sin(yaw/2),0,Math.cos(yaw/2)]);
+  if(sourceID==='survival/tool-axe')group.setExtras({terrainGrounded:true});
   for(const root of roots)group.addChild(map.get(root));scene.addChild(group);sources.add(sourceID);
  }
  const originalMeshes=[];
  function original(shape,size,position,color,yaw=0,tilt=0){
   let g;
   if(shape==='box')g=new BoxGeometry(...size);
+  else if(shape==='log')g=new CylinderGeometry(size[0]/2,size[0]/2,size[1],8);
   else if(shape==='hip'){
    g=new ConeGeometry(1,.999,4,1,false);g.rotateY(Math.PI/4);g.scale(size[0]/Math.SQRT2,size[1],size[2]/Math.SQRT2);
   }else if(shape==='gable'){
@@ -56,7 +58,8 @@ async function build(id,role,recipe,entrance=null){
   }
   if(g.index)p.setIndices(doc.createAccessor().setType('SCALAR').setArray(new Uint16Array(g.index.array)));
   const c=new Color(color);p.setMaterial(doc.createMaterial('Original '+color).setBaseColorFactor([...c.toArray().map(v=>Number(v.toFixed(6))),1]).setMetallicFactor(0).setRoughnessFactor(.95));
-  scene.addChild(doc.createNode('Original '+shape).setTranslation(position).setMesh(doc.createMesh().addPrimitive(p)));
+  const node=doc.createNode('Original '+shape).setTranslation(position).setMesh(doc.createMesh().addPrimitive(p));
+  if(shape==='log')node.setExtras({terrainGrounded:true});scene.addChild(node);
   originalMeshes.push(shape);g.dispose();
  }
 
@@ -72,7 +75,7 @@ async function build(id,role,recipe,entrance=null){
  let triangles=0;for(const mesh of doc.getRoot().listMeshes())for(const p of mesh.listPrimitives())triangles+=(p.getIndices()?.getCount()??p.getAttribute('POSITION').getCount())/3;
  records.push({id,role,url:`./${out}/${id}.glb`,bytes:bytes.byteLength,sha256:createHash('sha256').update(bytes).digest('hex'),
   boundsMin:final.min,boundsMax:final.max,triangles,entrance,sourceIds:[...sources],license:'CC0-1.0',recipeVersion:1,derivativePaletteSha256:createHash('sha256').update(derivativePalette).digest('hex'),
-  originalMeshes,status:'gallery-review',runtimeReady:false});
+  foundationRects:id==='facility-farm'?[[-.65,-.25,1.1,1.1],[.5,-.1,1.1,1.7]]:id==='facility-lumber'?[[-.3,-.3,1.05,1.1]]:null,originalMeshes,status:'gallery-review',runtimeReady:false});
 }
 async function shell(part,wood=false,length=1){
  const base='fantasy/'+(wood?'wall-wood':'wall');
@@ -119,6 +122,39 @@ await build('home-porch-cabin','house',async(part,original)=>{
  for(const x of [-.43,.43])original('box',[.055,.68,.055],[x,.34,1],'#594332');
  original('box',[1.02,.045,.55],[0,.022,.76],'#765741');
 },{position:[0,0,1.05],forward:[0,0,1]});
+
+await build('facility-farm','farm',async(part,original)=>{
+ await shell(shifted(part,[-.65,0,-.25]),true,1);
+ await part('fantasy/roof-gable',[-.65,1,-.25],Math.PI/2);
+ original('box',[1,.8,1.6],[.5,.4,-.1],'#765741');
+ original('gable',[1.1,.5,1.7],[.5,1.05,-.1],'#81503d');
+ original('box',[.55,.62,.03],[.5,.31,.71],'#594332');
+ original('box',[.34,.23,.3],[-.6,.115,.6],'#a58b5b');
+},{position:[0,0,.9],forward:[0,0,1]});
+await build('facility-lumber','lumber',async(part,original)=>{
+ for(const x of [-.7,.1])for(const z of [-.7,.1])original('box',[.07,.8,.07],[x,.4,z],'#594332');
+ original('gable',[1.05,.35,1.1],[-.3,.95,-.3],'#765741');
+ await part('survival/workbench',[-.3,0,-.3]);
+ for(let row=0;row<3;row++)for(let i=0;i<3-row;i++)original('log',[.15,.75,.15],[.5+i*.16,.08+row*.13,-.3],'#765741',0,Math.PI/2);
+ await part('survival/tool-axe',[.1,0,.5]);
+},{position:[-.3,0,.4],forward:[0,0,1]});
+await build('facility-smith','smith',async(part,original)=>{
+ await shell(shifted(part,[-.35,0,-.3]),false,1);await part('fantasy/roof-gable',[-.35,1,-.3],Math.PI/2);
+ original('box',[.4,1.9,.4],[.45,.95,-.55],'#81796a');
+ original('box',[.6,.4,.65],[.45,.2,-.25],'#81796a');
+ original('box',[.35,.15,.08],[.45,.24,.09],'#594332');
+ await part('survival/workbench-anvil',[.25,0,.5]);await part('survival/workbench-grind',[-.4,0,.6]);
+ original('box',[.3,.16,.3],[.8,.08,.5],'#594332');
+},{position:[0,0,.9],forward:[0,0,1]});
+await build('facility-granary','granary',async(part,original)=>{
+ for(const x of [-.4,.4])for(const z of [-.5,.4])original('box',[.13,.4,.13],[x,.2,z],'#81796a');
+ original('box',[1,1.5,1.2],[0,1.05,-.1],'#765741');
+ for(const x of [-.4,-.2,0,.2,.4])original('box',[.025,1.5,1.22],[x,1.05,-.1],'#594332');
+ original('gable',[1.15,.55,1.35],[0,2.075,-.1],'#626b67');
+ original('box',[1.1,.12,.55],[0,.3,.75],'#765741');
+ original('box',[.5,.75,.035],[0,.74,.52],'#594332');
+ await part('survival/barrel',[-.3,.36,.7]);
+},{position:[0,.36,1],forward:[0,0,1]});
 
 await build('tree-oak','vegetation',async part=>{await part('nature/tree_oak');});
 await writeFile(`${out}/manifest.json`,JSON.stringify({catalogVersion:'architecture-v1',recipeVersion:1,entries:records},null,2)+'\n');

@@ -40,6 +40,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": null,
       "originalMeshes": [],
       "status": "gallery-review",
       "runtimeReady": false
@@ -83,6 +84,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": null,
       "originalMeshes": [],
       "status": "gallery-review",
       "runtimeReady": false
@@ -124,6 +126,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": null,
       "originalMeshes": [
         "hip",
         "hip",
@@ -169,6 +172,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": null,
       "originalMeshes": [
         "hip",
         "hip",
@@ -216,6 +220,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": null,
       "originalMeshes": [
         "box",
         "gable"
@@ -261,9 +266,235 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": null,
       "originalMeshes": [
         "box",
         "box",
+        "box",
+        "box"
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "facility-farm",
+      "role": "farm",
+      "url": "./assets/wv/architecture-v1/facility-farm.glb",
+      "bytes": 53768,
+      "sha256": "343d3ef77e083a832b486c4a103cb7f7d3174c3218d41828e262af0be9ffde87",
+      "boundsMin": [
+        -1.18535532951355,
+        0,
+        -0.9500000238418579
+      ],
+      "boundsMax": [
+        1.050000011920929,
+        1.5707106649875642,
+        0.7500000238418579
+      ],
+      "triangles": 658,
+      "entrance": {
+        "position": [
+          0,
+          0,
+          0.9
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "fantasy/wall-wood-window-small",
+        "fantasy/wall-wood",
+        "fantasy/wall-wood-door",
+        "fantasy/roof-gable"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": [
+        [
+          -0.65,
+          -0.25,
+          1.1,
+          1.1
+        ],
+        [
+          0.5,
+          -0.1,
+          1.1,
+          1.7
+        ]
+      ],
+      "originalMeshes": [
+        "box",
+        "gable",
+        "box",
+        "box"
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "facility-lumber",
+      "role": "lumber",
+      "url": "./assets/wv/architecture-v1/facility-lumber.glb",
+      "bytes": 33776,
+      "sha256": "5cd3308c8ed431f47b6bdfa96df65bf3cc99f5c47fdd31b473a8b2ba914f1d61",
+      "boundsMin": [
+        -0.8249999761581421,
+        0,
+        -0.850000011920929
+      ],
+      "boundsMax": [
+        0.8950000029802323,
+        1.125000002980232,
+        0.5154635002836585
+      ],
+      "triangles": 372,
+      "entrance": {
+        "position": [
+          -0.3,
+          0,
+          0.4
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "survival/workbench",
+        "survival/tool-axe"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": [
+        [
+          -0.3,
+          -0.3,
+          1.05,
+          1.1
+        ]
+      ],
+      "originalMeshes": [
+        "box",
+        "box",
+        "box",
+        "box",
+        "gable",
+        "log",
+        "log",
+        "log",
+        "log",
+        "log",
+        "log"
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "facility-smith",
+      "role": "smith",
+      "url": "./assets/wv/architecture-v1/facility-smith.glb",
+      "bytes": 92180,
+      "sha256": "5a63f5e4947fbd6c2dbfe05a44710ff34ae5ec3afb929ddab0eec4894b2666ac",
+      "boundsMin": [
+        -0.8853553295135499,
+        0,
+        -0.850000011920929
+      ],
+      "boundsMax": [
+        0.9500000059604645,
+        1.8999999910593033,
+        0.764512500166893
+      ],
+      "triangles": 1160,
+      "entrance": {
+        "position": [
+          0,
+          0,
+          0.9
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "fantasy/wall-window-small",
+        "fantasy/wall",
+        "fantasy/wall-door",
+        "fantasy/roof-gable",
+        "survival/workbench-anvil",
+        "survival/workbench-grind"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": null,
+      "originalMeshes": [
+        "box",
+        "box",
+        "box",
+        "box"
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "facility-granary",
+      "role": "granary",
+      "url": "./assets/wv/architecture-v1/facility-granary.glb",
+      "bytes": 35332,
+      "sha256": "403cd605a5f6befea289a6f9550f56ba115e7eabe96c0adde674161ac9bf0f7a",
+      "boundsMin": [
+        -0.574999988079071,
+        0,
+        -0.7750000119209289
+      ],
+      "boundsMax": [
+        0.574999988079071,
+        2.3500000089406967,
+        1.0250000059604645
+      ],
+      "triangles": 480,
+      "entrance": {
+        "position": [
+          0,
+          0.36,
+          1
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "survival/barrel"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": null,
+      "originalMeshes": [
+        "box",
+        "box",
+        "box",
+        "box",
+        "box",
+        "box",
+        "box",
+        "box",
+        "box",
+        "box",
+        "gable",
         "box",
         "box"
       ],
@@ -294,6 +525,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "foundationRects": null,
       "originalMeshes": [],
       "status": "gallery-review",
       "runtimeReady": false
