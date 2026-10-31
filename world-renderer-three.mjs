@@ -1,3 +1,5 @@
+import {buildSceneBatches,estimateSceneBytes} from './scene-batches.mjs';
+import {naturePlacements} from './nature-visuals.mjs';
 import * as THREE from './assets/vendor/three.module.mjs';
 import {mountWorld3D as mountController} from './ui-kit/render-3d.mjs';
 import {createModelRegistry,manifestURL,HOME_IDS} from './asset-registry.mjs';
@@ -12,7 +14,11 @@ export function mountWorld3D(canvas,world,options={}){
  const light=new THREE.DirectionalLight('#fff1db',2);light.position.set(-400,860,250);
  scene.add(light,new THREE.HemisphereLight('#eff5ff','#61734e',2));
  const houses=new THREE.Group();scene.add(houses);
- const requiredIDs=[...HOME_IDS,...FACILITY_TYPES.map(type=>'facility-'+type)];
+ const requiredIDs=[...HOME_IDS,...FACILITY_TYPES.map(type=>'facility-'+type),'tree-oak'];
+ const low=options.quality==='lite';
+ let surfaceVersion=0,lastPlacementKey='',cached=null;
+ const clearBatches=()=>{for(const mesh of houses.children)mesh.dispose();houses.clear();};
+ const bind=(state,c)=>({houses:new Map((state.houses||[]).flatMap((h,i)=>c.homes[i]?[[h,c.homes[i]]]:[])),buildings:new Map((state.buildings||[]).flatMap((b,i)=>c.facilities[i]?[[b,c.facilities[i]]]:[])),cropRows:c.cropRows});
  const buffers=new Map(),registry=createModelRegistry(new THREE.GLTFLoader()),models=new Map();
  let entries=[],disposed=false,contact=world,terrain=null,refresh=()=>{},loaded=0;
  const raycaster=new THREE.Raycaster();
@@ -38,9 +44,12 @@ export function mountWorld3D(canvas,world,options={}){
    const mesh=new THREE.Mesh(geometry,material(index));mesh.renderOrder=index;buffers.set(index,mesh);scene.add(mesh);
    if(index===0)terrain=mesh;
   },
-  setTerrain(surface){contact=surface;},
+  setTerrain(surface){contact=surface;surfaceVersion++;lastPlacementKey="";},
   setSettlement(surface,state,onRefresh){
-   refresh=onRefresh;contact=surface;houses.clear();const represented=new Map();
+   refresh=onRefresh;contact=surface;
+   const key=JSON.stringify([surfaceVersion,models.size,state.houses,state.buildings,state.roads,state.localLanes,state.zones]);
+   if(key===lastPlacementKey&&cached)return bind(state,cached);
+   clearBatches();const objects=[],represented=new Map();
    for(const house of state.houses||[]){
     let p=homePlacement(surface,house,entries);
     // Keep a stable preferred identity. During loading or for an incompatible
@@ -48,7 +57,7 @@ export function mountWorld3D(canvas,world,options={}){
     if(!p)for(const id of HOME_IDS){p=homePlacement(surface,house,entries,id);if(p)break;}
     const source=p&&models.get(p.id);if(!source)continue;
     p.approach=homeApproach(surface,house,p);
-    const model=source.clone(true);model.position.set(...p.origin);model.scale.setScalar(p.scale);model.rotation.y=p.yaw;houses.add(model);represented.set(house,p);
+    const model=source.clone(true);model.position.set(...p.origin);model.scale.setScalar(p.scale);model.rotation.y=p.yaw;objects.push({scene:model,entityKey:'house:'+(house.id??JSON.stringify([house.x,house.y]))});represented.set(house,p);
    }
    const representedFacilities=new Map();
    for(const building of state.buildings||[]){
@@ -70,15 +79,23 @@ export function mountWorld3D(canvas,world,options={}){
      }});
     }
     model.traverse(node=>{if(node.userData.galleryOnly)node.visible=false;});
-    houses.add(model);representedFacilities.set(building,p);
+    objects.push({scene:model,entityKey:'facility:'+(building.id??JSON.stringify([building.type,building.x,building.y]))});representedFacilities.set(building,p);
    }
+   const nature=models.get('tree-oak');let natureCount=0;
+   if(nature)for(const p of naturePlacements(surface,state,{low})){
+    const model=nature.clone(true);model.position.set(...p.origin);model.scale.setScalar(p.scale);model.rotation.y=p.yaw;
+    objects.push({scene:model,entityKey:p.key});natureCount++;
+   }
+   for(const batch of buildSceneBatches(objects))houses.add(batch);
+   canvas.dataset.natureInstances=String(natureCount);canvas.dataset.quality=low?'low':'normal';
    canvas.dataset.modelFacilities=String(representedFacilities.size);
-   canvas.dataset.modelHouses=String(represented.size);canvas.dataset.loadedModels=String(loaded);canvas.dataset.homeModels=[...new Set([...represented.values()].map(p=>p.id))].sort().join(',');
+   canvas.dataset.modelHouses=String(represented.size);canvas.dataset.loadedModels=String(models.size-(models.has('tree-oak')?1:0));canvas.dataset.homeModels=[...new Set([...represented.values()].map(p=>p.id))].sort().join(',');
    const cropRows=farmlandRows(surface,state);canvas.dataset.cropRows=String(cropRows.length);
-   return{houses:represented,buildings:representedFacilities,cropRows};
+   cached={homes:(state.houses||[]).map(h=>represented.get(h)||null),facilities:(state.buildings||[]).map(b=>representedFacilities.get(b)||null),cropRows};
+   lastPlacementKey=key;return bind(state,cached);
   },
   draw(view,rect){
-   updateCamera(view,rect);renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.setSize(rect.width,rect.height,false);renderer.render(scene,camera);
+   updateCamera(view,rect);renderer.setPixelRatio(Math.min(devicePixelRatio||1,low?1:1.5));renderer.setSize(rect.width,rect.height,false);renderer.render(scene,camera);
    canvas.dataset.drawCalls=String(renderer.info.render.calls);canvas.dataset.triangles=String(renderer.info.render.triangles);
   },
   screenToWorld(x,y,view){
@@ -86,16 +103,16 @@ export function mountWorld3D(canvas,world,options={}){
    updateCamera(view,rect);raycaster.setFromCamera(new THREE.Vector2((x-rect.left)/rect.width*2-1,1-(y-rect.top)/rect.height*2),camera);
    const hit=raycaster.intersectObject(terrain,false)[0];return hit?{x:hit.point.x+contact.width/2,y:hit.point.z+contact.depth/2}:null;
   },
-  assetStatus:()=>({loaded,total:requiredIDs.length,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}),
-  dispose(){disposed=true;houses.clear();for(const mesh of buffers.values()){mesh.geometry.dispose();mesh.material.dispose();}buffers.clear();registry.dispose();renderer.dispose();renderer.forceContextLoss();}
+  assetStatus:()=>({loaded,total:requiredIDs.length,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,...estimateSceneBytes(scene)}),
+  dispose(){disposed=true;clearBatches();for(const mesh of buffers.values()){mesh.geometry.dispose();mesh.material.dispose();}buffers.clear();registry.dispose();renderer.dispose();renderer.forceContextLoss();}
  };
  let controller;
  try{controller=mountController(canvas,world,{...options,presentation:backend});}catch(error){backend.dispose();throw error;}
  canvas.dataset.renderer='three';
  void fetch(manifestURL).then(r=>{if(!r.ok)throw Error('Architecture manifest unavailable');return r.json();}).then(async manifest=>{
   if(disposed)return;entries=manifest.entries;
-  await Promise.allSettled(requiredIDs.map(async id=>{const model=await registry.load(id);if(disposed)return;models.set(id,model.scene);loaded++;refresh();}));
-  if(!disposed)options.onAssets?.(backend.assetStatus());
+  await Promise.allSettled(requiredIDs.map(async id=>{const model=await registry.load(id);if(disposed)return;models.set(id,model.scene);loaded++;}));
+  if(!disposed){refresh();options.onAssets?.(backend.assetStatus());}
  }).catch(()=>{if(!disposed)canvas.dataset.modelFallback='unavailable';});
  return controller;
 }

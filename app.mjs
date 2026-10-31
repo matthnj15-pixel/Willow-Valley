@@ -89,11 +89,11 @@ async function bootGameWorld({lite=false,preserveCamera=null}={}){
   const threeRequested=!lite&&location.protocol!=="file:"&&new URLSearchParams(location.search).get("renderer")==="three";
   if(threeRequested){
    try{mount=(await import('./world-renderer-three.mjs')).mountWorld3D;}
-   catch(error){console.warn('Three.js unavailable; using native WebGL',error);}
+   catch(error){console.warn('Three.js unavailable; using native WebGL',error);void bootGameWorld({lite:true,preserveCamera});return;}
    if(sequence!==worldLoadGeneration)return;
   }
   active3D=mount(canvas,world,{
-   interactive:false,quality:lite?"lite":"game",
+   interactive:false,quality:lite||new URLSearchParams(location.search).get("quality")==="low"?"lite":"game",
    onReady:()=>{if(sequence===worldLoadGeneration){$("terrainLoad").hidden=true;window.__wvBoot?.ready();}},
    onError:error=>{if(sequence===worldLoadGeneration){
     if(threeRequested){const view=active3D?.getCamera();void bootGameWorld({lite:true,preserveCamera:view});requestAnimationFrame(renderMap);}

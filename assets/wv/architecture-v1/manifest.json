@@ -1,6 +1,6 @@
 {
   "catalogVersion": "architecture-v1",
-  "recipeVersion": 1,
+  "recipeVersion": 2,
   "entries": [
     {
       "id": "home-long-ridge",
@@ -38,8 +38,16 @@
         "fantasy/roof-gable"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [],
@@ -83,8 +91,16 @@
         "fantasy/chimney"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [],
@@ -126,8 +142,16 @@
         "fantasy/wall-wood-door"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
@@ -173,8 +197,16 @@
         "fantasy/wall-door"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
@@ -222,8 +254,16 @@
         "fantasy/chimney"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
@@ -269,8 +309,16 @@
         "fantasy/roof-gable"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
@@ -318,8 +366,16 @@
         "fantasy/roof-gable"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": false,
       "foundationRects": [
         [
@@ -348,8 +404,8 @@
       "id": "facility-lumber",
       "role": "lumber",
       "url": "./assets/wv/architecture-v1/facility-lumber.glb",
-      "bytes": 33792,
-      "sha256": "2ccbf3f3050767fac3faac2a63af9edfff3f1da54778e762017a25d070c1f49a",
+      "bytes": 41080,
+      "sha256": "b2448a401201d021e1e1e3f9792ac258981bb5423a490bd9bd0a35c71484dda9",
       "boundsMin": [
         -0.8249999761581421,
         0,
@@ -378,8 +434,16 @@
         "survival/tool-axe"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
-      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "recipeVersion": 2,
+      "derivativePaletteSha256": "d87ac11679e7ed9ddcf13ad9417ab86b71871a689db8a04d5e1e196a68fb7a12",
+      "textureDerivatives": [
+        {
+          "kit": "survival",
+          "sourceSha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "outputSha256": "d87ac11679e7ed9ddcf13ad9417ab86b71871a689db8a04d5e1e196a68fb7a12"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": false,
       "foundationRects": [
         [
@@ -409,8 +473,8 @@
       "id": "facility-smith",
       "role": "smith",
       "url": "./assets/wv/architecture-v1/facility-smith.glb",
-      "bytes": 92180,
-      "sha256": "5a63f5e4947fbd6c2dbfe05a44710ff34ae5ec3afb929ddab0eec4894b2666ac",
+      "bytes": 99472,
+      "sha256": "82dabd72955b8d60e91173af41f289b9223d9d5d4badc8922860a4fc1a496033",
       "boundsMin": [
         -0.8853553295135499,
         0,
@@ -443,8 +507,21 @@
         "survival/workbench-grind"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        },
+        {
+          "kit": "survival",
+          "sourceSha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "outputSha256": "d87ac11679e7ed9ddcf13ad9417ab86b71871a689db8a04d5e1e196a68fb7a12"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
@@ -460,8 +537,8 @@
       "id": "facility-granary",
       "role": "granary",
       "url": "./assets/wv/architecture-v1/facility-granary.glb",
-      "bytes": 35332,
-      "sha256": "403cd605a5f6befea289a6f9550f56ba115e7eabe96c0adde674161ac9bf0f7a",
+      "bytes": 42620,
+      "sha256": "59f82292bb3b75dd82105e3b76c790da65b4a34fab32d83fe195b9277656c50f",
       "boundsMin": [
         -0.574999988079071,
         0,
@@ -489,8 +566,16 @@
         "survival/barrel"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
-      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "recipeVersion": 2,
+      "derivativePaletteSha256": "d87ac11679e7ed9ddcf13ad9417ab86b71871a689db8a04d5e1e196a68fb7a12",
+      "textureDerivatives": [
+        {
+          "kit": "survival",
+          "sourceSha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "outputSha256": "d87ac11679e7ed9ddcf13ad9417ab86b71871a689db8a04d5e1e196a68fb7a12"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
@@ -515,8 +600,8 @@
       "id": "facility-market",
       "role": "market",
       "url": "./assets/wv/architecture-v1/facility-market.glb",
-      "bytes": 97268,
-      "sha256": "e7a06e32f192e63d7d94103c49555069d059e0b159b3f13f697609d2e67f4879",
+      "bytes": 104556,
+      "sha256": "09ef32fca99817413d4507095540310321b9a74d4991f3c433522d8363b9b7bc",
       "boundsMin": [
         -1.2999999523162842,
         0,
@@ -548,8 +633,21 @@
         "survival/box"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        },
+        {
+          "kit": "survival",
+          "sourceSha256": "6ca023be9f12e8c2358fcf94320c8a894b4c05a3dd0bad1f5c268312053caca1",
+          "outputSha256": "d87ac11679e7ed9ddcf13ad9417ab86b71871a689db8a04d5e1e196a68fb7a12"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": true,
       "foundationRects": null,
       "originalMeshes": [
@@ -591,8 +689,16 @@
         "fantasy/stall-bench"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        }
+      ],
+      "materialOverrides": [],
       "groundSpace": true,
       "foundationRects": null,
       "originalMeshes": [
@@ -605,8 +711,8 @@
       "id": "facility-park",
       "role": "park",
       "url": "./assets/wv/architecture-v1/facility-park.glb",
-      "bytes": 46596,
-      "sha256": "6e386123937d80dc95ccf5c38f6c50922b5fe8d461673c021c96ea6d3095bce9",
+      "bytes": 46484,
+      "sha256": "83dbe6d9fccb9add1311f7e762dc57b467ccb1917f9edc949674f0342a11941b",
       "boundsMin": [
         -1.149999976158142,
         0,
@@ -637,8 +743,102 @@
         "fantasy/stall-bench"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
+      "recipeVersion": 2,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "textureDerivatives": [
+        {
+          "kit": "fantasy",
+          "sourceSha256": "4aac939dc33195e35caf8c382ee3cb170054da763577f22d3c22692ec6afccdf",
+          "outputSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53"
+        }
+      ],
+      "materialOverrides": [
+        {
+          "sourceID": "nature/tree_oak",
+          "material": "leafsGreen",
+          "source": [
+            0.160784319,
+            0.7882353,
+            0.670588255,
+            1
+          ],
+          "swatch": "#4d7c58",
+          "factor": [
+            0.074214,
+            0.201556,
+            0.097587,
+            1
+          ]
+        },
+        {
+          "sourceID": "nature/tree_oak",
+          "material": "woodBark",
+          "source": [
+            0.8862745,
+            0.5137255,
+            0.34117648,
+            1
+          ],
+          "swatch": "#765741",
+          "factor": [
+            0.181164,
+            0.095307,
+            0.052861,
+            1
+          ]
+        },
+        {
+          "sourceID": "nature/tree_default",
+          "material": "woodBark",
+          "source": [
+            0.8862745,
+            0.5137255,
+            0.34117648,
+            1
+          ],
+          "swatch": "#765741",
+          "factor": [
+            0.181164,
+            0.095307,
+            0.052861,
+            1
+          ]
+        },
+        {
+          "sourceID": "nature/tree_default",
+          "material": "leafsGreen",
+          "source": [
+            0.160784319,
+            0.7882353,
+            0.670588255,
+            1
+          ],
+          "swatch": "#4d7c58",
+          "factor": [
+            0.074214,
+            0.201556,
+            0.097587,
+            1
+          ]
+        },
+        {
+          "sourceID": "nature/plant_bush",
+          "material": "grass",
+          "source": [
+            0.172549024,
+            0.847058833,
+            0.721568644,
+            1
+          ],
+          "swatch": "#4d7c58",
+          "factor": [
+            0.074214,
+            0.201556,
+            0.097587,
+            1
+          ]
+        }
+      ],
       "groundSpace": true,
       "foundationRects": null,
       "originalMeshes": [
@@ -651,8 +851,8 @@
       "id": "tree-oak",
       "role": "vegetation",
       "url": "./assets/wv/architecture-v1/tree-oak.glb",
-      "bytes": 10724,
-      "sha256": "40773861abbc7e37358064f91a9ad9a906eb9eb3b5187aae49001cf6f31d7e60",
+      "bytes": 10712,
+      "sha256": "6dc71a8fe05f597833b9f92e9eee40a460c38b9f24c658c3151b39b6bd3275dc",
       "boundsMin": [
         -0.32027706503868103,
         1.602965340036949e-31,
@@ -669,8 +869,45 @@
         "nature/tree_oak"
       ],
       "license": "CC0-1.0",
-      "recipeVersion": 1,
-      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "recipeVersion": 2,
+      "derivativePaletteSha256": null,
+      "textureDerivatives": [],
+      "materialOverrides": [
+        {
+          "sourceID": "nature/tree_oak",
+          "material": "leafsGreen",
+          "source": [
+            0.160784319,
+            0.7882353,
+            0.670588255,
+            1
+          ],
+          "swatch": "#4d7c58",
+          "factor": [
+            0.074214,
+            0.201556,
+            0.097587,
+            1
+          ]
+        },
+        {
+          "sourceID": "nature/tree_oak",
+          "material": "woodBark",
+          "source": [
+            0.8862745,
+            0.5137255,
+            0.34117648,
+            1
+          ],
+          "swatch": "#765741",
+          "factor": [
+            0.181164,
+            0.095307,
+            0.052861,
+            1
+          ]
+        }
+      ],
       "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [],

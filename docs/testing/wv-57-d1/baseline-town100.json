@@ -1,0 +1,18 @@
+{
+  "sourceCommit": "6b7fbd0",
+  "scene": "WV-D01-town100",
+  "viewport": {
+    "width": 600,
+    "height": 850
+  },
+  "dpr": 2,
+  "renderDPR": 1.5,
+  "drawCalls": 1146,
+  "triangles": 118326,
+  "loaded": 13,
+  "total": 13,
+  "geometries": 94,
+  "textures": 16,
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "phonePerformanceVerified": false
+}

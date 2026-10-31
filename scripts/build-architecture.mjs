@@ -15,6 +15,14 @@ for(let i=0;i<palette.length;i+=4){
  else if(b>r*1.12&&b>g*1.03){const shade=(r+g+b)/3/150;palette[i]=Math.min(255,195*shade);palette[i+1]=Math.min(255,179*shade);palette[i+2]=Math.min(255,151*shade);}
 }
 const derivativePalette=await sharp(palette,{raw:info}).png().toBuffer();
+const survivalOriginal=await readFile('assets/wv/sources/survival/Models/GLB format/Textures/colormap.png');
+const {data:survivalPixels,info:survivalInfo}=await sharp(survivalOriginal).ensureAlpha().raw().toBuffer({resolveWithObject:true});
+for(let i=0;i<survivalPixels.length;i+=4){
+ const [r,g,b]=survivalPixels.slice(i,i+3);
+ if(r>140&&r>g*1.25&&r>b*1.35){const shade=(r+g+b)/3/140;survivalPixels[i]=Math.min(255,118*shade);survivalPixels[i+1]=Math.min(255,87*shade);survivalPixels[i+2]=Math.min(255,65*shade);}
+}
+const survivalPalette=await sharp(survivalPixels,{raw:survivalInfo}).png().toBuffer();
+const hash=bytes=>createHash('sha256').update(bytes).digest('hex');
 const io=new NodeIO().registerExtensions(ALL_EXTENSIONS),sourceCache=new Map();
 const out='assets/wv/architecture-v1';await mkdir(out,{recursive:true});
 const records=[];
@@ -27,12 +35,20 @@ async function source(id){
  return sourceCache.get(id);
 }
 async function build(id,role,recipe,entrance=null){
- const doc=new Document(),scene=doc.createScene(id),sources=new Set();
+ const doc=new Document(),scene=doc.createScene(id),sources=new Set(),materialOverrides=[];
  async function part(sourceID,position=[0,0,0],yaw=0){
   const src=await source(sourceID),roots=src.getRoot().getDefaultScene().listChildren();
   const map=copyToDocument(doc,src,roots);
   if(sourceID.startsWith('fantasy/'))for(const material of src.getRoot().listMaterials()){
    const texture=map.get(material)?.getBaseColorTexture();if(texture)texture.setImage(derivativePalette);
+  }
+  if(sourceID.startsWith('survival/'))for(const material of src.getRoot().listMaterials()){
+   const texture=map.get(material)?.getBaseColorTexture();if(texture)texture.setImage(survivalPalette);
+  }
+  if(sourceID.startsWith('nature/'))for(const material of src.getRoot().listMaterials()){
+   const name=material.getName(),swatch=/leaf|grass/i.test(name)?'#4d7c58':/wood|bark/i.test(name)?'#765741':null;
+   if(!swatch)continue;const factor=[...new Color(swatch).toArray().map(v=>Number(v.toFixed(6))),1];
+   map.get(material).setBaseColorFactor(factor);materialOverrides.push({sourceID,material:name,source:material.getBaseColorFactor(),swatch,factor});
   }
   const group=doc.createNode(sourceID).setTranslation(position).setRotation([0,Math.sin(yaw/2),0,Math.cos(yaw/2)]);
   if(sourceID==='survival/tool-axe'||groundSpaceIDs.has(id))group.setExtras({terrainGrounded:true,footing:groundSpaceIDs.has(id)&&!sourceID.startsWith('nature/')});
@@ -74,8 +90,11 @@ async function build(id,role,recipe,entrance=null){
  const bytes=await io.writeBinary(doc);await writeFile(`${out}/${id}.glb`,bytes);
  const final=getBounds(scene);
  let triangles=0;for(const mesh of doc.getRoot().listMeshes())for(const p of mesh.listPrimitives())triangles+=(p.getIndices()?.getCount()??p.getAttribute('POSITION').getCount())/3;
+ const textureDerivatives=[];
+ if([...sources].some(id=>id.startsWith('fantasy/')))textureDerivatives.push({kit:'fantasy',sourceSha256:hash(originalPalette),outputSha256:hash(derivativePalette)});
+ if([...sources].some(id=>id.startsWith('survival/')))textureDerivatives.push({kit:'survival',sourceSha256:hash(survivalOriginal),outputSha256:hash(survivalPalette)});
  records.push({id,role,url:`./${out}/${id}.glb`,bytes:bytes.byteLength,sha256:createHash('sha256').update(bytes).digest('hex'),
-  boundsMin:final.min,boundsMax:final.max,triangles,entrance,sourceIds:[...sources],license:'CC0-1.0',recipeVersion:1,derivativePaletteSha256:createHash('sha256').update(derivativePalette).digest('hex'),
+  boundsMin:final.min,boundsMax:final.max,triangles,entrance,sourceIds:[...sources],license:'CC0-1.0',recipeVersion:2,derivativePaletteSha256:textureDerivatives[0]?.outputSha256??null,textureDerivatives,materialOverrides,
   groundSpace:groundSpaceIDs.has(id),foundationRects:id==='facility-farm'?[[-.65,-.25,1.1,1.1],[.5,-.1,1.1,1.7]]:id==='facility-lumber'?[[-.3,-.3,1.05,1.1]]:null,originalMeshes,status:'gallery-review',runtimeReady:false});
 }
 async function shell(part,wood=false,length=1){
@@ -180,5 +199,5 @@ await build('facility-park','park',async(part,original)=>{
 },{position:[0,0,1.15],forward:[0,0,1]});
 
 await build('tree-oak','vegetation',async part=>{await part('nature/tree_oak');});
-await writeFile(`${out}/manifest.json`,JSON.stringify({catalogVersion:'architecture-v1',recipeVersion:1,entries:records},null,2)+'\n');
+await writeFile(`${out}/manifest.json`,JSON.stringify({catalogVersion:'architecture-v1',recipeVersion:2,entries:records},null,2)+'\n');
 console.log(records.map(r=>({id:r.id,triangles:r.triangles,bytes:r.bytes})));
