@@ -1,3 +1,4 @@
+import {createEditorOverlay} from "../editor-overlays.mjs";
 import {createTerrainSurface,terrainResolution} from "../terrain-surface.mjs";
 import {createWorldMesh,clamp} from "../world-gen.mjs";
 import {settlementGeometry} from "../game-3d-mesh.mjs";
@@ -74,6 +75,8 @@ export function mountWorld3D(canvas,initialWorld,{
   water:gl.getUniformLocation(program,"uWater"),
   opacity:gl.getUniformLocation(program,"uOpacity")
  };
+ const editorOverlay=createEditorOverlay(canvas);
+ let editorMarkers=[];
  const buffers=Array.from({length:9},()=>gl.createBuffer());
  const kenney={},kitNames=["oak","pine","birch","rock","tower","ground","waterTile","bank","cliff","beach"];
  let loadedAssets=0,showcase=showReference,disposed=false,firstDraw=false;
@@ -179,6 +182,7 @@ export function mountWorld3D(canvas,initialWorld,{
   gl.disable(gl.DEPTH_TEST);
   drawBuffer(buffers[8],counts[8]);
   gl.enable(gl.DEPTH_TEST);
+  editorOverlay.draw(contactWorld,camera,editorMarkers);
   if(!firstDraw){firstDraw=true;onReady();}
   }catch(error){onError(error);}
  }
@@ -203,7 +207,9 @@ function updateSettlement(){
   gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.DYNAMIC_DRAW);
   counts[index]=vertices.length/9;
  }
+ editorMarkers=data.editorMarkers;
  // Read-only UAT diagnostics for touch editing. Never persisted to a save.
+ canvas.dataset.roadEditorMarkers=String(editorMarkers.length);
  canvas.dataset.terrainContact="triangle-grid";
  canvas.dataset.roadGuideTriangles=String(data.counts.guideTriangles||0);
  // Read-only live diagnostic: screen drag may not throw a curve handle far
@@ -315,7 +321,7 @@ function setSettlement(state,{
   assetStatus:()=>({loaded:loadedAssets,total:kitNames.length}),
   getCamera:()=>({...camera}),
   dispose(){
-   disposed=true;
+   disposed=true;editorOverlay.dispose();
    canvas.removeEventListener("webglcontextlost",lost);
    canvas.removeEventListener("wheel",onWheel);
    canvas.removeEventListener("pointerdown",onDown);

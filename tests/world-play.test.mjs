@@ -99,14 +99,14 @@ test("ROAD-3D-010: 3D editor exposes existing nodes and curve handles",()=>{
  const bare=settlementGeometry(world,state,{mode:"explore"});
  const edit=settlementGeometry(world,state,{mode:"road"});
  assert.equal(bare.guides.length,0);
- assert.ok(edit.guides.length>0,"Junction beacons must exist in Road mode");
- assert.ok(edit.counts.guideTriangles>0);
+ assert.ok(edit.editorMarkers.length>0,"Screen-space junction markers must exist in Road mode");
+ assert.equal(edit.counts.guideTriangles,0);
  const edge=state.roadGraph.segments[0];
  const a=state.roadGraph.nodes.find(n=>n.id===edge.a);
  const b=state.roadGraph.nodes.find(n=>n.id===edge.b);
  edge.control={x:(a.x+b.x)/2+22,y:(a.y+b.y)/2+32};
  const now=settlementGeometry(world,state,{mode:"road"});
- assert.ok(now.guides.length>edit.guides.length,"Curved built road exposes a handle");
+ assert.ok(now.editorMarkers.length>edit.editorMarkers.length,"Curved built road exposes a handle");
  const live={id:edge.id,control:{x:edge.control.x+30,y:edge.control.y+55}};
  const dragging=settlementGeometry(world,state,{mode:"road",liveCurve:live});
  assert.ok(dragging.guides.length>now.guides.length,"Live curve must render a highlighted 3D preview");

@@ -165,8 +165,8 @@ test("ROAD-3D-015: junction nodes and constructed curve handle remain visible an
  const errors=[];page.on("pageerror",e=>errors.push(e.message));
  await page.goto("/?preview=1");
  await page.locator("#roadsBtn").click();
- await expect.poll(async()=>Number(await page.locator("#game3D").getAttribute("data-road-guide-triangles"))).toBeGreaterThan(0);
- const initial=Number(await page.locator("#game3D").getAttribute("data-road-guide-triangles"));
+ await expect.poll(async()=>Number(await page.locator("#game3D").getAttribute("data-road-editor-markers"))).toBeGreaterThan(0);
+ const initial=Number(await page.locator("#game3D").getAttribute("data-road-editor-markers"));
  const saved=await page.evaluate(()=>{
   const key="willow-valley:dev:v1:slot:1",entry=JSON.parse(localStorage.getItem(key)),g=entry.state.roadGraph;
   const e=g.segments[1],a=g.nodes.find(n=>n.id===e.a),b=g.nodes.find(n=>n.id===e.b);
@@ -176,7 +176,7 @@ test("ROAD-3D-015: junction nodes and constructed curve handle remain visible an
  });
  await page.reload();
  await page.locator("#roadsBtn").click();
- await expect.poll(async()=>Number(await page.locator("#game3D").getAttribute("data-road-guide-triangles"))).toBeGreaterThan(initial);
+ await expect.poll(async()=>Number(await page.locator("#game3D").getAttribute("data-road-editor-markers"))).toBeGreaterThan(initial);
  const position=await page.evaluate(async id=>{
   const {createWorld}=await import("/world-gen.mjs");
   const state=JSON.parse(localStorage.getItem("willow-valley:dev:v1:slot:1")).state;
@@ -198,7 +198,7 @@ test("ROAD-3D-015: junction nodes and constructed curve handle remain visible an
  expect(position.y).toBeLessThan(rect.y+rect.height-12);
  await page.mouse.move(position.x,position.y);await page.mouse.down();
  await page.mouse.move(position.x+24,position.y+38,{steps:5});
- await expect.poll(async()=>Number(await page.locator("#game3D").getAttribute("data-road-guide-triangles"))).toBeGreaterThan(initial);
+ await expect.poll(async()=>Number(await page.locator("#game3D").getAttribute("data-road-editor-markers"))).toBeGreaterThan(initial);
  await page.mouse.up();
  const updated=await page.evaluate(id=>{
   const state=JSON.parse(localStorage.getItem("willow-valley:dev:v1:slot:1")).state;

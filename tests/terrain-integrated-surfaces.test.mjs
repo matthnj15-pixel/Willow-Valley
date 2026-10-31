@@ -47,14 +47,15 @@ test("WORLD-SURFACE-02: cottages remain level and stone foundations meet the slo
  assert.ok(foundation.some(p=>p.y>siteHeight(p)));
 });
 
-test("WORLD-SURFACE-03: road handles are low discs and junctions close the pavement",()=>{
+test("WORLD-SURFACE-03: road handles are screen-space glyphs and junctions close the pavement",()=>{
  const graph={hubId:1,nodes:[{id:1,x:90,y:130},{id:2,x:205,y:130},
   {id:3,x:250,y:210}],segments:[{id:4,a:1,b:2,control:null},
   {id:5,a:2,b:3,control:null}]};
  const state={roadGraph:graph,houses:[],buildings:[],roads:[],zones:[]};
  const mesh=settlementGeometry(world,state,{mode:"road"});
  assert.ok(mesh.surfaces.length>1000,"Roads should have sampled ribbons and junction fans");
- assert.ok(mesh.guides.length>0);
+ assert.ok(mesh.editorMarkers.length>=3);
+ assert.equal(mesh.guides.length,0,"Editor nodes emit no world-space triangles");
  for(const p of vertices(mesh.guides)){
   assert.ok(p.y-siteHeight(p)<3.25,"Editor markers should hug the terrain");
   assert.ok(p.y-siteHeight(p)>3.0);
