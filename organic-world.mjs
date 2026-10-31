@@ -162,8 +162,9 @@ export function distanceToRoad(p,roads){
 }
 export function candidateParcel(center,key,frontageAngle=null){
  // Plots loosely follow nearby streets, with individual offsets and widths.
- const orientation=frontageAngle===null?rnd(key+2)*Math.PI*2:
+ const rawOrientation=frontageAngle===null?rnd(key+2)*Math.PI*2:
   frontageAngle+(rnd(key+2)-.5)*.72;
+ const orientation=((rawOrientation%(Math.PI*2))+(Math.PI*2))%(Math.PI*2);
  const rx=31+rnd(key+3)*27,ry=30+rnd(key+4)*26;
  const sides=5+Math.floor(rnd(key+9)*4);
  const vertices=Array.from({length:sides},(_,i)=>{
