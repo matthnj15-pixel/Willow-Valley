@@ -1,0 +1,2 @@
+# Bundled upstream GLSL strings retain their original whitespace.
+three.module.mjs -whitespace

@@ -1,0 +1,2 @@
+# Preserve exact vendor license bytes and their recorded SHA-256 hashes.
+**/License.txt -text -whitespace

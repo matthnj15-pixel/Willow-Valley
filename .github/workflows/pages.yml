@@ -58,8 +58,10 @@ jobs:
               cp "$branch/world-lab/"*.mjs "$dest/world-lab/"
               cp "$branch/world-lab/"*.css "$dest/world-lab/"
             fi
+            # Runtime engines, embedded models and source licenses stay branch-local.
+            if [ -d "$branch/assets" ]; then cp -R "$branch/assets" "$dest/"; fi
             # Offline assets are per-environment, like the saved game itself.
-            for asset in sw.js manifest.webmanifest icon.svg; do
+            for asset in sw.js asset-cache.js manifest.webmanifest icon.svg; do
               if [ -f "$branch/$asset" ]; then cp "$branch/$asset" "$dest/$asset"; fi
             done
             if [ -f "$dest/sw.js" ]; then

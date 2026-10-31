@@ -7,11 +7,19 @@
     "test": "node --test tests/*.test.mjs",
     "test:e2e": "playwright test",
     "build:offline": "node scripts/build-offline.mjs . offline.html",
-    "build:icons": "node scripts/build-icons.mjs . ."
+    "build:icons": "node scripts/build-icons.mjs . .",
+    "build:assets": "node scripts/build-three.mjs && node scripts/build-architecture.mjs && node scripts/build-asset-cache.mjs && node scripts/validate-assets.mjs"
   },
   "devDependencies": {
+    "@gltf-transform/core": "4.5.1",
+    "@gltf-transform/extensions": "4.5.1",
+    "@gltf-transform/functions": "4.5.1",
     "@playwright/test": "1.56.1",
     "esbuild": "0.25.12",
+    "gltf-validator": "2.0.0-dev.3.10",
     "sharp": "0.35.5"
+  },
+  "dependencies": {
+    "three": "0.187.0"
   }
 }
