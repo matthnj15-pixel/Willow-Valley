@@ -92,6 +92,7 @@ test('C2 four working facility compositions and committed farmland on terrain',a
   const r=mountWorld3D(canvas,world,{quality:'game',interactive:false});r.setSettlement(state);r.focusOn(300,155,280);window.facilityRenderer=r;window.facilityState=state;
  });
  await expect(page.locator('#workingScene')).toHaveAttribute('data-model-facilities','4');
+ expect(Number(await page.locator('#workingScene').getAttribute('data-ground-contact-error'))).toBeLessThanOrEqual(.02001);
  await expect.poll(()=>page.locator('#workingScene').getAttribute('data-crop-rows')).not.toBe('0');
  await page.screenshot({path:info.outputPath('working-facilities-and-fields.png')});
  await page.evaluate(()=>window.facilityRenderer.setSettlement({...window.facilityState,zones:[]}));
@@ -109,6 +110,7 @@ test('C3 marketplace, plaza and park stay open on sloping terrain',async({page},
   const r=mountWorld3D(canvas,world,{quality:'game',interactive:false});r.setSettlement(state);r.focusOn(200,160,210);window.publicRenderer=r;
  });
  await expect(page.locator('#publicScene')).toHaveAttribute('data-model-facilities','3');
+ expect(Number(await page.locator('#publicScene').getAttribute('data-ground-contact-error'))).toBeLessThanOrEqual(.02001);
  await page.screenshot({path:info.outputPath('market-plaza-park-slope.png')});
  await page.evaluate(()=>window.publicRenderer.dispose());
 });

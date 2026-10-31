@@ -28,3 +28,13 @@ test('visual identity ignores turn order/current chapter and does not mutate leg
  assert.equal(visualIdentity('SEED',house),visualIdentity('SEED',{...house}));
  assert.ok(new Set(Array.from({length:30},(_,i)=>selectHomeModel('SEED',{x:i*31,y:i*17}))).size===6);
 });
+
+test('finished assemblies have a floor-center pivot and canonical entrance metadata',()=>{
+ for(const entry of manifest.entries){
+  assert.ok(Math.abs(entry.boundsMin[1])<.00001,entry.id+' floor');
+  assert.ok(Math.abs(entry.boundsMin[0]+entry.boundsMax[0])<.00001,entry.id+' X center');
+  assert.ok(Math.abs(entry.boundsMin[2]+entry.boundsMax[2])<.00001,entry.id+' Z center');
+  assert.equal(entry.normalization.pivot,'floor-center');
+  if(entry.entrance){assert.deepEqual(entry.entrance.forward,[0,0,1]);assert.ok(entry.entrance.position.every(Number.isFinite));}
+ }
+});

@@ -83,9 +83,14 @@ async function build(id,role,recipe,entrance=null){
  await recipe(part,original);
  await doc.transform(unpartition(),weld(),dedup(),prune());
  const bounds=getBounds(scene);
- // Normalize floor only; retain full assembly grid alignment and hierarchy.
- const base=bounds.min[1];
- const wrapper=doc.createNode('floor-center +Z entrance').setTranslation([0,-base,0]);
+ // Recenter the finished composition, never its individual source modules.
+ const base=bounds.min[1],cx=(bounds.min[0]+bounds.max[0])/2,cz=(bounds.min[2]+bounds.max[2])/2;
+ const translation=[-cx,-base,-cz];
+ const normalization={pivot:'floor-center',up:'+Y',forward:'+Z',translation,sourceBoundsMin:bounds.min,sourceBoundsMax:bounds.max};
+ const normalizedEntrance=entrance?{...entrance,position:entrance.position.map((v,i)=>v+translation[i])}:null;
+ const rawRects=id==='facility-farm'?[[-.65,-.25,1.1,1.1],[.5,-.1,1.1,1.7]]:id==='facility-lumber'?[[-.3,-.3,1.05,1.1]]:null;
+ const foundationRects=rawRects?.map(([x,z,w,d])=>[x-cx,z-cz,w,d])??null;
+ const wrapper=doc.createNode('floor-center +Z entrance').setTranslation(translation);
  const children=scene.listChildren();for(const node of children){scene.removeChild(node);wrapper.addChild(node);}scene.addChild(wrapper);
  const bytes=await io.writeBinary(doc);await writeFile(`${out}/${id}.glb`,bytes);
  const final=getBounds(scene);
@@ -94,8 +99,8 @@ async function build(id,role,recipe,entrance=null){
  if([...sources].some(id=>id.startsWith('fantasy/')))textureDerivatives.push({kit:'fantasy',sourceSha256:hash(originalPalette),outputSha256:hash(derivativePalette)});
  if([...sources].some(id=>id.startsWith('survival/')))textureDerivatives.push({kit:'survival',sourceSha256:hash(survivalOriginal),outputSha256:hash(survivalPalette)});
  records.push({id,role,url:`./${out}/${id}.glb`,bytes:bytes.byteLength,sha256:createHash('sha256').update(bytes).digest('hex'),
-  boundsMin:final.min,boundsMax:final.max,triangles,entrance,sourceIds:[...sources],license:'CC0-1.0',recipeVersion:2,derivativePaletteSha256:textureDerivatives[0]?.outputSha256??null,textureDerivatives,materialOverrides,
-  groundSpace:groundSpaceIDs.has(id),foundationRects:id==='facility-farm'?[[-.65,-.25,1.1,1.1],[.5,-.1,1.1,1.7]]:id==='facility-lumber'?[[-.3,-.3,1.05,1.1]]:null,originalMeshes,status:'gallery-review',runtimeReady:false});
+  boundsMin:final.min,boundsMax:final.max,triangles,entrance:normalizedEntrance,normalization,sourceIds:[...sources],license:'CC0-1.0',recipeVersion:3,derivativePaletteSha256:textureDerivatives[0]?.outputSha256??null,textureDerivatives,materialOverrides,
+  groundSpace:groundSpaceIDs.has(id),foundationRects,originalMeshes,status:'gallery-review',runtimeReady:false});
 }
 async function shell(part,wood=false,length=1){
  const base='fantasy/'+(wood?'wall-wood':'wall');
@@ -155,7 +160,7 @@ await build('facility-lumber','lumber',async(part,original)=>{
  for(const x of [-.7,.1])for(const z of [-.7,.1])original('box',[.07,.8,.07],[x,.4,z],'#594332');
  original('gable',[1.05,.35,1.1],[-.3,.95,-.3],'#765741');
  await part('survival/workbench',[-.3,0,-.3]);
- for(let row=0;row<3;row++)for(let i=0;i<3-row;i++)original('log',[.15,.75,.15],[.5+i*.16,.08+row*.13,-.3],'#765741',0,Math.PI/2);
+ for(let row=0;row<3;row++)for(let i=0;i<3-row;i++)original('log',[.15,.75,.15],[.5+i*.16,.08+row*.13,-.3],'#765741',0,Math.PI/2,{groundOffset:row*.13});
  await part('survival/tool-axe',[.1,0,.5]);
 },{position:[-.3,0,.4],forward:[0,0,1]});
 await build('facility-smith','smith',async(part,original)=>{
@@ -199,5 +204,5 @@ await build('facility-park','park',async(part,original)=>{
 },{position:[0,0,1.15],forward:[0,0,1]});
 
 await build('tree-oak','vegetation',async part=>{await part('nature/tree_oak');});
-await writeFile(`${out}/manifest.json`,JSON.stringify({catalogVersion:'architecture-v1',recipeVersion:2,entries:records},null,2)+'\n');
+await writeFile(`${out}/manifest.json`,JSON.stringify({catalogVersion:'architecture-v1',recipeVersion:3,entries:records},null,2)+'\n');
 console.log(records.map(r=>({id:r.id,triangles:r.triangles,bytes:r.bytes})));

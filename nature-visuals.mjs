@@ -13,7 +13,7 @@ export function naturePlacements(world,state,{low=false}={}){
    const a=line.points[i],dx=b.x-a.x,dy=b.y-a.y,t=Math.max(0,Math.min(1,((p.x-a.x)*dx+(p.y-a.y)*dy)/(dx*dx+dy*dy||1)));
    return Math.hypot(p.x-a.x-dx*t,p.y-a.y-dy*t)<line.width+r;
   })))continue;
-  result.push({key:`tree:${tree.x}:${tree.z}`,origin:[p.x-world.width/2,world.sample(p.x,p.y).height+.2,p.y-world.depth/2],scale:Math.min(tree.h/1.22624,r*2/.739648),yaw:(p.x+p.y)*.1});
+  result.push({key:`tree:${tree.x}:${tree.z}`,origin:[p.x-world.width/2,world.sample(p.x,p.y).height-.02,p.y-world.depth/2],scale:Math.min(tree.h/1.22624,r*2/.739648),yaw:(p.x+p.y)*.1});
  }
  return result;
 }
