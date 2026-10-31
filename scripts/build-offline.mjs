@@ -2,8 +2,8 @@
 // Run from repo root: node scripts/build-offline.mjs . offline.html
 // Or specify a separate branch checkout as input to the release workflow.
 import {build} from "esbuild";
-import {readFile,writeFile} from "node:fs/promises";
-import {resolve,join} from "node:path";
+import {readFile,writeFile,cp,access} from "node:fs/promises";
+import {resolve,join,dirname} from "node:path";
 const root=resolve(process.argv[2]||".");
 const destination=resolve(process.argv[3]||"offline.html");
 const html=await readFile(join(root,"index.html"),"utf8");
@@ -25,3 +25,16 @@ if(bundled===html||bundled.includes('src="./app.mjs"')||bundled.includes('href="
  throw Error("Could not construct a standalone file without external dependencies");
 await writeFile(destination,bundled);
 console.log("Wrote self-contained offline game:",destination,"("+bundled.length+" characters)");
+
+// The workflow_run definition executes from main, but deliberately calls this
+// branch's build tool. Package branch-local runtime assets here as well so
+// development dependencies ship before workflow changes reach production.
+const outputRoot=dirname(destination);
+if(outputRoot!==root){
+ let hasAssetCache=true;
+ try{await access(join(root,"asset-cache.js"));}catch{hasAssetCache=false;}
+ if(hasAssetCache){
+  await cp(join(root,"asset-cache.js"),join(outputRoot,"asset-cache.js"));
+  await cp(join(root,"assets"),join(outputRoot,"assets"),{recursive:true});
+ }
+}
