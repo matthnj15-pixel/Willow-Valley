@@ -67,7 +67,7 @@ function junction(out,world,p,radius,color,offset){
   const edge=t=>worldPos(world,{
    x:p.x+Math.cos(t)*radius,y:p.y+Math.sin(t)*radius
   },offset);
-  addTri(out,center,edge(a),edge(b),color);
+  addTri(out,center,edge(b),edge(a),color);
  }
 }
 function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
@@ -141,8 +141,8 @@ function beacon(out,world,p,radius,color,outline=[.17,.29,.25],height=11){
  },3.2);
  for(let i=0;i<n;i++){
   const a=i/n*Math.PI*2,b=(i+1)/n*Math.PI*2;
-  addTri(out,center,point(inner,a),point(inner,b),color);
-  quad(out,point(inner,a),point(outer,a),point(outer,b),point(inner,b),outline);
+  addTri(out,center,point(inner,b),point(inner,a),color);
+  quad(out,point(inner,b),point(outer,b),point(outer,a),point(inner,a),outline);
  }
 }
 
