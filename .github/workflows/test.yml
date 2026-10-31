@@ -15,6 +15,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Install browser test dependencies
+        run: npm install --no-audit --no-fund --no-package-lock
       - name: Check syntax and simulation
         run: |
           node --check app.mjs
@@ -37,8 +39,6 @@ jobs:
           node --check scripts/build-icons.mjs
           node --check sw.js
           node --test tests/*.test.mjs
-      - name: Install browser test dependencies
-        run: npm install --no-audit --no-fund --no-package-lock
       - name: Verify local architecture assets
         run: npm run build:assets
       - name: Render iOS and PWA icons
