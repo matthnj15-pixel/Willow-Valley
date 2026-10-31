@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "architecture-v1",
+  "purpose": "Proposed compositions; output URLs are future destinations, not acquired or shipping files. See building-catalog.md for constraints.",
+  "requiredRoles": [
+    "house",
+    "lumber",
+    "farm",
+    "smith",
+    "park",
+    "plaza",
+    "market",
+    "granary"
+  ],
+  "entries": [
+    {
+      "id": "home-long-ridge",
+      "role": "house",
+      "status": "assembly-specified",
+      "runtimeReady": false,
+      "planEnvelopeCells": [
+        1,
+        2
+      ],
+      "silhouette": "long-gable",
+      "sourceIds": [
+        "fantasy/wall-wood",
+        "fantasy/wall-wood-door",
+        "fantasy/wall-wood-window-small",
+        "fantasy/roof-gable",
+        "fantasy/roof-gable-end",
+        "fantasy/roof-gable-top"
+      ],
+      "originalWork": [
+        "closed timber shell",
+        "roof seams and end caps",
+        "clay course derivative"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/home-long-ridge.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "home-steep-gable",
+      "role": "house",
+      "status": "assembly-specified",
+      "runtimeReady": false,
+      "planEnvelopeCells": [
+        1,
+        1
+      ],
+      "silhouette": "steep-gable",
+      "sourceIds": [
+        "fantasy/wall",
+        "fantasy/wall-door",
+        "fantasy/wall-window-small",
+        "fantasy/roof-high-gable",
+        "fantasy/roof-high-gable-end",
+        "fantasy/roof-high",
+        "fantasy/chimney"
+      ],
+      "originalWork": [
+        "closed infill shell",
+        "slate derivative"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/home-steep-gable.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "home-low-hip",
+      "role": "house",
+      "status": "assembly-specified",
+      "runtimeReady": false,
+      "planEnvelopeCells": [
+        1,
+        1
+      ],
+      "silhouette": "pyramidal-hip",
+      "sourceIds": [
+        "fantasy/wall-wood",
+        "fantasy/wall-wood-door",
+        "fantasy/wall-wood-window-small",
+        "fantasy/roof-point"
+      ],
+      "originalWork": [
+        "closed cabin shell",
+        "original thatch eave and courses"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/home-low-hip.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "home-crooked-wing",
+      "role": "house",
+      "status": "assembly-specified",
+      "runtimeReady": false,
+      "planEnvelopeCells": [
+        2,
+        2
+      ],
+      "silhouette": "L-wing",
+      "sourceIds": [
+        "fantasy/wall",
+        "fantasy/wall-door",
+        "fantasy/wall-window-small",
+        "fantasy/roof",
+        "fantasy/roof-corner",
+        "fantasy/roof-corner-inner",
+        "fantasy/roof-left",
+        "fantasy/roof-right"
+      ],
+      "originalWork": [
+        "three-cell L shell",
+        "valley closure",
+        "internal face removal"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/home-crooked-wing.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "home-offset-gables",
+      "role": "house",
+      "status": "assembly-specified",
+      "runtimeReady": false,
+      "planEnvelopeCells": [
+        1.5,
+        2
+      ],
+      "silhouette": "offset-cross-gable",
+      "sourceIds": [
+        "fantasy/wall",
+        "fantasy/wall-door",
+        "fantasy/wall-window-small",
+        "fantasy/roof-gable",
+        "fantasy/roof-gable-end",
+        "fantasy/overhang",
+        "fantasy/chimney-base",
+        "fantasy/chimney-top"
+      ],
+      "originalWork": [
+        "half-cell projecting shell",
+        "roof valley closure"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/home-offset-gables.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "home-porch-cabin",
+      "role": "house",
+      "status": "assembly-specified",
+      "runtimeReady": false,
+      "planEnvelopeCells": [
+        1,
+        1.5
+      ],
+      "silhouette": "porch-lean-to",
+      "sourceIds": [
+        "fantasy/wall-wood",
+        "fantasy/wall-wood-door",
+        "fantasy/wall-wood-window-small",
+        "fantasy/roof-gable",
+        "fantasy/roof-gable-end",
+        "fantasy/overhang",
+        "fantasy/pillar-wood",
+        "fantasy/planks"
+      ],
+      "originalWork": [
+        "lean-to closure",
+        "thatch eaves and courses"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/home-porch-cabin.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "facility-lumber",
+      "role": "lumber",
+      "status": "composition-specified",
+      "runtimeReady": false,
+      "sourceIds": [
+        "survival/structure",
+        "survival/structure-roof",
+        "survival/resource-wood",
+        "survival/resource-planks",
+        "survival/tree-log",
+        "survival/tree-log-small",
+        "survival/workbench",
+        "survival/tool-axe"
+      ],
+      "originalWork": [
+        "sawhorse",
+        "log-yard assembly"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/facility-lumber.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "facility-farm",
+      "role": "farm",
+      "status": "composition-specified",
+      "runtimeReady": false,
+      "sourceIds": [
+        "fantasy/wall-wood",
+        "fantasy/wall-wood-door",
+        "fantasy/wall-wood-window-small",
+        "fantasy/roof-gable",
+        "fantasy/roof-gable-end",
+        "survival/structure",
+        "survival/structure-roof",
+        "survival/fence",
+        "survival/tool-hoe",
+        "nature/crops_wheatStageA",
+        "nature/crops_wheatStageB",
+        "nature/crops_dirtRow",
+        "nature/crops_dirtRowEnd"
+      ],
+      "originalWork": [
+        "barn closure",
+        "hay bale",
+        "committed-field clipping and deduplication"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/facility-farm.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "facility-smith",
+      "role": "smith",
+      "status": "composition-specified",
+      "runtimeReady": false,
+      "sourceIds": [
+        "fantasy/wall",
+        "fantasy/wall-door",
+        "fantasy/wall-window-small",
+        "fantasy/roof-gable",
+        "fantasy/roof-gable-end",
+        "fantasy/chimney",
+        "survival/workbench-anvil",
+        "survival/workbench-grind",
+        "survival/tool-hammer",
+        "survival/resource-wood"
+      ],
+      "originalWork": [
+        "forge and hearth",
+        "fuel pile",
+        "work-bay assembly"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/facility-smith.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "facility-market",
+      "role": "market",
+      "status": "composition-specified",
+      "runtimeReady": false,
+      "sourceIds": [
+        "fantasy/stall",
+        "fantasy/stall-green",
+        "fantasy/stall-red",
+        "fantasy/stall-bench",
+        "fantasy/stall-stool",
+        "fantasy/cart",
+        "fantasy/cart-high",
+        "survival/box",
+        "survival/barrel"
+      ],
+      "originalWork": [
+        "sacks",
+        "counter goods",
+        "open layout"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/facility-market.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "facility-granary",
+      "role": "granary",
+      "status": "composition-specified",
+      "runtimeReady": false,
+      "sourceIds": [
+        "fantasy/wall-wood",
+        "fantasy/roof-gable",
+        "fantasy/roof-gable-end",
+        "fantasy/planks",
+        "fantasy/pillar-wood",
+        "fantasy/cart-high",
+        "survival/barrel",
+        "survival/box"
+      ],
+      "originalWork": [
+        "boarded storage shell",
+        "loading door and platform",
+        "grain sacks"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": "assets/wv/architecture-v1/facility-granary.glb",
+      "outputSha256": null
+    },
+    {
+      "id": "facility-plaza",
+      "role": "plaza",
+      "status": "composition-specified",
+      "runtimeReady": false,
+      "sourceIds": [
+        "fantasy/stall-bench",
+        "fantasy/fountain-round"
+      ],
+      "originalWork": [
+        "terrain-clipped paving",
+        "low edge stones",
+        "optional original well"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": null,
+      "outputSha256": null
+    },
+    {
+      "id": "facility-park",
+      "role": "park",
+      "status": "composition-specified",
+      "runtimeReady": false,
+      "sourceIds": [
+        "nature/tree_oak",
+        "nature/tree_default",
+        "nature/plant_bush",
+        "nature/rock_largeA",
+        "nature/fence_simple",
+        "nature/fence_gate",
+        "fantasy/stall-bench"
+      ],
+      "originalWork": [
+        "commons layout",
+        "terrain-clipped walking paths",
+        "seat pads"
+      ],
+      "entrance": {
+        "forward": "+Z",
+        "pivot": "floor-center",
+        "verified": false
+      },
+      "outputURL": null,
+      "outputSha256": null
+    }
+  ],
+  "galleryOnlyCandidates": [
+    "chapel",
+    "civic-hall",
+    "inn",
+    "mill",
+    "stoneworks",
+    "upgraded-shops",
+    "civic-estate"
+  ]
+}
