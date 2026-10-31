@@ -1,6 +1,7 @@
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {edgePoints,nodeAt,quadraticPoint} from "./road-network.mjs";
 import {flattenRoadDraft,curvedSegments} from "./road-editor.mjs";
+import {cottageBlueprint,buildingBlueprint} from "./settlement-architecture.mjs";
 // Gameplay geometry shares the exact seeded world elevation and water mask.
 // Every vertex is in the same WebGL coordinates as the World Builder.
 // The temporary structural shapes will be replaced with Kenney Fantasy Town
@@ -36,21 +37,38 @@ function ribbon(out,world,points,width,color,offset=2){
   quad(out,...corner,color);
  }
 }
-function block(out,world,p,width,depth,height,wall,roof,orientation=0){
+function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
  const c=worldPos(world,p,0),angle=orientation,cs=Math.cos(angle),sn=Math.sin(angle);
  function vert(dx,y,dz){
-  return[c[0]+dx*cs-dz*sn,c[1]+y,c[2]+dx*sn+dz*cs];
+  const wx=c[0]+dx*cs-dz*sn,wz=c[2]+dx*sn+dz*cs;
+   // Sample the authoritative ground height at each rotated wall corner.
+   return[wx,world.sample(wx+world.width/2,wz+world.depth/2).height+y,wz];
  }
  const x=width/2,z=depth/2;
  const a=vert(-x,1,-z),b=vert(x,1,-z),cc=vert(x,1,z),d=vert(-x,1,z);
  const at=vert(-x,height,-z),bt=vert(x,height,-z),ct=vert(x,height,z),dt=vert(-x,height,z);
  quad(out,a,b,bt,at,wall);quad(out,b,cc,ct,bt,wall);
  quad(out,cc,d,dt,ct,wall);quad(out,d,a,at,dt,wall);
- const ridgeLeft=vert(0,height+Math.min(width,depth)*.62,-z);
+ const ridgeLeft=vert(0,height+Math.min(width,depth)*(style.roofRise??.62),-z);
  const ridgeRight=vert(0,height+Math.min(width,depth)*.62,z);
  quad(out,at,bt,ridgeRight,ridgeLeft,roof);
  quad(out,dt,ct,ridgeRight,ridgeLeft,roof);
  addTri(out,at,ridgeLeft,bt,wall);addTri(out,dt,ct,ridgeRight,wall);
+  if(style.chimney){
+   const stone=[.44,.40,.35],p1=vert(width*.16,height+2,-depth*.23),
+    p2=vert(width*.32,height+2,-depth*.23),p3=vert(width*.32,height+2,-depth*.10),
+    p4=vert(width*.16,height+2,-depth*.10),lift=height+Math.min(width,depth)*.78+5,
+    u1=vert(width*.16,lift,-depth*.23),u2=vert(width*.32,lift,-depth*.23),
+    u3=vert(width*.32,lift,-depth*.10),u4=vert(width*.16,lift,-depth*.10);
+   quad(out,p1,p2,u2,u1,stone);quad(out,p2,p3,u3,u2,stone);
+   quad(out,p3,p4,u4,u3,stone);quad(out,p4,p1,u1,u4,stone);
+   quad(out,u1,u2,u3,u4,[.30,.29,.27]);
+  }
+  if(style.porch){
+   const wood=[.45,.33,.24],w=Math.min(6,width*.30);
+   quad(out,vert(-w,height*.47,depth/2),vert(w,height*.47,depth/2),
+    vert(w,height*.47,depth/2+6),vert(-w,height*.47,depth/2+6),wood);
+  }
 }
 // Road edit beacons are genuine 3D prisms above the terrain; the legacy
 // SVG nodes cannot be seen on top of the WebGL world.
@@ -74,7 +92,7 @@ function beacon(out,world,p,radius,color,outline=[.17,.29,.25],height=11){
 const curvePoints=(a,c,b,steps=18)=>Array.from({length:steps+1},(_,i)=>quadraticPoint(a,c,b,i/steps));
 export function settlementGeometry(world,state,{
  draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,
- zoneEdits=null,mode="explore",liveCurve=null,liveGesture=null,pendingControl=null
+ zoneEdits=null,mode="explore",liveCurve=null,liveGesture=null,pendingControl=null,touchFocus=null
 }={}){
  const surfaces=[],zones=[],markers=[],roadGuides=[];
  const zonePalette={...colors};
@@ -106,7 +124,10 @@ export function settlementGeometry(world,state,{
    worldPos(world,{x:xx,y:yy},2.3));
   quad(zones,...corners,zonePalette[p.type]||colors.residential);
  }
- for(const lane of state.localLanes||[])if(lane.points?.length>1)ribbon(surfaces,world,lane.points,5,colors.path,2.2);
+ for(const lane of state.localLanes||[])if(lane.points?.length>1){
+   ribbon(surfaces,world,lane.points,5,colors.path,2.2);
+   if(lane.foundedTurn===state.turn)ribbon(roadGuides,world,lane.points,2.5,[.99,.77,.4],4);
+  }
  for(const trail of visibleDesirePaths(state)){
   const line=trail.points||[trail.from,trail.to];
   if(line.length>1)ribbon(surfaces,world,line,4,colors.path,1.8);
@@ -128,14 +149,22 @@ export function settlementGeometry(world,state,{
   ribbon(surfaces,world,road,34,colors.roadEdge,2.7);
   ribbon(surfaces,world,road,24,colors.road,3.1);
  }
- for(const house of state.houses||[])block(markers,world,house,25,27,19,colors.wall,colors.roof,house.orientation||0);
+ for(const house of state.houses||[]){
+   const style=cottageBlueprint(house);
+   block(markers,world,house,style.width,style.depth,style.height,style.wall,style.roof,style.orientation,style);
+   if(house.foundedTurn===state.turn&&house.parcel?.vertices?.length>2)
+    ribbon(roadGuides,world,[...house.parcel.vertices,house.parcel.vertices[0]],2.5,[1,.80,.37],4);
+  }
  for(const building of state.buildings||[]){
   const material=colors[building.type]||colors.wall;
   const size=building.type==="farm"?48:building.type==="market"?48:building.type==="granary"?32:35;
   const height=building.type==="granary"?40:building.type==="market"?29:building.type==="lumber"?27:24;
-  block(markers,world,building,size,size*.9,height,material,colors.roof);
+  const style=buildingBlueprint(building,state.civic?.chapter||0);
+   block(markers,world,building,size,size*.9,height,material,colors.roof,style.orientation,style);
  }
  if(mode==="road"){
+  if(touchFocus&&Number.isFinite(touchFocus.x)&&Number.isFinite(touchFocus.y))
+   beacon(roadGuides,world,touchFocus,7,[1,.91,.61],[.32,.42,.30],7);
   if(graph){
    for(const n of graph.nodes)beacon(roadGuides,world,n,n.id===graph.hubId?13:11,
     n.id===graph.hubId?[.97,.72,.37]:[.86,.94,.77]);
