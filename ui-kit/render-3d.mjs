@@ -204,6 +204,9 @@ function updateSettlement(){
  }
  // Read-only UAT diagnostics for touch editing. Never persisted to a save.
  canvas.dataset.roadGuideTriangles=String(data.counts.guideTriangles||0);
+ // Read-only live diagnostic: screen drag may not throw a curve handle far
+ // beyond its fixed endpoint. Never persisted to settlement save data.
+ canvas.dataset.roadCurveRadius=String(settlementLiveGesture?.radius||0);
  canvas.dataset.pendingZoning=String(settlementEdits?.length||0);
  render();
 }

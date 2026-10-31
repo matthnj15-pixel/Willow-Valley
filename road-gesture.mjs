@@ -43,3 +43,35 @@ export function anchoredSegment(start,anchor,finger){
  if(!start||distance(start,anchor)<12)return{anchor:gesture.anchor,control:gesture.control,pending:true};
  return{start:p(start),end:gesture.anchor,control:gesture.radius>8?gesture.control:null,pending:false};
 }
+
+// 3D editing must never use the moving finger's terrain ray as a curve
+// control. A projected ground ray moves several world units per screen pixel
+// and jumps at slopes, especially with low camera pitches. Convert the screen
+// delta at a stable camera scale instead and limit its world-space magnitude.
+export function stableRoadDrag(screenDelta,camera,viewportHeight,{sensitivity=.32,maxWorld=75}={}){
+ if(!screenDelta||!camera||!Number.isFinite(screenDelta.x)||!Number.isFinite(screenDelta.y))
+  return{x:0,y:0};
+ const height=Math.max(1,viewportHeight||1);
+ const unitsPerPx=Math.min(8,2*Math.max(1,camera.zoom||1)/height);
+ const depth=screenDelta.y*unitsPerPx/Math.max(.52,Math.sin(camera.pitch??.86));
+ const side=screenDelta.x*unitsPerPx;
+ const yaw=camera.yaw??0,cs=Math.cos(yaw),sn=Math.sin(yaw);
+ const dx=(side*cs-depth*sn)*sensitivity,dy=(side*sn+depth*cs)*sensitivity;
+ const length=Math.hypot(dx,dy),limit=Math.max(0,maxWorld);
+ const factor=length>limit&&length>0?limit/length:1;
+ return{x:dx*factor,y:dy*factor};
+}
+// Bend around the chord MIDPOINT, not the endpoint. Removing the drag's
+// tangent component avoids a sharp hook or a road that doubles back on itself.
+export function roadControlFromDrag(start,end,delta,{width=1200,height=900}={}){
+ if(!start||!end||!delta)return null;
+ const dx=end.x-start.x,dy=end.y-start.y,length=Math.hypot(dx,dy);
+ if(length<8)return null;
+ const nx=-dy/length,ny=dx/length;
+ const bend=delta.x*nx+delta.y*ny;
+ const limit=Math.min(90,length*.65);
+ const amount=Math.max(-limit,Math.min(limit,bend));
+ if(Math.abs(amount)<4)return null;
+ return{x:Math.max(0,Math.min(width,(start.x+end.x)/2+nx*amount)),
+  y:Math.max(0,Math.min(height,(start.y+end.y)/2+ny*amount))};
+}

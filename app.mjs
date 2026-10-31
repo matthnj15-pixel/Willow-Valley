@@ -4,7 +4,7 @@ import {initializeSlots,listSlots,readSlot,newSlot,saveSlot,selectSlot,renameSlo
 import {mountResourceBar,mountGameDock,createBuildRow,createButton,renderGameToast} from "./ui-components.mjs";
 import {WORLD,BUILDINGS,clamp,distance,nearestRoad,roadCost,roadLength,seedValue,monthLabel,startGame,startWorldGame,configureWorldState,generatedWorld,validState,placeBuilding,addRoad,buildRoad,removeRoadNode,removeRoadSegment,reshapeRoadSegment,makeRoadIntersection,accessibleRoads,structureAccess,advance,housingOutlook} from "./simulation.mjs";
 import {ensureGraph,nearestNode,nearestSegment,nodeAt,segmentAt,quadraticPoint,SNAP_RADIUS} from "./road-network.mjs";
-import {radialCurveGesture} from "./road-gesture.mjs";
+import {radialCurveGesture,stableRoadDrag,roadControlFromDrag} from "./road-gesture.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
 import {ZONE_TYPES,BRUSH_RADIUS,applyZoneEdits,zoneAt,elevationAt,slopeAt,viableLotEstimate} from "./organic-world.mjs";
 import {terrainContours} from "./terrain-contours.mjs";
@@ -525,7 +525,14 @@ function handleTap(p){if(p.x<0||p.y<0||p.x>WORLD.w||p.y>WORLD.h)return;
   const chosen=near||p;
   if(draft.anchors.length&&distance(draft.anchors.at(-1),chosen)<8){notify("Choose a new location for the next road node.");return;}
   if(!addRoadAnchor(draft,{x:Math.round(chosen.x),y:Math.round(chosen.y)})){notify("Tap inside the map.");return;}
-  if(pendingControl&&draft.controls.length)draft.controls[draft.controls.length-1]=pendingControl;
+  if(pendingControl&&draft.controls.length){
+    // A pending hold at the first 3D node stores only its bend direction.
+    // Reconstruct a gentle midpoint control once the next endpoint is known.
+    const start=draft.anchors.at(-2);
+    const delta={x:pendingControl.x-start.x,y:pendingControl.y-start.y};
+    draft.controls[draft.controls.length-1]=active3D?
+     roadControlFromDrag(start,chosen,delta,{width:WORLD.w,height:WORLD.h}):pendingControl;
+   }
   pendingControl=null;
   updateRoadInfo();renderMap();return;
  }
@@ -587,7 +594,13 @@ function movePointer(e){
  const p=pointers.get(e.pointerId);if(!p)return;e.preventDefault();
  const dx=e.clientX-p.x,dy=e.clientY-p.y,travel=Math.hypot(e.clientX-p.startX,e.clientY-p.startY);
  p.x=e.clientX;p.y=e.clientY;
- if(mode==="road"&&!p.cancelled&&pointers.size===1)touchFocus=mapPoint(e.clientX,e.clientY);
+ const roadDelta=active3D&&mode==="road"&&pointers.size===1?
+  stableRoadDrag({x:e.clientX-p.startX,y:e.clientY-p.startY},
+   active3D.getCamera(),svg.getBoundingClientRect().height):null;
+ if(mode==="road"&&!p.cancelled&&pointers.size===1)
+  touchFocus=roadDelta&&p.holdReady?
+   {x:clamp(p.down.x+roadDelta.x,0,WORLD.w),y:clamp(p.down.y+roadDelta.y,0,WORLD.h)}:
+   mapPoint(e.clientX,e.clientY);
  if(pointers.size===2){
   const [a,b]=[...pointers.values()];
   if(gesture){
@@ -628,19 +641,37 @@ function movePointer(e){
    p.moved=true;clearHold(p);
    if(p.hit.segmentIndex>=0){
      if(!p.curveActive){p.initialControl=beginRoadBend(draft,p.hit.segmentIndex);p.curveActive=true;}
-     updateRoadBend(draft,p.hit.segmentIndex,p.initialControl,p.down,mapPoint(e.clientX,e.clientY));
+     const current=roadDelta?
+       {x:p.down.x+roadDelta.x/2,y:p.down.y+roadDelta.y/2}:
+       mapPoint(e.clientX,e.clientY);
+     updateRoadBend(draft,p.hit.segmentIndex,p.initialControl,p.down,current);
    }else if(p.hit.builtCurve){
      const eId=p.hit.builtCurve.segment.id,initial=p.hit.builtCurve.segment.control;
-     const current=mapPoint(e.clientX,e.clientY);
-     const c={x:clamp(initial.x+2*(current.x-p.down.x),0,WORLD.w),y:clamp(initial.y+2*(current.y-p.down.y),0,WORLD.h)};
+     const current=roadDelta?
+      {x:p.down.x+roadDelta.x/2,y:p.down.y+roadDelta.y/2}:
+      mapPoint(e.clientX,e.clientY);
+     const c={x:clamp(initial.x+2*(current.x-p.down.x),0,WORLD.w),
+      y:clamp(initial.y+2*(current.y-p.down.y),0,WORLD.h)};
      liveCurve={id:eId,control:c};p.curveActive=true;
    }else{
-     // The node is fixed at touch-down. Finger motion only sets its opposite
-     // radial curve control, never the endpoint position.
+     // The endpoint stays anchored at touch-down. On the 3D map, use a
+     // bounded screen displacement rather than a terrain-ray projection.
      const anchor=p.hit.node||p.down;
-     const radial=radialCurveGesture(anchor,mapPoint(e.clientX,e.clientY));
      const previous=draft.anchors.at(-1)||anchor;
-     liveGesture={start:previous,end:anchor,control:radial.control,radius:radial.radius};
+     const hasChord=distance(previous,anchor)>8;
+     if(roadDelta){
+      const control=hasChord?
+       roadControlFromDrag(previous,anchor,roadDelta,{width:WORLD.w,height:WORLD.h}):
+       {x:clamp(anchor.x+roadDelta.x,0,WORLD.w),
+        y:clamp(anchor.y+roadDelta.y,0,WORLD.h)};
+      const center=hasChord?
+       {x:(previous.x+anchor.x)/2,y:(previous.y+anchor.y)/2}:anchor;
+      liveGesture={start:previous,end:anchor,control,
+       radius:control?distance(control,center):0};
+     }else{
+      const radial=radialCurveGesture(anchor,mapPoint(e.clientX,e.clientY));
+      liveGesture={start:previous,end:anchor,control:radial.control,radius:radial.radius};
+     }
      p.gestureActive=true;
    }
    updateRoadInfo();renderMap();return;
