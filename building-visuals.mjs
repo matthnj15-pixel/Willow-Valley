@@ -1,11 +1,8 @@
-import {visualIdentity} from './asset-registry.mjs';
+import {visualIdentity,HOME_IDS} from './asset-registry.mjs';
 import {cottageBlueprint} from './settlement-architecture.mjs';
 import {resolveFoundation} from './foundation-system.mjs';
-// B3 catalog is deliberately limited to the two verified assemblies. No saved
-// identity is written; C1 will use the complete architecture-v1 ordering.
-export const B3_HOME_IDS=['home-long-ridge','home-steep-gable'];
-export function homePlacement(world,house,entries){
- const style=cottageBlueprint(house),id=B3_HOME_IDS[visualIdentity(world.options?.seed??world.seed??0,house)%2];
+export function homePlacement(world,house,entries,preferredID=null){
+ const style=cottageBlueprint(house),id=preferredID??HOME_IDS[visualIdentity(world.options?.seed??world.seed??0,house)%HOME_IDS.length];
  const entry=entries.find(e=>e.id===id);if(!entry)return null;
  const extent=[0,1,2].map(i=>Math.max(Math.abs(entry.boundsMin[i]),Math.abs(entry.boundsMax[i]))*2);
  const scale=Math.min((style.width-1)/extent[0],(style.depth-1)/extent[2],style.height);
@@ -24,4 +21,20 @@ export function homePlacement(world,house,entries){
  if(foundation.flooded)return null;
  const entrance=transform(entry.entrance.position[0],entry.entrance.position[2]);
  return {id,scale,width:extent[0]*scale,depth:extent[2]*scale,yaw:-style.orientation,origin:[house.x-world.width/2,foundation.floor,house.y-world.depth/2],entrance,footprint};
+}
+
+// Cosmetic access only. A connector never creates a lane or modifies routing.
+export function homeApproach(world,house,placement){
+ const from=placement?.entrance,to=house.entrance;if(!from||!to)return null;
+ const distance=Math.hypot(to.x-from.x,to.y-from.y);if(distance<.5||distance>60)return null;
+ const dx=(to.x-from.x)/distance,dy=(to.y-from.y)/distance;
+ const count=Math.ceil(distance/2)+1;
+ const samples=Array.from({length:count},(_,i)=>{
+  const t=i/(count-1);return{x:from.x+dx*distance*t,y:from.y+dy*distance*t};
+ });
+ for(const p of samples)for(const side of [-1,0,1]){
+  const x=p.x-dy*side,y=p.y+dx*side;
+  if(x<0||y<0||x>world.width||y>world.depth||world.sample(x,y).water!==null)return null;
+ }
+ return{from,to,distance,dx,dy,floor:placement.origin[1],samples};
 }

@@ -1,7 +1,7 @@
 import * as THREE from './assets/vendor/three.module.mjs';
 import {mountWorld3D as mountController} from './ui-kit/render-3d.mjs';
-import {createModelRegistry,manifestURL} from './asset-registry.mjs';
-import {homePlacement,B3_HOME_IDS} from './building-visuals.mjs';
+import {createModelRegistry,manifestURL,HOME_IDS} from './asset-registry.mjs';
+import {homePlacement,homeApproach} from './building-visuals.mjs';
 
 export function mountWorld3D(canvas,world,options={}){
  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'low-power'});
@@ -40,10 +40,15 @@ export function mountWorld3D(canvas,world,options={}){
   setSettlement(surface,state,onRefresh){
    refresh=onRefresh;contact=surface;houses.clear();const represented=new Map();
    for(const house of state.houses||[]){
-    const p=homePlacement(surface,house,entries),source=p&&models.get(p.id);if(!source)continue;
+    let p=homePlacement(surface,house,entries);
+    // Keep a stable preferred identity. During loading or for an incompatible
+    // plot, only use a smaller approved shape; never change saved placement.
+    if(!p)for(const id of HOME_IDS){p=homePlacement(surface,house,entries,id);if(p)break;}
+    const source=p&&models.get(p.id);if(!source)continue;
+    p.approach=homeApproach(surface,house,p);
     const model=source.clone(true);model.position.set(...p.origin);model.scale.setScalar(p.scale);model.rotation.y=p.yaw;houses.add(model);represented.set(house,p);
    }
-   canvas.dataset.modelHouses=String(represented.size);canvas.dataset.loadedModels=String(loaded);
+   canvas.dataset.modelHouses=String(represented.size);canvas.dataset.loadedModels=String(loaded);canvas.dataset.homeModels=[...new Set([...represented.values()].map(p=>p.id))].sort().join(',');
    return represented;
   },
   draw(view,rect){
@@ -55,7 +60,7 @@ export function mountWorld3D(canvas,world,options={}){
    updateCamera(view,rect);raycaster.setFromCamera(new THREE.Vector2((x-rect.left)/rect.width*2-1,1-(y-rect.top)/rect.height*2),camera);
    const hit=raycaster.intersectObject(terrain,false)[0];return hit?{x:hit.point.x+contact.width/2,y:hit.point.z+contact.depth/2}:null;
   },
-  assetStatus:()=>({loaded,total:B3_HOME_IDS.length,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}),
+  assetStatus:()=>({loaded,total:HOME_IDS.length,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures}),
   dispose(){disposed=true;houses.clear();for(const mesh of buffers.values()){mesh.geometry.dispose();mesh.material.dispose();}buffers.clear();registry.dispose();renderer.dispose();renderer.forceContextLoss();}
  };
  let controller;
@@ -63,7 +68,7 @@ export function mountWorld3D(canvas,world,options={}){
  canvas.dataset.renderer='three';
  void fetch(manifestURL).then(r=>{if(!r.ok)throw Error('Architecture manifest unavailable');return r.json();}).then(async manifest=>{
   if(disposed)return;entries=manifest.entries;
-  await Promise.allSettled(B3_HOME_IDS.map(async id=>{const model=await registry.load(id);if(disposed)return;models.set(id,model.scene);loaded++;refresh();}));
+  await Promise.allSettled(HOME_IDS.map(async id=>{const model=await registry.load(id);if(disposed)return;models.set(id,model.scene);loaded++;refresh();}));
   if(!disposed)options.onAssets?.(backend.assetStatus());
  }).catch(()=>{if(!disposed)canvas.dataset.modelFallback='unavailable';});
  return controller;

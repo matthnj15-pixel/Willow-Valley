@@ -3,18 +3,18 @@ for(const scope of ['/','/dev/'])test(`B3 playable Three.js cottages and cold of
  const errors=[],external=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url())&&new URL(r.url()).origin!=='http://127.0.0.1:4173')external.push(r.url());});
  await page.goto(scope+'?preview=1&renderer=three');
  await expect(page.locator('#game3D')).toHaveAttribute('data-renderer','three');
- await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','2');
+ await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','6');
  await expect.poll(()=>page.locator('#game3D').getAttribute('data-model-houses')).not.toBe('0');
  await page.screenshot({path:info.outputPath('playable-three-cottages.png')});
  await page.locator('#nextBtn').click();await expect(page.locator('#calendar')).toContainText('April');
  await page.evaluate(async()=>{await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;});
  await context.setOffline(true);await page.reload();
- await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','2');
+ await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','6');
  await expect(page.locator('#calendar')).toContainText('April');
  expect(errors).toEqual([]);expect(external).toEqual([]);
 });
 test('B3 context loss falls back to native WebGL and retains camera and settlement',async({page})=>{
- await page.goto('/?preview=1&renderer=three');await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','2');
+ await page.goto('/?preview=1&renderer=three');await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','6');
  const zoom=await page.locator('#stage').getAttribute('data-camera-zoom');
  await page.evaluate(()=>document.querySelector('#game3D').dispatchEvent(new Event('webglcontextlost',{cancelable:true})));
  await expect(page.locator('#game3D')).toHaveAttribute('data-renderer','webgl');
@@ -56,4 +56,25 @@ test('B3 read-only scene, read-only state and displayed-terrain picking',async({
  expect(result.unchanged).toBe(true);expect(result.point.x).toBeCloseTo(result.expected.x,2);expect(result.point.y).toBeCloseTo(result.expected.y,2);
  await page.screenshot({path:info.outputPath('three-hill-seat.png')});
  await page.evaluate(()=>window.parityRenderer.dispose());
+});
+
+test('C1 seeded 30-house hamlet uses all six fitted local silhouettes',async({page},info)=>{
+ await page.goto('/?preview=1&renderer=three');
+ await page.evaluate(async()=>{
+  const {mountWorld3D}=await import('/world-renderer-three.mjs');
+  const world={width:600,depth:500,options:{seed:'WV-C01-hamlet30'},trees:[],slope:()=>.1,
+   sample:(x,y)=>({height:10+Math.sin(x/90)*3+Math.cos(y/90)*2,water:null})};
+  const houses=Array.from({length:30},(_,i)=>{
+   const x=75+(i%6)*75+Math.sin(i*3)*13+Math.floor(i/6)*3,y=75+Math.floor(i/6)*75+Math.cos(i*2)*16;
+   return {id:i,x,y,foundedEra:0,foundedTurn:0,entrance:{x:x+Math.sin(i)*10,y:y+25},parcel:{vertices:[{x:x-28,y:y-28},{x:x+28,y:y-28},{x:x+28,y:y+28},{x:x-28,y:y+28}]}};
+  });
+  const state={turn:2,houses,roads:[],buildings:[],zones:[],desirePaths:[],localLanes:Array.from({length:5},(_,row)=>({points:houses.slice(row*6,row*6+6).map(h=>h.entrance)}))};
+  const canvas=document.createElement('canvas');canvas.id='hamlet30';canvas.style='position:fixed;inset:0;width:100vw;height:100vh;z-index:9999';document.body.append(canvas);
+  const r=mountWorld3D(canvas,world,{quality:'game',interactive:false});r.setSettlement(state);r.focusOn(300,240,310);window.hamletRenderer=r;
+ });
+ await expect(page.locator('#hamlet30')).toHaveAttribute('data-loaded-models','6');
+ await expect(page.locator('#hamlet30')).toHaveAttribute('data-model-houses','30');
+ expect((await page.locator('#hamlet30').getAttribute('data-home-models')).split(',')).toHaveLength(6);
+ await page.screenshot({path:info.outputPath('hamlet30-six-homes.png')});
+ await page.evaluate(()=>window.hamletRenderer.dispose());
 });
