@@ -40,6 +40,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [],
       "status": "gallery-review",
@@ -84,6 +85,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [],
       "status": "gallery-review",
@@ -126,6 +128,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
         "hip",
@@ -172,6 +175,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
         "hip",
@@ -220,6 +224,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
         "box",
@@ -266,6 +271,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
         "box",
@@ -314,6 +320,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": [
         [
           -0.65,
@@ -341,8 +348,8 @@
       "id": "facility-lumber",
       "role": "lumber",
       "url": "./assets/wv/architecture-v1/facility-lumber.glb",
-      "bytes": 33776,
-      "sha256": "5cd3308c8ed431f47b6bdfa96df65bf3cc99f5c47fdd31b473a8b2ba914f1d61",
+      "bytes": 33792,
+      "sha256": "2ccbf3f3050767fac3faac2a63af9edfff3f1da54778e762017a25d070c1f49a",
       "boundsMin": [
         -0.8249999761581421,
         0,
@@ -373,6 +380,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": [
         [
           -0.3,
@@ -437,6 +445,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
         "box",
@@ -482,6 +491,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [
         "box",
@@ -496,6 +506,142 @@
         "box",
         "gable",
         "box",
+        "box"
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "facility-market",
+      "role": "market",
+      "url": "./assets/wv/architecture-v1/facility-market.glb",
+      "bytes": 97268,
+      "sha256": "e7a06e32f192e63d7d94103c49555069d059e0b159b3f13f697609d2e67f4879",
+      "boundsMin": [
+        -1.2999999523162842,
+        0,
+        -1.2999999523162842
+      ],
+      "boundsMax": [
+        1.494999992847443,
+        1.236982822418213,
+        1.2999999523162842
+      ],
+      "triangles": 1250,
+      "entrance": {
+        "position": [
+          0,
+          0,
+          1.3
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "fantasy/stall",
+        "fantasy/stall-green",
+        "fantasy/stall-red",
+        "fantasy/cart",
+        "survival/box"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": true,
+      "foundationRects": null,
+      "originalMeshes": [
+        "box"
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "facility-plaza",
+      "role": "plaza",
+      "url": "./assets/wv/architecture-v1/facility-plaza.glb",
+      "bytes": 27076,
+      "sha256": "4043519e0de419ee1b2f75f32cca2ba6616d376a14c1af87bdc1d1c6b398b27a",
+      "boundsMin": [
+        -1.169999998807907,
+        0,
+        -1.100000023841858
+      ],
+      "boundsMax": [
+        1.169999998807907,
+        0.2255014181137085,
+        1.100000023841858
+      ],
+      "triangles": 192,
+      "entrance": {
+        "position": [
+          0,
+          0,
+          1.1
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "fantasy/stall-bench"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": true,
+      "foundationRects": null,
+      "originalMeshes": [
+        "box"
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "id": "facility-park",
+      "role": "park",
+      "url": "./assets/wv/architecture-v1/facility-park.glb",
+      "bytes": 46596,
+      "sha256": "6e386123937d80dc95ccf5c38f6c50922b5fe8d461673c021c96ea6d3095bce9",
+      "boundsMin": [
+        -1.149999976158142,
+        0,
+        -1.149999976158142
+      ],
+      "boundsMax": [
+        1.149999976158142,
+        1.7078874111175537,
+        1.149999976158142
+      ],
+      "triangles": 534,
+      "entrance": {
+        "position": [
+          0,
+          0,
+          1.15
+        ],
+        "forward": [
+          0,
+          0,
+          1
+        ]
+      },
+      "sourceIds": [
+        "nature/tree_oak",
+        "nature/tree_default",
+        "nature/plant_bush",
+        "fantasy/stall-bench"
+      ],
+      "license": "CC0-1.0",
+      "recipeVersion": 1,
+      "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": true,
+      "foundationRects": null,
+      "originalMeshes": [
         "box"
       ],
       "status": "gallery-review",
@@ -525,6 +671,7 @@
       "license": "CC0-1.0",
       "recipeVersion": 1,
       "derivativePaletteSha256": "8870a573cf56f32b5f239707e06c31ea5ae9b2cd0a9d7f76094982a5f7f76d53",
+      "groundSpace": false,
       "foundationRects": null,
       "originalMeshes": [],
       "status": "gallery-review",

@@ -18,6 +18,7 @@ const derivativePalette=await sharp(palette,{raw:info}).png().toBuffer();
 const io=new NodeIO().registerExtensions(ALL_EXTENSIONS),sourceCache=new Map();
 const out='assets/wv/architecture-v1';await mkdir(out,{recursive:true});
 const records=[];
+const groundSpaceIDs=new Set(['facility-market','facility-plaza','facility-park']);
 async function source(id){
  if(!sourceCache.has(id)){
   const row=manifest.assets.find(a=>a.id===id);if(!row)throw Error('Unverified source '+id);
@@ -34,11 +35,11 @@ async function build(id,role,recipe,entrance=null){
    const texture=map.get(material)?.getBaseColorTexture();if(texture)texture.setImage(derivativePalette);
   }
   const group=doc.createNode(sourceID).setTranslation(position).setRotation([0,Math.sin(yaw/2),0,Math.cos(yaw/2)]);
-  if(sourceID==='survival/tool-axe')group.setExtras({terrainGrounded:true});
+  if(sourceID==='survival/tool-axe'||groundSpaceIDs.has(id))group.setExtras({terrainGrounded:true,footing:groundSpaceIDs.has(id)&&!sourceID.startsWith('nature/')});
   for(const root of roots)group.addChild(map.get(root));scene.addChild(group);sources.add(sourceID);
  }
  const originalMeshes=[];
- function original(shape,size,position,color,yaw=0,tilt=0){
+ function original(shape,size,position,color,yaw=0,tilt=0,extras={}){
   let g;
   if(shape==='box')g=new BoxGeometry(...size);
   else if(shape==='log')g=new CylinderGeometry(size[0]/2,size[0]/2,size[1],8);
@@ -59,7 +60,7 @@ async function build(id,role,recipe,entrance=null){
   if(g.index)p.setIndices(doc.createAccessor().setType('SCALAR').setArray(new Uint16Array(g.index.array)));
   const c=new Color(color);p.setMaterial(doc.createMaterial('Original '+color).setBaseColorFactor([...c.toArray().map(v=>Number(v.toFixed(6))),1]).setMetallicFactor(0).setRoughnessFactor(.95));
   const node=doc.createNode('Original '+shape).setTranslation(position).setMesh(doc.createMesh().addPrimitive(p));
-  if(shape==='log')node.setExtras({terrainGrounded:true});scene.addChild(node);
+  if(shape==='log'||Object.keys(extras).length)node.setExtras({...extras,...(shape==='log'?{terrainGrounded:true}:{})});scene.addChild(node);
   originalMeshes.push(shape);g.dispose();
  }
 
@@ -75,7 +76,7 @@ async function build(id,role,recipe,entrance=null){
  let triangles=0;for(const mesh of doc.getRoot().listMeshes())for(const p of mesh.listPrimitives())triangles+=(p.getIndices()?.getCount()??p.getAttribute('POSITION').getCount())/3;
  records.push({id,role,url:`./${out}/${id}.glb`,bytes:bytes.byteLength,sha256:createHash('sha256').update(bytes).digest('hex'),
   boundsMin:final.min,boundsMax:final.max,triangles,entrance,sourceIds:[...sources],license:'CC0-1.0',recipeVersion:1,derivativePaletteSha256:createHash('sha256').update(derivativePalette).digest('hex'),
-  foundationRects:id==='facility-farm'?[[-.65,-.25,1.1,1.1],[.5,-.1,1.1,1.7]]:id==='facility-lumber'?[[-.3,-.3,1.05,1.1]]:null,originalMeshes,status:'gallery-review',runtimeReady:false});
+  groundSpace:groundSpaceIDs.has(id),foundationRects:id==='facility-farm'?[[-.65,-.25,1.1,1.1],[.5,-.1,1.1,1.7]]:id==='facility-lumber'?[[-.3,-.3,1.05,1.1]]:null,originalMeshes,status:'gallery-review',runtimeReady:false});
 }
 async function shell(part,wood=false,length=1){
  const base='fantasy/'+(wood?'wall-wood':'wall');
@@ -155,6 +156,28 @@ await build('facility-granary','granary',async(part,original)=>{
  original('box',[.5,.75,.035],[0,.74,.52],'#594332');
  await part('survival/barrel',[-.3,.36,.7]);
 },{position:[0,.36,1],forward:[0,0,1]});
+
+await build('facility-market','market',async(part,original)=>{
+ await part('fantasy/stall',[-.7,0,-.6]);
+ await part('fantasy/stall-green',[.7,0,-.6],Math.PI);
+ await part('fantasy/stall-red',[-.7,0,.65]);
+ await part('fantasy/cart',[.8,0,.7],Math.PI/2);
+ await part('survival/box',[-.95,0,.2]);
+ original('box',[2.6,.01,2.6],[0,.005,0],'#a58b5b',0,0,{galleryOnly:true});
+},{position:[0,0,1.3],forward:[0,0,1]});
+await build('facility-plaza','plaza',async(part,original)=>{
+ await part('fantasy/stall-bench',[-.7,0,-.7],Math.PI/2);
+ await part('fantasy/stall-bench',[.7,0,-.7],Math.PI/2);
+ await part('fantasy/stall-bench',[-.7,0,.7],Math.PI/2);
+ original('box',[2.2,.01,2.2],[0,.005,0],'#81796a',0,0,{galleryOnly:true});
+},{position:[0,0,1.1],forward:[0,0,1]});
+await build('facility-park','park',async(part,original)=>{
+ await part('nature/tree_oak',[-.65,0,-.65]);
+ await part('nature/tree_default',[.65,0,-.65]);
+ await part('nature/plant_bush',[-.65,0,.65]);
+ await part('fantasy/stall-bench',[.65,0,.65]);
+ original('box',[2.3,.01,2.3],[0,.005,0],'#64895b',0,0,{galleryOnly:true});
+},{position:[0,0,1.15],forward:[0,0,1]});
 
 await build('tree-oak','vegetation',async part=>{await part('nature/tree_oak');});
 await writeFile(`${out}/manifest.json`,JSON.stringify({catalogVersion:'architecture-v1',recipeVersion:1,entries:records},null,2)+'\n');

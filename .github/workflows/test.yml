@@ -54,7 +54,7 @@ jobs:
       - name: Exercise mobile portrait road interactions
         run: npm run test:e2e
       - name: Verify Three.js gameplay input and save parity
-        run: WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes
+        run: WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity
       - name: Preserve terrain contact screenshots
         if: always()
         uses: actions/upload-artifact@v4
