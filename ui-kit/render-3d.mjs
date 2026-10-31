@@ -195,6 +195,7 @@ function updateSettlement(){
  const data=settlementGeometry(world,settlement,{draft:settlementDraft,
   zoneStrokes:settlementZoneStrokes,zoneType:settlementZoneType,zoneRadius:settlementRadius,
   zoneEdits:settlementEdits,mode:settlementMode,liveCurve:settlementLiveCurve,
+  touchFocus:settlementTouchFocus,
   liveGesture:settlementLiveGesture,pendingControl:settlementPendingControl});
  for(const [index,vertices] of [[5,data.surfaces],[6,data.zones],[7,data.structures],[8,data.guides]]){
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[index]);
@@ -259,7 +260,7 @@ function homeView(x,z,zoom=null){
 }
 function setSettlement(state,{
   draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,zoneEdits=null,
-  mode="explore",liveCurve=null,liveGesture=null,pendingControl=null
+  mode="explore",liveCurve=null,liveGesture=null,pendingControl=null,touchFocus=null
  }={}){
  settlement=state;settlementDraft=draft;settlementZoneStrokes=zoneStrokes;
  settlementZoneType=zoneType;settlementRadius=zoneRadius;settlementEdits=zoneEdits;
