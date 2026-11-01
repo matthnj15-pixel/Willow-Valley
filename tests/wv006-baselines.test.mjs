@@ -23,10 +23,10 @@ test('C catalog explicitly validates glTF, hashes, measured geometry, mappings a
  assert.equal(sha(await readFile(path+'License_Source.txt')),m.provenance.sourceLicenseSha256);for(const input of m.inputs)assert.equal(sha(await readFile(input.url)),input.sha256);
  const images=d.getRoot().listTextures();assert.equal(new Set(images.map(t=>sha(t.getImage()))).size,images.length);assert.ok(m.textures.reduce((a,t)=>a+t.estimatedMipRGBA8Bytes,0)<6*1024*1024);
 });
-test('unchanged home geometry remains identical to the accepted catalog, including material image bytes',async()=>{
+test('preserved home cores remain identical to the accepted catalog, including material image bytes',async()=>{
  const io=new NodeIO(),d=await io.read(path+'catalog.glb'),old=await io.read('assets/wv/megakit-catalog-v1/catalog.glb');
  const signature=r=>{const records=[];r.traverse(n=>{for(const p of n.getMesh()?.listPrimitives()||[]){records.push({attributes:p.listSemantics().sort().map(k=>[k,Array.from(p.getAttribute(k).getArray())]),indices:Array.from(p.getIndices().getArray()),image:p.getMaterial().getBaseColorTexture()?.getImage()?sha(p.getMaterial().getBaseColorTexture().getImage()):null});}});return sha(JSON.stringify(records));};
- for(const e of m.entries.filter(e=>e.role==='residential'&&e.id!=='home-low-hip'))assert.equal(signature(d.getRoot().getDefaultScene().listChildren().find(n=>n.getName()===e.id)),signature(old.getRoot().getDefaultScene().listChildren().find(n=>n.getName()===e.id)));
+ for(const e of m.entries.filter(e=>e.role==='residential'&&e.id!=='home-low-hip'))assert.equal(signature(d.getRoot().getDefaultScene().listChildren().find(n=>n.getName()===e.id).listChildren().find(n=>n.getName()==='preserved PR81 shell')),signature(old.getRoot().getDefaultScene().listChildren().find(n=>n.getName()===e.id)));
 });
 test('granary supports, full floor-height study and chimney roof opening remain buildable at fixed scale',()=>{
  const e=m.entries.find(e=>e.id==='facility-granary');assert.equal(e.floorElevation,1.35);assert.equal(e.undercroft.forbidSolidInfill,true);assert.equal(e.supportPoints.length,8);assert.ok(e.envelopes.stairs);assert.ok(e.envelopes.porch);assert.deepEqual(m.granaryFloorStudies.map(s=>s.floorElevation),[1.2,1.35,1.5]);
@@ -39,6 +39,18 @@ test('granary supports, full floor-height study and chimney roof opening remain 
   if(id==='facility-smith'){const opening=a.roofPenetration;assert.equal(opening.clearance,.11);assert.equal(opening.stackTop,5.5);const stackAtRoof=new Box3(new Vector3(-1.31,3,-1.26),new Vector3(-.49,3.5,-.44));for(const part of a.parts.filter(p=>p.name==='roof around flue')){part.g.computeBoundingBox();assert.ok(!stackAtRoof.intersectsBox(part.g.boundingBox),'roof crosses stack opening');}}
   for(const p of a.parts)p.g.dispose();
  }
+});
+test('detail pass supplies roof relief, closed tile volumes and function-specific openings',()=>{
+ assert.equal(m.recipeRevision,2);
+ for(const e of m.entries){assert.ok(Object.keys(e.detailFeatures).length>0,e.id);if(e.role==='residential')assert.ok(e.detailFeatures['window jamb']);}
+ for(const id of ['facility-farm','facility-granary','facility-smith']){
+  const a=architecture(id),tiles=a.parts.filter(p=>p.name==='curved overlapping clay tile');assert.ok(tiles.length>50,id);
+  const g=tiles[0].g,positions=g.getAttribute('position'),edges=new Map();const key=i=>[positions.getX(i),positions.getY(i),positions.getZ(i)].map(v=>v.toFixed(5)).join(',');
+  for(let i=0;i<positions.count;i+=3)for(const [u,v] of [[i,i+1],[i+1,i+2],[i+2,i]]){const k=[key(u),key(v)].sort().join('/');edges.set(k,(edges.get(k)||0)+1);}assert.ok([...edges.values()].every(n=>n===2),'tile volume has an unclosed edge');
+  if(id==='facility-smith')assert.ok(a.parts.some(p=>p.name==='stepped chimney apron flashing'));
+  for(const p of a.parts)p.g.dispose();
+ }
+ assert.ok(m.entries.find(e=>e.role==='granary').detailFeatures['sloping weather louvre']);assert.ok(m.entries.find(e=>e.role==='lumber').detailFeatures['separate weathered roof board']);assert.ok(m.entries.find(e=>e.role==='market').detailFeatures['draped canvas canopy']);
 });
 test('checkout-only rebuild reproduces both GLB and measured contract byte-for-byte',async()=>{
  const temp=await mkdtemp(join(tmpdir(),'wv006-c-'));try{execFileSync(process.execPath,['scripts/build-wv006-baselines.mjs'],{env:{...process.env,WV006_OUTPUT:temp},stdio:'pipe'});for(const f of ['catalog.glb','manifest.json','License_Source.txt'])assert.equal(sha(await readFile(join(temp,f))),sha(await readFile(path+f)));}finally{await rm(temp,{recursive:true,force:true});}
