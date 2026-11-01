@@ -9,7 +9,7 @@ try{
  for(const id of ids){await page.selectOption('#design',id);await page.locator('#stage').screenshot({path:out+'/'+id+'-pair.jpg',type:'jpeg',quality:85});}
  await page.selectOption('#compare','new');
  for(const quality of ['normal','low']){await page.selectOption('#quality',quality);records.probes.push({quality,results:await page.evaluate(()=>wv006.inspect())});
-  for(const id of ['home-low-hip','facility-farm','facility-smith','facility-granary','facility-lumber','facility-market']){await page.selectOption('#design',id);
+  for(const id of ids){await page.selectOption('#design',id);
    for(const angle of quality==='normal'?['front','rear','left','side','roof','eye']:['front','roof']){await page.selectOption('#view',angle);records.cameraChecks.push({id,quality,angle,fullBoundsInFrame:await page.evaluate(()=>wv006.frameCheck()),stats:await page.evaluate(()=>wv006.stats)});await page.locator('#stage').screenshot({path:out+'/'+id+'-'+quality+'-'+angle+'.jpg',type:'jpeg',quality:85});}
    if(quality==='normal'){await page.selectOption('#view','front');await page.uncheck('#props');await page.uncheck('#labels-on');await page.check('#mono');await page.locator('#stage').screenshot({path:out+'/'+id+'-identity.jpg',type:'jpeg',quality:85});await page.uncheck('#mono');await page.check('#wire');await page.selectOption('#view','roof');await page.locator('#stage').screenshot({path:out+'/'+id+'-wire.jpg',type:'jpeg',quality:85});await page.uncheck('#wire');await page.check('#labels-on');await page.check('#props');}
   }

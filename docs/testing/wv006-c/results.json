@@ -1,220 +1,419 @@
 {
-  "baseDevelop": "5e39c72ff5e205dea166fa18febdfa89aaa5aec8",
+  "recipeRevision": 2,
+  "baseDevelop": "dfce320",
   "output": {
     "url": "assets/wv/buildings-next/catalog.glb",
-    "bytes": 3499164,
-    "sha256": "47bb946da13849f77491a08b7f66fa6413e10bb3a26fb5c4351b7d3b8449a520"
+    "bytes": 7527564,
+    "sha256": "ea352ed56ba07302dd1ff1a31867c765e7a7c9a82f15eafe88e72d9ab67ba310"
   },
-  "units": "visual metres",
+  "comparison": {
+    "recipeRevision": 1,
+    "url": "assets/wv/buildings-next/baseline-r1.glb",
+    "sha256": "47bb946da13849f77491a08b7f66fa6413e10bb3a26fb5c4351b7d3b8449a520",
+    "galleryOnly": true
+  },
   "gameUnitsPerMetre": 2.8,
   "entries": [
     {
       "id": "home-steep-gable",
+      "triangles": 5381,
+      "lowTriangles": 3680,
+      "materialGroups": 9,
       "dimensions": [
         5.513076305389404,
         6.853674286454916,
         5.6157066822052
       ],
-      "triangles": 4937,
-      "lowTriangles": 3476,
-      "materialGroups": 8,
-      "fixedScaleFit": null,
+      "detailFeatures": {
+        "dark window recess": 2,
+        "window jamb": 4,
+        "projecting window sill": 2,
+        "window drip hood": 2,
+        "glazing mullion": 4,
+        "open boarded shutter": 4,
+        "shutter hinge": 8,
+        "window transom": 2,
+        "entry latch plate": 1,
+        "bevelled dressed stone": 8
+      },
       "budgetExceptions": [
-        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
         "Measured authoring target exception; gallery review only, F must budget before adoption."
       ]
     },
     {
       "id": "home-long-ridge",
+      "triangles": 6784,
+      "lowTriangles": 4726,
+      "materialGroups": 9,
       "dimensions": [
         5.7028889656066895,
         6.646391743272543,
         7.588279604911804
       ],
-      "triangles": 6340,
-      "lowTriangles": 4522,
-      "materialGroups": 8,
-      "fixedScaleFit": null,
+      "detailFeatures": {
+        "dark window recess": 2,
+        "window jamb": 4,
+        "projecting window sill": 2,
+        "window drip hood": 2,
+        "glazing mullion": 4,
+        "open boarded shutter": 4,
+        "shutter hinge": 8,
+        "window transom": 2,
+        "entry latch plate": 1,
+        "bevelled dressed stone": 8
+      },
       "budgetExceptions": [
-        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
         "Measured authoring target exception; gallery review only, F must budget before adoption."
       ]
     },
     {
       "id": "home-low-hip",
+      "triangles": 6261,
+      "lowTriangles": 2766,
+      "materialGroups": 8,
       "dimensions": [
         5,
         4.855000132173299,
         5
       ],
-      "triangles": 5793,
-      "lowTriangles": 2538,
-      "materialGroups": 8,
-      "fixedScaleFit": null,
+      "detailFeatures": {
+        "overlapping continuous thatch course 0": 1,
+        "overlapping continuous thatch course 1": 1,
+        "overlapping continuous thatch course 2": 1,
+        "overlapping continuous thatch course 3": 1,
+        "overlapping continuous thatch course 4": 1,
+        "overlapping continuous thatch course 5": 1,
+        "overlapping continuous thatch course 6": 1,
+        "overlapping continuous thatch course 7": 1,
+        "overlapping continuous thatch course 8": 1,
+        "bound ridge": 1,
+        "ridge binding": 6,
+        "closed ridge weather cap": 1,
+        "closed ceiling": 1,
+        "dark window recess": 2,
+        "window jamb": 4,
+        "projecting window sill": 2,
+        "window drip hood": 2,
+        "glazing mullion": 4,
+        "open boarded shutter": 4,
+        "shutter hinge": 8,
+        "window transom": 2,
+        "entry latch plate": 1,
+        "bevelled dressed stone": 8,
+        "thatched cottage eave bearer": 2
+      },
       "budgetExceptions": [
+        "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
         "Measured authoring target exception; gallery review only, F must budget before adoption."
       ]
     },
     {
       "id": "home-porch-cabin",
+      "triangles": 6234,
+      "lowTriangles": 4322,
+      "materialGroups": 8,
       "dimensions": [
         5.534493923187256,
         6.64763700351119,
         6.313289284706116
       ],
-      "triangles": 5790,
-      "lowTriangles": 4118,
-      "materialGroups": 7,
-      "fixedScaleFit": null,
+      "detailFeatures": {
+        "dark window recess": 2,
+        "window jamb": 4,
+        "projecting window sill": 2,
+        "window drip hood": 2,
+        "glazing mullion": 4,
+        "open boarded shutter": 4,
+        "shutter hinge": 8,
+        "window transom": 2,
+        "entry latch plate": 1,
+        "bevelled dressed stone": 8
+      },
       "budgetExceptions": [
-        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
         "Measured authoring target exception; gallery review only, F must budget before adoption."
       ]
     },
     {
       "id": "home-offset-gables",
+      "triangles": 7633,
+      "lowTriangles": 5261,
+      "materialGroups": 10,
       "dimensions": [
         7.299776077270508,
         6.853674286454916,
         5.6157066822052
       ],
-      "triangles": 7189,
-      "lowTriangles": 5057,
-      "materialGroups": 9,
-      "fixedScaleFit": null,
+      "detailFeatures": {
+        "dark window recess": 2,
+        "window jamb": 4,
+        "projecting window sill": 2,
+        "window drip hood": 2,
+        "glazing mullion": 4,
+        "open boarded shutter": 4,
+        "shutter hinge": 8,
+        "window transom": 2,
+        "entry latch plate": 1,
+        "bevelled dressed stone": 8
+      },
       "budgetExceptions": [
-        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
         "Measured authoring target exception; gallery review only, F must budget before adoption."
       ]
     },
     {
       "id": "facility-farm",
-      "dimensions": [
-        8.50442361831665,
-        5.594642274081707,
-        5.940000057220459
-      ],
-      "triangles": 1168,
-      "lowTriangles": 808,
+      "triangles": 5872,
+      "lowTriangles": 3072,
       "materialGroups": 1,
-      "fixedScaleFit": {
-        "availableGameUnits": [
-          46,
-          41.2
-        ],
-        "fullGameUnits": [
-          23.81238613128662,
-          16.632000160217284
-        ],
-        "axisAlignedFit": true,
-        "heightCap": 48,
-        "heightFits": true
+      "dimensions": [
+        8.601724624633789,
+        5.650000207126141,
+        6.010000228881836
+      ],
+      "detailFeatures": {
+        "barn rubble seat": 1,
+        "closed barn floor": 1,
+        "rear barn wall": 1,
+        "barn side": 2,
+        "broad door side infill": 2,
+        "door head infill": 1,
+        "closed cargo leaf": 2,
+        "door diagonal": 2,
+        "forged strap": 4,
+        "door handle": 2,
+        "cargo door seam cover": 1,
+        "heavy jamb": 2,
+        "lintel": 1,
+        "individual stone foot": 9,
+        "bearing post": 9,
+        "barn side brace": 6,
+        "closed pitched roof": 2,
+        "ridge": 1,
+        "verge": 4,
+        "tie": 2,
+        "king post": 2,
+        "principal rafter": 4,
+        "knee brace": 4,
+        "barn gable infill": 2,
+        "bay cross beam": 3,
+        "bay brace": 3,
+        "hay bay roof": 1,
+        "work bench": 1,
+        "bench trestle": 2,
+        "bench stretcher": 1,
+        "integral hay loft": 1,
+        "stored hay mass": 2,
+        "hay fork handle": 1,
+        "fork tine": 3,
+        "curved overlapping clay tile": 150,
+        "overlapping barrel ridge cap": 12,
+        "deep bargeboard": 4,
+        "separate cargo door plank": 16,
+        "door hinge rivet": 8,
+        "forged door latch": 1,
+        "dark ventilation opening": 1,
+        "sloping weather louvre": 6,
+        "vent framing": 2,
+        "dark window recess": 2,
+        "window jamb": 4,
+        "projecting window sill": 2,
+        "window drip hood": 2,
+        "glazing mullion": 4,
+        "open boarded shutter": 4,
+        "shutter hinge": 8,
+        "window transom": 2,
+        "barn panel diagonal": 4,
+        "barn wall board batten": 20,
+        "bevelled dressed stone": 18,
+        "post base iron shoe": 8
       },
       "budgetExceptions": []
     },
     {
       "id": "facility-smith",
+      "triangles": 5908,
+      "lowTriangles": 2252,
+      "materialGroups": 1,
       "dimensions": [
         5.900000095367432,
         5.619999997317791,
-        5.317872047424316
+        5.347658157348633
       ],
-      "triangles": 688,
-      "lowTriangles": 640,
-      "materialGroups": 1,
-      "fixedScaleFit": {
-        "availableGameUnits": [
-          33,
-          29.5
-        ],
-        "fullGameUnits": [
-          16.52000026702881,
-          14.890041732788085
-        ],
-        "axisAlignedFit": true,
-        "heightCap": 48,
-        "heightFits": true
+      "detailFeatures": {
+        "hearth room seat": 1,
+        "closed working floor": 1,
+        "masonry rear": 1,
+        "masonry side return": 2,
+        "individual stone foot": 4,
+        "bearing post": 4,
+        "forge knee brace": 4,
+        "front bressummer": 1,
+        "substantial hearth": 1,
+        "dark fire bed": 1,
+        "fire back": 1,
+        "hood masonry pier": 2,
+        "tapered open forge hood": 4,
+        "continuous stack side": 2,
+        "continuous stack face": 2,
+        "open stack crown": 4,
+        "roof around flue": 4,
+        "metal flashing": 4,
+        "shed roof edging": 2,
+        "anvil stump": 1,
+        "anvil waist": 1,
+        "anvil face": 1,
+        "anvil horn": 1,
+        "work bench": 1,
+        "bench trestle": 2,
+        "bench stretcher": 1,
+        "tool rack rail": 1,
+        "stored tool shaft": 3,
+        "hammer head": 3,
+        "curved overlapping clay tile": 94,
+        "stepped chimney apron flashing": 4,
+        "bevelled dressed stone": 263,
+        "dark ventilation opening": 1,
+        "sloping weather louvre": 5,
+        "vent framing": 2,
+        "post iron collar": 2,
+        "post base iron shoe": 4
       },
       "budgetExceptions": []
     },
     {
       "id": "facility-granary",
-      "dimensions": [
-        7.520538330078125,
-        6.039914548397064,
-        6.694999933242798
-      ],
-      "triangles": 1408,
-      "lowTriangles": 1108,
+      "triangles": 4624,
+      "lowTriangles": 2548,
       "materialGroups": 1,
-      "fixedScaleFit": {
-        "availableGameUnits": [
-          30,
-          26.8
-        ],
-        "fullGameUnits": [
-          21.057507324218747,
-          18.745999813079834
-        ],
-        "axisAlignedFit": true,
-        "heightCap": 48,
-        "heightFits": true
+      "dimensions": [
+        7.611922979354858,
+        6.098788201808929,
+        6.730000019073486
+      ],
+      "detailFeatures": {
+        "individual stone foot": 8,
+        "bearing post": 8,
+        "floor bearer": 2,
+        "floor joist": 3,
+        "undercroft diagonal": 4,
+        "front rear brace": 4,
+        "closed floor and underside": 1,
+        "rear storage wall": 1,
+        "storage side": 2,
+        "door side infill": 2,
+        "door head infill": 1,
+        "closed cargo leaf": 2,
+        "door diagonal": 2,
+        "forged strap": 4,
+        "door handle": 2,
+        "cargo door seam cover": 1,
+        "heavy jamb": 2,
+        "lintel": 1,
+        "store corner": 4,
+        "upper corner brace": 4,
+        "closed pitched roof": 2,
+        "ridge": 1,
+        "verge": 4,
+        "tie": 2,
+        "king post": 2,
+        "principal rafter": 4,
+        "knee brace": 4,
+        "closed storage gable": 2,
+        "supported loading landing": 1,
+        "safe stair tread": 8,
+        "stair stringer": 2,
+        "stair handrail": 2,
+        "rail upright": 6,
+        "landing guard post": 2,
+        "landing front rail": 2,
+        "landing end rail": 2,
+        "optional crate": 1,
+        "curved overlapping clay tile": 102,
+        "overlapping barrel ridge cap": 12,
+        "deep bargeboard": 4,
+        "separate cargo door plank": 16,
+        "door hinge rivet": 8,
+        "forged door latch": 1,
+        "dark ventilation opening": 1,
+        "sloping weather louvre": 4,
+        "vent framing": 2,
+        "store side diagonal": 4,
+        "storage board batten": 20,
+        "storage binding rail": 4,
+        "post base iron shoe": 8
       },
       "budgetExceptions": []
     },
     {
       "id": "facility-lumber",
+      "triangles": 1984,
+      "lowTriangles": 1292,
+      "materialGroups": 1,
       "dimensions": [
         8.199999809265137,
-        3.4550000354647636,
+        3.4795380756258965,
         4.550000071525574
       ],
-      "triangles": 756,
-      "lowTriangles": 720,
-      "materialGroups": 1,
-      "fixedScaleFit": {
-        "availableGameUnits": [
-          33,
-          29.5
-        ],
-        "fullGameUnits": [
-          22.95999946594238,
-          12.740000200271606
-        ],
-        "axisAlignedFit": true,
-        "heightCap": 48,
-        "heightFits": true
+      "detailFeatures": {
+        "individual stone foot": 6,
+        "bearing post": 6,
+        "rack shelter brace": 6,
+        "long timber roof": 2,
+        "long eave edging": 2,
+        "long roof ridge": 1,
+        "cross tie": 3,
+        "rafter": 6,
+        "rack rail": 4,
+        "rack arm": 12,
+        "integral stacked timber": 6,
+        "work bench": 1,
+        "bench trestle": 2,
+        "bench stretcher": 1,
+        "cutting trestle": 4,
+        "cutting timber": 1,
+        "separate weathered roof board": 44,
+        "exposed rafter tail": 6,
+        "rack iron tie": 3,
+        "wooden joint peg": 6,
+        "bench vise jaw": 2,
+        "post base iron shoe": 6
       },
       "budgetExceptions": []
     },
     {
       "id": "facility-market",
-      "dimensions": [
-        9.925000190734863,
-        2.8832505866885185,
-        3.921643942594528
-      ],
-      "triangles": 636,
-      "lowTriangles": 528,
+      "triangles": 1596,
+      "lowTriangles": 888,
       "materialGroups": 1,
-      "fixedScaleFit": {
-        "availableGameUnits": [
-          46,
-          41.2
-        ],
-        "fullGameUnits": [
-          27.790000534057615,
-          10.980603039264679
-        ],
-        "axisAlignedFit": true,
-        "heightCap": 48,
-        "heightFits": true
+      "dimensions": [
+        9.960000038146973,
+        2.8300000354647636,
+        3.9400000274181366
+      ],
+      "detailFeatures": {
+        "individual stone foot": 12,
+        "bearing post": 12,
+        "canvas valance": 3,
+        "stall header": 3,
+        "open counter": 3,
+        "counter leg": 6,
+        "boarded counter front": 2,
+        "optional produce bin": 9,
+        "draped canvas canopy": 3,
+        "canvas folded hem": 3,
+        "awning rear support": 3,
+        "awning rope tie": 6,
+        "counter face board": 15,
+        "post base iron shoe": 8
       },
       "budgetExceptions": []
     }
   ],
-  "textureBytes": 162055,
-  "estimatedMipRGBA8Bytes": 5068122,
+  "textureBytes": 217199,
+  "estimatedMipRGBA8Bytes": 5767173,
   "probes": [
     {
       "quality": "normal",
@@ -227,21 +426,21 @@
       "failures": []
     }
   ],
-  "cameraBoundsChecks": {
-    "count": 48,
+  "cameraChecks": {
+    "count": 80,
     "failed": []
   },
   "scenes": [
     {
       "count": 30,
       "quality": "normal",
-      "drawCalls": 67,
-      "triangles": 192440,
+      "drawCalls": 73,
+      "triangles": 221232,
       "textures": 21,
-      "geometries": 139,
-      "submissions": 156,
-      "medianSubmissionMs": 1.3000000000465661,
-      "p95SubmissionMs": 2.699999999953434,
+      "geometries": 177,
+      "submissions": 236,
+      "medianSubmissionMs": 1.599999999627471,
+      "p95SubmissionMs": 3.5,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "sixthFallbackMeasured": false,
@@ -255,13 +454,13 @@
     {
       "count": 100,
       "quality": "normal",
-      "drawCalls": 67,
-      "triangles": 630990,
+      "drawCalls": 73,
+      "triangles": 691198,
       "textures": 21,
-      "geometries": 139,
-      "submissions": 171,
-      "medianSubmissionMs": 1,
-      "p95SubmissionMs": 1.3000000000465661,
+      "geometries": 177,
+      "submissions": 251,
+      "medianSubmissionMs": 1.200000001117587,
+      "p95SubmissionMs": 2,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "sixthFallbackMeasured": false,
@@ -275,13 +474,13 @@
     {
       "count": 30,
       "quality": "low",
-      "drawCalls": 65,
-      "triangles": 127412,
+      "drawCalls": 73,
+      "triangles": 139924,
       "textures": 21,
-      "geometries": 155,
-      "submissions": 191,
-      "medianSubmissionMs": 1.0999999998603016,
-      "p95SubmissionMs": 1.3999999999068677,
+      "geometries": 177,
+      "submissions": 271,
+      "medianSubmissionMs": 1.300000000745058,
+      "p95SubmissionMs": 4.400000000372529,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "sixthFallbackMeasured": false,
@@ -295,13 +494,13 @@
     {
       "count": 100,
       "quality": "low",
-      "drawCalls": 65,
-      "triangles": 415826,
+      "drawCalls": 73,
+      "triangles": 442954,
       "textures": 21,
-      "geometries": 155,
-      "submissions": 206,
-      "medianSubmissionMs": 1.0999999998603016,
-      "p95SubmissionMs": 3.4000000001396984,
+      "geometries": 177,
+      "submissions": 286,
+      "medianSubmissionMs": 1.199999999254942,
+      "p95SubmissionMs": 3.699999999254942,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "sixthFallbackMeasured": false,
@@ -316,58 +515,55 @@
   "commands": [
     {
       "command": "node scripts/build-wv006-baselines.mjs",
-      "result": "pass; checkout-only; deterministic GLB and manifest"
+      "result": "pass; checkout-only; isolated byte-identical GLB and manifest rebuild"
     },
     {
       "command": "node --test tests/wv006-baselines.test.mjs",
-      "result": "4 passed; glTF 0 errors / 0 warnings"
+      "result": "5 passed; glTF 0 errors / 0 warnings"
     },
     {
       "command": "npm test",
-      "result": "176 passed; 1 skipped after incorporating D (original C baseline: 171 passed; 1 skipped)"
+      "result": "187 passed; 1 skipped"
     },
     {
       "command": "npm run build:assets",
-      "result": "pass; no tracked regenerated artifacts changed"
+      "result": "pass; no shared tracked regenerated artifacts changed"
     },
     {
       "command": "npm run build:icons",
       "result": "pass"
     },
     {
+      "command": "CHECK_BUILT_ICONS=1 node --test tests/icon-artifacts.test.mjs",
+      "result": "1 passed"
+    },
+    {
       "command": "npm run build:offline",
       "result": "pass"
     },
     {
-      "command": "npm run test:e2e",
-      "result": "102 passed on original C baseline; current combined full suite is also required in PR CI"
-    },
-    {
-      "command": "WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity",
-      "result": "16 passed"
+      "command": "npx playwright test tests/browser/wv006-baselines.spec.mjs",
+      "result": "2 passed; all ten models in all cameras"
     },
     {
       "command": "node scripts/measure-wv006-baselines.mjs",
-      "result": "pass; 64 geometry probes and all camera bounds pass; 100-home triangle gates explicitly fail"
+      "result": "pass; 64 probes / 80 full-bounds camera checks; 30-home numerical guards pass, 100-home triangle guards fail"
     },
     {
-      "command": "npx playwright test tests/browser/wv006-baselines.spec.mjs tests/browser/wv006-storage.spec.mjs",
-      "result": "6 passed after incorporating current develop/D"
+      "command": "npm run test:e2e",
+      "result": "Full local run and current-head CI required before merge; final counts in PR delivery record"
+    },
+    {
+      "command": "WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity",
+      "result": "Full local run and current-head CI required before merge; final counts in PR delivery record"
     }
   ],
-  "earlierRun": {
-    "result": "98 passed / 4 failed during concurrent software-rendered evidence capture",
-    "affected": "B3 read-only scene, C1 hamlet, C2 workplaces, C3 marketplace",
-    "resolution": "All four passed in the sequential full-suite rerun; no shared source or test changes."
-  },
+  "runtimeReady": false,
   "remaining": [
     "human art review",
-    "F final-ground repeat",
-    "F actual parcel/slope/road/water placement",
-    "F combined scene / 100-home triangle budget",
-    "F runtime offline integration / physical phone UAT"
-  ],
-  "runtimeReady": false,
-  "incorporatedDevelop": "14b4d1e9e44fc4fb08e9cb1baf754952e43f953c",
-  "incorporation": "D merged in separate exclusive paths; no conflicts or shared source/dependency changes. C geometry and measurements unchanged."
+    "final ground cover in F",
+    "actual parcel/terrain/road/water admission",
+    "100-home triangle budget",
+    "runtime offline integration and physical-phone UAT"
+  ]
 }

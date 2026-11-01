@@ -1,17 +1,19 @@
 # WV006-C acceptance evidence
 
+Current revision: C2 full-building detail pass. See [detail contract](../../handoffs/wv006-c/DETAIL-PASS.md). New roof tiles/boards/canvas, window trim, cargo-door boards and bevelled masonry replace the earlier broad-surface treatment. Current measurements and hashes supersede the original C1 figures below.
+
 Review page: https://matthnj15-pixel.github.io/Willow-Valley/dev/ui-kit/wv006-baselines.html
 
 Review the side-by-side PR 81/candidate gallery at the existing human scale. Hide loose props and labels, then inspect each workplace in monochrome. Hearths, doors, supports, racks, counters and fixed work bays remain visible. Front, rear, left, right, roof and eye views are available for both detail levels, plus wireframe. Human visual acceptance remains a review step; automated geometry checks do not certify art approval. Repeat with F's final ground cover before runtime promotion.
 
 ## Visible correction evidence
 
-- Thatch: [normal close view](home-low-hip-normal-front.jpg), [roof](home-low-hip-normal-roof.jpg), [low](home-low-hip-low-front.jpg), [wireframe](home-low-hip-wire.jpg). The normal shell is preserved; the new courses have closed hips, relief and uneven bundle edges rather than per-straw geometry. Fine fibers are in the shared texture and can remain subtle at normal town zoom.
+- Thatch: [normal close view](home-low-hip-normal-front.jpg), [roof](home-low-hip-normal-roof.jpg), [low](home-low-hip-low-front.jpg), [wireframe](home-low-hip-wire.jpg). The original core shell is preserved beneath additive detail; the new courses have closed hips, relief and uneven bundle edges rather than per-straw geometry. Fine fibers are in the shared texture and can remain subtle at normal town zoom.
 - Smith: the original defect was inspected in [front](old-smith-front.jpg), [rear](old-smith-rear.jpg), [side](old-smith-side.jpg), [roof](old-smith-roof.jpg), [eye](old-smith-eye.jpg), and [wireframe](old-smith-wire.jpg). The sloped source stack bottom meets the separate square flue above a roof crossing; this is an assembly/penetration problem visible with ordinary materials and wireframe, not camera clipping alone. Compare [new eye view](facility-smith-normal-eye.jpg), [roof opening/crown](facility-smith-normal-roof.jpg), and [wireframe](facility-smith-wire.jpg). No smoke supplies identity.
 - Granary: [elevated mass and loading access](facility-granary-normal-front.jpg), [open undercroft at eye level](facility-granary-normal-eye.jpg), [side stair](facility-granary-normal-side.jpg), [roof/yard](facility-granary-normal-roof.jpg), [wireframe](facility-granary-wire.jpg). The selected 1.35 m floor is in the 1.2–1.5 m study. The store has air beneath its closed underside; the floor did not remain at 0.7 m beneath a raised deck.
 - Work identities with labels and loose props hidden: [barn](facility-farm-identity.jpg), [forge](facility-smith-identity.jpg), [granary](facility-granary-identity.jpg), [timber rack shelter](facility-lumber-identity.jpg), [stall court](facility-market-identity.jpg).
 
-Each `*-pair.jpg` compares the unchanged PR 81 input on the left with C on the right. `*-normal-{front,rear,left,side,roof,eye}.jpg` and `*-low-{front,roof}.jpg` cover revised designs. Mobile captures use a 600×850 CSS viewport at DPR 1; desktop captures use 1400×1050 at DPR 1. All use existing environment materials and the same gallery light. This is cloud Chromium/SwiftShader evidence, not physical-device FPS.
+Each `*-pair.jpg` now compares the exact C1 baseline on the left with the detailed C2 candidate on the right. `*-normal-{front,rear,left,side,roof,eye}.jpg` and `*-low-{front,roof}.jpg` cover revised designs. Mobile captures use a 600×850 CSS viewport at DPR 1; desktop captures use 1400×1050 at DPR 1. All use existing environment materials and the same gallery light. This is cloud Chromium/SwiftShader evidence, not physical-device FPS.
 
 ## Verification
 

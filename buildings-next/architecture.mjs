@@ -1,6 +1,7 @@
 // Original WV006-C architecture, visual metres, Y up. No simulation imports.
 import {BoxGeometry,CylinderGeometry,BufferGeometry,Float32BufferAttribute,Quaternion,Vector3} from 'three';
-export const recipeRevision=1;
+import {detailPass} from './details.mjs';
+export const recipeRevision=2;
 export const polygon=(x,z,w,d)=>[[x-w/2,z-d/2],[x+w/2,z-d/2],[x+w/2,z+d/2],[x-w/2,z+d/2]];
 export function architecture(id,{low=false,floor=1.35}={}){
  const parts=[],supports=[],entrances=[],probes=[];const categories={};
@@ -99,5 +100,6 @@ export function architecture(id,{low=false,floor=1.35}={}){
   }
   entrance([0,0,2.7],3,2);categories.openCourt={envelope:polygon(0,0,10.2,8),roofArea:stalls.reduce((a,s)=>a+(s[2]+.35)*2.25,0),openFraction:1-stalls.reduce((a,s)=>a+(s[2]+.35)*2.25,0)/(10.2*8)};
  }
+ detailPass(id,parts,{low,add,box,beam});
  for(const p of parts){(categories[p.category]??=[]).push(p.name);}return {parts,supports,entrances,seat,floorElevation,description,roofPenetration,categories,probes};
 }

@@ -4,7 +4,7 @@ for(const base of ['/','/dev/'])test('C candidates: fixed scale, roof/undercroft
  await page.goto(base+'ui-kit/wv006-baselines.html');await expect(page.locator('#catalog')).toHaveAttribute('data-loaded','10');
  const records=await page.evaluate(()=>wv006.manifest);expect(records.gameUnitsPerMetre).toBe(2.8);expect(records.runtimeReady).toBe(false);expect(records.entries).toHaveLength(10);
  for(const quality of ['normal','low']){await page.selectOption('#quality',quality);const probes=await page.evaluate(()=>wv006.inspect());expect(probes.filter(p=>!p.ok)).toEqual([]);}
- await page.selectOption('#compare','new');for(const id of ['home-low-hip','facility-farm','facility-smith','facility-granary','facility-lumber','facility-market']){
+ await page.selectOption('#compare','new');for(const id of records.entries.map(e=>e.id)){
   await page.selectOption('#design',id);for(const view of ['front','rear','left','side','roof','eye']){await page.selectOption('#view',view);expect(await page.evaluate(()=>wv006.frameCheck()),id+' '+view).toBe(true);}await page.uncheck('#labels-on');await page.uncheck('#props');await page.check('#mono');await page.screenshot({path:info.outputPath(id+'-identity.png')});await page.uncheck('#mono');
  }
  await page.check('#wire');await page.selectOption('#design','facility-smith');await page.screenshot({path:info.outputPath('smith-wire.png')});await page.uncheck('#wire');await page.selectOption('#compare','pair');await page.selectOption('#quality','normal');await page.selectOption('#view','front');
