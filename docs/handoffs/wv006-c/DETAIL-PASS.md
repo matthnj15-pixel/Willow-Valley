@@ -17,7 +17,7 @@ The atlas UV inset is widened to prevent neighbouring material colors bleeding i
 
 ## Review and measurement
 
-The gallery now compares the exact local C1 asset (`baseline-r1.glb`, SHA-256 `47bb946da13849f77491a08b7f66fa6413e10bb3a26fb5c4351b7d3b8449a520`) against C2. That file is a gallery-only reference, not a runtime candidate dependency. PR 81's accepted inputs are untouched. `comparison` and `inputs` in the new manifest record the reference explicitly.
+The gallery module and revised manifest/GLB requests carry a revision query so a previous visit cannot silently reuse C1 browser-cache entries. The gallery now compares the exact local C1 asset (`baseline-r1.glb`, SHA-256 `47bb946da13849f77491a08b7f66fa6413e10bb3a26fb5c4351b7d3b8449a520`) against C2. That file is a gallery-only reference, not a runtime candidate dependency. PR 81's accepted inputs are untouched. `comparison` and `inputs` in the new manifest record the reference explicitly.
 
 `detailFeatures` contains measured recipe component counts per entry. All ten designs have six normal cameras, low front/roof views, monochrome, wireframe and before/after evidence under the owned testing directory. The measurement script still records fixed-scale 30/100-home submission fixtures and their failed gates honestly; these synthetic fixtures do not establish actual placement or phone FPS.
 
