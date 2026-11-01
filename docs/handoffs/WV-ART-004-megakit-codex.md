@@ -3,6 +3,8 @@
 **Research baseline:** latest fetched `develop`, `604a2272a38e02c539027d2611d0d059b1370e76`, 2026-10-31. Fetch again before engineering.
 **Scope:** presentation-only, optional small-building slice first. No changes to simulation, founding rules, household capacity, buildable types, economics, terrain authority, road connectivity, controls, or save schema. Read [the acquired-kit audit](../design/WV-ART-004-megakit-audit.md), `WV-ART-001`, `WV-ART-002A`, and `WV-ART-003` together with current code. The repository has moved beyond the original handoff's renderer snapshot.
 
+**Delivery refresh:** includes `develop` commit `2920b0fa35c012fe30e3622fcef7b44b0145719b` (WV-ART-003 S2). Preserve the new `terrain-classification.mjs` and meadow/soil/slope material blending as well as the S1 texture registry. The refresh changes environment presentation, not the building placement or save contracts used below.
+
 ## 1. Source admission
 
 Use the user's privately acquired `Medieval Village MegaKit[Source].zip`, exactly **708,720,797 bytes**, SHA-256 `5e60888e2babe418a4618e7815539d9b1b2c3b24c1db2b22cd7a2a7f66140732`. The public repository contains the inventory and license evidence, not the archive or source models. Obtain the file through the user's approved private source; do not assume the temporary research workspace persists or publish the share URL.

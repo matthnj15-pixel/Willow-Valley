@@ -12,10 +12,12 @@ test('the branch build tool packages gallery assets even under the older main Pa
   writeFileSync(join(source,'index.html'),'<link rel="stylesheet" href="./styles.css"><script type="module" src="./app.mjs"></script>');
   writeFileSync(join(source,'styles.css'),'body{color:green}');writeFileSync(join(source,'app.mjs'),'console.log("fixture")');
   writeFileSync(join(source,'asset-cache.js'),'self.WV_ASSET_CACHE=[];');writeFileSync(join(source,'assets/models/home.glb'),'verified model fixture');
+  writeFileSync(join(source,'environment-asset-manifest.json'),'verified surface provenance fixture');
   const build=new URL('../scripts/build-offline.mjs',import.meta.url);
   execFileSync(process.execPath,[build.pathname,source,join(destination,'offline.html')]);
   assert.equal(readFileSync(join(destination,'assets/models/home.glb'),'utf8'),'verified model fixture');
   assert.equal(readFileSync(join(destination,'asset-cache.js'),'utf8'),'self.WV_ASSET_CACHE=[];');
+  assert.equal(readFileSync(join(destination,'environment-asset-manifest.json'),'utf8'),'verified surface provenance fixture');
   const stable=join(temp,'_site/stable');mkdirSync(stable,{recursive:true});rmSync(join(source,'asset-cache.js'));
   execFileSync(process.execPath,[build.pathname,source,join(stable,'offline.html')]);
   assert.equal(existsSync(join(stable,'assets')),false,'a branch without a catalog stays independent');

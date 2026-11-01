@@ -3,6 +3,8 @@
 **Inspected:** 2026-10-31, from `develop` commit `604a2272a38e02c539027d2611d0d059b1370e76`.
 **Decision:** admit the acquired source art as a **CC0-evidenced, selectively imported modular building source**. Start with small authored cottages, farmhouse, and workshop shells. Keep the current functional yard props and all simulation contracts. The demo's complete building arrangements are later-town studies, not drop-in founding homes. This research changes no runtime code or saves.
 
+**Latest develop compatibility review:** `2920b0fa35c012fe30e3622fcef7b44b0145719b` added WV-ART-003 S2 meadow/soil/slope rendering while this audit was in progress. Its changes do not alter the building, identity, parcel or save contracts described here. The delivery branch includes that commit. Recorded full-suite results remain explicitly tied to the tested `604a227` baseline; CI validates the combined documentation branch.
+
 ## Acquisition and evidence
 
 The user-supplied iCloud share was accessible without sign-in. Downloaded `Medieval Village MegaKit[Source].zip`: **708,720,797 bytes**, SHA-256 `5e60888e2babe418a4618e7815539d9b1b2c3b24c1db2b22cd7a2a7f66140732`. This is 708.7 decimal MB or 675.9 MiB. The original archive and extracted model files remain outside the repository. The private share URL and download tokens are intentionally omitted from public documentation.

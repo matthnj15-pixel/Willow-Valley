@@ -48,3 +48,5 @@ Baseline `604a2272a38e02c539027d2611d0d059b1370e76`:
 - Staged-path scan excludes archive/model/texture binaries and engine code. The only art binary in this research is the rendered JPEG comparison board. Original CC0 notice whitespace is deliberately preserved through the scoped `.gitattributes` rule.
 
 No physical-phone FPS, new-model offline readiness, final assembly closure or save compatibility of a future implementation is claimed. Those gates belong to the incremental integration handoff.
+
+The delivery branch also incorporates later develop `2920b0fa35c012fe30e3622fcef7b44b0145719b` (environment rendering S2). Its diff was reviewed for compatibility; building and save contracts did not change. Local full-suite counts above describe the recorded `604a227` run, not an unperformed rerun on S2. Check PR CI for the combined branch.
