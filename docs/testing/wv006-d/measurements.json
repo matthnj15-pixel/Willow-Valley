@@ -1,0 +1,226 @@
+[
+  {
+    "scene": "D warehouse gallery",
+    "quality": "normal",
+    "stock": "empty",
+    "viewport": {
+      "width": 600,
+      "height": 850
+    },
+    "dpr": 1,
+    "drawCalls": 24,
+    "triangles": 5018,
+    "geometries": 31,
+    "textures": 1,
+    "compositionRevision": 3,
+    "instances": {
+      "goods": 0,
+      "warehouses": 2
+    },
+    "medianSubmissionMs": 0.5999999998603016,
+    "p95SubmissionMs": 1.0999999998603016,
+    "physicalPhoneVerified": false
+  },
+  {
+    "scene": "D warehouse gallery",
+    "quality": "normal",
+    "stock": "partial",
+    "viewport": {
+      "width": 600,
+      "height": 850
+    },
+    "dpr": 1,
+    "drawCalls": 31,
+    "triangles": 6034,
+    "geometries": 31,
+    "textures": 1,
+    "compositionRevision": 4,
+    "instances": {
+      "goods": 6,
+      "warehouses": 2
+    },
+    "medianSubmissionMs": 0.5999999998603016,
+    "p95SubmissionMs": 1.0999999998603016,
+    "physicalPhoneVerified": false
+  },
+  {
+    "scene": "D warehouse gallery",
+    "quality": "normal",
+    "stock": "full",
+    "viewport": {
+      "width": 600,
+      "height": 850
+    },
+    "dpr": 1,
+    "drawCalls": 35,
+    "triangles": 7074,
+    "geometries": 35,
+    "textures": 1,
+    "compositionRevision": 5,
+    "instances": {
+      "goods": 14,
+      "warehouses": 2
+    },
+    "medianSubmissionMs": 0.5,
+    "p95SubmissionMs": 0.6999999999534339,
+    "physicalPhoneVerified": false
+  },
+  {
+    "scene": "D warehouse gallery",
+    "quality": "low",
+    "stock": "empty",
+    "viewport": {
+      "width": 600,
+      "height": 850
+    },
+    "dpr": 1,
+    "drawCalls": 22,
+    "triangles": 2086,
+    "geometries": 51,
+    "textures": 1,
+    "compositionRevision": 3,
+    "instances": {
+      "goods": 0,
+      "warehouses": 2
+    },
+    "medianSubmissionMs": 0.7999999998137355,
+    "p95SubmissionMs": 1.1999999999534339,
+    "physicalPhoneVerified": false
+  },
+  {
+    "scene": "D warehouse gallery",
+    "quality": "low",
+    "stock": "partial",
+    "viewport": {
+      "width": 600,
+      "height": 850
+    },
+    "dpr": 1,
+    "drawCalls": 29,
+    "triangles": 2758,
+    "geometries": 51,
+    "textures": 1,
+    "compositionRevision": 4,
+    "instances": {
+      "goods": 6,
+      "warehouses": 2
+    },
+    "medianSubmissionMs": 0.5,
+    "p95SubmissionMs": 0.6000000000931323,
+    "physicalPhoneVerified": false
+  },
+  {
+    "scene": "D warehouse gallery",
+    "quality": "low",
+    "stock": "full",
+    "viewport": {
+      "width": 600,
+      "height": 850
+    },
+    "dpr": 1,
+    "drawCalls": 33,
+    "triangles": 3598,
+    "geometries": 55,
+    "textures": 1,
+    "compositionRevision": 5,
+    "instances": {
+      "goods": 14,
+      "warehouses": 2
+    },
+    "medianSubmissionMs": 0.5,
+    "p95SubmissionMs": 0.6999999999534339,
+    "physicalPhoneVerified": false
+  },
+  {
+    "scene": "unchanged existing town baseline; no D candidates",
+    "count": 30,
+    "quality": "normal",
+    "viewport": {
+      "width": 1440,
+      "height": 1050
+    },
+    "dpr": 1,
+    "waterFrames": 8,
+    "loaded": 14,
+    "total": 14,
+    "geometries": 96,
+    "textures": 19,
+    "drawCalls": 96,
+    "triangles": 78514,
+    "geometryBytes": 2284644,
+    "textureBytes": 23795371,
+    "surfaceControlBuilds": 1,
+    "surfaceTexturesLoaded": 2,
+    "surfaceTextureBytes": 2823850.6666666665,
+    "physicalPhoneVerified": false
+  },
+  {
+    "scene": "unchanged existing town baseline; no D candidates",
+    "count": 30,
+    "quality": "low",
+    "viewport": {
+      "width": 1440,
+      "height": 1050
+    },
+    "dpr": 1,
+    "waterFrames": 3,
+    "loaded": 14,
+    "total": 14,
+    "geometries": 96,
+    "textures": 19,
+    "drawCalls": 96,
+    "triangles": 55179,
+    "geometryBytes": 1789880,
+    "textureBytes": 23780011,
+    "surfaceControlBuilds": 1,
+    "surfaceTexturesLoaded": 2,
+    "surfaceTextureBytes": 2808490.6666666665,
+    "physicalPhoneVerified": false
+  },
+  {
+    "scene": "unchanged existing town baseline; no D candidates",
+    "count": 100,
+    "quality": "normal",
+    "viewport": {
+      "width": 1440,
+      "height": 1050
+    },
+    "dpr": 1,
+    "waterFrames": 6,
+    "loaded": 14,
+    "total": 14,
+    "geometries": 96,
+    "textures": 19,
+    "drawCalls": 98,
+    "triangles": 143766,
+    "geometryBytes": 2990884,
+    "textureBytes": 23795371,
+    "surfaceControlBuilds": 1,
+    "surfaceTexturesLoaded": 2,
+    "surfaceTextureBytes": 2823850.6666666665,
+    "physicalPhoneVerified": false
+  },
+  {
+    "scene": "unchanged existing town baseline; no D candidates",
+    "count": 100,
+    "quality": "low",
+    "viewport": {
+      "width": 1440,
+      "height": 1050
+    },
+    "dpr": 1,
+    "waterFrames": 3,
+    "loaded": 14,
+    "total": 14,
+    "geometries": 96,
+    "textures": 19,
+    "drawCalls": 96,
+    "triangles": 121880,
+    "geometryBytes": 2512748,
+    "textureBytes": 23780011,
+    "surfaceControlBuilds": 1,
+    "surfaceTexturesLoaded": 2,
+    "surfaceTextureBytes": 2808490.6666666665,
+    "physicalPhoneVerified": false
+  }
+]
