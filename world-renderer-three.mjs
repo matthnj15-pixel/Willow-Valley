@@ -39,10 +39,11 @@ export function mountWorld3D(canvas,world,options={}){
   fragmentShader:'uniform float opacity; varying vec3 vColor; varying float vLight; void main(){gl_FragColor=vec4(vColor*vLight,opacity);}'
  });}
  const backend={
-  upload(index,data){
+  upload(index,data,surfaceKinds=null,surfaceOffsets=null){
    const previous=buffers.get(index);if(previous){scene.remove(previous);previous.geometry.dispose();previous.material.dispose();}
    const geometry=new THREE.BufferGeometry(),array=new THREE.InterleavedBuffer(data,9);
    for(const [name,offset] of [['position',0],['color',3],['normal',6]])geometry.setAttribute(name,new THREE.InterleavedBufferAttribute(array,3,offset));
+   if(index===5){geometry.setAttribute('surfaceKind',new THREE.BufferAttribute(surfaceKinds||new Float32Array(data.length/9),1));geometry.setAttribute('surfaceOffset',new THREE.BufferAttribute(surfaceOffsets||new Float32Array(data.length/9),1));}
    const mesh=new THREE.Mesh(geometry,material(index));mesh.renderOrder=index;buffers.set(index,mesh);scene.add(mesh);
    if(index===0)terrain=mesh;
   },

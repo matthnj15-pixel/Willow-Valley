@@ -1,3 +1,4 @@
+import {roadVisualOffsets} from './road-visual-offsets.mjs';
 import {roadJunctionPolygons} from "./road-junctions.mjs";
 import {resolveFoundation} from "./foundation-system.mjs";
 import {visibleDesirePaths} from "./desire-paths.mjs";
@@ -21,7 +22,7 @@ function addTri(out,a,b,c,color){
  const u=b.map((v,i)=>v-a[i]),v=c.map((x,i)=>x-a[i]);
  const n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
  const norm=n.map(x=>x/len(n));
- for(const p of [a,b,c])out.push(...p,...color,...norm);
+ for(const p of [a,b,c]){out.push(...p,...color,...norm);out.surfaceKinds?.push(out.surfaceKind||0);}
 }
 function quad(out,a,b,c,d,color){addTri(out,a,b,c,color);addTri(out,a,c,d,color);}
 function groundPolygon(out,world,points,color,offset){
@@ -72,6 +73,14 @@ export function terrainRibbon(out,world,points,width,color,offset=1.1,spacing=6)
 }
 function ribbon(out,world,points,width,color,offset=1.1){
  terrainRibbon(out,world,points,width,color,offset);
+}
+// Optional sidecar; the legacy nine-float vertices remain byte-identical.
+// 0 other/crop, 1 main road, 2 shoulder, 3 lane, 4 desire/approach, 5 plaza, 6 work ground.
+function surfaceRibbon(out,world,points,width,color,offset=1.1,kind=4){
+ const before=out.surfaceKind;out.surfaceKind=kind;ribbon(out,world,points,width,color,offset);out.surfaceKind=before;
+}
+function surfacePolygon(out,world,points,color,offset,kind=6){
+ const before=out.surfaceKind;out.surfaceKind=kind;groundPolygon(out,world,points,color,offset);out.surfaceKind=before;
 }
 function block(out,world,p,width,depth,height,wall,roof,orientation=0,style={}){
  const cs=Math.cos(orientation),sn=Math.sin(orientation),x=width/2,z=depth/2;
@@ -135,7 +144,7 @@ function accessSteps(markers,surfaces,world,approach){
       quad(markers,point(a,-1.2,y),point(b,-1.2,y),point(b,1.2,y),point(a,1.2,y),[.5,.47,.4]);
       quad(markers,point(b,-1.2,y),point(b,-1.2,next),point(b,1.2,next),point(b,1.2,y),[.46,.43,.37]);
      }
-     ribbon(surfaces,world,[end,to],2.4,colors.path,.85);
+     surfaceRibbon(surfaces,world,[end,to],2.4,colors.path,.85);
 }
 // Small screen-space glyphs are independent of the scene mesh and save state.
 function beacon(out,world,p,radius,color){
@@ -147,7 +156,7 @@ export function settlementGeometry(world,state,{
  modelHouses=new Map(),modelBuildings=new Map(),cropRows=[],draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,
  zoneEdits=null,mode="explore",liveCurve=null,liveGesture=null,pendingControl=null,touchFocus=null
 }={}){
- const surfaces=[],zones=[],markers=[],roadGuides=[];
+ const surfaces=[],zones=[],markers=[],roadGuides=[];surfaces.surfaceKinds=[];
  const zonePalette={...colors};
  const paint=new Map(),step=20;
  function applyStroke(points,radius,type){
@@ -178,18 +187,18 @@ export function settlementGeometry(world,state,{
   quad(zones,...corners,zonePalette[p.type]||colors.residential);
  }
  for(const lane of state.localLanes||[])if(lane.points?.length>1){
-   ribbon(surfaces,world,lane.points,5,colors.path,.85);
+   surfaceRibbon(surfaces,world,lane.points,5,colors.path,.85,3);
    if(lane.foundedTurn===state.turn)ribbon(roadGuides,world,lane.points,2.5,[.99,.77,.4],4);
   }
  for(const trail of visibleDesirePaths(state)){
   const line=trail.points||[trail.from,trail.to];
-  if(line.length>1)ribbon(surfaces,world,line,4,colors.path,.8);
+  if(line.length>1)surfaceRibbon(surfaces,world,line,4,colors.path,.8);
  }
  const graph=state.roadGraph;
  if(graph?.segments?.length){
   const network=roadJunctionPolygons(graph,liveCurve);
-  for(const polygon of network.shoulders)groundPolygon(surfaces,world,polygon,colors.roadEdge,.95);
-  for(const polygon of network.pavement)groundPolygon(surfaces,world,polygon,colors.road,1.3);
+  for(const polygon of network.shoulders)surfacePolygon(surfaces,world,polygon,colors.roadEdge,.95,2);
+  for(const polygon of network.pavement)surfacePolygon(surfaces,world,polygon,colors.road,1.3,1);
   if(liveCurve){
    const e=graph.segments.find(e=>e.id===liveCurve.id);
    const a=e&&nodeAt(graph,e.a),b=e&&nodeAt(graph,e.b);
@@ -197,8 +206,8 @@ export function settlementGeometry(world,state,{
   }
  }else for(const road of state.roads||[]){
   if(road.length<2)continue;
-  ribbon(surfaces,world,road,34,colors.roadEdge,.95);
-  ribbon(surfaces,world,road,24,colors.road,1.3);
+  surfaceRibbon(surfaces,world,road,34,colors.roadEdge,.95,2);
+  surfaceRibbon(surfaces,world,road,24,colors.road,1.3,1);
  }
  for(const house of state.houses||[]){
    const style=cottageBlueprint(house),model=modelHouses.get?.(house);
@@ -223,13 +232,13 @@ export function settlementGeometry(world,state,{
       const triangles=world.drapePolygon?world.drapePolygon(polygon):[polygon];
       for(const tri of triangles){
        const center={x:tri.reduce((n,p)=>n+p.x,0)/tri.length,y:tri.reduce((n,p)=>n+p.y,0)/tri.length};
-       if([...tri,center].every(p=>world.sample(p.x,p.y).water===null))groundPolygon(surfaces,world,tri,building.type==='plaza'?[.58,.55,.47]:colors.path,.65);
+       if([...tri,center].every(p=>world.sample(p.x,p.y).water===null))surfacePolygon(surfaces,world,tri,building.type==='plaza'?[.58,.55,.47]:colors.path,.65,building.type==='plaza'?5:6);
       }
      }else{
       const points=[position(0,-d),position(-w*.25,-d*.3),position(w*.25,d*.3),position(0,d)];
-      if(points.every(p=>world.sample(p.x,p.y).water===null))ribbon(surfaces,world,points,3,colors.path,.65);
+      if(points.every(p=>world.sample(p.x,p.y).water===null))surfaceRibbon(surfaces,world,points,3,colors.path,.65);
      }
-     if(model.approach)ribbon(surfaces,world,[model.approach.from,model.approach.to],2.4,colors.path,.65);
+     if(model.approach)surfaceRibbon(surfaces,world,[model.approach.from,model.approach.to],2.4,colors.path,.65);
      for(const rect of model.propFoundations||[])block(markers,world,rect,rect.width,rect.depth,0,material,colors.roof,0,{foundationOnly:true,floorY:rect.floor});
     }else{
      for(const rect of model.foundationRects||[{...building,width:model.width,depth:model.depth}])
@@ -240,7 +249,7 @@ export function settlementGeometry(world,state,{
  }
  for(const row of cropRows){
   for(const dx of [-2,2]){
-   ribbon(surfaces,world,[{x:row.x+dx,y:row.y-4},{x:row.x+dx,y:row.y+4}],1.7,[.36,.29,.18],.9);
+   surfaceRibbon(surfaces,world,[{x:row.x+dx,y:row.y-4},{x:row.x+dx,y:row.y+4}],1.7,[.36,.29,.18],.9,0);
    for(const dy of [-3,-1,1,3]){
     const p=worldPos(world,{x:row.x+dx,y:row.y+dy},1);
     addTri(markers,[p[0]-1,p[1],p[2]],[p[0]+1,p[1],p[2]],[p[0],p[1]+3,p[2]],[.64,.58,.30]);
@@ -285,7 +294,7 @@ export function settlementGeometry(world,state,{
    }
   }
  }
- return{editorMarkers:roadGuides.editorMarkers||[],surfaces:new Float32Array(surfaces),zones:new Float32Array(zones),
+ return{editorMarkers:roadGuides.editorMarkers||[],surfaceOffsets:roadVisualOffsets(world,state,surfaces,surfaces.surfaceKinds,liveCurve),surfaceKinds:new Float32Array(surfaces.surfaceKinds),surfaces:new Float32Array(surfaces),zones:new Float32Array(zones),
   structures:new Float32Array(markers),guides:new Float32Array(roadGuides),
   counts:{roads:(state.roads||[]).length,houses:(state.houses||[]).length,
    buildings:(state.buildings||[]).length,zonedCells:drawn,guideTriangles:roadGuides.length/27}};
