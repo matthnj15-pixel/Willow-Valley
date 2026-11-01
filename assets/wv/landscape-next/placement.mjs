@@ -21,6 +21,7 @@ export function placeLandscape({seed,treeCandidates=[],coverRegions=[],decorativ
  const index=createExclusionIndex(exclusions),catalog=new Map(entries.map(e=>[e.id,e])),instances=[],retainedTrees=[];
  function place(id,key,p,scale,yaw,tree=false){
   const e=catalog.get(id);if(!e)throw Error('Unknown landscape asset: '+id);
+  if(!Number.isFinite(scale)||scale<=0||!Number.isFinite(p.x)||!Number.isFinite(p.z)||!Number.isFinite(yaw))return false;
   const radius=Math.max(...[e.boundsMin[0],e.boundsMax[0],e.boundsMin[2],e.boundsMax[2]].map(Math.abs))*scale*Math.SQRT2;
   if(index.blocked(p,radius,{tree}))return false;
   const points=tree?[p]:footprint(e,scale,yaw,p),contacts=[];

@@ -41,7 +41,7 @@ Browser coverage exercises all six review compositions, individual form focus, n
 
 See [measurements.json](measurements.json) and the scene captures in this directory. The instrumented scene includes current architecture-v1 homes, all seven facility contexts, B landscaping, ground and a person. It does **not** include every gameplay road, overlay, foundation or surface-material pass. This is evidence for the candidate's cost in a populated composition, not a claim that F's combined scene passes its budgets. Existing whole-scene tests remain required separately. The candidate fallback list is reported; F must retain existing permitted tree presentation on candidate rejection. The review does not render that fallback set.
 
-Cloud Chromium, 600 × 850 CSS viewport, DPR 1. Desktop/software-renderer submission timings are recorded as such. They cannot establish physical-phone FPS or thermal behavior. Texture bytes in composition measurements belong to existing building context assets; the B collection adds zero.
+Cloud Chromium, 600 × 850 CSS viewport, DPR 1. Capture-host load was uncontrolled and other browser checks overlapped the capture; submission times are indicative only. Draw/triangle/texture counters are the deterministic cost evidence. Desktop/software-renderer submission timings are recorded as such. They cannot establish physical-phone FPS or thermal behavior. Texture bytes in composition measurements belong to existing building context assets; the B collection adds zero.
 
 | Homes | Quality / detail | Instances | Calls | Triangles | B call / triangle delta |
 | ---: | --- | ---: | ---: | ---: | ---: |
@@ -64,7 +64,7 @@ The original 6-unit cover lattice exceeded the normal 100-home triangle budget (
 - `npm run build:assets`: passes, all discovered existing GLBs zero errors/warnings; no tracked regenerated changes.
 - `npm run build:icons`: passes.
 - `npm run build:offline`: passes; existing self-contained game produced. New B page is not asserted installed/offline-ready.
-- Focused Chromium review suite: passing run recorded in PR; final raycast/failure additions and full suites are recorded below after completion.
+- Focused Chromium review suite: seven checks pass, including representative raycasts for every present form and explicit missing-GLB failure. The first exhaustive diagnostic exceeded its 20-second test allowance; the shipped diagnostic bounds its samples and uses a 60-second allowance for the multi-scene lifecycle check.
 - `PLAYWRIGHT_BROWSERS_PATH=/workspace/pw-browsers node scripts/measure-wv006-landscape.mjs`: eight normal/low near/far measurements and six composition captures. Run against `python3 scripts/serve-preview.py`; `WV_PREVIEW_ORIGIN` can select another local origin.
 - Full `npm run test:e2e` and `WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity`: results appended after completion.
 

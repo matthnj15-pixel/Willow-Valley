@@ -35,7 +35,7 @@ function rebuild(){if(!library||disposed)return;clear();builds++;const name=$('s
   for(const b of buildSceneBatches(objects))context.add(b);
  }
  batch=library.build(records);scene.add(batch.group);terrain=ground(fixture.surface||fixture.world);scene.add(terrain);
- person=new T.Mesh(new T.CapsuleGeometry(.17,1.41,4,7).translate(0,.875,0),new T.MeshStandardMaterial({color:'#476b7a',roughness:1}));person.scale.setScalar(2.8);const px=name==='collection'?-99:35-fixture.world.width/2,pz=name==='collection'?65:105-fixture.world.depth/2;person.position.set(px,fixture.world.sample(px+fixture.world.width/2,pz+fixture.world.depth/2).height,pz);scene.add(person);
+ person=new T.Mesh(new T.CapsuleGeometry(.17,1.41,4,7).translate(0,.875,0),new T.MeshStandardMaterial({color:'#476b7a',roughness:1}));person.scale.setScalar(2.8);const px=name==='collection'?-99:(name==='bank'?85:35)-fixture.world.width/2,pz=name==='collection'?65:105-fixture.world.depth/2;person.position.set(px,fixture.world.sample(px+fixture.world.width/2,pz+fixture.world.depth/2).height,pz);scene.add(person);
  $('caption').textContent={collection:'Twenty recognizable natural forms.',forest:'A layered edge, with open clearings.',bank:'Moisture gathers the bank plants.',yard:'A cottage with room at the door.',smith:'Bare ground for a working yard.',settlement:'Mature woodland frames the settlement.'}[name];canvas.dataset.loaded='20';reset();$('record').textContent=JSON.stringify({revision:manifest.revision,quality,distance,rendering:metrics,retainedTreePolicy:'Keep existing presentation on candidate rejection',dependencies:manifest.dependencies,runtimeReady:false},null,2);
 }
 let architecture,catalogScene;

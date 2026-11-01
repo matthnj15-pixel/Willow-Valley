@@ -25,6 +25,7 @@ test('B exclusion envelopes cover roads, doors, stairs, loading, fields, overlay
  const i=base();i.coverRegions=[];i.decorativeCandidates=[];for(const kind of ['road','lane','door','stairs','loading','field','structure','yard','water','overlay']){
  const result=placeLandscape({...i,exclusions:[{kind,points:[{x:30,z:80},{x:120,z:80}],radius:4}]});assert.ok(!result.instances.some(r=>r.key==='tree:oak-a'));assert.equal(result.retainedTrees[0].key,'tree:oak-a');}
  const result=placeLandscape({...i,exclusions:[{kind:'preserve',polygon:[{x:0,z:0},{x:500,z:0},{x:500,z:500},{x:0,z:500}]}],decorativeCandidates:[{key:'protected-cover',assetId:'grass-tuft',x:90,z:80}]});assert.equal(result.instances.length,2);assert.ok(result.instances.every(r=>r.key.startsWith('tree:')));
+ const reedBlocked=placeLandscape({...i,treeCandidates:[],decorativeCandidates:[{key:'loading-reed',assetId:'reed-cluster',x:200,z:200}],exclusions:[{kind:'loading-stairs',points:[{x:200,z:180},{x:200,z:220}],radius:5}]});assert.equal(reedBlocked.instances.length,0);
  const idx=createExclusionIndex(Array.from({length:500},(_,i)=>({polygon:[{x:i*100,z:0},{x:i*100+20,z:0},{x:i*100+20,z:20},{x:i*100,z:20}]})));idx.blocked({x:5,z:5},2);assert.ok(idx.stats().tests<5);
 });
 test('B displayed rolling terrain, shoreline moisture, rigid log contact and unsuitable slopes',()=>{
