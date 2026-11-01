@@ -1,5 +1,7 @@
 # WV-ART-006 B — landscaping candidate
 
+Follow-up: [plot-aware dressing, shared boundaries and committed field masks](PLOT-LANDSCAPE.md) supersedes fixed backyard/fence placement in the owned hamlet review. The original natural collection/placement API below is unchanged.
+
 Status: gallery-review. Every new asset remains `runtimeReady:false`. F owns playable adoption, shared renderer changes, offline admission and final combined-scene checks.
 
 ## Delivered collection

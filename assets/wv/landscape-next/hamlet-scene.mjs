@@ -4,7 +4,11 @@ import {createResourceDisposer} from '../../../asset-registry.mjs';
 import {createLandscapeLibrary} from './batches.mjs';
 import {placeLandscape} from './placement.mjs';
 import {createHamletProps} from './hamlet-props.mjs';
-import {createHamletPlan,createHamletUseIndex,hamletHeight,displayedHamletHeight,polygonsOverlap,laneCorridors,rectangle,transformPoint,keyedUnit,pointInPolygon,lineDistance,segmentDistance,METRES_TO_GAME as U} from './hamlet-plan.mjs';
+import {dressPlots} from './plot-dressing.mjs';
+import {createPlotFenceLibrary} from './plot-fence-view.mjs';
+import {createPlotStudyPlan} from './plot-study.mjs';
+import {capsuleRanges} from './plot-geometry.mjs';
+import {createHamletPlan,createHamletUseIndex,hamletHeight,displayedHamletHeight,polygonsOverlap,laneCorridors,rectangle,transformPoint,keyedUnit,pointInPolygon,lineDistance,segmentDistance,METRES_TO_GAME as U} from './hamlet-plan.mjs?v=plot-aware-1';
 const base=new URL('./',import.meta.url),CBASE=new URL('../buildings-next/',import.meta.url);
 function grainAt(x,z){let h=Math.imul(x|0,374761393)^Math.imul(z|0,668265263);h=Math.imul(h^(h>>>13),1274126177);return((h^(h>>>16))>>>0)/4294967296;}
 function smoothNoise(x,z){const ix=Math.floor(x),iz=Math.floor(z),a=x-ix,b=z-iz,u=a*a*(3-2*a),v=b*b*(3-2*b);return T.MathUtils.lerp(T.MathUtils.lerp(grainAt(ix,iz),grainAt(ix+1,iz),u),T.MathUtils.lerp(grainAt(ix,iz+1),grainAt(ix+1,iz+1),u),v);}
@@ -65,31 +69,20 @@ function createGround(plan,index,trees,low){
 function decorativeProps(plan,quality,distance){
  const low=quality==='low',rows=[],fences=[],beds=[],add=(kind,key,p,yaw=0,scale=1)=>{const clearance={'fruit-tree':1.35,'wood-stack':1.05,cart:1.6,barrel:.28,well:1.05,bench:.9}[kind]||.18;if(kind!=='person'&&blocked(p,clearance))return;rows.push({kind,key,origin:coord(p.x,p.z),yaw,scale:[U*scale,U*scale,U*scale]});};
  const blocked=(p,r=.4)=>[...plan.lanes,...plan.paths].some(l=>lineDistance(p,l.points)<l.width/2+r)||plan.entities.some(e=>pointInPolygon(p,e.footprint)||e.footprint.some((a,i)=>segmentDistance(p,a,e.footprint[(i+1)%e.footprint.length])<r));
- function boundary(a,b,key,kind){const d=Math.hypot(b.x-a.x,b.z-a.z),n=Math.floor(d/2);for(let i=0;i<n;i++){if(low&&plan.stage===30&&i>0&&i<n-1)continue;const t=(i+.5)/n,p={x:a.x+(b.x-a.x)*t,z:a.z+(b.z-a.z)*t};if(blocked(p,1))continue;const yaw=Math.atan2(-(b.z-a.z),b.x-a.x);add(kind,key+':'+i,p,yaw);fences.push({key:key+':'+i,a:{x:p.x-Math.cos(yaw),z:p.z+Math.sin(yaw)},b:{x:p.x+Math.cos(yaw),z:p.z-Math.sin(yaw)}});}}
- for(const h of plan.holdings){
-  // Rear and side fragments with actual approach gaps; not a fence on every edge.
-  const poly=h.polygon;if(Number(h.key.slice(-2))%3!==0){boundary(poly[2],poly[3],h.key+':back',h.use==='orchard'?'fence-rail':'fence-wattle');boundary(poly[1],poly[2],h.key+':side','fence-rail');}
-  const g=h.garden,local=q=>transformPoint(q,g.center,g.yaw);
-  if(h.use==='orchard'){
-   for(const [i,p] of [[-1.7,-1],[1.6,-1.2],[0,1.5]].entries()){const q=local({x:p[0],z:p[1]});if(!blocked(q,1.4))add('fruit-tree',h.key+':fruit:'+i,q,h.yaw,.85+keyedUnit(h.key+i)*.18);}
-  }else if(h.use==='work-yard'){
-   const q=local({x:-1.5,z:0});if(!blocked(q,.8))add('wood-stack',h.key+':fuel',q,h.yaw);add('barrel',h.key+':water',local({x:1.4,z:.4}));
-  }else{
-   for(let b=0;b<3;b++){
-    const center=local({x:(b-1)*1.5,z:0}),poly=rectangle(center.x,center.z,1.05,g.depth-.4,g.yaw);beds.push({key:h.key+':bed:'+b,polygon:poly});
-    if(distance==='far'||low&&plan.stage===30)continue;const step=low?(plan.stage===30?1.35:.95):.72;
-    for(let z=-g.depth/2+.6;z<g.depth/2-.35;z+=step)for(const x of low?[0]:[-.22,.22]){const q=local({x:(b-1)*1.5+x,z});if(!blocked(q,.35))add(b===2?'garden-herbs':'garden-greens',h.key+':plant:'+b+':'+x+':'+z,q,h.yaw,.8+keyedUnit(h.key+z)*.25);}
-   }
-  }
- }
- for(const r of plan.regions.filter(r=>r.key==='paddock'||r.kind==='field')){for(let i=0;i<r.polygon.length;i++){if(i===0)continue;boundary(r.polygon[i],r.polygon[(i+1)%r.polygon.length],r.key+':boundary:'+i,'fence-rail');}}
+ const plots=[...plan.holdings.map(h=>{
+  const inverse=p=>transformPoint({x:p.x-h.origin.x,z:p.z-h.origin.z},{x:0,z:0},-h.yaw);
+  const fenceEdges=plan.isPlotStudy?undefined:h.polygon.map((a,i)=>[a,h.polygon[(i+1)%h.polygon.length]]).filter(([a,b])=>{const c=inverse({x:(a.x+b.x)/2,z:(a.z+b.z)/2});return c.z< -3||c.x>1&&Number(h.key.slice(-2))%3!==0;});
+  return{...h,kind:'home',establishedAt:h.establishedAt??h.stage,fenceEdges,gates:[{point:h.gate,width:1.5}],plantingPolygon:rectangle(h.garden.center.x,h.garden.center.z,h.garden.width,h.garden.depth,h.garden.yaw),fenceKind:h.use==='orchard'?'fence-rail':'fence-wattle'};
+ }),...plan.regions.filter(r=>r.key==='paddock'||r.kind==='field').map(r=>({...r,kind:'field',planting:r.key!=='paddock'}))];
+ const exclusions=[...plan.entities.map(e=>({kind:'structure',polygon:e.footprint})),...[...plan.lanes,...plan.paths].map(l=>({kind:l.kind,points:l.points,radius:l.width/2}))];
+ const dressing=dressPlots({seed:plan.seed,plots,existingFences:plan.existingFences||[],exclusions,sample:(x,z)=>({height:displayedHamletHeight(x,z),water:null,slope:.04}),quality,distance,omitSmallPlants:low&&plan.stage===30});
+ for(const r of dressing.props)rows.push({...r,origin:r.origin.map(v=>v*U),scale:[U*r.scale,U*r.scale,U*r.scale]});beds.push(...dressing.beds);fences.push(...dressing.boundaries.fences);
+ if(plan.isPlotStudy){for(const [i,p] of [{x:-11,z:15.4},{x:17,z:14}].entries())add('person','reference-person:'+i,p,i);return{records:rows,fences,beds,dressing};}
  for(const f of plan.features)add(f.kind,f.key,f.origin,f.yaw);
  const people=[{x:-8,z:1},{x:1,z:5},{x:14,z:4},{x:-36,z:9},{x:24,z:18},{x:-52,z:-16}];for(const [i,p] of people.slice(0,plan.stage===4||low&&plan.stage===30?3:6).entries())add('person','reference-person:'+i,p,i*.9);
  if(plan.stage>=12){add('cart','smith-cart',{x:-53,z:33},.5);add('wood-stack','smith-fuel',{x:-51,z:24},1.1);add('barrel','market-barrel',{x:5,z:11},.2);}
  for(const [i,p] of [{x:-43,z:-19},{x:-45,z:-19}].entries())add('grain-sheaf','barn-sheaf:'+i,p,i);
- // Plant only the declared detached field. This has no crop output or ownership.
- if(distance!=='far'&&!(low&&plan.stage===30))for(let x=-75;x<-62;x+=low?2.9:1.8)for(let z=-39;z<-17;z+=low?2.8:1.6){const q={x:x+Math.sin(z)*.25,z};if(blocked(q,.4))continue;add('grain-sheaf','field:'+x+':'+z,q,0,.83);}
- return{records:rows,fences,beds};
+ return{records:rows,fences,beds,dressing};
 }
 function groundBedMesh(beds){
  const positions=[],colors=[],n=color('#726043');
@@ -111,21 +104,21 @@ export async function loadHamletLibrary(){
  const loading=[loader.loadAsync(new URL('catalog.glb?v='+architecture.output.sha256,CBASE).href),loader.loadAsync(new URL('landscape.glb?v='+landscape.output.sha256,base).href)];let loaded;
  try{loaded=await Promise.all(loading);}catch(error){void Promise.allSettled(loading).then(results=>{for(const r of results)if(r.status==='fulfilled'&&r.value?.scene)disposeResources(r.value.scene);});throw error;}const [buildingGLTF,natureGLTF]=loaded;
  const finalPlan=resolveHamlet(createHamletPlan({stage:30}),architecture.entries),reservedKeys=new Set(landscapeRecords(finalPlan,landscape.entries,'normal','far').instances.map(r=>r.key)),inheritedTrees=naturalTrees(finalPlan).filter(t=>reservedKeys.has('tree:'+t.key));
- const landscapeLibrary=createLandscapeLibrary(natureGLTF.scene),propsNormal=createHamletProps(),propsLow=createHamletProps({low:true});let disposed=false;
- return{architecture,build({stage=12,quality='normal',distance='near'}={}){
+ const landscapeLibrary=createLandscapeLibrary(natureGLTF.scene),propsNormal=createHamletProps(),propsLow=createHamletProps({low:true}),fenceLibrary=createPlotFenceLibrary();let disposed=false;
+ return{architecture,build({stage=12,quality='normal',distance='near',study=false}={}){
   if(disposed)throw Error('Hamlet library disposed');
-  const plan=resolveHamlet(createHamletPlan({stage}),architecture.entries),index=createHamletUseIndex(plan),group=new T.Group(),objects=[];
+  const plan=resolveHamlet(study?createPlotStudyPlan():createHamletPlan({stage}),architecture.entries),index=createHamletUseIndex(plan),group=new T.Group(),objects=[];stage=plan.stage;
   for(const e of plan.entities){const source=buildingGLTF.scene.getObjectByName(quality==='low'||distance==='far'||stage===30?e.entry.lowNode:e.entry.normalNode);if(!source)throw Error('Missing model '+e.assetId);const model=source.clone(true);if(quality==='low'&&stage===30)model.traverse(n=>{if(n.userData?.category==='detail'||n.userData?.optional)n.visible=false;});model.position.set(...e.modelOrigin);model.rotation.y=e.yaw;model.scale.setScalar(U);objects.push({scene:model,entityKey:e.key});}
   const buildingBatches=buildSceneBatches(objects);for(const b of buildingBatches)group.add(b);
   const nature=landscapeRecords(plan,landscape.entries,quality,distance,inheritedTrees),natureBatches=landscapeLibrary.build(nature.instances);group.add(natureBatches.group);
-  const dressing=decorativeProps(plan,quality,distance),propLibrary=quality==='low'?propsLow:propsNormal,propBatches=propLibrary.build(dressing.records);group.add(propBatches.group);
+  const dressing=decorativeProps(plan,quality,distance),propLibrary=quality==='low'?propsLow:propsNormal,propBatches=propLibrary.build(dressing.records);group.add(propBatches.group);const fenceView=fenceLibrary.build(dressing.fences,{sample:(x,z)=>({height:displayedHamletHeight(x,z)}),quality:distance==='far'?'low':quality});group.add(fenceView.group);
   const beds=groundBedMesh(dressing.beds);group.add(beds);const feet=footings(plan);group.add(feet.group);
   const ground=createGround(plan,index,nature.instances.filter(r=>r.key.startsWith('tree:')),quality==='low');group.add(ground.mesh);
   let released=false;
-  return{group,plan,nature:nature.instances,groundMesh:ground.mesh,props:dressing.records,sourceMeasurements:()=>propLibrary.measurements(),
-   stats:()=>({stage,homes:plan.holdings.length,workplaces:plan.buildings.length,lanes:plan.lanes.length,landUseRegions:plan.regions.length,plantAndPropInstances:dressing.records.length,landscapeInstances:nature.instances.length,landscapeBatches:natureBatches.group.children.length,propBatches:propBatches.group.children.length,surfaceTextureBytes:ground.texture.image.data.byteLength,architectureLOD:quality==='low'||distance==='far'||stage===30?'low':'normal',runtimeReady:false,...estimateSceneBytes(group)}),
-   inspectGround(){group.updateMatrixWorld(true);const ray=new T.Raycaster(),issues=[];for(const r of new Map(nature.instances.map(r=>[r.assetId,r])).values())for(const p of r.groundContact.points){ray.set(new T.Vector3(p.x-plan.width*U/2,p.height+150,p.z-plan.depth*U/2),new T.Vector3(0,-1,0));const hit=ray.intersectObject(ground.mesh,false)[0];if(!hit||Math.abs(hit.point.y-p.height)>.002)issues.push({key:r.key,error:hit?hit.point.y-p.height:null});}for(const r of new Map(dressing.records.map(r=>[r.kind,r])).values()){ray.set(new T.Vector3(r.origin[0],r.origin[1]+150,r.origin[2]),new T.Vector3(0,-1,0));const hit=ray.intersectObject(ground.mesh,false)[0];if(!hit||Math.abs(hit.point.y-r.origin[1])>.002)issues.push({key:r.key,error:hit?hit.point.y-r.origin[1]:null});}return issues;},
-   inspect(){const issues=[];for(let i=0;i<plan.entities.length;i++){const e=plan.entities[i];for(const b of plan.entities.slice(i+1))if(polygonsOverlap(e.footprint,b.footprint,.01))issues.push({key:e.key,type:'roof-overlap',other:b.key});for(const l of plan.lanes)if(laneCorridors(l).some(poly=>polygonsOverlap(e.footprint,poly,.01)))issues.push({key:e.key,type:'lane-overlap',lane:l.key});}for(const f of dressing.fences){for(const l of [...plan.lanes,...plan.paths])if([f.a,f.b].some(p=>lineDistance(p,l.points)<l.width/2))issues.push({key:f.key,type:'blocked-route',route:l.key});}return issues;},
-   dispose(){if(released)return;released=true;group.removeFromParent();for(const b of buildingBatches)b.dispose();natureBatches.dispose();propBatches.dispose();beds.geometry.dispose();beds.material.dispose();feet.dispose();ground.dispose();group.clear();}}
- },dispose(){if(disposed)return;disposed=true;landscapeLibrary.dispose();propsNormal.dispose();propsLow.dispose();disposeResources(buildingGLTF.scene);}};
+  return{group,plan,nature:nature.instances,groundMesh:ground.mesh,props:dressing.records,plotDressing:dressing.dressing,fenceContacts:fenceView.contacts,sourceMeasurements:()=>propLibrary.measurements(),
+   stats:()=>({stage,homes:plan.holdings.length,workplaces:plan.buildings.length,lanes:plan.lanes.length,landUseRegions:plan.regions.length,plantAndPropInstances:dressing.records.length,landscapeInstances:nature.instances.length,landscapeBatches:natureBatches.group.children.length,propBatches:propBatches.group.children.length,surfaceTextureBytes:ground.texture.image.data.byteLength,architectureLOD:quality==='low'||distance==='far'||stage===30?'low':'normal',plotStatistics:dressing.dressing.plotStats,sharedBoundaries:dressing.fences.filter(f=>f.users.length>1).length,reusedBoundaries:dressing.fences.filter(f=>f.source==='existing').length,fenceStats:fenceView.stats,runtimeReady:false,...estimateSceneBytes(group)}),
+   inspectGround(){group.updateMatrixWorld(true);const ray=new T.Raycaster(),issues=[];for(const r of new Map(nature.instances.map(r=>[r.assetId,r])).values())for(const p of r.groundContact.points){ray.set(new T.Vector3(p.x-plan.width*U/2,p.height+150,p.z-plan.depth*U/2),new T.Vector3(0,-1,0));const hit=ray.intersectObject(ground.mesh,false)[0];if(!hit||Math.abs(hit.point.y-p.height)>.002)issues.push({key:r.key,error:hit?hit.point.y-p.height:null});}for(const r of new Map(dressing.records.map(r=>[r.kind,r])).values())for(const p of r.groundContact?.points||[{x:r.origin[0]/U,z:r.origin[2]/U,height:r.origin[1]/U}]){ray.set(new T.Vector3(p.x*U,p.height*U+150,p.z*U),new T.Vector3(0,-1,0));const hit=ray.intersectObject(ground.mesh,false)[0];if(!hit||Math.abs(hit.point.y-p.height*U)>.002)issues.push({key:r.key,error:hit?hit.point.y-p.height*U:null});}for(let i=0;i<fenceView.contacts.length;i+=Math.max(1,Math.ceil(fenceView.contacts.length/64))){const p=fenceView.contacts[i];ray.set(new T.Vector3(p.x*U,p.height*U+150,p.z*U),new T.Vector3(0,-1,0));const hit=ray.intersectObject(ground.mesh,false)[0];if(!hit||Math.abs(hit.point.y-p.height*U)>.002)issues.push({key:p.key,type:'fence-contact'});}return issues;},
+   inspect(){const issues=[];for(let i=0;i<plan.entities.length;i++){const e=plan.entities[i];for(const b of plan.entities.slice(i+1))if(polygonsOverlap(e.footprint,b.footprint,.01))issues.push({key:e.key,type:'roof-overlap',other:b.key});for(const l of plan.lanes)if(laneCorridors(l).some(poly=>polygonsOverlap(e.footprint,poly,.01)))issues.push({key:e.key,type:'lane-overlap',lane:l.key});}for(const f of dressing.fences){for(const l of [...plan.lanes,...plan.paths])if(l.points.slice(1).some((p,i)=>capsuleRanges(f.a,f.b,l.points[i],p,l.width/2).length))issues.push({key:f.key,type:'blocked-route',route:l.key});}return issues;},
+   dispose(){if(released)return;released=true;group.removeFromParent();for(const b of buildingBatches)b.dispose();natureBatches.dispose();propBatches.dispose();fenceView.dispose();beds.geometry.dispose();beds.material.dispose();feet.dispose();ground.dispose();group.clear();}}
+ },dispose(){if(disposed)return;disposed=true;landscapeLibrary.dispose();propsNormal.dispose();propsLow.dispose();fenceLibrary.dispose();disposeResources(buildingGLTF.scene);}};
 }
