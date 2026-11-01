@@ -16,3 +16,9 @@ test('factory rebuilds on read input changes only, pauses safely, owns shared re
  const low=createEnvironmentMaterials({low:true,loadTextures:false});low.advance(100);low.advance(200);assert.equal(low.status().surfaceTime,0);low.dispose();
 });
 test('atmosphere detach restores the prior fog and preserves foreign nodes',()=>{const scene=new T.Scene(),old=new T.Fog('#ffffff',10,20),foreign=new T.Group();scene.fog=old;scene.add(foreign);const detach=attachAtmosphere(scene);assert.equal(scene.children.length,4);assert.notEqual(scene.fog,old);detach();detach();assert.equal(scene.fog,old);assert.deepEqual(scene.children,[foreign]);});
+test('review build dependency record matches exact committed source and borrowed assets',async()=>{
+ const {readFile}=await import('node:fs/promises'),{createHash}=await import('node:crypto');
+ const record=JSON.parse(await readFile(new URL('../assets/wv/environment-next/dependencies.json',import.meta.url),'utf8'));
+ assert.equal(record.runtimeReady,false);assert.equal(record.newTextures,0);
+ for(const item of record.dependencies){const data=await readFile(new URL('../'+item.path,import.meta.url));assert.equal(data.byteLength,item.bytes,item.path);assert.equal(createHash('sha256').update(data).digest('hex'),item.sha256,item.path);}
+});

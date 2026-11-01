@@ -9,7 +9,8 @@ for(const seed of ['WILLOW-1048','WV-SURFACES-2'])for(const quality of ['normal'
  }expect(cameras[0]).toEqual(cameras[1]);expect(errors).toEqual([]);expect(external).toEqual([]);
 });
 for(const quality of ['normal','low'])test(`WV006 idle and hidden lifecycle ${quality}`,async({page})=>{
- await page.goto('/ui-kit/wv006-environment.html?quality='+quality);await expect.poll(()=>page.evaluate(()=>window.environmentHarness?.viewer.assetStatus().loaded)).toBe(14);
+ await page.goto('/ui-kit/wv006-environment.html?quality='+quality);await expect.poll(()=>page.evaluate(()=>{const s=window.environmentHarness?.viewer.assetStatus();return s?.contextLoaded&&s.loaded===s.total&&s.surfaceTexturesLoaded===2;})).toBe(true);
+ await page.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));
  const stats=()=>page.evaluate(()=>window.environmentHarness.viewer.assetStatus());const a=await stats();await page.waitForTimeout(400);const b=await stats();expect(b.surfaceControlBuilds).toBe(a.surfaceControlBuilds);if(quality==='low')expect(b.waterFrames).toBe(a.waterFrames);else expect(b.waterFrames).toBeGreaterThan(a.waterFrames);
  await page.evaluate(()=>{Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});document.dispatchEvent(new Event('visibilitychange'));});await page.waitForTimeout(200);const hidden=await stats();await page.waitForTimeout(300);expect((await stats()).waterFrames).toBe(hidden.waterFrames);await page.evaluate(()=>window.environmentHarness.viewer.dispose());
 });

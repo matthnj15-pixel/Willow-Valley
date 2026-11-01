@@ -608,6 +608,7 @@ function createEnvironmentMaterials({ low = false, onReady = () => {
       const v = index === 5 ? vertex.replace("attribute vec3 color;", "attribute float surfaceKind;attribute float surfaceOffset;varying float vKind;varying float vOffset;attribute vec3 color;").replace("vColor=color;", "vKind=surfaceKind;vOffset=surfaceOffset;vColor=color;") : vertex;
       const m = new T2.ShaderMaterial({ uniforms, defines: low ? { LOW_QUALITY: 1 } : {}, vertexShader: v, fragmentShader: index === 0 ? terrain : index === 1 ? water : road, side: T2.DoubleSide });
       materials.add(m);
+      m.addEventListener("dispose", () => materials.delete(m));
       return m;
     },
     setWorld(next) {
