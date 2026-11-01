@@ -64,6 +64,7 @@ jobs:
             test-results/environment-surfaces-*/**/*.png
             test-results/terrain-contact-*/**/*.png
             test-results/asset-gallery-*/**/*.png
+            test-results/scale-study-*/**/*.png
             test-results/three-gameplay-*/**/*.png
             test-results/three-performance-*/**/*.png
             test-results/three-performance-*/**/*.json

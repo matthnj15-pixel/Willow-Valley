@@ -1,0 +1,877 @@
+{
+  "schemaVersion": 1,
+  "status": "gallery-review",
+  "runtimeReady": false,
+  "recipeRevision": 1,
+  "archiveSha256": "5e60888e2babe418a4618e7815539d9b1b2c3b24c1db2b22cd7a2a7f66140732",
+  "sourceLicenseSha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee",
+  "units": "visual metres",
+  "gameUnitsPerMetre": 2.8,
+  "output": {
+    "url": "assets/wv/megakit-v1/study.glb",
+    "sha256": "fac749f7f7a7aac7c77352786ef5dcbbf825a4d9c7de6ff24c61c057c944133e",
+    "bytes": 537916
+  },
+  "entries": [
+    {
+      "id": "home-steep-gable",
+      "boundsMin": [
+        -2.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.756538152694702,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "triangles": 4937,
+      "materials": 8
+    },
+    {
+      "id": "Prop_WoodenFence_Single-fixture",
+      "boundsMin": [
+        -1.0314507484436035,
+        -0.02825251966714859,
+        -0.059909969568252563
+      ],
+      "boundsMax": [
+        1.0326489210128784,
+        0.8098565340042114,
+        0.059910036623477936
+      ],
+      "triangles": 40,
+      "materials": 1
+    },
+    {
+      "id": "Prop_Wagon-fixture",
+      "boundsMin": [
+        -0.9793591499328613,
+        0.00312984362244606,
+        -3.1504321098327637
+      ],
+      "boundsMax": [
+        0.9720492362976074,
+        1.5323269367218018,
+        0.8735843896865845
+      ],
+      "triangles": 1672,
+      "materials": 1
+    },
+    {
+      "id": "Door_1_Round-fixture",
+      "boundsMin": [
+        -0.04626310616731644,
+        0.033089637756347656,
+        -0.05755755677819252
+      ],
+      "boundsMax": [
+        1.0737497806549072,
+        2.3513262271881104,
+        0.06314271688461304
+      ],
+      "triangles": 470,
+      "materials": 2
+    }
+  ],
+  "overhangPolygon": [
+    [
+      -2.756538152694702,
+      -2.794139862060547
+    ],
+    [
+      2.756538152694702,
+      -2.794139862060547
+    ],
+    [
+      2.756538152694702,
+      2.8215668201446533
+    ],
+    [
+      -2.756538152694702,
+      2.8215668201446533
+    ]
+  ],
+  "structuralSeat": [
+    [
+      -2,
+      -2
+    ],
+    [
+      2,
+      -2
+    ],
+    [
+      2,
+      2
+    ],
+    [
+      -2,
+      2
+    ]
+  ],
+  "entrance": {
+    "threshold": [
+      -1,
+      0,
+      2
+    ],
+    "forward": [
+      0,
+      0,
+      1
+    ],
+    "clearWidth": 1
+  },
+  "foundation": {
+    "height": 0.12,
+    "grade": -0.12
+  },
+  "fitPolicy": "Canonical scale 2.8 only; no parcel enlargement. Gallery only.",
+  "permittedEras": [
+    0
+  ],
+  "removedInteriors": "No interior furnishing imported; complete source exterior modules retained.",
+  "authoredAdditions": [
+    "closed floor",
+    "rubble plinth",
+    "closed attic backing"
+  ],
+  "sources": [
+    {
+      "name": "Wall_Plaster_Straight",
+      "path": "glTF/Wall_Plaster_Straight.gltf",
+      "category": "wall",
+      "sha256": "3bef920cbba4d124df4ca401439d893e0569f88f56049239e3480a04008fd0ac",
+      "bytes": 4169,
+      "boundsMin": [
+        -1.0000001192092896,
+        -0.0020958781242370605,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1,
+        3.1226887702941895,
+        0.0924467146396637
+      ],
+      "dimensions": [
+        2.0000001192092896,
+        3.1247846484184265,
+        0.4064820408821106
+      ],
+      "triangles": 86,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Wall_Plaster_Straight.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png"
+      ],
+      "dependencyBytes": 17687393,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Wall_Plaster_Door_Round",
+      "path": "glTF/Wall_Plaster_Door_Round.gltf",
+      "category": "wall",
+      "sha256": "15514442b52ed9e4bea685faaf83c45ca68a227810d5cec5f66b0f311f5f6fc7",
+      "bytes": 5946,
+      "boundsMin": [
+        -1.0000001192092896,
+        0,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1,
+        3.1226887702941895,
+        0.0924467146396637
+      ],
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064820408821106
+      ],
+      "triangles": 137,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster",
+        "MI_RockTrim"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Wall_Plaster_Door_Round.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png",
+        "glTF/T_RockTrim_Normal.png",
+        "glTF/T_RockTrim_BaseColor.png",
+        "glTF/T_RockTrim_ORM.png"
+      ],
+      "dependencyBytes": 25150961,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Wall_Plaster_Window_Thin_Round",
+      "path": "glTF/Wall_Plaster_Window_Thin_Round.gltf",
+      "category": "wall",
+      "sha256": "94eedafb4964e5e41098a39387298e122598a1b8dd31193070b4639a76b4e0b2",
+      "bytes": 5986,
+      "boundsMin": [
+        -1.0000001192092896,
+        0,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1,
+        3.1226887702941895,
+        0.0924467146396637
+      ],
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064820408821106
+      ],
+      "triangles": 166,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_Plaster",
+        "MI_Brick",
+        "MI_WoodTrim"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Wall_Plaster_Window_Thin_Round.bin",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png",
+        "glTF/T_Brick_Normal.png",
+        "glTF/T_Brick_BaseColor.png",
+        "glTF/T_Brick_Roughness.png",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 25301713,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Door_1_Round",
+      "path": "glTF/Door_1_Round.gltf",
+      "category": "door",
+      "sha256": "243fe5e3418e2459bcab858055d34e5441b60180a5efaadef440419e25cc27aa",
+      "bytes": 3901,
+      "boundsMin": [
+        -0.04626310616731644,
+        0.033089637756347656,
+        -0.05755755677819252
+      ],
+      "boundsMax": [
+        1.0737497806549072,
+        2.3513262271881104,
+        0.06314271688461304
+      ],
+      "dimensions": [
+        1.1200128868222237,
+        2.3182365894317627,
+        0.12070027366280556
+      ],
+      "triangles": 470,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_WindowGlass"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Door_1_Round.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7409622,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "DoorFrame_Round_WoodDark",
+      "path": "glTF/DoorFrame_Round_WoodDark.gltf",
+      "category": "door-frame",
+      "sha256": "d96fb7e3b6b7a5cb97339a7667dee3d9e03b5b0a02cbea283bd75a69f58bb4a7",
+      "bytes": 2235,
+      "boundsMin": [
+        -0.7034929394721985,
+        -0.008544921875,
+        -0.24002820253372192
+      ],
+      "boundsMax": [
+        0.7034913897514343,
+        2.5548486709594727,
+        0.29893577098846436
+      ],
+      "dimensions": [
+        1.4069843292236328,
+        2.5633935928344727,
+        0.5389639735221863
+      ],
+      "triangles": 320,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/DoorFrame_Round_WoodDark.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7389490,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Window_Thin_Round1",
+      "path": "glTF/Window_Thin_Round1.gltf",
+      "category": "window",
+      "sha256": "02ffe8984b2a7bffda79d6d598e852c39681c23bbdd7486dd8bcec3613286a4d",
+      "bytes": 3925,
+      "boundsMin": [
+        -0.44381028413772583,
+        1.01604425907135,
+        -0.2520223557949066
+      ],
+      "boundsMax": [
+        0.44381028413772583,
+        2.6207287311553955,
+        0.0923665463924408
+      ],
+      "dimensions": [
+        0.8876205682754517,
+        1.6046844720840454,
+        0.3443889021873474
+      ],
+      "triangles": 418,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim_Wear",
+        "MI_WindowGlass"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Window_Thin_Round1.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7401750,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_RoundTiles_4x4",
+      "path": "glTF/Roof_RoundTiles_4x4.gltf",
+      "category": "roof",
+      "sha256": "c6a7ce0649b897a7746929b44c448f4343f55ccd969ca1e4462f2f18b61676e4",
+      "bytes": 4337,
+      "boundsMin": [
+        -2.756538152694702,
+        -0.5157185792922974,
+        -2.73990797996521
+      ],
+      "boundsMax": [
+        2.756538152694702,
+        3.7336742877960205,
+        2.8215668201446533
+      ],
+      "dimensions": [
+        5.513076305389404,
+        4.249392867088318,
+        5.561474800109863
+      ],
+      "triangles": 1996,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_RoundTiles"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Roof_RoundTiles_4x4.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_RoundTiles_Normal.png",
+        "glTF/T_RoundTiles_BaseColor.png",
+        "glTF/T_RoundTiles_Roughness.png"
+      ],
+      "dependencyBytes": 17252161,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_Front_Wood4",
+      "path": "glTF/Roof_Front_Wood4.gltf",
+      "category": "roof",
+      "sha256": "b5849dee4851d62c9dbb7d6869d5f562ff47f1da4190ef9f54bcd2065f3f0233",
+      "bytes": 3857,
+      "boundsMin": [
+        -2.183807373046875,
+        -0.13180206716060638,
+        -0.33496367931365967
+      ],
+      "boundsMax": [
+        2.215996026992798,
+        2.9367027282714844,
+        0.7941397428512573
+      ],
+      "dimensions": [
+        4.399803400039673,
+        3.0685047954320908,
+        1.129103422164917
+      ],
+      "triangles": 168,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Roof_Front_Wood4.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png"
+      ],
+      "dependencyBytes": 17693021,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Corner_Exterior_Wood",
+      "path": "glTF/Corner_Exterior_Wood.gltf",
+      "category": "corner",
+      "sha256": "8f1ad0c8d0cb656601be4b6a48ca1ed5574d182c814ff27508bc91c81d0959a0",
+      "bytes": 2221,
+      "boundsMin": [
+        -0.10508733242750168,
+        -1.5052728485898115e-7,
+        -0.11982005089521408
+      ],
+      "boundsMax": [
+        0.10508709400892258,
+        2.999999761581421,
+        0.11982007324695587
+      ],
+      "dimensions": [
+        0.21017442643642426,
+        2.9999999121087058,
+        0.23964012414216995
+      ],
+      "triangles": 12,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/Corner_Exterior_Wood.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7376762,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Prop_WoodenFence_Single",
+      "path": "glTF/Prop_WoodenFence_Single.gltf",
+      "category": "prop",
+      "sha256": "c9f787c03c62dd94268da84bf3e4dacf554b2a5a9beee38314e37ff5d929c407",
+      "bytes": 2230,
+      "boundsMin": [
+        -1.0314507484436035,
+        -0.02825251966714859,
+        -0.059909969568252563
+      ],
+      "boundsMax": [
+        1.0326489210128784,
+        0.8098565340042114,
+        0.059910036623477936
+      ],
+      "dimensions": [
+        2.064099669456482,
+        0.83810905367136,
+        0.1198200061917305
+      ],
+      "triangles": 40,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/Prop_WoodenFence_Single.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7378722,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Prop_Wagon",
+      "path": "glTF/Prop_Wagon.gltf",
+      "category": "prop",
+      "sha256": "f81bf401710cd59f1325a5cdb36d335c2e5277c8416d79eefffdc646ec3fae83",
+      "bytes": 2422,
+      "boundsMin": [
+        -0.9793591499328613,
+        0.00312984362244606,
+        -3.1504321098327637
+      ],
+      "boundsMax": [
+        0.9720492362976074,
+        1.5323269367218018,
+        0.8735843896865845
+      ],
+      "dimensions": [
+        1.9514083862304688,
+        1.5291970930993557,
+        4.024016499519348
+      ],
+      "triangles": 1672,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim_Wear"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/Prop_Wagon.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7479194,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    }
+  ],
+  "recipes": [
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Wall_Plaster_Door_Round.gltf",
+      "position": [
+        -1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -1,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        1,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        2,
+        0,
+        -1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Wall_Plaster_Window_Thin_Round.gltf",
+      "position": [
+        2,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        2,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -2,
+        0,
+        -1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Wall_Plaster_Window_Thin_Round.gltf",
+      "position": [
+        -2,
+        0,
+        1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        -2,
+        0,
+        1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Door_1_Round.gltf",
+      "position": [
+        -1.5,
+        0,
+        2.015
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/DoorFrame_Round_WoodDark.gltf",
+      "position": [
+        -1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Roof_RoundTiles_4x4.gltf",
+      "position": [
+        0,
+        3,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        0,
+        3,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        0,
+        3,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -2,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -2,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        2,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-steep-gable",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        2,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "Prop_WoodenFence_Single-fixture",
+      "source": "glTF/Prop_WoodenFence_Single.gltf",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "Prop_Wagon-fixture",
+      "source": "glTF/Prop_Wagon.gltf",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "Door_1_Round-fixture",
+      "source": "glTF/Door_1_Round.gltf",
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "yaw": 0
+    }
+  ],
+  "textures": [
+    {
+      "sourceSha256": "aa571cd612091a8f4c95393f8f938bd6e5d47a8cdfd9c896b60a4b37903e2c7c",
+      "outputSha256": "e7e916bec6980f13400077b1975eaf54d85aeeed02fade779559333ff0d13737",
+      "width": 256,
+      "height": 256,
+      "bytes": 9024,
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "sourceSha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4",
+      "outputSha256": "4cd5dd3883f8137bca294f011a94cf3c1eab05a0fc2446862333b037a2bbc8fa",
+      "width": 256,
+      "height": 256,
+      "bytes": 3422,
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "sourceSha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+      "outputSha256": "877bd33004d33b005a6a2ef87cc68977b9c0b179369b91f9b0d7d6707ba51d83",
+      "width": 512,
+      "height": 512,
+      "bytes": 29346,
+      "estimatedMipRGBA8Bytes": 1398102
+    },
+    {
+      "sourceSha256": "5515f57e61767838f53f4b9e25aa83b1382ad345ff6b446482718b5140c33813",
+      "outputSha256": "4ffd0cabc7a9370f2859e0a94a6f390bf4b9f50aa10837f91a997b0fd0a8cc45",
+      "width": 256,
+      "height": 256,
+      "bytes": 9376,
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "sourceSha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997",
+      "outputSha256": "36b5244cc98f3369cb062beaae232a6bef63fe7393db8536d376b604d8bf6da2",
+      "width": 256,
+      "height": 256,
+      "bytes": 7091,
+      "estimatedMipRGBA8Bytes": 349526
+    }
+  ],
+  "externalDependencies": []
+}
