@@ -20,7 +20,11 @@ export function createEnvironmentMaterials({low=false,onReady=()=>{}}={}){
  vec4 weights=texture2D(control,(vPosition.xz+worldSize*.5)/worldSize);
  vec3 normal=normalize(vNormal);
  vec2 earthUV=abs(normal.y)<.65?(abs(normal.x)>abs(normal.z)?vPosition.zy:vPosition.xy):vPosition.xz;
+ #ifdef LOW_QUALITY
+ vec3 earth=vec3(dot(detail,vec3(.3,.5,.2)))*vec3(.85,.67,.48);
+ #else
  vec3 earth=texture2D(soil,earthUV/19.).rgb;
+ #endif
  float slope=smoothstep(.18,.65,1.-abs(normalize(vNormal).y));
  vec3 stone=vec3(dot(earth,vec3(.3,.5,.2)))*vec3(.88,.89,.83);
  vec3 meadow=mix(detail*vec3(.72,.84,.62),earth*vec3(.82,.76,.65),weights.r);
@@ -36,7 +40,11 @@ export function createEnvironmentMaterials({low=false,onReady=()=>{}}={}){
  void main(){float light=.70+.30*max(0.,dot(normalize(vNormal),normalize(vec3(-.40,.86,.25))));
  if(vKind<.5){gl_FragColor=vec4(vColor*light,1.);return;}
  vec3 earth=texture2D(soil,vPosition.xz/19.).rgb;
+ #ifdef LOW_QUALITY
+ vec3 turf=vec3(.19,.26,.11)*(.85+earth.g*.3);
+ #else
  vec3 turf=texture2D(grass,vPosition.xz/22.).rgb*vec3(.72,.84,.62);
+ #endif
  float noise=.5+.25*sin(vPosition.x*.25+sin(vPosition.z*.18)+phase)+.25*sin(vPosition.z*.19+vPosition.x*.14);
  vec3 dirt=earth*vec3(.92,.83,.68);
  float wear=vKind<1.5?.92:vKind<2.5?(1.-smoothstep(11.5+noise*.6,17.,abs(vOffset)))*.9:vKind<3.5?.72:vKind<4.5?.58:vKind<5.5?.86:.78;
