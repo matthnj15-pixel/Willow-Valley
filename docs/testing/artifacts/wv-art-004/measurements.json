@@ -1,0 +1,126 @@
+[
+  {
+    "quality": "normal",
+    "viewport": {
+      "width": 600,
+      "height": 850
+    },
+    "dpr": 1,
+    "drawCalls": 64,
+    "triangles": 9969,
+    "textures": 11,
+    "geometries": 53,
+    "oldScale": 19,
+    "lumberScale": 19.18604674433263,
+    "closure": [
+      {
+        "y": 1.5,
+        "x": -4,
+        "z": 0,
+        "hits": 8,
+        "nearestGameUnits": 5.599999881312473
+      },
+      {
+        "y": 1.5,
+        "x": 4,
+        "z": 0,
+        "hits": 8,
+        "nearestGameUnits": 5.599999795181575
+      },
+      {
+        "y": 1.5,
+        "x": 0,
+        "z": -4,
+        "hits": 8,
+        "nearestGameUnits": 5.6
+      },
+      {
+        "y": 1.5,
+        "x": 0,
+        "z": 4,
+        "hits": 8,
+        "nearestGameUnits": 5.599999807326157
+      },
+      {
+        "y": 4,
+        "x": 0,
+        "z": -4,
+        "hits": 9,
+        "nearestGameUnits": 5.33543335885428
+      },
+      {
+        "y": 4,
+        "x": 0,
+        "z": 4,
+        "hits": 9,
+        "nearestGameUnits": 5.335433379718272
+      }
+    ],
+    "renderSubmissionMedianMs": 2.099999999976717,
+    "renderSubmissionP95Ms": 6.400000000023283,
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "phonePerformanceVerified": false
+  },
+  {
+    "quality": "low",
+    "viewport": {
+      "width": 600,
+      "height": 850
+    },
+    "dpr": 1,
+    "drawCalls": 64,
+    "triangles": 9969,
+    "textures": 11,
+    "geometries": 53,
+    "oldScale": 19,
+    "lumberScale": 19.18604674433263,
+    "closure": [
+      {
+        "y": 1.5,
+        "x": -4,
+        "z": 0,
+        "hits": 8,
+        "nearestGameUnits": 5.599999881312473
+      },
+      {
+        "y": 1.5,
+        "x": 4,
+        "z": 0,
+        "hits": 8,
+        "nearestGameUnits": 5.599999795181575
+      },
+      {
+        "y": 1.5,
+        "x": 0,
+        "z": -4,
+        "hits": 8,
+        "nearestGameUnits": 5.6
+      },
+      {
+        "y": 1.5,
+        "x": 0,
+        "z": 4,
+        "hits": 8,
+        "nearestGameUnits": 5.599999807326157
+      },
+      {
+        "y": 4,
+        "x": 0,
+        "z": -4,
+        "hits": 9,
+        "nearestGameUnits": 5.33543335885428
+      },
+      {
+        "y": 4,
+        "x": 0,
+        "z": 4,
+        "hits": 9,
+        "nearestGameUnits": 5.335433379718272
+      }
+    ],
+    "renderSubmissionMedianMs": 3.400000000023283,
+    "renderSubmissionP95Ms": 8.20000000006985,
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "phonePerformanceVerified": false
+  }
+]
