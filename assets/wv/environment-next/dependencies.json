@@ -206,8 +206,8 @@
     },
     {
       "path": "environment-next/inspection-controls.mjs",
-      "bytes": 2060,
-      "sha256": "ec0ac07c37cb61e8e0588920313d719c75a20b68d44c9448d4119a261b28c14b"
+      "bytes": 2041,
+      "sha256": "1642d9ba43ad9d50f093bff428417ae8e4e072b5a38f593c8c7ee2b3c04fc268"
     },
     {
       "path": "environment-next/materials.mjs",

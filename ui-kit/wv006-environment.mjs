@@ -3251,7 +3251,6 @@ function attachInspectionControls(canvas, viewer2, world2) {
     if (points.size !== 2) gesture = null;
   };
   const wheel = (e) => {
-    if (!close()) return;
     stop(e);
     const v = viewer2.getCamera();
     viewer2.setCamera({ ...v, zoom: clamp7(v.zoom * (e.deltaY > 0 ? 1.12 : 1 / 1.12), 6, limit * 2.4) });

@@ -10,7 +10,7 @@ export function attachInspectionControls(canvas,viewer,world){
   else if(points.size===1)viewer.setCamera({...v,yaw:v.yaw-(e.clientX-last.x)/Math.max(120,rect.width)*Math.PI*1.5,pitch:clamp(v.pitch+(e.clientY-last.y)/Math.max(180,rect.height)*1.8,.32,1.47)});
  };
  const up=e=>{if(!points.has(e.pointerId))return;stop(e);points.delete(e.pointerId);if(points.size!==2)gesture=null;};
- const wheel=e=>{if(!close())return;stop(e);const v=viewer.getCamera();viewer.setCamera({...v,zoom:clamp(v.zoom*(e.deltaY>0?1.12:1/1.12),6,limit*2.4)});};
+ const wheel=e=>{stop(e);const v=viewer.getCamera();viewer.setCamera({...v,zoom:clamp(v.zoom*(e.deltaY>0?1.12:1/1.12),6,limit*2.4)});};
  const handlers={pointerdown:down,pointermove:move,pointerup:up,pointercancel:up,lostpointercapture:up,wheel};
  for(const [type,fn] of Object.entries(handlers))canvas.addEventListener(type,fn,{capture:true,passive:false});
  return()=>{for(const [type,fn] of Object.entries(handlers))canvas.removeEventListener(type,fn,true);points.clear();gesture=null;};
