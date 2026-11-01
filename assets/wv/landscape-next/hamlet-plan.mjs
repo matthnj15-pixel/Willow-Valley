@@ -77,14 +77,14 @@ export function createHamletPlan({stage=12,seed='WV-INHABITED-01'}={}){
  const all=HOLDINGS.map((r,i)=>holding(r,i,seed)),holdings=all.filter(h=>h.stage<=stage);
  const lanes=LANES.filter(l=>l.stage<=stage).map(l=>({...l,points:l.points.map(p=>({...p}))}));
  const buildings=[
-  {key:'barn',assetId:'facility-farm',origin:{x:-46,z:-25},yaw:.1,stage:4,kind:'farm',yard:rectangle(-47,-17,13,12,.1)},
+  {key:'barn',assetId:'facility-farm',origin:{x:-45.7,z:-25},yaw:.1,stage:4,kind:'farm',yard:rectangle(-47,-17,13,12,.1)},
   {key:'smith',assetId:'facility-smith',origin:{x:-49,z:28},yaw:-2.0,stage:12,kind:'smith',yard:rectangle(-49,24,13,13,-.3)},
   {key:'market',assetId:'facility-market',origin:{x:0,z:12.5},yaw:Math.PI,stage:12,kind:'market',yard:rectangle(0,10,11,5)},
   {key:'grain-store',assetId:'facility-granary',origin:{x:-42,z:-43},yaw:.15,stage:12,kind:'granary',yard:rectangle(-43,-37,12,8)},
   {key:'wood-yard',assetId:'facility-lumber',origin:{x:63,z:-58},yaw:-.5,stage:30,kind:'lumber',yard:rectangle(61,-52,14,12,-.5)}
  ].filter(b=>b.stage<=stage);
  const paths=[...holdings.map(h=>({key:h.key+':door',kind:'approach',width:1.1,points:h.approach})),
-  {key:'green-access',kind:'path',width:1.5,points:[{x:-9,z:0},{x:-8,z:4.8},{x:-6.5,z:6.8},{x:0,z:7},{x:12,z:1}]},
+  {key:'green-access',kind:'path',width:1.5,points:[{x:-9,z:0},{x:-8.5,z:4.5},{x:-7,z:7.5},{x:0,z:8},{x:12,z:1}]},
   ...buildings.filter(b=>b.kind==='smith').map(b=>({key:b.key+':access',kind:'approach',width:2.4,points:[{x:-45,z:22},{x:-45,z:15}]})),
   ...buildings.filter(b=>b.kind==='farm').map(b=>({key:b.key+':access',kind:'approach',width:2.4,points:[{x:-49,z:-20},{x:-52,z:-17}]})),
   ...buildings.filter(b=>b.kind==='granary').map(b=>({key:b.key+':access',kind:'approach',width:2.4,points:[{x:-52,z:-37},{x:-50,z:-35}]})),
@@ -96,7 +96,7 @@ export function createHamletPlan({stage=12,seed='WV-INHABITED-01'}={}){
  for(const h of holdings){regions.push({key:h.key+':holding',kind:'holding',polygon:h.polygon});regions.push({key:h.key+':yard',kind:'yard',polygon:[[-2,1.5],[1.7,1.4],[2,4.2],[-1.5,5.1],[-2.4,3.5]].map(([x,z])=>transformPoint({x,z},h.origin,h.yaw))});regions.push({key:h.key+':'+h.use,kind:h.use==='work-yard'?'yard':'garden',polygon:rectangle(h.garden.center.x,h.garden.center.z,h.garden.width,h.garden.depth,h.yaw),holdingKey:h.key});}
  for(const b of buildings)regions.push({key:b.key+':yard',kind:'work',polygon:b.yard});
  return{revision:HAMLET_REVISION,status:'gallery-review',runtimeReady:false,source:'authored reference composition; no simulation state',seed,stage,width:180,depth:164,holdings,buildings,lanes,paths,regions,
-  features:[{key:'shared-well',kind:'well',origin:{x:-6,z:5},yaw:.2},{key:'green-bench',kind:'bench',origin:{x:4,z:4},yaw:-.2}],
+  features:[{key:'shared-well',kind:'well',origin:{x:-6,z:5},yaw:.2},{key:'green-bench',kind:'bench',origin:{x:4,z:8},yaw:-.2}],
   markers:[{key:'green',label:'The shared green',x:-2,z:7},{key:'gardens',label:'Household gardens',x:6,z:-18},{key:'farm',label:'Fields & farmyard',x:-54,z:-32},{key:'edge',label:'The woodland edge',x:52,z:-33}],
   camera:{overview:{x:0,z:0,zoom:stage===30?160:stage===4?102:124},green:{x:0,z:8,zoom:58},gardens:{x:8,z:-11,zoom:75},farm:{x:-48,z:-31,zoom:82}}};
 }
@@ -124,7 +124,7 @@ export function createHamletUseIndex(plan,{cellSize=8}={}){
 // Exact b--d terrain triangle contact for this detached review's fixed mesh.
 // Quality changes materials/props/LODs, so the displayed ground and contacts stay stable.
 export function displayedHamletHeight(x,z){
- const w=180*2.1,d=164*2.1,nx=62,nz=56,sx=w/nx,sz=d/nz;
+ const w=180*2.1,d=164*2.1,nx=40,nz=36,sx=w/nx,sz=d/nz;
  const gx=Math.max(0,Math.min(nx,(x+w/2)/sx)),gz=Math.max(0,Math.min(nz,(z+d/2)/sz));
  const i=Math.min(nx-1,Math.floor(gx)),j=Math.min(nz-1,Math.floor(gz)),u=gx-i,v=gz-j;
  const a=hamletHeight(i*sx-w/2,j*sz-d/2),b=hamletHeight((i+1)*sx-w/2,j*sz-d/2),c=hamletHeight((i+1)*sx-w/2,(j+1)*sz-d/2),e=hamletHeight(i*sx-w/2,(j+1)*sz-d/2);

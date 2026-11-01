@@ -4,7 +4,7 @@ import {createResourceDisposer} from '../../../asset-registry.mjs';
 import {createLandscapeLibrary} from './batches.mjs';
 import {placeLandscape} from './placement.mjs';
 import {createHamletProps} from './hamlet-props.mjs';
-import {createHamletPlan,createHamletUseIndex,hamletHeight,displayedHamletHeight,polygonsOverlap,laneCorridors,rectangle,transformPoint,keyedUnit,pointInPolygon,lineDistance,METRES_TO_GAME as U} from './hamlet-plan.mjs';
+import {createHamletPlan,createHamletUseIndex,hamletHeight,displayedHamletHeight,polygonsOverlap,laneCorridors,rectangle,transformPoint,keyedUnit,pointInPolygon,lineDistance,segmentDistance,METRES_TO_GAME as U} from './hamlet-plan.mjs';
 const base=new URL('./',import.meta.url),CBASE=new URL('../buildings-next/',import.meta.url);
 function grainAt(x,z){let h=Math.imul(x|0,374761393)^Math.imul(z|0,668265263);h=Math.imul(h^(h>>>13),1274126177);return((h^(h>>>16))>>>0)/4294967296;}
 function smoothNoise(x,z){const ix=Math.floor(x),iz=Math.floor(z),a=x-ix,b=z-iz,u=a*a*(3-2*a),v=b*b*(3-2*b);return T.MathUtils.lerp(T.MathUtils.lerp(grainAt(ix,iz),grainAt(ix+1,iz),u),T.MathUtils.lerp(grainAt(ix,iz+1),grainAt(ix+1,iz+1),u),v);}
@@ -56,14 +56,15 @@ function createGround(plan,index,trees,low){
   c.convertLinearToSRGB();const k=(j*width+i)*4;data[k]=Math.round(T.MathUtils.clamp(c.r,0,1)*255);data[k+1]=Math.round(T.MathUtils.clamp(c.g,0,1)*255);data[k+2]=Math.round(T.MathUtils.clamp(c.b,0,1)*255);data[k+3]=255;
  }
  const texture=new T.DataTexture(data,width,height,T.RGBAFormat);texture.colorSpace=T.SRGBColorSpace;texture.magFilter=T.LinearFilter;texture.minFilter=T.LinearFilter;texture.needsUpdate=true;texture.flipY=false;
- const nx=62,nz=56,g=new T.PlaneGeometry(plan.width*U*2.1,plan.depth*U*2.1,nx,nz);g.rotateX(-Math.PI/2);const p=g.attributes.position,uv=g.attributes.uv;
+ // Gentle broad hills need only 40x36 cells; the pure sampler uses these same triangles in both qualities.
+ const nx=40,nz=36,g=new T.PlaneGeometry(plan.width*U*2.1,plan.depth*U*2.1,nx,nz);g.rotateX(-Math.PI/2);const p=g.attributes.position,uv=g.attributes.uv;
  for(let i=0;i<p.count;i++){const x=p.getX(i)/U,z=p.getZ(i)/U;p.setY(i,(hamletHeight(x,z)-.012)*U);uv.setXY(i,x/(plan.width*2.1)+.5,z/(plan.depth*2.1)+.5);}g.computeVertexNormals();
  const material=new T.MeshStandardMaterial({map:texture,roughness:1}),mesh=new T.Mesh(g,material);
  return{mesh,texture,geometry:g,material,dispose(){texture.dispose();g.dispose();material.dispose();}};
 }
 function decorativeProps(plan,quality,distance){
- const low=quality==='low',rows=[],fences=[],beds=[],add=(kind,key,p,yaw=0,scale=1)=>rows.push({kind,key,origin:coord(p.x,p.z),yaw,scale:[U*scale,U*scale,U*scale]});
- const blocked=(p,r=.4)=>[...plan.lanes,...plan.paths].some(l=>lineDistance(p,l.points)<l.width/2+r)||plan.entities.some(e=>pointInPolygon(p,e.footprint));
+ const low=quality==='low',rows=[],fences=[],beds=[],add=(kind,key,p,yaw=0,scale=1)=>{const clearance={'fruit-tree':1.35,'wood-stack':1.05,cart:1.6,barrel:.28,well:1.05,bench:.9}[kind]||.18;if(kind!=='person'&&blocked(p,clearance))return;rows.push({kind,key,origin:coord(p.x,p.z),yaw,scale:[U*scale,U*scale,U*scale]});};
+ const blocked=(p,r=.4)=>[...plan.lanes,...plan.paths].some(l=>lineDistance(p,l.points)<l.width/2+r)||plan.entities.some(e=>pointInPolygon(p,e.footprint)||e.footprint.some((a,i)=>segmentDistance(p,a,e.footprint[(i+1)%e.footprint.length])<r));
  function boundary(a,b,key,kind){const d=Math.hypot(b.x-a.x,b.z-a.z),n=Math.floor(d/2);for(let i=0;i<n;i++){if(low&&plan.stage===30&&i>0&&i<n-1)continue;const t=(i+.5)/n,p={x:a.x+(b.x-a.x)*t,z:a.z+(b.z-a.z)*t};if(blocked(p,1))continue;const yaw=Math.atan2(-(b.z-a.z),b.x-a.x);add(kind,key+':'+i,p,yaw);fences.push({key:key+':'+i,a:{x:p.x-Math.cos(yaw),z:p.z+Math.sin(yaw)},b:{x:p.x+Math.cos(yaw),z:p.z-Math.sin(yaw)}});}}
  for(const h of plan.holdings){
   // Rear and side fragments with actual approach gaps; not a fence on every edge.
@@ -84,8 +85,8 @@ function decorativeProps(plan,quality,distance){
  for(const r of plan.regions.filter(r=>r.key==='paddock'||r.kind==='field')){for(let i=0;i<r.polygon.length;i++){if(i===0)continue;boundary(r.polygon[i],r.polygon[(i+1)%r.polygon.length],r.key+':boundary:'+i,'fence-rail');}}
  for(const f of plan.features)add(f.kind,f.key,f.origin,f.yaw);
  const people=[{x:-8,z:1},{x:1,z:5},{x:14,z:4},{x:-36,z:9},{x:24,z:18},{x:-52,z:-16}];for(const [i,p] of people.slice(0,plan.stage===4||low&&plan.stage===30?3:6).entries())add('person','reference-person:'+i,p,i*.9);
- if(plan.stage>=12){add('cart','smith-cart',{x:-47,z:30},.5);add('wood-stack','smith-fuel',{x:-51,z:24},1.1);add('barrel','market-barrel',{x:5,z:11},.2);}
- for(const [i,p] of [{x:-53,z:-25},{x:-43,z:-26}].entries())add('grain-sheaf','barn-sheaf:'+i,p,i);
+ if(plan.stage>=12){add('cart','smith-cart',{x:-53,z:33},.5);add('wood-stack','smith-fuel',{x:-51,z:24},1.1);add('barrel','market-barrel',{x:5,z:11},.2);}
+ for(const [i,p] of [{x:-43,z:-19},{x:-45,z:-19}].entries())add('grain-sheaf','barn-sheaf:'+i,p,i);
  // Plant only the declared detached field. This has no crop output or ownership.
  if(distance!=='far'&&!(low&&plan.stage===30))for(let x=-75;x<-62;x+=low?2.9:1.8)for(let z=-39;z<-17;z+=low?2.8:1.6){const q={x:x+Math.sin(z)*.25,z};if(blocked(q,.4))continue;add('grain-sheaf','field:'+x+':'+z,q,0,.83);}
  return{records:rows,fences,beds};
@@ -105,13 +106,16 @@ function footings(plan){
 }
 export async function loadHamletLibrary(){
  const loader=new T.GLTFLoader(),disposeResources=createResourceDisposer();
- const loading=[fetch(new URL('manifest.json',CBASE)).then(r=>{if(!r.ok)throw Error('Building catalog unavailable');return r.json();}),fetch(new URL('manifest.json',base)).then(r=>{if(!r.ok)throw Error('Landscape manifest unavailable');return r.json();}),loader.loadAsync(new URL('catalog.glb',CBASE).href),loader.loadAsync(new URL('landscape.glb',base).href)];let loaded;try{loaded=await Promise.all(loading);}catch(error){void Promise.allSettled(loading).then(results=>{for(const r of results)if(r.status==='fulfilled'&&r.value?.scene)disposeResources(r.value.scene);});throw error;}const [architecture,landscape,buildingGLTF,natureGLTF]=loaded;
+ const metadata=await Promise.all([fetch(new URL('manifest.json?v=inhabited-1',CBASE),{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Building catalog unavailable');return r.json();}),fetch(new URL('manifest.json?v=inhabited-1',base),{cache:'no-cache'}).then(r=>{if(!r.ok)throw Error('Landscape manifest unavailable');return r.json();})]);
+ const [architecture,landscape]=metadata;
+ const loading=[loader.loadAsync(new URL('catalog.glb?v='+architecture.output.sha256,CBASE).href),loader.loadAsync(new URL('landscape.glb?v='+landscape.output.sha256,base).href)];let loaded;
+ try{loaded=await Promise.all(loading);}catch(error){void Promise.allSettled(loading).then(results=>{for(const r of results)if(r.status==='fulfilled'&&r.value?.scene)disposeResources(r.value.scene);});throw error;}const [buildingGLTF,natureGLTF]=loaded;
  const finalPlan=resolveHamlet(createHamletPlan({stage:30}),architecture.entries),reservedKeys=new Set(landscapeRecords(finalPlan,landscape.entries,'normal','far').instances.map(r=>r.key)),inheritedTrees=naturalTrees(finalPlan).filter(t=>reservedKeys.has('tree:'+t.key));
  const landscapeLibrary=createLandscapeLibrary(natureGLTF.scene),propsNormal=createHamletProps(),propsLow=createHamletProps({low:true});let disposed=false;
  return{architecture,build({stage=12,quality='normal',distance='near'}={}){
   if(disposed)throw Error('Hamlet library disposed');
   const plan=resolveHamlet(createHamletPlan({stage}),architecture.entries),index=createHamletUseIndex(plan),group=new T.Group(),objects=[];
-  for(const e of plan.entities){const source=buildingGLTF.scene.getObjectByName(quality==='low'||distance==='far'||stage===30?e.entry.lowNode:e.entry.normalNode);if(!source)throw Error('Missing model '+e.assetId);const model=source.clone(true);model.position.set(...e.modelOrigin);model.rotation.y=e.yaw;model.scale.setScalar(U);objects.push({scene:model,entityKey:e.key});}
+  for(const e of plan.entities){const source=buildingGLTF.scene.getObjectByName(quality==='low'||distance==='far'||stage===30?e.entry.lowNode:e.entry.normalNode);if(!source)throw Error('Missing model '+e.assetId);const model=source.clone(true);if(quality==='low'&&stage===30)model.traverse(n=>{if(n.userData?.category==='detail'||n.userData?.optional)n.visible=false;});model.position.set(...e.modelOrigin);model.rotation.y=e.yaw;model.scale.setScalar(U);objects.push({scene:model,entityKey:e.key});}
   const buildingBatches=buildSceneBatches(objects);for(const b of buildingBatches)group.add(b);
   const nature=landscapeRecords(plan,landscape.entries,quality,distance,inheritedTrees),natureBatches=landscapeLibrary.build(nature.instances);group.add(natureBatches.group);
   const dressing=decorativeProps(plan,quality,distance),propLibrary=quality==='low'?propsLow:propsNormal,propBatches=propLibrary.build(dressing.records);group.add(propBatches.group);
