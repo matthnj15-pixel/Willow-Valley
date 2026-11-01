@@ -18,7 +18,8 @@ function geometry(id,lod){
  if(id.includes('oak')||id.includes('beech')||id.includes('birch')||id.includes('pine')){
   const pine=id.includes('pine'),h=young?3.2:pine?10:id.includes('beech')?9.5:id.includes('birch')?8.8:8.2;
   pole([0,0,0],[.12,h*.8,.08],young?.11:.28,young?.04:.10,id.includes('birch')?'#a5a18a':'bark');
-  if(pine){for(let i=0;i<(far?2:4);i++){const y=h*(.38+i*.16),r=(h-y)*.48,g=new T.ConeGeometry(r,h*.38,low?6:9,1);g.translate(.08,y,0);add(g,'pine');}}
+  if(pine&&far){const g=new T.ConeGeometry(h*.2976,h*.86,6,1);g.translate(.08,h*.62,0);add(g,'pine');}
+  else if(pine){for(let i=0;i<4;i++){const y=h*(.38+i*.16),r=(h-y)*.48,g=new T.ConeGeometry(r,h*.38,low?6:9,1);g.translate(.08,y,0);add(g,'pine');}}
   else {const n=far?3:low?5:7;for(let i=0;i<n;i++){const a=i*2.399,r=young?.7:id.includes('beech')?1.25:id.includes('birch')?1.8:2.1,y=h*(.60+(i%3)*.10),x=Math.cos(a)*r,z=Math.sin(a)*r;pole([.05,h*.38,0],[x,y,z],young?.05:.10,.025);blob(x,y,z,young?.8:id.includes('beech')?1.55:1.85,young?.9:id.includes('beech')?2.2:1.55,young?.8:1.55,i%2?'leaf':'light',low?0:1,a);}}
  }else if(id.includes('shrub')||id==='hedge-fragment'){
   const hedge=id==='hedge-fragment',n=hedge?5:id==='hazel-shrub'?4:3;
@@ -34,7 +35,16 @@ function geometry(id,lod){
   const reed=id==='reed-cluster',rush=id==='rush-cluster',fern=id==='fern-cluster',flower=id.startsWith('flower');
   const n=low?fern?5:7:fern?9:flower?10:reed?15:19;
   for(let i=0;i<n;i++){const a=i*2.399,r=Math.sqrt(i/n)*(reed?.65:fern?.15:.65),x=Math.cos(a)*r,z=Math.sin(a)*r,h=(reed?1.35:rush?.8:fern?.55:flower?.48:.32)*( .65+(i%4)*.13);
-   if(fern){for(let j=1;j<4;j++){const d=j*.19;blade(x+Math.cos(a)*d,z+Math.sin(a)*d,h*(1-j*.12),a+(j%2?.65:-.65),'leaf',.08);}}
+   if(fern){
+    const point=t=>[Math.cos(a)*t*.92,.035+Math.sin(t*Math.PI)*.38,Math.sin(a)*t*.92];
+    const steps=low?2:4;let previous=point(0);
+    for(let j=1;j<=steps;j++){const t=j/(steps+1),base=point(t);pole(previous,base,.009,.006,'leaf',3);previous=base;
+     for(const side of [-1,1]){const tip=[base[0]+Math.cos(a)*.13-Math.sin(a)*side*(.25-t*.16),base[1]+.035,base[2]+Math.sin(a)*.13+Math.cos(a)*side*(.25-t*.16)],dx=tip[0]-base[0],dz=tip[2]-base[2],length=Math.hypot(dx,dz),w=.05*(1-t*.45),mid=base.map((v,k)=>(v+tip[k])*.5),g=new T.BufferGeometry();
+      g.setAttribute('position',new T.Float32BufferAttribute([...base,...tip,mid[0]-dz/length*w,mid[1],mid[2]+dx/length*w,mid[0]+dz/length*w,mid[1],mid[2]-dx/length*w,mid[0],mid[1]+.018,mid[2]],3));g.setIndex([0,2,4,2,1,4,1,3,4,3,0,4,0,1,2,0,3,1]);g.computeVertexNormals();add(g,j%2?'leaf':'light');
+     }
+    }
+    pole(previous,point(1),.006,.002,'leaf',3);
+   }
    else {blade(x,z,h,a,reed?'#7c8052':'grass',reed?.025:.035);if(flower&&i%3===0)blob(x+Math.sin(a)*h*.25,h,z-Math.cos(a)*h*.25,.07,.035,.07,id==='flower-cream'?'cream':'mauve',0);if(reed&&i%4===0)pole([x,h*.75,z],[x,h,z],.025,.024,'bark',4);}
   }
  }

@@ -4,7 +4,7 @@ Status: gallery-review. Every new asset remains `runtimeReady:false`. F owns pla
 
 ## Delivered collection
 
-Twenty original recognizable forms: spreading oak, upright beech, open birch, tiered pine, young oak/pine, hazel/thorn shrubs, broken hedge, fern, grass, cream/mauve wildflowers, reeds/rushes, bank stones, rounded boulder, layered outcrop, stump and fallen log. No private archive was available or needed. These are original recipe geometry, not claimed MegaKit derivatives. There are no source textures, remote models, transparency, decoders or paid dependencies.
+Twenty original recognizable forms: spreading oak, upright beech, open birch, tiered pine, young oak/pine, hazel/thorn shrubs, broken hedge, fern, grass, cream/mauve wildflowers, reeds/rushes, bank stones, rounded boulder, layered outcrop, stump and fallen log. No private archive was needed or used. These are original recipe geometry, not claimed MegaKit derivatives. There are no source textures, remote models, transparency, decoders or paid dependencies.
 
 Build from checkout with `node scripts/build-wv006-landscape.mjs`. The manifest records recipe/catalog source hashes, output hash/bytes, measured normal/low/far bounds and triangles, material groups, exact base contact vertices, conservative plan envelopes, units and provenance. Architecture-specific entrances and roof envelopes are empty/null for natural props. Proposed gameplay metadata is explicitly null. Canonical geometry uses visual metres, Y up, measured base Y=0. Gallery placement uses 2.8 game units/m and a 1.75 m person. No max-to-fit transform is used. Authoritative mature-tree height supplies a uniform natural size; it does not rescale the world or saves.
 

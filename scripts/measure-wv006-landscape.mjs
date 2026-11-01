@@ -5,6 +5,7 @@ const browser=await chromium.launch({args:['--no-sandbox']}),measurements=[];
 try{
  const page=await browser.newPage({viewport:{width:1200,height:1000},deviceScaleFactor:1});await page.goto(origin+'/ui-kit/wv006-landscape.html');await page.waitForSelector('[data-loaded="20"]');
  for(const name of ['collection','forest','bank','yard','smith']){await page.selectOption('#scene',name);await page.locator('.stage').screenshot({path:`${out}/${name}.jpg`,type:'jpeg',quality:88});}
+ for(const form of ['oak-spreading','beech-upright','birch-open','pine-tiered','fern-cluster','grass-tuft','reed-cluster','fallen-log']){await page.selectOption('#form',form);await page.locator('.stage').screenshot({path:`${out}/form-${form}.jpg`,type:'jpeg',quality:88});}
  await page.close();
  for(const count of [30,100])for(const quality of ['normal','low'])for(const distance of ['near','far']){
   const p=await browser.newPage({viewport:{width:600,height:850},deviceScaleFactor:1,isMobile:true,hasTouch:true});
