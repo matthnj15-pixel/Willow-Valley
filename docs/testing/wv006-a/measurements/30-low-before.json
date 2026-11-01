@@ -1,0 +1,41 @@
+{
+  "seed": "WV-C01-hamlet30",
+  "count": 30,
+  "quality": "low",
+  "treatment": "before",
+  "viewport": {
+    "width": 574,
+    "height": 580
+  },
+  "devicePixelRatio": 2,
+  "renderDPR": 1,
+  "cameraPath": "orbit-v1",
+  "initialCamera": {
+    "yaw": 0.71,
+    "pitch": 0.86,
+    "zoom": 546,
+    "focusX": -21,
+    "focusZ": -13
+  },
+  "warmupSeconds": 2,
+  "durationSeconds": 8,
+  "frameCount": 52,
+  "medianMs": 166.59999999999945,
+  "p95Ms": 183.39999999999964,
+  "p99Ms": 183.39999999999964,
+  "peakDrawCalls": 96,
+  "peakTriangles": 55179,
+  "textureBytes": 23780011,
+  "surfaceTextureBytes": 2808490.6666666665,
+  "geometryBytes": 1789880,
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "shadows": false,
+  "cancelled": false,
+  "phonePerformanceVerified": false,
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "environmentTextureEncodedBytes": 144900,
+  "environmentTextureTransferBytes": 145500,
+  "browserVersion": "141.0.7390.37",
+  "recordedAt": "2026-11-01T16:15:14.447Z",
+  "sourceRevision": "fbb5598d4921805c14101f57b8d9d8fe60ea3c50"
+}
