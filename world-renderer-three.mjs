@@ -1,3 +1,4 @@
+import {createEnvironmentMaterials} from './environment-materials.mjs';
 import {buildSceneBatches,estimateSceneBytes} from './scene-batches.mjs';
 import {naturePlacements} from './nature-visuals.mjs';
 import * as THREE from './assets/vendor/three.module.mjs';
@@ -16,6 +17,7 @@ export function mountWorld3D(canvas,world,options={}){
  const houses=new THREE.Group();scene.add(houses);
  const requiredIDs=[...HOME_IDS,...FACILITY_TYPES.map(type=>'facility-'+type),'tree-oak'];
  const low=options.quality==='lite';
+ const environment=createEnvironmentMaterials({low,onReady:()=>controller?.render()});
  let surfaceVersion=0,lastPlacementKey='',cached=null;
  const clearBatches=()=>{for(const mesh of houses.children)mesh.dispose();houses.clear();};
  const bind=(state,c)=>({houses:new Map((state.houses||[]).flatMap((h,i)=>c.homes[i]?[[h,c.homes[i]]]:[])),buildings:new Map((state.buildings||[]).flatMap((b,i)=>c.facilities[i]?[[b,c.facilities[i]]]:[])),cropRows:c.cropRows});
@@ -31,7 +33,7 @@ export function mountWorld3D(canvas,world,options={}){
  }
  // Match legacy vertex lighting exactly for terrain/roads/overlays. Imported
  // glTF materials keep their own sRGB texture and matte lighting pipeline.
- function material(index){return new THREE.ShaderMaterial({
+ function material(index){const surface=environment.material(index);if(surface)return surface;return new THREE.ShaderMaterial({
   uniforms:{opacity:{value:index===6?.52:1}},transparent:index===6,depthTest:index!==8,depthWrite:index!==6,side:THREE.DoubleSide,
   vertexShader:'attribute vec3 color; varying vec3 vColor; varying float vLight; void main(){vColor=color;vLight=.70+.30*max(0.,dot(normalize(normal),normalize(vec3(-.40,.86,.25))));gl_Position=projectionMatrix*modelViewMatrix*vec4(position,1.);}',
   fragmentShader:'uniform float opacity; varying vec3 vColor; varying float vLight; void main(){gl_FragColor=vec4(vColor*vLight,opacity);}'
@@ -109,8 +111,8 @@ export function mountWorld3D(canvas,world,options={}){
    updateCamera(view,rect);raycaster.setFromCamera(new THREE.Vector2((x-rect.left)/rect.width*2-1,1-(y-rect.top)/rect.height*2),camera);
    const hit=raycaster.intersectObject(terrain,false)[0];return hit?{x:hit.point.x+contact.width/2,y:hit.point.z+contact.depth/2}:null;
   },
-  assetStatus:()=>({loaded,total:requiredIDs.length,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,...estimateSceneBytes(scene)}),
-  dispose(){disposed=true;clearBatches();for(const mesh of buffers.values()){mesh.geometry.dispose();mesh.material.dispose();}buffers.clear();registry.dispose();renderer.dispose();renderer.forceContextLoss();}
+  assetStatus:()=>({loaded,total:requiredIDs.length,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,...estimateSceneBytes(scene),...environment.status()}),
+  dispose(){disposed=true;clearBatches();for(const mesh of buffers.values()){mesh.geometry.dispose();mesh.material.dispose();}buffers.clear();registry.dispose();environment.dispose();renderer.dispose();renderer.forceContextLoss();}
  };
  let controller;
  try{controller=mountController(canvas,world,{...options,presentation:backend});}catch(error){backend.dispose();throw error;}

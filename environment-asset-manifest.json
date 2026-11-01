@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "entries": [
+    {
+      "id": "grass",
+      "url": "assets/wv/environment-v1/grass.jpg",
+      "publisher": "Poly Haven",
+      "assetURL": "https://polyhaven.com/a/leafy_grass",
+      "metadataURL": "https://api.polyhaven.com/files/leafy_grass",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "sourceURL": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/leafy_grass/leafy_grass_diff_1k.jpg",
+      "sourceSHA256": "cfa40bc9d9417d1852db8753a8d5917f110c40101179f63543c382e39bc05e4a",
+      "sourceBytes": 1195394,
+      "publisherMD5": "0dbc071e91d6905edfcfbe8eb785a1ab",
+      "sha256": "8968c4a760f5d7fde6c9c252c80f3567a9114f61a7793c053c5593f5abba4638",
+      "bytes": 107694,
+      "width": 512,
+      "height": 512,
+      "map": "albedo",
+      "colorSpace": "srgb",
+      "processing": "sharp 0.35.5 resize 512x512, JPEG quality 82, 4:4:4"
+    },
+    {
+      "id": "soil",
+      "url": "assets/wv/environment-v1/soil.jpg",
+      "publisher": "Poly Haven",
+      "assetURL": "https://polyhaven.com/a/dirt",
+      "metadataURL": "https://api.polyhaven.com/files/dirt",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license",
+      "sourceURL": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_diff_1k.jpg",
+      "sourceSHA256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+      "sourceBytes": 730425,
+      "publisherMD5": "cb37e24797597b1dd1ae3819fa80f076",
+      "sha256": "0c1ca435dff526c06474cf107755c6dca8deeacf890fc9bef745424d856d5063",
+      "bytes": 37206,
+      "width": 512,
+      "height": 512,
+      "map": "albedo",
+      "colorSpace": "srgb",
+      "processing": "sharp 0.35.5 resize 512x512, JPEG quality 82, 4:4:4"
+    }
+  ]
+}
