@@ -1,0 +1,9 @@
+WV-ART-006 D — original Willow Valley artwork, 2026.
+All architecture, goods, fixtures, reference figures and procedural geometry in
+storage.glb are authored for this repository in storage-next/recipe.mjs.
+No private archive, third-party model, texture, photograph or vendor derivative
+is used. The output is provided under CC0 1.0 Universal:
+https://creativecommons.org/publicdomain/zero/1.0/
+Build-time Three.js geometry utilities retain their own MIT software license;
+no Three.js software is embedded in the asset. Runtime uses the repository's
+existing, locally bundled Three.js and GLTFLoader.
