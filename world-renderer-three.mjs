@@ -18,6 +18,10 @@ export function mountWorld3D(canvas,world,options={}){
  const requiredIDs=[...HOME_IDS,...FACILITY_TYPES.map(type=>'facility-'+type),'tree-oak'];
  const low=options.quality==='lite';
  const environment=createEnvironmentMaterials({low,onReady:()=>controller?.render()});
+ let waterTimer=0,waterFrames=0;
+ const waterFrustum=new THREE.Frustum(),waterMatrix=new THREE.Matrix4();
+ const pauseWater=()=>{clearTimeout(waterTimer);waterTimer=0;environment.pause();};
+ document.addEventListener('visibilitychange',pauseWater);
  let surfaceVersion=0,lastPlacementKey='',cached=null;
  const clearBatches=()=>{for(const mesh of houses.children)mesh.dispose();houses.clear();};
  const bind=(state,c)=>({houses:new Map((state.houses||[]).flatMap((h,i)=>c.homes[i]?[[h,c.homes[i]]]:[])),buildings:new Map((state.buildings||[]).flatMap((b,i)=>c.facilities[i]?[[b,c.facilities[i]]]:[])),cropRows:c.cropRows});
@@ -39,10 +43,11 @@ export function mountWorld3D(canvas,world,options={}){
   fragmentShader:'uniform float opacity; varying vec3 vColor; varying float vLight; void main(){gl_FragColor=vec4(vColor*vLight,opacity);}'
  });}
  const backend={
-  upload(index,data){
+  upload(index,data,surfaceKinds=null,surfaceOffsets=null){
    const previous=buffers.get(index);if(previous){scene.remove(previous);previous.geometry.dispose();previous.material.dispose();}
    const geometry=new THREE.BufferGeometry(),array=new THREE.InterleavedBuffer(data,9);
    for(const [name,offset] of [['position',0],['color',3],['normal',6]])geometry.setAttribute(name,new THREE.InterleavedBufferAttribute(array,3,offset));
+   if(index===5){geometry.setAttribute('surfaceKind',new THREE.BufferAttribute(surfaceKinds||new Float32Array(data.length/9),1));geometry.setAttribute('surfaceOffset',new THREE.BufferAttribute(surfaceOffsets||new Float32Array(data.length/9),1));}
    const mesh=new THREE.Mesh(geometry,material(index));mesh.renderOrder=index;buffers.set(index,mesh);scene.add(mesh);
    if(index===0)terrain=mesh;
   },
@@ -103,7 +108,12 @@ export function mountWorld3D(canvas,world,options={}){
    lastPlacementKey=key;return bind(state,cached);
   },
   draw(view,rect){
+   clearTimeout(waterTimer);waterTimer=0;if(options.animateWater!==false)environment.advance(performance.now());
    updateCamera(view,rect);renderer.setPixelRatio(Math.min(devicePixelRatio||1,low?1:1.5));renderer.setSize(rect.width,rect.height,false);renderer.render(scene,camera);
+   waterFrames++;
+   const water=buffers.get(1);
+   waterFrustum.setFromProjectionMatrix(waterMatrix.multiplyMatrices(camera.projectionMatrix,camera.matrixWorldInverse));
+   if(options.animateWater!==false&&!low&&!document.hidden&&rect.bottom>0&&rect.top<innerHeight&&rect.right>0&&rect.left<innerWidth&&water?.geometry.getAttribute('position').count&&waterFrustum.intersectsObject(water))waterTimer=setTimeout(()=>{waterTimer=0;if(!disposed&&!document.hidden)controller?.render();},100);
    canvas.dataset.drawCalls=String(renderer.info.render.calls);canvas.dataset.triangles=String(renderer.info.render.triangles);
   },
   screenToWorld(x,y,view){
@@ -111,8 +121,8 @@ export function mountWorld3D(canvas,world,options={}){
    updateCamera(view,rect);raycaster.setFromCamera(new THREE.Vector2((x-rect.left)/rect.width*2-1,1-(y-rect.top)/rect.height*2),camera);
    const hit=raycaster.intersectObject(terrain,false)[0];return hit?{x:hit.point.x+contact.width/2,y:hit.point.z+contact.depth/2}:null;
   },
-  assetStatus:()=>({loaded,total:requiredIDs.length,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,...estimateSceneBytes(scene),...environment.status()}),
-  dispose(){disposed=true;clearBatches();for(const mesh of buffers.values()){mesh.geometry.dispose();mesh.material.dispose();}buffers.clear();registry.dispose();environment.dispose();renderer.dispose();renderer.forceContextLoss();}
+  assetStatus:()=>({waterFrames,loaded,total:requiredIDs.length,geometries:renderer.info.memory.geometries,textures:renderer.info.memory.textures,drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,...estimateSceneBytes(scene),...environment.status()}),
+  dispose(){disposed=true;pauseWater();document.removeEventListener('visibilitychange',pauseWater);clearBatches();for(const mesh of buffers.values()){mesh.geometry.dispose();mesh.material.dispose();}buffers.clear();registry.dispose();environment.dispose();renderer.dispose();renderer.forceContextLoss();}
  };
  let controller;
  try{controller=mountController(canvas,world,{...options,presentation:backend});}catch(error){backend.dispose();throw error;}
