@@ -43,7 +43,7 @@ The two added mipmapped 512px RGBA texture estimates total 2,796,203 bytes; cont
 
 ## Integration verification record
 
-The final rendering implementation measured here is `92f2077deba85a7062acc094770baef31138014f`. S3 is [#77](https://github.com/matthnj15-pixel/Willow-Valley/pull/77). Before opening each shared-renderer slice, develop was fetched and checked for concurrent changes; no open parallel building PR was present during this run. No architecture asset, building-scale or placement implementation was edited.
+The final rendering implementation measured here is `92f2077deba85a7062acc094770baef31138014f`. S3 is [#77](https://github.com/matthnj15-pixel/Willow-Valley/pull/77); S4 is [#79](https://github.com/matthnj15-pixel/Willow-Valley/pull/79). Before opening each shared-renderer slice, develop was fetched and checked for concurrent changes; the initial check had no open parallel building PR. The later [#78 audit/handoff PR](https://github.com/matthnj15-pixel/Willow-Valley/pull/78) was checked file-by-file and contains only documentation, with no shared rendering edits. No architecture asset, building-scale or placement implementation was edited.
 
 Completed locally: `npm run build:assets`, `npm run build:icons`, `npm run build:offline`, `CHECK_BUILT_ICONS=1 npm test` (**166 passed**), `npm run test:e2e` (**94 passed**), and the required `WV_RENDERER=three` camera/road/zoning/save/lane selection (**16 passed**). The normal/low 100-home scenes pass the existing ≤150/100 draw-call and ≤250k/150k triangle guardrails. Root/dev offline cold launches and corruption rollback pass. Real WebKit/iPhone shader compilation, visual review and thermal performance remain untested.
 
