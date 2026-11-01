@@ -1,0 +1,2 @@
+# Preserve the acquired notice byte-for-byte, including original whitespace.
+License_Source.txt -text -whitespace
