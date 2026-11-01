@@ -1,6 +1,6 @@
 # WV-ART-006 B — measured acceptance
 
-Baseline: fetched `develop` at `5e39c72ff5e205dea166fa18febdfa89aaa5aec8`. Work is isolated on `feat/wv-art-006-b-landscape`; main is untouched. Review: https://matthnj15-pixel.github.io/Willow-Valley/dev/ui-kit/wv006-landscape.html
+Baseline: fetched `develop` at `5e39c72ff5e205dea166fa18febdfa89aaa5aec8`. Before merge, develop advanced through D storage PR 84 to `14b4d1e9e44fc4fb08e9cb1baf754952e43f953c`; that commit was incorporated without conflicts or changes to D-owned content. Work is isolated on `feat/wv-art-006-b-landscape`; main is untouched. Review: https://matthnj15-pixel.github.io/Willow-Valley/dev/ui-kit/wv006-landscape.html
 
 ## Reproducibility and asset validation
 
@@ -60,13 +60,13 @@ The original 6-unit cover lattice exceeded the normal 100-home triangle budget (
 
 - `node scripts/build-wv006-landscape.mjs` twice: reproducible GLB/manifest.
 - `node tests/wv006-landscape.test.mjs`: six focused checks pass, including explicit new glTF validation.
-- `npm test`: 173 passed, one skipped (174 total). The first sandbox run hit EPERM in an existing child-process packaging check; rerunning with process access passes.
+- `npm test`: initially 173 passed, one skipped (174 total); after incorporating D, 178 passed, one skipped (179 total). The first sandbox run hit EPERM in an existing child-process packaging check; rerunning with process access passes.
 - `npm run build:assets`: passes, all discovered existing GLBs zero errors/warnings; no tracked regenerated changes.
 - `npm run build:icons`: passes.
 - `npm run build:offline`: passes; existing self-contained game produced. New B page is not asserted installed/offline-ready.
 - Focused Chromium review suite: seven checks pass, including representative raycasts for every present form and explicit missing-GLB failure. The first exhaustive diagnostic exceeded its 20-second test allowance; the shipped diagnostic bounds its samples and uses a 60-second allowance for the multi-scene lifecycle check.
 - `PLAYWRIGHT_BROWSERS_PATH=/workspace/pw-browsers node scripts/measure-wv006-landscape.mjs`: eight normal/low near/far measurements and six composition captures. Run against `python3 scripts/serve-preview.py`; `WV_PREVIEW_ORIGIN` can select another local origin.
-- Full local `npm run test:e2e -- --timeout=60000`: 106 passed, one existing C1 hamlet test failed its unchanged five-second model-load expectation (loaded-models 0 rather than 13). An isolated rerun of that exact test passed in 13.7 seconds. The first default-timeout run also encountered software-renderer timeouts and was stopped after failure; no shared test limits were edited. Full unmodified CI browser commands passed on the committed pre-export-correction head in [run 41324514467](https://github.com/matthnj15-pixel/Willow-Valley/actions/runs/41324514467); the final PR CI gate must pass again before merge.
+- Full local `npm run test:e2e -- --timeout=60000`: 106 passed, one existing C1 hamlet test failed its unchanged five-second model-load expectation (loaded-models 0 rather than 13). An isolated rerun of that exact test passed in 13.7 seconds. The first default-timeout run also encountered software-renderer timeouts and was stopped after failure; no shared test limits were edited. Full unmodified CI browser commands passed on final export head `d5407a5ec7f804b0204067eb2366734727e2b93a` in [run 41325333095](https://github.com/matthnj15-pixel/Willow-Valley/actions/runs/41325333095). After incorporating D, unit/build checks and all eleven combined B/D focused browser checks passed; the refreshed-head CI gate is recorded in the PR before merge.
 - `WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity --timeout=60000`: all 16 parity checks pass.
 
 ## Remaining integration limits
