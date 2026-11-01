@@ -1,0 +1,1841 @@
+{
+  "revision": "inhabited-hamlet-1",
+  "status": "gallery-review",
+  "runtimeReady": false,
+  "phonePerformanceVerified": false,
+  "scope": "Detached authored hamlet; includes C buildings at fixed 2.8, B natural collection, original procedural props, semantic ground and foundations. Not the playable generator or a simulation.",
+  "sourceArt": "Committed licensed C/B derivatives; new prop geometry and ground artwork are original project recipes. No private archive input.",
+  "timingConditions": "Cloud Chromium software rendering, no overlapping local browser suite; submission timings are not physical-phone FPS.",
+  "dependencies": [
+    {
+      "path": "assets/wv/landscape-next/hamlet-plan.mjs",
+      "bytes": 11123,
+      "sha256": "38a74524f72c93ea54761aa4dbf6d4a0e5d5cd176ff6b69e8eb238732e6fa324"
+    },
+    {
+      "path": "assets/wv/landscape-next/hamlet-props.mjs",
+      "bytes": 5907,
+      "sha256": "f9f40588e217052234ee5b8ac711779f81f0302898fd7a279a839e02ccc28fdd"
+    },
+    {
+      "path": "assets/wv/landscape-next/hamlet-scene.mjs",
+      "bytes": 18791,
+      "sha256": "473bd6fdbdb74253716d3fd2a6f22017fd4dd6056fea66d5a42cac0f36b20afc"
+    },
+    {
+      "path": "assets/wv/landscape-next/landscape.glb",
+      "bytes": 1260580,
+      "sha256": "20f878c3630c0389467fb76b02047a40e80a46560f9f46bb3992ad3ace67bb76"
+    },
+    {
+      "path": "assets/wv/buildings-next/catalog.glb",
+      "bytes": 7527564,
+      "sha256": "38c88a54bed04bc7a2dcf97a9c4a628c119cc6ec03d212247ffc4ebfb5c3d95c"
+    },
+    {
+      "path": "ui-kit/wv006-landscape.mjs",
+      "bytes": 13604,
+      "sha256": "e322295a0967db56ff6a70e8de3e1afae26c866be3a526b0e9524131d74d8564"
+    },
+    {
+      "path": "ui-kit/wv006-landscape.html",
+      "bytes": 3310,
+      "sha256": "e13e6bde8873d0f5e41fe8fdda6c4c5a54cb419f43871edad6207bb33b24d6c8"
+    },
+    {
+      "path": "ui-kit/wv006-landscape.css",
+      "bytes": 2272,
+      "sha256": "32148bd99c10fea2bee7fe7daf3a5699cdfb1f1425ee2452e9d9ff9345a7434a"
+    }
+  ],
+  "propMeasurements": [
+    {
+      "kind": "fence-rail",
+      "triangles": 36,
+      "boundsMin": [
+        -1.0449999570846558,
+        1.1920929132713809e-8,
+        -0.04500000178813934
+      ],
+      "boundsMax": [
+        1.0449999570846558,
+        0.8999999761581421,
+        0.04500000178813934
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "fruit-tree",
+      "triangles": 140,
+      "boundsMin": [
+        -1.4301056861877441,
+        -0.0018286227714270353,
+        -1.2023590803146362
+      ],
+      "boundsMax": [
+        1.2216497659683228,
+        3.5305206775665283,
+        1.3730531930923462
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "fence-wattle",
+      "triangles": 48,
+      "boundsMin": [
+        -1.0449999570846558,
+        1.1920929132713809e-8,
+        -0.04749999940395355
+      ],
+      "boundsMax": [
+        1.0449999570846558,
+        0.8999999761581421,
+        0.04749999940395355
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "garden-greens",
+      "triangles": 20,
+      "boundsMin": [
+        -0.1531171351671219,
+        0.0009088915539905429,
+        -0.04461062699556351
+      ],
+      "boundsMax": [
+        0.1531171351671219,
+        0.23909111320972443,
+        0.24461062252521515
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "garden-herbs",
+      "triangles": 64,
+      "boundsMin": [
+        -0.06379880756139755,
+        3.5762786065873797e-9,
+        -0.15228605270385742
+      ],
+      "boundsMax": [
+        0.14485439658164978,
+        0.41999998688697815,
+        0.18379880487918854
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "well",
+      "triangles": 224,
+      "boundsMin": [
+        -1.045285940170288,
+        -1.1920929132713809e-8,
+        -1.0499999523162842
+      ],
+      "boundsMax": [
+        1.045285940170288,
+        2.241417169570923,
+        1.0499999523162842
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "bench",
+      "triangles": 88,
+      "boundsMin": [
+        -0.824999988079071,
+        1.19209286886246e-9,
+        -0.20999999344348907
+      ],
+      "boundsMax": [
+        0.824999988079071,
+        0.9624056220054626,
+        0.2150000035762787
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "person",
+      "triangles": 184,
+      "boundsMin": [
+        -0.2825528383255005,
+        1.1920929132713809e-8,
+        -0.17000000178813934
+      ],
+      "boundsMax": [
+        0.2825528383255005,
+        1.75,
+        0.17000000178813934
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "grain-sheaf",
+      "triangles": 36,
+      "boundsMin": [
+        -0.0476313978433609,
+        -0.0008991897339001298,
+        -0.12336118519306183
+      ],
+      "boundsMax": [
+        0.1354416161775589,
+        0.824999988079071,
+        0.1850000023841858
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "wood-stack",
+      "triangles": 96,
+      "boundsMin": [
+        -1,
+        0.02607695572078228,
+        -0.47999998927116394
+      ],
+      "boundsMax": [
+        1.0080000162124634,
+        0.2339230477809906,
+        -2.6822091214739885e-9
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "barrel",
+      "triangles": 96,
+      "boundsMin": [
+        -0.2750000059604645,
+        7.1525572131747595e-9,
+        -0.25
+      ],
+      "boundsMax": [
+        0.2750000059604645,
+        0.6399999856948853,
+        0.25
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    },
+    {
+      "kind": "cart",
+      "triangles": 216,
+      "boundsMin": [
+        -0.7049999833106995,
+        -0.04499999061226845,
+        -0.8849999904632568
+      ],
+      "boundsMax": [
+        0.7049999833106995,
+        0.9200000166893005,
+        2.2010245323181152
+      ],
+      "materials": 1,
+      "textureBytes": 0,
+      "status": "gallery-review",
+      "runtimeReady": false
+    }
+  ],
+  "records": [
+    {
+      "viewport": {
+        "width": 1400,
+        "height": 1100
+      },
+      "dpr": 1,
+      "quality": "normal",
+      "distance": "near",
+      "propMeasurements": [
+        {
+          "kind": "fence-rail",
+          "triangles": 48,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04500000178813934
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04500000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fruit-tree",
+          "triangles": 268,
+          "boundsMin": [
+            -1.4301056861877441,
+            -0.0018745183479040861,
+            -1.363100290298462
+          ],
+          "boundsMax": [
+            1.298482894897461,
+            3.5305206775665283,
+            1.3730531930923462
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fence-wattle",
+          "triangles": 120,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04749999940395355
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04749999940395355
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-greens",
+          "triangles": 40,
+          "boundsMin": [
+            -0.1531171351671219,
+            0.0009088915539905429,
+            -0.21834999322891235
+          ],
+          "boundsMax": [
+            0.22066345810890198,
+            0.2640911042690277,
+            0.24461062252521515
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-herbs",
+          "triangles": 96,
+          "boundsMin": [
+            -0.18333856761455536,
+            3.5762786065873797e-9,
+            -0.15228605270385742
+          ],
+          "boundsMax": [
+            0.14485439658164978,
+            0.41999998688697815,
+            0.18379880487918854
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "wood-stack",
+          "triangles": 240,
+          "boundsMin": [
+            -1,
+            0.02607695572078228,
+            -0.47999998927116394
+          ],
+          "boundsMax": [
+            1.0080000162124634,
+            0.47392305731773376,
+            0.47999998927116394
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "barrel",
+          "triangles": 144,
+          "boundsMin": [
+            -0.25841546058654785,
+            7.1525572131747595e-9,
+            -0.270822137594223
+          ],
+          "boundsMax": [
+            0.2750000059604645,
+            0.6399999856948853,
+            0.270822137594223
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "well",
+          "triangles": 224,
+          "boundsMin": [
+            -1.045285940170288,
+            -1.1920929132713809e-8,
+            -1.0499999523162842
+          ],
+          "boundsMax": [
+            1.045285940170288,
+            2.241417169570923,
+            1.0499999523162842
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "bench",
+          "triangles": 88,
+          "boundsMin": [
+            -0.824999988079071,
+            1.19209286886246e-9,
+            -0.20999999344348907
+          ],
+          "boundsMax": [
+            0.824999988079071,
+            0.9624056220054626,
+            0.2150000035762787
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "person",
+          "triangles": 184,
+          "boundsMin": [
+            -0.2825528383255005,
+            1.1920929132713809e-8,
+            -0.17000000178813934
+          ],
+          "boundsMax": [
+            0.2825528383255005,
+            1.75,
+            0.17000000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "cart",
+          "triangles": 280,
+          "boundsMin": [
+            -0.7049999833106995,
+            -0.04499999061226845,
+            -0.8849999904632568
+          ],
+          "boundsMax": [
+            0.7049999833106995,
+            0.9200000166893005,
+            2.2010245323181152
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "grain-sheaf",
+          "triangles": 54,
+          "boundsMin": [
+            -0.17713280022144318,
+            -0.0008991897339001298,
+            -0.12336118519306183
+          ],
+          "boundsMax": [
+            0.1354416161775589,
+            0.824999988079071,
+            0.1850000023841858
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        }
+      ],
+      "stage": 4,
+      "homes": 4,
+      "workplaces": 1,
+      "lanes": 3,
+      "landUseRegions": 22,
+      "plantAndPropInstances": 335,
+      "landscapeInstances": 64,
+      "landscapeBatches": 12,
+      "propBatches": 9,
+      "surfaceTextureBytes": 2924544,
+      "architectureLOD": "normal",
+      "runtimeReady": false,
+      "geometryBytes": 3105684,
+      "textureBytes": 8691712,
+      "drawCalls": 62,
+      "triangles": 65497,
+      "textures": 11,
+      "geometries": 93,
+      "instances": 64,
+      "builds": 3,
+      "phonePerformanceVerified": false,
+      "contact": [],
+      "access": [],
+      "medianSubmissionMs": 4.5,
+      "p95SubmissionMs": 17.09999999962747
+    },
+    {
+      "viewport": {
+        "width": 1400,
+        "height": 1100
+      },
+      "dpr": 1,
+      "quality": "low",
+      "distance": "near",
+      "propMeasurements": [
+        {
+          "kind": "fence-rail",
+          "triangles": 36,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04500000178813934
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04500000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fruit-tree",
+          "triangles": 140,
+          "boundsMin": [
+            -1.4301056861877441,
+            -0.0018286227714270353,
+            -1.2023590803146362
+          ],
+          "boundsMax": [
+            1.2216497659683228,
+            3.5305206775665283,
+            1.3730531930923462
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fence-wattle",
+          "triangles": 48,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04749999940395355
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04749999940395355
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-greens",
+          "triangles": 20,
+          "boundsMin": [
+            -0.1531171351671219,
+            0.0009088915539905429,
+            -0.04461062699556351
+          ],
+          "boundsMax": [
+            0.1531171351671219,
+            0.23909111320972443,
+            0.24461062252521515
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-herbs",
+          "triangles": 64,
+          "boundsMin": [
+            -0.06379880756139755,
+            3.5762786065873797e-9,
+            -0.15228605270385742
+          ],
+          "boundsMax": [
+            0.14485439658164978,
+            0.41999998688697815,
+            0.18379880487918854
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "well",
+          "triangles": 224,
+          "boundsMin": [
+            -1.045285940170288,
+            -1.1920929132713809e-8,
+            -1.0499999523162842
+          ],
+          "boundsMax": [
+            1.045285940170288,
+            2.241417169570923,
+            1.0499999523162842
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "bench",
+          "triangles": 88,
+          "boundsMin": [
+            -0.824999988079071,
+            1.19209286886246e-9,
+            -0.20999999344348907
+          ],
+          "boundsMax": [
+            0.824999988079071,
+            0.9624056220054626,
+            0.2150000035762787
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "person",
+          "triangles": 184,
+          "boundsMin": [
+            -0.2825528383255005,
+            1.1920929132713809e-8,
+            -0.17000000178813934
+          ],
+          "boundsMax": [
+            0.2825528383255005,
+            1.75,
+            0.17000000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "grain-sheaf",
+          "triangles": 36,
+          "boundsMin": [
+            -0.0476313978433609,
+            -0.0008991897339001298,
+            -0.12336118519306183
+          ],
+          "boundsMax": [
+            0.1354416161775589,
+            0.824999988079071,
+            0.1850000023841858
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        }
+      ],
+      "stage": 4,
+      "homes": 4,
+      "workplaces": 1,
+      "lanes": 3,
+      "landUseRegions": 22,
+      "plantAndPropInstances": 200,
+      "landscapeInstances": 43,
+      "landscapeBatches": 10,
+      "propBatches": 9,
+      "surfaceTextureBytes": 731136,
+      "architectureLOD": "low",
+      "runtimeReady": false,
+      "geometryBytes": 1731888,
+      "textureBytes": 6498304,
+      "drawCalls": 60,
+      "triangles": 34570,
+      "textures": 11,
+      "geometries": 128,
+      "instances": 43,
+      "builds": 5,
+      "phonePerformanceVerified": false,
+      "contact": [],
+      "access": [],
+      "medianSubmissionMs": 1.700000001117587,
+      "p95SubmissionMs": 6
+    },
+    {
+      "viewport": {
+        "width": 1400,
+        "height": 1100
+      },
+      "dpr": 1,
+      "quality": "normal",
+      "distance": "near",
+      "propMeasurements": [
+        {
+          "kind": "fence-rail",
+          "triangles": 48,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04500000178813934
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04500000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fruit-tree",
+          "triangles": 268,
+          "boundsMin": [
+            -1.4301056861877441,
+            -0.0018745183479040861,
+            -1.363100290298462
+          ],
+          "boundsMax": [
+            1.298482894897461,
+            3.5305206775665283,
+            1.3730531930923462
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fence-wattle",
+          "triangles": 120,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04749999940395355
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04749999940395355
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-greens",
+          "triangles": 40,
+          "boundsMin": [
+            -0.1531171351671219,
+            0.0009088915539905429,
+            -0.21834999322891235
+          ],
+          "boundsMax": [
+            0.22066345810890198,
+            0.2640911042690277,
+            0.24461062252521515
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-herbs",
+          "triangles": 96,
+          "boundsMin": [
+            -0.18333856761455536,
+            3.5762786065873797e-9,
+            -0.15228605270385742
+          ],
+          "boundsMax": [
+            0.14485439658164978,
+            0.41999998688697815,
+            0.18379880487918854
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "wood-stack",
+          "triangles": 240,
+          "boundsMin": [
+            -1,
+            0.02607695572078228,
+            -0.47999998927116394
+          ],
+          "boundsMax": [
+            1.0080000162124634,
+            0.47392305731773376,
+            0.47999998927116394
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "barrel",
+          "triangles": 144,
+          "boundsMin": [
+            -0.25841546058654785,
+            7.1525572131747595e-9,
+            -0.270822137594223
+          ],
+          "boundsMax": [
+            0.2750000059604645,
+            0.6399999856948853,
+            0.270822137594223
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "well",
+          "triangles": 224,
+          "boundsMin": [
+            -1.045285940170288,
+            -1.1920929132713809e-8,
+            -1.0499999523162842
+          ],
+          "boundsMax": [
+            1.045285940170288,
+            2.241417169570923,
+            1.0499999523162842
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "bench",
+          "triangles": 88,
+          "boundsMin": [
+            -0.824999988079071,
+            1.19209286886246e-9,
+            -0.20999999344348907
+          ],
+          "boundsMax": [
+            0.824999988079071,
+            0.9624056220054626,
+            0.2150000035762787
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "person",
+          "triangles": 184,
+          "boundsMin": [
+            -0.2825528383255005,
+            1.1920929132713809e-8,
+            -0.17000000178813934
+          ],
+          "boundsMax": [
+            0.2825528383255005,
+            1.75,
+            0.17000000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "cart",
+          "triangles": 280,
+          "boundsMin": [
+            -0.7049999833106995,
+            -0.04499999061226845,
+            -0.8849999904632568
+          ],
+          "boundsMax": [
+            0.7049999833106995,
+            0.9200000166893005,
+            2.2010245323181152
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "grain-sheaf",
+          "triangles": 54,
+          "boundsMin": [
+            -0.17713280022144318,
+            -0.0008991897339001298,
+            -0.12336118519306183
+          ],
+          "boundsMax": [
+            0.1354416161775589,
+            0.824999988079071,
+            0.1850000023841858
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        }
+      ],
+      "stage": 12,
+      "homes": 12,
+      "workplaces": 4,
+      "lanes": 3,
+      "landUseRegions": 60,
+      "plantAndPropInstances": 582,
+      "landscapeInstances": 64,
+      "landscapeBatches": 12,
+      "propBatches": 12,
+      "surfaceTextureBytes": 2924544,
+      "architectureLOD": "normal",
+      "runtimeReady": false,
+      "geometryBytes": 5414502,
+      "textureBytes": 8691712,
+      "drawCalls": 97,
+      "triangles": 149197,
+      "textures": 11,
+      "geometries": 128,
+      "instances": 64,
+      "builds": 7,
+      "phonePerformanceVerified": false,
+      "contact": [],
+      "access": [],
+      "medianSubmissionMs": 2.599999999627471,
+      "p95SubmissionMs": 6.5
+    },
+    {
+      "viewport": {
+        "width": 1400,
+        "height": 1100
+      },
+      "dpr": 1,
+      "quality": "low",
+      "distance": "near",
+      "propMeasurements": [
+        {
+          "kind": "fence-rail",
+          "triangles": 36,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04500000178813934
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04500000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fruit-tree",
+          "triangles": 140,
+          "boundsMin": [
+            -1.4301056861877441,
+            -0.0018286227714270353,
+            -1.2023590803146362
+          ],
+          "boundsMax": [
+            1.2216497659683228,
+            3.5305206775665283,
+            1.3730531930923462
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fence-wattle",
+          "triangles": 48,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04749999940395355
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04749999940395355
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-greens",
+          "triangles": 20,
+          "boundsMin": [
+            -0.1531171351671219,
+            0.0009088915539905429,
+            -0.04461062699556351
+          ],
+          "boundsMax": [
+            0.1531171351671219,
+            0.23909111320972443,
+            0.24461062252521515
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-herbs",
+          "triangles": 64,
+          "boundsMin": [
+            -0.06379880756139755,
+            3.5762786065873797e-9,
+            -0.15228605270385742
+          ],
+          "boundsMax": [
+            0.14485439658164978,
+            0.41999998688697815,
+            0.18379880487918854
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "well",
+          "triangles": 224,
+          "boundsMin": [
+            -1.045285940170288,
+            -1.1920929132713809e-8,
+            -1.0499999523162842
+          ],
+          "boundsMax": [
+            1.045285940170288,
+            2.241417169570923,
+            1.0499999523162842
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "bench",
+          "triangles": 88,
+          "boundsMin": [
+            -0.824999988079071,
+            1.19209286886246e-9,
+            -0.20999999344348907
+          ],
+          "boundsMax": [
+            0.824999988079071,
+            0.9624056220054626,
+            0.2150000035762787
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "person",
+          "triangles": 184,
+          "boundsMin": [
+            -0.2825528383255005,
+            1.1920929132713809e-8,
+            -0.17000000178813934
+          ],
+          "boundsMax": [
+            0.2825528383255005,
+            1.75,
+            0.17000000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "grain-sheaf",
+          "triangles": 36,
+          "boundsMin": [
+            -0.0476313978433609,
+            -0.0008991897339001298,
+            -0.12336118519306183
+          ],
+          "boundsMax": [
+            0.1354416161775589,
+            0.824999988079071,
+            0.1850000023841858
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "wood-stack",
+          "triangles": 96,
+          "boundsMin": [
+            -1,
+            0.02607695572078228,
+            -0.47999998927116394
+          ],
+          "boundsMax": [
+            1.0080000162124634,
+            0.2339230477809906,
+            -2.6822091214739885e-9
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "barrel",
+          "triangles": 96,
+          "boundsMin": [
+            -0.2750000059604645,
+            7.1525572131747595e-9,
+            -0.25
+          ],
+          "boundsMax": [
+            0.2750000059604645,
+            0.6399999856948853,
+            0.25
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "cart",
+          "triangles": 216,
+          "boundsMin": [
+            -0.7049999833106995,
+            -0.04499999061226845,
+            -0.8849999904632568
+          ],
+          "boundsMax": [
+            0.7049999833106995,
+            0.9200000166893005,
+            2.2010245323181152
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        }
+      ],
+      "stage": 12,
+      "homes": 12,
+      "workplaces": 4,
+      "lanes": 3,
+      "landUseRegions": 60,
+      "plantAndPropInstances": 363,
+      "landscapeInstances": 43,
+      "landscapeBatches": 10,
+      "propBatches": 12,
+      "surfaceTextureBytes": 731136,
+      "architectureLOD": "low",
+      "runtimeReady": false,
+      "geometryBytes": 2959026,
+      "textureBytes": 6498304,
+      "drawCalls": 93,
+      "triangles": 82336,
+      "textures": 11,
+      "geometries": 147,
+      "instances": 43,
+      "builds": 9,
+      "phonePerformanceVerified": false,
+      "contact": [],
+      "access": [],
+      "medianSubmissionMs": 3.5,
+      "p95SubmissionMs": 17.59999999962747
+    },
+    {
+      "viewport": {
+        "width": 1400,
+        "height": 1100
+      },
+      "dpr": 1,
+      "quality": "normal",
+      "distance": "near",
+      "propMeasurements": [
+        {
+          "kind": "fence-rail",
+          "triangles": 48,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04500000178813934
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04500000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fruit-tree",
+          "triangles": 268,
+          "boundsMin": [
+            -1.4301056861877441,
+            -0.0018745183479040861,
+            -1.363100290298462
+          ],
+          "boundsMax": [
+            1.298482894897461,
+            3.5305206775665283,
+            1.3730531930923462
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fence-wattle",
+          "triangles": 120,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04749999940395355
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04749999940395355
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-greens",
+          "triangles": 40,
+          "boundsMin": [
+            -0.1531171351671219,
+            0.0009088915539905429,
+            -0.21834999322891235
+          ],
+          "boundsMax": [
+            0.22066345810890198,
+            0.2640911042690277,
+            0.24461062252521515
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-herbs",
+          "triangles": 96,
+          "boundsMin": [
+            -0.18333856761455536,
+            3.5762786065873797e-9,
+            -0.15228605270385742
+          ],
+          "boundsMax": [
+            0.14485439658164978,
+            0.41999998688697815,
+            0.18379880487918854
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "wood-stack",
+          "triangles": 240,
+          "boundsMin": [
+            -1,
+            0.02607695572078228,
+            -0.47999998927116394
+          ],
+          "boundsMax": [
+            1.0080000162124634,
+            0.47392305731773376,
+            0.47999998927116394
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "barrel",
+          "triangles": 144,
+          "boundsMin": [
+            -0.25841546058654785,
+            7.1525572131747595e-9,
+            -0.270822137594223
+          ],
+          "boundsMax": [
+            0.2750000059604645,
+            0.6399999856948853,
+            0.270822137594223
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "well",
+          "triangles": 224,
+          "boundsMin": [
+            -1.045285940170288,
+            -1.1920929132713809e-8,
+            -1.0499999523162842
+          ],
+          "boundsMax": [
+            1.045285940170288,
+            2.241417169570923,
+            1.0499999523162842
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "bench",
+          "triangles": 88,
+          "boundsMin": [
+            -0.824999988079071,
+            1.19209286886246e-9,
+            -0.20999999344348907
+          ],
+          "boundsMax": [
+            0.824999988079071,
+            0.9624056220054626,
+            0.2150000035762787
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "person",
+          "triangles": 184,
+          "boundsMin": [
+            -0.2825528383255005,
+            1.1920929132713809e-8,
+            -0.17000000178813934
+          ],
+          "boundsMax": [
+            0.2825528383255005,
+            1.75,
+            0.17000000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "cart",
+          "triangles": 280,
+          "boundsMin": [
+            -0.7049999833106995,
+            -0.04499999061226845,
+            -0.8849999904632568
+          ],
+          "boundsMax": [
+            0.7049999833106995,
+            0.9200000166893005,
+            2.2010245323181152
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "grain-sheaf",
+          "triangles": 54,
+          "boundsMin": [
+            -0.17713280022144318,
+            -0.0008991897339001298,
+            -0.12336118519306183
+          ],
+          "boundsMax": [
+            0.1354416161775589,
+            0.824999988079071,
+            0.1850000023841858
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        }
+      ],
+      "stage": 30,
+      "homes": 30,
+      "workplaces": 5,
+      "lanes": 5,
+      "landUseRegions": 134,
+      "plantAndPropInstances": 1116,
+      "landscapeInstances": 49,
+      "landscapeBatches": 8,
+      "propBatches": 12,
+      "surfaceTextureBytes": 2924544,
+      "architectureLOD": "low",
+      "runtimeReady": false,
+      "geometryBytes": 3321346,
+      "textureBytes": 8691712,
+      "drawCalls": 95,
+      "triangles": 224226,
+      "textures": 11,
+      "geometries": 152,
+      "instances": 49,
+      "builds": 11,
+      "phonePerformanceVerified": false,
+      "contact": [],
+      "access": [],
+      "medianSubmissionMs": 3,
+      "p95SubmissionMs": 10.5
+    },
+    {
+      "viewport": {
+        "width": 1400,
+        "height": 1100
+      },
+      "dpr": 1,
+      "quality": "low",
+      "distance": "near",
+      "propMeasurements": [
+        {
+          "kind": "fence-rail",
+          "triangles": 36,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04500000178813934
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04500000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fruit-tree",
+          "triangles": 140,
+          "boundsMin": [
+            -1.4301056861877441,
+            -0.0018286227714270353,
+            -1.2023590803146362
+          ],
+          "boundsMax": [
+            1.2216497659683228,
+            3.5305206775665283,
+            1.3730531930923462
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "fence-wattle",
+          "triangles": 48,
+          "boundsMin": [
+            -1.0449999570846558,
+            1.1920929132713809e-8,
+            -0.04749999940395355
+          ],
+          "boundsMax": [
+            1.0449999570846558,
+            0.8999999761581421,
+            0.04749999940395355
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-greens",
+          "triangles": 20,
+          "boundsMin": [
+            -0.1531171351671219,
+            0.0009088915539905429,
+            -0.04461062699556351
+          ],
+          "boundsMax": [
+            0.1531171351671219,
+            0.23909111320972443,
+            0.24461062252521515
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "garden-herbs",
+          "triangles": 64,
+          "boundsMin": [
+            -0.06379880756139755,
+            3.5762786065873797e-9,
+            -0.15228605270385742
+          ],
+          "boundsMax": [
+            0.14485439658164978,
+            0.41999998688697815,
+            0.18379880487918854
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "well",
+          "triangles": 224,
+          "boundsMin": [
+            -1.045285940170288,
+            -1.1920929132713809e-8,
+            -1.0499999523162842
+          ],
+          "boundsMax": [
+            1.045285940170288,
+            2.241417169570923,
+            1.0499999523162842
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "bench",
+          "triangles": 88,
+          "boundsMin": [
+            -0.824999988079071,
+            1.19209286886246e-9,
+            -0.20999999344348907
+          ],
+          "boundsMax": [
+            0.824999988079071,
+            0.9624056220054626,
+            0.2150000035762787
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "person",
+          "triangles": 184,
+          "boundsMin": [
+            -0.2825528383255005,
+            1.1920929132713809e-8,
+            -0.17000000178813934
+          ],
+          "boundsMax": [
+            0.2825528383255005,
+            1.75,
+            0.17000000178813934
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "grain-sheaf",
+          "triangles": 36,
+          "boundsMin": [
+            -0.0476313978433609,
+            -0.0008991897339001298,
+            -0.12336118519306183
+          ],
+          "boundsMax": [
+            0.1354416161775589,
+            0.824999988079071,
+            0.1850000023841858
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "wood-stack",
+          "triangles": 96,
+          "boundsMin": [
+            -1,
+            0.02607695572078228,
+            -0.47999998927116394
+          ],
+          "boundsMax": [
+            1.0080000162124634,
+            0.2339230477809906,
+            -2.6822091214739885e-9
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "barrel",
+          "triangles": 96,
+          "boundsMin": [
+            -0.2750000059604645,
+            7.1525572131747595e-9,
+            -0.25
+          ],
+          "boundsMax": [
+            0.2750000059604645,
+            0.6399999856948853,
+            0.25
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        },
+        {
+          "kind": "cart",
+          "triangles": 216,
+          "boundsMin": [
+            -0.7049999833106995,
+            -0.04499999061226845,
+            -0.8849999904632568
+          ],
+          "boundsMax": [
+            0.7049999833106995,
+            0.9200000166893005,
+            2.2010245323181152
+          ],
+          "materials": 1,
+          "textureBytes": 0,
+          "status": "gallery-review",
+          "runtimeReady": false
+        }
+      ],
+      "stage": 30,
+      "homes": 30,
+      "workplaces": 5,
+      "lanes": 5,
+      "landUseRegions": 134,
+      "plantAndPropInstances": 128,
+      "landscapeInstances": 36,
+      "landscapeBatches": 6,
+      "propBatches": 9,
+      "surfaceTextureBytes": 731136,
+      "architectureLOD": "low",
+      "runtimeReady": false,
+      "geometryBytes": 2776122,
+      "textureBytes": 6498304,
+      "drawCalls": 82,
+      "triangles": 147927,
+      "textures": 11,
+      "geometries": 152,
+      "instances": 36,
+      "builds": 13,
+      "phonePerformanceVerified": false,
+      "contact": [],
+      "access": [],
+      "medianSubmissionMs": 2.599999999627471,
+      "p95SubmissionMs": 5.099999999627471
+    },
+    {
+      "quality": "normal",
+      "distance": "far",
+      "stage": 12,
+      "homes": 12,
+      "workplaces": 4,
+      "lanes": 3,
+      "landUseRegions": 60,
+      "plantAndPropInstances": 218,
+      "landscapeInstances": 26,
+      "landscapeBatches": 4,
+      "propBatches": 10,
+      "surfaceTextureBytes": 2924544,
+      "architectureLOD": "low",
+      "runtimeReady": false,
+      "geometryBytes": 2885262,
+      "textureBytes": 8691712,
+      "drawCalls": 85,
+      "triangles": 81626,
+      "textures": 11,
+      "geometries": 152,
+      "instances": 26,
+      "builds": 17,
+      "phonePerformanceVerified": false
+    },
+    {
+      "quality": "low",
+      "distance": "far",
+      "stage": 12,
+      "homes": 12,
+      "workplaces": 4,
+      "lanes": 3,
+      "landUseRegions": 60,
+      "plantAndPropInstances": 218,
+      "landscapeInstances": 26,
+      "landscapeBatches": 4,
+      "propBatches": 10,
+      "surfaceTextureBytes": 731136,
+      "architectureLOD": "low",
+      "runtimeReady": false,
+      "geometryBytes": 2832774,
+      "textureBytes": 6498304,
+      "drawCalls": 85,
+      "triangles": 76006,
+      "textures": 11,
+      "geometries": 152,
+      "instances": 26,
+      "builds": 19,
+      "phonePerformanceVerified": false
+    },
+    {
+      "viewport": {
+        "width": 600,
+        "height": 850
+      },
+      "dpr": 1,
+      "quality": "normal",
+      "distance": "near",
+      "view": "green",
+      "stage": 12,
+      "homes": 12,
+      "workplaces": 4,
+      "lanes": 3,
+      "landUseRegions": 60,
+      "plantAndPropInstances": 582,
+      "landscapeInstances": 64,
+      "landscapeBatches": 12,
+      "propBatches": 12,
+      "surfaceTextureBytes": 2924544,
+      "architectureLOD": "normal",
+      "runtimeReady": false,
+      "geometryBytes": 5414502,
+      "textureBytes": 8691712,
+      "drawCalls": 68,
+      "triangles": 129803,
+      "textures": 11,
+      "geometries": 152,
+      "instances": 64,
+      "builds": 21,
+      "phonePerformanceVerified": false
+    },
+    {
+      "viewport": {
+        "width": 600,
+        "height": 850
+      },
+      "dpr": 1,
+      "quality": "low",
+      "distance": "near",
+      "view": "green",
+      "stage": 12,
+      "homes": 12,
+      "workplaces": 4,
+      "lanes": 3,
+      "landUseRegions": 60,
+      "plantAndPropInstances": 363,
+      "landscapeInstances": 43,
+      "landscapeBatches": 10,
+      "propBatches": 12,
+      "surfaceTextureBytes": 731136,
+      "architectureLOD": "low",
+      "runtimeReady": false,
+      "geometryBytes": 2959026,
+      "textureBytes": 6498304,
+      "drawCalls": 67,
+      "triangles": 73380,
+      "textures": 11,
+      "geometries": 152,
+      "instances": 43,
+      "builds": 23,
+      "phonePerformanceVerified": false
+    }
+  ]
+}
