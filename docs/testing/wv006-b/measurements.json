@@ -1,0 +1,302 @@
+{
+  "scope": "Static composition: existing architecture-v1 homes and seven facilities, B candidate, ground and reference person. Excludes game road/overlay/foundation render passes. F must verify combined scene.",
+  "phonePerformanceVerified": false,
+  "measurements": [
+    {
+      "count": 30,
+      "quality": "normal",
+      "distance": "near",
+      "viewport": {
+        "width": 600,
+        "height": 850
+      },
+      "dpr": 1,
+      "retainedTrees": 232,
+      "exclusionQueries": {
+        "queries": 1548,
+        "tests": 1768,
+        "cells": 328
+      },
+      "drawCalls": 64,
+      "triangles": 109098,
+      "textures": 11,
+      "geometries": 64,
+      "geometryBytes": 933344,
+      "textureBytes": 20971520,
+      "instances": 520,
+      "landscapeBatches": 7,
+      "builds": 1,
+      "phonePerformanceVerified": false,
+      "medianSubmissionMs": 3.2999999999883585,
+      "p95SubmissionMs": 33.600000000034925,
+      "maxContactGap": 0.15885757051706761,
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "baseline": {
+        "drawCalls": 57,
+        "triangles": 36088,
+        "textureBytes": 20971520,
+        "landscapeDrawDelta": 7,
+        "landscapeTriangleDelta": 73010
+      }
+    },
+    {
+      "count": 30,
+      "quality": "normal",
+      "distance": "far",
+      "viewport": {
+        "width": 600,
+        "height": 850
+      },
+      "dpr": 1,
+      "retainedTrees": 232,
+      "exclusionQueries": {
+        "queries": 320,
+        "tests": 407,
+        "cells": 328
+      },
+      "drawCalls": 61,
+      "triangles": 45144,
+      "textures": 11,
+      "geometries": 61,
+      "geometryBytes": 661076,
+      "textureBytes": 20971520,
+      "instances": 88,
+      "landscapeBatches": 4,
+      "builds": 1,
+      "phonePerformanceVerified": false,
+      "medianSubmissionMs": 3.200000000069849,
+      "p95SubmissionMs": 16.599999999976717,
+      "maxContactGap": 0,
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "baseline": {
+        "drawCalls": 57,
+        "triangles": 36088,
+        "textureBytes": 20971520,
+        "landscapeDrawDelta": 4,
+        "landscapeTriangleDelta": 9056
+      }
+    },
+    {
+      "count": 30,
+      "quality": "low",
+      "distance": "near",
+      "viewport": {
+        "width": 600,
+        "height": 850
+      },
+      "dpr": 1,
+      "retainedTrees": 232,
+      "exclusionQueries": {
+        "queries": 733,
+        "tests": 863,
+        "cells": 328
+      },
+      "drawCalls": 64,
+      "triangles": 54114,
+      "textures": 11,
+      "geometries": 64,
+      "geometryBytes": 717928,
+      "textureBytes": 20971520,
+      "instances": 222,
+      "landscapeBatches": 7,
+      "builds": 1,
+      "phonePerformanceVerified": false,
+      "medianSubmissionMs": 6.900000000023283,
+      "p95SubmissionMs": 38.70000000006985,
+      "maxContactGap": 0.15737143900735973,
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "baseline": {
+        "drawCalls": 57,
+        "triangles": 36088,
+        "textureBytes": 20971520,
+        "landscapeDrawDelta": 7,
+        "landscapeTriangleDelta": 18026
+      }
+    },
+    {
+      "count": 30,
+      "quality": "low",
+      "distance": "far",
+      "viewport": {
+        "width": 600,
+        "height": 850
+      },
+      "dpr": 1,
+      "retainedTrees": 232,
+      "exclusionQueries": {
+        "queries": 320,
+        "tests": 407,
+        "cells": 328
+      },
+      "drawCalls": 61,
+      "triangles": 45144,
+      "textures": 11,
+      "geometries": 61,
+      "geometryBytes": 661076,
+      "textureBytes": 20971520,
+      "instances": 88,
+      "landscapeBatches": 4,
+      "builds": 1,
+      "phonePerformanceVerified": false,
+      "medianSubmissionMs": 2.900000000023283,
+      "p95SubmissionMs": 12.199999999953434,
+      "maxContactGap": 0,
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "baseline": {
+        "drawCalls": 57,
+        "triangles": 36088,
+        "textureBytes": 20971520,
+        "landscapeDrawDelta": 4,
+        "landscapeTriangleDelta": 9056
+      }
+    },
+    {
+      "count": 100,
+      "quality": "normal",
+      "distance": "near",
+      "viewport": {
+        "width": 600,
+        "height": 850
+      },
+      "dpr": 1,
+      "retainedTrees": 249,
+      "exclusionQueries": {
+        "queries": 3751,
+        "tests": 5034,
+        "cells": 789
+      },
+      "drawCalls": 59,
+      "triangles": 222128,
+      "textures": 9,
+      "geometries": 59,
+      "geometryBytes": 1040608,
+      "textureBytes": 20971520,
+      "instances": 1447,
+      "landscapeBatches": 7,
+      "builds": 1,
+      "phonePerformanceVerified": false,
+      "medianSubmissionMs": 3.900000000023283,
+      "p95SubmissionMs": 14.599999999976717,
+      "maxContactGap": 0.15983115914724166,
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "baseline": {
+        "drawCalls": 52,
+        "triangles": 96508,
+        "textureBytes": 20971520,
+        "landscapeDrawDelta": 7,
+        "landscapeTriangleDelta": 125620
+      }
+    },
+    {
+      "count": 100,
+      "quality": "normal",
+      "distance": "far",
+      "viewport": {
+        "width": 600,
+        "height": 850
+      },
+      "dpr": 1,
+      "retainedTrees": 249,
+      "exclusionQueries": {
+        "queries": 320,
+        "tests": 466,
+        "cells": 789
+      },
+      "drawCalls": 56,
+      "triangles": 104336,
+      "textures": 9,
+      "geometries": 56,
+      "geometryBytes": 707924,
+      "textureBytes": 20971520,
+      "instances": 71,
+      "landscapeBatches": 4,
+      "builds": 1,
+      "phonePerformanceVerified": false,
+      "medianSubmissionMs": 4.699999999953434,
+      "p95SubmissionMs": 20.400000000023283,
+      "maxContactGap": 0,
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "baseline": {
+        "drawCalls": 52,
+        "triangles": 96508,
+        "textureBytes": 20971520,
+        "landscapeDrawDelta": 4,
+        "landscapeTriangleDelta": 7828
+      }
+    },
+    {
+      "count": 100,
+      "quality": "low",
+      "distance": "near",
+      "viewport": {
+        "width": 600,
+        "height": 850
+      },
+      "dpr": 1,
+      "retainedTrees": 249,
+      "exclusionQueries": {
+        "queries": 1479,
+        "tests": 1980,
+        "cells": 789
+      },
+      "drawCalls": 59,
+      "triangles": 120418,
+      "textures": 9,
+      "geometries": 59,
+      "geometryBytes": 785256,
+      "textureBytes": 20971520,
+      "instances": 525,
+      "landscapeBatches": 7,
+      "builds": 1,
+      "phonePerformanceVerified": false,
+      "medianSubmissionMs": 5.099999999976717,
+      "p95SubmissionMs": 8.399999999906868,
+      "maxContactGap": 0.15983115914724166,
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "baseline": {
+        "drawCalls": 52,
+        "triangles": 96508,
+        "textureBytes": 20971520,
+        "landscapeDrawDelta": 7,
+        "landscapeTriangleDelta": 23910
+      }
+    },
+    {
+      "count": 100,
+      "quality": "low",
+      "distance": "far",
+      "viewport": {
+        "width": 600,
+        "height": 850
+      },
+      "dpr": 1,
+      "retainedTrees": 249,
+      "exclusionQueries": {
+        "queries": 320,
+        "tests": 466,
+        "cells": 789
+      },
+      "drawCalls": 56,
+      "triangles": 104336,
+      "textures": 9,
+      "geometries": 56,
+      "geometryBytes": 707924,
+      "textureBytes": 20971520,
+      "instances": 71,
+      "landscapeBatches": 4,
+      "builds": 1,
+      "phonePerformanceVerified": false,
+      "medianSubmissionMs": 3.200000000069849,
+      "p95SubmissionMs": 7.900000000023283,
+      "maxContactGap": 0,
+      "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+      "baseline": {
+        "drawCalls": 52,
+        "triangles": 96508,
+        "textureBytes": 20971520,
+        "landscapeDrawDelta": 4,
+        "landscapeTriangleDelta": 7828
+      }
+    }
+  ]
+}

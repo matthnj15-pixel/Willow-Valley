@@ -1,0 +1,52 @@
+import * as T from '../assets/vendor/three.module.mjs';
+import {placeLandscape,createPlacementCache} from '../assets/wv/landscape-next/placement.mjs';
+import {createLandscapeLibrary} from '../assets/wv/landscape-next/batches.mjs';
+import {landscapeFixture} from '../assets/wv/landscape-next/fixtures.mjs';
+import {buildSceneBatches,estimateSceneBytes} from '../scene-batches.mjs';
+import {createResourceDisposer,createModelRegistry,HOME_IDS,manifestURL} from '../asset-registry.mjs';
+import {homePlacement,facilityPlacement,FACILITY_TYPES} from '../building-visuals.mjs';
+const $=id=>document.getElementById(id),canvas=$('landscape'),params=new URLSearchParams(location.search);
+for(const id of ['scene','quality','distance','count'])if(params.has(id))$(id).value=params.get(id);
+const renderer=new T.WebGLRenderer({canvas,antialias:true,powerPreference:'low-power'});renderer.outputColorSpace=T.SRGBColorSpace;
+const scene=new T.Scene();scene.background=new T.Color('#b8c6af');scene.add(new T.HemisphereLight('#eef3f1','#687253',2));const sun=new T.DirectionalLight('#fff0db',2.3);sun.position.set(-180,300,160);scene.add(sun);
+const camera=new T.PerspectiveCamera(40,1,.1,4000),target=new T.Vector3();let radius=150,yaw=.45,pitch=.68,disposed=false,library,manifest,fixture,records=[],batch,context=new T.Group(),terrain,person,labels=[],builds=0,draws=0;
+scene.add(context);const cache=createPlacementCache(),registry=createModelRegistry(new T.GLTFLoader()),models=new Map(),disposer=createResourceDisposer();
+const metrics={};window.landscapeReview={stats:metrics,render:draw,inspectContact:()=>{scene.updateMatrixWorld(true);const ray=new T.Raycaster(),errors=[];for(const r of records)for(const p of r.groundContact?.points||[]){ray.set(new T.Vector3(p.x-fixture.world.width/2,p.height+100,p.z-fixture.world.depth/2),new T.Vector3(0,-1,0));const hit=ray.intersectObject(terrain,false)[0];if(!hit||Math.abs(hit.point.y+.025-p.height)>.001)errors.push({key:r.key,expected:p.height,actual:hit?.point.y});}return errors;},setLandscapeVisible:visible=>{batch.group.visible=visible;draw();},get records(){return records;},get builds(){return builds;},get cacheRebuilds(){return cache.rebuilds;},get draws(){return draws;},dispose};
+function draw(){if(disposed||document.hidden)return;draws++;const rect=canvas.getBoundingClientRect();renderer.setPixelRatio(Math.min(devicePixelRatio||1,$('quality').value==='low'?1:1.5));renderer.setSize(rect.width,rect.height,false);camera.aspect=rect.width/rect.height;camera.position.set(target.x+Math.sin(yaw)*Math.cos(pitch)*radius,target.y+Math.sin(pitch)*radius,target.z+Math.cos(yaw)*Math.cos(pitch)*radius);camera.lookAt(target);camera.updateProjectionMatrix();renderer.render(scene,camera);
+ for(const l of labels){const p=l.point.clone().project(camera);l.el.hidden=p.z>1||p.z< -1||Math.abs(p.x)>1||Math.abs(p.y)>1;l.el.style.left=(p.x*.5+.5)*rect.width+'px';l.el.style.top=(-p.y*.5+.5)*rect.height+'px';}
+ Object.assign(metrics,{drawCalls:renderer.info.render.calls,triangles:renderer.info.render.triangles,textures:renderer.info.memory.textures,geometries:renderer.info.memory.geometries,...estimateSceneBytes(scene),instances:records.length,landscapeBatches:batch?.group.children.length||0,builds,phonePerformanceVerified:false});$('status').textContent=`${records.length} natural instances · ${metrics.drawCalls} calls · ${metrics.triangles.toLocaleString()} triangles`;
+}
+function reset(){if($('scene').value==='collection'){const r=records.find(r=>r.assetId===$('form').value);if(r){const e=manifest.entries.find(e=>e.id===r.assetId);target.set(r.origin[0],Math.max(1,e.boundsMax[1]*1.4),r.origin[2]);radius=Math.max(13,e.boundsMax[1]*9);pitch=.40;person?.position.set(r.origin[0]+Math.max(3,e.boundsMax[0]*2.8+2),0,r.origin[2]+2);}else{target.set(0,7,12);radius=innerWidth<700?245:180;pitch=.88;}}else {target.set(0,8,0);radius=fixture.world.depth*1.02;pitch=.72;}yaw=.45;draw();}
+function ground(world){const [nx,nz]=$('scene').value==='settlement'?[62,46]:[64,48],g=new T.PlaneGeometry(world.width,world.depth,nx,nz);g.rotateX(-Math.PI/2);const p=g.attributes.position,c=[];for(let i=0;i<p.count;i++){const v=world.sample(p.getX(i)+world.width/2,p.getZ(i)+world.depth/2);p.setY(i,v.height-.025);c.push(...new T.Color(v.water!==null?'#4a829a':Math.abs(v.height%1)<.1?'#7b8960':'#72865c').toArray());}g.setAttribute('color',new T.Float32BufferAttribute(c,3));g.computeVertexNormals();return new T.Mesh(g,new T.MeshStandardMaterial({vertexColors:true,roughness:1}));}
+function clear(){batch?.dispose();batch=null;if(terrain){scene.remove(terrain);terrain.geometry.dispose();terrain.material.dispose();terrain=null;}for(const o of [...context.children]){o.removeFromParent();o.traverse(n=>{if(n.isInstancedMesh)n.dispose();});}if(person){scene.remove(person);person.geometry.dispose();person.material.dispose();person=null;}for(const l of labels)l.el.remove();labels=[];}
+function addContext(id,p){const source=($('scene').value==='yard'||$('scene').value==='smith'?catalogScene?.getObjectByName(id):null)||models.get(id);if(!source||!p)return;const model=source.clone(true);model.position.set(...p.origin);model.scale.setScalar(p.scale);model.rotation.y=p.yaw;return{scene:model,entityKey:id+':'+p.origin.join(',')};}
+function rebuild(){if(!library||disposed)return;clear();builds++;const name=$('scene').value,quality=$('quality').value,distance=$('distance').value;
+ if(name==='collection'){
+  fixture={world:{width:220,depth:160,sample:()=>({height:0,water:null})}};records=manifest.entries.map((e,i)=>{const x=(i%5-2)*37,z=(Math.floor(i/5)-1.5)*35,origin=[x,0,z],r={assetId:e.id,key:'collection:'+e.id,origin,scale:2.8,yaw:.25,quality,lod:distance==='far'?'far':quality==='low'?'low':'normal'};const el=document.createElement('span');el.className='label';el.textContent=e.name;$('labels').append(el);labels.push({el,point:new T.Vector3(x,Math.min(e.boundsMax[1]*2.8+1,29),z)});return r;});
+ }else{
+  fixture=landscapeFixture(name,Number($('count').value));const result=cache.get({...fixture.input,entries:manifest.entries,quality,distance,terrainRevision:name+'-display-64x48-v1',catalogRevision:manifest.revision});records=result.instances;metrics.retainedTrees=result.retainedTrees.length;metrics.exclusionQueries=result.diagnostics;
+  const objects=[];
+  if(name==='settlement'){
+   for(const h of fixture.state.houses){const p=homePlacement(fixture.surface,h,architecture.entries);const o=p&&addContext(p.id,p);if(o)objects.push(o);}
+   for(const b of fixture.state.buildings){const p=facilityPlacement(fixture.surface,b,fixture.state,architecture.entries);const o=p&&addContext(p.id,p);if(o)objects.push(o);}
+  }else if(name==='yard'||name==='smith'){
+   const id=name==='yard'?'home-steep-gable':'facility-smith';const o=addContext(id,{origin:[87-fixture.world.width/2,fixture.surface.sample(87,80).height,80-fixture.world.depth/2],scale:2.8,yaw:0});if(o)objects.push(o);
+  }
+  for(const b of buildSceneBatches(objects))context.add(b);
+ }
+ batch=library.build(records);scene.add(batch.group);terrain=ground(fixture.surface||fixture.world);scene.add(terrain);
+ person=new T.Mesh(new T.CapsuleGeometry(.17,1.41,4,7).translate(0,.875,0),new T.MeshStandardMaterial({color:'#476b7a',roughness:1}));person.scale.setScalar(2.8);const px=name==='collection'?-99:35-fixture.world.width/2,pz=name==='collection'?65:105-fixture.world.depth/2;person.position.set(px,fixture.world.sample(px+fixture.world.width/2,pz+fixture.world.depth/2).height,pz);scene.add(person);
+ $('caption').textContent={collection:'Twenty recognizable natural forms.',forest:'A layered edge, with open clearings.',bank:'Moisture gathers the bank plants.',yard:'A cottage with room at the door.',smith:'Bare ground for a working yard.',settlement:'Mature woodland frames the settlement.'}[name];canvas.dataset.loaded='20';reset();$('record').textContent=JSON.stringify({revision:manifest.revision,quality,distance,rendering:metrics,retainedTreePolicy:'Keep existing presentation on candidate rejection',dependencies:manifest.dependencies,runtimeReady:false},null,2);
+}
+let architecture,catalogScene;
+try{
+ const [m,g,a]=await Promise.all([fetch('../assets/wv/landscape-next/manifest.json').then(r=>{if(!r.ok)throw Error('Manifest unavailable');return r.json();}),new T.GLTFLoader().loadAsync('../assets/wv/landscape-next/landscape.glb'),fetch(manifestURL).then(r=>r.json())]);
+ manifest=m;for(const e of manifest.entries)$('form').add(new Option(e.name,e.id));library=createLandscapeLibrary(g.scene);architecture=a;
+ catalogScene=(await new T.GLTFLoader().loadAsync('../assets/wv/megakit-catalog-v1/catalog.glb')).scene;
+ await Promise.all([...HOME_IDS,...FACILITY_TYPES.map(t=>'facility-'+t)].map(async id=>models.set(id,(await registry.load(id)).scene)));
+ if(disposed){library.dispose();if(catalogScene)disposer(catalogScene);await registry.dispose();}else rebuild();
+}catch(e){canvas.dataset.loaded='error';$('status').textContent='Landscape unavailable: '+e.message;console.error(e);}
+for(const id of ['scene','quality','distance','count'])$(id).onchange=rebuild;$('reset').onclick=reset;$('form').onchange=()=>{$('scene').value='collection';if(!records.some(r=>r.key.startsWith('collection:')))rebuild();else reset();};
+const pointers=new Map();let pinch=0;canvas.onpointerdown=e=>{canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,[e.clientX,e.clientY]);};canvas.onpointermove=e=>{const old=pointers.get(e.pointerId);if(!old)return;pointers.set(e.pointerId,[e.clientX,e.clientY]);if(pointers.size===2){const[a,b]=[...pointers.values()],d=Math.hypot(a[0]-b[0],a[1]-b[1]);if(pinch)radius=Math.max(15,Math.min(2000,radius*pinch/d));pinch=d;}else{yaw-=(e.clientX-old[0])*.008;pitch=Math.max(.08,Math.min(1.48,pitch+(e.clientY-old[1])*.006));}draw();};for(const type of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(type,e=>{pointers.delete(e.pointerId);pinch=0;});canvas.addEventListener('wheel',e=>{e.preventDefault();radius=Math.max(15,Math.min(2400,radius*Math.exp(e.deltaY*.001)));draw();},{passive:false});
+window.addEventListener('resize',draw);document.addEventListener('visibilitychange',draw);window.addEventListener('pagehide',dispose);
+function dispose(){if(disposed)return;disposed=true;clear();library?.dispose();void registry.dispose();disposer(context);if(catalogScene)disposer(catalogScene);renderer.dispose();renderer.forceContextLoss();window.removeEventListener('resize',draw);document.removeEventListener('visibilitychange',draw);}
