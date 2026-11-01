@@ -1,6 +1,6 @@
 // Detached art study, in visual metres. Never passed to simulation or saves.
 // A holding grows from a frontage; the inherited lane and earlier homes persist.
-export const HAMLET_REVISION = 'inhabited-hamlet-1';
+export const HAMLET_REVISION = 'inhabited-hamlet-2';
 export const METRES_TO_GAME = 2.8;
 export const HAMLET_STAGES = Object.freeze([4, 12, 30]);
 const HOME_IDS = ['home-steep-gable','home-low-hip','home-porch-cabin','home-long-ridge','home-offset-gables'];
@@ -66,7 +66,7 @@ function holding(row,index,seed){
  const rear=use==='orchard'?11:use==='work-yard'?7.5:9.2;
  const local=q=>transformPoint(q,origin,yaw),gate={x:p.x-p.dz*side*(route.width/2+.10),z:p.z+p.dx*side*(route.width/2+.10)};
  return{key,stage,assetId,origin,yaw,laneKey,station,side,width,use,roofFootprint:rectangle(origin.x,origin.z,7.8,8.3,yaw),
-  polygon:[[-width/2,5.8],[width/2,5.8],[width/2,-rear-1.4],[-width/2,-rear-1.4]].map(([x,z])=>local({x,z})),
+  polygon:[[-width/2,5.8],[width/2,5.8],[width/2,-4.8],[width/2-.4-keyedUnit(key)*.5,-rear-1.1],[-width/2+.5,-rear-1.4],[-width/2,-5.3]].map(([x,z])=>local({x,z})),
   garden:{center:local({x:0,z:-rear*.72}),width:width-1.8,depth:use==='work-yard'?3.2:4.8,yaw},
   gate,entrance:local({x:0,z:3.3}),approach:[local({x:0,z:3.3}),local({x:0,z:5.2}),gate],
   stableVariant:keyedUnit(seed+':'+key),source:'detached-reference-holding'};
@@ -117,7 +117,7 @@ export function createHamletUseIndex(plan,{cellSize=8}={}){
  const rank={seat:9,holding:1,common:1,meadow:1,field:2,garden:3,yard:4,work:5,path:6,approach:7,lane:8};
  return{query(x,z){const p={x,z};let kind='meadow',strength=0,priority=0;
   for(const s of cells.get(Math.floor(x/cellSize)+':'+Math.floor(z/cellSize))||[]){let amount=0;
-   if(s.polygon)amount=pointInPolygon(p,s.polygon)?1:Math.max(0,1-Math.min(...s.polygon.map((a,i)=>segmentDistance(p,a,s.polygon[(i+1)%s.polygon.length])))/.38);else{const d=lineDistance(p,s.points);amount=Math.max(0,Math.min(1,(s.width/2+.45-d)/.65));}
+   if(s.polygon)amount=s.holes?.some(h=>pointInPolygon(p,h))?0:pointInPolygon(p,s.polygon)?1:Math.max(0,1-Math.min(...s.polygon.map((a,i)=>segmentDistance(p,a,s.polygon[(i+1)%s.polygon.length])))/.38);else{const d=lineDistance(p,s.points);amount=Math.max(0,Math.min(1,(s.width/2+.45-d)/.65));}
    if(amount>0&&(rank[s.kind]>priority||rank[s.kind]===priority&&amount>strength)){kind=s.kind;strength=amount;priority=rank[s.kind]||0;}
   }return{kind,strength};},shapes,cells:cells.size};
 }

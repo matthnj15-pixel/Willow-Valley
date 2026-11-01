@@ -1,0 +1,4857 @@
+{
+  "revision": "plot-dressing-1",
+  "holdings": [
+    {
+      "key": "holding-01",
+      "assetId": "home-steep-gable",
+      "origin": {
+        "x": -14,
+        "z": 4
+      },
+      "yaw": 0,
+      "use": "kitchen-garden",
+      "polygon": [
+        {
+          "x": -21,
+          "z": 12
+        },
+        {
+          "x": -8,
+          "z": 12
+        },
+        {
+          "x": -8,
+          "z": -9
+        },
+        {
+          "x": -16,
+          "z": -12
+        },
+        {
+          "x": -22,
+          "z": -5
+        }
+      ],
+      "garden": {
+        "center": {
+          "x": -14,
+          "z": -5
+        },
+        "width": 8,
+        "depth": 6,
+        "yaw": 0
+      },
+      "gate": {
+        "x": -14,
+        "z": 13.6
+      },
+      "stage": 4,
+      "establishedAt": 0,
+      "source": "detached-plot-study"
+    },
+    {
+      "key": "holding-02",
+      "assetId": "home-low-hip",
+      "origin": {
+        "x": -2,
+        "z": 4
+      },
+      "yaw": 0,
+      "use": "work-yard",
+      "polygon": [
+        {
+          "x": -8,
+          "z": 12
+        },
+        {
+          "x": 4,
+          "z": 12
+        },
+        {
+          "x": 4,
+          "z": -6
+        },
+        {
+          "x": 0,
+          "z": -11
+        },
+        {
+          "x": -8,
+          "z": -9
+        }
+      ],
+      "garden": {
+        "center": {
+          "x": -2,
+          "z": -5
+        },
+        "width": 7,
+        "depth": 6,
+        "yaw": 0
+      },
+      "gate": {
+        "x": -2,
+        "z": 13.6
+      },
+      "stage": 4,
+      "establishedAt": 1,
+      "source": "detached-plot-study"
+    },
+    {
+      "key": "holding-03",
+      "assetId": "home-porch-cabin",
+      "origin": {
+        "x": 15,
+        "z": 3
+      },
+      "yaw": 0,
+      "use": "orchard",
+      "polygon": [
+        {
+          "x": 8,
+          "z": 12
+        },
+        {
+          "x": 24,
+          "z": 12
+        },
+        {
+          "x": 26,
+          "z": -8
+        },
+        {
+          "x": 20,
+          "z": -16
+        },
+        {
+          "x": 9,
+          "z": -14
+        },
+        {
+          "x": 7,
+          "z": -4
+        }
+      ],
+      "garden": {
+        "center": {
+          "x": 16,
+          "z": -9
+        },
+        "width": 13,
+        "depth": 8,
+        "yaw": 0
+      },
+      "gate": {
+        "x": 15,
+        "z": 13.6
+      },
+      "stage": 4,
+      "establishedAt": 2,
+      "source": "detached-plot-study"
+    },
+    {
+      "key": "holding-04",
+      "assetId": "home-low-hip",
+      "origin": {
+        "x": 32,
+        "z": 4
+      },
+      "yaw": 0,
+      "use": "orchard",
+      "polygon": [
+        {
+          "x": 29,
+          "z": 11
+        },
+        {
+          "x": 37,
+          "z": 10
+        },
+        {
+          "x": 35,
+          "z": -1
+        },
+        {
+          "x": 28,
+          "z": -1
+        },
+        {
+          "x": 27,
+          "z": 8
+        }
+      ],
+      "garden": {
+        "center": {
+          "x": 31.6,
+          "z": 0.25
+        },
+        "width": 5,
+        "depth": 1.5,
+        "yaw": 0
+      },
+      "gate": {
+        "x": 32,
+        "z": 13.6
+      },
+      "stage": 4,
+      "establishedAt": 3,
+      "source": "detached-plot-study"
+    }
+  ],
+  "fields": [
+    {
+      "key": "painted-field:-51,-47:0",
+      "kind": "field",
+      "polygon": [
+        {
+          "x": -38.25,
+          "z": -34.5
+        },
+        {
+          "x": -37.5,
+          "z": -36.75
+        },
+        {
+          "x": -24.75,
+          "z": -42.75
+        },
+        {
+          "x": -20.25,
+          "z": -39.75
+        },
+        {
+          "x": -12.75,
+          "z": -41.25
+        },
+        {
+          "x": -9,
+          "z": -39.75
+        },
+        {
+          "x": 1.5,
+          "z": -42.75
+        },
+        {
+          "x": 6,
+          "z": -39.75
+        },
+        {
+          "x": 12.75,
+          "z": -41.25
+        },
+        {
+          "x": 15,
+          "z": -40.5
+        },
+        {
+          "x": 21,
+          "z": -28.5
+        },
+        {
+          "x": 20.25,
+          "z": -26.25
+        },
+        {
+          "x": 8.25,
+          "z": -21
+        },
+        {
+          "x": 3.75,
+          "z": -24
+        },
+        {
+          "x": -5.25,
+          "z": -23.25
+        },
+        {
+          "x": -7.5,
+          "z": -24
+        },
+        {
+          "x": -12,
+          "z": -21.75
+        },
+        {
+          "x": -18,
+          "z": -21
+        },
+        {
+          "x": -22.5,
+          "z": -24
+        },
+        {
+          "x": -27,
+          "z": -24
+        },
+        {
+          "x": -31.5,
+          "z": -23.25
+        }
+      ],
+      "holes": [
+        [
+          {
+            "x": -9,
+            "z": -33
+          },
+          {
+            "x": -6.75,
+            "z": -35.25
+          },
+          {
+            "x": -5.25,
+            "z": -35.25
+          },
+          {
+            "x": -3,
+            "z": -33
+          },
+          {
+            "x": -3.75,
+            "z": -29.25
+          },
+          {
+            "x": -6.75,
+            "z": -29.25
+          },
+          {
+            "x": -9,
+            "z": -30
+          }
+        ]
+      ],
+      "area": 924.46875,
+      "rasterArea": 1009.125,
+      "cellSize": 0.75,
+      "source": "committed-land-use-mask"
+    }
+  ],
+  "boundaries": {
+    "revision": "plot-boundaries-1",
+    "runtimeReady": false,
+    "fences": [
+      {
+        "key": "boundary:-120000,-217500:-180000,-210000",
+        "a": {
+          "x": -12,
+          "z": -21.75
+        },
+        "b": {
+          "x": -18,
+          "z": -21
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-120000,-217500:-75000,-240000",
+        "a": {
+          "x": -7.5,
+          "z": -24
+        },
+        "b": {
+          "x": -12,
+          "z": -21.75
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-127500,-412500:-202500,-397500",
+        "a": {
+          "x": -20.25,
+          "z": -39.75
+        },
+        "b": {
+          "x": -12.75,
+          "z": -41.25
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-127500,-412500:-90000,-397500",
+        "a": {
+          "x": -12.75,
+          "z": -41.25
+        },
+        "b": {
+          "x": -9,
+          "z": -39.75
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-135452,120000:-80000,120000",
+        "a": {
+          "x": -8,
+          "z": 12
+        },
+        "b": {
+          "x": -13.545193767614782,
+          "z": 12
+        },
+        "ownerKey": "holding-01",
+        "users": [
+          "holding-01"
+        ],
+        "kind": "fence-wattle",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-149087,120000:-210000,120000",
+        "a": {
+          "x": -14.908706941605077,
+          "z": 12
+        },
+        "b": {
+          "x": -21,
+          "z": 12
+        },
+        "ownerKey": "holding-01",
+        "users": [
+          "holding-01"
+        ],
+        "kind": "fence-wattle",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-15452,120000:40000,120000",
+        "a": {
+          "x": 4,
+          "z": 12
+        },
+        "b": {
+          "x": -1.5451937676147818,
+          "z": 12
+        },
+        "ownerKey": "holding-02",
+        "users": [
+          "holding-02"
+        ],
+        "kind": "fence-wattle",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-160000,-120000:-220000,-50000",
+        "a": {
+          "x": -22,
+          "z": -5
+        },
+        "b": {
+          "x": -16,
+          "z": -12
+        },
+        "ownerKey": "holding-01",
+        "users": [
+          "holding-01"
+        ],
+        "kind": "fence-wattle",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-160000,-120000:-80000,-90000",
+        "a": {
+          "x": -16,
+          "z": -12
+        },
+        "b": {
+          "x": -8,
+          "z": -9
+        },
+        "ownerKey": "holding-01",
+        "users": [
+          "holding-01"
+        ],
+        "kind": "fence-wattle",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-180000,-210000:-225000,-240000",
+        "a": {
+          "x": -18,
+          "z": -21
+        },
+        "b": {
+          "x": -22.5,
+          "z": -24
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-202500,-397500:-247500,-427500",
+        "a": {
+          "x": -24.75,
+          "z": -42.75
+        },
+        "b": {
+          "x": -20.25,
+          "z": -39.75
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-210000,120000:-220000,-50000",
+        "a": {
+          "x": -21,
+          "z": 12
+        },
+        "b": {
+          "x": -22,
+          "z": -5
+        },
+        "ownerKey": "holding-01",
+        "users": [
+          "holding-01"
+        ],
+        "kind": "fence-wattle",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-225000,-240000:-244800,-240000",
+        "a": {
+          "x": -22.5,
+          "z": -24
+        },
+        "b": {
+          "x": -24.48,
+          "z": -24
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-247500,-427500:-375000,-367500",
+        "a": {
+          "x": -37.5,
+          "z": -36.75
+        },
+        "b": {
+          "x": -24.75,
+          "z": -42.75
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-275176,-239137:-315000,-232500",
+        "a": {
+          "x": -27.517550488740948,
+          "z": -23.91374158520984
+        },
+        "b": {
+          "x": -31.5,
+          "z": -23.25
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-29087,120000:-80000,120000",
+        "a": {
+          "x": -2.9087069416050753,
+          "z": 12
+        },
+        "b": {
+          "x": -8,
+          "z": 12
+        },
+        "ownerKey": "holding-02",
+        "users": [
+          "holding-02"
+        ],
+        "kind": "fence-wattle",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-30000,-330000:-37500,-292500",
+        "a": {
+          "x": -3,
+          "z": -33
+        },
+        "b": {
+          "x": -3.75,
+          "z": -29.25
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-30000,-330000:-52500,-352500",
+        "a": {
+          "x": -5.25,
+          "z": -35.25
+        },
+        "b": {
+          "x": -3,
+          "z": -33
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-315000,-232500:-382500,-345000",
+        "a": {
+          "x": -31.5,
+          "z": -23.25
+        },
+        "b": {
+          "x": -38.25,
+          "z": -34.5
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-37500,-292500:-67500,-292500",
+        "a": {
+          "x": -3.75,
+          "z": -29.25
+        },
+        "b": {
+          "x": -6.75,
+          "z": -29.25
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-375000,-367500:-382500,-345000",
+        "a": {
+          "x": -38.25,
+          "z": -34.5
+        },
+        "b": {
+          "x": -37.5,
+          "z": -36.75
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-52500,-232500:-75000,-240000",
+        "a": {
+          "x": -5.25,
+          "z": -23.25
+        },
+        "b": {
+          "x": -7.5,
+          "z": -24
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-52500,-232500:37500,-240000",
+        "a": {
+          "x": 3.75,
+          "z": -24
+        },
+        "b": {
+          "x": -5.25,
+          "z": -23.25
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-52500,-352500:-67500,-352500",
+        "a": {
+          "x": -6.75,
+          "z": -35.25
+        },
+        "b": {
+          "x": -5.25,
+          "z": -35.25
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-67500,-292500:-90000,-300000",
+        "a": {
+          "x": -6.75,
+          "z": -29.25
+        },
+        "b": {
+          "x": -9,
+          "z": -30
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-67500,-352500:-90000,-330000",
+        "a": {
+          "x": -9,
+          "z": -33
+        },
+        "b": {
+          "x": -6.75,
+          "z": -35.25
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-80000,-90000:0,-110000",
+        "a": {
+          "x": -8,
+          "z": -9
+        },
+        "b": {
+          "x": 0,
+          "z": -11
+        },
+        "ownerKey": "holding-02",
+        "users": [
+          "holding-02"
+        ],
+        "kind": "fence-wattle",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-90000,-300000:-90000,-330000",
+        "a": {
+          "x": -9,
+          "z": -30
+        },
+        "b": {
+          "x": -9,
+          "z": -33
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:-90000,-397500:15000,-427500",
+        "a": {
+          "x": -9,
+          "z": -39.75
+        },
+        "b": {
+          "x": 1.5,
+          "z": -42.75
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:0,-110000:40000,-60000",
+        "a": {
+          "x": 0,
+          "z": -11
+        },
+        "b": {
+          "x": 4,
+          "z": -6
+        },
+        "ownerKey": "holding-02",
+        "users": [
+          "holding-02"
+        ],
+        "kind": "fence-wattle",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:127500,-412500:150000,-405000",
+        "a": {
+          "x": 12.75,
+          "z": -41.25
+        },
+        "b": {
+          "x": 15,
+          "z": -40.5
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:127500,-412500:60000,-397500",
+        "a": {
+          "x": 6,
+          "z": -39.75
+        },
+        "b": {
+          "x": 12.75,
+          "z": -41.25
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:140896,120000:80000,120000",
+        "a": {
+          "x": 14.08957560385583,
+          "z": 12
+        },
+        "b": {
+          "x": 8,
+          "z": 12
+        },
+        "ownerKey": "holding-03",
+        "users": [
+          "holding-03"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:15000,-427500:60000,-397500",
+        "a": {
+          "x": 1.5,
+          "z": -42.75
+        },
+        "b": {
+          "x": 6,
+          "z": -39.75
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:150000,-405000:210000,-285000",
+        "a": {
+          "x": 15,
+          "z": -40.5
+        },
+        "b": {
+          "x": 21,
+          "z": -28.5
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:154533,120000:240000,120000",
+        "a": {
+          "x": 24,
+          "z": 12
+        },
+        "b": {
+          "x": 15.453281539001315,
+          "z": 12
+        },
+        "ownerKey": "holding-03",
+        "users": [
+          "holding-03"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:200000,-160000:260000,-80000",
+        "a": {
+          "x": 20,
+          "z": -16
+        },
+        "b": {
+          "x": 26,
+          "z": -8
+        },
+        "ownerKey": "holding-03",
+        "users": [
+          "holding-03"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:200000,-160000:90000,-140000",
+        "a": {
+          "x": 9,
+          "z": -14
+        },
+        "b": {
+          "x": 20,
+          "z": -16
+        },
+        "ownerKey": "holding-03",
+        "users": [
+          "holding-03"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:202500,-262500:210000,-285000",
+        "a": {
+          "x": 21,
+          "z": -28.5
+        },
+        "b": {
+          "x": 20.25,
+          "z": -26.25
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:202500,-262500:82500,-210000",
+        "a": {
+          "x": 20.25,
+          "z": -26.25
+        },
+        "b": {
+          "x": 8.25,
+          "z": -21
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:240000,120000:260000,-80000",
+        "a": {
+          "x": 26,
+          "z": -8
+        },
+        "b": {
+          "x": 24,
+          "z": 12
+        },
+        "ownerKey": "holding-03",
+        "users": [
+          "holding-03"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:270000,80000:280000,-10000",
+        "a": {
+          "x": 27,
+          "z": 8
+        },
+        "b": {
+          "x": 28,
+          "z": -1
+        },
+        "ownerKey": "holding-04",
+        "users": [
+          "holding-04"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:270000,80000:290000,110000",
+        "a": {
+          "x": 29,
+          "z": 11
+        },
+        "b": {
+          "x": 27,
+          "z": 8
+        },
+        "ownerKey": "holding-04",
+        "users": [
+          "holding-04"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:280000,-10000:350000,-10000",
+        "a": {
+          "x": 28,
+          "z": -1
+        },
+        "b": {
+          "x": 35,
+          "z": -1
+        },
+        "ownerKey": "holding-04",
+        "users": [
+          "holding-04"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:290000,110000:309155,107606",
+        "a": {
+          "x": 30.91548655911975,
+          "z": 10.76056418011003
+        },
+        "b": {
+          "x": 29,
+          "z": 11
+        },
+        "ownerKey": "holding-04",
+        "users": [
+          "holding-04"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:322552,105931:370000,100000",
+        "a": {
+          "x": 37,
+          "z": 10
+        },
+        "b": {
+          "x": 32.25524514819732,
+          "z": 10.593094356475335
+        },
+        "ownerKey": "holding-04",
+        "users": [
+          "holding-04"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:350000,-10000:370000,100000",
+        "a": {
+          "x": 35,
+          "z": -1
+        },
+        "b": {
+          "x": 37,
+          "z": 10
+        },
+        "ownerKey": "holding-04",
+        "users": [
+          "holding-04"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:37500,-240000:82500,-210000",
+        "a": {
+          "x": 8.25,
+          "z": -21
+        },
+        "b": {
+          "x": 3.75,
+          "z": -24
+        },
+        "ownerKey": "painted-field:-51,-47:0",
+        "users": [
+          "painted-field:-51,-47:0"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:40000,-60000:40000,120000",
+        "a": {
+          "x": 4,
+          "z": -6
+        },
+        "b": {
+          "x": 4,
+          "z": 12
+        },
+        "ownerKey": "holding-02",
+        "users": [
+          "holding-02"
+        ],
+        "kind": "fence-wattle",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:70000,-40000:80000,120000",
+        "a": {
+          "x": 8,
+          "z": 12
+        },
+        "b": {
+          "x": 7,
+          "z": -4
+        },
+        "ownerKey": "holding-03",
+        "users": [
+          "holding-03"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "boundary:70000,-40000:90000,-140000",
+        "a": {
+          "x": 7,
+          "z": -4
+        },
+        "b": {
+          "x": 9,
+          "z": -14
+        },
+        "ownerKey": "holding-03",
+        "users": [
+          "holding-03"
+        ],
+        "kind": "fence-rail",
+        "source": "candidate"
+      },
+      {
+        "key": "earlier-household-fence",
+        "ownerKey": "holding-01",
+        "kind": "fence-wattle",
+        "a": {
+          "x": -8,
+          "z": -9
+        },
+        "b": {
+          "x": -8,
+          "z": 12
+        },
+        "source": "existing",
+        "users": [
+          "holding-01",
+          "holding-02"
+        ]
+      }
+    ],
+    "uses": [
+      {
+        "plotKey": "holding-01",
+        "boundaryKey": "boundary:-135452,120000:-80000,120000",
+        "range": [
+          0,
+          0.4265533667395986
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-01",
+        "boundaryKey": "boundary:-149087,120000:-210000,120000",
+        "range": [
+          0.5314389955080828,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-01",
+        "boundaryKey": "boundary:-160000,-120000:-220000,-50000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-01",
+        "boundaryKey": "boundary:-160000,-120000:-80000,-90000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-01",
+        "boundaryKey": "boundary:-210000,120000:-220000,-50000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-01",
+        "boundaryKey": "earlier-household-fence",
+        "range": [
+          0,
+          1
+        ],
+        "source": "existing"
+      },
+      {
+        "plotKey": "holding-02",
+        "boundaryKey": "boundary:-15452,120000:40000,120000",
+        "range": [
+          0,
+          0.46209948063456513
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-02",
+        "boundaryKey": "boundary:-29087,120000:-80000,120000",
+        "range": [
+          0.5757255784670896,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-02",
+        "boundaryKey": "boundary:-80000,-90000:0,-110000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-02",
+        "boundaryKey": "boundary:0,-110000:40000,-60000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-02",
+        "boundaryKey": "boundary:40000,-60000:40000,120000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-02",
+        "boundaryKey": "earlier-household-fence",
+        "range": [
+          0,
+          1
+        ],
+        "source": "existing"
+      },
+      {
+        "plotKey": "holding-03",
+        "boundaryKey": "boundary:140896,120000:80000,120000",
+        "range": [
+          0.6194015247590107,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-03",
+        "boundaryKey": "boundary:154533,120000:240000,120000",
+        "range": [
+          0,
+          0.5341699038124178
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-03",
+        "boundaryKey": "boundary:200000,-160000:260000,-80000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-03",
+        "boundaryKey": "boundary:200000,-160000:90000,-140000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-03",
+        "boundaryKey": "boundary:240000,120000:260000,-80000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-03",
+        "boundaryKey": "boundary:70000,-40000:80000,120000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-03",
+        "boundaryKey": "boundary:70000,-40000:90000,-140000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-04",
+        "boundaryKey": "boundary:270000,80000:280000,-10000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-04",
+        "boundaryKey": "boundary:270000,80000:290000,110000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-04",
+        "boundaryKey": "boundary:280000,-10000:350000,-10000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-04",
+        "boundaryKey": "boundary:290000,110000:309155,107606",
+        "range": [
+          0.7605641801100312,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-04",
+        "boundaryKey": "boundary:322552,105931:370000,100000",
+        "range": [
+          0,
+          0.5930943564753348
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "holding-04",
+        "boundaryKey": "boundary:350000,-10000:370000,100000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-120000,-217500:-180000,-210000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-120000,-217500:-75000,-240000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-127500,-412500:-202500,-397500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-127500,-412500:-90000,-397500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-180000,-210000:-225000,-240000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-202500,-397500:-247500,-427500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-225000,-240000:-244800,-240000",
+        "range": [
+          0,
+          0.44
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-247500,-427500:-375000,-367500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-275176,-239137:-315000,-232500",
+        "range": [
+          0.11501121972021061,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-30000,-330000:-37500,-292500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-30000,-330000:-52500,-352500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-315000,-232500:-382500,-345000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-37500,-292500:-67500,-292500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-375000,-367500:-382500,-345000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-52500,-232500:-75000,-240000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-52500,-232500:37500,-240000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-52500,-352500:-67500,-352500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-67500,-292500:-90000,-300000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-67500,-352500:-90000,-330000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-90000,-300000:-90000,-330000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:-90000,-397500:15000,-427500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:127500,-412500:150000,-405000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:127500,-412500:60000,-397500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:15000,-427500:60000,-397500",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:150000,-405000:210000,-285000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:202500,-262500:210000,-285000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:202500,-262500:82500,-210000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      },
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "boundaryKey": "boundary:37500,-240000:82500,-210000",
+        "range": [
+          0,
+          1
+        ],
+        "source": "candidate"
+      }
+    ],
+    "gaps": [
+      {
+        "plotKey": "painted-field:-51,-47:0",
+        "reason": "field-access",
+        "point": {
+          "x": -26,
+          "z": -24
+        },
+        "width": 2.8,
+        "source": "nearest-supplied-corridor"
+      }
+    ],
+    "conflicts": [],
+    "diagnostics": {
+      "requests": 49,
+      "fenceQueries": {
+        "cells": 64,
+        "tests": 123
+      },
+      "exclusionQueries": {
+        "cells": 36,
+        "tests": 50
+      },
+      "plotQueries": {
+        "cells": 63,
+        "tests": 68
+      }
+    }
+  },
+  "plotStats": [
+    {
+      "key": "holding-01",
+      "kind": "home",
+      "use": "kitchen-garden",
+      "area": 48,
+      "props": 6,
+      "beds": 2
+    },
+    {
+      "key": "holding-02",
+      "kind": "home",
+      "use": "work-yard",
+      "area": 42,
+      "props": 2,
+      "beds": 0
+    },
+    {
+      "key": "holding-03",
+      "kind": "home",
+      "use": "orchard",
+      "area": 104,
+      "props": 4,
+      "beds": 0
+    },
+    {
+      "key": "holding-04",
+      "kind": "home",
+      "use": "orchard",
+      "area": 7.5,
+      "props": 0,
+      "beds": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0",
+      "kind": "field",
+      "use": "field",
+      "area": 924.46875,
+      "props": 150,
+      "beds": 0
+    }
+  ],
+  "props": [
+    {
+      "key": "holding-01:kitchen-garden:-2,-6:plant:0",
+      "plotKey": "holding-01",
+      "kind": "garden-herbs",
+      "origin": [
+        -17,
+        -0.05341974247885024,
+        -5.58
+      ],
+      "scale": 0.85,
+      "yaw": 0
+    },
+    {
+      "key": "holding-01:kitchen-garden:-2,-6:plant:1",
+      "plotKey": "holding-01",
+      "kind": "garden-herbs",
+      "origin": [
+        -17,
+        -0.05301352506391371,
+        -5
+      ],
+      "scale": 0.85,
+      "yaw": 0
+    },
+    {
+      "key": "holding-01:kitchen-garden:-2,-6:plant:2",
+      "plotKey": "holding-01",
+      "kind": "garden-herbs",
+      "origin": [
+        -17,
+        -0.05260730764897721,
+        -4.42
+      ],
+      "scale": 0.85,
+      "yaw": 0
+    },
+    {
+      "key": "holding-01:kitchen-garden:1,-6:plant:0",
+      "plotKey": "holding-01",
+      "kind": "garden-greens",
+      "origin": [
+        -12.5,
+        -0.015382097903525726,
+        -5.58
+      ],
+      "scale": 0.85,
+      "yaw": 0
+    },
+    {
+      "key": "holding-01:kitchen-garden:1,-6:plant:1",
+      "plotKey": "holding-01",
+      "kind": "garden-greens",
+      "origin": [
+        -12.5,
+        -0.014738083281448593,
+        -5
+      ],
+      "scale": 0.85,
+      "yaw": 0
+    },
+    {
+      "key": "holding-01:kitchen-garden:1,-6:plant:2",
+      "plotKey": "holding-01",
+      "kind": "garden-greens",
+      "origin": [
+        -12.5,
+        -0.0140940686593715,
+        -4.42
+      ],
+      "scale": 0.85,
+      "yaw": 0
+    },
+    {
+      "key": "holding-02:work-yard:0,-3",
+      "plotKey": "holding-02",
+      "kind": "wood-stack",
+      "origin": [
+        -2,
+        0.0911072109422167,
+        -4.399999999999999
+      ],
+      "scale": 1,
+      "yaw": 0
+    },
+    {
+      "key": "holding-02:work-yard:1,-4:barrel",
+      "plotKey": "holding-02",
+      "kind": "barrel",
+      "origin": [
+        0.7999999999999998,
+        0.1060870131378827,
+        -7.199999999999999
+      ],
+      "scale": 1,
+      "yaw": 0
+    },
+    {
+      "key": "holding-03:orchard:-1,-3",
+      "plotKey": "holding-03",
+      "kind": "fruit-tree",
+      "origin": [
+        11.4,
+        0.2000929097329042,
+        -7.800000000000001
+      ],
+      "scale": 0.9793265862273983,
+      "yaw": 0
+    },
+    {
+      "key": "holding-03:orchard:0,-3",
+      "plotKey": "holding-03",
+      "kind": "fruit-tree",
+      "origin": [
+        15,
+        0.2302281528069743,
+        -7.800000000000001
+      ],
+      "scale": 0.9937035460094921,
+      "yaw": 0
+    },
+    {
+      "key": "holding-03:orchard:1,-3",
+      "plotKey": "holding-03",
+      "kind": "fruit-tree",
+      "origin": [
+        18.6,
+        0.26101301047373116,
+        -7.800000000000001
+      ],
+      "scale": 0.890330633125268,
+      "yaw": 0
+    },
+    {
+      "key": "holding-03:orchard:1,-4",
+      "plotKey": "holding-03",
+      "kind": "fruit-tree",
+      "origin": [
+        18.6,
+        0.24440952766470614,
+        -11.4
+      ],
+      "scale": 0.8918541072192602,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-1,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -1.8,
+        0.0029399851520005883,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-1,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -1.8,
+        -0.0077640724073127975,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-1,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -1.8,
+        -0.015044195851027864,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-1,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -1.8,
+        -0.026043065190532535,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-1,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -1.8,
+        -0.03708618251703215,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-1,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -1.8,
+        -0.04812929984353176,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-1,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -1.8,
+        -0.07497083958551375,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-1,-23",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -1.8,
+        -0.08361050392675937,
+        -41.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-12",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.08899526594346478,
+        -21.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-13",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.09270815386236303,
+        -23.400000000000002
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.09642104178126121,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.1001339297001595,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.10399789793963998,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.10838929085722204,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.11058636743689557,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.11278344401656909,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.11498052059624259,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.1171775971759161,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-10,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -18,
+        -0.11949736046444516,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-11,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -19.8,
+        -0.12135771239810664,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-11,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -19.8,
+        -0.12292415195434174,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-12,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -21.6,
+        -0.11714965902257737,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-12,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -21.6,
+        -0.11945505765823825,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-12,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -21.6,
+        -0.12045969816991908,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-12,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -21.6,
+        -0.12265677474959258,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-12,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -21.6,
+        -0.1248538513292661,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-12,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -21.6,
+        -0.12705092790893963,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-12,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -21.6,
+        -0.12857397500943357,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-12,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -21.6,
+        -0.1272562626740721,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-12,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -21.6,
+        -0.1260079986271407,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-13,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -23.400000000000002,
+        -0.13290608572916393,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-13,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -23.400000000000002,
+        -0.13158837339380247,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-13,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -23.400000000000002,
+        -0.13034010934687107,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-13,-23",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -23.400000000000002,
+        -0.12911615220089018,
+        -41.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-14,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -25.2,
+        -0.1343011446256876,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-14,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -25.2,
+        -0.13523564183925124,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-14,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -25.2,
+        -0.13624028235093208,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-14,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -25.2,
+        -0.13843735893060558,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-14,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -25.2,
+        -0.1398736211196172,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-14,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -25.2,
+        -0.13855590878425575,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-14,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -25.2,
+        -0.1372381964488943,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-14,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -25.2,
+        -0.13592048411353283,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-14,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -25.2,
+        -0.13467222006660143,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-14,-23",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -25.2,
+        -0.13344826292062054,
+        -41.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-17,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -30.6,
+        -0.15177071671288642,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-17,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -30.6,
+        -0.1480497666071133,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-18,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -32.4,
+        -0.15496681311671182,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-18,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -32.4,
+        -0.15114104300016107,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-19,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -34.2,
+        -0.16830216175542848,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-19,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -34.2,
+        -0.16698444942006704,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-19,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -34.2,
+        -0.16566673708470556,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-19,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -34.2,
+        -0.1618838596263104,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-19,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -34.2,
+        -0.15805808950975955,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-19,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -34.2,
+        -0.1542323193932088,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-20,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -36,
+        -0.16880090613590892,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-20,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -36,
+        -0.16497513601935818,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-4,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -7.2,
+        -0.03175529200514762,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-4,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -7.2,
+        -0.03881609050210917,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-4,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -7.2,
+        -0.04609621394582404,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-4,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -7.2,
+        -0.0776671652605182,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-4,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -7.2,
+        -0.08409949894989607,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-4,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -7.2,
+        -0.09201973700460696,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-5,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -9,
+        -0.042105964703412824,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-5,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -9,
+        -0.04916676320037437,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-5,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -9,
+        -0.05644688664408963,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-5,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -9,
+        -0.07691779737750491,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-6,-13",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -10.8,
+        -0.047135762365101516,
+        -23.400000000000002
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-6,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -10.8,
+        -0.05419656086206287,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-6,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -10.8,
+        -0.06125735935902442,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-6,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -10.8,
+        -0.06596726055938178,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-6,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -10.8,
+        -0.07239959424875958,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-6,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -10.8,
+        -0.07883192793813745,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-6,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -10.8,
+        -0.08526426162751533,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-6,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -10.8,
+        -0.09169659531689314,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-6,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -10.8,
+        -0.09629713673371984,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-6,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -10.8,
+        -0.09945822435577924,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-7,-13",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -12.6,
+        -0.0600326645175881,
+        -23.400000000000002
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-7,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -12.6,
+        -0.06709346301454945,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-7,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -12.6,
+        -0.07161095166496584,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-7,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -12.6,
+        -0.07547491990444632,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-7,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -12.6,
+        -0.08190725359382413,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-8,-13",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -14.4,
+        -0.07292956667007466,
+        -23.400000000000002
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-8,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -14.4,
+        -0.07740572309113211,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-8,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -14.4,
+        -0.0811186110100304,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-8,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -14.4,
+        -0.08498257924951089,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-8,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -14.4,
+        -0.09141491293888869,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-8,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -14.4,
+        -0.09784724662826656,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-8,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -14.4,
+        -0.10234321379547097,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-8,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -14.4,
+        -0.10454029037514447,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-8,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -14.4,
+        -0.10673736695481797,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-8,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -14.4,
+        -0.10989845457687737,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-9,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -16.2,
+        -0.10976040548569352,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-9,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -16.2,
+        -0.11195748206536703,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:-9,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        -16.2,
+        -0.11511856968742643,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:0,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        0,
+        0.016758089089292653,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:0,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        0,
+        0.006052531629171572,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:0,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        0,
+        -0.004653025830949612,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:0,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        0,
+        -0.01569239249226714,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:0,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        0,
+        -0.02673550981876675,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:0,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        0,
+        -0.037778627145266364,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:0,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        0,
+        -0.04882174447176588,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:0,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        0,
+        -0.05986486179826549,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:0,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        0,
+        -0.06928787377914934,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:0,-23",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        0,
+        -0.07792753812039496,
+        -41.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:11,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        19.8,
+        0.12132428677136607,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:11,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        19.8,
+        0.10362605977002197,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:2,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        3.6,
+        0.037459434485823576,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:2,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        3.6,
+        0.026753877025702488,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:2,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        3.6,
+        0.01604831956558131,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:2,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        3.6,
+        0.00044940019644340926,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:2,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        3.6,
+        -0.015204500767177932,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:2,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        3.6,
+        -0.026412695532537486,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:2,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        3.6,
+        -0.037455812859037,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:2,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        3.6,
+        -0.04849893018553661,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:2,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        3.6,
+        -0.061387473497871964,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:4,-13",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        7.2,
+        0.07522891656952212,
+        -23.400000000000002
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:4,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        7.2,
+        0.06087860014624126,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:4,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        7.2,
+        0.04745522242223321,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:4,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        7.2,
+        0.03674966496211203,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:4,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        7.2,
+        0.021150745592974137,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:4,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        7.2,
+        0.005496844629352796,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:4,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        7.2,
+        -0.010157056334268545,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:4,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        7.2,
+        -0.02581095729788974,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:4,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        7.2,
+        -0.03713299857280783,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:4,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        7.2,
+        -0.050021541885143184,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:5,-13",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        9,
+        0.08926934525518367,
+        -23.400000000000002
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:5,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        9,
+        0.07491902883190281,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:5,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        9,
+        0.060568712408622064,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:5,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        9,
+        0.0471003376603774,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:5,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        9,
+        0.031501418291239494,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:5,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        9,
+        0.015847517327618157,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:5,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        9,
+        0.00019361636399681595,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:5,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        9,
+        -0.01546028459962438,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:5,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        9,
+        -0.031114185563245727,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:5,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        9,
+        -0.044338576078778794,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:6,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        10.8,
+        -0.008957530092146133,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:6,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        10.8,
+        -0.024611431055767477,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:6,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        10.8,
+        -0.04218602848384363,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:7,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        12.6,
+        0.02757038694564547,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:7,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        12.6,
+        0.01191648598202413,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:7,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        12.6,
+        -0.003737414981597067,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:7,-21",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        12.6,
+        -0.01939131594521841,
+        -37.800000000000004
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:7,-22",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        12.6,
+        -0.036965913373294565,
+        -39.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:9,-14",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        16.2,
+        0.11573201449872676,
+        -25.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:9,-15",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        16.2,
+        0.09973254212402972,
+        -27
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:9,-16",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        16.2,
+        0.08538222570074885,
+        -28.8
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:9,-17",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        16.2,
+        0.06555461031242381,
+        -30.6
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:9,-18",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        16.2,
+        0.04566545223909811,
+        -32.4
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:9,-19",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        16.2,
+        0.02577629416577241,
+        -34.2
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    },
+    {
+      "key": "painted-field:-51,-47:0:field:9,-20",
+      "plotKey": "painted-field:-51,-47:0",
+      "kind": "grain-sheaf",
+      "origin": [
+        16.2,
+        0.006702815239501066,
+        -36
+      ],
+      "scale": 0.83,
+      "yaw": 0
+    }
+  ],
+  "fenceContacts": [
+    {
+      "key": "-120000,-217500",
+      "x": -12,
+      "z": -21.75,
+      "height": -0.05012109198804365
+    },
+    {
+      "key": "-140000,-215000",
+      "x": -14,
+      "z": -21.5,
+      "height": -0.06347031681067304
+    },
+    {
+      "key": "-160000,-212500",
+      "x": -16,
+      "z": -21.25,
+      "height": -0.07681954163330242
+    },
+    {
+      "key": "-180000,-210000",
+      "x": -18,
+      "z": -21,
+      "height": -0.08839148059350317
+    },
+    {
+      "key": "-75000,-240000",
+      "x": -7.5,
+      "z": -24,
+      "height": -0.029463249970101784
+    },
+    {
+      "key": "-90000,-232500",
+      "x": -9,
+      "z": -23.25,
+      "height": -0.03514681117825589
+    },
+    {
+      "key": "-105000,-225000",
+      "x": -10.5,
+      "z": -22.5,
+      "height": -0.04231567290137209
+    },
+    {
+      "key": "-202500,-397500",
+      "x": -20.25,
+      "z": -39.75,
+      "height": -0.12294572653982656
+    },
+    {
+      "key": "-183750,-401250",
+      "x": -18.375,
+      "z": -40.125,
+      "height": -0.11931350440716194
+    },
+    {
+      "key": "-165000,-405000",
+      "x": -16.5,
+      "z": -40.5,
+      "height": -0.11808584229000177
+    },
+    {
+      "key": "-146250,-408750",
+      "x": -14.625,
+      "z": -40.875,
+      "height": -0.11337707477628288
+    },
+    {
+      "key": "-127500,-412500",
+      "x": -12.75,
+      "z": -41.25,
+      "height": -0.10866830726256395
+    },
+    {
+      "key": "-108750,-405000",
+      "x": -10.875,
+      "z": -40.5,
+      "height": -0.1017729825695359
+    },
+    {
+      "key": "-90000,-397500",
+      "x": -9,
+      "z": -39.75,
+      "height": -0.09606310623359363
+    },
+    {
+      "key": "-80000,120000",
+      "x": -8,
+      "z": 12,
+      "height": 0.012934327990413549
+    },
+    {
+      "key": "-98484,120000",
+      "x": -9.848397922538261,
+      "z": 12,
+      "height": -0.0031341976635493735
+    },
+    {
+      "key": "-116968,120000",
+      "x": -11.69679584507652,
+      "z": 12,
+      "height": -0.016377868300124585
+    },
+    {
+      "key": "-135452,120000",
+      "x": -13.545193767614782,
+      "z": 12,
+      "height": -0.031661454667612436
+    },
+    {
+      "key": "-149087,120000",
+      "x": -14.908706941605077,
+      "z": 12,
+      "height": -0.04307528826008307
+    },
+    {
+      "key": "-169391,120000",
+      "x": -16.939137961070053,
+      "z": 12,
+      "height": -0.060071825014724536
+    },
+    {
+      "key": "-189696,120000",
+      "x": -18.969568980535026,
+      "z": 12,
+      "height": -0.07689967099729719
+    },
+    {
+      "key": "-210000,120000",
+      "x": -21,
+      "z": 12,
+      "height": -0.08897282129906994
+    },
+    {
+      "key": "40000,120000",
+      "x": 4,
+      "z": 12,
+      "height": 0.11913606287708244
+    },
+    {
+      "key": "21516,120000",
+      "x": 2.1516020774617397,
+      "z": 12,
+      "height": 0.10229138800215476
+    },
+    {
+      "key": "3032,120000",
+      "x": 0.30320415492347896,
+      "z": 12,
+      "height": 0.08544671312722707
+    },
+    {
+      "key": "-15452,120000",
+      "x": -1.5451937676147818,
+      "z": 12,
+      "height": 0.07063069743102354
+    },
+    {
+      "key": "-220000,-50000",
+      "x": -22,
+      "z": -5,
+      "height": -0.0915214545009608
+    },
+    {
+      "key": "-205000,-67500",
+      "x": -20.5,
+      "z": -6.75,
+      "height": -0.08181006961626129
+    },
+    {
+      "key": "-190000,-85000",
+      "x": -19,
+      "z": -8.5,
+      "height": -0.07209868473156177
+    },
+    {
+      "key": "-175000,-102500",
+      "x": -17.5,
+      "z": -10.25,
+      "height": -0.06243839467102458
+    },
+    {
+      "key": "-160000,-120000",
+      "x": -16,
+      "z": -12,
+      "height": -0.05510909879846629
+    },
+    {
+      "key": "-140000,-112500",
+      "x": -14,
+      "z": -11.25,
+      "height": -0.03612713048709042
+    },
+    {
+      "key": "-120000,-105000",
+      "x": -12,
+      "z": -10.5,
+      "height": -0.01714516217571465
+    },
+    {
+      "key": "-100000,-97500",
+      "x": -10,
+      "z": -9.75,
+      "height": 0.0018368061356611176
+    },
+    {
+      "key": "-80000,-90000",
+      "x": -8,
+      "z": -9,
+      "height": 0.020831633770196683
+    },
+    {
+      "key": "-195000,-220000",
+      "x": -19.5,
+      "z": -22,
+      "height": -0.0987756870817545
+    },
+    {
+      "key": "-210000,-230000",
+      "x": -21,
+      "z": -23,
+      "height": -0.10975755585530357
+    },
+    {
+      "key": "-225000,-240000",
+      "x": -22.5,
+      "z": -24,
+      "height": -0.12073942462885262
+    },
+    {
+      "key": "-247500,-427500",
+      "x": -24.75,
+      "z": -42.75,
+      "height": -0.12990957908966985
+    },
+    {
+      "key": "-232500,-417500",
+      "x": -23.25,
+      "z": -41.75,
+      "height": -0.12880595868828731
+    },
+    {
+      "key": "-217500,-407500",
+      "x": -21.75,
+      "z": -40.75,
+      "height": -0.12587584261405693
+    },
+    {
+      "key": "-211250,98750",
+      "x": -21.125,
+      "z": 9.875,
+      "height": -0.08782232630058084
+    },
+    {
+      "key": "-212500,77500",
+      "x": -21.25,
+      "z": 7.75,
+      "height": -0.08716950579009994
+    },
+    {
+      "key": "-213750,56250",
+      "x": -21.375,
+      "z": 5.625,
+      "height": -0.08654957296383353
+    },
+    {
+      "key": "-215000,35000",
+      "x": -21.5,
+      "z": 3.5,
+      "height": -0.08592964013756736
+    },
+    {
+      "key": "-216250,13750",
+      "x": -21.625,
+      "z": 1.375,
+      "height": -0.08578049159105336
+    },
+    {
+      "key": "-217500,-7500",
+      "x": -21.75,
+      "z": -0.75,
+      "height": -0.08672202122793052
+    },
+    {
+      "key": "-218750,-28750",
+      "x": -21.875,
+      "z": -2.875,
+      "height": -0.08912173786444566
+    },
+    {
+      "key": "-244800,-240000",
+      "x": -24.48,
+      "z": -24,
+      "height": -0.13104804911980972
+    },
+    {
+      "key": "-375000,-367500",
+      "x": -37.5,
+      "z": -36.75,
+      "height": -0.16238641002288776
+    },
+    {
+      "key": "-353750,-377500",
+      "x": -35.375,
+      "z": -37.75,
+      "height": -0.15661155866078924
+    },
+    {
+      "key": "-332500,-387500",
+      "x": -33.25,
+      "z": -38.75,
+      "height": -0.15048299045150204
+    },
+    {
+      "key": "-311250,-397500",
+      "x": -31.125,
+      "z": -39.75,
+      "height": -0.1439763111297028
+    },
+    {
+      "key": "-290000,-407500",
+      "x": -29,
+      "z": -40.75,
+      "height": -0.13746963180790361
+    },
+    {
+      "key": "-268750,-417500",
+      "x": -26.875,
+      "z": -41.75,
+      "height": -0.13319729310830244
+    },
+    {
+      "key": "-275176,-239137",
+      "x": -27.517550488740948,
+      "z": -23.91374158520984,
+      "height": -0.14431835597956483
+    },
+    {
+      "key": "-295088,-235819",
+      "x": -29.508775244370476,
+      "z": -23.58187079260492,
+      "height": -0.15271175549485255
+    },
+    {
+      "key": "-315000,-232500",
+      "x": -31.5,
+      "z": -23.25,
+      "height": -0.16098818020015032
+    },
+    {
+      "key": "-29087,120000",
+      "x": -2.9087069416050753,
+      "z": 12,
+      "height": 0.05933190029663529
+    },
+    {
+      "key": "-46058,120000",
+      "x": -4.605804627736717,
+      "z": 12,
+      "height": 0.043866042861228055
+    },
+    {
+      "key": "-63029,120000",
+      "x": -6.302902313868358,
+      "z": 12,
+      "height": 0.0284001854258208
+    },
+    {
+      "key": "-30000,-330000",
+      "x": -3,
+      "z": -33,
+      "height": -0.04840387791314221
+    },
+    {
+      "key": "-33750,-311250",
+      "x": -3.375,
+      "z": -31.125,
+      "height": -0.03905702084351036
+    },
+    {
+      "key": "-37500,-292500",
+      "x": -3.75,
+      "z": -29.25,
+      "height": -0.02971016377387869
+    },
+    {
+      "key": "-52500,-352500",
+      "x": -5.25,
+      "z": -35.25,
+      "height": -0.06925930217900783
+    },
+    {
+      "key": "-41250,-341250",
+      "x": -4.125,
+      "z": -34.125,
+      "height": -0.06168723999416903
+    },
+    {
+      "key": "-326250,-251250",
+      "x": -32.625,
+      "z": -25.125,
+      "height": -0.16590582747022636
+    },
+    {
+      "key": "-337500,-270000",
+      "x": -33.75,
+      "z": -27,
+      "height": -0.1683330065097887
+    },
+    {
+      "key": "-348750,-288750",
+      "x": -34.875,
+      "z": -28.875,
+      "height": -0.17073397195878046
+    },
+    {
+      "key": "-360000,-307500",
+      "x": -36,
+      "z": -30.75,
+      "height": -0.1725629134171839
+    },
+    {
+      "key": "-371250,-326250",
+      "x": -37.125,
+      "z": -32.625,
+      "height": -0.17050978395809835
+    },
+    {
+      "key": "-382500,-345000",
+      "x": -38.25,
+      "z": -34.5,
+      "height": -0.16841177101844107
+    },
+    {
+      "key": "-52500,-292500",
+      "x": -5.25,
+      "z": -29.25,
+      "height": -0.038335724355766515
+    },
+    {
+      "key": "-67500,-292500",
+      "x": -6.75,
+      "z": -29.25,
+      "height": -0.04696128493765435
+    },
+    {
+      "key": "-52500,-232500",
+      "x": -5.25,
+      "z": -23.25,
+      "height": -0.013309177826097175
+    },
+    {
+      "key": "37500,-240000",
+      "x": 3.75,
+      "z": -24,
+      "height": 0.0447453250200851
+    },
+    {
+      "key": "15000,-238125",
+      "x": 1.5,
+      "z": -23.8125,
+      "height": 0.03292214638268272
+    },
+    {
+      "key": "-7500,-236250",
+      "x": -0.75,
+      "z": -23.625,
+      "height": 0.019561569417198287
+    },
+    {
+      "key": "-30000,-234375",
+      "x": -3,
+      "z": -23.4375,
+      "height": 0.0031261957955506063
+    },
+    {
+      "key": "-67500,-352500",
+      "x": -6.75,
+      "z": -35.25,
+      "height": -0.07399510701764483
+    },
+    {
+      "key": "-90000,-300000",
+      "x": -9,
+      "z": -30,
+      "height": -0.06233784101491506
+    },
+    {
+      "key": "-90000,-330000",
+      "x": -9,
+      "z": -33,
+      "height": -0.07305839716387816
+    },
+    {
+      "key": "-78750,-341250",
+      "x": -7.875,
+      "z": -34.125,
+      "height": -0.07352675209076154
+    },
+    {
+      "key": "-60000,-95000",
+      "x": -6,
+      "z": -9.5,
+      "height": 0.03850269177982635
+    },
+    {
+      "key": "-40000,-100000",
+      "x": -4,
+      "z": -10,
+      "height": 0.05479861353792739
+    },
+    {
+      "key": "-20000,-105000",
+      "x": -2,
+      "z": -10.5,
+      "height": 0.07088297587271625
+    },
+    {
+      "key": "0,-110000",
+      "x": 0,
+      "z": -11,
+      "height": 0.08696733820750481
+    },
+    {
+      "key": "-90000,-315000",
+      "x": -9,
+      "z": -31.5,
+      "height": -0.06769811908939662
+    },
+    {
+      "key": "-69000,-403500",
+      "x": -6.9,
+      "z": -40.35,
+      "height": -0.09524841380181491
+    },
+    {
+      "key": "-48000,-409500",
+      "x": -4.8,
+      "z": -40.95,
+      "height": -0.09149817514147175
+    },
+    {
+      "key": "-27000,-415500",
+      "x": -2.7,
+      "z": -41.55,
+      "height": -0.08774793648112827
+    },
+    {
+      "key": "-6000,-421500",
+      "x": -0.5999999999999996,
+      "z": -42.15,
+      "height": -0.08399769782078502
+    },
+    {
+      "key": "15000,-427500",
+      "x": 1.5,
+      "z": -42.75,
+      "height": -0.08458466259724005
+    },
+    {
+      "key": "13333,-93333",
+      "x": 1.3333333333333333,
+      "z": -9.333333333333334,
+      "height": 0.10562145912148851
+    },
+    {
+      "key": "26667,-76667",
+      "x": 2.6666666666666665,
+      "z": -7.666666666666667,
+      "height": 0.12036681808659959
+    },
+    {
+      "key": "40000,-60000",
+      "x": 4,
+      "z": -6,
+      "height": 0.1351121770517107
+    },
+    {
+      "key": "127500,-412500",
+      "x": 12.75,
+      "z": -41.25,
+      "height": -0.05472580151207976
+    },
+    {
+      "key": "150000,-405000",
+      "x": 15,
+      "z": -40.5,
+      "height": -0.040490955195363304
+    },
+    {
+      "key": "60000,-397500",
+      "x": 6,
+      "z": -39.75,
+      "height": -0.055877311335392324
+    },
+    {
+      "key": "82500,-402500",
+      "x": 8.25,
+      "z": -40.25,
+      "height": -0.05260161440954696
+    },
+    {
+      "key": "105000,-407500",
+      "x": 10.5,
+      "z": -40.75,
+      "height": -0.05238468482917262
+    },
+    {
+      "key": "140896,120000",
+      "x": 14.08957560385583,
+      "z": 12,
+      "height": 0.2044842792289739
+    },
+    {
+      "key": "120597,120000",
+      "x": 12.05971706923722,
+      "z": 12,
+      "height": 0.18749253468822175
+    },
+    {
+      "key": "100299,120000",
+      "x": 10.02985853461861,
+      "z": 12,
+      "height": 0.1705007901474696
+    },
+    {
+      "key": "80000,120000",
+      "x": 8,
+      "z": 12,
+      "height": 0.15433650651476835
+    },
+    {
+      "key": "30000,-417500",
+      "x": 3,
+      "z": -41.75,
+      "height": -0.07938624767248711
+    },
+    {
+      "key": "45000,-407500",
+      "x": 4.5,
+      "z": -40.75,
+      "height": -0.06826913683824967
+    },
+    {
+      "key": "160000,-385000",
+      "x": 16,
+      "z": -38.5,
+      "height": -0.017031684768978324
+    },
+    {
+      "key": "170000,-365000",
+      "x": 17,
+      "z": -36.5,
+      "height": 0.003630967178942287
+    },
+    {
+      "key": "180000,-345000",
+      "x": 18,
+      "z": -34.5,
+      "height": 0.030643149960394408
+    },
+    {
+      "key": "190000,-325000",
+      "x": 19,
+      "z": -32.5,
+      "height": 0.05773671697660698
+    },
+    {
+      "key": "200000,-305000",
+      "x": 20,
+      "z": -30.5,
+      "height": 0.08224250968015222
+    },
+    {
+      "key": "210000,-285000",
+      "x": 21,
+      "z": -28.5,
+      "height": 0.1106560771971607
+    },
+    {
+      "key": "240000,120000",
+      "x": 24,
+      "z": 12,
+      "height": 0.2772824008431269
+    },
+    {
+      "key": "218633,120000",
+      "x": 21.863320384750327,
+      "z": 12,
+      "height": 0.2624390800780231
+    },
+    {
+      "key": "197266,120000",
+      "x": 19.72664076950066,
+      "z": 12,
+      "height": 0.24759575931291933
+    },
+    {
+      "key": "175900,120000",
+      "x": 17.589961154250986,
+      "z": 12,
+      "height": 0.23246680325388402
+    },
+    {
+      "key": "154533,120000",
+      "x": 15.453281539001315,
+      "z": 12,
+      "height": 0.21589972640596342
+    },
+    {
+      "key": "200000,-160000",
+      "x": 20,
+      "z": -16,
+      "height": 0.22130634310927833
+    },
+    {
+      "key": "212000,-144000",
+      "x": 21.2,
+      "z": -14.4,
+      "height": 0.23927667758129556
+    },
+    {
+      "key": "224000,-128000",
+      "x": 22.4,
+      "z": -12.8,
+      "height": 0.25755335685579706
+    },
+    {
+      "key": "236000,-112000",
+      "x": 23.6,
+      "z": -11.2,
+      "height": 0.2783064249918123
+    },
+    {
+      "key": "248000,-96000",
+      "x": 24.8,
+      "z": -9.6,
+      "height": 0.299059493127828
+    },
+    {
+      "key": "260000,-80000",
+      "x": 26,
+      "z": -8,
+      "height": 0.3114349308307898
+    },
+    {
+      "key": "90000,-140000",
+      "x": 9,
+      "z": -14,
+      "height": 0.15038467922194407
+    },
+    {
+      "key": "112000,-144000",
+      "x": 11.2,
+      "z": -14.4,
+      "height": 0.16479198518556779
+    },
+    {
+      "key": "134000,-148000",
+      "x": 13.4,
+      "z": -14.8,
+      "height": 0.1783226120058643
+    },
+    {
+      "key": "156000,-152000",
+      "x": 15.6,
+      "z": -15.2,
+      "height": 0.192559163829266
+    },
+    {
+      "key": "178000,-156000",
+      "x": 17.8,
+      "z": -15.6,
+      "height": 0.20826639274247022
+    },
+    {
+      "key": "202500,-262500",
+      "x": 20.25,
+      "z": -26.25,
+      "height": 0.12949123924446315
+    },
+    {
+      "key": "182500,-253750",
+      "x": 18.25,
+      "z": -25.375,
+      "height": 0.12751961030272763
+    },
+    {
+      "key": "162500,-245000",
+      "x": 16.25,
+      "z": -24.5,
+      "height": 0.12179302381450681
+    },
+    {
+      "key": "142500,-236250",
+      "x": 14.25,
+      "z": -23.625,
+      "height": 0.11606643732628615
+    },
+    {
+      "key": "122500,-227500",
+      "x": 12.25,
+      "z": -22.75,
+      "height": 0.11179451568799899
+    },
+    {
+      "key": "102500,-218750",
+      "x": 10.25,
+      "z": -21.875,
+      "height": 0.1082062980103554
+    },
+    {
+      "key": "82500,-210000",
+      "x": 8.25,
+      "z": -21,
+      "height": 0.10159623410564714
+    },
+    {
+      "key": "257778,-57778",
+      "x": 25.77777777777778,
+      "z": -5.777777777777778,
+      "height": 0.3156566979204093
+    },
+    {
+      "key": "255556,-35556",
+      "x": 25.555555555555557,
+      "z": -3.5555555555555554,
+      "height": 0.32015486568464563
+    },
+    {
+      "key": "253333,-13333",
+      "x": 25.333333333333332,
+      "z": -1.333333333333334,
+      "height": 0.3246530334488824
+    },
+    {
+      "key": "251111,8889",
+      "x": 25.11111111111111,
+      "z": 0.8888888888888893,
+      "height": 0.32455886962706726
+    },
+    {
+      "key": "248889,31111",
+      "x": 24.88888888888889,
+      "z": 3.1111111111111107,
+      "height": 0.31757620842617496
+    },
+    {
+      "key": "246667,53333",
+      "x": 24.666666666666668,
+      "z": 5.333333333333332,
+      "height": 0.31004760688570204
+    },
+    {
+      "key": "244444,75556",
+      "x": 24.444444444444443,
+      "z": 7.555555555555555,
+      "height": 0.3023853790143567
+    },
+    {
+      "key": "242222,97778",
+      "x": 24.22222222222222,
+      "z": 9.777777777777779,
+      "height": 0.29387478618345736
+    },
+    {
+      "key": "270000,80000",
+      "x": 27,
+      "z": 8,
+      "height": 0.3189148991713231
+    },
+    {
+      "key": "272500,57500",
+      "x": 27.25,
+      "z": 5.75,
+      "height": 0.3268465776384764
+    },
+    {
+      "key": "275000,35000",
+      "x": 27.5,
+      "z": 3.5,
+      "height": 0.3347782561056295
+    },
+    {
+      "key": "277500,12500",
+      "x": 27.75,
+      "z": 1.25,
+      "height": 0.34270993457278254
+    },
+    {
+      "key": "280000,-10000",
+      "x": 28,
+      "z": -1,
+      "height": 0.34501443219399425
+    },
+    {
+      "key": "290000,110000",
+      "x": 29,
+      "z": 11,
+      "height": 0.31607847591596744
+    },
+    {
+      "key": "280000,95000",
+      "x": 28,
+      "z": 9.5,
+      "height": 0.3217318417392885
+    },
+    {
+      "key": "303333,-10000",
+      "x": 30.333333333333332,
+      "z": -1,
+      "height": 0.35764273315919876
+    },
+    {
+      "key": "326667,-10000",
+      "x": 32.666666666666664,
+      "z": -1,
+      "height": 0.3697828719323917
+    },
+    {
+      "key": "350000,-10000",
+      "x": 35,
+      "z": -1,
+      "height": 0.3819230107055848
+    },
+    {
+      "key": "309155,107606",
+      "x": 30.91548655911975,
+      "z": 10.76056418011003,
+      "height": 0.32743192221736417
+    },
+    {
+      "key": "370000,100000",
+      "x": 37,
+      "z": 10,
+      "height": 0.36349596886507635
+    },
+    {
+      "key": "346276,102965",
+      "x": 34.62762257409866,
+      "z": 10.296547178237667,
+      "height": 0.34943444513191374
+    },
+    {
+      "key": "322552,105931",
+      "x": 32.25524514819732,
+      "z": 10.593094356475335,
+      "height": 0.33537292139875063
+    },
+    {
+      "key": "354000,12000",
+      "x": 35.4,
+      "z": 1.2000000000000002,
+      "height": 0.38369630823881556
+    },
+    {
+      "key": "358000,34000",
+      "x": 35.8,
+      "z": 3.4000000000000004,
+      "height": 0.3793862738883846
+    },
+    {
+      "key": "362000,56000",
+      "x": 36.2,
+      "z": 5.6,
+      "height": 0.37477769382918985
+    },
+    {
+      "key": "366000,78000",
+      "x": 36.6,
+      "z": 7.800000000000001,
+      "height": 0.3701691137699949
+    },
+    {
+      "key": "67500,-220000",
+      "x": 6.75,
+      "z": -22,
+      "height": 0.08192347885466195
+    },
+    {
+      "key": "52500,-230000",
+      "x": 5.25,
+      "z": -23,
+      "height": 0.062250723603676894
+    },
+    {
+      "key": "40000,-37500",
+      "x": 4,
+      "z": -3.75,
+      "height": 0.13874842184414007
+    },
+    {
+      "key": "40000,-15000",
+      "x": 4,
+      "z": -1.5,
+      "height": 0.14325532101270544
+    },
+    {
+      "key": "40000,7500",
+      "x": 4,
+      "z": 0.75,
+      "height": 0.14509238183271417
+    },
+    {
+      "key": "40000,30000",
+      "x": 4,
+      "z": 3,
+      "height": 0.14158976595560946
+    },
+    {
+      "key": "40000,52500",
+      "x": 4,
+      "z": 5.25,
+      "height": 0.13808715007850478
+    },
+    {
+      "key": "40000,75000",
+      "x": 4,
+      "z": 7.5,
+      "height": 0.13369955260135294
+    },
+    {
+      "key": "40000,97500",
+      "x": 4,
+      "z": 9.75,
+      "height": 0.12877452599950995
+    },
+    {
+      "key": "78571,97143",
+      "x": 7.857142857142857,
+      "z": 9.714285714285715,
+      "height": 0.16407812903291946
+    },
+    {
+      "key": "77143,74286",
+      "x": 7.714285714285714,
+      "z": 7.428571428571429,
+      "height": 0.1676913658186632
+    },
+    {
+      "key": "75714,51429",
+      "x": 7.571428571428571,
+      "z": 5.142857142857143,
+      "height": 0.17096792856722196
+    },
+    {
+      "key": "74286,28571",
+      "x": 7.428571428571429,
+      "z": 2.8571428571428577,
+      "height": 0.1742444913157807
+    },
+    {
+      "key": "72857,5714",
+      "x": 7.285714285714286,
+      "z": 0.5714285714285712,
+      "height": 0.17679815902491325
+    },
+    {
+      "key": "71429,-17143",
+      "x": 7.142857142857143,
+      "z": -1.7142857142857135,
+      "height": 0.17288745859493054
+    },
+    {
+      "key": "70000,-40000",
+      "x": 7,
+      "z": -4,
+      "height": 0.16694259561366698
+    },
+    {
+      "key": "74000,-60000",
+      "x": 7.4,
+      "z": -6,
+      "height": 0.16676245506522808
+    },
+    {
+      "key": "78000,-80000",
+      "x": 7.8,
+      "z": -8,
+      "height": 0.16662860247096378
+    },
+    {
+      "key": "82000,-100000",
+      "x": 8.2,
+      "z": -10,
+      "height": 0.16541671789346263
+    },
+    {
+      "key": "86000,-120000",
+      "x": 8.6,
+      "z": -12,
+      "height": 0.15790069855770342
+    },
+    {
+      "key": "-80000,-66667",
+      "x": -8,
+      "z": -6.666666666666667,
+      "height": 0.02342249719234599
+    },
+    {
+      "key": "-80000,-43333",
+      "x": -8,
+      "z": -4.333333333333334,
+      "height": 0.026013360614495263
+    },
+    {
+      "key": "-80000,-20000",
+      "x": -8,
+      "z": -2,
+      "height": 0.02860422403664453
+    },
+    {
+      "key": "-80000,3333",
+      "x": -8,
+      "z": 0.33333333333333215,
+      "height": 0.031110035737147258
+    },
+    {
+      "key": "-80000,26667",
+      "x": -8,
+      "z": 2.666666666666668,
+      "height": 0.02851917231499797
+    },
+    {
+      "key": "-80000,50000",
+      "x": -8,
+      "z": 5,
+      "height": 0.025928308892848643
+    },
+    {
+      "key": "-80000,73333",
+      "x": -8,
+      "z": 7.333333333333332,
+      "height": 0.02333744547069935
+    },
+    {
+      "key": "-80000,96667",
+      "x": -8,
+      "z": 9.666666666666664,
+      "height": 0.019903735201485934
+    }
+  ]
+}
