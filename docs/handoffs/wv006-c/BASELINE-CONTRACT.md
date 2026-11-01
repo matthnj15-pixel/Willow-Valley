@@ -1,6 +1,6 @@
 # WV-ART-006 C: level 1 building baselines
 
-Status: gallery-review; every entry is `runtimeReady:false`. This is the E/F input contract, not a gameplay rollout. Started from fetched develop `5e39c72ff5e205dea166fa18febdfa89aaa5aec8` in isolated worktree `/workspace/wv006-c`, branch `feat/wv-art-006-c-baselines`. No applicable AGENTS.md was found. PR 81 inputs, identity salt/order, gameplay, saves, founding era and shared integration files are unchanged.
+Status: gallery-review; every entry is `runtimeReady:false`. This is the E/F input contract, not a gameplay rollout. Started from fetched develop `5e39c72ff5e205dea166fa18febdfa89aaa5aec8` in isolated worktree `/workspace/wv006-c`, branch `feat/wv-art-006-c-baselines`. Refreshed by incorporating develop `14b4d1e9e44fc4fb08e9cb1baf754952e43f953c` (D storage) with no conflicts; its exclusive paths are preserved and C asset measurements are unchanged. No applicable AGENTS.md was found. PR 81 inputs, identity salt/order, gameplay, saves, founding era and shared integration files are unchanged.
 
 ## Delivered candidates
 

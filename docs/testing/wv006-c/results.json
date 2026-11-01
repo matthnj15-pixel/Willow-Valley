@@ -324,7 +324,7 @@
     },
     {
       "command": "npm test",
-      "result": "171 passed; 1 skipped"
+      "result": "176 passed; 1 skipped after incorporating D (original C baseline: 171 passed; 1 skipped)"
     },
     {
       "command": "npm run build:assets",
@@ -340,7 +340,7 @@
     },
     {
       "command": "npm run test:e2e",
-      "result": "102 passed; final isolated run"
+      "result": "102 passed on original C baseline; current combined full suite is also required in PR CI"
     },
     {
       "command": "WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity",
@@ -349,6 +349,10 @@
     {
       "command": "node scripts/measure-wv006-baselines.mjs",
       "result": "pass; 64 geometry probes and all camera bounds pass; 100-home triangle gates explicitly fail"
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-baselines.spec.mjs tests/browser/wv006-storage.spec.mjs",
+      "result": "6 passed after incorporating current develop/D"
     }
   ],
   "earlierRun": {
@@ -363,5 +367,7 @@
     "F combined scene / 100-home triangle budget",
     "F runtime offline integration / physical phone UAT"
   ],
-  "runtimeReady": false
+  "runtimeReady": false,
+  "incorporatedDevelop": "14b4d1e9e44fc4fb08e9cb1baf754952e43f953c",
+  "incorporation": "D merged in separate exclusive paths; no conflicts or shared source/dependency changes. C geometry and measurements unchanged."
 }
