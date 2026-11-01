@@ -1,7 +1,7 @@
 {
-  "recipe": "wv006-a-1",
+  "recipe": "wv006-a-2",
   "runtimeReady": false,
-  "newTextures": 0,
+  "newTextures": 7,
   "newMeshAssets": 0,
   "dependencies": [
     {
@@ -90,6 +90,51 @@
       "sha256": "ced2e01f169d53dd0270543500ae5f6889e1aa95125dbec2b0a2a3f977826e96"
     },
     {
+      "path": "assets/wv/environment-next/LICENSE.txt",
+      "bytes": 625,
+      "sha256": "30b35e8c311ade4a9532afc25db47100d45d6655cdae62b27a883c6cdf05040c"
+    },
+    {
+      "path": "assets/wv/environment-next/detail-manifest.json",
+      "bytes": 6283,
+      "sha256": "d91dc53868252fe9f5faf13fff1176b625cea645ccd30823bf8149949d2c060b"
+    },
+    {
+      "path": "assets/wv/environment-next/grass-color.jpg",
+      "bytes": 604885,
+      "sha256": "311fd4613832a9fde1a32953d099c025a9782e6c38df4aed552948ce5a6615da"
+    },
+    {
+      "path": "assets/wv/environment-next/grass-normal.png",
+      "bytes": 638902,
+      "sha256": "c0f6c7d6fe897651b4c21a08d2ab84f6c15d7491af1ff428face8849350b48e2"
+    },
+    {
+      "path": "assets/wv/environment-next/rock-color.jpg",
+      "bytes": 100387,
+      "sha256": "0aaa8fcbdf0144d529aa108e97819efa40fdb5e251c05d5622d3d005784b695f"
+    },
+    {
+      "path": "assets/wv/environment-next/rock-low.jpg",
+      "bytes": 18629,
+      "sha256": "c78ca87b5f71747b169ca1a43e97e7601655f614ef63ae5c8683c671bf09d377"
+    },
+    {
+      "path": "assets/wv/environment-next/rock-normal.png",
+      "bytes": 132147,
+      "sha256": "b8551331f7fd2c41ede6393f220d0892ead463e93090aacc5fb8b9cfe96d711b"
+    },
+    {
+      "path": "assets/wv/environment-next/soil-color.jpg",
+      "bytes": 278671,
+      "sha256": "96b3c6dbf8dca43e38f2db4ae398071d0a8770491d69c31abdd84375a87da955"
+    },
+    {
+      "path": "assets/wv/environment-next/soil-normal.png",
+      "bytes": 551093,
+      "sha256": "e9133062bad5fbafa530e55b1f0f9a205b3572448cd4b456f272d90f04b566f2"
+    },
+    {
       "path": "assets/wv/environment-v1/LICENSE.txt",
       "bytes": 602,
       "sha256": "6e9f446eca12e7de5e104e7462c560a71172d73f9819191b1bcd880a484e9915"
@@ -155,24 +200,34 @@
       "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
     },
     {
+      "path": "environment-next/detail-resources.mjs",
+      "bytes": 1209,
+      "sha256": "e03545df3e417d91a1c1a11fad5b7ebba1347b41b581634e2a3f23e301f46e9e"
+    },
+    {
       "path": "environment-next/materials.mjs",
-      "bytes": 7517,
-      "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+      "bytes": 9565,
+      "sha256": "64647b150bf4ca321ee65f6d6b2f19821155d0197f3cd1210bdc39234c86ab5e"
     },
     {
       "path": "environment-next/preset.mjs",
       "bytes": 401,
-      "sha256": "ba6ec06e5c9643a990b8e1b561fb8d62af4f172555388b75c750c565db2ef2ad"
+      "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+    },
+    {
+      "path": "environment-next/previous-materials.mjs",
+      "bytes": 7517,
+      "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
     },
     {
       "path": "environment-next/review-page.mjs",
-      "bytes": 5810,
-      "sha256": "e29f09efa3a2666c5708bde13c830f1e39621a4afe8c7b7d116e57471e63689f"
+      "bytes": 6237,
+      "sha256": "4853bd9b4bd3c6310fd50e434ddedf4faac5b62b85612aa581d09f3b22a7e85e"
     },
     {
       "path": "environment-next/review-renderer.mjs",
-      "bytes": 12105,
-      "sha256": "39f6edc14370376182f7472683476966dcfc17ecc268809cc803e9cd1ba7b013"
+      "bytes": 12237,
+      "sha256": "1823cb0bf4e3a23634babf7450a8b4f7197cc185d2c37160b4c11bc16070e84c"
     },
     {
       "path": "environment-next/scale-context.mjs",
