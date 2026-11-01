@@ -1,0 +1,27 @@
+import {test,expect} from '@playwright/test';
+for(const prefix of ['/','/dev/'])test('storage study shares assets, edits detached examples, preserves all local data '+prefix,async({page},info)=>{
+ const errors=[],external=[],writes=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(new URL(r.url()).origin!=='http://127.0.0.1:4173')external.push(r.url());if(r.method()!=='GET')writes.push(r.url());});
+ await page.addInitScript(()=>{localStorage.setItem('wv006-immutability-sentinel',JSON.stringify({saves:[{slot:1,wood:42},{slot:2,tools:9},{slot:3,food:60}],logs:['sentinel']}));window.storageWrites=[];for(const method of ['setItem','removeItem','clear']){const original=Storage.prototype[method];Storage.prototype[method]=function(...args){window.storageWrites.push({method,key:args[0]});return original.apply(this,args);};}});
+ await page.goto(prefix+'ui-kit/wv006-storage.html');await expect(page.locator('#storage-canvas')).toHaveAttribute('data-loaded','true');const before=await page.evaluate(()=>JSON.stringify(localStorage));
+ expect(await page.evaluate(()=>storageStudy.measurements.filter(e=>e.id==='storehouse-l1'||e.id==='warehouse-l2').every(e=>e.runtimeReady===false))).toBe(true);
+ const counts=[];for(const stock of ['empty','partial','full']){await page.selectOption('#stock',stock);counts.push(await page.evaluate(()=>storageStudy.instanceCounts.goods));}expect(counts).toEqual([0,6,14]);
+ await page.uncheck('#props');await page.uncheck('#labels-toggle');await page.screenshot({path:info.outputPath('architecture-without-dressing.png')});
+ for(const subject of ['l1','l2','kit','construction','compare'])await page.selectOption('#subject',subject);for(const view of ['rear','side','eye','roof','front'])await page.selectOption('#view',view);
+ await page.check('#mono');await page.check('#props');await page.selectOption('#quality','low');const low=await page.evaluate(()=>({...storageStudy.stats}));await page.selectOption('#quality','normal');const normal=await page.evaluate(()=>({...storageStudy.stats}));expect(low.triangles).toBeLessThan(normal.triangles);expect(normal.drawCalls).toBeLessThan(100);
+ const revision=await page.evaluate(()=>storageStudy.stats.compositionRevision);await page.locator('#storage-canvas').dispatchEvent('wheel',{deltaY:100});expect(await page.evaluate(()=>storageStudy.stats.compositionRevision)).toBe(revision);
+ const wood=page.locator('[data-good="wood"]');for(const policy of ['Import','Export','Balance','Keep'])await wood.locator('[data-field="policy"]').selectOption(policy);
+ await wood.locator('[data-field="policy"]').selectOption('Balance');await wood.locator('[data-field="min"]').fill('70');await wood.locator('[data-field="min"]').press('Tab');await expect(page.locator('#policy-status')).toContainText('minimum below maximum');expect((await page.evaluate(()=>storageStudy.getExample())).goods[0].min).toBe(20);
+ await wood.locator('[data-field="min"]').fill('15');await wood.locator('[data-field="min"]').press('Tab');await wood.locator('[data-field="accepted"]').uncheck();expect((await page.evaluate(()=>storageStudy.getExample())).goods[0].current).toBe(36);
+ await page.selectOption('#example-level','2');await page.locator('#reset-example').click();expect((await page.evaluate(()=>storageStudy.getExample())).capacity).toBe(100);
+ expect(await page.evaluate(()=>JSON.stringify(localStorage))).toBe(before);expect(await page.evaluate(()=>storageWrites)).toEqual([]);expect(writes).toEqual([]);expect(external).toEqual([]);expect(errors).toEqual([]);expect(await page.evaluate(()=>navigator.serviceWorker.controller)).toBeNull();
+ // Switching all views again does not grow GPU geometry ownership; disposal is idempotent.
+ expect((await page.evaluate(()=>storageStudy.sharing())).allShared).toBe(true);
+ const memory=await page.evaluate(()=>storageStudy.stats.geometries);for(const subject of ['l1','l2','kit','construction','compare'])await page.selectOption('#subject',subject);expect(await page.evaluate(()=>storageStudy.stats.geometries)).toBe(memory);
+ const disposal=await page.evaluate(()=>{storageStudy.dispose();const first=JSON.stringify(storageStudy.disposal);storageStudy.dispose();return{same:first===JSON.stringify(storageStudy.disposal),disposed:storageStudy.disposed};});expect(disposal).toEqual({same:true,disposed:true});
+});
+test('warehouse load failure is visible and the example panel remains usable',async({page})=>{await page.route('**/storage-next/storage.glb',r=>r.abort());await page.goto('/ui-kit/wv006-storage.html');await expect(page.locator('#load-status')).toContainText('unavailable');await page.selectOption('#example-level','2');await expect(page.locator('#capacity')).toContainText('240');});
+
+test('a GLB arriving after disposal cannot reactivate the gallery',async({page})=>{
+ let release;const gate=new Promise(resolve=>{release=resolve;});await page.route('**/storage-next/storage.glb',async r=>{await gate;await r.continue();});
+ await page.goto('/ui-kit/wv006-storage.html',{waitUntil:'domcontentloaded'});await page.waitForFunction(()=>!!window.storageStudy);await page.evaluate(()=>storageStudy.dispose());release();await page.waitForFunction(()=>storageStudy.loadSettled);expect(await page.evaluate(()=>({ready:storageStudy.ready,disposed:storageStudy.disposed}))).toEqual({ready:false,disposed:true});await expect(page.locator('#storage-canvas')).not.toHaveAttribute('data-loaded','true');
+});
