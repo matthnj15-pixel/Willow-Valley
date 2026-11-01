@@ -19,10 +19,10 @@
   },
   "warmupSeconds": 2,
   "durationSeconds": 8,
-  "frameCount": 47,
-  "medianMs": 183.29999999999927,
+  "frameCount": 45,
+  "medianMs": 183.30000000000018,
   "p95Ms": 200.10000000000036,
-  "p99Ms": 216.60000000000036,
+  "p99Ms": 250.10000000000036,
   "peakDrawCalls": 97,
   "peakTriangles": 55181,
   "textureBytes": 23792299,
@@ -32,5 +32,10 @@
   "shadows": false,
   "cancelled": false,
   "phonePerformanceVerified": false,
-  "sourceRevision": "wv006-a-1"
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "environmentTextureEncodedBytes": 144900,
+  "environmentTextureTransferBytes": 145500,
+  "browserVersion": "141.0.7390.37",
+  "recordedAt": "2026-11-01T16:15:26.341Z",
+  "sourceRevision": "fbb5598d4921805c14101f57b8d9d8fe60ea3c50"
 }

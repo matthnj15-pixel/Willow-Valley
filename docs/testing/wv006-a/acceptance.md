@@ -8,15 +8,26 @@ Quiet broad meadow color/density variation, rotated/coarse grass sampling in nor
 
 The standalone review has two seeds, normal/low, matching before/after treatment, close/wide, .40/1.35 pitch, forest edge, cliff, junction, lake and river. Changing only treatment preserves the current camera in the URL. `motion=off` freezes comparison animation. Context uses unchanged committed catalog geometry at common scale and seven material witnesses (plaster, timber, clay, straw, stone, cloth, water); it makes no functional-building or trade claims. The gallery renderer excludes tree intersections within loaded context bounds equally before/after. The shared playable renderer remains unchanged.
 
-## Local verification
+## Final local verification
 
-- `node scripts/build-wv006-environment.mjs`: passed. Deterministic scoped bundle and exact SHA256 dependency record. No shared cache/workflow edits.
-- Focused `npx playwright test wv006-environment`: initial nine checks passed (1.6m), including both seeds × both qualities, all paired views/camera equality, unchanged state serialization, missing-resource fallback, disposal before late image loads, six repeated world changes/resource stability, hidden/low idle behavior and 100-home budgets. Final full-suite rerun includes gallery seating/exclusion improvements and a tenth rendered-pixel test proving custom terrain responds to light and explicit haze.
-- `npm test`: 170 passed / one icon check skipped before icon build; no failures. Final `CHECK_BUILT_ICONS=1 npm test` result recorded below.
-- `npm run build:assets`: passed all current validators, including explicit existing MegaKit study and catalog GLBs (0 errors / 0 warnings). **No new glTF is emitted**, so there is no unvalidated new mesh output.
-- `npm run build:icons`: passed, three PNGs generated; `npm run build:offline`: passed, self-contained shared game generated (1,227,427 characters). Generated unrelated output is not committed.
-- An initial sandbox-only unit invocation could not execute offline-packaging subprocess checks; rerunning with process access passed. This was an execution restriction, not an application regression.
-- Full e2e, Three.js parity, PR CI and deployment evidence are recorded in the final delivery record below when complete.
+Rendering source: `fbb5598d4921805c14101f57b8d9d8fe60ea3c50`. Later changes only finalize evidence, dependency/license records and measurement metadata.
+
+| Command | Result |
+| --- | --- |
+| `node scripts/build-wv006-environment.mjs` | Passed; deterministic review bundle and exact dependency hash record, reproducible without private inputs |
+| `CHECK_BUILT_ICONS=1 npm test` | **172 passed**, zero failed/skipped |
+| `npm run test:e2e` | **110 passed (6.1m)**, including all ten candidate checks and the existing root/dev cold-offline/save/fallback suites |
+| `WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity` | **16 passed (39.3s)** |
+| `npm run build:assets` | Passed current validators, including explicit existing study/catalog GLBs: zero errors/warnings; no new glTF is emitted |
+| `npm run build:icons` | Passed; three generated PNGs, not committed |
+| `npm run build:offline` | Passed; shared self-contained game, 1,227,427 characters, not committed |
+| `git diff --check` and exclusive-path audit | Passed; no shared game, registry, workflow, manifest, package, simulation or save edits |
+
+Candidate browser coverage includes both seeds × both qualities, nine paired views with exact camera equality, unchanged state serialization, missing-texture fallback, disposal before late completion, repeated world/resource stability, hidden/low idle behavior, 100-home budgets and rendered-pixel proof of explicit light/haze support. Both terrain shader variants compiled; console errors/external runtime requests were absent during the paired gallery tests. The final rock shader has irregular low-contrast mineral variation after wide-view inspection found excessive repeated strata in the first candidate.
+
+One initial full local run had 109 passes and one low-idle test failure: counting began before the asynchronously loaded context's final draw. The corrected test waits for model/texture/context readiness and two queued animation frames; the full rerun passes. An initial sandbox-restricted unit run could not execute offline packaging subprocesses; running with process access passed. These failures were investigated and are not omitted from the record.
+
+Final PR checks and merge/deployment evidence are linked from the PR and delivery report; they must be checked on the final head before merging. A passing PR alone does not establish Pages deployment.
 
 ## Matched frame measurements
 
@@ -26,10 +37,10 @@ These are **software-renderer smoke measurements**, not mobile FPS acceptance. C
 
 | Homes / quality | Median ms | p95 ms | p99 ms | Calls | Triangles | Candidate total texture bytes |
 | --- | --- | --- | --- | --- | --- | --- |
-| 30 / normal | 283.4 → 366.6 | 366.7 → 450.0 | 383.4 → 483.2 | 96 → 97 | 78,514 → 78,516 | 23,823,019 |
-| 30 / low | 150.0 → 183.3 | 183.4 → 200.1 | 200.1 → 216.6 | 96 → 97 | 55,179 → 55,181 | 23,792,299 |
-| 100 / normal | 416.7 → 516.6 | 516.7 → 616.6 | 516.7 → 616.6 | 98 → 99 | 143,766 → 143,768 | 23,823,019 |
-| 100 / low | 283.3 → 299.9 | 316.7 → 350.0 | 333.3 → 350.0 | 96 → 97 | 121,880 → 121,882 | 23,792,299 |
+| 30 / normal | 300.0 → 383.3 | 383.3 → 483.3 | 383.3 → 483.4 | 96 → 97 | 78,514 → 78,516 | 23,823,019 |
+| 30 / low | 166.6 → 183.3 | 183.4 → 200.1 | 183.4 → 250.1 | 96 → 97 | 55,179 → 55,181 | 23,792,299 |
+| 100 / normal | 416.7 → 516.7 | 533.3 → 633.3 | 533.3 → 633.3 | 98 → 99 | 143,766 → 143,768 | 23,823,019 |
+| 100 / low | 283.3 → 300.0 | 300.0 → 350.0 | 300.1 → 366.7 | 96 → 97 | 121,880 → 121,882 | 23,792,299 |
 
 Whole-scene existing guardrails: normal ≤150 calls / 250k triangles, low ≤100 / 150k. All four candidate fixtures pass. Their architecture-v1 models remain the benchmark's unchanged models; this is not proof that B–D's forthcoming combined assets fit. The accepted ten-design catalog is scale context in the separate valley view, not substituted into these performance fixtures.
 
@@ -41,4 +52,7 @@ Physical phone Safari/Chrome compilation, sustained 60s frame pacing/thermals, s
 
 Root/dev cold-offline game behavior is checked by the existing full suite. This gallery and candidate closure are deliberately **not installed/offline-ready**; F adds and verifies that closure if adopted. Existing saves, three slots, migrations, simulation production/employment/housing/founded-era behavior and the default environment retain their original code. A merge into develop approves delivery for review, not final art, physical-device performance or production rollout.
 
-Final icon-aware unit rerun before PR: `CHECK_BUILT_ICONS=1 npm test` **171/171 passed**, zero skipped. A later exact dependency-hash check brings the final expected count to 172; its completed result is recorded with final validation. The scoped unit tests cover deterministic read-only fields, envelope clipping/wet exclusion, lifecycle/resource sharing/low pause behavior and atmosphere detach ownership.
+
+Final timing source is the rendering SHA above. All eight JSONs record the exact revision, Chromium 141.0.7390.37, user agent, timestamp, driver and measured environment-image encoded/transfer bytes. Encoded JPEG body bytes are **144,900**; observed network transfer including response overhead is **145,500** per cold page. Earlier smoke runs were superseded after the rock appearance correction. Sampling variance and software-renderer cost remain explicit limitations. No simultaneous local browser or unit workload ran during these serial measurements.
+
+Selected matched captures: [close before](captures/WILLOW-1048-normal-before-near.png), [close candidate](captures/WILLOW-1048-normal-after-near.png), [cliff before](captures/WILLOW-1048-normal-before-cliff.png), [cliff candidate](captures/WILLOW-1048-normal-after-cliff.png), [lake before](captures/WILLOW-1048-normal-before-lake.png), [lake candidate](captures/WILLOW-1048-normal-after-lake.png), [wide before](captures/WILLOW-1048-normal-before-wide.png), [wide candidate](captures/WILLOW-1048-normal-after-wide.png), [second-seed low river before](captures/WV-SURFACES-2-low-before-river.png), [candidate](captures/WV-SURFACES-2-low-after-river.png). These are review evidence, not human acceptance of the art direction.

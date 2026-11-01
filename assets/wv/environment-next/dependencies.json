@@ -105,6 +105,11 @@
       "sha256": "0c1ca435dff526c06474cf107755c6dca8deeacf890fc9bef745424d856d5063"
     },
     {
+      "path": "assets/wv/megakit-catalog-v1/License_Source.txt",
+      "bytes": 897,
+      "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+    },
+    {
       "path": "assets/wv/megakit-catalog-v1/catalog.glb",
       "bytes": 3135732,
       "sha256": "d8926948018bb382ab82d9a437fae0b20e71a60d195c56960652ad0b0aedf5c7"
@@ -133,6 +138,11 @@
       "path": "editor-overlays.mjs",
       "bytes": 1804,
       "sha256": "fe7a6303a40e99bd9b0e92c10a12961700818635b36eb48e19b09e641ecb3c1f"
+    },
+    {
+      "path": "environment-asset-manifest.json",
+      "bytes": 1784,
+      "sha256": "516eaf3c4cab12ded8e6fdced4b7d445f84492fc65fe7176f6e09dc64b9a7cd0"
     },
     {
       "path": "environment-materials.mjs",
