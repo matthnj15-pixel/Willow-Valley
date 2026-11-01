@@ -1,7 +1,7 @@
 import {test,expect} from '@playwright/test';
 test('B local collection, six compositions, quality, contact and scene changes',async({page},info)=>{
  test.setTimeout(60000);const errors=[],external=[];page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(new URL(r.url()).origin!=='http://127.0.0.1:4173')external.push(r.url());});
- await page.goto('/ui-kit/wv006-landscape.html');await expect(page.locator('#landscape')).toHaveAttribute('data-loaded','20');
+ await page.goto('/ui-kit/wv006-landscape.html?scene=collection');await expect(page.locator('#landscape')).toHaveAttribute('data-loaded','20');
  expect(await page.evaluate(()=>landscapeReview.records.length)).toBe(20);await page.selectOption('#form','fallen-log');await page.selectOption('#form','all');await page.screenshot({path:info.outputPath('collection.png')});
  for(const scene of ['forest','bank','yard','smith','settlement']){await page.selectOption('#scene',scene);expect(await page.evaluate(()=>landscapeReview.inspectContact())).toEqual([]);expect(await page.evaluate(()=>landscapeReview.records.length)).toBeGreaterThan(5);await page.screenshot({path:info.outputPath(scene+'.png')});}
  await page.selectOption('#scene','forest');const normal=await page.evaluate(()=>({trees:landscapeReview.records.filter(r=>r.key.startsWith('tree:')).map(({assetId,key,origin})=>({assetId,key,origin})),stats:{...landscapeReview.stats}}));
