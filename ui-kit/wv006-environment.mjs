@@ -3215,6 +3215,56 @@ function mountWorld3D2(canvas, world2, options = {}) {
   } };
 }
 
+// environment-next/inspection-controls.mjs
+function attachInspectionControls(canvas, viewer2, world2) {
+  const points = /* @__PURE__ */ new Map(), limit = Math.max(world2.width, world2.depth), clamp7 = (v, a, b) => Math.max(a, Math.min(b, v));
+  let gesture = null;
+  const close = () => viewer2.getCamera().zoom < limit * 0.08, stop = (e) => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+  };
+  const down = (e) => {
+    if (!close() && !points.size) return;
+    stop(e);
+    points.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    try {
+      canvas.setPointerCapture(e.pointerId);
+    } catch {
+    }
+    if (points.size === 2) gesture = beginCameraGesture([...points.values()], canvas.getBoundingClientRect());
+  };
+  const move = (e) => {
+    const last = points.get(e.pointerId);
+    if (!last) return;
+    stop(e);
+    points.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const v = viewer2.getCamera(), rect = canvas.getBoundingClientRect();
+    if (points.size === 2 && gesture) {
+      const change = advanceCameraGesture(gesture, [...points.values()]);
+      viewer2.setCamera({ ...v, yaw: v.yaw + change.yawDelta, pitch: clamp7(v.pitch + change.pitchDelta, 0.32, 1.47), zoom: clamp7(v.zoom * change.zoomRatio, 6, limit * 2.4) });
+    } else if (points.size === 1) viewer2.setCamera({ ...v, yaw: v.yaw - (e.clientX - last.x) / Math.max(120, rect.width) * Math.PI * 1.5, pitch: clamp7(v.pitch + (e.clientY - last.y) / Math.max(180, rect.height) * 1.8, 0.32, 1.47) });
+  };
+  const up = (e) => {
+    if (!points.has(e.pointerId)) return;
+    stop(e);
+    points.delete(e.pointerId);
+    if (points.size !== 2) gesture = null;
+  };
+  const wheel = (e) => {
+    if (!close()) return;
+    stop(e);
+    const v = viewer2.getCamera();
+    viewer2.setCamera({ ...v, zoom: clamp7(v.zoom * (e.deltaY > 0 ? 1.12 : 1 / 1.12), 6, limit * 2.4) });
+  };
+  const handlers = { pointerdown: down, pointermove: move, pointerup: up, pointercancel: up, lostpointercapture: up, wheel };
+  for (const [type, fn] of Object.entries(handlers)) canvas.addEventListener(type, fn, { capture: true, passive: false });
+  return () => {
+    for (const [type, fn] of Object.entries(handlers)) canvas.removeEventListener(type, fn, true);
+    points.clear();
+    gesture = null;
+  };
+}
+
 // environment-next/review-page.mjs
 var params = new URLSearchParams(location.search);
 var $ = (id) => document.getElementById(id);
@@ -3243,6 +3293,7 @@ var viewer = mountWorld3D2($("environment"), world, { baseline, previous, qualit
   $("status").textContent = "Local models ready \xB7 " + (baseline ? "existing environment" : previous ? "published A1 surface" : "fine-detail A2 surface");
 } });
 viewer.setSettlement(state);
+var releaseInspection = attachInspectionControls($("environment"), viewer, world);
 function focus(x2, y2, zoom, pitch = 0.65) {
   viewer.focusOn(x2, y2, zoom);
   viewer.setCamera({ ...viewer.getCamera(), pitch, yaw: 0.6, focusY: 17 });
@@ -3339,5 +3390,6 @@ document.addEventListener("visibilitychange", () => {
 window.environmentHarness = { viewer, world, state, center, measure, serializationUnchanged: () => beforeState === JSON.stringify(state) };
 window.addEventListener("pagehide", () => {
   cancel = true;
+  releaseInspection();
   viewer.dispose();
 });

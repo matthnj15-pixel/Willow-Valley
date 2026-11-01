@@ -1,6 +1,7 @@
 import {createWorld} from '../world-gen.mjs';
 import {settlementRenderFixture} from '../settlement-render-fixtures.mjs';
 import {mountWorld3D} from './review-renderer.mjs';
+import {attachInspectionControls} from './inspection-controls.mjs';
 const params=new URLSearchParams(location.search),$=id=>document.getElementById(id),seed=params.get('seed')||'WILLOW-1048',quality=params.get('quality')||'normal',count=Number(params.get('count'))||0,baseline=params.get('treatment')==='before',previous=params.get('treatment')==='previous';
 for(const [id,value] of Object.entries({seed,quality,count:String(count),treatment:baseline?'before':previous?'previous':'after'}))$(id).value=value;
 const fixture=count?settlementRenderFixture(count):null,world=fixture?.world||createWorld({seed,size:'small',lakes:2,rivers:1,hills:70,cliffs:65});
@@ -8,7 +9,7 @@ let center={x:world.width*.5,y:world.depth*.5},best=Infinity;
 for(let z=100;z<world.depth-100;z+=30)for(let x=100;x<world.width-100;x+=30){const points=[{x:x-75,y:z},{x:x+75,y:z},{x,y:z-65},{x:x+45,y:z+65},{x,y:z}];if(points.every(p=>world.sample(p.x,p.y).water===null)&&world.slope(x,z)<best){best=world.slope(x,z);center={x,y:z};}}
 const {x,y}=center,nodes=[{id:1,x,y},{id:2,x:x-75,y},{id:3,x:x+75,y},{id:4,x,y:y-65},{id:5,x:x+45,y:y+65}],state=fixture?.state||{turn:2,houses:[],buildings:[],roads:[],roadGraph:{hubId:1,nodes,segments:[{id:1,a:1,b:2},{id:2,a:1,b:3,control:{x:x+50,y:y-20}},{id:3,a:1,b:4},{id:4,a:1,b:5}]},localLanes:[{points:[{x:x-75,y:y+30},{x:x-20,y:y+40}]}],zones:[],desirePaths:[]};
 const beforeState=JSON.stringify(state),viewer=mountWorld3D($('environment'),world,{baseline,previous,quality:quality==='low'?'lite':'game',animateWater:params.get('motion')!=='off',contextCenter:count?null:center,onAssets:()=>{$('status').textContent='Local models ready · '+(baseline?'existing environment':previous?'published A1 surface':'fine-detail A2 surface');}});
-viewer.setSettlement(state);
+viewer.setSettlement(state);const releaseInspection=attachInspectionControls($('environment'),viewer,world);
 function focus(x,y,zoom,pitch=.65){viewer.focusOn(x,y,zoom);viewer.setCamera({...viewer.getCamera(),pitch,yaw:.6,focusY:17});}
 const views={ground:()=>{const x=center.x-52,z=center.y-45;viewer.focusOn(x,z);viewer.setCamera({...viewer.getCamera(),zoom:7,pitch:1.1,yaw:.6,focusY:world.sample(x,z).height});},detail:()=>{viewer.focusOn(center.x-52,center.y-52);viewer.setCamera({...viewer.getCamera(),zoom:17,pitch:.58,yaw:.6});},wide:()=>focus(world.width*.5,world.depth*.5,world.depth*.7,.85),near:()=>focus(center.x,center.y,105,.42),junction:()=>focus(center.x,center.y,110,.78),forest:()=>{const p=world.trees.find(t=>world.sample(t.x,t.z).water===null)||{x:center.x,z:center.y};focus(p.x,p.z,130,.55);},cliff:()=>{let p=center,slope=0;for(let z=30;z<world.depth;z+=20)for(let x=30;x<world.width;x+=20)if(world.sample(x,z).water===null&&world.slope(x,z)>slope){p={x,y:z};slope=world.slope(x,z);}focus(p.x,p.y,140,.4);},lake:()=>{const p=world.lakes?.find(l=>world.sample(l.x,l.z).kind==='lake');if(p)focus(p.x,p.z,230,.45);},river:()=>{const r=world.rivers?.[0];let p=null,score=Infinity;for(const v of r?.points.slice(6,-6)||[]){const q=world.sample(v.x,v.z);if(q.kind!=='river')continue;const obstruction=[[60,0],[-60,0],[0,60],[0,-60]].reduce((n,[dx,dz])=>n+Math.max(0,world.sample(v.x+dx,v.z+dz).height-q.water),0);if(obstruction<score){p=v;score=obstruction;}}if(p)focus(p.x,p.z,140,.55);},lowpitch:()=>viewer.setCamera({...viewer.getCamera(),pitch:.4}),highpitch:()=>viewer.setCamera({...viewer.getCamera(),pitch:1.35})};
 for(const [id,action] of Object.entries(views))$(id).onclick=()=>{action();params.set('view',id);};
@@ -24,4 +25,4 @@ async function measure(duration=8,warmup=2){if(running)throw Error('Already reco
 }
 $('run').onclick=()=>void measure(60,10);document.addEventListener('visibilitychange',()=>{if(document.hidden)cancel=true;});
 window.environmentHarness={viewer,world,state,center,measure,serializationUnchanged:()=>beforeState===JSON.stringify(state)};
-window.addEventListener('pagehide',()=>{cancel=true;viewer.dispose();});
+window.addEventListener('pagehide',()=>{cancel=true;releaseInspection();viewer.dispose();});

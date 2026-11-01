@@ -1,5 +1,7 @@
 # WV006 A: measured review evidence
 
+This is the historical A1 evidence. The user requested finer detail; see [A2 evidence](detail-v2/acceptance.md) and its paired Published A1 / Detailed A2 comparisons.
+
 Candidate only; final composition and physical-device acceptance await B–D and F. Review URL after deployment: https://matthnj15-pixel.github.io/Willow-Valley/dev/ui-kit/wv006-environment.html
 
 ## Implemented and constrained

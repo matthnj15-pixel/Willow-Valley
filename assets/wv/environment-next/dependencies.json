@@ -205,6 +205,11 @@
       "sha256": "e03545df3e417d91a1c1a11fad5b7ebba1347b41b581634e2a3f23e301f46e9e"
     },
     {
+      "path": "environment-next/inspection-controls.mjs",
+      "bytes": 2060,
+      "sha256": "ec0ac07c37cb61e8e0588920313d719c75a20b68d44c9448d4119a261b28c14b"
+    },
+    {
       "path": "environment-next/materials.mjs",
       "bytes": 9565,
       "sha256": "64647b150bf4ca321ee65f6d6b2f19821155d0197f3cd1210bdc39234c86ab5e"
@@ -221,8 +226,8 @@
     },
     {
       "path": "environment-next/review-page.mjs",
-      "bytes": 6237,
-      "sha256": "4853bd9b4bd3c6310fd50e434ddedf4faac5b62b85612aa581d09f3b22a7e85e"
+      "bytes": 6405,
+      "sha256": "656270aee051f94548e32f942a496d3db2e81239a859833691838977e030e7bd"
     },
     {
       "path": "environment-next/review-renderer.mjs",

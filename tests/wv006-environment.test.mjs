@@ -24,9 +24,10 @@ test('review build dependency record matches exact committed source and borrowed
 });
 
 test('detail derivatives match measured bytes/hashes and keep a smaller normal-map-free low path',async()=>{
+ const {default:sharp}=await import('sharp');
  const {readFile}=await import('node:fs/promises'),{createHash}=await import('node:crypto'),{DETAIL_TEXTURES,LOW_TEXTURES,SURFACE_DETAIL,mipBytes}=await import('../environment-next/detail-resources.mjs');
  const manifest=JSON.parse(await readFile(new URL('../assets/wv/environment-next/detail-manifest.json',import.meta.url),'utf8'));
- for(const e of manifest.entries){const bytes=await readFile(new URL('../assets/wv/environment-next/'+e.file,import.meta.url));assert.equal(bytes.length,e.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),e.sha256);}
+ for(const e of manifest.entries){const bytes=await readFile(new URL('../assets/wv/environment-next/'+e.file,import.meta.url));assert.equal(bytes.length,e.bytes);assert.equal(createHash('sha256').update(bytes).digest('hex'),e.sha256);const meta=await sharp(bytes).metadata();assert.equal(meta.width,e.width);assert.equal(meta.height,e.height);assert.equal(meta.format,e.file.endsWith('.png')?'png':'jpeg');}
  assert.ok(SURFACE_DETAIL.grassPeriod/2.8<=3.01);assert.equal(DETAIL_TEXTURES.filter(t=>!t.color).length,3);assert.ok(LOW_TEXTURES.every(t=>t.color));assert.ok(LOW_TEXTURES.reduce((n,t)=>n+mipBytes(t),0)<DETAIL_TEXTURES.reduce((n,t)=>n+mipBytes(t),0)/4);
  const normal=createEnvironmentMaterials({loadTextures:false}),low=createEnvironmentMaterials({loadTextures:false,low:true});assert.equal(normal.status().surfaceTexturesExpected,6);assert.equal(low.status().surfaceTexturesExpected,3);assert.equal(normal.status().normalMaps,3);assert.equal(low.status().normalMaps,0);normal.dispose();low.dispose();
 });
