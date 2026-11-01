@@ -1,3 +1,4 @@
+import {createEnvironmentMaterials as createPrevious} from './previous-materials.mjs';
 import {createEnvironmentMaterials as createCandidate} from './materials.mjs';
 import {createEnvironmentMaterials as createBaseline} from '../environment-materials.mjs';
 import {loadScaleContext} from './scale-context.mjs';
@@ -19,7 +20,7 @@ export function mountWorld3D(canvas,world,options={}){
  const houses=new THREE.Group();scene.add(houses);
  const requiredIDs=[...HOME_IDS,...FACILITY_TYPES.map(type=>'facility-'+type),'tree-oak'];
  const low=options.quality==='lite';
- const environment=(options.baseline?createBaseline:createCandidate)({low,onReady:()=>controller?.render()});
+ const environment=(options.baseline?createBaseline:options.previous?createPrevious:createCandidate)({low,onReady:()=>controller?.render()});
  if(!options.baseline)environment.attachAtmosphere(scene);
  let contextRelease=()=>{},contextLoaded=false,contextEnvelopes=[];
  if(options.contextCenter)void loadScaleContext(scene,()=>contact,options.contextCenter).then(result=>{if(disposed){result.dispose();return;}contextRelease=result.dispose;contextEnvelopes=result.envelopes;environment.setVisualInputs?.(result.visualInputs);contextLoaded=true;lastPlacementKey="";refresh();controller?.render();}).catch(()=>{canvas.dataset.contextFallback='unavailable';});
@@ -36,7 +37,7 @@ export function mountWorld3D(canvas,world,options={}){
  function updateCamera(view,rect){
   const aspect=rect.width/Math.max(1,rect.height),{yaw,pitch,zoom,focusX,focusZ}=view;
   camera.left=-zoom*aspect;camera.right=zoom*aspect;camera.top=zoom;camera.bottom=-zoom;
-  const focus=new THREE.Vector3(focusX,17,focusZ);
+  const focus=new THREE.Vector3(focusX,view.focusY??17,focusZ);
   camera.position.copy(focus).add(new THREE.Vector3(-Math.sin(yaw)*Math.cos(pitch),Math.sin(pitch),Math.cos(yaw)*Math.cos(pitch)).multiplyScalar(2700));
   camera.up.set(0,1,0);camera.lookAt(focus);camera.updateProjectionMatrix();camera.updateMatrixWorld();
  }

@@ -2284,8 +2284,8 @@
       "textures": 18,
       "geometries": 100,
       "submissions": 59,
-      "medianSubmissionMs": 1.9000000022351742,
-      "p95SubmissionMs": 4.699999999254942,
+      "medianSubmissionMs": 1.7999999970197678,
+      "p95SubmissionMs": 8.200000002980232,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "publicLayouts": [
@@ -2308,8 +2308,8 @@
       "textures": 18,
       "geometries": 100,
       "submissions": 74,
-      "medianSubmissionMs": 1.699999999254942,
-      "p95SubmissionMs": 2.300000000745058,
+      "medianSubmissionMs": 1.8999999985098839,
+      "p95SubmissionMs": 3,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "publicLayouts": [
@@ -2330,10 +2330,10 @@
       "drawCalls": 86,
       "triangles": 142766,
       "textures": 18,
-      "geometries": 150,
+      "geometries": 149,
       "submissions": 89,
-      "medianSubmissionMs": 1.7000000029802322,
-      "p95SubmissionMs": 6.300000000745058,
+      "medianSubmissionMs": 2.600000001490116,
+      "p95SubmissionMs": 8.300000000745058,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "publicLayouts": [
@@ -2354,10 +2354,10 @@
       "drawCalls": 86,
       "triangles": 445796,
       "textures": 18,
-      "geometries": 150,
+      "geometries": 149,
       "submissions": 104,
       "medianSubmissionMs": 1.5999999977648258,
-      "p95SubmissionMs": 2.100000001490116,
+      "p95SubmissionMs": 1.800000000745058,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "publicLayouts": [
@@ -2381,14 +2381,14 @@
   },
   "civicOutput": {
     "url": "assets/wv/buildings-next/civic.glb",
-    "bytes": 3416424,
-    "sha256": "a329f417726867a788cd768a378fefcf501ddb64961652d8ac681d321f43b133"
+    "bytes": 3251052,
+    "sha256": "d30eb5d17b29a937c3d432265108b2306065c5764016985f9b64a8653f45bb1a"
   },
   "mobileViewport": {
     "width": 600,
     "height": 850
   },
   "visibilityRevision": "Late corrections: optional flag on market goods (geometry/BIN unchanged), plus a 0.10 m grounded fountain footing/contact. Bounds remain unchanged; synthetic fixture uses town square, so scene budgets remain unchanged. Final market identity and fountain views refreshed separately.",
-  "finalRefresh": "Market identity/wire views, all fountain normal/low/mobile views and all four scene fixtures refreshed after final corrections and passing targeted civic/hamlet checks. The complete final browser suite reruns afterward.",
+  "finalRefresh": "Market loose-prop identity/wire views and all fountain normal/low/mobile views refreshed after final metadata/footing fixes; all four scene budgets remeasured sequentially after full browser/parity suites.",
   "candidateSeparation": "civic.glb now contains nine candidates, while all ten main C2 roots are unchanged. Gallery display roots/bounds/materials are equivalent to the earlier bulk views; final root mapping is verified by focused/browser checks. Full scene fixtures remeasured after separation."
 }

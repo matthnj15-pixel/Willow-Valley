@@ -8,8 +8,8 @@
   },
   "civicOutput": {
     "url": "assets/wv/buildings-next/civic.glb",
-    "bytes": 3416424,
-    "sha256": "a329f417726867a788cd768a378fefcf501ddb64961652d8ac681d321f43b133"
+    "bytes": 3251052,
+    "sha256": "d30eb5d17b29a937c3d432265108b2306065c5764016985f9b64a8653f45bb1a"
   },
   "comparison": {
     "recipeRevision": 1,
@@ -511,8 +511,8 @@
       "textures": 18,
       "geometries": 100,
       "submissions": 59,
-      "medianSubmissionMs": 1.9000000022351742,
-      "p95SubmissionMs": 4.699999999254942,
+      "medianSubmissionMs": 1.7999999970197678,
+      "p95SubmissionMs": 8.200000002980232,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "publicLayouts": [
@@ -535,8 +535,8 @@
       "textures": 18,
       "geometries": 100,
       "submissions": 74,
-      "medianSubmissionMs": 1.699999999254942,
-      "p95SubmissionMs": 2.300000000745058,
+      "medianSubmissionMs": 1.8999999985098839,
+      "p95SubmissionMs": 3,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "publicLayouts": [
@@ -557,10 +557,10 @@
       "drawCalls": 86,
       "triangles": 142766,
       "textures": 18,
-      "geometries": 150,
+      "geometries": 149,
       "submissions": 89,
-      "medianSubmissionMs": 1.7000000029802322,
-      "p95SubmissionMs": 6.300000000745058,
+      "medianSubmissionMs": 2.600000001490116,
+      "p95SubmissionMs": 8.300000000745058,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "publicLayouts": [
@@ -581,10 +581,10 @@
       "drawCalls": 86,
       "triangles": 445796,
       "textures": 18,
-      "geometries": 150,
+      "geometries": 149,
       "submissions": 104,
       "medianSubmissionMs": 1.5999999977648258,
-      "p95SubmissionMs": 2.100000001490116,
+      "p95SubmissionMs": 1.800000000745058,
       "actualTown": false,
       "includesFiveWorkplaces": true,
       "publicLayouts": [
@@ -611,7 +611,7 @@
     },
     {
       "command": "npm test",
-      "result": "205 passed; one existing icon skip, separately verified after generation; refreshed develop includes ten new plot unit tests."
+      "result": "206 passed; one existing icon skip separately verified after generation; latest A/B develop incorporated."
     },
     {
       "command": "npm run build:assets",
@@ -643,15 +643,27 @@
     },
     {
       "command": "npm run test:e2e",
-      "result": "Initial run 126 passed / 1 hamlet well failure; corrected by candidate separation, targeted hamlet passes. Complete 127-test rerun and exact-head CI completion are recorded on the delivery PR before merge."
+      "result": "127 passed on the corrected candidate separation; afterward the newer develop is incorporated and affected B/A checks rerun. Current combined 132-test required CI completion is recorded on the delivery PR."
     },
     {
       "command": "WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity",
-      "result": "Full local parity run required; completion and exact-head CI result recorded on delivery PR before merge."
+      "result": "16 passed locally; current required CI repeats parity."
     },
     {
       "command": "npx playwright test tests/browser/wv006-landscape-hamlet.spec.mjs tests/browser/wv006-baselines-civic.spec.mjs",
       "result": "4 passed; complete B hamlet preserved, eight public choices and market goods visibility pass"
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-landscape-hamlet.spec.mjs tests/browser/wv006-landscape-plots.spec.mjs",
+      "result": "4 passed after B develop refresh"
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-baselines*.spec.mjs",
+      "result": "4 passed after final loose-goods grouping; both scopes, all eighteen designs and eight choice cards"
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-environment.spec.mjs",
+      "result": "Affected latest A checks repeated; completion is recorded on the delivery PR."
     }
   ],
   "runtimeReady": false,
@@ -663,9 +675,9 @@
     "actual game placement selector and save persistence integration",
     "runtime offline closure and physical-device UAT"
   ],
-  "finalReview": "All measured roots explicitly validated. Main C2 GLB remains byte-identical for existing consumers. Market display goods can be hidden; grounded fountain footing and independent contact are present. Final identity/fountain captures and all four scene fixtures were refreshed after the fixes. The complete final 127-test browser rerun and parity completion are recorded on the delivery PR.",
+  "finalReview": "Main C2 GLB remains byte-identical. All loose market display goods now export in one optional group; counters and structural bays stay visible. Both GLBs explicitly validate and deterministic rebuilds pass. Final identity/fountain captures and all four scene fixtures match current output hashes. Baseline local suites and affected current-source checks are reported above; exact CI/deployment is on the delivery PR.",
   "visibilityRevision": "Late corrections: optional flag on market goods (geometry/BIN unchanged), plus a 0.10 m grounded fountain footing/contact. Bounds remain unchanged; synthetic fixture uses town square, so scene budgets remain unchanged. Final market identity and fountain views refreshed separately.",
-  "finalRefresh": "Market identity/wire views, all fountain normal/low/mobile views and all four scene fixtures refreshed after final corrections and passing targeted civic/hamlet checks. The complete final browser suite reruns afterward.",
+  "finalRefresh": "Market loose-prop identity/wire views and all fountain normal/low/mobile views refreshed after final metadata/footing fixes; all four scene budgets remeasured sequentially after full browser/parity suites.",
   "candidateOverrides": [
     {
       "existingIdentity": "facility-market",
@@ -684,6 +696,6 @@
     "targetedVerification": "4 passed: civic choices at / and /dev/, complete hamlet growth/quality/contact/budget test and failed-import scope check"
   },
   "candidateSeparation": "civic.glb now contains nine candidates, while all ten main C2 roots are unchanged. Gallery display roots/bounds/materials are equivalent to the earlier bulk views; final root mapping is verified by focused/browser checks. Full scene fixtures remeasured after separation.",
-  "refreshedDevelop": "c2a3ab47858363efb8f1558846942f7d87db8fb3",
-  "refreshedChecks": "205 unit tests pass, one existing icon skip verified separately; asset/icon/offline builds pass. Full 127-test run is followed by affected hamlet/plot tests introduced by the refreshed develop; current PR CI repeats the combined 129-test suite."
+  "refreshedDevelop": "0f8467f953e5431ffb9646d9858b79b0e0837d09",
+  "refreshedChecks": "206 unit tests pass, one existing icon skip verified separately; required asset/icon/offline builds pass. Full local browser rerun: 127 pass, parity:16 pass. Refreshed B hamlet/plots:4 pass; final C gallery:4 pass. Latest A material checks and current combined 132-test CI are recorded on the delivery PR."
 }

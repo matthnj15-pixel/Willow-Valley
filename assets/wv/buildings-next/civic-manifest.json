@@ -8,8 +8,8 @@
   "humanHeightMetres": 1.75,
   "output": {
     "url": "assets/wv/buildings-next/civic.glb",
-    "bytes": 3416424,
-    "sha256": "a329f417726867a788cd768a378fefcf501ddb64961652d8ac681d321f43b133"
+    "bytes": 3251052,
+    "sha256": "d30eb5d17b29a937c3d432265108b2306065c5764016985f9b64a8653f45bb1a"
   },
   "inputs": [
     {
@@ -22,7 +22,7 @@
     },
     {
       "url": "buildings-next/civic.mjs",
-      "sha256": "c1070f189781215ad6d366323cc1a1f45ddbedb7aa119e43098eb5d7712d035e"
+      "sha256": "8ef5440ccbc72ab89f5c0de6c16734265b6a2471bd70e38615bd850cb52f90ff"
     },
     {
       "url": "assets/wv/buildings-next/baseline-r1.glb",

@@ -184,7 +184,7 @@ function createWorld(raw = {}) {
   function sample(x2, z) {
     x2 = clamp(x2, 0, width);
     z = clamp(z, 0, depth);
-    let height = baseHeight(x2, z), water2 = -Infinity, kind = "land";
+    let height = baseHeight(x2, z), water3 = -Infinity, kind = "land";
     for (const lake of lakes) {
       const far = Math.hypot(x2 - lake.x, z - lake.z);
       if (far > lake.rx + lake.rz * 6) continue;
@@ -195,8 +195,8 @@ function createWorld(raw = {}) {
         height = mix(Math.min(height, basin), height, smooth(rim));
         if (d < 1) {
           height = Math.min(height, lake.level - 1.5);
-          if (lake.level > water2) {
-            water2 = lake.level;
+          if (lake.level > water3) {
+            water3 = lake.level;
             kind = "lake";
           }
         }
@@ -208,14 +208,14 @@ function createWorld(raw = {}) {
         height = Math.min(height, river.level + (d - bank) * 2.2);
         if (d < bank) {
           height = Math.min(height, river.level - 3);
-          if (river.level > water2) {
-            water2 = river.level;
+          if (river.level > water3) {
+            water3 = river.level;
             kind = "river";
           }
         }
       }
     }
-    return { height, water: Number.isFinite(water2) ? water2 : null, kind };
+    return { height, water: Number.isFinite(water3) ? water3 : null, kind };
   }
   function slope(x2, z) {
     const d = Math.min(width, depth) / 260;
@@ -244,7 +244,7 @@ function previewTrees(world2, maxCount = 650) {
   return Array.from({ length: maxCount }, (_, i) => trees[Math.floor((i + 0.5) * stride)]);
 }
 function createWorldMesh(world2, nx = 92, nz = 72, { trees = true, palette = null, treeLimit = 650, coherentMeadow = false } = {}) {
-  const { width, depth } = world2, ground = [], water2 = [];
+  const { width, depth } = world2, ground = [], water3 = [];
   const rand = (i, j) => hash2(i, j, hashSeed(world2.options.seed) + 901);
   function triangle(to, a, b, c, color) {
     const ux = b[0] - a[0], uy = b[1] - a[1], uz = b[2] - a[2];
@@ -282,9 +282,9 @@ function createWorldMesh(world2, nx = 92, nz = 72, { trees = true, palette = nul
     const isRiver = corners.some((p) => p.kind === "river");
     const shore = corners.some((p) => !p.wet);
     const color = deep.map((c, i) => clamp(c + (isRiver ? [0.025, 0.055, 0.043][i] : 0) + (shore ? [0.072, 0.078, 0.054][i] : 0), 0, 1));
-    const vertex2 = (p) => [p.x - width / 2, p.level + 0.5, p.z - depth / 2];
+    const vertex3 = (p) => [p.x - width / 2, p.level + 0.5, p.z - depth / 2];
     for (let i = 1; i + 1 < result.length; i++)
-      triangle(water2, vertex2(result[0]), vertex2(result[i]), vertex2(result[i + 1]), color);
+      triangle(water3, vertex3(result[0]), vertex3(result[i]), vertex3(result[i + 1]), color);
   }
   const rowLength = nx + 1;
   const sampled = Array.from({ length: (nz + 1) * rowLength }, (_, i) => world2.sample(i % rowLength / nx * width, Math.floor(i / rowLength) / nz * depth));
@@ -343,9 +343,9 @@ function createWorldMesh(world2, nx = 92, nz = 72, { trees = true, palette = nul
   }
   return {
     ground: new Float32Array(ground),
-    water: new Float32Array(water2),
+    water: new Float32Array(water3),
     groundTriangles: ground.length / 27,
-    waterTriangles: water2.length / 27
+    waterTriangles: water3.length / 27
   };
 }
 
@@ -367,7 +367,7 @@ function settlementRenderFixture(count2 = 30) {
   return { world: world2, state: state2, seed: world2.options.seed };
 }
 
-// environment-next/materials.mjs
+// environment-next/previous-materials.mjs
 import * as T2 from "../assets/vendor/three.module.mjs";
 
 // terrain-classification.mjs
@@ -466,7 +466,7 @@ function createVisualField(world2, { low = false, inputs = [] } = {}) {
 import * as T from "../assets/vendor/three.module.mjs";
 
 // environment-next/preset.mjs
-var ENVIRONMENT_PRESET = Object.freeze({ revision: "wv006-a-1", runtimeReady: false, sunColor: "#fff4e5", sunIntensity: 2.1, sunDirection: [-0.4, 0.86, 0.25], skyColor: "#eaf0f3", groundColor: "#76745f", fillIntensity: 1.8, horizon: "#c5d1c7", zenith: "#91b2c3", fogColor: "#c5d1c7", fogNear: 3300, fogFar: 4900, shadows: false });
+var ENVIRONMENT_PRESET = Object.freeze({ revision: "wv006-a-2", runtimeReady: false, sunColor: "#fff4e5", sunIntensity: 2.1, sunDirection: [-0.4, 0.86, 0.25], skyColor: "#eaf0f3", groundColor: "#76745f", fillIntensity: 1.8, horizon: "#c5d1c7", zenith: "#91b2c3", fogColor: "#c5d1c7", fogNear: 3300, fogFar: 4900, shadows: false });
 
 // environment-next/atmosphere.mjs
 function attachAtmosphere(scene, { low = false, time = { value: 0 } } = {}) {
@@ -501,7 +501,7 @@ function attachAtmosphere(scene, { low = false, time = { value: 0 } } = {}) {
   };
 }
 
-// environment-next/materials.mjs
+// environment-next/previous-materials.mjs
 var vertex = `attribute vec3 color;varying vec3 vColor;varying vec3 vPosition;varying vec3 vNormal;varying float vDepth;
 void main(){vColor=color;vPosition=position;vNormal=normal;vec4 mv=modelViewMatrix*vec4(position,1.);vDepth=-mv.z;gl_Position=projectionMatrix*mv;}`;
 var common = `uniform sampler2D grass;uniform sampler2D soil;uniform sampler2D control;uniform sampler2D visual;uniform vec2 worldSize;uniform float time;uniform vec3 sunDirection;uniform vec3 haze;uniform vec2 fogRange;
@@ -658,9 +658,211 @@ function createEnvironmentMaterials({ low = false, onReady = () => {
   };
 }
 
+// environment-next/materials.mjs
+import * as T3 from "../assets/vendor/three.module.mjs";
+
+// environment-next/detail-resources.mjs
+var SURFACE_DETAIL = Object.freeze({ revision: "wv006-a-2", grassPeriod: 8.4, soilPeriod: 7, rockPeriod: 5.6, normalStrength: 0.65, normalAnisotropy: 8, lowAnisotropy: 4 });
+var DETAIL_TEXTURES = Object.freeze([
+  { name: "grass", file: "grass-color.jpg", width: 1024, height: 1024, color: true },
+  { name: "soil", file: "soil-color.jpg", width: 1024, height: 1024, color: true },
+  { name: "rock", file: "rock-color.jpg", width: 512, height: 512, color: true },
+  { name: "grassNormal", file: "grass-normal.png", width: 512, height: 512, color: false },
+  { name: "soilNormal", file: "soil-normal.png", width: 512, height: 512, color: false },
+  { name: "rockNormal", file: "rock-normal.png", width: 256, height: 256, color: false }
+]);
+var LOW_TEXTURES = Object.freeze([
+  { name: "grass", file: "../environment-v1/grass.jpg", width: 512, height: 512, color: true },
+  { name: "soil", file: "../environment-v1/soil.jpg", width: 512, height: 512, color: true },
+  { name: "rock", file: "rock-low.jpg", width: 256, height: 256, color: true }
+]);
+function mipBytes({ width, height }) {
+  let bytes = 0;
+  for (; ; ) {
+    bytes += width * height * 4;
+    if (width === 1 && height === 1) return bytes;
+    width = Math.max(1, width >> 1);
+    height = Math.max(1, height >> 1);
+  }
+}
+
+// environment-next/materials.mjs
+var vertex2 = `attribute vec3 color;varying vec3 vColor;varying vec3 vPosition;varying vec3 vNormal;varying float vDepth;
+void main(){vColor=color;vPosition=position;vNormal=normal;vec4 mv=modelViewMatrix*vec4(position,1.);vDepth=-mv.z;gl_Position=projectionMatrix*mv;}`;
+var common2 = `uniform sampler2D grass;uniform sampler2D soil;uniform sampler2D rock;uniform sampler2D grassNormal;uniform sampler2D soilNormal;uniform sampler2D rockNormal;uniform sampler2D control;uniform sampler2D visual;uniform vec2 worldSize;uniform float time;uniform vec3 sunDirection;uniform vec3 haze;uniform vec2 fogRange;uniform float normalStrength;
+varying vec3 vColor;varying vec3 vPosition;varying vec3 vNormal;varying float vDepth;
+const float GRASS_PERIOD=${SURFACE_DETAIL.grassPeriod.toFixed(2)},SOIL_PERIOD=${SURFACE_DETAIL.soilPeriod.toFixed(2)},ROCK_PERIOD=${SURFACE_DETAIL.rockPeriod.toFixed(2)};
+float grain(vec2 p){return .5+.25*sin(p.x*.73+sin(p.y*.47))+.25*sin(p.y*1.13+p.x*.21);}
+vec3 finish(vec3 c,vec3 n){float light=.64+.36*max(0.,dot(normalize(n),sunDirection));return mix(c*light,haze,smoothstep(fogRange.x,fogRange.y,vDepth)*.62);}
+vec3 finish(vec3 c){return finish(c,normalize(vNormal));}
+vec2 fieldUV(){return (vPosition.xz+worldSize*.5)/worldSize;}
+// Macro colour belongs in the control field; it must not blur the albedo.
+vec3 meadow(vec3 g,float m){return g*mix(vec3(.87,.96,.81),vec3(.96,.98,.84),m)*(.94+.10*m);}
+#ifndef LOW_QUALITY
+// Cotangent frame follows the actual rendered face and projection. Geometry is untouched.
+vec3 relief(sampler2D detail,vec2 uv,vec3 n){vec3 dp1=dFdx(vPosition),dp2=dFdy(vPosition);vec2 duv1=dFdx(uv),duv2=dFdy(uv);vec3 a=cross(dp2,n),b=cross(n,dp1),t=a*duv1.x+b*duv2.x,bt=a*duv1.y+b*duv2.y;float scale=inversesqrt(max(max(dot(t,t),dot(bt,bt)),1.e-12));vec3 map=texture2D(detail,uv).rgb*2.-1.;map.xy*=normalStrength;return normalize(mat3(t*scale,bt*scale,n)*normalize(map));}
+#endif
+void stone(vec3 n,out vec3 color,out vec3 litNormal){
+ vec2 ux=vec2(vPosition.z*sign(n.x),vPosition.y)/ROCK_PERIOD,uz=vec2(-vPosition.x*sign(n.z),vPosition.y)/ROCK_PERIOD;
+ // Continuous world-space warp breaks straight tile columns without geometry displacement.
+ ux+=vec2(sin(vPosition.y*.047+sin(vPosition.z*.019)),sin(vPosition.z*.039+sin(vPosition.y*.023)))*.65;
+ uz+=vec2(sin(vPosition.y*.043+sin(vPosition.x*.021)),sin(vPosition.x*.037+sin(vPosition.y*.027)))*.65;
+ float w=abs(n.x)/(abs(n.x)+abs(n.z)+.00001);
+ #ifdef LOW_QUALITY
+ vec2 uv=w>.5?ux:uz;color=texture2D(rock,uv).rgb;litNormal=n;
+ #else
+ color=mix(texture2D(rock,uz).rgb,texture2D(rock,ux).rgb,w);litNormal=normalize(mix(relief(rockNormal,uz,n),relief(rockNormal,ux,n),w));
+ #endif
+ color=mix(vec3(dot(color,vec3(.3,.5,.2))),color,.65)*vec3(.97,.96,.93);
+}
+`;
+var terrain2 = `${common2}
+void main(){vec3 n=normalize(vNormal),lightingNormal=n,c;float slope=smoothstep(.24,.62,1.-abs(n.y));
+if(slope>.99){stone(n,c,lightingNormal);}else{
+ vec4 f=texture2D(visual,fieldUV()),shore=texture2D(control,fieldUV());
+ vec2 guv=vPosition.xz/GRASS_PERIOD,euv=vPosition.xz/SOIL_PERIOD;
+ vec3 g=texture2D(grass,guv).rgb,earth=texture2D(soil,euv).rgb;
+ c=meadow(g,f.b);float litter=f.r*.42;vec3 floorColor=earth*mix(vec3(.83,.77,.64),vec3(.91,.86,.73),grain(vPosition.xz*.7));c=mix(c,floorColor,litter);
+ float bank=1.-smoothstep(0.,.48,shore.g),damp=1.-smoothstep(0.,.16,shore.g);
+ vec3 gravel=earth*vec3(.91,.92,.87),wetEarth=earth*vec3(.56,.57,.49);c=mix(c,mix(gravel,wetEarth,damp),bank*.8);
+ c=mix(c,earth*vec3(.91,.82,.67),f.g);
+ #ifndef LOW_QUALITY
+ float earthWeight=max(max(litter,bank*.8),f.g);lightingNormal=normalize(mix(relief(grassNormal,guv,n),relief(soilNormal,euv,n),earthWeight));
+ #endif
+ if(slope>.001){vec3 rockColor,rockLight;stone(n,rockColor,rockLight);c=mix(c,rockColor,slope);lightingNormal=normalize(mix(lightingNormal,rockLight,slope));}
+}
+gl_FragColor=vec4(finish(c,lightingNormal),1.);
+#include <colorspace_fragment>
+}`;
+var road2 = `${common2}varying float vKind;varying float vOffset;
+void main(){vec3 c=vColor,n=normalize(vNormal);if(vKind>.5){vec2 uv=vPosition.xz/SOIL_PERIOD;vec3 earth=texture2D(soil,uv).rgb;
+#ifdef LOW_QUALITY
+vec3 turf=vec3(.19,.26,.11)*(.85+earth.g*.3);
+#else
+vec4 f=texture2D(visual,fieldUV());vec3 turf=meadow(texture2D(grass,vPosition.xz/GRASS_PERIOD).rgb,f.b);n=relief(soilNormal,uv,n);
+#endif
+float wear=vKind<1.5?.92:vKind<2.5?(1.-smoothstep(11.5+grain(vPosition.xz)*.6,17.,abs(vOffset)))*.9:vKind<3.5?.72:vKind<4.5?.58:vKind<5.5?.86:.78;
+c=mix(turf,earth*vec3(.92,.83,.68),wear);if(vKind>4.5&&vKind<5.5)c=mix(c,vColor*.72,.25);}
+gl_FragColor=vec4(finish(c,n),1.);
+#include <colorspace_fragment>
+}`;
+var water2 = `${common2}
+void main(){vec4 field=texture2D(control,fieldUV());vec2 flow=field.ba*2.-1.;float river=smoothstep(.12,.4,length(flow));
+// G is normalized shore distance, never measured depth.
+vec3 c=mix(vec3(.135,.19,.16),vec3(.105,.22,.225),smoothstep(0.,.23,field.g));c=mix(c,vec3(.04,.12,.155),smoothstep(.16,.98,field.g));
+#ifndef LOW_QUALITY
+vec2 p=vPosition.xz/35.-flow*time*.025*river-vec2(time*.001*(1.-river));float ripple=sin(p.x*8.+sin(p.y*6.))*sin(p.y*7.);c+=vec3(.004,.006,.006)*ripple*smoothstep(.03,.30,field.g);
+#endif
+// Water uses the same haze, but no diffuse terrain-normal darkening.
+c=mix(c,haze,smoothstep(fogRange.x,fogRange.y,vDepth)*.62);gl_FragColor=vec4(c,1.);
+#include <colorspace_fragment>
+}`;
+function createEnvironmentMaterials2({ low = false, onReady = () => {
+}, loadTextures = true } = {}) {
+  let disposed = false, loaded2 = 0, failed = 0, lastTime = 0, controlBuilds = 0, world2 = null, inputs = [], field = null, detach = null;
+  const textures = /* @__PURE__ */ new Set(), materials = /* @__PURE__ */ new Set(), resources = low ? LOW_TEXTURES : DETAIL_TEXTURES;
+  const pixel = (rgb) => {
+    const t = new T3.DataTexture(new Uint8Array([...rgb, 255]), 1, 1);
+    t.needsUpdate = true;
+    textures.add(t);
+    return t;
+  };
+  const uniforms = { grass: { value: pixel([106, 124, 72]) }, soil: { value: pixel([116, 94, 66]) }, rock: { value: pixel([126, 122, 110]) }, grassNormal: { value: pixel([128, 128, 255]) }, soilNormal: { value: pixel([128, 128, 255]) }, rockNormal: { value: pixel([128, 128, 255]) }, normalStrength: { value: SURFACE_DETAIL.normalStrength }, control: { value: pixel([0, 255, 128]) }, visual: { value: pixel([0, 0, 128]) }, worldSize: { value: new T3.Vector2(1, 1) }, time: { value: 0 }, sunDirection: { value: new T3.Vector3(...ENVIRONMENT_PRESET.sunDirection).normalize() }, haze: { value: new T3.Color(ENVIRONMENT_PRESET.fogColor) }, fogRange: { value: new T3.Vector2(ENVIRONMENT_PRESET.fogNear, ENVIRONMENT_PRESET.fogFar) } };
+  if (loadTextures) for (const resource of resources) {
+    const { name, file, color } = resource, t = new T3.TextureLoader().load(new URL("../assets/wv/environment-next/" + file, import.meta.url).href, (texture) => {
+      if (disposed) {
+        texture.dispose();
+        return;
+      }
+      loaded2++;
+      uniforms[name].value.dispose();
+      textures.delete(uniforms[name].value);
+      uniforms[name].value = texture;
+      onReady();
+    }, void 0, () => {
+      if (!disposed) {
+        failed++;
+        onReady();
+      }
+    });
+    t.colorSpace = color ? T3.SRGBColorSpace : T3.NoColorSpace;
+    t.wrapS = t.wrapT = T3.RepeatWrapping;
+    t.minFilter = T3.LinearMipmapLinearFilter;
+    t.magFilter = T3.LinearFilter;
+    t.anisotropy = low ? SURFACE_DETAIL.lowAnisotropy : SURFACE_DETAIL.normalAnisotropy;
+    textures.add(t);
+  }
+  for (const name of ["grass", "soil", "rock"]) uniforms[name].value.colorSpace = T3.SRGBColorSpace;
+  function rebuild() {
+    if (!world2 || disposed) return;
+    field = createVisualField(world2, { low, inputs });
+    controlBuilds++;
+    for (const [key, data] of [["control", field.data], ["visual", field.visualData]]) {
+      const t = uniforms[key].value;
+      t.image = { data, width: key === "visual" ? field.visualWidth : field.width, height: key === "visual" ? field.visualHeight : field.height };
+      t.minFilter = t.magFilter = T3.LinearFilter;
+      t.colorSpace = T3.NoColorSpace;
+      t.needsUpdate = true;
+    }
+    uniforms.worldSize.value.set(world2.width, world2.depth);
+  }
+  return {
+    material(index) {
+      if (disposed || ![0, 1, 5].includes(index)) return null;
+      const v = index === 5 ? vertex2.replace("attribute vec3 color;", "attribute float surfaceKind;attribute float surfaceOffset;varying float vKind;varying float vOffset;attribute vec3 color;").replace("vColor=color;", "vKind=surfaceKind;vOffset=surfaceOffset;vColor=color;") : vertex2;
+      const m = new T3.ShaderMaterial({ uniforms, defines: low ? { LOW_QUALITY: 1 } : {}, vertexShader: v, fragmentShader: index === 0 ? terrain2 : index === 1 ? water2 : road2, side: T3.DoubleSide });
+      materials.add(m);
+      m.addEventListener("dispose", () => materials.delete(m));
+      return m;
+    },
+    setWorld(next) {
+      if (disposed) return;
+      world2 = next;
+      rebuild();
+    },
+    setVisualInputs(next = []) {
+      if (disposed) return;
+      inputs = next;
+      rebuild();
+    },
+    sample(x2, z) {
+      return field?.sample(x2, z) ?? null;
+    },
+    attachAtmosphere(scene) {
+      if (disposed) return () => {
+      };
+      detach?.();
+      const release = attachAtmosphere(scene, { low, time: uniforms.time });
+      detach = release;
+      return release;
+    },
+    advance(now) {
+      if (disposed || low) return;
+      if (lastTime) uniforms.time.value += Math.max(0, Math.min(100, now - lastTime)) / 1e3;
+      lastTime = now;
+    },
+    pause() {
+      lastTime = 0;
+    },
+    status: () => ({ disposed, surfaceControlBuilds: controlBuilds, surfaceTexturesLoaded: loaded2, surfaceTexturesExpected: resources.length, surfaceDetailRevision: SURFACE_DETAIL.revision, normalMaps: low ? 0 : 3, surfaceTexturesFailed: failed, surfaceTextureBytes: disposed ? 0 : resources.reduce((sum, r) => sum + mipBytes(r), 0) + (field ? field.data.byteLength + field.visualData.byteLength : 8), surfaceTime: uniforms.time.value, visualInputs: field?.acceptedInputs ?? 0, quality: low ? "low" : "normal", idleAnimation: !low, shadows: false }),
+    dispose() {
+      if (disposed) return;
+      disposed = true;
+      detach?.();
+      for (const m of materials) m.dispose();
+      for (const t of textures) t.dispose();
+      materials.clear();
+      textures.clear();
+      field = null;
+      world2 = null;
+      inputs = [];
+    }
+  };
+}
+
 // environment-materials.mjs
 import * as THREE from "../assets/vendor/three.module.mjs";
-function createEnvironmentMaterials2({ low = false, onReady = () => {
+function createEnvironmentMaterials3({ low = false, onReady = () => {
 } } = {}) {
   let disposed = false, loaded2 = 0, lastTime = 0, controlBuilds = 0;
   const loader = new THREE.TextureLoader(), textures = /* @__PURE__ */ new Map();
@@ -777,7 +979,7 @@ function createEnvironmentMaterials2({ low = false, onReady = () => {
 }
 
 // environment-next/scale-context.mjs
-import * as T3 from "../assets/vendor/three.module.mjs";
+import * as T4 from "../assets/vendor/three.module.mjs";
 
 // asset-registry.mjs
 var ARCHITECTURE_VERSION = "architecture-v1";
@@ -850,7 +1052,7 @@ function createModelRegistry(loader) {
 
 // environment-next/scale-context.mjs
 async function loadScaleContext(scene, getSurface, center2) {
-  const results = await Promise.allSettled([new T3.GLTFLoader().loadAsync(new URL("../assets/wv/megakit-catalog-v1/catalog.glb", import.meta.url).href), fetch(new URL("../assets/wv/megakit-catalog-v1/manifest.json", import.meta.url)).then((r) => {
+  const results = await Promise.allSettled([new T4.GLTFLoader().loadAsync(new URL("../assets/wv/megakit-catalog-v1/catalog.glb", import.meta.url).href), fetch(new URL("../assets/wv/megakit-catalog-v1/manifest.json", import.meta.url)).then((r) => {
     if (!r.ok) throw Error("Context manifest unavailable");
     return r.json();
   })]);
@@ -859,7 +1061,7 @@ async function loadScaleContext(scene, getSurface, center2) {
     if (results[0].status === "fulfilled") disposeModel(results[0].value.scene);
     throw Error("Context resources unavailable");
   }
-  const model = results[0].value, manifest = results[1].value, group = new T3.Group(), world2 = getSurface(), envelopes = [], visualInputs = [];
+  const model = results[0].value, manifest = results[1].value, group = new T4.Group(), world2 = getSurface(), envelopes = [], visualInputs = [];
   const ids = ["home-steep-gable", "home-long-ridge", "home-low-hip", "home-porch-cabin", "home-offset-gables", "market"];
   const positions = [];
   for (let z = center2.y - 65; z <= center2.y + 65; z += 26) for (let x2 = center2.x - 65; x2 <= center2.x + 65; x2 += 26) {
@@ -871,11 +1073,11 @@ async function loadScaleContext(scene, getSurface, center2) {
     if (!source || !p) continue;
     const mesh = source.clone(true);
     mesh.scale.setScalar(2.8);
-    const box = new T3.Box3().setFromObject(mesh);
+    const box = new T4.Box3().setFromObject(mesh);
     mesh.position.set(p.x - world2.width / 2, p.height - box.min.y, p.z - world2.depth / 2);
     group.add(mesh);
     mesh.updateMatrixWorld(true);
-    envelopes.push(new T3.Box3().setFromObject(mesh));
+    envelopes.push(new T4.Box3().setFromObject(mesh));
     const entry = manifest.entries.find((e) => e.id === source.name), door = entry?.entrances?.[0];
     if (door && entry.overhangPolygon) {
       const point = (a, b) => ({ x: p.x + a * 2.8, z: p.z + b * 2.8 }), from = point(door.threshold[0], door.threshold[2]), to = point(door.threshold[0] + door.forward[0] * door.clearDepth, door.threshold[2] + door.forward[2] * door.clearDepth);
@@ -884,7 +1086,7 @@ async function loadScaleContext(scene, getSurface, center2) {
   }
   const colors2 = ["#d6c5a5", "#765741", "#81503d", "#a58b5b", "#81796a", "#8c5549", "#4a829a"];
   for (const [i, color] of colors2.entries()) {
-    const p = positions[0] || { x: center2.x, z: center2.y, height: world2.sample(center2.x, center2.y).height }, g = new T3.BoxGeometry(3, 4.9, 3), m = new T3.MeshStandardMaterial({ color, roughness: 1, metalness: 0 }), mesh = new T3.Mesh(g, m);
+    const p = positions[0] || { x: center2.x, z: center2.y, height: world2.sample(center2.x, center2.y).height }, g = new T4.BoxGeometry(3, 4.9, 3), m = new T4.MeshStandardMaterial({ color, roughness: 1, metalness: 0 }), mesh = new T4.Mesh(g, m);
     mesh.position.set(p.x - world2.width / 2 + i * 5, p.height + 2.45, p.z - world2.depth / 2 + 17);
     group.add(mesh);
   }
@@ -1061,8 +1263,8 @@ function paintOnLand(s, p) {
     if (model.sample(p.x, p.y).water !== null || model.slope(p.x, p.y) > 1.1) return false;
   } else if (Math.abs(p.x - riverX(p.y)) < RIVER_PAINT_HALF_WIDTH) return false;
   if ((s.roads || []).length) {
-    const road2 = distanceToRoad(p, s.roads);
-    if (road2 && road2.distance < ROAD_PAINT_HALF_WIDTH) return false;
+    const road3 = distanceToRoad(p, s.roads);
+    if (road3 && road3.distance < ROAD_PAINT_HALF_WIDTH) return false;
   }
   return true;
 }
@@ -1552,13 +1754,13 @@ function block(out, world2, p, width, depth, height, wall, roof, orientation = 0
   const contacts = foundation.perimeter;
   for (let i = 0; i < contacts.length; i++) {
     const a2 = contacts[i], b2 = contacts[(i + 1) % contacts.length];
-    const vertex2 = (q, y2) => [q.x - world2.width / 2, y2, q.y - world2.depth / 2];
+    const vertex3 = (q, y2) => [q.x - world2.width / 2, y2, q.y - world2.depth / 2];
     quad(
       out,
-      vertex2(a2, a2.height - 0.4),
-      vertex2(b2, b2.height - 0.4),
-      vertex2(b2, floor),
-      vertex2(a2, floor),
+      vertex3(a2, a2.height - 0.4),
+      vertex3(b2, b2.height - 0.4),
+      vertex3(b2, floor),
+      vertex3(a2, floor),
       stone
     );
   }
@@ -1681,10 +1883,10 @@ function settlementGeometry(world2, state2, {
       const a = e && nodeAt(graph, e.a), b = e && nodeAt(graph, e.b);
       if (a && b) ribbon(roadGuides, world2, curvePoints(a, liveCurve.control, b), 13, [0.99, 0.77, 0.34], 4.8);
     }
-  } else for (const road2 of state2.roads || []) {
-    if (road2.length < 2) continue;
-    surfaceRibbon(surfaces, world2, road2, 34, colors.roadEdge, 0.95, 2);
-    surfaceRibbon(surfaces, world2, road2, 24, colors.road, 1.3, 1);
+  } else for (const road3 of state2.roads || []) {
+    if (road3.length < 2) continue;
+    surfaceRibbon(surfaces, world2, road3, 34, colors.roadEdge, 0.95, 2);
+    surfaceRibbon(surfaces, world2, road3, 24, colors.road, 1.3, 1);
   }
   for (const house of state2.houses || []) {
     const style = cottageBlueprint(house), model = modelHouses.get?.(house);
@@ -1834,9 +2036,9 @@ function beginCameraGesture(points, viewport = { left: 0, top: 0, width: 400, he
 }
 function advanceCameraGesture(gesture, points) {
   if (!gesture || !Array.isArray(points) || points.length !== 2) return null;
-  const previous = gesture.last, current = pair(points);
+  const previous2 = gesture.last, current = pair(points);
   gesture.last = current;
-  const v = trackballVector(previous.x, previous.y, gesture.viewport);
+  const v = trackballVector(previous2.x, previous2.y, gesture.viewport);
   const w = trackballVector(current.x, current.y, gesture.viewport);
   const cross2 = [
     v[1] * w[2] - v[2] * w[1],
@@ -1849,15 +2051,15 @@ function advanceCameraGesture(gesture, points) {
     Math.max(-1, Math.min(1, v[0] * w[0] + v[1] * w[1] + v[2] * w[2]))
   );
   const scale = magnitude > 1e-9 ? angle / magnitude : 0;
-  const twist = wrapAngle(current.angle, previous.angle);
+  const twist = wrapAngle(current.angle, previous2.angle);
   return {
     kind: "trackball",
     // "Push" direction: the map moves with the hands, not as if the user
     // were dragging the camera rig in the opposite direction.
     yawDelta: -cross2[1] * scale - twist * 0.78,
     pitchDelta: cross2[0] * scale,
-    zoomRatio: previous.distance / current.distance,
-    previous,
+    zoomRatio: previous2.distance / current.distance,
+    previous: previous2,
     current
   };
 }
@@ -2072,8 +2274,8 @@ function instantiateKenney(world2, models, { showReference = false, maxTrees = 6
   if (models.rock) for (let i = 0; i < 23; i++) {
     const x2 = (0.09 + i * 73 % 79 / 100) * world2.width;
     const z = (0.13 + i * 47 % 69 / 100) * world2.depth;
-    const terrain2 = world2.sample(x2, z);
-    if (terrain2.water !== null || world2.slope(x2, z) > 1.2) continue;
+    const terrain3 = world2.sample(x2, z);
+    if (terrain3.water !== null || world2.slope(x2, z) > 1.2) continue;
     put("rock", x2, z, 6 + i % 5 * 2, i * 0.47);
   }
   if (showReference && models.tower) {
@@ -2083,7 +2285,7 @@ function instantiateKenney(world2, models, { showReference = false, maxTrees = 6
   return { vertices: new Float32Array(output), treeModels };
 }
 function instantiateKenneyTerrain(world2, models, { density = 1 } = {}) {
-  const land = [], water2 = [];
+  const land = [], water3 = [];
   const size = Math.min(world2.width, world2.depth);
   const hash = (i) => {
     let v = i * 1664525 + 1013904223 + world2.options.seed.length * 374761393 >>> 0;
@@ -2093,7 +2295,7 @@ function instantiateKenneyTerrain(world2, models, { density = 1 } = {}) {
   function instance(key, x2, z, footprint, rotation, category = "land", faceRise = 0) {
     const model = models[key];
     if (!model) return;
-    const destination = category === "water" ? water2 : land;
+    const destination = category === "water" ? water3 : land;
     const span = Math.max(1e-4, model.max[0] - model.min[0], model.max[2] - model.min[2]);
     const verticalSpan = Math.max(1e-3, model.max[1] - model.min[1]);
     const scale = footprint / span, cs = Math.cos(rotation), sn = Math.sin(rotation);
@@ -2102,7 +2304,7 @@ function instantiateKenneyTerrain(world2, models, { density = 1 } = {}) {
     if (category === "water" && level === null) return;
     const input = model.vertices;
     for (let i = 0; i + 26 < input.length; i += 27) {
-      const triangle = [], terrain2 = [];
+      const triangle = [], terrain3 = [];
       for (let j = 0; j < 3; j++) {
         const v = i + j * 9;
         const dx = (input[v] - centerX) * scale, dz = (input[v + 2] - centerZ) * scale;
@@ -2125,10 +2327,10 @@ function instantiateKenneyTerrain(world2, models, { density = 1 } = {}) {
           ny,
           nx * sn + nz * cs
         );
-        terrain2.push(surface);
+        terrain3.push(surface);
       }
-      if (category === "water" && terrain2.some((p) => p.water === null)) continue;
-      if (category === "land" && terrain2.some((p) => p.water !== null)) continue;
+      if (category === "water" && terrain3.some((p) => p.water === null)) continue;
+      if (category === "land" && terrain3.some((p) => p.water !== null)) continue;
       destination.push(...triangle);
     }
   }
@@ -2171,7 +2373,7 @@ function instantiateKenneyTerrain(world2, models, { density = 1 } = {}) {
     const height = Math.min(36, Math.max(10, rise * 0.89));
     instance("cliff", x2, z, Math.min(23, Math.max(12, height * 0.7)), angle, "cliff", height);
   }
-  return { land: new Float32Array(land), water: new Float32Array(water2) };
+  return { land: new Float32Array(land), water: new Float32Array(water3) };
 }
 function kenneyLandscapePalette(models) {
   const brightness = (model) => {
@@ -2334,10 +2536,10 @@ function mountWorld3D(canvas, initialWorld, {
       showReference: showcase,
       maxTrees: gameplay ? 260 : 650
     });
-    const terrain2 = instantiateKenneyTerrain(contactWorld, kenney, {
+    const terrain3 = instantiateKenneyTerrain(contactWorld, kenney, {
       density: gameplay ? 0.32 : 1
     });
-    for (const [index, data] of [[2, props.vertices], [3, terrain2.land], [4, terrain2.water]]) {
+    for (const [index, data] of [[2, props.vertices], [3, terrain3.land], [4, terrain3.water]]) {
       put(index, data);
       counts[index] = data.length / 9;
     }
@@ -2756,7 +2958,7 @@ function mountWorld3D2(canvas, world2, options = {}) {
   scene.add(houses);
   const requiredIDs = [...HOME_IDS, ...FACILITY_TYPES.map((type) => "facility-" + type), "tree-oak"];
   const low = options.quality === "lite";
-  const environment = (options.baseline ? createEnvironmentMaterials2 : createEnvironmentMaterials)({ low, onReady: () => controller?.render() });
+  const environment = (options.baseline ? createEnvironmentMaterials3 : options.previous ? createEnvironmentMaterials : createEnvironmentMaterials2)({ low, onReady: () => controller?.render() });
   if (!options.baseline) environment.attachAtmosphere(scene);
   let contextRelease = () => {
   }, contextLoaded = false, contextEnvelopes = [];
@@ -2790,7 +2992,7 @@ function mountWorld3D2(canvas, world2, options = {}) {
   };
   const bind = (state2, c) => ({ houses: new Map((state2.houses || []).flatMap((h, i) => c.homes[i] ? [[h, c.homes[i]]] : [])), buildings: new Map((state2.buildings || []).flatMap((b, i) => c.facilities[i] ? [[b, c.facilities[i]]] : [])), cropRows: c.cropRows });
   const buffers = /* @__PURE__ */ new Map(), registry = createModelRegistry(new THREE3.GLTFLoader()), models = /* @__PURE__ */ new Map();
-  let entries = [], disposed = false, contact = world2, terrain2 = null, refresh = () => {
+  let entries = [], disposed = false, contact = world2, terrain3 = null, refresh = () => {
   }, loaded2 = 0;
   const raycaster = new THREE3.Raycaster();
   function updateCamera(view, rect) {
@@ -2799,7 +3001,7 @@ function mountWorld3D2(canvas, world2, options = {}) {
     camera.right = zoom * aspect;
     camera.top = zoom;
     camera.bottom = -zoom;
-    const focus2 = new THREE3.Vector3(focusX, 17, focusZ);
+    const focus2 = new THREE3.Vector3(focusX, view.focusY ?? 17, focusZ);
     camera.position.copy(focus2).add(new THREE3.Vector3(-Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch)).multiplyScalar(2700));
     camera.up.set(0, 1, 0);
     camera.lookAt(focus2);
@@ -2821,11 +3023,11 @@ function mountWorld3D2(canvas, world2, options = {}) {
   }
   const backend = {
     upload(index, data, surfaceKinds = null, surfaceOffsets = null) {
-      const previous = buffers.get(index);
-      if (previous) {
-        scene.remove(previous);
-        previous.geometry.dispose();
-        previous.material.dispose();
+      const previous2 = buffers.get(index);
+      if (previous2) {
+        scene.remove(previous2);
+        previous2.geometry.dispose();
+        previous2.material.dispose();
       }
       const geometry = new THREE3.BufferGeometry(), array = new THREE3.InterleavedBuffer(data, 9);
       for (const [name, offset] of [["position", 0], ["color", 3], ["normal", 6]]) geometry.setAttribute(name, new THREE3.InterleavedBufferAttribute(array, 3, offset));
@@ -2837,7 +3039,7 @@ function mountWorld3D2(canvas, world2, options = {}) {
       mesh.renderOrder = index;
       buffers.set(index, mesh);
       scene.add(mesh);
-      if (index === 0) terrain2 = mesh;
+      if (index === 0) terrain3 = mesh;
     },
     setTerrain(surface) {
       environment.setWorld(surface);
@@ -2945,9 +3147,9 @@ function mountWorld3D2(canvas, world2, options = {}) {
       renderer.setSize(rect.width, rect.height, false);
       renderer.render(scene, camera);
       waterFrames++;
-      const water2 = buffers.get(1);
+      const water3 = buffers.get(1);
       waterFrustum.setFromProjectionMatrix(waterMatrix.multiplyMatrices(camera.projectionMatrix, camera.matrixWorldInverse));
-      if (options.animateWater !== false && !low && !document.hidden && rect.bottom > 0 && rect.top < innerHeight && rect.right > 0 && rect.left < innerWidth && water2?.geometry.getAttribute("position").count && waterFrustum.intersectsObject(water2)) waterTimer = setTimeout(() => {
+      if (options.animateWater !== false && !low && !document.hidden && rect.bottom > 0 && rect.top < innerHeight && rect.right > 0 && rect.left < innerWidth && water3?.geometry.getAttribute("position").count && waterFrustum.intersectsObject(water3)) waterTimer = setTimeout(() => {
         waterTimer = 0;
         if (!disposed && !document.hidden) controller?.render();
       }, 100);
@@ -2956,10 +3158,10 @@ function mountWorld3D2(canvas, world2, options = {}) {
     },
     screenToWorld(x2, y2, view) {
       const rect = canvas.getBoundingClientRect();
-      if (!rect.width || !rect.height || !terrain2) return null;
+      if (!rect.width || !rect.height || !terrain3) return null;
       updateCamera(view, rect);
       raycaster.setFromCamera(new THREE3.Vector2((x2 - rect.left) / rect.width * 2 - 1, 1 - (y2 - rect.top) / rect.height * 2), camera);
-      const hit = raycaster.intersectObject(terrain2, false)[0];
+      const hit = raycaster.intersectObject(terrain3, false)[0];
       return hit ? { x: hit.point.x + contact.width / 2, y: hit.point.z + contact.depth / 2 } : null;
     },
     assetStatus: () => ({ contextLoaded, waterFrames, loaded: loaded2, total: requiredIDs.length, geometries: renderer.info.memory.geometries, textures: renderer.info.memory.textures, drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles, ...estimateSceneBytes(scene), ...environment.status() }),
@@ -3013,6 +3215,55 @@ function mountWorld3D2(canvas, world2, options = {}) {
   } };
 }
 
+// environment-next/inspection-controls.mjs
+function attachInspectionControls(canvas, viewer2, world2) {
+  const points = /* @__PURE__ */ new Map(), limit = Math.max(world2.width, world2.depth), clamp7 = (v, a, b) => Math.max(a, Math.min(b, v));
+  let gesture = null;
+  const close = () => viewer2.getCamera().zoom < limit * 0.08, stop = (e) => {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+  };
+  const down = (e) => {
+    if (!close() && !points.size) return;
+    stop(e);
+    points.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    try {
+      canvas.setPointerCapture(e.pointerId);
+    } catch {
+    }
+    if (points.size === 2) gesture = beginCameraGesture([...points.values()], canvas.getBoundingClientRect());
+  };
+  const move = (e) => {
+    const last = points.get(e.pointerId);
+    if (!last) return;
+    stop(e);
+    points.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    const v = viewer2.getCamera(), rect = canvas.getBoundingClientRect();
+    if (points.size === 2 && gesture) {
+      const change = advanceCameraGesture(gesture, [...points.values()]);
+      viewer2.setCamera({ ...v, yaw: v.yaw + change.yawDelta, pitch: clamp7(v.pitch + change.pitchDelta, 0.32, 1.47), zoom: clamp7(v.zoom * change.zoomRatio, 6, limit * 2.4) });
+    } else if (points.size === 1) viewer2.setCamera({ ...v, yaw: v.yaw - (e.clientX - last.x) / Math.max(120, rect.width) * Math.PI * 1.5, pitch: clamp7(v.pitch + (e.clientY - last.y) / Math.max(180, rect.height) * 1.8, 0.32, 1.47) });
+  };
+  const up = (e) => {
+    if (!points.has(e.pointerId)) return;
+    stop(e);
+    points.delete(e.pointerId);
+    if (points.size !== 2) gesture = null;
+  };
+  const wheel = (e) => {
+    stop(e);
+    const v = viewer2.getCamera();
+    viewer2.setCamera({ ...v, zoom: clamp7(v.zoom * (e.deltaY > 0 ? 1.12 : 1 / 1.12), 6, limit * 2.4) });
+  };
+  const handlers = { pointerdown: down, pointermove: move, pointerup: up, pointercancel: up, lostpointercapture: up, wheel };
+  for (const [type, fn] of Object.entries(handlers)) canvas.addEventListener(type, fn, { capture: true, passive: false });
+  return () => {
+    for (const [type, fn] of Object.entries(handlers)) canvas.removeEventListener(type, fn, true);
+    points.clear();
+    gesture = null;
+  };
+}
+
 // environment-next/review-page.mjs
 var params = new URLSearchParams(location.search);
 var $ = (id) => document.getElementById(id);
@@ -3020,7 +3271,8 @@ var seed = params.get("seed") || "WILLOW-1048";
 var quality = params.get("quality") || "normal";
 var count = Number(params.get("count")) || 0;
 var baseline = params.get("treatment") === "before";
-for (const [id, value] of Object.entries({ seed, quality, count: String(count), treatment: baseline ? "before" : "after" })) $(id).value = value;
+var previous = params.get("treatment") === "previous";
+for (const [id, value] of Object.entries({ seed, quality, count: String(count), treatment: baseline ? "before" : previous ? "previous" : "after" })) $(id).value = value;
 var fixture = count ? settlementRenderFixture(count) : null;
 var world = fixture?.world || createWorld({ seed, size: "small", lakes: 2, rivers: 1, hills: 70, cliffs: 65 });
 var center = { x: world.width * 0.5, y: world.depth * 0.5 };
@@ -3036,15 +3288,23 @@ var { x, y } = center;
 var nodes = [{ id: 1, x, y }, { id: 2, x: x - 75, y }, { id: 3, x: x + 75, y }, { id: 4, x, y: y - 65 }, { id: 5, x: x + 45, y: y + 65 }];
 var state = fixture?.state || { turn: 2, houses: [], buildings: [], roads: [], roadGraph: { hubId: 1, nodes, segments: [{ id: 1, a: 1, b: 2 }, { id: 2, a: 1, b: 3, control: { x: x + 50, y: y - 20 } }, { id: 3, a: 1, b: 4 }, { id: 4, a: 1, b: 5 }] }, localLanes: [{ points: [{ x: x - 75, y: y + 30 }, { x: x - 20, y: y + 40 }] }], zones: [], desirePaths: [] };
 var beforeState = JSON.stringify(state);
-var viewer = mountWorld3D2($("environment"), world, { baseline, quality: quality === "low" ? "lite" : "game", animateWater: params.get("motion") !== "off", contextCenter: count ? null : center, onAssets: () => {
-  $("status").textContent = "Local models ready \xB7 " + (baseline ? "existing environment" : "candidate environment");
+var viewer = mountWorld3D2($("environment"), world, { baseline, previous, quality: quality === "low" ? "lite" : "game", animateWater: params.get("motion") !== "off", contextCenter: count ? null : center, onAssets: () => {
+  $("status").textContent = "Local models ready \xB7 " + (baseline ? "existing environment" : previous ? "published A1 surface" : "fine-detail A2 surface");
 } });
 viewer.setSettlement(state);
+var releaseInspection = attachInspectionControls($("environment"), viewer, world);
 function focus(x2, y2, zoom, pitch = 0.65) {
   viewer.focusOn(x2, y2, zoom);
-  viewer.setCamera({ ...viewer.getCamera(), pitch, yaw: 0.6 });
+  viewer.setCamera({ ...viewer.getCamera(), pitch, yaw: 0.6, focusY: 17 });
 }
-var views = { wide: () => focus(world.width * 0.5, world.depth * 0.5, world.depth * 0.7, 0.85), near: () => focus(center.x, center.y, 105, 0.42), junction: () => focus(center.x, center.y, 110, 0.78), forest: () => {
+var views = { ground: () => {
+  const x2 = center.x - 52, z = center.y - 45;
+  viewer.focusOn(x2, z);
+  viewer.setCamera({ ...viewer.getCamera(), zoom: 7, pitch: 1.1, yaw: 0.6, focusY: world.sample(x2, z).height });
+}, detail: () => {
+  viewer.focusOn(center.x - 52, center.y - 52);
+  viewer.setCamera({ ...viewer.getCamera(), zoom: 17, pitch: 0.58, yaw: 0.6, focusY: 17 });
+}, wide: () => focus(world.width * 0.5, world.depth * 0.5, world.depth * 0.7, 0.85), near: () => focus(center.x, center.y, 105, 0.42), junction: () => focus(center.x, center.y, 110, 0.78), forest: () => {
   const p = world.trees.find((t) => world.sample(t.x, t.z).water === null) || { x: center.x, z: center.y };
   focus(p.x, p.z, 130, 0.55);
 }, cliff: () => {
@@ -3075,9 +3335,9 @@ for (const [id, action] of Object.entries(views)) $(id).onclick = () => {
   action();
   params.set("view", id);
 };
-var benchmarkCamera = { yaw: 0.71, pitch: 0.86, zoom: world.depth * 0.84, focusX: world.width * -0.03, focusZ: world.depth * -0.02 };
+var benchmarkCamera = { focusY: 17, yaw: 0.71, pitch: 0.86, zoom: world.depth * 0.84, focusX: world.width * -0.03, focusZ: world.depth * -0.02 };
 if (count) viewer.setCamera(benchmarkCamera);
-else (views[params.get("view")] || views.wide)();
+else (views[params.get("view")] || views.detail)();
 if (params.has("camera")) try {
   viewer.setCamera(JSON.parse(params.get("camera")));
 } catch {
@@ -3095,7 +3355,7 @@ async function measure(duration = 8, warmup = 2) {
   running = true;
   cancel = false;
   const times = [], stats = [], initial = { ...benchmarkCamera };
-  let previous = null, begin = performance.now();
+  let previous2 = null, begin = performance.now();
   $("run").disabled = true;
   await new Promise((resolve) => {
     function tick(now) {
@@ -3105,11 +3365,11 @@ async function measure(duration = 8, warmup = 2) {
       }
       const sec = (now - begin) / 1e3, phase = sec * 0.12;
       viewer.setCamera({ ...initial, yaw: 0.71 + Math.sin(phase) * 0.6, pitch: 0.86 + Math.sin(phase * 0.7) * 0.25, zoom: initial.zoom * (0.5 + 0.5 * Math.cos(phase) ** 2), focusX: initial.focusX + Math.sin(phase) * 35 });
-      if (sec >= warmup && previous !== null) {
-        times.push(now - previous);
+      if (sec >= warmup && previous2 !== null) {
+        times.push(now - previous2);
         stats.push(viewer.assetStatus());
       }
-      previous = now;
+      previous2 = now;
       if (sec < duration + warmup) requestAnimationFrame(tick);
       else resolve();
     }
@@ -3118,7 +3378,7 @@ async function measure(duration = 8, warmup = 2) {
   running = false;
   $("run").disabled = false;
   const sorted = times.sort((a, b) => a - b), p = (q) => sorted[Math.min(sorted.length - 1, Math.floor(sorted.length * q))], peak = (k) => Math.max(0, ...stats.map((s) => s[k] || 0)), gl = $("environment").getContext("webgl2"), ext = gl.getExtension("WEBGL_debug_renderer_info");
-  const result = { seed: fixture?.seed || seed, count, quality, treatment: baseline ? "before" : "after", viewport: { width: $("environment").clientWidth, height: $("environment").clientHeight }, devicePixelRatio, renderDPR: Math.min(devicePixelRatio, quality === "low" ? 1 : 1.5), cameraPath: "orbit-v1", initialCamera: initial, warmupSeconds: warmup, durationSeconds: duration, frameCount: times.length, medianMs: p(0.5), p95Ms: p(0.95), p99Ms: p(0.99), peakDrawCalls: peak("drawCalls"), peakTriangles: peak("triangles"), textureBytes: peak("textureBytes"), surfaceTextureBytes: peak("surfaceTextureBytes"), geometryBytes: peak("geometryBytes"), renderer: ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER), shadows: false, cancelled: cancel, phonePerformanceVerified: false };
+  const result = { seed: fixture?.seed || seed, count, quality, treatment: baseline ? "before" : previous2 ? "previous" : "after", viewport: { width: $("environment").clientWidth, height: $("environment").clientHeight }, devicePixelRatio, renderDPR: Math.min(devicePixelRatio, quality === "low" ? 1 : 1.5), cameraPath: "orbit-v1", initialCamera: initial, warmupSeconds: warmup, durationSeconds: duration, frameCount: times.length, medianMs: p(0.5), p95Ms: p(0.95), p99Ms: p(0.99), peakDrawCalls: peak("drawCalls"), peakTriangles: peak("triangles"), textureBytes: peak("textureBytes"), surfaceTextureBytes: peak("surfaceTextureBytes"), geometryBytes: peak("geometryBytes"), renderer: ext ? gl.getParameter(ext.UNMASKED_RENDERER_WEBGL) : gl.getParameter(gl.RENDERER), shadows: false, cancelled: cancel, phonePerformanceVerified: false };
   $("record").textContent = JSON.stringify(result, null, 2);
   return result;
 }
@@ -3129,5 +3389,6 @@ document.addEventListener("visibilitychange", () => {
 window.environmentHarness = { viewer, world, state, center, measure, serializationUnchanged: () => beforeState === JSON.stringify(state) };
 window.addEventListener("pagehide", () => {
   cancel = true;
+  releaseInspection();
   viewer.dispose();
 });

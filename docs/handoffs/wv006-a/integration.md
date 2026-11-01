@@ -1,5 +1,7 @@
 # WV006 A: environment candidate integration contract
 
+A2 supersedes the quality/resource/readiness details below. See [fine surface detail revision](detail-v2.md); the factory name and ownership interface remain compatible.
+
 Gallery-review, `runtimeReady:false`. A owns this candidate only; F owns shared adoption. No shared renderer, save, simulation, road, zoning, registry, cache manifest, package or workflow edits are included. Baseline: develop `5e39c72ff5e205dea166fa18febdfa89aaa5aec8` (PR 81). No applicable AGENTS.md was present in the checkout or ancestor workspace.
 
 ## Exact factory use
