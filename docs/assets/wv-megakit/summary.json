@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "baselineCommit": "604a2272a38e02c539027d2611d0d059b1370e76",
+  "inspectionDate": "2026-10-31",
+  "archive": {
+    "filename": "Medieval Village MegaKit[Source].zip",
+    "bytes": 708720797,
+    "sha256": "5e60888e2babe418a4618e7815539d9b1b2c3b24c1db2b22cd7a2a7f66140732",
+    "expandedBytes": 804698551,
+    "files": 3138
+  },
+  "canonicalModelCount": 304,
+  "categoryCounts": {
+    "balcony": 4,
+    "corner": 8,
+    "door-frame": 6,
+    "door": 16,
+    "floor": 13,
+    "closure": 5,
+    "overhang": 38,
+    "prop": 26,
+    "roof": 109,
+    "stairs": 21,
+    "wall": 32,
+    "shutter": 8,
+    "window": 18
+  },
+  "completeLooseBuildingModels": 0,
+  "godotExportCount": 305,
+  "canonicalTriangles": 240684,
+  "triangleRange": [
+    4,
+    6356
+  ],
+  "sourceLicense": {
+    "path": "License_Source.txt",
+    "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee",
+    "declared": "CC0-1.0"
+  },
+  "nestedArchives": [
+    {
+      "path": "Engine Projects/Godot.zip",
+      "fileCount": 1323,
+      "expandedBytes": 171063980,
+      "extensions": {
+        "": 2,
+        ".bin": 615,
+        ".tres": 20,
+        ".png": 36,
+        ".import": 341,
+        ".tscn": 1,
+        ".gltf": 305,
+        ".gd": 1,
+        ".ini": 1,
+        ".godot": 1
+      }
+    },
+    {
+      "path": "Engine Projects/Medieval Village MegaKit[Unity URP].zip",
+      "fileCount": 2357,
+      "expandedBytes": 131542127,
+      "extensions": {
+        "": 2,
+        ".json": 8,
+        ".csproj": 3,
+        ".unity": 1,
+        ".meta": 1181,
+        ".fbx": 600,
+        ".mat": 14,
+        ".shadergraph": 6,
+        ".png": 47,
+        ".prefab": 304,
+        ".asset": 63,
+        ".md": 2,
+        ".cs": 99,
+        ".asmdef": 1,
+        ".uss": 18,
+        ".uxml": 1,
+        ".txt": 1,
+        ".sln": 1,
+        ".htm": 1,
+        ".dwlt": 2,
+        ".index": 1,
+        ".settings": 1
+      }
+    },
+    {
+      "path": "Engine Projects/Unreal Engine.zip",
+      "fileCount": 369,
+      "expandedBytes": 167435366,
+      "extensions": {
+        ".ini": 5,
+        ".uasset": 362,
+        ".umap": 1,
+        ".uproject": 1
+      }
+    }
+  ],
+  "allContainerFileCount": 7187,
+  "demoSceneNodeCount": 933,
+  "demoBuildingGroups": 5,
+  "uniqueOuterPNGHashes": 51,
+  "uniqueOuterPNGBytes": 133667219
+}
