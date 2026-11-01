@@ -39,7 +39,8 @@ test('B3 read-only scene, read-only state and displayed-terrain picking',async({
   const freeze=o=>{Object.freeze(o);for(const v of Object.values(o))if(v&&typeof v==='object')freeze(v);};freeze(state);
   const before=JSON.stringify(state),canvas=document.createElement('canvas');canvas.id='parityScene';canvas.style='position:fixed;inset:0;width:100vw;height:100vh;z-index:9999';document.body.append(canvas);
   const r=mountWorld3D(canvas,world,{interactive:false,quality:'game'});r.setSettlement(state);r.focusOn(215,160,160);r.navigateTouches({yawDelta:.4,pitchDelta:-.2,zoomRatio:.8});
-  await new Promise(resolve=>setTimeout(resolve,400));
+  for(let wait=0;wait<200&&r.assetStatus().loaded<r.assetStatus().total;wait++)await new Promise(resolve=>setTimeout(resolve,50));
+  if(r.assetStatus().loaded!==r.assetStatus().total)throw Error('Resource lifecycle check requires fully loaded models');
   const c=document.createElement('canvas');c.style.cssText=canvas.style.cssText;document.body.append(c);const old=legacy(c,world,{interactive:false,quality:'lite'});old.setCamera(r.getCamera());
   const point=r.screenToWorld(300,425),expected=old.screenToWorld(300,425);old.dispose();c.remove();
   const counts=[];

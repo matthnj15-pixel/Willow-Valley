@@ -10,7 +10,7 @@ async function add(path){
  const bytes=await readFile(path);
  if(path.endsWith('.mjs'))for(const match of bytes.toString().matchAll(/(?:from\s*|import\s*(?:\(\s*)?)["'](\.[^"']+)["']/g))await add(posix.join(posix.dirname(path),match[1]));
 }
-for(const path of ['index.html','styles.css','app.mjs','ui-kit/world-lab.html','ui-kit/world-lab.css','ui-kit/world-lab.mjs',
+for(const path of ['ui-kit/environment-lab.html','ui-kit/environment-lab.mjs','index.html','styles.css','app.mjs','ui-kit/world-lab.html','ui-kit/world-lab.css','ui-kit/world-lab.mjs',
  'environment-asset-manifest.json','assets/wv/environment-v1/LICENSE.txt',...environment.entries.map(e=>e.url),'assets/vendor/three.module.mjs','assets/wv/architecture-v1/manifest.json','asset-registry.mjs',
  'ui-kit/settlement-benchmark.html','ui-kit/settlement-benchmark.mjs','ui-kit/asset-gallery.html','ui-kit/asset-gallery.css','ui-kit/asset-gallery.mjs',...manifest.entries.map(e=>e.url)])await add(path);
 const entries=[];

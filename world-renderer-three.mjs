@@ -46,7 +46,7 @@ export function mountWorld3D(canvas,world,options={}){
    const mesh=new THREE.Mesh(geometry,material(index));mesh.renderOrder=index;buffers.set(index,mesh);scene.add(mesh);
    if(index===0)terrain=mesh;
   },
-  setTerrain(surface){contact=surface;surfaceVersion++;lastPlacementKey="";},
+  setTerrain(surface){environment.setWorld(surface);contact=surface;surfaceVersion++;lastPlacementKey="";},
   setSettlement(surface,state,onRefresh){
    refresh=onRefresh;contact=surface;
    const key=JSON.stringify([surfaceVersion,models.size,state.houses,state.buildings,state.roads,state.localLanes,state.zones]);

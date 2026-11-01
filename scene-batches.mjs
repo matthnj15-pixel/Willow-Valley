@@ -28,7 +28,7 @@ export function estimateSceneBytes(scene){
   if(node.geometry){for(const attribute of Object.values(node.geometry.attributes))buffer(attribute.array||attribute.data?.array);buffer(node.geometry.index?.array);}
   buffer(node.instanceMatrix?.array);
   for(const material of node.material?(Array.isArray(node.material)?node.material:[node.material]):[])
-   for(const value of Object.values(material))if(value?.isTexture&&!textures.has(value)){
+   for(const value of [...Object.values(material),...Object.values(material.uniforms||{}).map(u=>u.value)])if(value?.isTexture&&!textures.has(value)){
     textures.add(value);const data=value.source?.data;textureBytes+=(data?.width||0)*(data?.height||0)*4*(value.generateMipmaps?4/3:1);
    }
  });
