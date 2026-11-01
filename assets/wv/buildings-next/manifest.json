@@ -1,0 +1,3654 @@
+{
+  "schemaVersion": 1,
+  "recipeRevision": 1,
+  "toolchain": {
+    "three": "0.187.0",
+    "gltfTransform": "4.5.1",
+    "sharp": "0.35.5",
+    "lowSimplifier": "Three.js bundled meshoptimizer via async SimplifyModifier; no runtime decoder"
+  },
+  "status": "gallery-review",
+  "runtimeReady": false,
+  "units": "visual metres",
+  "up": "Y",
+  "gameUnitsPerMetre": 2.8,
+  "humanHeightMetres": 1.75,
+  "output": {
+    "url": "assets/wv/buildings-next/catalog.glb",
+    "bytes": 3499164,
+    "sha256": "47bb946da13849f77491a08b7f66fa6413e10bb3a26fb5c4351b7d3b8449a520"
+  },
+  "inputs": [
+    {
+      "url": "buildings-next/architecture.mjs",
+      "sha256": "2c6bafba9a8ef72878312c50679c9ae59ce3715d11dff496b419a3d06a3c6fce"
+    },
+    {
+      "url": "scripts/build-wv006-baselines.mjs",
+      "sha256": "45cf367fc4035d7aba0fe933451df032299d88358f5ec402879b2c45c6736366"
+    },
+    {
+      "url": "assets/wv/megakit-catalog-v1/manifest.json",
+      "sha256": "f4bbe2a2fce19244f334b41f1e667e84bbfaba3d46c74a7e100cd2f248cef8c4"
+    },
+    {
+      "url": "assets/wv/megakit-catalog-v1/catalog.glb",
+      "sha256": "d8926948018bb382ab82d9a437fae0b20e71a60d195c56960652ad0b0aedf5c7"
+    },
+    {
+      "url": "assets/wv/megakit-catalog-v1/License_Source.txt",
+      "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+    }
+  ],
+  "textures": [
+    {
+      "name": "WV006 original structural atlas",
+      "sha256": "42f0d0ce1d99b56c8cba57d83cdaa4ef45715b97fb7579dc680068a0653a615d",
+      "bytes": 86438,
+      "dimensions": [
+        768,
+        384
+      ],
+      "estimatedMipRGBA8Bytes": 1572864
+    },
+    {
+      "name": "T_RoundTiles_BaseColor",
+      "sha256": "36b5244cc98f3369cb062beaae232a6bef63fe7393db8536d376b604d8bf6da2",
+      "bytes": 7091,
+      "dimensions": [
+        256,
+        256
+      ],
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "name": "T_Brick_BaseColor",
+      "sha256": "4ffd0cabc7a9370f2859e0a94a6f390bf4b9f50aa10837f91a997b0fd0a8cc45",
+      "bytes": 9376,
+      "dimensions": [
+        256,
+        256
+      ],
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "name": "T_Plaster_BaseColor",
+      "sha256": "4cd5dd3883f8137bca294f011a94cf3c1eab05a0fc2446862333b037a2bbc8fa",
+      "bytes": 3422,
+      "dimensions": [
+        256,
+        256
+      ],
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "name": "T_WoodTrim_BaseColor",
+      "sha256": "877bd33004d33b005a6a2ef87cc68977b9c0b179369b91f9b0d7d6707ba51d83",
+      "bytes": 29346,
+      "dimensions": [
+        512,
+        512
+      ],
+      "estimatedMipRGBA8Bytes": 1398102
+    },
+    {
+      "name": "T_RockTrim_BaseColor",
+      "sha256": "e7e916bec6980f13400077b1975eaf54d85aeeed02fade779559333ff0d13737",
+      "bytes": 9024,
+      "dimensions": [
+        256,
+        256
+      ],
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "name": "T_UnevenBrick_BaseColor",
+      "sha256": "b14844bb18eb02d8b51d587dccce6c8f884ec12c035b3ff8c623ad7f4b0f0808",
+      "bytes": 10071,
+      "dimensions": [
+        256,
+        256
+      ],
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "name": "T_FlatTiles_BaseColor",
+      "sha256": "b94580fcf6b7dbf314630f3f581cd8ed05169a3ddc210535bfdee3db7936e59b",
+      "bytes": 7287,
+      "dimensions": [
+        256,
+        256
+      ],
+      "estimatedMipRGBA8Bytes": 349526
+    }
+  ],
+  "externalDependencies": [],
+  "entries": [
+    {
+      "id": "home-steep-gable",
+      "existingIdentity": "home-steep-gable",
+      "role": "residential",
+      "name": "Gabled plaster cottage",
+      "description": "Approved compact plaster cottage; steep tiled roof and arched entry.",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "level": 1,
+      "levelIsVisualOnly": true,
+      "permittedEras": [
+        0
+      ],
+      "source": "PR81 committed derivative unchanged",
+      "inputSha256": "d8926948018bb382ab82d9a437fae0b20e71a60d195c56960652ad0b0aedf5c7",
+      "normalNode": "home-steep-gable",
+      "lowNode": "home-steep-gable__low",
+      "boundsMin": [
+        -2.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.756538152694702,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "dimensions": [
+        5.513076305389404,
+        6.853674286454916,
+        5.6157066822052
+      ],
+      "triangles": 4937,
+      "materialGroups": 8,
+      "drawPrimitives": 8,
+      "entrances": [
+        {
+          "threshold": [
+            -1,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2,
+              -2
+            ],
+            [
+              2,
+              -2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        }
+      ],
+      "supportPoints": [],
+      "floorElevation": 0,
+      "accessPoints": [],
+      "groundDatum": -0.12,
+      "roofPenetration": null,
+      "undercroft": null,
+      "openCourt": null,
+      "envelopes": {
+        "seat": [
+          [
+            [
+              -2,
+              -2
+            ],
+            [
+              2,
+              -2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ]
+        ],
+        "roof": {
+          "min": [
+            -2.756538152694702,
+            3,
+            -2.794139862060547
+          ],
+          "max": [
+            2.756538152694702,
+            6.7336742877960205,
+            2.8215668201446533
+          ],
+          "polygon": [
+            [
+              -2.756538152694702,
+              -2.794139862060547
+            ],
+            [
+              2.756538152694702,
+              -2.794139862060547
+            ],
+            [
+              2.756538152694702,
+              2.8215668201446533
+            ],
+            [
+              -2.756538152694702,
+              2.8215668201446533
+            ]
+          ],
+          "basis": "conservative accepted full overhang, not isolated roof measurement"
+        },
+        "stairs": null,
+        "porch": null,
+        "yard": {
+          "min": [
+            -2.756538152694702,
+            -2.794139862060547
+          ],
+          "max": [
+            2.756538152694702,
+            2.8215668201446533
+          ]
+        }
+      },
+      "optionalDressingGroups": [],
+      "groundContacts": [
+        [
+          -2,
+          -0.12,
+          -2
+        ]
+      ],
+      "fitPolicy": "Fixed 2.8. Test rotated full roof/stair/yard bounds and approach against actual existing parcel; omit optional dressing then fall back, never stretch or enlarge plot.",
+      "budgetExceptions": [
+        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -3,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            3,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "low": {
+        "boundsMin": [
+          -2.756538152694702,
+          -0.11999999865889549,
+          -2.794139862060547
+        ],
+        "boundsMax": [
+          2.756538152694702,
+          6.7336742877960205,
+          2.8215668201446533
+        ],
+        "dimensions": [
+          5.513076305389404,
+          6.853674286454916,
+          5.6157066822052
+        ],
+        "triangles": 3476,
+        "materialGroups": 8,
+        "drawPrimitives": 8,
+        "retainsAcceptedShell": true,
+        "homeReduction": "Three.js r187 SimplifyModifier, 30% vertices for large primitives",
+        "optionalDressing": false
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "existingIdentity": "home-long-ridge",
+      "role": "residential",
+      "name": "Long-ridge timber house",
+      "description": "Four-by-six metre timber house with a long clay-tile ridge.",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "level": 1,
+      "levelIsVisualOnly": true,
+      "permittedEras": [
+        0
+      ],
+      "source": "PR81 committed derivative unchanged",
+      "inputSha256": "d8926948018bb382ab82d9a437fae0b20e71a60d195c56960652ad0b0aedf5c7",
+      "normalNode": "home-long-ridge",
+      "lowNode": "home-long-ridge__low",
+      "boundsMin": [
+        -2.8514444828033447,
+        -0.11999999865889549,
+        -3.794139862060547
+      ],
+      "boundsMax": [
+        2.8514444828033447,
+        6.5263917446136475,
+        3.7941397428512573
+      ],
+      "dimensions": [
+        5.7028889656066895,
+        6.646391743272543,
+        7.588279604911804
+      ],
+      "triangles": 6340,
+      "materialGroups": 8,
+      "drawPrimitives": 8,
+      "entrances": [
+        {
+          "threshold": [
+            -1,
+            0,
+            3
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2,
+              -3
+            ],
+            [
+              2,
+              -3
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              -2,
+              3
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        }
+      ],
+      "supportPoints": [],
+      "floorElevation": 0,
+      "accessPoints": [],
+      "groundDatum": -0.12,
+      "roofPenetration": null,
+      "undercroft": null,
+      "openCourt": null,
+      "envelopes": {
+        "seat": [
+          [
+            [
+              -2,
+              -3
+            ],
+            [
+              2,
+              -3
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              -2,
+              3
+            ]
+          ]
+        ],
+        "roof": {
+          "min": [
+            -2.8514444828033447,
+            3,
+            -3.794139862060547
+          ],
+          "max": [
+            2.8514444828033447,
+            6.5263917446136475,
+            3.7941397428512573
+          ],
+          "polygon": [
+            [
+              -2.8514444828033447,
+              -3.794139862060547
+            ],
+            [
+              2.8514444828033447,
+              -3.794139862060547
+            ],
+            [
+              2.8514444828033447,
+              3.7941397428512573
+            ],
+            [
+              -2.8514444828033447,
+              3.7941397428512573
+            ]
+          ],
+          "basis": "conservative accepted full overhang, not isolated roof measurement"
+        },
+        "stairs": null,
+        "porch": null,
+        "yard": {
+          "min": [
+            -2.8514444828033447,
+            -3.794139862060547
+          ],
+          "max": [
+            2.8514444828033447,
+            3.7941397428512573
+          ]
+        }
+      },
+      "optionalDressingGroups": [],
+      "groundContacts": [
+        [
+          -2,
+          -0.12,
+          -3
+        ]
+      ],
+      "fitPolicy": "Fixed 2.8. Test rotated full roof/stair/yard bounds and approach against actual existing parcel; omit optional dressing then fall back, never stretch or enlarge plot.",
+      "budgetExceptions": [
+        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -3,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            3,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            -4
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            4
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "low": {
+        "boundsMin": [
+          -2.8514444828033447,
+          -0.11999999865889549,
+          -3.794139862060547
+        ],
+        "boundsMax": [
+          2.8514444828033447,
+          6.5263917446136475,
+          3.7941397428512573
+        ],
+        "dimensions": [
+          5.7028889656066895,
+          6.646391743272543,
+          7.588279604911804
+        ],
+        "triangles": 4522,
+        "materialGroups": 8,
+        "drawPrimitives": 8,
+        "retainsAcceptedShell": true,
+        "homeReduction": "Three.js r187 SimplifyModifier, 30% vertices for large primitives",
+        "optionalDressing": false
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "existingIdentity": "home-low-hip",
+      "role": "residential",
+      "name": "Thatched crofter’s cottage",
+      "description": "Original cottage shell with thick overlapping reed courses, continuous closed hips and a bound ridge.",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "level": 1,
+      "levelIsVisualOnly": true,
+      "permittedEras": [
+        0
+      ],
+      "source": "PR81 committed derivative shell + original roof",
+      "inputSha256": "d8926948018bb382ab82d9a437fae0b20e71a60d195c56960652ad0b0aedf5c7",
+      "normalNode": "home-low-hip",
+      "lowNode": "home-low-hip__low",
+      "boundsMin": [
+        -2.5,
+        -0.11999999865889549,
+        -2.5
+      ],
+      "boundsMax": [
+        2.5,
+        4.735000133514404,
+        2.5
+      ],
+      "dimensions": [
+        5,
+        4.855000132173299,
+        5
+      ],
+      "triangles": 5793,
+      "materialGroups": 8,
+      "drawPrimitives": 8,
+      "entrances": [
+        {
+          "threshold": [
+            -1,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2,
+              -2
+            ],
+            [
+              2,
+              -2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          "floor": 0,
+          "foundationPolicy": "seat-local-terrain"
+        }
+      ],
+      "supportPoints": [],
+      "floorElevation": 0,
+      "accessPoints": [],
+      "groundDatum": -0.12,
+      "roofPenetration": null,
+      "undercroft": null,
+      "openCourt": null,
+      "envelopes": {
+        "seat": [
+          [
+            [
+              -2,
+              -2
+            ],
+            [
+              2,
+              -2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ]
+        ],
+        "roof": {
+          "min": [
+            -2.5,
+            2.8082711696624756,
+            -2.5
+          ],
+          "max": [
+            2.5,
+            4.735000133514404,
+            2.5
+          ],
+          "polygon": [
+            [
+              -2.5,
+              -2.5
+            ],
+            [
+              2.5,
+              -2.5
+            ],
+            [
+              2.5,
+              2.5
+            ],
+            [
+              -2.5,
+              2.5
+            ]
+          ]
+        },
+        "stairs": null,
+        "porch": null,
+        "yard": {
+          "min": [
+            -2.5,
+            -2.5
+          ],
+          "max": [
+            2.5,
+            2.5
+          ]
+        }
+      },
+      "optionalDressingGroups": [],
+      "groundContacts": [],
+      "fitPolicy": "Fixed 2.8. Test rotated full roof/stair/yard bounds and approach against actual existing parcel; omit optional dressing then fall back, never stretch or enlarge plot.",
+      "budgetExceptions": [
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -3,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            3,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "low": {
+        "boundsMin": [
+          -2.5,
+          -0.11999999865889549,
+          -2.5
+        ],
+        "boundsMax": [
+          2.5,
+          4.730000019073486,
+          2.5
+        ],
+        "dimensions": [
+          5,
+          4.850000017732381,
+          5
+        ],
+        "triangles": 2538,
+        "materialGroups": 8,
+        "drawPrimitives": 8,
+        "retainsAcceptedShell": true,
+        "homeReduction": "Three.js r187 SimplifyModifier, 30% vertices for large primitives",
+        "optionalDressing": false
+      }
+    },
+    {
+      "id": "home-porch-cabin",
+      "existingIdentity": "home-porch-cabin",
+      "role": "residential",
+      "name": "Porch-front timber cottage",
+      "description": "Compact boarded cottage with a usable shaded timber porch.",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "level": 1,
+      "levelIsVisualOnly": true,
+      "permittedEras": [
+        0
+      ],
+      "source": "PR81 committed derivative unchanged",
+      "inputSha256": "d8926948018bb382ab82d9a437fae0b20e71a60d195c56960652ad0b0aedf5c7",
+      "normalNode": "home-porch-cabin",
+      "lowNode": "home-porch-cabin__low",
+      "boundsMin": [
+        -2.767246961593628,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.767246961593628,
+        6.527637004852295,
+        3.519149422645569
+      ],
+      "dimensions": [
+        5.534493923187256,
+        6.64763700351119,
+        6.313289284706116
+      ],
+      "triangles": 5790,
+      "materialGroups": 7,
+      "drawPrimitives": 7,
+      "entrances": [
+        {
+          "threshold": [
+            -1,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2,
+              -2
+            ],
+            [
+              2,
+              -2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        },
+        {
+          "polygon": [
+            [
+              -2,
+              2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3.3
+            ],
+            [
+              -2,
+              3.3
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12,
+          "open": true
+        }
+      ],
+      "supportPoints": [],
+      "floorElevation": 0,
+      "accessPoints": [],
+      "groundDatum": -0.12,
+      "roofPenetration": null,
+      "undercroft": null,
+      "openCourt": null,
+      "envelopes": {
+        "seat": [
+          [
+            [
+              -2,
+              -2
+            ],
+            [
+              2,
+              -2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          [
+            [
+              -2,
+              2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3.3
+            ],
+            [
+              -2,
+              3.3
+            ]
+          ]
+        ],
+        "roof": {
+          "min": [
+            -2.767246961593628,
+            3,
+            -2.794139862060547
+          ],
+          "max": [
+            2.767246961593628,
+            6.527637004852295,
+            3.519149422645569
+          ],
+          "polygon": [
+            [
+              -2.767246961593628,
+              -2.794139862060547
+            ],
+            [
+              2.767246961593628,
+              -2.794139862060547
+            ],
+            [
+              2.767246961593628,
+              3.519149422645569
+            ],
+            [
+              -2.767246961593628,
+              3.519149422645569
+            ]
+          ],
+          "basis": "conservative accepted full overhang, not isolated roof measurement"
+        },
+        "stairs": null,
+        "porch": null,
+        "yard": {
+          "min": [
+            -2.767246961593628,
+            -2.794139862060547
+          ],
+          "max": [
+            2.767246961593628,
+            3.519149422645569
+          ]
+        }
+      },
+      "optionalDressingGroups": [],
+      "groundContacts": [
+        [
+          -2,
+          -0.12,
+          -2
+        ],
+        [
+          -2,
+          -0.12,
+          2
+        ]
+      ],
+      "fitPolicy": "Fixed 2.8. Test rotated full roof/stair/yard bounds and approach against actual existing parcel; omit optional dressing then fall back, never stretch or enlarge plot.",
+      "budgetExceptions": [
+        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -3,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            3,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "low": {
+        "boundsMin": [
+          -2.767246961593628,
+          -0.11999999865889549,
+          -2.794139862060547
+        ],
+        "boundsMax": [
+          2.767246961593628,
+          6.527637004852295,
+          3.519149422645569
+        ],
+        "dimensions": [
+          5.534493923187256,
+          6.64763700351119,
+          6.313289284706116
+        ],
+        "triangles": 4118,
+        "materialGroups": 7,
+        "drawPrimitives": 7,
+        "retainsAcceptedShell": true,
+        "homeReduction": "Three.js r187 SimplifyModifier, 30% vertices for large primitives",
+        "optionalDressing": false
+      }
+    },
+    {
+      "id": "home-offset-gables",
+      "existingIdentity": "home-offset-gables",
+      "role": "residential",
+      "name": "Paired-gable house",
+      "description": "Plaster main room with a lower narrow timber wing and unequal gables.",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "level": 1,
+      "levelIsVisualOnly": true,
+      "permittedEras": [
+        0
+      ],
+      "source": "PR81 committed derivative unchanged",
+      "inputSha256": "d8926948018bb382ab82d9a437fae0b20e71a60d195c56960652ad0b0aedf5c7",
+      "normalNode": "home-offset-gables",
+      "lowNode": "home-offset-gables__low",
+      "boundsMin": [
+        -3.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        3.5432379245758057,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "dimensions": [
+        7.299776077270508,
+        6.853674286454916,
+        5.6157066822052
+      ],
+      "triangles": 7189,
+      "materialGroups": 9,
+      "drawPrimitives": 9,
+      "entrances": [
+        {
+          "threshold": [
+            -2,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        },
+        {
+          "threshold": [
+            2,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -3,
+              -2
+            ],
+            [
+              1,
+              -2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              -3,
+              2
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        },
+        {
+          "polygon": [
+            [
+              1,
+              -2
+            ],
+            [
+              3,
+              -2
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        }
+      ],
+      "supportPoints": [],
+      "floorElevation": 0,
+      "accessPoints": [],
+      "groundDatum": -0.12,
+      "roofPenetration": null,
+      "undercroft": null,
+      "openCourt": null,
+      "envelopes": {
+        "seat": [
+          [
+            [
+              -3,
+              -2
+            ],
+            [
+              1,
+              -2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              -3,
+              2
+            ]
+          ],
+          [
+            [
+              1,
+              -2
+            ],
+            [
+              3,
+              -2
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ]
+        ],
+        "roof": {
+          "min": [
+            -3.756538152694702,
+            3,
+            -2.794139862060547
+          ],
+          "max": [
+            3.5432379245758057,
+            6.7336742877960205,
+            2.8215668201446533
+          ],
+          "polygon": [
+            [
+              -3.756538152694702,
+              -2.794139862060547
+            ],
+            [
+              3.5432379245758057,
+              -2.794139862060547
+            ],
+            [
+              3.5432379245758057,
+              2.8215668201446533
+            ],
+            [
+              -3.756538152694702,
+              2.8215668201446533
+            ]
+          ],
+          "basis": "conservative accepted full overhang, not isolated roof measurement"
+        },
+        "stairs": null,
+        "porch": null,
+        "yard": {
+          "min": [
+            -3.756538152694702,
+            -2.794139862060547
+          ],
+          "max": [
+            3.5432379245758057,
+            2.8215668201446533
+          ]
+        }
+      },
+      "optionalDressingGroups": [],
+      "groundContacts": [
+        [
+          -3,
+          -0.12,
+          -2
+        ],
+        [
+          1,
+          -0.12,
+          -2
+        ]
+      ],
+      "fitPolicy": "Fixed 2.8. Test rotated full roof/stair/yard bounds and approach against actual existing parcel; omit optional dressing then fall back, never stretch or enlarge plot.",
+      "budgetExceptions": [
+        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -4,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            -1,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            -1,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            4,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            2,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            2,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "low": {
+        "boundsMin": [
+          -3.756538152694702,
+          -0.11999999865889549,
+          -2.794139862060547
+        ],
+        "boundsMax": [
+          3.5431374311447144,
+          6.7336742877960205,
+          2.8215668201446533
+        ],
+        "dimensions": [
+          7.2996755838394165,
+          6.853674286454916,
+          5.6157066822052
+        ],
+        "triangles": 5057,
+        "materialGroups": 9,
+        "drawPrimitives": 9,
+        "retainsAcceptedShell": true,
+        "homeReduction": "Three.js r187 SimplifyModifier, 30% vertices for large primitives",
+        "optionalDressing": false
+      }
+    },
+    {
+      "id": "facility-farm",
+      "existingIdentity": "facility-farm",
+      "role": "farm",
+      "name": "Agricultural barn & work bays",
+      "description": "Broad agricultural barn with double cargo doors, open hay/work bays and a field-facing yard.",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "level": 1,
+      "levelIsVisualOnly": true,
+      "permittedEras": [
+        0
+      ],
+      "source": "original Willow Valley architecture",
+      "inputSha256": null,
+      "normalNode": "facility-farm",
+      "lowNode": "facility-farm__low",
+      "boundsMin": [
+        -3.936915397644043,
+        -0.11999999731779099,
+        -2.9700000286102295
+      ],
+      "boundsMax": [
+        4.567508220672607,
+        5.474642276763916,
+        2.9700000286102295
+      ],
+      "dimensions": [
+        8.50442361831665,
+        5.594642274081707,
+        5.940000057220459
+      ],
+      "triangles": 1168,
+      "materialGroups": 1,
+      "drawPrimitives": 7,
+      "entrances": [
+        {
+          "threshold": [
+            -1,
+            0.22,
+            2.68
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.4,
+          "clearHeight": 2.2,
+          "clearDepth": 3,
+          "corridor": [
+            [
+              -2.2,
+              2.6799999999999997
+            ],
+            [
+              0.19999999999999996,
+              2.6799999999999997
+            ],
+            [
+              0.19999999999999996,
+              5.68
+            ],
+            [
+              -2.2,
+              5.68
+            ]
+          ]
+        }
+      ],
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -3.5,
+              -2.5
+            ],
+            [
+              1.5,
+              -2.5
+            ],
+            [
+              1.5,
+              2.5
+            ],
+            [
+              -3.5,
+              2.5
+            ]
+          ],
+          "floor": 0,
+          "foundationPolicy": "seat-local-terrain"
+        },
+        {
+          "polygon": [
+            [
+              1.6,
+              -2.4
+            ],
+            [
+              4.4,
+              -2.4
+            ],
+            [
+              4.4,
+              2.4
+            ],
+            [
+              1.6,
+              2.4
+            ]
+          ],
+          "floor": 0,
+          "foundationPolicy": "seat-local-terrain"
+        }
+      ],
+      "supportPoints": [
+        {
+          "point": [
+            -3.45,
+            0,
+            -2.45
+          ],
+          "contact": [
+            -3.45,
+            -0.12,
+            -2.45
+          ],
+          "top": 3.5,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -3.45,
+            0,
+            0
+          ],
+          "contact": [
+            -3.45,
+            -0.12,
+            0
+          ],
+          "top": 3.5,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -3.45,
+            0,
+            2.45
+          ],
+          "contact": [
+            -3.45,
+            -0.12,
+            2.45
+          ],
+          "top": 3.5,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            1.45,
+            0,
+            -2.45
+          ],
+          "contact": [
+            1.45,
+            -0.12,
+            -2.45
+          ],
+          "top": 3.5,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            1.45,
+            0,
+            0
+          ],
+          "contact": [
+            1.45,
+            -0.12,
+            0
+          ],
+          "top": 3.5,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            1.45,
+            0,
+            2.45
+          ],
+          "contact": [
+            1.45,
+            -0.12,
+            2.45
+          ],
+          "top": 3.5,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            4.15,
+            0,
+            -2
+          ],
+          "contact": [
+            4.15,
+            -0.12,
+            -2
+          ],
+          "top": 2.65,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            4.15,
+            0,
+            0
+          ],
+          "contact": [
+            4.15,
+            -0.12,
+            0
+          ],
+          "top": 2.65,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            4.15,
+            0,
+            2
+          ],
+          "contact": [
+            4.15,
+            -0.12,
+            2
+          ],
+          "top": 2.65,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        }
+      ],
+      "floorElevation": 0,
+      "accessPoints": [],
+      "groundDatum": -0.12,
+      "roofPenetration": null,
+      "undercroft": null,
+      "openCourt": null,
+      "envelopes": {
+        "seat": [
+          [
+            [
+              -3.5,
+              -2.5
+            ],
+            [
+              1.5,
+              -2.5
+            ],
+            [
+              1.5,
+              2.5
+            ],
+            [
+              -3.5,
+              2.5
+            ]
+          ],
+          [
+            [
+              1.6,
+              -2.4
+            ],
+            [
+              4.4,
+              -2.4
+            ],
+            [
+              4.4,
+              2.4
+            ],
+            [
+              1.6,
+              2.4
+            ]
+          ]
+        ],
+        "roof": {
+          "min": [
+            -3.936915397644043,
+            2.6036572456359863,
+            -2.9700000286102295
+          ],
+          "max": [
+            4.567508220672607,
+            5.474642276763916,
+            2.9700000286102295
+          ],
+          "polygon": [
+            [
+              -3.936915397644043,
+              -2.9700000286102295
+            ],
+            [
+              4.567508220672607,
+              -2.9700000286102295
+            ],
+            [
+              4.567508220672607,
+              2.9700000286102295
+            ],
+            [
+              -3.936915397644043,
+              2.9700000286102295
+            ]
+          ]
+        },
+        "stairs": null,
+        "porch": null,
+        "yard": {
+          "min": [
+            -3.936915397644043,
+            -2.9700000286102295
+          ],
+          "max": [
+            4.567508220672607,
+            2.9700000286102295
+          ]
+        }
+      },
+      "optionalDressingGroups": [
+        "facility-farm-optional"
+      ],
+      "groundContacts": [
+        [
+          -3.45,
+          -0.12,
+          -2.45
+        ],
+        [
+          -3.45,
+          -0.12,
+          0
+        ],
+        [
+          -3.45,
+          -0.12,
+          2.45
+        ],
+        [
+          1.45,
+          -0.12,
+          -2.45
+        ],
+        [
+          1.45,
+          -0.12,
+          0
+        ],
+        [
+          1.45,
+          -0.12,
+          2.45
+        ],
+        [
+          4.15,
+          -0.12,
+          -2
+        ],
+        [
+          4.15,
+          -0.12,
+          0
+        ],
+        [
+          4.15,
+          -0.12,
+          2
+        ]
+      ],
+      "fitPolicy": "Fixed 2.8. Test rotated full roof/stair/yard bounds and approach against actual existing parcel; omit optional dressing then fall back, never stretch or enlarge plot.",
+      "budgetExceptions": [],
+      "shellProbes": [],
+      "existingEnvelopeCheck": {
+        "availableGameUnits": [
+          46,
+          41.2
+        ],
+        "fullGameUnits": [
+          23.81238613128662,
+          16.632000160217284
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      },
+      "low": {
+        "boundsMin": [
+          -3.936915397644043,
+          -0.11999999731779099,
+          -2.9700000286102295
+        ],
+        "boundsMax": [
+          4.567508220672607,
+          5.389999866485596,
+          2.9700000286102295
+        ],
+        "dimensions": [
+          8.50442361831665,
+          5.509999863803387,
+          5.940000057220459
+        ],
+        "triangles": 808,
+        "materialGroups": 1,
+        "drawPrimitives": 5,
+        "retainsAcceptedShell": false,
+        "homeReduction": "not applicable",
+        "optionalDressing": false
+      }
+    },
+    {
+      "id": "facility-smith",
+      "existingIdentity": "facility-smith",
+      "role": "smith",
+      "name": "Open masonry forge",
+      "description": "Deep open masonry forge: continuous hearth, supported hood and hollow stack through a flashed roof opening.",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "level": 1,
+      "levelIsVisualOnly": true,
+      "permittedEras": [
+        0
+      ],
+      "source": "original Willow Valley architecture",
+      "inputSha256": null,
+      "normalNode": "facility-smith",
+      "lowNode": "facility-smith__low",
+      "boundsMin": [
+        -2.950000047683716,
+        -0.11999999731779099,
+        -2.658936023712158
+      ],
+      "boundsMax": [
+        2.950000047683716,
+        5.5,
+        2.658936023712158
+      ],
+      "dimensions": [
+        5.900000095367432,
+        5.619999997317791,
+        5.317872047424316
+      ],
+      "triangles": 688,
+      "materialGroups": 1,
+      "drawPrimitives": 5,
+      "entrances": [
+        {
+          "threshold": [
+            0,
+            0.18,
+            2.3
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1.2,
+          "clearHeight": 2.2,
+          "clearDepth": 2.3,
+          "corridor": [
+            [
+              -0.6,
+              2.3
+            ],
+            [
+              0.6,
+              2.3
+            ],
+            [
+              0.6,
+              4.6
+            ],
+            [
+              -0.6,
+              4.6
+            ]
+          ]
+        }
+      ],
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2.7,
+              -2.3
+            ],
+            [
+              2.7,
+              -2.3
+            ],
+            [
+              2.7,
+              2.3
+            ],
+            [
+              -2.7,
+              2.3
+            ]
+          ],
+          "floor": 0,
+          "foundationPolicy": "seat-local-terrain"
+        }
+      ],
+      "supportPoints": [
+        {
+          "point": [
+            -2.5,
+            0,
+            -2
+          ],
+          "contact": [
+            -2.5,
+            -0.12,
+            -2
+          ],
+          "top": 3.4400000000000004,
+          "width": 0.24,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -2.5,
+            0,
+            2
+          ],
+          "contact": [
+            -2.5,
+            -0.12,
+            2
+          ],
+          "top": 2.96,
+          "width": 0.24,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            2.5,
+            0,
+            -2
+          ],
+          "contact": [
+            2.5,
+            -0.12,
+            -2
+          ],
+          "top": 3.4400000000000004,
+          "width": 0.24,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            2.5,
+            0,
+            2
+          ],
+          "contact": [
+            2.5,
+            -0.12,
+            2
+          ],
+          "top": 2.96,
+          "width": 0.24,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        }
+      ],
+      "floorElevation": 0,
+      "accessPoints": [],
+      "groundDatum": -0.12,
+      "roofPenetration": {
+        "center": [
+          -0.9,
+          -0.85
+        ],
+        "hole": [
+          [
+            -1.42,
+            -1.37
+          ],
+          [
+            -0.38,
+            -1.37
+          ],
+          [
+            -0.38,
+            -0.32999999999999996
+          ],
+          [
+            -1.42,
+            -0.32999999999999996
+          ]
+        ],
+        "stackOuter": [
+          [
+            -1.31,
+            -1.26
+          ],
+          [
+            -0.49000000000000005,
+            -1.26
+          ],
+          [
+            -0.49000000000000005,
+            -0.44
+          ],
+          [
+            -1.31,
+            -0.44
+          ]
+        ],
+        "clearance": 0.11,
+        "roofYAtCenter": 3.302,
+        "stackTop": 5.5,
+        "continuousFrom": 2.85,
+        "smokeRequired": false
+      },
+      "undercroft": null,
+      "openCourt": null,
+      "envelopes": {
+        "seat": [
+          [
+            [
+              -2.7,
+              -2.3
+            ],
+            [
+              2.7,
+              -2.3
+            ],
+            [
+              2.7,
+              2.3
+            ],
+            [
+              -2.7,
+              2.3
+            ]
+          ]
+        ],
+        "roof": {
+          "min": [
+            -2.950000047683716,
+            2.8075342178344727,
+            -2.658936023712158
+          ],
+          "max": [
+            2.950000047683716,
+            3.592465877532959,
+            2.658936023712158
+          ],
+          "polygon": [
+            [
+              -2.950000047683716,
+              -2.658936023712158
+            ],
+            [
+              2.950000047683716,
+              -2.658936023712158
+            ],
+            [
+              2.950000047683716,
+              2.658936023712158
+            ],
+            [
+              -2.950000047683716,
+              2.658936023712158
+            ]
+          ]
+        },
+        "stairs": null,
+        "porch": null,
+        "yard": {
+          "min": [
+            -2.950000047683716,
+            -2.658936023712158
+          ],
+          "max": [
+            2.950000047683716,
+            2.658936023712158
+          ]
+        }
+      },
+      "optionalDressingGroups": [],
+      "groundContacts": [
+        [
+          -2.5,
+          -0.12,
+          -2
+        ],
+        [
+          -2.5,
+          -0.12,
+          2
+        ],
+        [
+          2.5,
+          -0.12,
+          -2
+        ],
+        [
+          2.5,
+          -0.12,
+          2
+        ]
+      ],
+      "fitPolicy": "Fixed 2.8. Test rotated full roof/stair/yard bounds and approach against actual existing parcel; omit optional dressing then fall back, never stretch or enlarge plot.",
+      "budgetExceptions": [],
+      "shellProbes": [],
+      "existingEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          16.52000026702881,
+          14.890041732788085
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      },
+      "low": {
+        "boundsMin": [
+          -2.950000047683716,
+          -0.11999999731779099,
+          -2.658936023712158
+        ],
+        "boundsMax": [
+          2.950000047683716,
+          5.5,
+          2.658936023712158
+        ],
+        "dimensions": [
+          5.900000095367432,
+          5.619999997317791,
+          5.317872047424316
+        ],
+        "triangles": 640,
+        "materialGroups": 1,
+        "drawPrimitives": 5,
+        "retainsAcceptedShell": false,
+        "homeReduction": "not applicable",
+        "optionalDressing": false
+      }
+    },
+    {
+      "id": "facility-granary",
+      "existingIdentity": "facility-granary",
+      "role": "granary",
+      "name": "Post-raised granary & loading stair",
+      "description": "Enclosed boarded store raised on braced posts, with a level closed underside, cargo landing and side loading stair.",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "level": 1,
+      "levelIsVisualOnly": true,
+      "permittedEras": [
+        0
+      ],
+      "source": "original Willow Valley architecture",
+      "inputSha256": null,
+      "normalNode": "facility-granary",
+      "lowNode": "facility-granary__low",
+      "boundsMin": [
+        -4.684999942779541,
+        -0.1687883734703064,
+        -2.8949999809265137
+      ],
+      "boundsMax": [
+        2.835538387298584,
+        5.871126174926758,
+        3.799999952316284
+      ],
+      "dimensions": [
+        7.520538330078125,
+        6.039914548397064,
+        6.694999933242798
+      ],
+      "triangles": 1408,
+      "materialGroups": 1,
+      "drawPrimitives": 10,
+      "entrances": [
+        {
+          "threshold": [
+            0,
+            1.35,
+            2.65
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.1,
+          "clearHeight": 2.2,
+          "clearDepth": 1,
+          "corridor": [
+            [
+              -1.05,
+              2.65
+            ],
+            [
+              1.05,
+              2.65
+            ],
+            [
+              1.05,
+              3.65
+            ],
+            [
+              -1.05,
+              3.65
+            ]
+          ]
+        }
+      ],
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2.4,
+              -2.4
+            ],
+            [
+              2.4,
+              -2.4
+            ],
+            [
+              2.4,
+              2.4
+            ],
+            [
+              -2.4,
+              2.4
+            ]
+          ],
+          "floor": 1.35,
+          "foundationPolicy": "individual-supports-only"
+        }
+      ],
+      "supportPoints": [
+        {
+          "point": [
+            -2.1,
+            0,
+            -2.1
+          ],
+          "contact": [
+            -2.1,
+            -0.12,
+            -2.1
+          ],
+          "top": 1.21,
+          "width": 0.26,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -2.1,
+            0,
+            2.1
+          ],
+          "contact": [
+            -2.1,
+            -0.12,
+            2.1
+          ],
+          "top": 1.21,
+          "width": 0.26,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            0,
+            0,
+            -2.1
+          ],
+          "contact": [
+            0,
+            -0.12,
+            -2.1
+          ],
+          "top": 1.21,
+          "width": 0.26,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            0,
+            0,
+            2.1
+          ],
+          "contact": [
+            0,
+            -0.12,
+            2.1
+          ],
+          "top": 1.21,
+          "width": 0.26,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            2.1,
+            0,
+            -2.1
+          ],
+          "contact": [
+            2.1,
+            -0.12,
+            -2.1
+          ],
+          "top": 1.21,
+          "width": 0.26,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            2.1,
+            0,
+            2.1
+          ],
+          "contact": [
+            2.1,
+            -0.12,
+            2.1
+          ],
+          "top": 1.21,
+          "width": 0.26,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -2.1,
+            0,
+            3.6
+          ],
+          "contact": [
+            -2.1,
+            -0.12,
+            3.6
+          ],
+          "top": 1.1700000000000002,
+          "width": 0.24,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            2.1,
+            0,
+            3.6
+          ],
+          "contact": [
+            2.1,
+            -0.12,
+            3.6
+          ],
+          "top": 1.1700000000000002,
+          "width": 0.24,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        }
+      ],
+      "floorElevation": 1.35,
+      "accessPoints": [
+        {
+          "kind": "cargo",
+          "threshold": [
+            0,
+            1.35,
+            2.65
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.1,
+          "clearDepth": 1
+        },
+        {
+          "kind": "stair-foot",
+          "threshold": [
+            -4.64,
+            0,
+            3.1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ],
+          "clearWidth": 1.1,
+          "run": 2.24,
+          "rise": 1.35
+        },
+        {
+          "kind": "stair-head",
+          "threshold": [
+            -2.4,
+            1.35,
+            3.1
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ],
+          "clearWidth": 1.1
+        }
+      ],
+      "groundDatum": -0.12,
+      "roofPenetration": null,
+      "undercroft": {
+        "floorElevation": 1.35,
+        "underside": 1.1500000000000001,
+        "forbidSolidInfill": true,
+        "openProbe": {
+          "origin": [
+            0,
+            0.6,
+            4.5
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ]
+        }
+      },
+      "openCourt": null,
+      "envelopes": {
+        "seat": [
+          [
+            [
+              -2.4,
+              -2.4
+            ],
+            [
+              2.4,
+              -2.4
+            ],
+            [
+              2.4,
+              2.4
+            ],
+            [
+              -2.4,
+              2.4
+            ]
+          ]
+        ],
+        "roof": {
+          "min": [
+            -2.835538387298584,
+            3.989692449569702,
+            -2.8949999809265137
+          ],
+          "max": [
+            2.835538387298584,
+            5.871126174926758,
+            2.8949999809265137
+          ],
+          "polygon": [
+            [
+              -2.835538387298584,
+              -2.8949999809265137
+            ],
+            [
+              2.835538387298584,
+              -2.8949999809265137
+            ],
+            [
+              2.835538387298584,
+              2.8949999809265137
+            ],
+            [
+              -2.835538387298584,
+              2.8949999809265137
+            ]
+          ]
+        },
+        "stairs": {
+          "min": [
+            -4.684999942779541,
+            -0.1687883734703064,
+            2.5399999618530273
+          ],
+          "max": [
+            -2.3550000190734863,
+            2.3885414600372314,
+            3.6600000858306885
+          ],
+          "polygon": [
+            [
+              -4.684999942779541,
+              2.5399999618530273
+            ],
+            [
+              -2.3550000190734863,
+              2.5399999618530273
+            ],
+            [
+              -2.3550000190734863,
+              3.6600000858306885
+            ],
+            [
+              -4.684999942779541,
+              3.6600000858306885
+            ]
+          ]
+        },
+        "porch": {
+          "min": [
+            -2.4000000953674316,
+            1.1699999570846558,
+            2.424999952316284
+          ],
+          "max": [
+            2.4000000953674316,
+            2.3949999809265137,
+            3.7750000953674316
+          ],
+          "polygon": [
+            [
+              -2.4000000953674316,
+              2.424999952316284
+            ],
+            [
+              2.4000000953674316,
+              2.424999952316284
+            ],
+            [
+              2.4000000953674316,
+              3.7750000953674316
+            ],
+            [
+              -2.4000000953674316,
+              3.7750000953674316
+            ]
+          ]
+        },
+        "yard": {
+          "min": [
+            -4.684999942779541,
+            -2.8949999809265137
+          ],
+          "max": [
+            2.835538387298584,
+            3.799999952316284
+          ]
+        }
+      },
+      "optionalDressingGroups": [
+        "facility-granary-optional"
+      ],
+      "groundContacts": [
+        [
+          -2.1,
+          -0.12,
+          -2.1
+        ],
+        [
+          -2.1,
+          -0.12,
+          2.1
+        ],
+        [
+          0,
+          -0.12,
+          -2.1
+        ],
+        [
+          0,
+          -0.12,
+          2.1
+        ],
+        [
+          2.1,
+          -0.12,
+          -2.1
+        ],
+        [
+          2.1,
+          -0.12,
+          2.1
+        ],
+        [
+          -2.1,
+          -0.12,
+          3.6
+        ],
+        [
+          2.1,
+          -0.12,
+          3.6
+        ]
+      ],
+      "fitPolicy": "Fixed 2.8. Test rotated full roof/stair/yard bounds and approach against actual existing parcel; omit optional dressing then fall back, never stretch or enlarge plot.",
+      "budgetExceptions": [],
+      "shellProbes": [],
+      "existingEnvelopeCheck": {
+        "availableGameUnits": [
+          30,
+          26.8
+        ],
+        "fullGameUnits": [
+          21.057507324218747,
+          18.745999813079834
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      },
+      "low": {
+        "boundsMin": [
+          -4.684999942779541,
+          -0.1687883734703064,
+          -2.8949999809265137
+        ],
+        "boundsMax": [
+          2.835538387298584,
+          5.789999961853027,
+          3.799999952316284
+        ],
+        "dimensions": [
+          7.520538330078125,
+          5.958788335323334,
+          6.694999933242798
+        ],
+        "triangles": 1108,
+        "materialGroups": 1,
+        "drawPrimitives": 8,
+        "retainsAcceptedShell": false,
+        "homeReduction": "not applicable",
+        "optionalDressing": false
+      }
+    },
+    {
+      "id": "facility-lumber",
+      "existingIdentity": "facility-lumber",
+      "role": "lumber",
+      "name": "Timber rack & cutting shelter",
+      "description": "Low open post frame with long integral timber racks, covered bench and an uncovered cutting apron.",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "level": 1,
+      "levelIsVisualOnly": true,
+      "permittedEras": [
+        0
+      ],
+      "source": "original Willow Valley architecture",
+      "inputSha256": null,
+      "normalNode": "facility-lumber",
+      "lowNode": "facility-lumber__low",
+      "boundsMin": [
+        -4.099999904632568,
+        -0.11999999731779099,
+        -1.975000023841858
+      ],
+      "boundsMax": [
+        4.099999904632568,
+        3.3350000381469727,
+        2.575000047683716
+      ],
+      "dimensions": [
+        8.199999809265137,
+        3.4550000354647636,
+        4.550000071525574
+      ],
+      "triangles": 756,
+      "materialGroups": 1,
+      "drawPrimitives": 3,
+      "entrances": [
+        {
+          "threshold": [
+            0,
+            0,
+            1.5
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1.5,
+          "clearHeight": 2.2,
+          "clearDepth": 2.2,
+          "corridor": [
+            [
+              -0.75,
+              1.5
+            ],
+            [
+              0.75,
+              1.5
+            ],
+            [
+              0.75,
+              3.7
+            ],
+            [
+              -0.75,
+              3.7
+            ]
+          ]
+        }
+      ],
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -3.75,
+              -1.6
+            ],
+            [
+              3.75,
+              -1.6
+            ],
+            [
+              3.75,
+              1.6
+            ],
+            [
+              -3.75,
+              1.6
+            ]
+          ],
+          "floor": 0,
+          "foundationPolicy": "seat-local-terrain"
+        }
+      ],
+      "supportPoints": [
+        {
+          "point": [
+            -3.5,
+            0,
+            -1.3
+          ],
+          "contact": [
+            -3.5,
+            -0.12,
+            -1.3
+          ],
+          "top": 2.35,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -3.5,
+            0,
+            1.3
+          ],
+          "contact": [
+            -3.5,
+            -0.12,
+            1.3
+          ],
+          "top": 2.35,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            0,
+            0,
+            -1.3
+          ],
+          "contact": [
+            0,
+            -0.12,
+            -1.3
+          ],
+          "top": 2.35,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            0,
+            0,
+            1.3
+          ],
+          "contact": [
+            0,
+            -0.12,
+            1.3
+          ],
+          "top": 2.35,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            3.5,
+            0,
+            -1.3
+          ],
+          "contact": [
+            3.5,
+            -0.12,
+            -1.3
+          ],
+          "top": 2.35,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            3.5,
+            0,
+            1.3
+          ],
+          "contact": [
+            3.5,
+            -0.12,
+            1.3
+          ],
+          "top": 2.35,
+          "width": 0.22,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        }
+      ],
+      "floorElevation": 0,
+      "accessPoints": [],
+      "groundDatum": -0.12,
+      "roofPenetration": null,
+      "undercroft": null,
+      "openCourt": null,
+      "envelopes": {
+        "seat": [
+          [
+            [
+              -3.75,
+              -1.6
+            ],
+            [
+              3.75,
+              -1.6
+            ],
+            [
+              3.75,
+              1.6
+            ],
+            [
+              -3.75,
+              1.6
+            ]
+          ]
+        ],
+        "roof": {
+          "min": [
+            -4.099999904632568,
+            2.325000047683716,
+            -1.975000023841858
+          ],
+          "max": [
+            4.099999904632568,
+            3.3350000381469727,
+            1.975000023841858
+          ],
+          "polygon": [
+            [
+              -4.099999904632568,
+              -1.975000023841858
+            ],
+            [
+              4.099999904632568,
+              -1.975000023841858
+            ],
+            [
+              4.099999904632568,
+              1.975000023841858
+            ],
+            [
+              -4.099999904632568,
+              1.975000023841858
+            ]
+          ]
+        },
+        "stairs": null,
+        "porch": null,
+        "yard": {
+          "min": [
+            -4.099999904632568,
+            -1.975000023841858
+          ],
+          "max": [
+            4.099999904632568,
+            2.575000047683716
+          ]
+        }
+      },
+      "optionalDressingGroups": [],
+      "groundContacts": [
+        [
+          -3.5,
+          -0.12,
+          -1.3
+        ],
+        [
+          -3.5,
+          -0.12,
+          1.3
+        ],
+        [
+          0,
+          -0.12,
+          -1.3
+        ],
+        [
+          0,
+          -0.12,
+          1.3
+        ],
+        [
+          3.5,
+          -0.12,
+          -1.3
+        ],
+        [
+          3.5,
+          -0.12,
+          1.3
+        ]
+      ],
+      "fitPolicy": "Fixed 2.8. Test rotated full roof/stair/yard bounds and approach against actual existing parcel; omit optional dressing then fall back, never stretch or enlarge plot.",
+      "budgetExceptions": [],
+      "shellProbes": [],
+      "existingEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          22.95999946594238,
+          12.740000200271606
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      },
+      "low": {
+        "boundsMin": [
+          -4.099999904632568,
+          -0.11999999731779099,
+          -1.975000023841858
+        ],
+        "boundsMax": [
+          4.099999904632568,
+          3.3350000381469727,
+          2.575000047683716
+        ],
+        "dimensions": [
+          8.199999809265137,
+          3.4550000354647636,
+          4.550000071525574
+        ],
+        "triangles": 720,
+        "materialGroups": 1,
+        "drawPrimitives": 3,
+        "retainsAcceptedShell": false,
+        "homeReduction": "not applicable",
+        "optionalDressing": false
+      }
+    },
+    {
+      "id": "facility-market",
+      "existingIdentity": "facility-market",
+      "role": "market",
+      "name": "Open stall court",
+      "description": "Three independent trading stalls: muted canvas, varied open counters and a broad unroofed circulation court.",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "level": 1,
+      "levelIsVisualOnly": true,
+      "permittedEras": [
+        0
+      ],
+      "source": "original Willow Valley architecture",
+      "inputSha256": null,
+      "normalNode": "facility-market",
+      "lowNode": "facility-market__low",
+      "boundsMin": [
+        -5.025000095367432,
+        -0.11999999731779099,
+        -3.451643943786621
+      ],
+      "boundsMax": [
+        4.900000095367432,
+        2.7632505893707275,
+        0.4699999988079071
+      ],
+      "dimensions": [
+        9.925000190734863,
+        2.8832505866885185,
+        3.921643942594528
+      ],
+      "triangles": 636,
+      "materialGroups": 1,
+      "drawPrimitives": 5,
+      "entrances": [
+        {
+          "threshold": [
+            0,
+            0,
+            2.7
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 3,
+          "clearHeight": 2.2,
+          "clearDepth": 2,
+          "corridor": [
+            [
+              -1.5,
+              2.7
+            ],
+            [
+              1.5,
+              2.7
+            ],
+            [
+              1.5,
+              4.7
+            ],
+            [
+              -1.5,
+              4.7
+            ]
+          ]
+        }
+      ],
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -4.85,
+              -1.75
+            ],
+            [
+              -2.35,
+              -1.75
+            ],
+            [
+              -2.35,
+              0.1499999999999999
+            ],
+            [
+              -4.85,
+              0.1499999999999999
+            ]
+          ],
+          "floor": 0,
+          "foundationPolicy": "seat-local-terrain"
+        },
+        {
+          "polygon": [
+            [
+              -1.4,
+              -3.45
+            ],
+            [
+              1.4,
+              -3.45
+            ],
+            [
+              1.4,
+              -1.55
+            ],
+            [
+              -1.4,
+              -1.55
+            ]
+          ],
+          "floor": 0,
+          "foundationPolicy": "seat-local-terrain"
+        },
+        {
+          "polygon": [
+            [
+              2.475,
+              -1.75
+            ],
+            [
+              4.725,
+              -1.75
+            ],
+            [
+              4.725,
+              0.1499999999999999
+            ],
+            [
+              2.475,
+              0.1499999999999999
+            ]
+          ],
+          "floor": 0,
+          "foundationPolicy": "seat-local-terrain"
+        }
+      ],
+      "supportPoints": [
+        {
+          "point": [
+            -4.7299999999999995,
+            0,
+            -1.4500000000000002
+          ],
+          "contact": [
+            -4.7299999999999995,
+            -0.12,
+            -1.4500000000000002
+          ],
+          "top": 2.65,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -4.7299999999999995,
+            0,
+            0.09999999999999998
+          ],
+          "contact": [
+            -4.7299999999999995,
+            -0.12,
+            0.09999999999999998
+          ],
+          "top": 2.25,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -2.47,
+            0,
+            -1.4500000000000002
+          ],
+          "contact": [
+            -2.47,
+            -0.12,
+            -1.4500000000000002
+          ],
+          "top": 2.65,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -2.47,
+            0,
+            0.09999999999999998
+          ],
+          "contact": [
+            -2.47,
+            -0.12,
+            0.09999999999999998
+          ],
+          "top": 2.25,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -1.2799999999999998,
+            0,
+            -3.15
+          ],
+          "contact": [
+            -1.2799999999999998,
+            -0.12,
+            -3.15
+          ],
+          "top": 2.65,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            -1.2799999999999998,
+            0,
+            -1.6
+          ],
+          "contact": [
+            -1.2799999999999998,
+            -0.12,
+            -1.6
+          ],
+          "top": 2.25,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            1.2799999999999998,
+            0,
+            -3.15
+          ],
+          "contact": [
+            1.2799999999999998,
+            -0.12,
+            -3.15
+          ],
+          "top": 2.65,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            1.2799999999999998,
+            0,
+            -1.6
+          ],
+          "contact": [
+            1.2799999999999998,
+            -0.12,
+            -1.6
+          ],
+          "top": 2.25,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            2.595,
+            0,
+            -1.4500000000000002
+          ],
+          "contact": [
+            2.595,
+            -0.12,
+            -1.4500000000000002
+          ],
+          "top": 2.65,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            2.595,
+            0,
+            0.09999999999999998
+          ],
+          "contact": [
+            2.595,
+            -0.12,
+            0.09999999999999998
+          ],
+          "top": 2.25,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            4.6049999999999995,
+            0,
+            -1.4500000000000002
+          ],
+          "contact": [
+            4.6049999999999995,
+            -0.12,
+            -1.4500000000000002
+          ],
+          "top": 2.65,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        },
+        {
+          "point": [
+            4.6049999999999995,
+            0,
+            0.09999999999999998
+          ],
+          "contact": [
+            4.6049999999999995,
+            -0.12,
+            0.09999999999999998
+          ],
+          "top": 2.25,
+          "width": 0.12,
+          "terrainExtension": "extend this individual support down to local terrain; keep floor level"
+        }
+      ],
+      "floorElevation": 0,
+      "accessPoints": [],
+      "groundDatum": -0.12,
+      "roofPenetration": null,
+      "undercroft": null,
+      "openCourt": {
+        "envelope": [
+          [
+            -5.1,
+            -4
+          ],
+          [
+            5.1,
+            -4
+          ],
+          [
+            5.1,
+            4
+          ],
+          [
+            -5.1,
+            4
+          ]
+        ],
+        "roofArea": 19.35,
+        "openFraction": 0.7628676470588235
+      },
+      "envelopes": {
+        "seat": [
+          [
+            [
+              -4.85,
+              -1.75
+            ],
+            [
+              -2.35,
+              -1.75
+            ],
+            [
+              -2.35,
+              0.1499999999999999
+            ],
+            [
+              -4.85,
+              0.1499999999999999
+            ]
+          ],
+          [
+            [
+              -1.4,
+              -3.45
+            ],
+            [
+              1.4,
+              -3.45
+            ],
+            [
+              1.4,
+              -1.55
+            ],
+            [
+              -1.4,
+              -1.55
+            ]
+          ],
+          [
+            [
+              2.475,
+              -1.75
+            ],
+            [
+              4.725,
+              -1.75
+            ],
+            [
+              4.725,
+              0.1499999999999999
+            ],
+            [
+              2.475,
+              0.1499999999999999
+            ]
+          ]
+        ],
+        "roof": {
+          "min": [
+            -5.025000095367432,
+            2.0199999809265137,
+            -3.451643943786621
+          ],
+          "max": [
+            4.900000095367432,
+            2.7632505893707275,
+            0.4699999988079071
+          ],
+          "polygon": [
+            [
+              -5.025000095367432,
+              -3.451643943786621
+            ],
+            [
+              4.900000095367432,
+              -3.451643943786621
+            ],
+            [
+              4.900000095367432,
+              0.4699999988079071
+            ],
+            [
+              -5.025000095367432,
+              0.4699999988079071
+            ]
+          ]
+        },
+        "stairs": null,
+        "porch": null,
+        "yard": {
+          "min": [
+            -5.025000095367432,
+            -3.451643943786621
+          ],
+          "max": [
+            4.900000095367432,
+            0.4699999988079071
+          ]
+        }
+      },
+      "optionalDressingGroups": [
+        "facility-market-optional"
+      ],
+      "groundContacts": [
+        [
+          -4.7299999999999995,
+          -0.12,
+          -1.4500000000000002
+        ],
+        [
+          -4.7299999999999995,
+          -0.12,
+          0.09999999999999998
+        ],
+        [
+          -2.47,
+          -0.12,
+          -1.4500000000000002
+        ],
+        [
+          -2.47,
+          -0.12,
+          0.09999999999999998
+        ],
+        [
+          -1.2799999999999998,
+          -0.12,
+          -3.15
+        ],
+        [
+          -1.2799999999999998,
+          -0.12,
+          -1.6
+        ],
+        [
+          1.2799999999999998,
+          -0.12,
+          -3.15
+        ],
+        [
+          1.2799999999999998,
+          -0.12,
+          -1.6
+        ],
+        [
+          2.595,
+          -0.12,
+          -1.4500000000000002
+        ],
+        [
+          2.595,
+          -0.12,
+          0.09999999999999998
+        ],
+        [
+          4.6049999999999995,
+          -0.12,
+          -1.4500000000000002
+        ],
+        [
+          4.6049999999999995,
+          -0.12,
+          0.09999999999999998
+        ]
+      ],
+      "fitPolicy": "Fixed 2.8. Test rotated full roof/stair/yard bounds and approach against actual existing parcel; omit optional dressing then fall back, never stretch or enlarge plot.",
+      "budgetExceptions": [],
+      "shellProbes": [],
+      "existingEnvelopeCheck": {
+        "availableGameUnits": [
+          46,
+          41.2
+        ],
+        "fullGameUnits": [
+          27.790000534057615,
+          10.980603039264679
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      },
+      "low": {
+        "boundsMin": [
+          -5.025000095367432,
+          -0.11999999731779099,
+          -3.451643943786621
+        ],
+        "boundsMax": [
+          4.900000095367432,
+          2.7632505893707275,
+          0.4699999988079071
+        ],
+        "dimensions": [
+          9.925000190734863,
+          2.8832505866885185,
+          3.921643942594528
+        ],
+        "triangles": 528,
+        "materialGroups": 1,
+        "drawPrimitives": 4,
+        "retainsAcceptedShell": false,
+        "homeReduction": "not applicable",
+        "optionalDressing": false
+      }
+    }
+  ],
+  "granaryFloorStudies": [
+    {
+      "floorElevation": 1.2,
+      "min": [
+        -4.40500020980835,
+        -0.16853763163089752,
+        -2.8949999809265137
+      ],
+      "max": [
+        2.835538387298584,
+        5.721126556396484,
+        3.799999952316284
+      ],
+      "fullGameUnits": [
+        20.273508071899414,
+        16.491059726476667,
+        18.745999813079834
+      ],
+      "selected": false
+    },
+    {
+      "floorElevation": 1.35,
+      "min": [
+        -4.684999942779541,
+        -0.1687883734703064,
+        -2.8949999809265137
+      ],
+      "max": [
+        2.835538387298584,
+        5.871126174926758,
+        3.799999952316284
+      ],
+      "fullGameUnits": [
+        21.057507324218747,
+        16.911760735511777,
+        18.745999813079834
+      ],
+      "selected": true
+    },
+    {
+      "floorElevation": 1.5,
+      "min": [
+        -4.965000152587891,
+        -0.1689828485250473,
+        -2.8949999809265137
+      ],
+      "max": [
+        2.835538387298584,
+        6.0211262702941895,
+        3.799999952316284
+      ],
+      "fullGameUnits": [
+        21.84150791168213,
+        17.332305532693862,
+        18.745999813079834
+      ],
+      "selected": false
+    }
+  ],
+  "provenance": {
+    "rebuild": "node scripts/build-wv006-baselines.mjs (checkout only)",
+    "privateArchiveRequired": false,
+    "originalGeometryLicense": "CC0-1.0; Willow Valley original architecture and atlas",
+    "retainedDerivativeLicense": "Quaternius source art CC0 per copied scoped notice and docs/design/WV-ART-004-megakit-audit.md",
+    "sourceLicenseSha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee",
+    "archiveAccess": "not available/used in C; upstream archive hash remains provenance in PR81 manifest, not a claim of verification here"
+  },
+  "fallbacks": [
+    {
+      "id": "home-crooked-wing",
+      "source": "architecture-v1",
+      "newApprovedMegaKitCottage": false
+    }
+  ],
+  "adoptionGate": "E consumes measured data only. F owns shared renderer/placement/offline wiring and combined scene, final-ground and physical-device review."
+}
