@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "recipeRevision": 2,
+  "recipeRevision": 3,
   "comparison": {
     "recipeRevision": 1,
     "url": "assets/wv/buildings-next/baseline-r1.glb",
@@ -27,19 +27,35 @@
   "inputs": [
     {
       "url": "buildings-next/architecture.mjs",
-      "sha256": "c61c4d627f487ae7a74a0ed864b16af849ee6de2a70cc8d2c12c958b88162e2b"
+      "sha256": "531657feeedf0d79894a11712c8488239848912401a46a4f527bfada9d924f2c"
     },
     {
       "url": "buildings-next/details.mjs",
       "sha256": "31a84162dc0174e415eca74afed89788adf3bc925054611ec4d30c7b5b7b4a36"
     },
     {
+      "url": "buildings-next/civic.mjs",
+      "sha256": "c1070f189781215ad6d366323cc1a1f45ddbedb7aa119e43098eb5d7712d035e"
+    },
+    {
       "url": "assets/wv/buildings-next/baseline-r1.glb",
       "sha256": "47bb946da13849f77491a08b7f66fa6413e10bb3a26fb5c4351b7d3b8449a520"
     },
     {
+      "url": "environment-asset-manifest.json",
+      "sha256": "516eaf3c4cab12ded8e6fdced4b7d445f84492fc65fe7176f6e09dc64b9a7cd0"
+    },
+    {
+      "url": "assets/wv/environment-v1/soil.jpg",
+      "sha256": "0c1ca435dff526c06474cf107755c6dca8deeacf890fc9bef745424d856d5063"
+    },
+    {
+      "url": "assets/wv/environment-v1/LICENSE.txt",
+      "sha256": "6e9f446eca12e7de5e104e7462c560a71172d73f9819191b1bcd880a484e9915"
+    },
+    {
       "url": "scripts/build-wv006-baselines.mjs",
-      "sha256": "f97d4cb6d4be178d77bda3d9255ca657fa57983eb3f7ef114dde84f069d0fbdb"
+      "sha256": "55b73090bb98d433470529124f354cd3bd5a7a613549dd1f4b34255f7b914fec"
     },
     {
       "url": "assets/wv/megakit-catalog-v1/manifest.json",
@@ -150,6 +166,7 @@
   "entries": [
     {
       "id": "home-steep-gable",
+      "civic": null,
       "existingIdentity": "home-steep-gable",
       "role": "residential",
       "name": "Gabled plaster cottage",
@@ -394,6 +411,7 @@
     },
     {
       "id": "home-long-ridge",
+      "civic": null,
       "existingIdentity": "home-long-ridge",
       "role": "residential",
       "name": "Long-ridge timber house",
@@ -638,6 +656,7 @@
     },
     {
       "id": "home-low-hip",
+      "civic": null,
       "existingIdentity": "home-low-hip",
       "role": "residential",
       "name": "Thatched crofter’s cottage",
@@ -895,6 +914,7 @@
     },
     {
       "id": "home-porch-cabin",
+      "civic": null,
       "existingIdentity": "home-porch-cabin",
       "role": "residential",
       "name": "Porch-front timber cottage",
@@ -1180,6 +1200,7 @@
     },
     {
       "id": "home-offset-gables",
+      "civic": null,
       "existingIdentity": "home-offset-gables",
       "role": "residential",
       "name": "Paired-gable house",
@@ -1504,6 +1525,7 @@
     },
     {
       "id": "facility-farm",
+      "civic": null,
       "existingIdentity": "facility-farm",
       "role": "farm",
       "name": "Agricultural barn & work bays",
@@ -1992,6 +2014,7 @@
     },
     {
       "id": "facility-smith",
+      "civic": null,
       "existingIdentity": "facility-smith",
       "role": "smith",
       "name": "Open masonry forge",
@@ -2366,6 +2389,7 @@
     },
     {
       "id": "facility-granary",
+      "civic": null,
       "existingIdentity": "facility-granary",
       "role": "granary",
       "name": "Post-raised granary & loading stair",
@@ -2909,6 +2933,7 @@
     },
     {
       "id": "facility-lumber",
+      "civic": null,
       "existingIdentity": "facility-lumber",
       "role": "lumber",
       "name": "Timber rack & cutting shelter",
@@ -3262,9 +3287,10 @@
     },
     {
       "id": "facility-market",
+      "civic": null,
       "existingIdentity": "facility-market",
       "role": "market",
-      "name": "Open stall court",
+      "name": "Retained C2 market stall court",
       "description": "Three independent trading stalls: muted canvas, varied open counters and a broad unroofed circulation court.",
       "status": "gallery-review",
       "runtimeReady": false,
@@ -3893,9 +3919,42 @@
     "privateArchiveRequired": false,
     "originalGeometryLicense": "CC0-1.0; Willow Valley original architecture and atlas",
     "retainedDerivativeLicense": "Quaternius source art CC0 per copied scoped notice and docs/design/WV-ART-004-megakit-audit.md",
+    "environmentSources": [
+      {
+        "id": "soil",
+        "url": "assets/wv/environment-v1/soil.jpg",
+        "publisher": "Poly Haven",
+        "assetURL": "https://polyhaven.com/a/dirt",
+        "metadataURL": "https://api.polyhaven.com/files/dirt",
+        "license": "CC0-1.0",
+        "licenseURL": "https://polyhaven.com/license",
+        "sourceURL": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_diff_1k.jpg",
+        "sourceSHA256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+        "sourceBytes": 730425,
+        "publisherMD5": "cb37e24797597b1dd1ae3819fa80f076",
+        "sha256": "0c1ca435dff526c06474cf107755c6dca8deeacf890fc9bef745424d856d5063",
+        "bytes": 37206,
+        "width": 512,
+        "height": 512,
+        "map": "albedo",
+        "colorSpace": "srgb",
+        "processing": "sharp 0.35.5 resize 512x512, JPEG quality 82, 4:4:4"
+      }
+    ],
+    "environmentLicense": "assets/wv/buildings-next/License_Environment.txt",
     "sourceLicenseSha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee",
     "archiveAccess": "not available/used in C; upstream archive hash remains provenance in PR81 manifest, not a claim of verification here"
   },
+  "candidateOverrides": [
+    {
+      "existingIdentity": "facility-market",
+      "candidateId": "market-civic-square",
+      "manifest": "assets/wv/buildings-next/civic-manifest.json",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "reason": "Existing consumers retain C2 market until explicit placement/performance adoption."
+    }
+  ],
   "fallbacks": [
     {
       "id": "home-crooked-wing",

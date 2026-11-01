@@ -1,6 +1,6 @@
 # WV-ART-006 C: level 1 building baselines
 
-Current detail revision: [C2 full-building detail pass](DETAIL-PASS.md). The revision-2 manifest supersedes C1 counts and adds details to the preserved home cores. The gallery now compares C1 against C2; PR 81 remains untouched.
+Current revision: [C3 market, parks and plazas](CIVIC-SPACES.md), retaining the [C2 full-building detail pass](DETAIL-PASS.md). Revision 3 supersedes earlier counts and adds a second measured civic family. PR 81 remains untouched. The C1 account below is historical where superseded by those revision notes.
 
 Status: gallery-review; every entry is `runtimeReady:false`. This is the E/F input contract, not a gameplay rollout. Started from fetched develop `5e39c72ff5e205dea166fa18febdfa89aaa5aec8` in isolated worktree `/workspace/wv006-c`, branch `feat/wv-art-006-c-baselines`. Refreshed by incorporating develop `14b4d1e9e44fc4fb08e9cb1baf754952e43f953c` (D storage) with no conflicts; its exclusive paths are preserved and C asset measurements are unchanged. No applicable AGENTS.md was found. PR 81 inputs, identity salt/order, gameplay, saves, founding era and shared integration files are unchanged.
 
@@ -17,8 +17,8 @@ The machine-readable authority is [manifest.json](../../../assets/wv/buildings-n
 | smith | Deep open working frontage, masonry hearth and supported tapered hood, one continuous hollow stack, explicit flashed roof aperture, reachable anvil and fixed tool storage. No smoke dependency. |
 | granary | 1.35 m enclosed storage floor on individual posts/piers and bracing, closed underside, cargo doors, supported landing and a side stair. No domestic windows or solid undercroft seat. |
 | lumber | Long low open frame, longitudinal rack, covered bench and an uncovered cutting apron clear of the approach. |
-| market | Three independent awnings and differently sized open/boarded counters around an open circulation court. Loose produce bins are optional. |
-| park / plaza | Existing open-ground implementations; no candidates, meshes or BUILDINGS keys added. |
+| market | Main catalog retains C2. Explicit market-civic-square candidate in civic-manifest.json has twelve varied stands, a 16 × 14 m court and a stage; see C3. |
+| park / plaza | Eight visual layouts in civic-manifest.json, four per existing type. Open terrain, independently seated furniture, no new BUILDINGS keys; see C3. |
 
 ## E: consume measured data
 
