@@ -56,7 +56,7 @@ export function detailPass(id,parts,{low,add,box,beam}){
   for(const p of parts.filter(p=>p.name==='boarded counter front')){p.g.computeBoundingBox();const b=p.g.boundingBox;for(let x=b.min.x+.12;x<b.max.x;x+=low?.5:.28)box('counter face board',[.022,.68,.025],[x,.53,b.max.z+.018],0,'detail');}
  }else if(id.startsWith('home-')){
   const wing=id==='home-offset-gables',d=id==='home-long-ridge'?6:4,xl=wing?-3: -2,xr=wing?3:2,z=d===6?2:1;for(const [x,yaw] of [[xl-.06,-Math.PI/2],[xr+.06,Math.PI/2]])face(x,1.65,z,yaw,.52,.82);
-  const ex=wing?-2:-1,front=d/2;box('entry latch plate',[.07,.18,.03],[ex+.30,1.05,front+.14],6,'detail');if(!low)for(const z of [-d/2,d/2])for(const x of [xl,xr]){stone([x,.22,z+.06],.34,.24,0,.92);stone([x,.48,z+.06],.28,.23,0,.85);}
+  const ex=wing?-2:-1,front=d/2;box('entry latch plate',[.07,.18,.03],[ex+.30,1.05,front+.14],6,'detail');if(!low)for(const z of [-d/2,d/2])for(const x of [xl,xr]){stone([x,.22,z+(z>0?.06:-.06)],.34,.24,z>0?0:Math.PI,.92);stone([x,.48,z+(z>0?.06:-.06)],.28,.23,z>0?0:Math.PI,.85);}
   if(id==='home-low-hip'){
    // The course relief is retained. Fine bundle ends are textured, not modeled as straws.
    for(const z of [-2.12,2.12])beam('thatched cottage eave bearer',[-2.1,2.77,z],[2.1,2.77,z],.14,0,'roof');

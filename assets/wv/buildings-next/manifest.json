@@ -22,7 +22,7 @@
   "output": {
     "url": "assets/wv/buildings-next/catalog.glb",
     "bytes": 7527564,
-    "sha256": "ea352ed56ba07302dd1ff1a31867c765e7a7c9a82f15eafe88e72d9ab67ba310"
+    "sha256": "38c88a54bed04bc7a2dcf97a9c4a628c119cc6ec03d212247ffc4ebfb5c3d95c"
   },
   "inputs": [
     {
@@ -31,7 +31,7 @@
     },
     {
       "url": "buildings-next/details.mjs",
-      "sha256": "af492c3e6914b3052b699ecbcec19a5384efd9a44e8508be4287c3cd1f74b597"
+      "sha256": "31a84162dc0174e415eca74afed89788adf3bc925054611ec4d30c7b5b7b4a36"
     },
     {
       "url": "assets/wv/buildings-next/baseline-r1.glb",
