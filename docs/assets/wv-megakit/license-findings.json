@@ -1,0 +1,20 @@
+[
+  {
+    "container": "Engine Projects/Medieval Village MegaKit[Unity URP].zip",
+    "path": "Medieval Village MegaKit[Unity URP]/Quaternius/Packages/com.unity.asset-store-tools/LICENSE.md",
+    "sha256": "406511460a2d13c693241ca3602c1bc2b846f05794ddee88f34a24ba34d903f1",
+    "text": "Asset Store Tools v2 copyright © 2023 Unity Technologies\r\n\r\nSource code of the package is licensed under the Unity Companion License (see https://unity.com/legal/licenses/unity-companion-license); otherwise licensed under the Unity Package Distribution License (see https://unity.com/legal/licenses/unity-package-distribution-license )\r\n\r\nUnless expressly provided otherwise, the software under this license is made available strictly on an “AS IS” BASIS WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED. Please review the license for details on these and other terms and conditions."
+  },
+  {
+    "container": "Engine Projects/Medieval Village MegaKit[Unity URP].zip",
+    "path": "Medieval Village MegaKit[Unity URP]/Quaternius/Packages/com.unity.asset-store-tools/LICENSE.md.meta",
+    "sha256": "54ab4fe7a4d290c416db90836e7c1b69c531523cf8b4a72fed724819e8de3a01",
+    "text": "fileFormatVersion: 2\nguid: baeaa62ad0dc664428d6069db8fd986d\nTextScriptImporter:\n  externalObjects: {}\n  userData: \n  assetBundleName: \n  assetBundleVariant: \n"
+  },
+  {
+    "container": "outer",
+    "path": "License_Source.txt",
+    "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee",
+    "text": "Thanks for buying the Source version of the Medieval Village MegaKit!\r\nAll textures can be found inside the Textures folder.\r\n\r\nThe SOURCE version of the Medieval Village MegaKit contains \r\nall of the models and project files in Unity(URP), Unreal Engine and Godot projects\r\nwith the custom shaders already setup.\r\n\r\nVersions used for the SOURCE version projects (anything above these work)\r\n Godot_v4.3 | Unity (URP) 2022.3.4 | Unreal Engine 4.27.2\r\n-------------------------------------------------------\r\nLicense:\r\nCC0 1.0 Universal (CC0 1.0) \r\nPublic Domain Dedication\r\nhttps://creativecommons.org/publicdomain/zero/1.0/\r\n\r\n------------------------------------------------------\r\nModels by @Quaternius\r\nConsider supporting me on Patreon!\r\n\r\nhttps://www.patreon.com/quaternius\r\n\r\n-------------------------------------------------------\r\nJoin the Discord Server:\r\nhttps://discord.gg/vJqnRUYRfT\r\n"
+  }
+]

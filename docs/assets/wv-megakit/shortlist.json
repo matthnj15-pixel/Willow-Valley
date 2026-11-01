@@ -1,0 +1,1703 @@
+{
+  "schemaVersion": 1,
+  "archiveSha256": "5e60888e2babe418a4618e7815539d9b1b2c3b24c1db2b22cd7a2a7f66140732",
+  "count": 38,
+  "selection": [
+    {
+      "id": "megakit/Wall_Plaster_Straight",
+      "role": "cottage-shell",
+      "path": "glTF/Wall_Plaster_Straight.gltf",
+      "sha256": "3bef920cbba4d124df4ca401439d893e0569f88f56049239e3480a04008fd0ac",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.0000001192092896,
+        3.1247846484184265,
+        0.4064820408821106
+      ],
+      "triangles": 86,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Wall_Plaster_Straight.bin",
+          "bytes": "5876",
+          "sha256": "986bf171c62e9019eea9aab709d19d07a3bd5021ff76ab749f57563f364858f3"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_Plaster_Normal.png",
+          "bytes": "4607606",
+          "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4"
+        },
+        {
+          "path": "glTF/T_Plaster_BaseColor.png",
+          "bytes": "3316410",
+          "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4"
+        },
+        {
+          "path": "glTF/T_Plaster_ORM.png",
+          "bytes": "2381579",
+          "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Wall_Plaster_Door_Flat",
+      "role": "cottage-shell",
+      "path": "glTF/Wall_Plaster_Door_Flat.gltf",
+      "sha256": "d2bf9bd8bb88068c79ec6c2bcb0915b0dfc94341f02d9612a4d97da9583e75b3",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064820408821106
+      ],
+      "triangles": 92,
+      "materials": 3,
+      "dependencies": [
+        {
+          "path": "glTF/Wall_Plaster_Door_Flat.bin",
+          "bytes": "6792",
+          "sha256": "e169b64543f0ef818daac1a5f0a154bcbb665888e8b283979bfde5f758fb5e37"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_Plaster_Normal.png",
+          "bytes": "4607606",
+          "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4"
+        },
+        {
+          "path": "glTF/T_Plaster_BaseColor.png",
+          "bytes": "3316410",
+          "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4"
+        },
+        {
+          "path": "glTF/T_Plaster_ORM.png",
+          "bytes": "2381579",
+          "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7"
+        },
+        {
+          "path": "glTF/T_RockTrim_Normal.png",
+          "bytes": "3925938",
+          "sha256": "f93f82f7e69aa0bf1900f8ab3f252390f091b771f0b84a345c5fefb0f0155cd3"
+        },
+        {
+          "path": "glTF/T_RockTrim_BaseColor.png",
+          "bytes": "1908835",
+          "sha256": "aa571cd612091a8f4c95393f8f938bd6e5d47a8cdfd9c896b60a4b37903e2c7c"
+        },
+        {
+          "path": "glTF/T_RockTrim_ORM.png",
+          "bytes": "1625807",
+          "sha256": "5287dd9a4e9fb7423af8d8440a8de8bdb8910f9f37ba148f619a6eddf58d5bc8"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Wall_Plaster_Window_Thin_Round",
+      "role": "cottage-shell",
+      "path": "glTF/Wall_Plaster_Window_Thin_Round.gltf",
+      "sha256": "94eedafb4964e5e41098a39387298e122598a1b8dd31193070b4639a76b4e0b2",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064820408821106
+      ],
+      "triangles": 166,
+      "materials": 3,
+      "dependencies": [
+        {
+          "path": "glTF/Wall_Plaster_Window_Thin_Round.bin",
+          "bytes": "9556",
+          "sha256": "b52fb0f380f2bfbf3743952e1fddba7c7ccd1fcd6f28f88540d0ccd43bb7c19c"
+        },
+        {
+          "path": "glTF/T_Plaster_Normal.png",
+          "bytes": "4607606",
+          "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4"
+        },
+        {
+          "path": "glTF/T_Plaster_BaseColor.png",
+          "bytes": "3316410",
+          "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4"
+        },
+        {
+          "path": "glTF/T_Plaster_ORM.png",
+          "bytes": "2381579",
+          "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7"
+        },
+        {
+          "path": "glTF/T_Brick_Normal.png",
+          "bytes": "4474267",
+          "sha256": "6349f1fb3eed9985e6f969c1de04b9e92490020a12ba19a44b96ea808fb27c1a"
+        },
+        {
+          "path": "glTF/T_Brick_BaseColor.png",
+          "bytes": "2447169",
+          "sha256": "5515f57e61767838f53f4b9e25aa83b1382ad345ff6b446482718b5140c33813"
+        },
+        {
+          "path": "glTF/T_Brick_Roughness.png",
+          "bytes": "689204",
+          "sha256": "981e7a4f8e3119749b2fb3d557e3d0ba0551e75a39b467cff0a3a948a9392716"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Wall_WoodWear_Straight",
+      "role": "cottage-shell",
+      "path": "glTF/Wall_WoodWear_Straight.gltf",
+      "sha256": "7f62ee4a911d5a0e630fd790e9eea7279a7eee468110e86571023d02c5f0158e",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.000000476837158,
+        3.1226889650013447,
+        0.4064820408821106
+      ],
+      "triangles": 204,
+      "materials": 3,
+      "dependencies": [
+        {
+          "path": "glTF/Wall_WoodWear_Straight.bin",
+          "bytes": "16104",
+          "sha256": "502bd1fc87b4d601a09123d1293bfdfd9234cf2294b8499a020c444de9ff2d92"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_Plaster_Normal.png",
+          "bytes": "4607606",
+          "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4"
+        },
+        {
+          "path": "glTF/T_Plaster_BaseColor.png",
+          "bytes": "3316410",
+          "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4"
+        },
+        {
+          "path": "glTF/T_Plaster_ORM.png",
+          "bytes": "2381579",
+          "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Wall_WoodWear_Door_Flat",
+      "role": "cottage-shell",
+      "path": "glTF/Wall_WoodWear_Door_Flat.gltf",
+      "sha256": "2423477630a1991ff0a398922b04d88b8a771e409f76428fe47117909de180ce",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.000000476837158,
+        3.1226889650013447,
+        0.4064820408821106
+      ],
+      "triangles": 188,
+      "materials": 3,
+      "dependencies": [
+        {
+          "path": "glTF/Wall_WoodWear_Door_Flat.bin",
+          "bytes": "13448",
+          "sha256": "e0156361bb0e84278ed1e6b5b938d72504f67cb7606e230fb49cf2dbb9df795e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_Plaster_Normal.png",
+          "bytes": "4607606",
+          "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4"
+        },
+        {
+          "path": "glTF/T_Plaster_BaseColor.png",
+          "bytes": "3316410",
+          "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4"
+        },
+        {
+          "path": "glTF/T_Plaster_ORM.png",
+          "bytes": "2381579",
+          "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Wall_WoodWear_Window_Thin_Round",
+      "role": "cottage-shell",
+      "path": "glTF/Wall_WoodWear_Window_Thin_Round.gltf",
+      "sha256": "771bf8203f7665e1ecb362dfc07128116e386828210a6f07096dc6365248b5d9",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.000000476837158,
+        3.1226889650013447,
+        0.40648189932107925
+      ],
+      "triangles": 334,
+      "materials": 3,
+      "dependencies": [
+        {
+          "path": "glTF/Wall_WoodWear_Window_Thin_Round.bin",
+          "bytes": "22004",
+          "sha256": "122bbb63b912ba84376b8d9e69fc1f7e1a78601b74bc2f4eecf555058fb3b3d5"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_Plaster_Normal.png",
+          "bytes": "4607606",
+          "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4"
+        },
+        {
+          "path": "glTF/T_Plaster_BaseColor.png",
+          "bytes": "3316410",
+          "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4"
+        },
+        {
+          "path": "glTF/T_Plaster_ORM.png",
+          "bytes": "2381579",
+          "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Corner_Exterior_Wood",
+      "role": "cottage-shell",
+      "path": "glTF/Corner_Exterior_Wood.gltf",
+      "sha256": "8f1ad0c8d0cb656601be4b6a48ca1ed5574d182c814ff27508bc91c81d0959a0",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        0.21017442643642426,
+        2.9999999121087058,
+        0.23964012414216995
+      ],
+      "triangles": 12,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Corner_Exterior_Wood.bin",
+          "bytes": "840",
+          "sha256": "f3eaa2714897338fabee249e32e4be6846bac86081fee4576df0cac8d8ab6bbc"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Corner_Exterior_Brick",
+      "role": "cottage-shell",
+      "path": "glTF/Corner_Exterior_Brick.gltf",
+      "sha256": "5021a098ff1c69eb388b62ed73183d7db4ddfc7cf944e0dc24c48532567cc443",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        0.5306706577539444,
+        3.0156269669532776,
+        0.5758337825536728
+      ],
+      "triangles": 3102,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Corner_Exterior_Brick.bin",
+          "bytes": "96180",
+          "sha256": "0800f8ef9585be5632eb1446289bfee125c112ba3c16dbba1cd1c4f19f5db6f8"
+        },
+        {
+          "path": "glTF/T_RockTrim_Normal.png",
+          "bytes": "3925938",
+          "sha256": "f93f82f7e69aa0bf1900f8ab3f252390f091b771f0b84a345c5fefb0f0155cd3"
+        },
+        {
+          "path": "glTF/T_RockTrim_BaseColor.png",
+          "bytes": "1908835",
+          "sha256": "aa571cd612091a8f4c95393f8f938bd6e5d47a8cdfd9c896b60a4b37903e2c7c"
+        },
+        {
+          "path": "glTF/T_RockTrim_ORM.png",
+          "bytes": "1625807",
+          "sha256": "5287dd9a4e9fb7423af8d8440a8de8bdb8910f9f37ba148f619a6eddf58d5bc8"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Floor_WoodDark",
+      "role": "cottage-shell",
+      "path": "glTF/Floor_WoodDark.gltf",
+      "sha256": "2ee57724a06289164fee75ad62eb770f7f8cc9cb1b51c041da477c086775cd8d",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.0,
+        0.020000374875962734,
+        2.0
+      ],
+      "triangles": 32,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Floor_WoodDark.bin",
+          "bytes": "2240",
+          "sha256": "cb43341c0969b62d82c11e2759caec854ea97ecba3bcb505d3300d57ebba7b81"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Door_1_Flat",
+      "role": "doors-and-windows",
+      "path": "glTF/Door_1_Flat.gltf",
+      "sha256": "7e69ba9bcaf45238daa22b96461e9af6c80a59f422f9effb6de7f32e1fc677d8",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        1.1178661659359932,
+        2.0997196435928345,
+        0.12070027366280556
+      ],
+      "triangles": 314,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Door_1_Flat.bin",
+          "bytes": "24924",
+          "sha256": "f2235efcb17e3c7c761eba632bba8901f0299e65a27483528b486fbaece29bb5"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Door_1_Round",
+      "role": "doors-and-windows",
+      "path": "glTF/Door_1_Round.gltf",
+      "sha256": "243fe5e3418e2459bcab858055d34e5441b60180a5efaadef440419e25cc27aa",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        1.1200128868222237,
+        2.3182365894317627,
+        0.12070027366280556
+      ],
+      "triangles": 470,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Door_1_Round.bin",
+          "bytes": "33700",
+          "sha256": "783db477a76115724668f8846695651725b955af6b5b23a503f834b206ebc958"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/DoorFrame_Flat_WoodLight",
+      "role": "doors-and-windows",
+      "path": "glTF/DoorFrame_Flat_WoodLight.gltf",
+      "sha256": "89d230cc366d2c538e5b742716ff8df8b563718422337a9a030890ee395e9f57",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        1.5739920735359192,
+        2.311080362647772,
+        0.3884521424770355
+      ],
+      "triangles": 52,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/DoorFrame_Flat_WoodLight.bin",
+          "bytes": "4392",
+          "sha256": "c069ddd55fbbae90f7eca418bf5c202cacc2f664b9d1e3b846fab079335be91b"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/DoorFrame_Round_WoodDark",
+      "role": "doors-and-windows",
+      "path": "glTF/DoorFrame_Round_WoodDark.gltf",
+      "sha256": "d96fb7e3b6b7a5cb97339a7667dee3d9e03b5b0a02cbea283bd75a69f58bb4a7",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        1.4069843292236328,
+        2.5633935928344727,
+        0.5389639735221863
+      ],
+      "triangles": 320,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/DoorFrame_Round_WoodDark.bin",
+          "bytes": "13568",
+          "sha256": "1899a064497568422c4d2a9246be0f7dba9e1f9fae6483f4dc39fe63c398b824"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Window_Thin_Round1",
+      "role": "doors-and-windows",
+      "path": "glTF/Window_Thin_Round1.gltf",
+      "sha256": "02ffe8984b2a7bffda79d6d598e852c39681c23bbdd7486dd8bcec3613286a4d",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        0.8876205682754517,
+        1.6046844720840454,
+        0.3443889021873474
+      ],
+      "triangles": 418,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Window_Thin_Round1.bin",
+          "bytes": "25828",
+          "sha256": "757574fbdb5a42da154baa311203ca4a5d0a0fe8693254105171107b0174c184"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Window_Wide_Flat1",
+      "role": "doors-and-windows",
+      "path": "glTF/Window_Wide_Flat1.gltf",
+      "sha256": "28b91e0693bac3763248c72497f234085fccb646f1adee505dc87c62b5ad8403",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        1.608236312866211,
+        1.5801108479499817,
+        0.6834383308887482
+      ],
+      "triangles": 160,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Window_Wide_Flat1.bin",
+          "bytes": "11104",
+          "sha256": "95aabb93aa96572ce4f70934e6a2b4270ef9696fca52756572f30c1ebb3e26a9"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/WindowShutters_Thin_Round_Open",
+      "role": "doors-and-windows",
+      "path": "glTF/WindowShutters_Thin_Round_Open.gltf",
+      "sha256": "6aff6c02fc9670f7623849ccc9a1f55f13f624ac8a9521aa2054a2a23520ec6f",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        1.606278121471405,
+        1.5184228420257568,
+        0.3764881193637848
+      ],
+      "triangles": 112,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/WindowShutters_Thin_Round_Open.bin",
+          "bytes": "9472",
+          "sha256": "dbffd622221dc83a263a72cdb85fbfeb64ba77a789882f40945ebff168058ffd"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Roof_FlatTiles_4x4",
+      "role": "roofs-and-lean-to",
+      "path": "glTF/Roof_FlatTiles_4x4.gltf",
+      "sha256": "c152a913086a3279eefbb06c237b0d716ecc7415f9da5ab21373adb29eff2255",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        5.534493923187256,
+        4.085606575012207,
+        5.561474800109863
+      ],
+      "triangles": 1908,
+      "materials": 3,
+      "dependencies": [
+        {
+          "path": "glTF/Roof_FlatTiles_4x4.bin",
+          "bytes": "107768",
+          "sha256": "cb2a9cdf7201e2145b85d53f712b1e52957a94f9b5573c6ec59f25cccd8629d8"
+        },
+        {
+          "path": "glTF/T_FlatTiles_Normal.png",
+          "bytes": "3937764",
+          "sha256": "d4bd2fe0e149e8df373a67379623e82d77db32d3e77dfd5dba0154879b30baea"
+        },
+        {
+          "path": "glTF/T_FlatTiles_BaseColor.png",
+          "bytes": "3317978",
+          "sha256": "e99ddf215d4172fb41f288cc1aab92193236206eb109dc260308dcb38c84c71d"
+        },
+        {
+          "path": "glTF/T_FlatTiles_Roughness.png",
+          "bytes": "1379175",
+          "sha256": "f62a2b715a278fc4625e1a946ec50fabdcaca857dd978f550719d2aeca786bf3"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_RoundTiles_Normal.png",
+          "bytes": "3792369",
+          "sha256": "e8cf202fbc1ec36c3f5389a25ab9c99f015d49ae0ca963d0404614c3e1e8f687"
+        },
+        {
+          "path": "glTF/T_RoundTiles_BaseColor.png",
+          "bytes": "4352034",
+          "sha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997"
+        },
+        {
+          "path": "glTF/T_RoundTiles_Roughness.png",
+          "bytes": "1624660",
+          "sha256": "02c5cdbb6768de6ac674a343265c020c5bd6ef70fd7ba555d9b9dc7445179366"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Roof_RoundTiles_4x4",
+      "role": "roofs-and-lean-to",
+      "path": "glTF/Roof_RoundTiles_4x4.gltf",
+      "sha256": "c6a7ce0649b897a7746929b44c448f4343f55ccd969ca1e4462f2f18b61676e4",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        5.513076305389404,
+        4.249392867088318,
+        5.561474800109863
+      ],
+      "triangles": 1996,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Roof_RoundTiles_4x4.bin",
+          "bytes": "107176",
+          "sha256": "414067398f08e15e7c5c2c56b648770d3d49427489f073b0078ffde81673af67"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_RoundTiles_Normal.png",
+          "bytes": "3792369",
+          "sha256": "e8cf202fbc1ec36c3f5389a25ab9c99f015d49ae0ca963d0404614c3e1e8f687"
+        },
+        {
+          "path": "glTF/T_RoundTiles_BaseColor.png",
+          "bytes": "4352034",
+          "sha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997"
+        },
+        {
+          "path": "glTF/T_RoundTiles_Roughness.png",
+          "bytes": "1624660",
+          "sha256": "02c5cdbb6768de6ac674a343265c020c5bd6ef70fd7ba555d9b9dc7445179366"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Roof_FlatTiles_4x6",
+      "role": "roofs-and-lean-to",
+      "path": "glTF/Roof_FlatTiles_4x6.gltf",
+      "sha256": "3a7b79a93bdc40c3e569c1aa12b2b1ebe2e00d45b4f28eab439f7165c437d7e1",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        5.7028889656066895,
+        4.149313509464264,
+        7.572279930114746
+      ],
+      "triangles": 2308,
+      "materials": 3,
+      "dependencies": [
+        {
+          "path": "glTF/Roof_FlatTiles_4x6.bin",
+          "bytes": "127128",
+          "sha256": "6b55457cec13e3c24254878874c31dac723beac6d341907d0f7b22459c77c921"
+        },
+        {
+          "path": "glTF/T_FlatTiles_Normal.png",
+          "bytes": "3937764",
+          "sha256": "d4bd2fe0e149e8df373a67379623e82d77db32d3e77dfd5dba0154879b30baea"
+        },
+        {
+          "path": "glTF/T_FlatTiles_BaseColor.png",
+          "bytes": "3317978",
+          "sha256": "e99ddf215d4172fb41f288cc1aab92193236206eb109dc260308dcb38c84c71d"
+        },
+        {
+          "path": "glTF/T_FlatTiles_Roughness.png",
+          "bytes": "1379175",
+          "sha256": "f62a2b715a278fc4625e1a946ec50fabdcaca857dd978f550719d2aeca786bf3"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_RoundTiles_Normal.png",
+          "bytes": "3792369",
+          "sha256": "e8cf202fbc1ec36c3f5389a25ab9c99f015d49ae0ca963d0404614c3e1e8f687"
+        },
+        {
+          "path": "glTF/T_RoundTiles_BaseColor.png",
+          "bytes": "4352034",
+          "sha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997"
+        },
+        {
+          "path": "glTF/T_RoundTiles_Roughness.png",
+          "bytes": "1624660",
+          "sha256": "02c5cdbb6768de6ac674a343265c020c5bd6ef70fd7ba555d9b9dc7445179366"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Roof_RoundTiles_4x6",
+      "role": "roofs-and-lean-to",
+      "path": "glTF/Roof_RoundTiles_4x6.gltf",
+      "sha256": "4d969026106822eb2106a32a8d596416e069f63e20f53b475839076fb635ed5a",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        5.513076305389404,
+        4.23358690738678,
+        7.572280406951904
+      ],
+      "triangles": 2520,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Roof_RoundTiles_4x6.bin",
+          "bytes": "129840",
+          "sha256": "f68f36721d6d1000c1f16d1d1482c33479aa6ea518d2872e9649ce762b01c52c"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_RoundTiles_Normal.png",
+          "bytes": "3792369",
+          "sha256": "e8cf202fbc1ec36c3f5389a25ab9c99f015d49ae0ca963d0404614c3e1e8f687"
+        },
+        {
+          "path": "glTF/T_RoundTiles_BaseColor.png",
+          "bytes": "4352034",
+          "sha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997"
+        },
+        {
+          "path": "glTF/T_RoundTiles_Roughness.png",
+          "bytes": "1624660",
+          "sha256": "02c5cdbb6768de6ac674a343265c020c5bd6ef70fd7ba555d9b9dc7445179366"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Roof_Front_Wood4",
+      "role": "roofs-and-lean-to",
+      "path": "glTF/Roof_Front_Wood4.gltf",
+      "sha256": "b5849dee4851d62c9dbb7d6869d5f562ff47f1da4190ef9f54bcd2065f3f0233",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        4.399803400039673,
+        3.0685047954320908,
+        1.129103422164917
+      ],
+      "triangles": 168,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Roof_Front_Wood4.bin",
+          "bytes": "11504",
+          "sha256": "ad3dc52397d16946261296ba5e9fdecb88dc7ca200486e8c04cc5f746787db5e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_Plaster_Normal.png",
+          "bytes": "4607606",
+          "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4"
+        },
+        {
+          "path": "glTF/T_Plaster_BaseColor.png",
+          "bytes": "3316410",
+          "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4"
+        },
+        {
+          "path": "glTF/T_Plaster_ORM.png",
+          "bytes": "2381579",
+          "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Roof_Wooden_2x1",
+      "role": "roofs-and-lean-to",
+      "path": "glTF/Roof_Wooden_2x1.gltf",
+      "sha256": "8b93dcb9bfa468842f45738f3d900c05ebf96db276a8dbdd78788420372b60c0",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.2578582763671875,
+        1.2483549118041992,
+        1.5603222846984863
+      ],
+      "triangles": 224,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Roof_Wooden_2x1.bin",
+          "bytes": "19104",
+          "sha256": "e8f8a04efef5fbae79b450b04f93399429bc1025c7fd4bc0ce4b8634dbe85467"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Roof_Wooden_2x1_Center",
+      "role": "roofs-and-lean-to",
+      "path": "glTF/Roof_Wooden_2x1_Center.gltf",
+      "sha256": "7eae55e33fd7ae829c75d097a182ecea55673c9d07707a7c503e94dbceefedf9",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.000000238418579,
+        1.2075486183166504,
+        1.4989915533861833
+      ],
+      "triangles": 52,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Roof_Wooden_2x1_Center.bin",
+          "bytes": "4472",
+          "sha256": "1cc10d27154a206b2b384cb818b1e5af446ecc24c17faf2977f2ccbe2560fa6e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Roof_Wooden_2x1_L",
+      "role": "roofs-and-lean-to",
+      "path": "glTF/Roof_Wooden_2x1_L.gltf",
+      "sha256": "7f36fa6b0a007a04ae66ce85cf0855d0a0fc078bc90a8d6777d9aa4abf155102",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.1289291381835938,
+        1.2483549118041992,
+        1.5603222846984863
+      ],
+      "triangles": 158,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Roof_Wooden_2x1_L.bin",
+          "bytes": "13428",
+          "sha256": "c2489976937747aae13bcc925c05c64b0cc008162f1f43eaa09dac4e7494fb04"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Roof_Wooden_2x1_R",
+      "role": "roofs-and-lean-to",
+      "path": "glTF/Roof_Wooden_2x1_R.gltf",
+      "sha256": "22f1e20db96548836b4841703f0bf4a9955ae8fdea9ed844b9416c81546a1df5",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.1289291381835938,
+        1.2483549118041992,
+        1.5603222846984863
+      ],
+      "triangles": 158,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Roof_Wooden_2x1_R.bin",
+          "bytes": "13428",
+          "sha256": "5a53309c9aa633a24a51099692e2799243fba7f67ba6107b51448f8a0a6b4800"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Wall_UnevenBrick_Straight",
+      "role": "workplace-and-yard",
+      "path": "glTF/Wall_UnevenBrick_Straight.gltf",
+      "sha256": "3b004772bace43cc43bf76f3c75d47f68dce175510a26690468efe63bfc05f95",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064817279577255
+      ],
+      "triangles": 56,
+      "materials": 3,
+      "dependencies": [
+        {
+          "path": "glTF/Wall_UnevenBrick_Straight.bin",
+          "bytes": "2768",
+          "sha256": "4d3b14acd4c5e6fe450e13d930f6c9240f719ed22b959bb2e7674e731225f103"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_Plaster_Normal.png",
+          "bytes": "4607606",
+          "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4"
+        },
+        {
+          "path": "glTF/T_Plaster_BaseColor.png",
+          "bytes": "3316410",
+          "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4"
+        },
+        {
+          "path": "glTF/T_Plaster_ORM.png",
+          "bytes": "2381579",
+          "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7"
+        },
+        {
+          "path": "glTF/T_UnevenBrick_Normal.png",
+          "bytes": "3866626",
+          "sha256": "bbf623cc35720d67a02079b20b9a6d9641c3686952b288cda97dec41e4b8acad"
+        },
+        {
+          "path": "glTF/T_UnevenBrick_BaseColor.png",
+          "bytes": "2945342",
+          "sha256": "ee0f096df6110e943cd9739680b61bc0ffd6fe00db752c5c3797941057a95ebc"
+        },
+        {
+          "path": "glTF/T_UnevenBrick_Roughness.png",
+          "bytes": "1246162",
+          "sha256": "da170cb92ac5479b93ca0c0002b783f1186a146e6e3124891ce7bfe6e1a8a942"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Wall_UnevenBrick_Door_Flat",
+      "role": "workplace-and-yard",
+      "path": "glTF/Wall_UnevenBrick_Door_Flat.gltf",
+      "sha256": "51c6364927fbe67bab7dc979bb7e95a98f2444fa59fe72dc3db6e50afce4136c",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064817279577255
+      ],
+      "triangles": 74,
+      "materials": 3,
+      "dependencies": [
+        {
+          "path": "glTF/Wall_UnevenBrick_Door_Flat.bin",
+          "bytes": "3516",
+          "sha256": "6cf49baa77c62df4f7f298a049d7d1905338eabd82bc8c7a566cef538483cc15"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        },
+        {
+          "path": "glTF/T_Plaster_Normal.png",
+          "bytes": "4607606",
+          "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4"
+        },
+        {
+          "path": "glTF/T_Plaster_BaseColor.png",
+          "bytes": "3316410",
+          "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4"
+        },
+        {
+          "path": "glTF/T_Plaster_ORM.png",
+          "bytes": "2381579",
+          "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7"
+        },
+        {
+          "path": "glTF/T_UnevenBrick_Normal.png",
+          "bytes": "3866626",
+          "sha256": "bbf623cc35720d67a02079b20b9a6d9641c3686952b288cda97dec41e4b8acad"
+        },
+        {
+          "path": "glTF/T_UnevenBrick_BaseColor.png",
+          "bytes": "2945342",
+          "sha256": "ee0f096df6110e943cd9739680b61bc0ffd6fe00db752c5c3797941057a95ebc"
+        },
+        {
+          "path": "glTF/T_UnevenBrick_Roughness.png",
+          "bytes": "1246162",
+          "sha256": "da170cb92ac5479b93ca0c0002b783f1186a146e6e3124891ce7bfe6e1a8a942"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Prop_Chimney2",
+      "role": "workplace-and-yard",
+      "path": "glTF/Prop_Chimney2.gltf",
+      "sha256": "45e93dfdacd304864ec90fd8a36392bf743b62a35d3b850ac3a25cb4330dc3c6",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        0.9457785189151764,
+        2.999999941792339,
+        0.9880171120166779
+      ],
+      "triangles": 130,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Prop_Chimney2.bin",
+          "bytes": "4684",
+          "sha256": "07d34b621ea375292e907a92f9231da9539d44224b7b54ff0aaf8d4cc871dc09"
+        },
+        {
+          "path": "glTF/T_UnevenBrick_Normal.png",
+          "bytes": "3866626",
+          "sha256": "bbf623cc35720d67a02079b20b9a6d9641c3686952b288cda97dec41e4b8acad"
+        },
+        {
+          "path": "glTF/T_UnevenBrick_BaseColor.png",
+          "bytes": "2945342",
+          "sha256": "ee0f096df6110e943cd9739680b61bc0ffd6fe00db752c5c3797941057a95ebc"
+        },
+        {
+          "path": "glTF/T_UnevenBrick_Roughness.png",
+          "bytes": "1246162",
+          "sha256": "da170cb92ac5479b93ca0c0002b783f1186a146e6e3124891ce7bfe6e1a8a942"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Prop_Crate",
+      "role": "workplace-and-yard",
+      "path": "glTF/Prop_Crate.gltf",
+      "sha256": "fb1d2ae668cc2761f9177110424e0c5c80a6698ef44f9cac642cb4a766d37883",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        1.0835824608802795,
+        1.0595807433128357,
+        1.08358234167099
+      ],
+      "triangles": 230,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Prop_Crate.bin",
+          "bytes": "16100",
+          "sha256": "b7dbddf64868c84abd62515caac55ac1a9cd70d897d9bf8a6b9b7191210365c4"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Prop_Wagon",
+      "role": "workplace-and-yard",
+      "path": "glTF/Prop_Wagon.gltf",
+      "sha256": "f81bf401710cd59f1325a5cdb36d335c2e5277c8416d79eefffdc646ec3fae83",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        1.9514083862304688,
+        1.5291970930993557,
+        4.024016499519348
+      ],
+      "triangles": 1672,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Prop_Wagon.bin",
+          "bytes": "103272",
+          "sha256": "2b5e35c01572b1447bdd3dcf4246fefe5aa5415d4685451b4747b80048d8f544"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Prop_WoodenFence_Single",
+      "role": "workplace-and-yard",
+      "path": "glTF/Prop_WoodenFence_Single.gltf",
+      "sha256": "c9f787c03c62dd94268da84bf3e4dacf554b2a5a9beee38314e37ff5d929c407",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.064099669456482,
+        0.83810905367136,
+        0.1198200061917305
+      ],
+      "triangles": 40,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Prop_WoodenFence_Single.bin",
+          "bytes": "2800",
+          "sha256": "aac37141af8f33e762b330486fd1cbd1c12a96b2978f491be4a58e24f1fe9ec1"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Prop_WoodenFence_Extension1",
+      "role": "workplace-and-yard",
+      "path": "glTF/Prop_WoodenFence_Extension1.gltf",
+      "sha256": "8eccb1f1e52e58e99b649f34fcdf66871a0395d1d8a5d9c0a24e9eca68581178",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.045045018196106,
+        0.83810905367136,
+        0.11035726591944695
+      ],
+      "triangles": 32,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Prop_WoodenFence_Extension1.bin",
+          "bytes": "2240",
+          "sha256": "a083e95cfcd4e657c6aec87c124845e7c7b957be22920953567fca1ab78721e8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Prop_WoodenFence_Extension2",
+      "role": "workplace-and-yard",
+      "path": "glTF/Prop_WoodenFence_Extension2.gltf",
+      "sha256": "29e1ebbb38f3027e9aff48078b34bee07983d5d1e6657426a61b44165975c004",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.0270316004753113,
+        0.83810905367136,
+        0.11035726591944695
+      ],
+      "triangles": 28,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Prop_WoodenFence_Extension2.bin",
+          "bytes": "1960",
+          "sha256": "60d92d8e63a530f6cf04c07ab9a6a2a17c38e31d5401c453e074e55fde6565dd"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Prop_Support",
+      "role": "workplace-and-yard",
+      "path": "glTF/Prop_Support.gltf",
+      "sha256": "c7292aa4f0f73a3d83c2ea5d0f9f3c726e17b13156679c9dfa043646a9f08037",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        0.1986035406589508,
+        1.708636999130249,
+        2.0362730622291565
+      ],
+      "triangles": 16,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Prop_Support.bin",
+          "bytes": "1120",
+          "sha256": "c0aa629b294c52071f66feb89e7bc771480391bfe012f33c60b5cb4aa9881897"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Balcony_Simple_Straight",
+      "role": "optional-detail",
+      "path": "glTF/Balcony_Simple_Straight.gltf",
+      "sha256": "00b028b35860ca9a8c6af8e4b1946ca39a4b6cac29a8d283164f41f1d27f0360",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.0000001192092896,
+        1.2298866659402847,
+        0.20628303289413452
+      ],
+      "triangles": 1120,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Balcony_Simple_Straight.bin",
+          "bytes": "62016",
+          "sha256": "1b74ba722dfd97e4511a630cb709e1be73bb08070cd4ad8c5d59c62f55bd51a2"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Balcony_Simple_Corner",
+      "role": "optional-detail",
+      "path": "glTF/Balcony_Simple_Corner.gltf",
+      "sha256": "10abdc6beb85b336c22425c829320d228475ebb33bd94936bd6477d4e0d7c2ed",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.10425341129303,
+        1.229886643588543,
+        2.104253888130188
+      ],
+      "triangles": 2240,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Balcony_Simple_Corner.bin",
+          "bytes": "124032",
+          "sha256": "f13fd88cf5bb6a31a0da4e46423ab0216d699d9e21077cfeffc3141c091bb3cb"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Normal.png",
+          "bytes": "3596501",
+          "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8"
+        },
+        {
+          "path": "glTF/T_WoodTrim_BaseColor.png",
+          "bytes": "2082310",
+          "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e"
+        },
+        {
+          "path": "glTF/T_WoodTrim_Roughness.png",
+          "bytes": "1697111",
+          "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Prop_Vine1",
+      "role": "optional-detail",
+      "path": "glTF/Prop_Vine1.gltf",
+      "sha256": "5326ab98fef8a68b3b4d980c066d882b21e1d0489ccbc1228fd4b156d5f21ac1",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        1.5357589721679688,
+        2.602551430463791,
+        0.21896351873874664
+      ],
+      "triangles": 82,
+      "materials": 1,
+      "dependencies": [
+        {
+          "path": "glTF/Prop_Vine1.bin",
+          "bytes": "5580",
+          "sha256": "43970bd08ae75708cfa440706e1b4b6ec2164280ec804da6d92bf9e8ac854ece"
+        },
+        {
+          "path": "glTF/T_VineLeaf_png.png",
+          "bytes": "162432",
+          "sha256": "8c80a9835d29cf7b1360ca46c2a96cedc0bfffee59f09db892f64db6825e3188"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    },
+    {
+      "id": "megakit/Stairs_Exterior_Straight",
+      "role": "optional-detail",
+      "path": "glTF/Stairs_Exterior_Straight.gltf",
+      "sha256": "6fc0e396d3441eb06d451690bb50244b047f8d73e9d1ff61c429fb5c46e9e3c7",
+      "sourceLicense": "CC0-1.0",
+      "dimensions": [
+        2.000000476837158,
+        1.2036878764629364,
+        2.0779173374176025
+      ],
+      "triangles": 62,
+      "materials": 2,
+      "dependencies": [
+        {
+          "path": "glTF/Stairs_Exterior_Straight.bin",
+          "bytes": "4148",
+          "sha256": "2b09708cd0334b8dfcdf66d6121aa1196ef192e7ac40cf56250b99c69f50988a"
+        },
+        {
+          "path": "glTF/T_RockTrim_Normal.png",
+          "bytes": "3925938",
+          "sha256": "f93f82f7e69aa0bf1900f8ab3f252390f091b771f0b84a345c5fefb0f0155cd3"
+        },
+        {
+          "path": "glTF/T_RockTrim_BaseColor.png",
+          "bytes": "1908835",
+          "sha256": "aa571cd612091a8f4c95393f8f938bd6e5d47a8cdfd9c896b60a4b37903e2c7c"
+        },
+        {
+          "path": "glTF/T_RockTrim_ORM.png",
+          "bytes": "1625807",
+          "sha256": "5287dd9a4e9fb7423af8d8440a8de8bdb8910f9f37ba148f619a6eddf58d5bc8"
+        },
+        {
+          "path": "glTF/T_Brick_Normal.png",
+          "bytes": "4474267",
+          "sha256": "6349f1fb3eed9985e6f969c1de04b9e92490020a12ba19a44b96ea808fb27c1a"
+        },
+        {
+          "path": "glTF/T_Brick_BaseColor.png",
+          "bytes": "2447169",
+          "sha256": "5515f57e61767838f53f4b9e25aa83b1382ad345ff6b446482718b5140c33813"
+        },
+        {
+          "path": "glTF/T_Brick_Roughness.png",
+          "bytes": "689204",
+          "sha256": "981e7a4f8e3119749b2fb3d557e3d0ba0551e75a39b467cff0a3a948a9392716"
+        }
+      ],
+      "status": "verified source module; proposed assembly input; not runtime-ready"
+    }
+  ]
+}

@@ -1,0 +1,802 @@
+[
+  {
+    "path": "glTF/T_Brick_BaseColor.png",
+    "bytes": 2447169,
+    "sha256": "5515f57e61767838f53f4b9e25aa83b1382ad345ff6b446482718b5140c33813",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_Brick_Normal.png",
+    "bytes": 4474267,
+    "sha256": "6349f1fb3eed9985e6f969c1de04b9e92490020a12ba19a44b96ea808fb27c1a",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_Brick_Roughness.png",
+    "bytes": 689204,
+    "sha256": "981e7a4f8e3119749b2fb3d557e3d0ba0551e75a39b467cff0a3a948a9392716",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_FlatTiles_BaseColor.png",
+    "bytes": 3317978,
+    "sha256": "e99ddf215d4172fb41f288cc1aab92193236206eb109dc260308dcb38c84c71d",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_FlatTiles_Normal.png",
+    "bytes": 3937764,
+    "sha256": "d4bd2fe0e149e8df373a67379623e82d77db32d3e77dfd5dba0154879b30baea",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_FlatTiles_Roughness.png",
+    "bytes": 1379175,
+    "sha256": "f62a2b715a278fc4625e1a946ec50fabdcaca857dd978f550719d2aeca786bf3",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_MetalOrnaments_BaseColor.png",
+    "bytes": 725116,
+    "sha256": "28603125908bb443ef7ac405d6bf2978dafdd348081c1dfd21630ac09862b668",
+    "width": 1024,
+    "height": 1024,
+    "estimatedRGBA8Bytes": 4194304
+  },
+  {
+    "path": "glTF/T_MetalOrnaments_Roughness.png",
+    "bytes": 89547,
+    "sha256": "2de0135d6ffc3021e2550860107f531d0e64fdd0b46b3bf06f2f85e30b818874",
+    "width": 512,
+    "height": 512,
+    "estimatedRGBA8Bytes": 1048576
+  },
+  {
+    "path": "glTF/T_Plaster_BaseColor.png",
+    "bytes": 3316410,
+    "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_Plaster_Normal.png",
+    "bytes": 4607606,
+    "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_Plaster_ORM.png",
+    "bytes": 2381579,
+    "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_RedBrick_BaseColor.png",
+    "bytes": 2525865,
+    "sha256": "44c6303a8b9cef8988f02d92d7309482082412ebf0a2e2f99a50a642dcb3b8f9",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_RockTrim_BaseColor.png",
+    "bytes": 1908835,
+    "sha256": "aa571cd612091a8f4c95393f8f938bd6e5d47a8cdfd9c896b60a4b37903e2c7c",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_RockTrim_Normal.png",
+    "bytes": 3925938,
+    "sha256": "f93f82f7e69aa0bf1900f8ab3f252390f091b771f0b84a345c5fefb0f0155cd3",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_RockTrim_ORM.png",
+    "bytes": 1625807,
+    "sha256": "5287dd9a4e9fb7423af8d8440a8de8bdb8910f9f37ba148f619a6eddf58d5bc8",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_RoundRocks_BaseColor.png",
+    "bytes": 1886219,
+    "sha256": "c3c6f7f5fe1792269012d6579d29c4cfe5b3add30b628661dc7605c44eccf9cb",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_RoundRocks_Normal.png",
+    "bytes": 3482263,
+    "sha256": "53e11f0468e81cd4370c84b46be15e3b126153887082a53e2804c64049a23dba",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_RoundRocks_Roughness.png",
+    "bytes": 412180,
+    "sha256": "e21f291914b0a756c29b6cf8d41d689e36b39a0f1216fdddd3e59cb3a31a0659",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_RoundTiles_BaseColor.png",
+    "bytes": 4352034,
+    "sha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_RoundTiles_Normal.png",
+    "bytes": 3792369,
+    "sha256": "e8cf202fbc1ec36c3f5389a25ab9c99f015d49ae0ca963d0404614c3e1e8f687",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_RoundTiles_Roughness.png",
+    "bytes": 1624660,
+    "sha256": "02c5cdbb6768de6ac674a343265c020c5bd6ef70fd7ba555d9b9dc7445179366",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_UnevenBrick_BaseColor.png",
+    "bytes": 2945342,
+    "sha256": "ee0f096df6110e943cd9739680b61bc0ffd6fe00db752c5c3797941057a95ebc",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_UnevenBrick_Normal.png",
+    "bytes": 3866626,
+    "sha256": "bbf623cc35720d67a02079b20b9a6d9641c3686952b288cda97dec41e4b8acad",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_UnevenBrick_Roughness.png",
+    "bytes": 1246162,
+    "sha256": "da170cb92ac5479b93ca0c0002b783f1186a146e6e3124891ce7bfe6e1a8a942",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_VineLeaf_png.png",
+    "bytes": 162432,
+    "sha256": "8c80a9835d29cf7b1360ca46c2a96cedc0bfffee59f09db892f64db6825e3188",
+    "width": 512,
+    "height": 512,
+    "estimatedRGBA8Bytes": 1048576
+  },
+  {
+    "path": "glTF/T_WoodTrim_BaseColor.png",
+    "bytes": 2082310,
+    "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_WoodTrim_Normal.png",
+    "bytes": 3596501,
+    "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF/T_WoodTrim_Roughness.png",
+    "bytes": 1697111,
+    "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_Brick_BaseColor.png",
+    "bytes": 2447169,
+    "sha256": "5515f57e61767838f53f4b9e25aa83b1382ad345ff6b446482718b5140c33813",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_Brick_Normal.png",
+    "bytes": 4474267,
+    "sha256": "6349f1fb3eed9985e6f969c1de04b9e92490020a12ba19a44b96ea808fb27c1a",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_Brick_Roughness.png",
+    "bytes": 689204,
+    "sha256": "981e7a4f8e3119749b2fb3d557e3d0ba0551e75a39b467cff0a3a948a9392716",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_FlatTiles_BaseColor.png",
+    "bytes": 3317978,
+    "sha256": "e99ddf215d4172fb41f288cc1aab92193236206eb109dc260308dcb38c84c71d",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_FlatTiles_Normal.png",
+    "bytes": 3937764,
+    "sha256": "d4bd2fe0e149e8df373a67379623e82d77db32d3e77dfd5dba0154879b30baea",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_FlatTiles_Roughness.png",
+    "bytes": 1379175,
+    "sha256": "f62a2b715a278fc4625e1a946ec50fabdcaca857dd978f550719d2aeca786bf3",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_MetalOrnaments_BaseColor.png",
+    "bytes": 725116,
+    "sha256": "28603125908bb443ef7ac405d6bf2978dafdd348081c1dfd21630ac09862b668",
+    "width": 1024,
+    "height": 1024,
+    "estimatedRGBA8Bytes": 4194304
+  },
+  {
+    "path": "glTF (Godot)/T_MetalOrnaments_Roughness.png",
+    "bytes": 89547,
+    "sha256": "2de0135d6ffc3021e2550860107f531d0e64fdd0b46b3bf06f2f85e30b818874",
+    "width": 512,
+    "height": 512,
+    "estimatedRGBA8Bytes": 1048576
+  },
+  {
+    "path": "glTF (Godot)/T_Plaster_BaseColor.png",
+    "bytes": 3316410,
+    "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_Plaster_Normal.png",
+    "bytes": 4607606,
+    "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_Plaster_ORM.png",
+    "bytes": 2381579,
+    "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_RedBrick_BaseColor.png",
+    "bytes": 2525865,
+    "sha256": "44c6303a8b9cef8988f02d92d7309482082412ebf0a2e2f99a50a642dcb3b8f9",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_RockTrim_BaseColor.png",
+    "bytes": 1908835,
+    "sha256": "aa571cd612091a8f4c95393f8f938bd6e5d47a8cdfd9c896b60a4b37903e2c7c",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_RockTrim_Normal.png",
+    "bytes": 3925938,
+    "sha256": "f93f82f7e69aa0bf1900f8ab3f252390f091b771f0b84a345c5fefb0f0155cd3",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_RockTrim_ORM.png",
+    "bytes": 1625807,
+    "sha256": "5287dd9a4e9fb7423af8d8440a8de8bdb8910f9f37ba148f619a6eddf58d5bc8",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_RoundRocks_BaseColor.png",
+    "bytes": 1886219,
+    "sha256": "c3c6f7f5fe1792269012d6579d29c4cfe5b3add30b628661dc7605c44eccf9cb",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_RoundRocks_Normal.png",
+    "bytes": 3482263,
+    "sha256": "53e11f0468e81cd4370c84b46be15e3b126153887082a53e2804c64049a23dba",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_RoundRocks_Roughness.png",
+    "bytes": 412180,
+    "sha256": "e21f291914b0a756c29b6cf8d41d689e36b39a0f1216fdddd3e59cb3a31a0659",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_RoundTiles_BaseColor.png",
+    "bytes": 4352034,
+    "sha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_RoundTiles_Normal.png",
+    "bytes": 3792369,
+    "sha256": "e8cf202fbc1ec36c3f5389a25ab9c99f015d49ae0ca963d0404614c3e1e8f687",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_RoundTiles_Roughness.png",
+    "bytes": 1624660,
+    "sha256": "02c5cdbb6768de6ac674a343265c020c5bd6ef70fd7ba555d9b9dc7445179366",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_UnevenBrick_BaseColor.png",
+    "bytes": 2945342,
+    "sha256": "ee0f096df6110e943cd9739680b61bc0ffd6fe00db752c5c3797941057a95ebc",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_UnevenBrick_Normal.png",
+    "bytes": 3866626,
+    "sha256": "bbf623cc35720d67a02079b20b9a6d9641c3686952b288cda97dec41e4b8acad",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_UnevenBrick_Roughness.png",
+    "bytes": 1246162,
+    "sha256": "da170cb92ac5479b93ca0c0002b783f1186a146e6e3124891ce7bfe6e1a8a942",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_VineLeaf_png.png",
+    "bytes": 162432,
+    "sha256": "8c80a9835d29cf7b1360ca46c2a96cedc0bfffee59f09db892f64db6825e3188",
+    "width": 512,
+    "height": 512,
+    "estimatedRGBA8Bytes": 1048576
+  },
+  {
+    "path": "glTF (Godot)/T_WoodTrim_BaseColor.png",
+    "bytes": 2082310,
+    "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_WoodTrim_Normal.png",
+    "bytes": 3596501,
+    "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "glTF (Godot)/T_WoodTrim_Roughness.png",
+    "bytes": 1697111,
+    "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/Normals Godot-Unity/T_Brick_Normal.png",
+    "bytes": 5199854,
+    "sha256": "eb9a0c76b019cd490995fa92d63c375d9c66b05e16cc73aba5cc8c6f1ff3421a",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/Normals Godot-Unity/T_FlatTiles_Normal.png",
+    "bytes": 3367914,
+    "sha256": "d4eb68f8d192e6cb856e3b07fc12b86d331ef48e94f664708f6980b6fbfdd15f",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/Normals Godot-Unity/T_Plaster_Normal.png",
+    "bytes": 4575580,
+    "sha256": "da129ede879d0ebe7cc21d092242667ca82514959709cfd1565569898b358bda",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/Normals Godot-Unity/T_RockTrim_Normal.png",
+    "bytes": 3921997,
+    "sha256": "381fc15a3555008dbd281ad475969d373d999b17d70da34496c28861cea831fa",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/Normals Godot-Unity/T_RoundRocks_Normal.png",
+    "bytes": 3483017,
+    "sha256": "855e593884824cdf1868cc011a3d3eaa7e1822781440a72553a39601c443447a",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/Normals Godot-Unity/T_RoundTiles_Normal.png",
+    "bytes": 3256812,
+    "sha256": "af24f7dbde89f8cb0da20b1a0fff35cf411710e033c61a372a2c6472d96fc353",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/Normals Godot-Unity/T_UnevenBrick_Normal.png",
+    "bytes": 3868581,
+    "sha256": "71b1f5a3707be38e729b0e2c5c09c6841ccb8836cab4f62043c455cfdb5a8c56",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/Normals Godot-Unity/T_WoodTrim_Normal.png",
+    "bytes": 3613847,
+    "sha256": "a2aa15d79245ba1bbdf82c0aa722a6453bb908fa115c4f5bdfb725d45bf6a641",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_BottomWear.png",
+    "bytes": 3463884,
+    "sha256": "0114ea735fabd591c4bd9de3634a968160fe415ec0119f13805b3d5f8e1b121c",
+    "width": 4096,
+    "height": 4096,
+    "estimatedRGBA8Bytes": 67108864
+  },
+  {
+    "path": "Textures/T_Brick_BaseColor.png",
+    "bytes": 2447169,
+    "sha256": "5515f57e61767838f53f4b9e25aa83b1382ad345ff6b446482718b5140c33813",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_Brick_Normal.png",
+    "bytes": 4474267,
+    "sha256": "6349f1fb3eed9985e6f969c1de04b9e92490020a12ba19a44b96ea808fb27c1a",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_Brick_Roughness.png",
+    "bytes": 350932,
+    "sha256": "297286525610d5a4b6fa77427b4a2c7cbd1e595eb3ce8fb9391b1118630d01a5",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_BrushedNoise.png",
+    "bytes": 13059210,
+    "sha256": "217730ed808c69bb3f14a38a0ead20cf6929d025b2dc5535eed0319af93b3d69",
+    "width": 4096,
+    "height": 4096,
+    "estimatedRGBA8Bytes": 67108864
+  },
+  {
+    "path": "Textures/T_FlatTiles_BaseColor.png",
+    "bytes": 3317978,
+    "sha256": "e99ddf215d4172fb41f288cc1aab92193236206eb109dc260308dcb38c84c71d",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_FlatTiles_Normal.png",
+    "bytes": 3937764,
+    "sha256": "d4bd2fe0e149e8df373a67379623e82d77db32d3e77dfd5dba0154879b30baea",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_FlatTiles_Roughness.png",
+    "bytes": 748211,
+    "sha256": "31e3a8821d3ceb96b557036bb3cc4fbf8bbd01ec323cd605f0b46a7607186db1",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_MetalOrnaments_BaseColor.png",
+    "bytes": 725116,
+    "sha256": "28603125908bb443ef7ac405d6bf2978dafdd348081c1dfd21630ac09862b668",
+    "width": 1024,
+    "height": 1024,
+    "estimatedRGBA8Bytes": 4194304
+  },
+  {
+    "path": "Textures/T_MetalOrnaments_Roughness.png",
+    "bytes": 48802,
+    "sha256": "1554aaf1510264eafd875ccb9cd44b8cfd2f37037fa2133e88377a29e72ab24a",
+    "width": 512,
+    "height": 512,
+    "estimatedRGBA8Bytes": 1048576
+  },
+  {
+    "path": "Textures/T_MidWear.png",
+    "bytes": 5753780,
+    "sha256": "d8a7d954ff2a0ff25fbd109794ded99378d60b6af01ab71913c31552ac5a0b64",
+    "width": 4096,
+    "height": 4096,
+    "estimatedRGBA8Bytes": 67108864
+  },
+  {
+    "path": "Textures/T_Noise_Terrain.png",
+    "bytes": 213487,
+    "sha256": "98fb32738b356cf376beb960045e7be728056a086acd612e24ad2855f445e7ff",
+    "width": 512,
+    "height": 512,
+    "estimatedRGBA8Bytes": 1048576
+  },
+  {
+    "path": "Textures/T_Normal_Default.png",
+    "bytes": 2976,
+    "sha256": "81d2cb2c07ccfce895dd9d0d8952de462709e1de7b9228ecdb5f11798ded9f66",
+    "width": 128,
+    "height": 128,
+    "estimatedRGBA8Bytes": 65536
+  },
+  {
+    "path": "Textures/T_Plaster_BaseColor.png",
+    "bytes": 3316410,
+    "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_Plaster_Normal.png",
+    "bytes": 4607606,
+    "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_Plaster_ORM.png",
+    "bytes": 2381579,
+    "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_RedBrick_BaseColor.png",
+    "bytes": 2525865,
+    "sha256": "44c6303a8b9cef8988f02d92d7309482082412ebf0a2e2f99a50a642dcb3b8f9",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_RockTrim_BaseColor.png",
+    "bytes": 1908835,
+    "sha256": "aa571cd612091a8f4c95393f8f938bd6e5d47a8cdfd9c896b60a4b37903e2c7c",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_RockTrim_Normal.png",
+    "bytes": 3925938,
+    "sha256": "f93f82f7e69aa0bf1900f8ab3f252390f091b771f0b84a345c5fefb0f0155cd3",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_RockTrim_ORM.png",
+    "bytes": 1625807,
+    "sha256": "5287dd9a4e9fb7423af8d8440a8de8bdb8910f9f37ba148f619a6eddf58d5bc8",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_RoundRocks_BaseColor.png",
+    "bytes": 1886219,
+    "sha256": "c3c6f7f5fe1792269012d6579d29c4cfe5b3add30b628661dc7605c44eccf9cb",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_RoundRocks_Normal.png",
+    "bytes": 3482263,
+    "sha256": "53e11f0468e81cd4370c84b46be15e3b126153887082a53e2804c64049a23dba",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_RoundRocks_Roughness.png",
+    "bytes": 187659,
+    "sha256": "d7c2166cda3a2f2487845f50bbc6eb643db8ae29eb8410d948e8fe5c13d5c8fc",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_RoundTiles_BaseColor.png",
+    "bytes": 4352034,
+    "sha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_RoundTiles_Normal.png",
+    "bytes": 3792369,
+    "sha256": "e8cf202fbc1ec36c3f5389a25ab9c99f015d49ae0ca963d0404614c3e1e8f687",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_RoundTiles_Roughness.png",
+    "bytes": 1445880,
+    "sha256": "02709f84b0a15217c99082fecd7c8d2b44d004973a711b1edd47f69bcfb44c4e",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_TopWear.png",
+    "bytes": 3934516,
+    "sha256": "838d2074dced0664111db305745a17cad25adfdd80ca9781b734e259f91f4fc6",
+    "width": 4096,
+    "height": 4096,
+    "estimatedRGBA8Bytes": 67108864
+  },
+  {
+    "path": "Textures/T_UnevenBrick_BaseColor.png",
+    "bytes": 2945342,
+    "sha256": "ee0f096df6110e943cd9739680b61bc0ffd6fe00db752c5c3797941057a95ebc",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_UnevenBrick_Normal.png",
+    "bytes": 3866626,
+    "sha256": "bbf623cc35720d67a02079b20b9a6d9641c3686952b288cda97dec41e4b8acad",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_UnevenBrick_Roughness.png",
+    "bytes": 707775,
+    "sha256": "c037bcaee905333108985d006958393e7e19580f29a1da334692303145ef6ed6",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_VineLeaf.png",
+    "bytes": 162432,
+    "sha256": "8c80a9835d29cf7b1360ca46c2a96cedc0bfffee59f09db892f64db6825e3188",
+    "width": 512,
+    "height": 512,
+    "estimatedRGBA8Bytes": 1048576
+  },
+  {
+    "path": "Textures/T_WindowGradient.png",
+    "bytes": 21462,
+    "sha256": "57ce243ef673957eab01c02ebfb559c87c7ccd6fb2296aa30829aa823db5d3de",
+    "width": 512,
+    "height": 512,
+    "estimatedRGBA8Bytes": 1048576
+  },
+  {
+    "path": "Textures/T_WoodTrim_BaseColor.png",
+    "bytes": 2082310,
+    "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_WoodTrim_Normal.png",
+    "bytes": 3596501,
+    "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_WoodTrim_ORM.png",
+    "bytes": 3030751,
+    "sha256": "8947ae1f065dbf8a4ac01470e6cf1242782c3bc59733e0bbd91ba5efbdb3c1c1",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  },
+  {
+    "path": "Textures/T_WoodTrim_Roughness.png",
+    "bytes": 911823,
+    "sha256": "5f63426bcc8d3db3254599d5a4c729f745a2fb2b7a11b5266b1894e3e7031a32",
+    "width": 2048,
+    "height": 2048,
+    "estimatedRGBA8Bytes": 16777216
+  }
+]
