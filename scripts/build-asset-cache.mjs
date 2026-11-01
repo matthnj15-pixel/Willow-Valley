@@ -2,6 +2,7 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {posix} from 'node:path';
 import {createHash} from 'node:crypto';
 const manifest=JSON.parse(await readFile('assets/wv/architecture-v1/manifest.json','utf8'));
+const environment=JSON.parse(await readFile('environment-asset-manifest.json','utf8'));
 const files=new Set();
 async function add(path){
  path=posix.normalize(path);if(path.startsWith('../')||path.startsWith('/'))throw Error('Escaping install root');
@@ -10,7 +11,7 @@ async function add(path){
  if(path.endsWith('.mjs'))for(const match of bytes.toString().matchAll(/(?:from\s*|import\s*(?:\(\s*)?)["'](\.[^"']+)["']/g))await add(posix.join(posix.dirname(path),match[1]));
 }
 for(const path of ['index.html','styles.css','app.mjs','ui-kit/world-lab.html','ui-kit/world-lab.css','ui-kit/world-lab.mjs',
- 'assets/vendor/three.module.mjs','assets/wv/architecture-v1/manifest.json','asset-registry.mjs',
+ 'environment-asset-manifest.json','assets/wv/environment-v1/LICENSE.txt',...environment.entries.map(e=>e.url),'assets/vendor/three.module.mjs','assets/wv/architecture-v1/manifest.json','asset-registry.mjs',
  'ui-kit/settlement-benchmark.html','ui-kit/settlement-benchmark.mjs','ui-kit/asset-gallery.html','ui-kit/asset-gallery.css','ui-kit/asset-gallery.mjs',...manifest.entries.map(e=>e.url)])await add(path);
 const entries=[];
 for(const path of [...files].sort()){
