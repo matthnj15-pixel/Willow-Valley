@@ -146,8 +146,8 @@
     },
     {
       "path": "environment-next/materials.mjs",
-      "bytes": 7189,
-      "sha256": "5bc509b90fc910da9cb92a23eda2e1697cbeb1b6b0f2a3eb5d96496811555813"
+      "bytes": 7517,
+      "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
     },
     {
       "path": "environment-next/preset.mjs",

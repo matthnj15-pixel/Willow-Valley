@@ -13,6 +13,8 @@ vec2 fieldUV(){return (vPosition.xz+worldSize*.5)/worldSize;}
 vec3 meadow(vec3 g,float m){return g*mix(vec3(.79,.86,.66),vec3(.84,.85,.68),m)*(.94+.10*m);}
 `;
 const terrain=`${common}
+float mineralHash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float mineral(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(mineralHash(i),mineralHash(i+vec2(1.,0.)),f.x),mix(mineralHash(i+vec2(0.,1.)),mineralHash(i+vec2(1.,1.)),f.x),f.y);}
 void main(){vec4 f=texture2D(visual,fieldUV()),shore=texture2D(control,fieldUV());vec3 n=normalize(vNormal);vec2 rockUV=abs(n.x)>abs(n.z)?vPosition.zy:vPosition.xy;
 vec3 g=texture2D(grass,vPosition.xz/24.).rgb;
 #ifdef LOW_QUALITY
@@ -27,8 +29,8 @@ c=mix(c,litter,f.r*.75);float bank=1.-smoothstep(.0,.48,shore.g);vec3 damp=earth
 c=mix(c,mix(gravel,damp,1.-smoothstep(0.,.16,shore.g)),bank*.8);
 c=mix(c,earth*vec3(.85,.73,.56),f.g);
 // Dedicated neutral rock: no foliage albedo. Vertical axis projection follows face orientation.
-float strata=grain(rockUV*vec2(.28,.9));vec3 rock=mix(vec3(.22,.23,.21),vec3(.34,.33,.29),strata);
-float slope=smoothstep(.24,.62,1.-abs(n.y));c=mix(c,rock,slope);
+float slope=smoothstep(.24,.62,1.-abs(n.y));
+if(slope>0.){float strata=mineral(rockUV*vec2(.07,.12))*.75+mineral(rockUV*.027)*.25;vec3 rock=mix(vec3(.16,.16,.14),vec3(.235,.225,.20),strata);c=mix(c,rock,slope);}
 gl_FragColor=vec4(finish(c),1.);
 #include <colorspace_fragment>
 }`;
