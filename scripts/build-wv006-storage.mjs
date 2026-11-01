@@ -7,7 +7,9 @@ import {build} from 'esbuild';
 import {IDS,REVISION,PALETTE,makeAsset} from '../storage-next/recipe.mjs';
 const hash=b=>createHash('sha256').update(b).digest('hex'),out='assets/wv/storage-next';await mkdir(out,{recursive:true});
 const doc=new Document(),buffer=doc.createBuffer(),scene=doc.createScene('WV006 D storage review');doc.getRoot().setDefaultScene(scene);
-const materials=Object.fromEntries(Object.entries(PALETTE).map(([k,v])=>[k,doc.createMaterial(k).setBaseColorFactor([...new Color(v).toArray(),1]).setRoughnessFactor(.94).setMetallicFactor(0)])),entries=[];
+// Canonicalize linear palette JSON: V8 pow differs in its last decimal across Node 22/24.
+// Geometry bytes are identical; ten decimal places retain far more than display precision.
+const materials=Object.fromEntries(Object.entries(PALETTE).map(([k,v])=>[k,doc.createMaterial(k).setBaseColorFactor([...new Color(v).toArray().map(c=>Number(c.toFixed(10))),1]).setRoughnessFactor(.94).setMetallicFactor(0)])),entries=[];
 for(const quality of ['normal','low'])for(const id of IDS){
  const {parts,metadata}=makeAsset(id,quality),node=doc.createNode(id+'-'+quality),mesh=doc.createMesh(id+'-'+quality);scene.addChild(node);node.setMesh(mesh);let triangles=0;
  for(const mat of Object.keys(PALETTE)){

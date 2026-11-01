@@ -4,7 +4,7 @@ Scope: original storehouse/warehouse candidates, shared goods and common-space f
 
 ## Local checks
 
-Environment: Linux, Node 22-compatible pinned checkout dependencies, Chromium 141 / Playwright 1.56.1. Commands requiring child processes, browsers or localhost sockets ran in the approved executor outside the restricted process sandbox. No dependency/lockfile changes.
+Environment: Linux, Node 24.19.0 and cross-checked Node 22.23.4, pinned checkout dependencies, Chromium 141 / Playwright 1.56.1. Commands requiring child processes, browsers or localhost sockets ran in the approved executor outside the restricted process sandbox. No dependency/lockfile changes.
 
 | Command | Result |
 | --- | --- |
@@ -20,6 +20,8 @@ Environment: Linux, Node 22-compatible pinned checkout dependencies, Chromium 14
 | `node scripts/measure-wv006-storage.mjs` | Completed; captures and machine-readable record in this directory |
 | `git diff --exit-code -- assets/ asset-cache.js` before staging task assets | Passed; existing assets/cache unchanged |
 | `git diff --check` | Passed |
+
+Initial PR CI run [41324884258](https://github.com/matthnj15-pixel/Willow-Valley/actions/runs/41324884258) found a cross-Node palette serialization difference: identical geometry buffer, but one last decimal from sRGB-to-linear `pow` differed between Node 22 and Node 24. Recipe revision 2 canonicalizes linear material colors to ten decimal places. GLB, manifest and UI rebuilds are then checked under both runtimes; measured geometry is unchanged.
 
 The PR's current required CI is the final full-suite gate. Its exact head, CI URLs, merge and deployment evidence are recorded in the PR completion record. A passing PR does not itself establish deployment.
 

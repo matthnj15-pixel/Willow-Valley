@@ -1,6 +1,6 @@
 // Original Willow Valley artwork. Visual metres, Y up; never simulation geometry.
 import * as T from 'three';
-export const REVISION='wv006-d-original-1';
+export const REVISION='wv006-d-original-2';
 export const PALETTE={timber:'#594332',board:'#967451',stone:'#81796a',roof:'#81503d',iron:'#414744',sack:'#c3b397',water:'#4a829a',leaf:'#64895b'};
 export const IDS=['storehouse-l1','warehouse-l2','lumber','tools','sacks','barrel','cargo','well','bench','noticeboard','trough','wall','fence','gate-open','gate-closed','planted-common','scaffold','storehouse-frame','person','cart'];
 export const rect=(x,z,w,d)=>[[x-w/2,z-d/2],[x+w/2,z-d/2],[x+w/2,z+d/2],[x-w/2,z+d/2]];

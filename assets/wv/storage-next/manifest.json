@@ -1,5 +1,5 @@
 {
-  "recipeRevision": "wv006-d-original-1",
+  "recipeRevision": "wv006-d-original-2",
   "status": "gallery-review",
   "runtimeReady": false,
   "units": "visual metres",
@@ -12,7 +12,7 @@
   "sources": [
     {
       "path": "storage-next/recipe.mjs",
-      "sha256": "f71d03fe0b41690ee4df7b1408c32e1b1884dc144c67ad668ecc8c2965d9d1ba"
+      "sha256": "399573a72fe0f92f062234a07135f6d6ea9a5002196bad4d05546a653d5332ec"
     },
     {
       "path": "storage-next/view-data.mjs",
@@ -24,7 +24,7 @@
     },
     {
       "path": "scripts/build-wv006-storage.mjs",
-      "sha256": "49b753b33bfbb828c2a2baf5bb8bf9baf1ba3cb73e99816e69739b3b92906e6b"
+      "sha256": "2c0ab96a7e102c50ebab3f68337ce980db45613362e2a897acb43984fb142089"
     },
     {
       "path": "assets/wv/storage-next/LICENSE.txt",
@@ -33,8 +33,8 @@
   ],
   "output": {
     "url": "assets/wv/storage-next/storage.glb",
-    "bytes": 798232,
-    "sha256": "1595d1d5f13c117febb70244e752cf3c6f0ed951de5b7fab4003f03f9d9973fe"
+    "bytes": 798068,
+    "sha256": "638fe141f28ca83e23926e21c9f7b2b7c03d7ec14770f64275413f7d46cd36d6"
   },
   "textures": [],
   "entries": [

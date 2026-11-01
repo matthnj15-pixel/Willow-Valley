@@ -26,7 +26,7 @@ npx playwright test wv006-storage
 node scripts/measure-wv006-storage.mjs
 ```
 
-Use the pinned existing tools in package.json. The manifest records source hashes, license hash through its source list, output bytes/hash and deterministic recipe revision. Original geometry is CC0 under the new local license notice. No MegaKit input or private archive was accessed; no unavailable input hash is asserted. The clean-build test copies only the recipe, view/gallery sources, script and license into a temporary checkout-shaped directory and compares GLB, manifest and UI bytes.
+Use the pinned existing tools in package.json. Recipe revision 2 canonicalizes linear palette factors to ten decimal places so Node 22/24 produce identical JSON and geometry bytes. The manifest records source hashes, license hash through its source list, output bytes/hash and deterministic recipe revision. Original geometry is CC0 under the new local license notice. No MegaKit input or private archive was accessed; no unavailable input hash is asserted. The clean-build test copies only the recipe, view/gallery sources, script and license into a temporary checkout-shaped directory and compares GLB, manifest and UI bytes.
 
 ## Geometry, scale and fit
 
