@@ -1,0 +1,7181 @@
+{
+  "schemaVersion": 1,
+  "recipeRevision": 1,
+  "status": "gallery-review",
+  "runtimeReady": false,
+  "units": "visual metres",
+  "gameUnitsPerMetre": 2.8,
+  "archiveSha256": "5e60888e2babe418a4618e7815539d9b1b2c3b24c1db2b22cd7a2a7f66140732",
+  "sourceLicenseSha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee",
+  "approvedStudySha256": "fac749f7f7a7aac7c77352786ef5dcbbf825a4d9c7de6ff24c61c057c944133e",
+  "output": {
+    "url": "assets/wv/megakit-catalog-v1/catalog.glb",
+    "bytes": 3135732,
+    "sha256": "d8926948018bb382ab82d9a437fae0b20e71a60d195c56960652ad0b0aedf5c7"
+  },
+  "entries": [
+    {
+      "id": "home-steep-gable",
+      "name": "Gabled plaster cottage",
+      "role": "residential",
+      "description": "Approved compact plaster cottage; steep tiled roof and arched entry.",
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2,
+              -2
+            ],
+            [
+              2,
+              -2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        }
+      ],
+      "entrances": [
+        {
+          "threshold": [
+            -1,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -3,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            3,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "authoredAdditions": [
+        "closed floor",
+        "rubble plinth",
+        "closed attic backing"
+      ],
+      "permittedEras": [
+        0
+      ],
+      "status": "visual-approved",
+      "runtimeReady": false,
+      "approvedGeometryInputSha256": "fac749f7f7a7aac7c77352786ef5dcbbf825a4d9c7de6ff24c61c057c944133e",
+      "boundsMin": [
+        -2.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.756538152694702,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "dimensions": [
+        5.513076305389404,
+        6.853674286454916,
+        5.6157066822052
+      ],
+      "triangles": 4937,
+      "materials": 8,
+      "overhangPolygon": [
+        [
+          -2.756538152694702,
+          -2.794139862060547
+        ],
+        [
+          2.756538152694702,
+          -2.794139862060547
+        ],
+        [
+          2.756538152694702,
+          2.8215668201446533
+        ],
+        [
+          -2.756538152694702,
+          2.8215668201446533
+        ]
+      ],
+      "fitPolicy": "Uniform 2.8 only; validate entire roof/yard and entrance against actual parcel before runtime use. Fallback on failure."
+    },
+    {
+      "id": "home-long-ridge",
+      "name": "Long-ridge timber house",
+      "role": "residential",
+      "description": "Four-by-six metre timber house with a long clay-tile ridge.",
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2,
+              -3
+            ],
+            [
+              2,
+              -3
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              -2,
+              3
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        }
+      ],
+      "entrances": [
+        {
+          "threshold": [
+            -1,
+            0,
+            3
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -3,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            3,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            -4
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            4
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "authoredAdditions": [
+        "rubble foundation",
+        "closed floor",
+        "closed attic backing"
+      ],
+      "permittedEras": [
+        0
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "boundsMin": [
+        -2.8514444828033447,
+        -0.11999999865889549,
+        -3.794139862060547
+      ],
+      "boundsMax": [
+        2.8514444828033447,
+        6.5263917446136475,
+        3.7941397428512573
+      ],
+      "dimensions": [
+        5.7028889656066895,
+        6.646391743272543,
+        7.588279604911804
+      ],
+      "triangles": 6340,
+      "materials": 8,
+      "overhangPolygon": [
+        [
+          -2.8514444828033447,
+          -3.794139862060547
+        ],
+        [
+          2.8514444828033447,
+          -3.794139862060547
+        ],
+        [
+          2.8514444828033447,
+          3.7941397428512573
+        ],
+        [
+          -2.8514444828033447,
+          3.7941397428512573
+        ]
+      ],
+      "fitPolicy": "Uniform 2.8 only; validate entire roof/yard and entrance against actual parcel before runtime use. Fallback on failure."
+    },
+    {
+      "id": "home-low-hip",
+      "name": "Thatched crofter’s cottage",
+      "role": "residential",
+      "description": "Low hipped thatch, limewashed walls and an off-centre arched doorway.",
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2,
+              -2
+            ],
+            [
+              2,
+              -2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        }
+      ],
+      "entrances": [
+        {
+          "threshold": [
+            -1,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -3,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            3,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "authoredAdditions": [
+        "rubble foundation",
+        "closed floor",
+        "authored layered hipped thatch",
+        "bound thatch ridge",
+        "hip ceiling",
+        "thick bound reed eave"
+      ],
+      "permittedEras": [
+        0
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "boundsMin": [
+        -2.5199999809265137,
+        -0.11999999865889549,
+        -2.5199999809265137
+      ],
+      "boundsMax": [
+        2.5199999809265137,
+        4.699999979972839,
+        2.5199999809265137
+      ],
+      "dimensions": [
+        5.039999961853027,
+        4.819999978631734,
+        5.039999961853027
+      ],
+      "triangles": 2761,
+      "materials": 8,
+      "overhangPolygon": [
+        [
+          -2.5199999809265137,
+          -2.5199999809265137
+        ],
+        [
+          2.5199999809265137,
+          -2.5199999809265137
+        ],
+        [
+          2.5199999809265137,
+          2.5199999809265137
+        ],
+        [
+          -2.5199999809265137,
+          2.5199999809265137
+        ]
+      ],
+      "fitPolicy": "Uniform 2.8 only; validate entire roof/yard and entrance against actual parcel before runtime use. Fallback on failure."
+    },
+    {
+      "id": "home-porch-cabin",
+      "name": "Porch-front timber cottage",
+      "role": "residential",
+      "description": "Compact boarded cottage with a usable shaded timber porch.",
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2,
+              -2
+            ],
+            [
+              2,
+              -2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              -2,
+              2
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        },
+        {
+          "polygon": [
+            [
+              -2,
+              2
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              3.3
+            ],
+            [
+              -2,
+              3.3
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12,
+          "open": true
+        }
+      ],
+      "entrances": [
+        {
+          "threshold": [
+            -1,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -3,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            3,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "authoredAdditions": [
+        "rubble foundation",
+        "closed floor",
+        "closed attic backing",
+        "porch post",
+        "post stone",
+        "porch eave tie"
+      ],
+      "permittedEras": [
+        0
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "boundsMin": [
+        -2.767246961593628,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.767246961593628,
+        6.527637004852295,
+        3.519149422645569
+      ],
+      "dimensions": [
+        5.534493923187256,
+        6.64763700351119,
+        6.313289284706116
+      ],
+      "triangles": 5790,
+      "materials": 7,
+      "overhangPolygon": [
+        [
+          -2.767246961593628,
+          -2.794139862060547
+        ],
+        [
+          2.767246961593628,
+          -2.794139862060547
+        ],
+        [
+          2.767246961593628,
+          3.519149422645569
+        ],
+        [
+          -2.767246961593628,
+          3.519149422645569
+        ]
+      ],
+      "fitPolicy": "Uniform 2.8 only; validate entire roof/yard and entrance against actual parcel before runtime use. Fallback on failure."
+    },
+    {
+      "id": "home-offset-gables",
+      "name": "Paired-gable house",
+      "role": "residential",
+      "description": "Plaster main room with a lower narrow timber wing and unequal gables.",
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -3,
+              -2
+            ],
+            [
+              1,
+              -2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              -3,
+              2
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        },
+        {
+          "polygon": [
+            [
+              1,
+              -2
+            ],
+            [
+              3,
+              -2
+            ],
+            [
+              3,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        }
+      ],
+      "entrances": [
+        {
+          "threshold": [
+            -2,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        },
+        {
+          "threshold": [
+            2,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -4,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            -1,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            -1,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            4,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            2,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            2,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "authoredAdditions": [
+        "rubble foundation",
+        "closed floor",
+        "closed attic backing"
+      ],
+      "permittedEras": [
+        0
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "removedInteriorModules": "Shared wall bays and window assemblies at the main-room/service-wing join are omitted",
+      "boundsMin": [
+        -3.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        3.5432379245758057,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "dimensions": [
+        7.299776077270508,
+        6.853674286454916,
+        5.6157066822052
+      ],
+      "triangles": 7189,
+      "materials": 9,
+      "overhangPolygon": [
+        [
+          -3.756538152694702,
+          -2.794139862060547
+        ],
+        [
+          3.5432379245758057,
+          -2.794139862060547
+        ],
+        [
+          3.5432379245758057,
+          2.8215668201446533
+        ],
+        [
+          -3.756538152694702,
+          2.8215668201446533
+        ]
+      ],
+      "fitPolicy": "Uniform 2.8 only; validate entire roof/yard and entrance against actual parcel before runtime use. Fallback on failure."
+    },
+    {
+      "id": "facility-farm",
+      "name": "Farmhouse & hay yard",
+      "role": "farm",
+      "description": "Plaster farmhouse, open hay shelter, wagon and rear yard fencing.",
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -5,
+              -3
+            ],
+            [
+              -1,
+              -3
+            ],
+            [
+              -1,
+              1
+            ],
+            [
+              -5,
+              1
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        },
+        {
+          "polygon": [
+            [
+              1,
+              -2.35
+            ],
+            [
+              5,
+              -2.35
+            ],
+            [
+              5,
+              0.3500000000000001
+            ],
+            [
+              1,
+              0.3500000000000001
+            ]
+          ],
+          "floor": -0.12,
+          "grade": -0.12,
+          "open": true
+        }
+      ],
+      "entrances": [
+        {
+          "threshold": [
+            -4,
+            0,
+            1
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -6,
+            1.5,
+            -1
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            1.5,
+            -1
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            -3,
+            1.5,
+            -4
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            -3,
+            1.5,
+            2
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "authoredAdditions": [
+        "rubble foundation",
+        "closed floor",
+        "closed attic backing",
+        "shelter post",
+        "post stone",
+        "shelter cross tie",
+        "bound straw bale"
+      ],
+      "permittedEras": [
+        0
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "boundsMin": [
+        -5.756538152694702,
+        -0.12000003039836883,
+        -4.059909820556641
+      ],
+      "boundsMax": [
+        5.128929138183594,
+        6.7336742877960205,
+        5.479359149932861
+      ],
+      "dimensions": [
+        10.885467290878296,
+        6.85367431819439,
+        9.539268970489502
+      ],
+      "triangles": 7489,
+      "materials": 9,
+      "overhangPolygon": [
+        [
+          -5.756538152694702,
+          -4.059909820556641
+        ],
+        [
+          5.128929138183594,
+          -4.059909820556641
+        ],
+        [
+          5.128929138183594,
+          5.479359149932861
+        ],
+        [
+          -5.756538152694702,
+          5.479359149932861
+        ]
+      ],
+      "fitPolicy": "Uniform 2.8 only; validate entire roof/yard and entrance against actual parcel before runtime use. Fallback on failure."
+    },
+    {
+      "id": "facility-smith",
+      "name": "Masonry forge & smithy",
+      "role": "smith",
+      "description": "Brick workshop, vented hearth, open working bay, anvil and loading space.",
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -4,
+              -2
+            ],
+            [
+              0,
+              -2
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              -4,
+              2
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12
+        },
+        {
+          "polygon": [
+            [
+              0,
+              0
+            ],
+            [
+              4,
+              0
+            ],
+            [
+              4,
+              1.3
+            ],
+            [
+              0,
+              1.3
+            ]
+          ],
+          "floor": 0,
+          "grade": -0.12,
+          "open": true
+        }
+      ],
+      "entrances": [
+        {
+          "threshold": [
+            -3,
+            0,
+            2
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 1,
+          "clearDepth": 1.3
+        }
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -5,
+            1.5,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            1,
+            1.5,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            -2,
+            1.5,
+            -3
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            -2,
+            1.5,
+            3
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "authoredAdditions": [
+        "rubble foundation",
+        "closed floor",
+        "closed attic backing",
+        "porch post",
+        "post stone",
+        "porch eave tie",
+        "rear workshop post",
+        "forge masonry base",
+        "forge black hearth",
+        "banked forge coals",
+        "forge hood",
+        "masonry flue",
+        "anvil oak stump",
+        "anvil waist",
+        "anvil face",
+        "anvil horn"
+      ],
+      "permittedEras": [
+        0
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "boundsMin": [
+        -5.341791152954102,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        4.128929138183594,
+        6.550000190734863,
+        2.950000047683716
+      ],
+      "dimensions": [
+        9.470720291137695,
+        6.670000189393758,
+        5.744139909744263
+      ],
+      "triangles": 5100,
+      "materials": 11,
+      "overhangPolygon": [
+        [
+          -5.341791152954102,
+          -2.794139862060547
+        ],
+        [
+          4.128929138183594,
+          -2.794139862060547
+        ],
+        [
+          4.128929138183594,
+          2.950000047683716
+        ],
+        [
+          -5.341791152954102,
+          2.950000047683716
+        ]
+      ],
+      "fitPolicy": "Uniform 2.8 only; validate entire roof/yard and entrance against actual parcel before runtime use. Fallback on failure."
+    },
+    {
+      "id": "facility-granary",
+      "name": "Raised granary & loading deck",
+      "role": "granary",
+      "description": "Dry timber store, raised loading platform, entrance steps and a delivery wagon.",
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2,
+              -3
+            ],
+            [
+              2,
+              -3
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              -2,
+              3
+            ]
+          ],
+          "floor": 0.7,
+          "grade": -0.12
+        },
+        {
+          "polygon": [
+            [
+              -2.4,
+              2.95
+            ],
+            [
+              2.4,
+              2.95
+            ],
+            [
+              2.4,
+              4.25
+            ],
+            [
+              -2.4,
+              4.25
+            ]
+          ],
+          "floor": 0.7,
+          "grade": -0.12,
+          "open": true,
+          "supportPoints": [
+            [
+              -2,
+              3.8
+            ],
+            [
+              2,
+              3.8
+            ]
+          ]
+        }
+      ],
+      "entrances": [
+        {
+          "threshold": [
+            0,
+            0.7,
+            3
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2,
+          "clearDepth": 2.4
+        }
+      ],
+      "shellProbes": [
+        {
+          "origin": [
+            -3,
+            2.2,
+            0
+          ],
+          "direction": [
+            1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            3,
+            2.2,
+            0
+          ],
+          "direction": [
+            -1,
+            0,
+            0
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            2.2,
+            -4
+          ],
+          "direction": [
+            0,
+            0,
+            1
+          ],
+          "maxDistance": 1.7
+        },
+        {
+          "origin": [
+            0,
+            2.2,
+            4
+          ],
+          "direction": [
+            0,
+            0,
+            -1
+          ],
+          "maxDistance": 1.7
+        }
+      ],
+      "authoredAdditions": [
+        "rubble foundation",
+        "closed floor",
+        "loading bay infill",
+        "double loading door",
+        "loading jamb",
+        "forged door strap",
+        "loading bay header",
+        "closed attic backing",
+        "loading deck",
+        "deck stone pier",
+        "entrance step"
+      ],
+      "permittedEras": [
+        0
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "boundsMin": [
+        -2.8514444828033447,
+        -0.11999999642372133,
+        -3.7941397428512573
+      ],
+      "boundsMax": [
+        5.072049140930176,
+        7.226391744613648,
+        5.574999809265137
+      ],
+      "dimensions": [
+        7.9234936237335205,
+        7.346391741037369,
+        9.369139552116394
+      ],
+      "triangles": 7570,
+      "materials": 9,
+      "overhangPolygon": [
+        [
+          -2.8514444828033447,
+          -3.7941397428512573
+        ],
+        [
+          5.072049140930176,
+          -3.7941397428512573
+        ],
+        [
+          5.072049140930176,
+          5.574999809265137
+        ],
+        [
+          -2.8514444828033447,
+          5.574999809265137
+        ]
+      ],
+      "fitPolicy": "Uniform 2.8 only; validate entire roof/yard and entrance against actual parcel before runtime use. Fallback on failure."
+    },
+    {
+      "id": "facility-lumber",
+      "name": "Open logging shelter",
+      "role": "lumber",
+      "description": "Low open shelter with reachable eaves, workbench and stacked cut timber.",
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -2,
+              -1.35
+            ],
+            [
+              2,
+              -1.35
+            ],
+            [
+              2,
+              1.35
+            ],
+            [
+              -2,
+              1.35
+            ]
+          ],
+          "floor": -0.12,
+          "grade": -0.12,
+          "open": true
+        }
+      ],
+      "entrances": [
+        {
+          "threshold": [
+            0,
+            -0.12,
+            1.5
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.4,
+          "clearDepth": 2
+        }
+      ],
+      "shellProbes": [],
+      "authoredAdditions": [
+        "shelter post",
+        "post stone",
+        "shelter cross tie",
+        "workbench top",
+        "workbench legs",
+        "stacked cut log"
+      ],
+      "permittedEras": [
+        0
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "boundsMin": [
+        -4.979359149932861,
+        -0.1200000286102294,
+        -2.4599099159240723
+      ],
+      "boundsMax": [
+        4.532649040222168,
+        3.5071591567993163,
+        2.673584461212158
+      ],
+      "dimensions": [
+        9.51200819015503,
+        3.6271591854095457,
+        5.1334943771362305
+      ],
+      "triangles": 2764,
+      "materials": 3,
+      "overhangPolygon": [
+        [
+          -4.979359149932861,
+          -2.4599099159240723
+        ],
+        [
+          4.532649040222168,
+          -2.4599099159240723
+        ],
+        [
+          4.532649040222168,
+          2.673584461212158
+        ],
+        [
+          -4.979359149932861,
+          2.673584461212158
+        ]
+      ],
+      "fitPolicy": "Uniform 2.8 only; validate entire roof/yard and entrance against actual parcel before runtime use. Fallback on failure."
+    },
+    {
+      "id": "facility-market",
+      "name": "Three-stall market court",
+      "role": "market",
+      "description": "Separate timber stalls with muted cloth awnings and an open central approach.",
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -4.5,
+              -0.9000000000000001
+            ],
+            [
+              -2.5,
+              -0.9000000000000001
+            ],
+            [
+              -2.5,
+              0.7
+            ],
+            [
+              -4.5,
+              0.7
+            ]
+          ],
+          "floor": -0.12,
+          "grade": -0.12,
+          "open": true
+        },
+        {
+          "polygon": [
+            [
+              -1,
+              -2.6
+            ],
+            [
+              1,
+              -2.6
+            ],
+            [
+              1,
+              -1
+            ],
+            [
+              -1,
+              -1
+            ]
+          ],
+          "floor": -0.12,
+          "grade": -0.12,
+          "open": true
+        },
+        {
+          "polygon": [
+            [
+              2.5,
+              -0.9000000000000001
+            ],
+            [
+              4.5,
+              -0.9000000000000001
+            ],
+            [
+              4.5,
+              0.7
+            ],
+            [
+              2.5,
+              0.7
+            ]
+          ],
+          "floor": -0.12,
+          "grade": -0.12,
+          "open": true
+        }
+      ],
+      "entrances": [
+        {
+          "threshold": [
+            0,
+            -0.12,
+            3
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 3,
+          "clearDepth": 2
+        }
+      ],
+      "shellProbes": [],
+      "authoredAdditions": [
+        "stall post",
+        "stall counter",
+        "stall counter boards",
+        "cloth awning",
+        "cloth valance",
+        "counter goods bin",
+        "produce"
+      ],
+      "permittedEras": [
+        0
+      ],
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "boundsMin": [
+        -6.931450843811035,
+        -0.12000008583068844,
+        -3.0599098682403563
+      ],
+      "boundsMax": [
+        6.7720489501953125,
+        3.3071591567993166,
+        4.1735841751098635
+      ],
+      "dimensions": [
+        13.703499794006348,
+        3.427159242630005,
+        7.23349404335022
+      ],
+      "triangles": 3334,
+      "materials": 7,
+      "overhangPolygon": [
+        [
+          -6.931450843811035,
+          -3.0599098682403563
+        ],
+        [
+          6.7720489501953125,
+          -3.0599098682403563
+        ],
+        [
+          6.7720489501953125,
+          4.1735841751098635
+        ],
+        [
+          -6.931450843811035,
+          4.1735841751098635
+        ]
+      ],
+      "fitPolicy": "Uniform 2.8 only; validate entire roof/yard and entrance against actual parcel before runtime use. Fallback on failure."
+    }
+  ],
+  "sources": [
+    {
+      "name": "Wall_Plaster_Straight",
+      "path": "glTF/Wall_Plaster_Straight.gltf",
+      "category": "wall",
+      "sha256": "3bef920cbba4d124df4ca401439d893e0569f88f56049239e3480a04008fd0ac",
+      "bytes": 4169,
+      "boundsMin": [
+        -1.0000001192092896,
+        -0.0020958781242370605,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1,
+        3.1226887702941895,
+        0.0924467146396637
+      ],
+      "dimensions": [
+        2.0000001192092896,
+        3.1247846484184265,
+        0.4064820408821106
+      ],
+      "triangles": 86,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Wall_Plaster_Straight.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png"
+      ],
+      "dependencyBytes": 17687393,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Wall_Plaster_Door_Round",
+      "path": "glTF/Wall_Plaster_Door_Round.gltf",
+      "category": "wall",
+      "sha256": "15514442b52ed9e4bea685faaf83c45ca68a227810d5cec5f66b0f311f5f6fc7",
+      "bytes": 5946,
+      "boundsMin": [
+        -1.0000001192092896,
+        0,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1,
+        3.1226887702941895,
+        0.0924467146396637
+      ],
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064820408821106
+      ],
+      "triangles": 137,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster",
+        "MI_RockTrim"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Wall_Plaster_Door_Round.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png",
+        "glTF/T_RockTrim_Normal.png",
+        "glTF/T_RockTrim_BaseColor.png",
+        "glTF/T_RockTrim_ORM.png"
+      ],
+      "dependencyBytes": 25150961,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Wall_Plaster_Window_Thin_Round",
+      "path": "glTF/Wall_Plaster_Window_Thin_Round.gltf",
+      "category": "wall",
+      "sha256": "94eedafb4964e5e41098a39387298e122598a1b8dd31193070b4639a76b4e0b2",
+      "bytes": 5986,
+      "boundsMin": [
+        -1.0000001192092896,
+        0,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1,
+        3.1226887702941895,
+        0.0924467146396637
+      ],
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064820408821106
+      ],
+      "triangles": 166,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_Plaster",
+        "MI_Brick",
+        "MI_WoodTrim"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Wall_Plaster_Window_Thin_Round.bin",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png",
+        "glTF/T_Brick_Normal.png",
+        "glTF/T_Brick_BaseColor.png",
+        "glTF/T_Brick_Roughness.png",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 25301713,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Wall_WoodWear_Straight",
+      "path": "glTF/Wall_WoodWear_Straight.gltf",
+      "category": "wall",
+      "sha256": "7f62ee4a911d5a0e630fd790e9eea7279a7eee468110e86571023d02c5f0158e",
+      "bytes": 5756,
+      "boundsMin": [
+        -1.000000238418579,
+        -1.9470715528768778e-7,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1.000000238418579,
+        3.1226887702941895,
+        0.0924467146396637
+      ],
+      "dimensions": [
+        2.000000476837158,
+        3.1226889650013447,
+        0.4064820408821106
+      ],
+      "triangles": 204,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim_Wear",
+        "MI_WoodTrim",
+        "MI_Plaster"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Wall_WoodWear_Straight.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png"
+      ],
+      "dependencyBytes": 17697621,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Wall_WoodWear_Door_Flat",
+      "path": "glTF/Wall_WoodWear_Door_Flat.gltf",
+      "category": "wall",
+      "sha256": "2423477630a1991ff0a398922b04d88b8a771e409f76428fe47117909de180ce",
+      "bytes": 5764,
+      "boundsMin": [
+        -1.000000238418579,
+        -1.9470715528768778e-7,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1.000000238418579,
+        3.1226887702941895,
+        0.0924467146396637
+      ],
+      "dimensions": [
+        2.000000476837158,
+        3.1226889650013447,
+        0.4064820408821106
+      ],
+      "triangles": 188,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim_Wear",
+        "MI_WoodTrim",
+        "MI_Plaster"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Wall_WoodWear_Door_Flat.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png"
+      ],
+      "dependencyBytes": 17694965,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Wall_WoodWear_Window_Thin_Round",
+      "path": "glTF/Wall_WoodWear_Window_Thin_Round.gltf",
+      "category": "wall",
+      "sha256": "771bf8203f7665e1ecb362dfc07128116e386828210a6f07096dc6365248b5d9",
+      "bytes": 5778,
+      "boundsMin": [
+        -1.000000238418579,
+        -1.9470715528768778e-7,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1.000000238418579,
+        3.1226887702941895,
+        0.09244657307863235
+      ],
+      "dimensions": [
+        2.000000476837158,
+        3.1226889650013447,
+        0.40648189932107925
+      ],
+      "triangles": 334,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster",
+        "MI_WoodTrim_Wear"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Wall_WoodWear_Window_Thin_Round.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png"
+      ],
+      "dependencyBytes": 17703521,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Wall_UnevenBrick_Straight",
+      "path": "glTF/Wall_UnevenBrick_Straight.gltf",
+      "category": "wall",
+      "sha256": "3b004772bace43cc43bf76f3c75d47f68dce175510a26690468efe63bfc05f95",
+      "bytes": 5392,
+      "boundsMin": [
+        -1.0000001192092896,
+        0,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1,
+        3.1226887702941895,
+        0.09244640171527863
+      ],
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064817279577255
+      ],
+      "triangles": 56,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster",
+        "MI_UnevenBrick"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Wall_UnevenBrick_Straight.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png",
+        "glTF/T_UnevenBrick_Normal.png",
+        "glTF/T_UnevenBrick_BaseColor.png",
+        "glTF/T_UnevenBrick_Roughness.png"
+      ],
+      "dependencyBytes": 25742415,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Wall_UnevenBrick_Door_Flat",
+      "path": "glTF/Wall_UnevenBrick_Door_Flat.gltf",
+      "category": "wall",
+      "sha256": "51c6364927fbe67bab7dc979bb7e95a98f2444fa59fe72dc3db6e50afce4136c",
+      "bytes": 5406,
+      "boundsMin": [
+        -1.0000001192092896,
+        0,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1,
+        3.1226887702941895,
+        0.09244640171527863
+      ],
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064817279577255
+      ],
+      "triangles": 74,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster",
+        "MI_UnevenBrick"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Wall_UnevenBrick_Door_Flat.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png",
+        "glTF/T_UnevenBrick_Normal.png",
+        "glTF/T_UnevenBrick_BaseColor.png",
+        "glTF/T_UnevenBrick_Roughness.png"
+      ],
+      "dependencyBytes": 25743163,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Wall_UnevenBrick_Window_Thin_Round",
+      "path": "glTF/Wall_UnevenBrick_Window_Thin_Round.gltf",
+      "category": "wall",
+      "sha256": "e43cde1412d15cf255d6d5f4eb0b28fdb5b19e34ad0765a8891073f090d13b4d",
+      "bytes": 6009,
+      "boundsMin": [
+        -1.0000001192092896,
+        0,
+        -0.3140353262424469
+      ],
+      "boundsMax": [
+        1,
+        3.1226887702941895,
+        0.09244640171527863
+      ],
+      "dimensions": [
+        2.0000001192092896,
+        3.1226887702941895,
+        0.4064817279577255
+      ],
+      "triangles": 158,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster",
+        "MI_UnevenBrick"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Wall_UnevenBrick_Window_Thin_Round.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png",
+        "glTF/T_UnevenBrick_Normal.png",
+        "glTF/T_UnevenBrick_BaseColor.png",
+        "glTF/T_UnevenBrick_Roughness.png"
+      ],
+      "dependencyBytes": 25747195,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Door_1_Round",
+      "path": "glTF/Door_1_Round.gltf",
+      "category": "door",
+      "sha256": "243fe5e3418e2459bcab858055d34e5441b60180a5efaadef440419e25cc27aa",
+      "bytes": 3901,
+      "boundsMin": [
+        -0.04626310616731644,
+        0.033089637756347656,
+        -0.05755755677819252
+      ],
+      "boundsMax": [
+        1.0737497806549072,
+        2.3513262271881104,
+        0.06314271688461304
+      ],
+      "dimensions": [
+        1.1200128868222237,
+        2.3182365894317627,
+        0.12070027366280556
+      ],
+      "triangles": 470,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_WindowGlass"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Door_1_Round.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7409622,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Door_1_Flat",
+      "path": "glTF/Door_1_Flat.gltf",
+      "category": "door",
+      "sha256": "7e69ba9bcaf45238daa22b96461e9af6c80a59f422f9effb6de7f32e1fc677d8",
+      "bytes": 3895,
+      "boundsMin": [
+        -0.04626310616731644,
+        0.0352252721786499,
+        -0.05755755677819252
+      ],
+      "boundsMax": [
+        1.0716030597686768,
+        2.1349449157714844,
+        0.06314271688461304
+      ],
+      "dimensions": [
+        1.1178661659359932,
+        2.0997196435928345,
+        0.12070027366280556
+      ],
+      "triangles": 314,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_WindowGlass"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Door_1_Flat.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7400846,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "DoorFrame_Round_WoodDark",
+      "path": "glTF/DoorFrame_Round_WoodDark.gltf",
+      "category": "door-frame",
+      "sha256": "d96fb7e3b6b7a5cb97339a7667dee3d9e03b5b0a02cbea283bd75a69f58bb4a7",
+      "bytes": 2235,
+      "boundsMin": [
+        -0.7034929394721985,
+        -0.008544921875,
+        -0.24002820253372192
+      ],
+      "boundsMax": [
+        0.7034913897514343,
+        2.5548486709594727,
+        0.29893577098846436
+      ],
+      "dimensions": [
+        1.4069843292236328,
+        2.5633935928344727,
+        0.5389639735221863
+      ],
+      "triangles": 320,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/DoorFrame_Round_WoodDark.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7389490,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "DoorFrame_Flat_WoodLight",
+      "path": "glTF/DoorFrame_Flat_WoodLight.gltf",
+      "category": "door-frame",
+      "sha256": "89d230cc366d2c538e5b742716ff8df8b563718422337a9a030890ee395e9f57",
+      "bytes": 2430,
+      "boundsMin": [
+        -0.7862095236778259,
+        -0.008544828742742538,
+        -0.24328981339931488
+      ],
+      "boundsMax": [
+        0.7877825498580933,
+        2.3025355339050293,
+        0.14516232907772064
+      ],
+      "dimensions": [
+        1.5739920735359192,
+        2.311080362647772,
+        0.3884521424770355
+      ],
+      "triangles": 52,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/DoorFrame_Flat_WoodLight.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7380314,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Window_Thin_Round1",
+      "path": "glTF/Window_Thin_Round1.gltf",
+      "category": "window",
+      "sha256": "02ffe8984b2a7bffda79d6d598e852c39681c23bbdd7486dd8bcec3613286a4d",
+      "bytes": 3925,
+      "boundsMin": [
+        -0.44381028413772583,
+        1.01604425907135,
+        -0.2520223557949066
+      ],
+      "boundsMax": [
+        0.44381028413772583,
+        2.6207287311553955,
+        0.0923665463924408
+      ],
+      "dimensions": [
+        0.8876205682754517,
+        1.6046844720840454,
+        0.3443889021873474
+      ],
+      "triangles": 418,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim_Wear",
+        "MI_WindowGlass"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Window_Thin_Round1.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7401750,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_RoundTiles_4x4",
+      "path": "glTF/Roof_RoundTiles_4x4.gltf",
+      "category": "roof",
+      "sha256": "c6a7ce0649b897a7746929b44c448f4343f55ccd969ca1e4462f2f18b61676e4",
+      "bytes": 4337,
+      "boundsMin": [
+        -2.756538152694702,
+        -0.5157185792922974,
+        -2.73990797996521
+      ],
+      "boundsMax": [
+        2.756538152694702,
+        3.7336742877960205,
+        2.8215668201446533
+      ],
+      "dimensions": [
+        5.513076305389404,
+        4.249392867088318,
+        5.561474800109863
+      ],
+      "triangles": 1996,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_RoundTiles"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Roof_RoundTiles_4x4.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_RoundTiles_Normal.png",
+        "glTF/T_RoundTiles_BaseColor.png",
+        "glTF/T_RoundTiles_Roughness.png"
+      ],
+      "dependencyBytes": 17252161,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_FlatTiles_4x4",
+      "path": "glTF/Roof_FlatTiles_4x4.gltf",
+      "category": "roof",
+      "sha256": "c152a913086a3279eefbb06c237b0d716ecc7415f9da5ab21373adb29eff2255",
+      "bytes": 6236,
+      "boundsMin": [
+        -2.767246961593628,
+        -0.5579695701599121,
+        -2.73990797996521
+      ],
+      "boundsMax": [
+        2.767246961593628,
+        3.527637004852295,
+        2.8215668201446533
+      ],
+      "dimensions": [
+        5.534493923187256,
+        4.085606575012207,
+        5.561474800109863
+      ],
+      "triangles": 1908,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_FlatTiles",
+        "MI_WoodTrim",
+        "MI_RoundTiles"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Roof_FlatTiles_4x4.bin",
+        "glTF/T_FlatTiles_Normal.png",
+        "glTF/T_FlatTiles_BaseColor.png",
+        "glTF/T_FlatTiles_Roughness.png",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_RoundTiles_Normal.png",
+        "glTF/T_RoundTiles_BaseColor.png",
+        "glTF/T_RoundTiles_Roughness.png"
+      ],
+      "dependencyBytes": 25887670,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_FlatTiles_4x6",
+      "path": "glTF/Roof_FlatTiles_4x6.gltf",
+      "category": "roof",
+      "sha256": "3a7b79a93bdc40c3e569c1aa12b2b1ebe2e00d45b4f28eab439f7165c437d7e1",
+      "bytes": 6242,
+      "boundsMin": [
+        -2.8514444828033447,
+        -0.6229217648506165,
+        -3.786034107208252
+      ],
+      "boundsMax": [
+        2.8514444828033447,
+        3.5263917446136475,
+        3.786245822906494
+      ],
+      "dimensions": [
+        5.7028889656066895,
+        4.149313509464264,
+        7.572279930114746
+      ],
+      "triangles": 2308,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_FlatTiles",
+        "MI_WoodTrim",
+        "MI_RoundTiles"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Roof_FlatTiles_4x6.bin",
+        "glTF/T_FlatTiles_Normal.png",
+        "glTF/T_FlatTiles_BaseColor.png",
+        "glTF/T_FlatTiles_Roughness.png",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_RoundTiles_Normal.png",
+        "glTF/T_RoundTiles_BaseColor.png",
+        "glTF/T_RoundTiles_Roughness.png"
+      ],
+      "dependencyBytes": 25907030,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_2x4_FlatTile",
+      "path": "glTF/Roof_2x4_FlatTile.gltf",
+      "category": "roof",
+      "sha256": "46d214c7502274ad96178e04cbce21bde888f814d7f6efd10bcfef8145770f86",
+      "bytes": 6227,
+      "boundsMin": [
+        -1.5432379245758057,
+        -0.3415522575378418,
+        -2.124508857727051
+      ],
+      "boundsMax": [
+        1.5432379245758057,
+        2.3241586685180664,
+        2.1076807975769043
+      ],
+      "dimensions": [
+        3.0864758491516113,
+        2.665710926055908,
+        4.232189655303955
+      ],
+      "triangles": 956,
+      "primitives": 3,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_RoundTiles",
+        "MI_FlatTiles"
+      ],
+      "materials": 3,
+      "dependencies": [
+        "glTF/Roof_2x4_FlatTile.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_RoundTiles_Normal.png",
+        "glTF/T_RoundTiles_BaseColor.png",
+        "glTF/T_RoundTiles_Roughness.png",
+        "glTF/T_FlatTiles_Normal.png",
+        "glTF/T_FlatTiles_BaseColor.png",
+        "glTF/T_FlatTiles_Roughness.png"
+      ],
+      "dependencyBytes": 25833558,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_Front_Wood4",
+      "path": "glTF/Roof_Front_Wood4.gltf",
+      "category": "roof",
+      "sha256": "b5849dee4851d62c9dbb7d6869d5f562ff47f1da4190ef9f54bcd2065f3f0233",
+      "bytes": 3857,
+      "boundsMin": [
+        -2.183807373046875,
+        -0.13180206716060638,
+        -0.33496367931365967
+      ],
+      "boundsMax": [
+        2.215996026992798,
+        2.9367027282714844,
+        0.7941397428512573
+      ],
+      "dimensions": [
+        4.399803400039673,
+        3.0685047954320908,
+        1.129103422164917
+      ],
+      "triangles": 168,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Roof_Front_Wood4.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png"
+      ],
+      "dependencyBytes": 17693021,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_Front_Wood2",
+      "path": "glTF/Roof_Front_Wood2.gltf",
+      "category": "roof",
+      "sha256": "17164d921a9cafb387016b4879d2258245ca00c65e990d7e6517b1c9b30721a7",
+      "bytes": 3855,
+      "boundsMin": [
+        -1.3322436809539795,
+        -0.13308730721473694,
+        -0.3349645733833313
+      ],
+      "boundsMax": [
+        1.2748736143112183,
+        1.6417748928070068,
+        0.41629892587661743
+      ],
+      "dimensions": [
+        2.6071172952651978,
+        1.7748622000217438,
+        0.7512634992599487
+      ],
+      "triangles": 86,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_Plaster"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Roof_Front_Wood2.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png",
+        "glTF/T_Plaster_Normal.png",
+        "glTF/T_Plaster_BaseColor.png",
+        "glTF/T_Plaster_ORM.png"
+      ],
+      "dependencyBytes": 17687473,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_Wooden_2x1",
+      "path": "glTF/Roof_Wooden_2x1.gltf",
+      "category": "roof",
+      "sha256": "8b93dcb9bfa468842f45738f3d900c05ebf96db276a8dbdd78788420372b60c0",
+      "bytes": 3985,
+      "boundsMin": [
+        -1.1289291381835938,
+        -0.1611957550048828,
+        -0.04117286205291748
+      ],
+      "boundsMax": [
+        1.1289291381835938,
+        1.0871591567993164,
+        1.5191494226455688
+      ],
+      "dimensions": [
+        2.2578582763671875,
+        1.2483549118041992,
+        1.5603222846984863
+      ],
+      "triangles": 224,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_WoodTrim_Wear"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Roof_Wooden_2x1.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7395026,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_Wooden_2x1_L",
+      "path": "glTF/Roof_Wooden_2x1_L.gltf",
+      "category": "roof",
+      "sha256": "7f36fa6b0a007a04ae66ce85cf0855d0a0fc078bc90a8d6777d9aa4abf155102",
+      "bytes": 3969,
+      "boundsMin": [
+        -1.1289291381835938,
+        -0.1611957550048828,
+        -0.04117286205291748
+      ],
+      "boundsMax": [
+        1,
+        1.0871591567993164,
+        1.5191494226455688
+      ],
+      "dimensions": [
+        2.1289291381835938,
+        1.2483549118041992,
+        1.5603222846984863
+      ],
+      "triangles": 158,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_WoodTrim_Wear"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Roof_Wooden_2x1_L.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7389350,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Roof_Wooden_2x1_R",
+      "path": "glTF/Roof_Wooden_2x1_R.gltf",
+      "category": "roof",
+      "sha256": "22f1e20db96548836b4841703f0bf4a9955ae8fdea9ed844b9416c81546a1df5",
+      "bytes": 3969,
+      "boundsMin": [
+        -1,
+        -0.1611957550048828,
+        -0.04117286205291748
+      ],
+      "boundsMax": [
+        1.1289291381835938,
+        1.0871591567993164,
+        1.5191494226455688
+      ],
+      "dimensions": [
+        2.1289291381835938,
+        1.2483549118041992,
+        1.5603222846984863
+      ],
+      "triangles": 158,
+      "primitives": 2,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim",
+        "MI_WoodTrim_Wear"
+      ],
+      "materials": 2,
+      "dependencies": [
+        "glTF/Roof_Wooden_2x1_R.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7389350,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Corner_Exterior_Wood",
+      "path": "glTF/Corner_Exterior_Wood.gltf",
+      "category": "corner",
+      "sha256": "8f1ad0c8d0cb656601be4b6a48ca1ed5574d182c814ff27508bc91c81d0959a0",
+      "bytes": 2221,
+      "boundsMin": [
+        -0.10508733242750168,
+        -1.5052728485898115e-7,
+        -0.11982005089521408
+      ],
+      "boundsMax": [
+        0.10508709400892258,
+        2.999999761581421,
+        0.11982007324695587
+      ],
+      "dimensions": [
+        0.21017442643642426,
+        2.9999999121087058,
+        0.23964012414216995
+      ],
+      "triangles": 12,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/Corner_Exterior_Wood.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7376762,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Prop_WoodenFence_Single",
+      "path": "glTF/Prop_WoodenFence_Single.gltf",
+      "category": "prop",
+      "sha256": "c9f787c03c62dd94268da84bf3e4dacf554b2a5a9beee38314e37ff5d929c407",
+      "bytes": 2230,
+      "boundsMin": [
+        -1.0314507484436035,
+        -0.02825251966714859,
+        -0.059909969568252563
+      ],
+      "boundsMax": [
+        1.0326489210128784,
+        0.8098565340042114,
+        0.059910036623477936
+      ],
+      "dimensions": [
+        2.064099669456482,
+        0.83810905367136,
+        0.1198200061917305
+      ],
+      "triangles": 40,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/Prop_WoodenFence_Single.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7378722,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Prop_Wagon",
+      "path": "glTF/Prop_Wagon.gltf",
+      "category": "prop",
+      "sha256": "f81bf401710cd59f1325a5cdb36d335c2e5277c8416d79eefffdc646ec3fae83",
+      "bytes": 2422,
+      "boundsMin": [
+        -0.9793591499328613,
+        0.00312984362244606,
+        -3.1504321098327637
+      ],
+      "boundsMax": [
+        0.9720492362976074,
+        1.5323269367218018,
+        0.8735843896865845
+      ],
+      "dimensions": [
+        1.9514083862304688,
+        1.5291970930993557,
+        4.024016499519348
+      ],
+      "triangles": 1672,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim_Wear"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/Prop_Wagon.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7479194,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Prop_Crate",
+      "path": "glTF/Prop_Crate.gltf",
+      "category": "prop",
+      "sha256": "fb1d2ae668cc2761f9177110424e0c5c80a6698ef44f9cac642cb4a766d37883",
+      "bytes": 2211,
+      "boundsMin": [
+        -0.5417912602424622,
+        0.003361523151397705,
+        -0.5417911410331726
+      ],
+      "boundsMax": [
+        0.5417912006378174,
+        1.0629422664642334,
+        0.5417912006378174
+      ],
+      "dimensions": [
+        1.0835824608802795,
+        1.0595807433128357,
+        1.08358234167099
+      ],
+      "triangles": 230,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_WoodTrim"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/Prop_Crate.bin",
+        "glTF/T_WoodTrim_Normal.png",
+        "glTF/T_WoodTrim_BaseColor.png",
+        "glTF/T_WoodTrim_Roughness.png"
+      ],
+      "dependencyBytes": 7392022,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    },
+    {
+      "name": "Prop_Chimney2",
+      "path": "glTF/Prop_Chimney2.gltf",
+      "category": "prop",
+      "sha256": "45e93dfdacd304864ec90fd8a36392bf743b62a35d3b850ac3a25cb4330dc3c6",
+      "bytes": 2233,
+      "boundsMin": [
+        -0.5000000596046448,
+        5.820766091346741e-8,
+        -0.49400854110717773
+      ],
+      "boundsMax": [
+        0.4457784593105316,
+        3,
+        0.4940085709095001
+      ],
+      "dimensions": [
+        0.9457785189151764,
+        2.999999941792339,
+        0.9880171120166779
+      ],
+      "triangles": 130,
+      "primitives": 1,
+      "visualMeshNodes": 1,
+      "materialNames": [
+        "MI_UnevenBrick"
+      ],
+      "materials": 1,
+      "dependencies": [
+        "glTF/Prop_Chimney2.bin",
+        "glTF/T_UnevenBrick_Normal.png",
+        "glTF/T_UnevenBrick_BaseColor.png",
+        "glTF/T_UnevenBrick_Roughness.png"
+      ],
+      "dependencyBytes": 8062814,
+      "missingDependencies": [],
+      "animations": 0,
+      "units": "unverified authoring units",
+      "completeBuilding": false
+    }
+  ],
+  "recipes": [
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Wall_WoodWear_Door_Flat.gltf",
+      "position": [
+        -1,
+        0,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        1,
+        0,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        -1,
+        0,
+        -3
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        1,
+        0,
+        -3
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        2,
+        0,
+        -2
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        2,
+        0,
+        0
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Wall_WoodWear_Window_Thin_Round.gltf",
+      "position": [
+        2,
+        0,
+        2
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        2,
+        0,
+        2
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        -2,
+        0,
+        -2
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        -2,
+        0,
+        0
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Wall_WoodWear_Window_Thin_Round.gltf",
+      "position": [
+        -2,
+        0,
+        2
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        -2,
+        0,
+        2
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Door_1_Flat.gltf",
+      "position": [
+        -1.5,
+        0,
+        3.015
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/DoorFrame_Flat_WoodLight.gltf",
+      "position": [
+        -1,
+        0,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -2,
+        0,
+        -3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -2,
+        0,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        2,
+        0,
+        -3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        2,
+        0,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Roof_FlatTiles_4x6.gltf",
+      "position": [
+        0,
+        3,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        0,
+        3,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        0,
+        3,
+        -3
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-long-ridge",
+      "source": "glTF/Prop_Chimney2.gltf",
+      "position": [
+        1.2,
+        3.5,
+        -1.4
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Wall_Plaster_Door_Round.gltf",
+      "position": [
+        -1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -1,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        1,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        2,
+        0,
+        -1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Wall_Plaster_Window_Thin_Round.gltf",
+      "position": [
+        2,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        2,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -2,
+        0,
+        -1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Wall_Plaster_Window_Thin_Round.gltf",
+      "position": [
+        -2,
+        0,
+        1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        -2,
+        0,
+        1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Door_1_Round.gltf",
+      "position": [
+        -1.5,
+        0,
+        2.015
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/DoorFrame_Round_WoodDark.gltf",
+      "position": [
+        -1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -2,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -2,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        2,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-low-hip",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        2,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Wall_WoodWear_Door_Flat.gltf",
+      "position": [
+        -1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        -1,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        1,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        2,
+        0,
+        -1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Wall_WoodWear_Window_Thin_Round.gltf",
+      "position": [
+        2,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        2,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        -2,
+        0,
+        -1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Wall_WoodWear_Window_Thin_Round.gltf",
+      "position": [
+        -2,
+        0,
+        1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        -2,
+        0,
+        1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Door_1_Flat.gltf",
+      "position": [
+        -1.5,
+        0,
+        2.015
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/DoorFrame_Flat_WoodLight.gltf",
+      "position": [
+        -1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -2,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -2,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        2,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        2,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Roof_FlatTiles_4x4.gltf",
+      "position": [
+        0,
+        3,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        0,
+        3,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        0,
+        3,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Roof_Wooden_2x1_L.gltf",
+      "position": [
+        -1,
+        2.55,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "source": "glTF/Roof_Wooden_2x1_R.gltf",
+      "position": [
+        1,
+        2.55,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Wall_Plaster_Door_Round.gltf",
+      "position": [
+        -2,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        0,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -2,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        0,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -3,
+        0,
+        -1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Wall_Plaster_Window_Thin_Round.gltf",
+      "position": [
+        -3,
+        0,
+        1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        -3,
+        0,
+        1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Door_1_Round.gltf",
+      "position": [
+        -2.5,
+        0,
+        2.015
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/DoorFrame_Round_WoodDark.gltf",
+      "position": [
+        -2,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -3,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -3,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        1,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Roof_RoundTiles_4x4.gltf",
+      "position": [
+        -1,
+        3,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        -1,
+        3,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        -1,
+        3,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Wall_WoodWear_Door_Flat.gltf",
+      "position": [
+        2,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        2,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        3,
+        0,
+        -1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Wall_WoodWear_Window_Thin_Round.gltf",
+      "position": [
+        3,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        3,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Door_1_Flat.gltf",
+      "position": [
+        1.5,
+        0,
+        2.015
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/DoorFrame_Flat_WoodLight.gltf",
+      "position": [
+        2,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        1,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        3,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        3,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Roof_2x4_FlatTile.gltf",
+      "position": [
+        2,
+        3,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Roof_Front_Wood2.gltf",
+      "position": [
+        2,
+        3,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "home-offset-gables",
+      "source": "glTF/Roof_Front_Wood2.gltf",
+      "position": [
+        2,
+        3,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Wall_Plaster_Door_Round.gltf",
+      "position": [
+        -4,
+        0,
+        1
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -2,
+        0,
+        1
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -4,
+        0,
+        -3
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -2,
+        0,
+        -3
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -1,
+        0,
+        -2
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Wall_Plaster_Window_Thin_Round.gltf",
+      "position": [
+        -1,
+        0,
+        0
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        -1,
+        0,
+        0
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Wall_Plaster_Straight.gltf",
+      "position": [
+        -5,
+        0,
+        -2
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Wall_Plaster_Window_Thin_Round.gltf",
+      "position": [
+        -5,
+        0,
+        0
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        -5,
+        0,
+        0
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Door_1_Round.gltf",
+      "position": [
+        -4.5,
+        0,
+        1.015
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/DoorFrame_Round_WoodDark.gltf",
+      "position": [
+        -4,
+        0,
+        1
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -5,
+        0,
+        -3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -5,
+        0,
+        1
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -1,
+        0,
+        -3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -1,
+        0,
+        1
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Roof_RoundTiles_4x4.gltf",
+      "position": [
+        -3,
+        3,
+        -1
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        -3,
+        3,
+        1
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        -3,
+        3,
+        -3
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Roof_Wooden_2x1_L.gltf",
+      "position": [
+        2,
+        2.42,
+        -1
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Roof_Wooden_2x1_R.gltf",
+      "position": [
+        4,
+        2.42,
+        -1
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Roof_Wooden_2x1_L.gltf",
+      "position": [
+        2,
+        2.42,
+        -1
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Roof_Wooden_2x1_R.gltf",
+      "position": [
+        4,
+        2.42,
+        -1
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Prop_Wagon.gltf",
+      "position": [
+        3.8,
+        -0.123,
+        4.5
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Prop_WoodenFence_Single.gltf",
+      "position": [
+        -4,
+        -0.09,
+        -4
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-farm",
+      "source": "glTF/Prop_WoodenFence_Single.gltf",
+      "position": [
+        3,
+        -0.09,
+        -3.7
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Wall_UnevenBrick_Door_Flat.gltf",
+      "position": [
+        -3,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Wall_UnevenBrick_Straight.gltf",
+      "position": [
+        -1,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Wall_UnevenBrick_Straight.gltf",
+      "position": [
+        -3,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Wall_UnevenBrick_Straight.gltf",
+      "position": [
+        -1,
+        0,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Wall_UnevenBrick_Straight.gltf",
+      "position": [
+        0,
+        0,
+        -1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Wall_UnevenBrick_Window_Thin_Round.gltf",
+      "position": [
+        0,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        0,
+        0,
+        1
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Wall_UnevenBrick_Straight.gltf",
+      "position": [
+        -4,
+        0,
+        -1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Wall_UnevenBrick_Window_Thin_Round.gltf",
+      "position": [
+        -4,
+        0,
+        1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        -4,
+        0,
+        1
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Door_1_Flat.gltf",
+      "position": [
+        -3.5,
+        0,
+        2.015
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/DoorFrame_Flat_WoodLight.gltf",
+      "position": [
+        -3,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -4,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -4,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        0,
+        0,
+        -2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        0,
+        0,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Roof_FlatTiles_4x4.gltf",
+      "position": [
+        -2,
+        3,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        -2,
+        3,
+        2
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        -2,
+        3,
+        -2
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Roof_Wooden_2x1_L.gltf",
+      "position": [
+        1,
+        2.65,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Roof_Wooden_2x1_R.gltf",
+      "position": [
+        3,
+        2.65,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Prop_Chimney2.gltf",
+      "position": [
+        2,
+        3.55,
+        0.4
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-smith",
+      "source": "glTF/Prop_Crate.gltf",
+      "position": [
+        -4.8,
+        -0.12,
+        1.4
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        -1,
+        0.7,
+        -3
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        1,
+        0.7,
+        -3
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        2,
+        0.7,
+        -2
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        2,
+        0.7,
+        0
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Wall_WoodWear_Window_Thin_Round.gltf",
+      "position": [
+        2,
+        0.7,
+        2
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        2,
+        0.7,
+        2
+      ],
+      "yaw": 1.5707963267948966
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        -2,
+        0.7,
+        -2
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Wall_WoodWear_Straight.gltf",
+      "position": [
+        -2,
+        0.7,
+        0
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Wall_WoodWear_Window_Thin_Round.gltf",
+      "position": [
+        -2,
+        0.7,
+        2
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Window_Thin_Round1.gltf",
+      "position": [
+        -2,
+        0.7,
+        2
+      ],
+      "yaw": -1.5707963267948966
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -2,
+        0.7,
+        -3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        -2,
+        0.7,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        2,
+        0.7,
+        -3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Corner_Exterior_Wood.gltf",
+      "position": [
+        2,
+        0.7,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Roof_FlatTiles_4x6.gltf",
+      "position": [
+        0,
+        3.7,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        0,
+        3.7,
+        3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Roof_Front_Wood4.gltf",
+      "position": [
+        0,
+        3.7,
+        -3
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Prop_Wagon.gltf",
+      "position": [
+        4.1,
+        -0.123,
+        1.6
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-granary",
+      "source": "glTF/Prop_Crate.gltf",
+      "position": [
+        1.75,
+        0.7,
+        3.65
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-lumber",
+      "source": "glTF/Roof_Wooden_2x1_L.gltf",
+      "position": [
+        -1,
+        2.42,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-lumber",
+      "source": "glTF/Roof_Wooden_2x1_R.gltf",
+      "position": [
+        1,
+        2.42,
+        0
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-lumber",
+      "source": "glTF/Roof_Wooden_2x1_L.gltf",
+      "position": [
+        -1,
+        2.42,
+        0
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-lumber",
+      "source": "glTF/Roof_Wooden_2x1_R.gltf",
+      "position": [
+        1,
+        2.42,
+        0
+      ],
+      "yaw": 3.141592653589793
+    },
+    {
+      "assembly": "facility-lumber",
+      "source": "glTF/Prop_Wagon.gltf",
+      "position": [
+        -4,
+        -0.123,
+        1.8
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-lumber",
+      "source": "glTF/Prop_WoodenFence_Single.gltf",
+      "position": [
+        3.5,
+        -0.09,
+        -2.4
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-market",
+      "source": "glTF/Roof_Wooden_2x1.gltf",
+      "position": [
+        -3.5,
+        2.22,
+        -0.8
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-market",
+      "source": "glTF/Roof_Wooden_2x1.gltf",
+      "position": [
+        0,
+        2.22,
+        -2.5
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-market",
+      "source": "glTF/Roof_Wooden_2x1.gltf",
+      "position": [
+        3.5,
+        2.22,
+        -0.8
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-market",
+      "source": "glTF/Prop_Wagon.gltf",
+      "position": [
+        5.8,
+        -0.123,
+        3.3
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-market",
+      "source": "glTF/Prop_Crate.gltf",
+      "position": [
+        -5.6,
+        -0.12,
+        -0.5
+      ],
+      "yaw": 0
+    },
+    {
+      "assembly": "facility-market",
+      "source": "glTF/Prop_WoodenFence_Single.gltf",
+      "position": [
+        -5.9,
+        -0.09,
+        -3
+      ],
+      "yaw": 0
+    }
+  ],
+  "authoredGeometry": [
+    {
+      "assembly": "home-long-ridge",
+      "name": "rubble foundation",
+      "position": [
+        0,
+        -0.06,
+        0
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-long-ridge",
+      "name": "closed floor",
+      "position": [
+        0,
+        0.02,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-long-ridge",
+      "name": "closed attic backing",
+      "position": [
+        0,
+        3,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "rubble foundation",
+      "position": [
+        0,
+        -0.06,
+        0
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "closed floor",
+      "position": [
+        0,
+        0.02,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "authored layered hipped thatch",
+      "position": [
+        0,
+        2.879,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "authored layered hipped thatch",
+      "position": [
+        0,
+        2.878,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "authored layered hipped thatch",
+      "position": [
+        0,
+        2.8770000000000002,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "authored layered hipped thatch",
+      "position": [
+        0,
+        2.876,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "authored layered hipped thatch",
+      "position": [
+        0,
+        2.875,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "authored layered hipped thatch",
+      "position": [
+        0,
+        2.874,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "authored layered hipped thatch",
+      "position": [
+        0,
+        2.873,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "authored layered hipped thatch",
+      "position": [
+        0,
+        2.872,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "authored layered hipped thatch",
+      "position": [
+        0,
+        2.871,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "bound thatch ridge",
+      "position": [
+        0,
+        4.5,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "hip ceiling",
+      "position": [
+        0,
+        2.98,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "thick bound reed eave",
+      "position": [
+        0,
+        2.79,
+        -2.46
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "thick bound reed eave",
+      "position": [
+        0,
+        2.79,
+        2.46
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "thick bound reed eave",
+      "position": [
+        -2.46,
+        2.79,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-low-hip",
+      "name": "thick bound reed eave",
+      "position": [
+        2.46,
+        2.79,
+        0
+      ],
+      "color": "Original layered thatch",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "name": "rubble foundation",
+      "position": [
+        0,
+        -0.06,
+        0
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "name": "closed floor",
+      "position": [
+        0,
+        0.02,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "name": "closed attic backing",
+      "position": [
+        0,
+        3,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "name": "porch post",
+      "position": [
+        -1.8,
+        1.265,
+        3.3
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "name": "post stone",
+      "position": [
+        -1.8,
+        -0.06,
+        3.3
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "name": "porch post",
+      "position": [
+        1.8,
+        1.265,
+        3.3
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "name": "post stone",
+      "position": [
+        1.8,
+        -0.06,
+        3.3
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-porch-cabin",
+      "name": "porch eave tie",
+      "position": [
+        0,
+        2.4899999999999998,
+        3.3
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-offset-gables",
+      "name": "rubble foundation",
+      "position": [
+        -1,
+        -0.06,
+        0
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-offset-gables",
+      "name": "closed floor",
+      "position": [
+        -1,
+        0.02,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-offset-gables",
+      "name": "closed attic backing",
+      "position": [
+        -1,
+        3,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-offset-gables",
+      "name": "rubble foundation",
+      "position": [
+        2,
+        -0.06,
+        0
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-offset-gables",
+      "name": "closed floor",
+      "position": [
+        2,
+        0.02,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "home-offset-gables",
+      "name": "closed attic backing",
+      "position": [
+        2,
+        3,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "rubble foundation",
+      "position": [
+        -3,
+        -0.06,
+        -1
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "closed floor",
+      "position": [
+        -3,
+        0.02,
+        -1
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "closed attic backing",
+      "position": [
+        -3,
+        3,
+        -1
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "shelter post",
+      "position": [
+        1.2,
+        1.1,
+        -2.25
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "post stone",
+      "position": [
+        1.2,
+        -0.06,
+        -2.25
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "shelter post",
+      "position": [
+        1.2,
+        1.1,
+        0.25
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "post stone",
+      "position": [
+        1.2,
+        -0.06,
+        0.25
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "shelter post",
+      "position": [
+        4.8,
+        1.1,
+        -2.25
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "post stone",
+      "position": [
+        4.8,
+        -0.06,
+        -2.25
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "shelter post",
+      "position": [
+        4.8,
+        1.1,
+        0.25
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "post stone",
+      "position": [
+        4.8,
+        -0.06,
+        0.25
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "shelter cross tie",
+      "position": [
+        1.2,
+        2.31,
+        -0.9999999999999999
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "shelter cross tie",
+      "position": [
+        4.8,
+        2.31,
+        -0.9999999999999999
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "bound straw bale",
+      "position": [
+        3,
+        0.255,
+        -1.1
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-farm",
+      "name": "bound straw bale",
+      "position": [
+        3,
+        0.255,
+        -0.35
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "rubble foundation",
+      "position": [
+        -2,
+        -0.06,
+        0
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "closed floor",
+      "position": [
+        -2,
+        0.02,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "closed attic backing",
+      "position": [
+        -2,
+        3,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "porch post",
+      "position": [
+        0.19999999999999996,
+        1.315,
+        1.3
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "post stone",
+      "position": [
+        0.19999999999999996,
+        -0.06,
+        1.3
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "porch post",
+      "position": [
+        3.8,
+        1.315,
+        1.3
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "post stone",
+      "position": [
+        3.8,
+        -0.06,
+        1.3
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "porch eave tie",
+      "position": [
+        2,
+        2.59,
+        1.3
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "rear workshop post",
+      "position": [
+        0.19999999999999996,
+        1.765,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "post stone",
+      "position": [
+        0.19999999999999996,
+        -0.06,
+        0
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "rear workshop post",
+      "position": [
+        3.8,
+        1.765,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "post stone",
+      "position": [
+        3.8,
+        -0.06,
+        0
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "forge masonry base",
+      "position": [
+        2,
+        0.23,
+        0.45
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "forge black hearth",
+      "position": [
+        2,
+        0.63,
+        0.45
+      ],
+      "color": "#302f2a",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "banked forge coals",
+      "position": [
+        2,
+        0.7,
+        0.45
+      ],
+      "color": "#994c2e",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "forge hood",
+      "position": [
+        2,
+        2.1,
+        0.45
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "masonry flue",
+      "position": [
+        2,
+        3,
+        0.4
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "anvil oak stump",
+      "position": [
+        2.5,
+        0.17,
+        2.7
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "anvil waist",
+      "position": [
+        2.5,
+        0.57,
+        2.7
+      ],
+      "color": "#414744",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "anvil face",
+      "position": [
+        2.5,
+        0.74,
+        2.7
+      ],
+      "color": "#414744",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-smith",
+      "name": "anvil horn",
+      "position": [
+        3.05,
+        0.72,
+        2.7
+      ],
+      "color": "#414744",
+      "rotation": [
+        0,
+        0,
+        -1.5707963267948966
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "rubble foundation",
+      "position": [
+        0,
+        0.29,
+        0
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "closed floor",
+      "position": [
+        0,
+        0.72,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "loading bay infill",
+      "position": [
+        -1.55,
+        2.2,
+        3
+      ],
+      "color": "Original boarded timber",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "double loading door",
+      "position": [
+        -0.55,
+        1.9,
+        3.07
+      ],
+      "color": "Original boarded timber",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "loading jamb",
+      "position": [
+        -1.15,
+        1.95,
+        3.06
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "forged door strap",
+      "position": [
+        -0.55,
+        1.15,
+        3.15
+      ],
+      "color": "#414744",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "forged door strap",
+      "position": [
+        -0.55,
+        2.5999999999999996,
+        3.15
+      ],
+      "color": "#414744",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "loading bay infill",
+      "position": [
+        1.55,
+        2.2,
+        3
+      ],
+      "color": "Original boarded timber",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "double loading door",
+      "position": [
+        0.55,
+        1.9,
+        3.07
+      ],
+      "color": "Original boarded timber",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "loading jamb",
+      "position": [
+        1.15,
+        1.95,
+        3.06
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "forged door strap",
+      "position": [
+        0.55,
+        1.15,
+        3.15
+      ],
+      "color": "#414744",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "forged door strap",
+      "position": [
+        0.55,
+        2.5999999999999996,
+        3.15
+      ],
+      "color": "#414744",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "loading bay header",
+      "position": [
+        0,
+        3.4000000000000004,
+        3
+      ],
+      "color": "Original boarded timber",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "closed attic backing",
+      "position": [
+        0,
+        3.7,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "loading deck",
+      "position": [
+        0,
+        0.61,
+        3.6
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "deck stone pier",
+      "position": [
+        -2,
+        0.245,
+        3.8
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "deck stone pier",
+      "position": [
+        2,
+        0.245,
+        3.8
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "entrance step",
+      "position": [
+        0,
+        0.29,
+        4.35
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "entrance step",
+      "position": [
+        0,
+        0.20249999999999996,
+        4.699999999999999
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "entrance step",
+      "position": [
+        0,
+        0.11499999999999999,
+        5.05
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-granary",
+      "name": "entrance step",
+      "position": [
+        0,
+        0.027499999999999997,
+        5.3999999999999995
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "shelter post",
+      "position": [
+        -1.8,
+        1.1,
+        -1.25
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "post stone",
+      "position": [
+        -1.8,
+        -0.06,
+        -1.25
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "shelter post",
+      "position": [
+        -1.8,
+        1.1,
+        1.25
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "post stone",
+      "position": [
+        -1.8,
+        -0.06,
+        1.25
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "shelter post",
+      "position": [
+        1.8,
+        1.1,
+        -1.25
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "post stone",
+      "position": [
+        1.8,
+        -0.06,
+        -1.25
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "shelter post",
+      "position": [
+        1.8,
+        1.1,
+        1.25
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "post stone",
+      "position": [
+        1.8,
+        -0.06,
+        1.25
+      ],
+      "color": "#777063",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "shelter cross tie",
+      "position": [
+        -1.8,
+        2.31,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "shelter cross tie",
+      "position": [
+        1.8,
+        2.31,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "workbench top",
+      "position": [
+        0,
+        0.88,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "workbench legs",
+      "position": [
+        -0.65,
+        0.35,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "workbench legs",
+      "position": [
+        0.65,
+        0.35,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "stacked cut log",
+      "position": [
+        3,
+        0.06,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "stacked cut log",
+      "position": [
+        3.38,
+        0.06,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "stacked cut log",
+      "position": [
+        3.76,
+        0.06,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "stacked cut log",
+      "position": [
+        3.19,
+        0.38,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "stacked cut log",
+      "position": [
+        3.57,
+        0.38,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-lumber",
+      "name": "stacked cut log",
+      "position": [
+        3.38,
+        0.7,
+        0
+      ],
+      "color": "#65503d",
+      "rotation": [
+        1.5707963267948966,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        -4.4399999999999995,
+        1.54,
+        -0.8
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        -4.4399999999999995,
+        1.072,
+        0.5
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        -2.56,
+        1.54,
+        -0.8
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        -2.56,
+        1.072,
+        0.5
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall counter",
+      "position": [
+        -3.5,
+        0.9,
+        0.30000000000000004
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall counter boards",
+      "position": [
+        -3.5,
+        0.32,
+        0.5999999999999999
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "cloth awning",
+      "position": [
+        -3.5,
+        2.12,
+        0.8799999999999999
+      ],
+      "color": "#6c7952",
+      "rotation": [
+        0.08,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "cloth valance",
+      "position": [
+        -3.5,
+        1.99,
+        1.19
+      ],
+      "color": "#6c7952",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "counter goods bin",
+      "position": [
+        -4.02,
+        1.05,
+        0.30000000000000004
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -4.119999999999999,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -4.02,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -3.9199999999999995,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "counter goods bin",
+      "position": [
+        -3.5,
+        1.05,
+        0.30000000000000004
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -3.6,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -3.5,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -3.4,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "counter goods bin",
+      "position": [
+        -2.98,
+        1.05,
+        0.30000000000000004
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -3.08,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -2.98,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -2.88,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        -0.94,
+        1.54,
+        -2.5
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        -0.94,
+        1.072,
+        -1.2
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        0.94,
+        1.54,
+        -2.5
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        0.94,
+        1.072,
+        -1.2
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall counter",
+      "position": [
+        0,
+        0.9,
+        -1.4
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall counter boards",
+      "position": [
+        0,
+        0.32,
+        -1.1
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "cloth awning",
+      "position": [
+        0,
+        2.12,
+        -0.8200000000000001
+      ],
+      "color": "#a18458",
+      "rotation": [
+        0.08,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "cloth valance",
+      "position": [
+        0,
+        1.99,
+        -0.51
+      ],
+      "color": "#a18458",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "counter goods bin",
+      "position": [
+        -0.52,
+        1.05,
+        -1.4
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -0.62,
+        1.17,
+        -1.4
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -0.52,
+        1.17,
+        -1.4
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -0.42000000000000004,
+        1.17,
+        -1.4
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "counter goods bin",
+      "position": [
+        0,
+        1.05,
+        -1.4
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        -0.1,
+        1.17,
+        -1.4
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        0,
+        1.17,
+        -1.4
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        0.1,
+        1.17,
+        -1.4
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "counter goods bin",
+      "position": [
+        0.52,
+        1.05,
+        -1.4
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        0.42000000000000004,
+        1.17,
+        -1.4
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        0.52,
+        1.17,
+        -1.4
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        0.62,
+        1.17,
+        -1.4
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        2.56,
+        1.54,
+        -0.8
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        2.56,
+        1.072,
+        0.5
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        4.4399999999999995,
+        1.54,
+        -0.8
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall post",
+      "position": [
+        4.4399999999999995,
+        1.072,
+        0.5
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall counter",
+      "position": [
+        3.5,
+        0.9,
+        0.30000000000000004
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "stall counter boards",
+      "position": [
+        3.5,
+        0.32,
+        0.5999999999999999
+      ],
+      "color": "#65503d",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "cloth awning",
+      "position": [
+        3.5,
+        2.12,
+        0.8799999999999999
+      ],
+      "color": "#8a5950",
+      "rotation": [
+        0.08,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "cloth valance",
+      "position": [
+        3.5,
+        1.99,
+        1.19
+      ],
+      "color": "#8a5950",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "counter goods bin",
+      "position": [
+        2.98,
+        1.05,
+        0.30000000000000004
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        2.88,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        2.98,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        3.08,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "counter goods bin",
+      "position": [
+        3.5,
+        1.05,
+        0.30000000000000004
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        3.4,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        3.5,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        3.6,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "counter goods bin",
+      "position": [
+        4.02,
+        1.05,
+        0.30000000000000004
+      ],
+      "color": "#938059",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        3.9199999999999995,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        4.02,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "assembly": "facility-market",
+      "name": "produce",
+      "position": [
+        4.119999999999999,
+        1.17,
+        0.30000000000000004
+      ],
+      "color": "#73744b",
+      "rotation": [
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "authoredTextures": [
+    {
+      "id": "original-reed-fibres",
+      "sourceSha256": "c0a86d960a2b9f77855a96d68156888404b51ad80a32493d78c71978b3e91ed1",
+      "generator": "seeded SVG reed-fibre strokes, recipe revision 1",
+      "license": "original Willow Valley artwork"
+    },
+    {
+      "id": "original-boarded-timber",
+      "sourceSha256": "486a3b7792de8d4cba1680f25aafcb505f0461230d251f323b59db6d67e339f0",
+      "generator": "seeded SVG board joints and grain strokes, recipe revision 1",
+      "license": "original Willow Valley artwork"
+    }
+  ],
+  "textures": [
+    {
+      "sourceSha256": "c0a86d960a2b9f77855a96d68156888404b51ad80a32493d78c71978b3e91ed1",
+      "outputSha256": "7837eabc30ea32ce3df452a1e825f9bda1b08d2853d7d3d91aa3abe5666805c0",
+      "width": 256,
+      "height": 256,
+      "bytes": 5459,
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "sourceSha256": "486a3b7792de8d4cba1680f25aafcb505f0461230d251f323b59db6d67e339f0",
+      "outputSha256": "4539123f72fc1301f98d0f8fb942617653d2d18e5c6e7afe9e08ad3b0cad61d0",
+      "width": 256,
+      "height": 256,
+      "bytes": 6440,
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "sourceSha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997",
+      "outputSha256": "36b5244cc98f3369cb062beaae232a6bef63fe7393db8536d376b604d8bf6da2",
+      "width": 256,
+      "height": 256,
+      "bytes": 7091,
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "sourceSha256": "5515f57e61767838f53f4b9e25aa83b1382ad345ff6b446482718b5140c33813",
+      "outputSha256": "4ffd0cabc7a9370f2859e0a94a6f390bf4b9f50aa10837f91a997b0fd0a8cc45",
+      "width": 256,
+      "height": 256,
+      "bytes": 9376,
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "sourceSha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4",
+      "outputSha256": "4cd5dd3883f8137bca294f011a94cf3c1eab05a0fc2446862333b037a2bbc8fa",
+      "width": 256,
+      "height": 256,
+      "bytes": 3422,
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "sourceSha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+      "outputSha256": "877bd33004d33b005a6a2ef87cc68977b9c0b179369b91f9b0d7d6707ba51d83",
+      "width": 512,
+      "height": 512,
+      "bytes": 29346,
+      "estimatedMipRGBA8Bytes": 1398102
+    },
+    {
+      "sourceSha256": "aa571cd612091a8f4c95393f8f938bd6e5d47a8cdfd9c896b60a4b37903e2c7c",
+      "outputSha256": "e7e916bec6980f13400077b1975eaf54d85aeeed02fade779559333ff0d13737",
+      "width": 256,
+      "height": 256,
+      "bytes": 9024,
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "sourceSha256": "e99ddf215d4172fb41f288cc1aab92193236206eb109dc260308dcb38c84c71d",
+      "outputSha256": "b94580fcf6b7dbf314630f3f581cd8ed05169a3ddc210535bfdee3db7936e59b",
+      "width": 256,
+      "height": 256,
+      "bytes": 7287,
+      "estimatedMipRGBA8Bytes": 349526
+    },
+    {
+      "sourceSha256": "ee0f096df6110e943cd9739680b61bc0ffd6fe00db752c5c3797941057a95ebc",
+      "outputSha256": "b14844bb18eb02d8b51d587dccce6c8f884ec12c035b3ff8c623ad7f4b0f0808",
+      "width": 256,
+      "height": 256,
+      "bytes": 10071,
+      "estimatedMipRGBA8Bytes": 349526
+    }
+  ],
+  "externalDependencies": [],
+  "preservedLegacyIdentity": "home-crooked-wing remains architecture-v1; no HOME_IDS or identity salt changes."
+}

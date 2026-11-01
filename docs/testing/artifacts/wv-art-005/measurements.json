@@ -1,0 +1,378 @@
+[
+  {
+    "quality": "normal",
+    "viewport": {
+      "width": 600,
+      "height": 850
+    },
+    "dpr": 1,
+    "drawCalls": 98,
+    "triangles": 57972,
+    "textures": 13,
+    "geometries": 64,
+    "closure": [
+      {
+        "id": "home-steep-gable",
+        "ok": true,
+        "distance": 2.7999998975907943
+      },
+      {
+        "id": "home-steep-gable",
+        "ok": true,
+        "distance": 2.799999795181577
+      },
+      {
+        "id": "home-steep-gable",
+        "ok": true,
+        "distance": 2.8000000000000007
+      },
+      {
+        "id": "home-steep-gable",
+        "ok": true,
+        "distance": 2.799999807326156
+      },
+      {
+        "id": "home-long-ridge",
+        "ok": true,
+        "distance": 2.799999157537165
+      },
+      {
+        "id": "home-long-ridge",
+        "ok": true,
+        "distance": 2.799999157537158
+      },
+      {
+        "id": "home-long-ridge",
+        "ok": true,
+        "distance": 2.7999993149616813
+      },
+      {
+        "id": "home-long-ridge",
+        "ok": true,
+        "distance": 2.7999991573652814
+      },
+      {
+        "id": "home-low-hip",
+        "ok": true,
+        "distance": 2.7999998975907863
+      },
+      {
+        "id": "home-low-hip",
+        "ok": true,
+        "distance": 2.7999997951815745
+      },
+      {
+        "id": "home-low-hip",
+        "ok": true,
+        "distance": 2.8000000000000007
+      },
+      {
+        "id": "home-low-hip",
+        "ok": true,
+        "distance": 2.799999807326156
+      },
+      {
+        "id": "home-porch-cabin",
+        "ok": true,
+        "distance": 2.7999998065563005
+      },
+      {
+        "id": "home-porch-cabin",
+        "ok": true,
+        "distance": 2.7999991575368526
+      },
+      {
+        "id": "home-porch-cabin",
+        "ok": true,
+        "distance": 2.7999993149616778
+      },
+      {
+        "id": "home-porch-cabin",
+        "ok": true,
+        "distance": 2.7999991573652814
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.7999998975907943
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.8000000000000007
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.799999807326156
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.7999991575311327
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.7999999999999545
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.6143859387029273
+      },
+      {
+        "id": "facility-farm",
+        "ok": true,
+        "distance": 2.7999998813124733
+      },
+      {
+        "id": "facility-farm",
+        "ok": true,
+        "distance": 2.8000000000000114
+      },
+      {
+        "id": "facility-farm",
+        "ok": true,
+        "distance": 2.799999999999997
+      },
+      {
+        "id": "facility-farm",
+        "ok": true,
+        "distance": 2.7999998073261665
+      },
+      {
+        "id": "facility-smith",
+        "ok": true,
+        "distance": 2.799999902383341
+      },
+      {
+        "id": "facility-smith",
+        "ok": true,
+        "distance": 2.0160000801086397
+      },
+      {
+        "id": "facility-smith",
+        "ok": true,
+        "distance": 2.8000000000000007
+      },
+      {
+        "id": "facility-smith",
+        "ok": true,
+        "distance": 2.799999806020395
+      },
+      {
+        "id": "facility-granary",
+        "ok": true,
+        "distance": 2.799999157537168
+      },
+      {
+        "id": "facility-granary",
+        "ok": true,
+        "distance": 2.799999157537159
+      },
+      {
+        "id": "facility-granary",
+        "ok": true,
+        "distance": 2.799999314795013
+      },
+      {
+        "id": "facility-granary",
+        "ok": true,
+        "distance": 2.4220000267028823
+      }
+    ],
+    "medianSubmissionMs": 2.800000000745058,
+    "p95SubmissionMs": 5.799999997019768,
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "phonePerformanceVerified": false
+  },
+  {
+    "quality": "low",
+    "viewport": {
+      "width": 600,
+      "height": 850
+    },
+    "dpr": 1,
+    "drawCalls": 98,
+    "triangles": 57972,
+    "textures": 12,
+    "geometries": 64,
+    "closure": [
+      {
+        "id": "home-steep-gable",
+        "ok": true,
+        "distance": 2.7999998975907943
+      },
+      {
+        "id": "home-steep-gable",
+        "ok": true,
+        "distance": 2.799999795181577
+      },
+      {
+        "id": "home-steep-gable",
+        "ok": true,
+        "distance": 2.8000000000000007
+      },
+      {
+        "id": "home-steep-gable",
+        "ok": true,
+        "distance": 2.799999807326156
+      },
+      {
+        "id": "home-long-ridge",
+        "ok": true,
+        "distance": 2.799999157537165
+      },
+      {
+        "id": "home-long-ridge",
+        "ok": true,
+        "distance": 2.799999157537158
+      },
+      {
+        "id": "home-long-ridge",
+        "ok": true,
+        "distance": 2.7999993149616813
+      },
+      {
+        "id": "home-long-ridge",
+        "ok": true,
+        "distance": 2.7999991573652814
+      },
+      {
+        "id": "home-low-hip",
+        "ok": true,
+        "distance": 2.7999998975907863
+      },
+      {
+        "id": "home-low-hip",
+        "ok": true,
+        "distance": 2.7999997951815745
+      },
+      {
+        "id": "home-low-hip",
+        "ok": true,
+        "distance": 2.8000000000000007
+      },
+      {
+        "id": "home-low-hip",
+        "ok": true,
+        "distance": 2.799999807326156
+      },
+      {
+        "id": "home-porch-cabin",
+        "ok": true,
+        "distance": 2.7999998065563005
+      },
+      {
+        "id": "home-porch-cabin",
+        "ok": true,
+        "distance": 2.7999991575368526
+      },
+      {
+        "id": "home-porch-cabin",
+        "ok": true,
+        "distance": 2.7999993149616778
+      },
+      {
+        "id": "home-porch-cabin",
+        "ok": true,
+        "distance": 2.7999991573652814
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.7999998975907943
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.8000000000000007
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.799999807326156
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.7999991575311327
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.7999999999999545
+      },
+      {
+        "id": "home-offset-gables",
+        "ok": true,
+        "distance": 2.6143859387029273
+      },
+      {
+        "id": "facility-farm",
+        "ok": true,
+        "distance": 2.7999998813124733
+      },
+      {
+        "id": "facility-farm",
+        "ok": true,
+        "distance": 2.8000000000000114
+      },
+      {
+        "id": "facility-farm",
+        "ok": true,
+        "distance": 2.799999999999997
+      },
+      {
+        "id": "facility-farm",
+        "ok": true,
+        "distance": 2.7999998073261665
+      },
+      {
+        "id": "facility-smith",
+        "ok": true,
+        "distance": 2.799999902383341
+      },
+      {
+        "id": "facility-smith",
+        "ok": true,
+        "distance": 2.0160000801086397
+      },
+      {
+        "id": "facility-smith",
+        "ok": true,
+        "distance": 2.8000000000000007
+      },
+      {
+        "id": "facility-smith",
+        "ok": true,
+        "distance": 2.799999806020395
+      },
+      {
+        "id": "facility-granary",
+        "ok": true,
+        "distance": 2.799999157537168
+      },
+      {
+        "id": "facility-granary",
+        "ok": true,
+        "distance": 2.799999157537159
+      },
+      {
+        "id": "facility-granary",
+        "ok": true,
+        "distance": 2.799999314795013
+      },
+      {
+        "id": "facility-granary",
+        "ok": true,
+        "distance": 2.4220000267028823
+      }
+    ],
+    "medianSubmissionMs": 3,
+    "p95SubmissionMs": 6.699999999254942,
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "phonePerformanceVerified": false
+  }
+]
