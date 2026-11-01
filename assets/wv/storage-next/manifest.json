@@ -1,0 +1,5318 @@
+{
+  "recipeRevision": "wv006-d-original-1",
+  "status": "gallery-review",
+  "runtimeReady": false,
+  "units": "visual metres",
+  "up": "Y",
+  "gameUnitsPerMetre": 2.8,
+  "humanHeightMetres": 1.75,
+  "license": "Original Willow Valley artwork; see LICENSE.txt",
+  "privateSourcePrerequisites": [],
+  "externalAssetDependencies": [],
+  "sources": [
+    {
+      "path": "storage-next/recipe.mjs",
+      "sha256": "f71d03fe0b41690ee4df7b1408c32e1b1884dc144c67ad668ecc8c2965d9d1ba"
+    },
+    {
+      "path": "storage-next/view-data.mjs",
+      "sha256": "30b15761d23834ec436f1d938323cd5252d36dc08eda539b0bcb7cc87c911ea0"
+    },
+    {
+      "path": "storage-next/gallery.mjs",
+      "sha256": "b7595a6065123b3105125e959e9f9be77537432e622b7b231942856170c2679f"
+    },
+    {
+      "path": "scripts/build-wv006-storage.mjs",
+      "sha256": "49b753b33bfbb828c2a2baf5bb8bf9baf1ba3cb73e99816e69739b3b92906e6b"
+    },
+    {
+      "path": "assets/wv/storage-next/LICENSE.txt",
+      "sha256": "1efe667036d83e52916cc341e0965221f788f5fcc4bbe8bb11984dc606ffb08e"
+    }
+  ],
+  "output": {
+    "url": "assets/wv/storage-next/storage.glb",
+    "bytes": 798232,
+    "sha256": "1595d1d5f13c117febb70244e752cf3c6f0ed951de5b7fab4003f03f9d9973fe"
+  },
+  "textures": [],
+  "entries": [
+    {
+      "id": "storehouse-l1",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -3,
+              -2.5
+            ],
+            [
+              3,
+              -2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              -3,
+              2.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        },
+        {
+          "polygon": [
+            [
+              -3,
+              2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              3,
+              3.8
+            ],
+            [
+              -3,
+              3.8
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        }
+      ],
+      "entrances": [
+        {
+          "kind": "personnel",
+          "threshold": [
+            3,
+            0.32,
+            -0.8
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ],
+          "clearWidth": 1,
+          "clearHeight": 2.1,
+          "clearDepth": 2.2,
+          "clearance": [
+            [
+              2.9999999999999996,
+              -1.3
+            ],
+            [
+              5.199999999999999,
+              -1.3
+            ],
+            [
+              5.199999999999999,
+              -0.30000000000000004
+            ],
+            [
+              2.9999999999999996,
+              -0.30000000000000004
+            ]
+          ],
+          "closedLeaf": true
+        },
+        {
+          "kind": "cargo",
+          "threshold": [
+            -1,
+            0.32,
+            2.5
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.6,
+          "clearHeight": 2.55,
+          "clearDepth": 4.8,
+          "clearance": [
+            [
+              -2.3,
+              2.5000000000000004
+            ],
+            [
+              0.30000000000000004,
+              2.5000000000000004
+            ],
+            [
+              0.30000000000000004,
+              7.300000000000001
+            ],
+            [
+              -2.3,
+              7.300000000000001
+            ]
+          ],
+          "doorLeaf": "open inward",
+          "loadingEdgeY": 0.32
+        }
+      ],
+      "steps": [
+        {
+          "polygon": [
+            [
+              3.8999999999999995,
+              -1.4500000000000002
+            ],
+            [
+              4.3,
+              -1.4500000000000002
+            ],
+            [
+              4.3,
+              -0.15000000000000002
+            ],
+            [
+              3.8999999999999995,
+              -0.15000000000000002
+            ]
+          ],
+          "rise": 0.10666666666666667,
+          "tread": 0.4,
+          "topY": 0.21333333333333335
+        },
+        {
+          "polygon": [
+            [
+              4.3,
+              -1.4500000000000002
+            ],
+            [
+              4.7,
+              -1.4500000000000002
+            ],
+            [
+              4.7,
+              -0.15000000000000002
+            ],
+            [
+              4.3,
+              -0.15000000000000002
+            ]
+          ],
+          "rise": 0.10666666666666667,
+          "tread": 0.4,
+          "topY": 0.10666666666666667
+        }
+      ],
+      "roofEnvelope": [
+        [
+          -3.5268452167510986,
+          -3.0199999809265137
+        ],
+        [
+          3.5268452167510986,
+          -3.0199999809265137
+        ],
+        [
+          3.5268452167510986,
+          4.076868534088135
+        ],
+        [
+          -3.5268452167510986,
+          4.076868534088135
+        ]
+      ],
+      "yardEnvelope": [
+        [
+          -4.7,
+          -4.7
+        ],
+        [
+          5.3,
+          -4.7
+        ],
+        [
+          5.3,
+          7.3
+        ],
+        [
+          -4.7,
+          7.3
+        ]
+      ],
+      "supportPoints": [
+        {
+          "position": [
+            -3,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -3,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            0,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            0,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            3,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            3,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -3,
+            0.16,
+            3.8
+          ],
+          "seat": "canopy stone foot"
+        },
+        {
+          "position": [
+            3,
+            0.16,
+            3.8
+          ],
+          "seat": "canopy stone foot"
+        }
+      ],
+      "optionalPropSeats": [
+        {
+          "id": "west-stack",
+          "polygon": [
+            [
+              -4.6,
+              -2.1
+            ],
+            [
+              -3.2,
+              -2.1
+            ],
+            [
+              -3.2,
+              0.10000000000000009
+            ],
+            [
+              -4.6,
+              0.10000000000000009
+            ]
+          ],
+          "seatY": 0
+        },
+        {
+          "id": "rear-cargo",
+          "polygon": [
+            [
+              -1.5,
+              -4.3
+            ],
+            [
+              1.5,
+              -4.3
+            ],
+            [
+              1.5,
+              -2.9000000000000004
+            ],
+            [
+              -1.5,
+              -2.9000000000000004
+            ]
+          ],
+          "seatY": 0
+        }
+      ],
+      "localSeats": [
+        {
+          "name": "continuous rubble plinth",
+          "polygon": [
+            [
+              -3,
+              -2.5
+            ],
+            [
+              3,
+              -2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              -3,
+              2.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "covered loading deck",
+          "polygon": [
+            [
+              -3,
+              2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              3,
+              3.8
+            ],
+            [
+              -3,
+              3.8
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel landing",
+          "polygon": [
+            [
+              3,
+              -1.4500000000000002
+            ],
+            [
+              3.9000000000000004,
+              -1.4500000000000002
+            ],
+            [
+              3.9000000000000004,
+              -0.15000000000000002
+            ],
+            [
+              3,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel stair 0",
+          "polygon": [
+            [
+              3.8999999999999995,
+              -1.4500000000000002
+            ],
+            [
+              4.3,
+              -1.4500000000000002
+            ],
+            [
+              4.3,
+              -0.15000000000000002
+            ],
+            [
+              3.8999999999999995,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.21333333333333335,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel stair 1",
+          "polygon": [
+            [
+              4.3,
+              -1.4500000000000002
+            ],
+            [
+              4.7,
+              -1.4500000000000002
+            ],
+            [
+              4.7,
+              -0.15000000000000002
+            ],
+            [
+              4.3,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.10666666666666667,
+          "kind": "ground"
+        },
+        {
+          "name": "canopy stone foot",
+          "polygon": [
+            [
+              -3.17,
+              3.63
+            ],
+            [
+              -2.83,
+              3.63
+            ],
+            [
+              -2.83,
+              3.9699999999999998
+            ],
+            [
+              -3.17,
+              3.9699999999999998
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.16,
+          "kind": "ground"
+        },
+        {
+          "name": "canopy stone foot",
+          "polygon": [
+            [
+              2.83,
+              3.63
+            ],
+            [
+              3.17,
+              3.63
+            ],
+            [
+              3.17,
+              3.9699999999999998
+            ],
+            [
+              2.83,
+              3.9699999999999998
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.16,
+          "kind": "ground"
+        }
+      ],
+      "enclosedShell": {
+        "width": 6,
+        "depth": 5,
+        "wallTopY": 3.25,
+        "floorY": 0.32
+      },
+      "roofOverhang": {
+        "west": 0.5268452167510986,
+        "east": 0.5268452167510986,
+        "rear": 0.5199999809265137,
+        "front": 1.5768685340881348
+      },
+      "handlingArea": {
+        "polygon": [
+          [
+            -3.5,
+            3.8000000000000003
+          ],
+          [
+            3.5,
+            3.8000000000000003
+          ],
+          [
+            3.5,
+            7.6
+          ],
+          [
+            -3.5,
+            7.6
+          ]
+        ],
+        "cartApproachWidth": 2.8,
+        "standingGrade": 0,
+        "loadingEdgeY": 0.32
+      },
+      "fit": "Uniform 2.8 conversion only. Test yard, roof, side stairs and cargo clearances at rotated site. No automatic upgrade fit.",
+      "node": "storehouse-l1-normal",
+      "boundsMin": [
+        -4.699999809265137,
+        -2.582867919542764e-9,
+        -4.699999809265137
+      ],
+      "boundsMax": [
+        5.300000190734863,
+        4.525000095367432,
+        7.300000190734863
+      ],
+      "triangles": 1578,
+      "materialGroups": 6,
+      "textureBytes": 0
+    },
+    {
+      "id": "warehouse-l2",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -5,
+              -3.5
+            ],
+            [
+              5,
+              -3.5
+            ],
+            [
+              5,
+              3.5
+            ],
+            [
+              -5,
+              3.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        },
+        {
+          "polygon": [
+            [
+              -5,
+              3.5000000000000004
+            ],
+            [
+              5,
+              3.5000000000000004
+            ],
+            [
+              5,
+              4.800000000000001
+            ],
+            [
+              -5,
+              4.800000000000001
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        }
+      ],
+      "entrances": [
+        {
+          "kind": "personnel",
+          "threshold": [
+            5,
+            0.32,
+            -0.8
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ],
+          "clearWidth": 1,
+          "clearHeight": 2.1,
+          "clearDepth": 2.2,
+          "clearance": [
+            [
+              5,
+              -1.3
+            ],
+            [
+              7.199999999999999,
+              -1.3
+            ],
+            [
+              7.199999999999999,
+              -0.30000000000000004
+            ],
+            [
+              5,
+              -0.30000000000000004
+            ]
+          ],
+          "closedLeaf": true
+        },
+        {
+          "kind": "cargo",
+          "threshold": [
+            -3.3,
+            0.32,
+            3.5
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.4,
+          "clearHeight": 2.55,
+          "clearDepth": 4.8,
+          "clearance": [
+            [
+              -4.5,
+              3.5000000000000004
+            ],
+            [
+              -2.0999999999999996,
+              3.5000000000000004
+            ],
+            [
+              -2.0999999999999996,
+              8.3
+            ],
+            [
+              -4.5,
+              8.3
+            ]
+          ],
+          "doorLeaf": "open inward",
+          "loadingEdgeY": 0.32
+        },
+        {
+          "kind": "cargo",
+          "threshold": [
+            0,
+            0.32,
+            3.5
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.4,
+          "clearHeight": 2.55,
+          "clearDepth": 4.8,
+          "clearance": [
+            [
+              -1.2,
+              3.5000000000000004
+            ],
+            [
+              1.2,
+              3.5000000000000004
+            ],
+            [
+              1.2,
+              8.3
+            ],
+            [
+              -1.2,
+              8.3
+            ]
+          ],
+          "doorLeaf": "open inward",
+          "loadingEdgeY": 0.32
+        },
+        {
+          "kind": "cargo",
+          "threshold": [
+            3.3,
+            0.32,
+            3.5
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.4,
+          "clearHeight": 2.55,
+          "clearDepth": 4.8,
+          "clearance": [
+            [
+              2.0999999999999996,
+              3.5000000000000004
+            ],
+            [
+              4.5,
+              3.5000000000000004
+            ],
+            [
+              4.5,
+              8.3
+            ],
+            [
+              2.0999999999999996,
+              8.3
+            ]
+          ],
+          "doorLeaf": "open inward",
+          "loadingEdgeY": 0.32
+        }
+      ],
+      "steps": [
+        {
+          "polygon": [
+            [
+              5.9,
+              -1.4500000000000002
+            ],
+            [
+              6.300000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.300000000000001,
+              -0.15000000000000002
+            ],
+            [
+              5.9,
+              -0.15000000000000002
+            ]
+          ],
+          "rise": 0.10666666666666667,
+          "tread": 0.4,
+          "topY": 0.21333333333333335
+        },
+        {
+          "polygon": [
+            [
+              6.300000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.700000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.700000000000001,
+              -0.15000000000000002
+            ],
+            [
+              6.300000000000001,
+              -0.15000000000000002
+            ]
+          ],
+          "rise": 0.10666666666666667,
+          "tread": 0.4,
+          "topY": 0.10666666666666667
+        }
+      ],
+      "roofEnvelope": [
+        [
+          -5.523503303527832,
+          -4.019999980926514
+        ],
+        [
+          5.523503303527832,
+          -4.019999980926514
+        ],
+        [
+          5.523503303527832,
+          5.076868534088135
+        ],
+        [
+          -5.523503303527832,
+          5.076868534088135
+        ]
+      ],
+      "yardEnvelope": [
+        [
+          -7.7,
+          -6.2
+        ],
+        [
+          8.3,
+          -6.2
+        ],
+        [
+          8.3,
+          8.8
+        ],
+        [
+          -7.7,
+          8.8
+        ]
+      ],
+      "supportPoints": [
+        {
+          "position": [
+            -5,
+            0.32,
+            -3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -5,
+            0.32,
+            3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -1.65,
+            0.32,
+            -3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -1.65,
+            0.32,
+            3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            1.65,
+            0.32,
+            -3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            1.65,
+            0.32,
+            3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            5,
+            0.32,
+            -3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            5,
+            0.32,
+            3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -5,
+            0.16,
+            4.8
+          ],
+          "seat": "canopy stone foot"
+        },
+        {
+          "position": [
+            5,
+            0.16,
+            4.8
+          ],
+          "seat": "canopy stone foot"
+        }
+      ],
+      "optionalPropSeats": [
+        {
+          "id": "west-stack",
+          "polygon": [
+            [
+              -6.6000000000000005,
+              -2.1
+            ],
+            [
+              -5.2,
+              -2.1
+            ],
+            [
+              -5.2,
+              0.10000000000000009
+            ],
+            [
+              -6.6000000000000005,
+              0.10000000000000009
+            ]
+          ],
+          "seatY": 0
+        },
+        {
+          "id": "rear-cargo",
+          "polygon": [
+            [
+              -1.5,
+              -5.3
+            ],
+            [
+              1.5,
+              -5.3
+            ],
+            [
+              1.5,
+              -3.8999999999999995
+            ],
+            [
+              -1.5,
+              -3.8999999999999995
+            ]
+          ],
+          "seatY": 0
+        }
+      ],
+      "localSeats": [
+        {
+          "name": "continuous rubble plinth",
+          "polygon": [
+            [
+              -5,
+              -3.5
+            ],
+            [
+              5,
+              -3.5
+            ],
+            [
+              5,
+              3.5
+            ],
+            [
+              -5,
+              3.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "covered loading deck",
+          "polygon": [
+            [
+              -5,
+              3.5000000000000004
+            ],
+            [
+              5,
+              3.5000000000000004
+            ],
+            [
+              5,
+              4.800000000000001
+            ],
+            [
+              -5,
+              4.800000000000001
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel landing",
+          "polygon": [
+            [
+              5,
+              -1.4500000000000002
+            ],
+            [
+              5.9,
+              -1.4500000000000002
+            ],
+            [
+              5.9,
+              -0.15000000000000002
+            ],
+            [
+              5,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel stair 0",
+          "polygon": [
+            [
+              5.9,
+              -1.4500000000000002
+            ],
+            [
+              6.300000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.300000000000001,
+              -0.15000000000000002
+            ],
+            [
+              5.9,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.21333333333333335,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel stair 1",
+          "polygon": [
+            [
+              6.300000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.700000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.700000000000001,
+              -0.15000000000000002
+            ],
+            [
+              6.300000000000001,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.10666666666666667,
+          "kind": "ground"
+        },
+        {
+          "name": "canopy stone foot",
+          "polygon": [
+            [
+              -5.17,
+              4.63
+            ],
+            [
+              -4.83,
+              4.63
+            ],
+            [
+              -4.83,
+              4.97
+            ],
+            [
+              -5.17,
+              4.97
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.16,
+          "kind": "ground"
+        },
+        {
+          "name": "canopy stone foot",
+          "polygon": [
+            [
+              4.83,
+              4.63
+            ],
+            [
+              5.17,
+              4.63
+            ],
+            [
+              5.17,
+              4.97
+            ],
+            [
+              4.83,
+              4.97
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.16,
+          "kind": "ground"
+        }
+      ],
+      "enclosedShell": {
+        "width": 10,
+        "depth": 7,
+        "wallTopY": 4.1,
+        "floorY": 0.32
+      },
+      "roofOverhang": {
+        "west": 0.523503303527832,
+        "east": 0.523503303527832,
+        "rear": 0.5199999809265137,
+        "front": 1.5768685340881348
+      },
+      "handlingArea": {
+        "polygon": [
+          [
+            -5.5,
+            4.800000000000001
+          ],
+          [
+            5.5,
+            4.800000000000001
+          ],
+          [
+            5.5,
+            8.6
+          ],
+          [
+            -5.5,
+            8.6
+          ]
+        ],
+        "cartApproachWidth": 3,
+        "standingGrade": 0,
+        "loadingEdgeY": 0.32
+      },
+      "fit": "Uniform 2.8 conversion only. Test yard, roof, side stairs and cargo clearances at rotated site. No automatic upgrade fit.",
+      "node": "warehouse-l2-normal",
+      "boundsMin": [
+        -7.699999809265137,
+        -2.582867919542764e-9,
+        -6.199999809265137
+      ],
+      "boundsMax": [
+        8.300000190734863,
+        5.875,
+        8.800000190734863
+      ],
+      "triangles": 2238,
+      "materialGroups": 6,
+      "textureBytes": 0
+    },
+    {
+      "id": "lumber",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "stack bearer",
+          "polygon": [
+            [
+              -0.725,
+              -0.6
+            ],
+            [
+              -0.5750000000000001,
+              -0.6
+            ],
+            [
+              -0.5750000000000001,
+              0.6
+            ],
+            [
+              -0.725,
+              0.6
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.12,
+          "kind": "ground"
+        },
+        {
+          "name": "stack bearer",
+          "polygon": [
+            [
+              0.5750000000000001,
+              -0.6
+            ],
+            [
+              0.725,
+              -0.6
+            ],
+            [
+              0.725,
+              0.6
+            ],
+            [
+              0.5750000000000001,
+              0.6
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.12,
+          "kind": "ground"
+        }
+      ],
+      "node": "lumber-normal",
+      "boundsMin": [
+        -1,
+        1.3411045607369942e-9,
+        -0.6000000238418579
+      ],
+      "boundsMax": [
+        1,
+        0.7549999952316284,
+        0.6000000238418579
+      ],
+      "triangles": 168,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "tools",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "tool crate seat",
+          "polygon": [
+            [
+              -0.6,
+              -0.325
+            ],
+            [
+              0.6,
+              -0.325
+            ],
+            [
+              0.6,
+              0.325
+            ],
+            [
+              -0.6,
+              0.325
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.16,
+          "kind": "ground"
+        }
+      ],
+      "node": "tools-normal",
+      "boundsMin": [
+        -0.6050000190734863,
+        1.7881393032936899e-9,
+        -0.39000001549720764
+      ],
+      "boundsMax": [
+        0.6050000190734863,
+        1.399999976158142,
+        0.39000001549720764
+      ],
+      "triangles": 180,
+      "materialGroups": 3,
+      "textureBytes": 0
+    },
+    {
+      "id": "sacks",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "flat review ground seat",
+          "polygon": [
+            [
+              -0.5067852735519409,
+              -0.3700000047683716
+            ],
+            [
+              0.5167852640151978,
+              -0.3700000047683716
+            ],
+            [
+              0.5167852640151978,
+              0.3700000047683716
+            ],
+            [
+              -0.5067852735519409,
+              0.3700000047683716
+            ]
+          ],
+          "seatY": -2.38418573772492e-9,
+          "kind": "ground-envelope",
+          "note": "Seat envelope; not a claim of full-area contact."
+        }
+      ],
+      "node": "sacks-normal",
+      "boundsMin": [
+        -0.5067852735519409,
+        -2.38418573772492e-9,
+        -0.3700000047683716
+      ],
+      "boundsMax": [
+        0.5167852640151978,
+        0.7200000286102295,
+        0.3700000047683716
+      ],
+      "triangles": 160,
+      "materialGroups": 1,
+      "textureBytes": 0
+    },
+    {
+      "id": "barrel",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "flat review ground seat",
+          "polygon": [
+            [
+              -0.30433809757232666,
+              -0.3199999928474426
+            ],
+            [
+              0.30433809757232666,
+              -0.3199999928474426
+            ],
+            [
+              0.30433809757232666,
+              0.3199999928474426
+            ],
+            [
+              -0.30433809757232666,
+              0.3199999928474426
+            ]
+          ],
+          "seatY": -1.1920929132713809e-8,
+          "kind": "ground-envelope",
+          "note": "Seat envelope; not a claim of full-area contact."
+        }
+      ],
+      "node": "barrel-normal",
+      "boundsMin": [
+        -0.30433809757232666,
+        -1.1920929132713809e-8,
+        -0.3199999928474426
+      ],
+      "boundsMax": [
+        0.30433809757232666,
+        0.8500000238418579,
+        0.3199999928474426
+      ],
+      "triangles": 160,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "cargo",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "cargo pallet",
+          "polygon": [
+            [
+              -0.75,
+              -0.5
+            ],
+            [
+              0.75,
+              -0.5
+            ],
+            [
+              0.75,
+              0.5
+            ],
+            [
+              -0.75,
+              0.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.12,
+          "kind": "ground"
+        }
+      ],
+      "node": "cargo-normal",
+      "boundsMin": [
+        -0.75,
+        1.3411045607369942e-9,
+        -0.5
+      ],
+      "boundsMax": [
+        0.75,
+        0.8299999833106995,
+        0.5
+      ],
+      "triangles": 96,
+      "materialGroups": 3,
+      "textureBytes": 0
+    },
+    {
+      "id": "well",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "well upright",
+          "polygon": [
+            [
+              -0.8700000000000001,
+              -0.09
+            ],
+            [
+              -0.73,
+              -0.09
+            ],
+            [
+              -0.73,
+              0.09
+            ],
+            [
+              -0.8700000000000001,
+              0.09
+            ]
+          ],
+          "seatY": 0,
+          "topY": 2.1,
+          "kind": "ground"
+        },
+        {
+          "name": "well upright",
+          "polygon": [
+            [
+              0.73,
+              -0.09
+            ],
+            [
+              0.8700000000000001,
+              -0.09
+            ],
+            [
+              0.8700000000000001,
+              0.09
+            ],
+            [
+              0.73,
+              0.09
+            ]
+          ],
+          "seatY": 0,
+          "topY": 2.1,
+          "kind": "ground"
+        }
+      ],
+      "node": "well-normal",
+      "boundsMin": [
+        -0.8999999761581421,
+        5.9604645663569045e-9,
+        -0.7250000238418579
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        2.0999999046325684,
+        0.7250000238418579
+      ],
+      "triangles": 232,
+      "materialGroups": 4,
+      "textureBytes": 0
+    },
+    {
+      "id": "bench",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "bench leg",
+          "polygon": [
+            [
+              -0.73,
+              -0.24
+            ],
+            [
+              -0.5700000000000001,
+              -0.24
+            ],
+            [
+              -0.5700000000000001,
+              0.24
+            ],
+            [
+              -0.73,
+              0.24
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.45,
+          "kind": "ground"
+        },
+        {
+          "name": "bench leg",
+          "polygon": [
+            [
+              0.5700000000000001,
+              -0.24
+            ],
+            [
+              0.73,
+              -0.24
+            ],
+            [
+              0.73,
+              0.24
+            ],
+            [
+              0.5700000000000001,
+              0.24
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.45,
+          "kind": "ground"
+        }
+      ],
+      "node": "bench-normal",
+      "boundsMin": [
+        -0.8999999761581421,
+        5.9604645663569045e-9,
+        -0.27000001072883606
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        1.0099999904632568,
+        0.25
+      ],
+      "triangles": 108,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "noticeboard",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "notice post",
+          "polygon": [
+            [
+              -0.6699999999999999,
+              -0.08
+            ],
+            [
+              -0.53,
+              -0.08
+            ],
+            [
+              -0.53,
+              0.08
+            ],
+            [
+              -0.6699999999999999,
+              0.08
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.8,
+          "kind": "ground"
+        },
+        {
+          "name": "notice post",
+          "polygon": [
+            [
+              0.53,
+              -0.08
+            ],
+            [
+              0.6699999999999999,
+              -0.08
+            ],
+            [
+              0.6699999999999999,
+              0.08
+            ],
+            [
+              0.53,
+              0.08
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.8,
+          "kind": "ground"
+        }
+      ],
+      "node": "noticeboard-normal",
+      "boundsMin": [
+        -0.824999988079071,
+        2.3841858265427618e-8,
+        -0.2750000059604645
+      ],
+      "boundsMax": [
+        0.824999988079071,
+        1.909999966621399,
+        0.2750000059604645
+      ],
+      "triangles": 108,
+      "materialGroups": 4,
+      "textureBytes": 0
+    },
+    {
+      "id": "trough",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "trough base",
+          "polygon": [
+            [
+              -0.9,
+              -0.35
+            ],
+            [
+              0.9,
+              -0.35
+            ],
+            [
+              0.9,
+              0.35
+            ],
+            [
+              -0.9,
+              0.35
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.14,
+          "kind": "ground"
+        }
+      ],
+      "node": "trough-normal",
+      "boundsMin": [
+        -0.8999999761581421,
+        -2.98023217215615e-10,
+        -0.3799999952316284
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        0.5,
+        0.3799999952316284
+      ],
+      "triangles": 72,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "wall",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "short rubble wall",
+          "polygon": [
+            [
+              -1.1,
+              -0.19
+            ],
+            [
+              1.1,
+              -0.19
+            ],
+            [
+              1.1,
+              0.19
+            ],
+            [
+              -1.1,
+              0.19
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.65,
+          "kind": "ground"
+        }
+      ],
+      "node": "wall-normal",
+      "boundsMin": [
+        -1.1399999856948853,
+        1.1920929132713809e-8,
+        -0.2199999988079071
+      ],
+      "boundsMax": [
+        1.1399999856948853,
+        0.7699999809265137,
+        0.2199999988079071
+      ],
+      "triangles": 48,
+      "materialGroups": 1,
+      "textureBytes": 0
+    },
+    {
+      "id": "fence",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              -1.065,
+              -0.075
+            ],
+            [
+              -0.935,
+              -0.075
+            ],
+            [
+              -0.935,
+              0.075
+            ],
+            [
+              -1.065,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        },
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              0.935,
+              -0.075
+            ],
+            [
+              1.065,
+              -0.075
+            ],
+            [
+              1.065,
+              0.075
+            ],
+            [
+              0.935,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        }
+      ],
+      "node": "fence-normal",
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -0.07500000298023224
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "triangles": 48,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "gate-open",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              -1.065,
+              -0.075
+            ],
+            [
+              -0.935,
+              -0.075
+            ],
+            [
+              -0.935,
+              0.075
+            ],
+            [
+              -1.065,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        },
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              0.935,
+              -0.075
+            ],
+            [
+              1.065,
+              -0.075
+            ],
+            [
+              1.065,
+              0.075
+            ],
+            [
+              0.935,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        }
+      ],
+      "opening": {
+        "clearWidth": 1.87,
+        "open": true,
+        "swingEnvelope": [
+          [
+            -1,
+            -2
+          ],
+          [
+            1,
+            -2
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      },
+      "node": "gate-open-normal",
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -1.8799999952316284
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "triangles": 108,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "gate-closed",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              -1.065,
+              -0.075
+            ],
+            [
+              -0.935,
+              -0.075
+            ],
+            [
+              -0.935,
+              0.075
+            ],
+            [
+              -1.065,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        },
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              0.935,
+              -0.075
+            ],
+            [
+              1.065,
+              -0.075
+            ],
+            [
+              1.065,
+              0.075
+            ],
+            [
+              0.935,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        }
+      ],
+      "opening": {
+        "clearWidth": 1.87,
+        "open": false,
+        "swingEnvelope": [
+          [
+            -1,
+            -2
+          ],
+          [
+            1,
+            -2
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      },
+      "node": "gate-closed-normal",
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -0.07500000298023224
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "triangles": 108,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "planted-common",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "small planted stone seat",
+          "polygon": [
+            [
+              -0.55,
+              -0.35
+            ],
+            [
+              0.55,
+              -0.35
+            ],
+            [
+              0.55,
+              0.35
+            ],
+            [
+              -0.55,
+              0.35
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.2,
+          "kind": "ground"
+        }
+      ],
+      "note": "Small planted accent only; not a nature asset collection or an enclosed park.",
+      "node": "planted-common-normal",
+      "boundsMin": [
+        -0.550000011920929,
+        -1.4901161415892261e-9,
+        -0.3499999940395355
+      ],
+      "boundsMax": [
+        0.550000011920929,
+        0.5049999952316284,
+        0.3499999940395355
+      ],
+      "triangles": 144,
+      "materialGroups": 3,
+      "textureBytes": 0
+    },
+    {
+      "id": "scaffold",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "scaffold foot",
+          "polygon": [
+            [
+              -1.065,
+              -0.515
+            ],
+            [
+              -0.935,
+              -0.515
+            ],
+            [
+              -0.935,
+              -0.385
+            ],
+            [
+              -1.065,
+              -0.385
+            ]
+          ],
+          "seatY": 0,
+          "topY": 3.5,
+          "kind": "ground"
+        },
+        {
+          "name": "scaffold foot",
+          "polygon": [
+            [
+              -1.065,
+              0.385
+            ],
+            [
+              -0.935,
+              0.385
+            ],
+            [
+              -0.935,
+              0.515
+            ],
+            [
+              -1.065,
+              0.515
+            ]
+          ],
+          "seatY": 0,
+          "topY": 3.5,
+          "kind": "ground"
+        },
+        {
+          "name": "scaffold foot",
+          "polygon": [
+            [
+              0.935,
+              -0.515
+            ],
+            [
+              1.065,
+              -0.515
+            ],
+            [
+              1.065,
+              -0.385
+            ],
+            [
+              0.935,
+              -0.385
+            ]
+          ],
+          "seatY": 0,
+          "topY": 3.5,
+          "kind": "ground"
+        },
+        {
+          "name": "scaffold foot",
+          "polygon": [
+            [
+              0.935,
+              0.385
+            ],
+            [
+              1.065,
+              0.385
+            ],
+            [
+              1.065,
+              0.515
+            ],
+            [
+              0.935,
+              0.515
+            ]
+          ],
+          "seatY": 0,
+          "topY": 3.5,
+          "kind": "ground"
+        }
+      ],
+      "note": "Display construction only; no clock, turn or simulated duration.",
+      "node": "scaffold-normal",
+      "boundsMin": [
+        -1.149999976158142,
+        -2.3841858265427618e-8,
+        -0.5149999856948853
+      ],
+      "boundsMax": [
+        1.149999976158142,
+        3.5,
+        0.6299999952316284
+      ],
+      "triangles": 240,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "storehouse-frame",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -3,
+              -2.5
+            ],
+            [
+              3,
+              -2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              -3,
+              2.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        },
+        {
+          "polygon": [
+            [
+              -3,
+              2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              3,
+              3.8
+            ],
+            [
+              -3,
+              3.8
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        }
+      ],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [
+        [
+          -4.7,
+          -4.7
+        ],
+        [
+          5.3,
+          -4.7
+        ],
+        [
+          5.3,
+          7.3
+        ],
+        [
+          -4.7,
+          7.3
+        ]
+      ],
+      "supportPoints": [
+        {
+          "position": [
+            -3,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -3,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            0,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            0,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            3,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            3,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        }
+      ],
+      "optionalPropSeats": [
+        {
+          "id": "west-stack",
+          "polygon": [
+            [
+              -4.6,
+              -2.1
+            ],
+            [
+              -3.2,
+              -2.1
+            ],
+            [
+              -3.2,
+              0.10000000000000009
+            ],
+            [
+              -4.6,
+              0.10000000000000009
+            ]
+          ],
+          "seatY": 0
+        },
+        {
+          "id": "rear-cargo",
+          "polygon": [
+            [
+              -1.5,
+              -4.3
+            ],
+            [
+              1.5,
+              -4.3
+            ],
+            [
+              1.5,
+              -2.9000000000000004
+            ],
+            [
+              -1.5,
+              -2.9000000000000004
+            ]
+          ],
+          "seatY": 0
+        }
+      ],
+      "localSeats": [
+        {
+          "name": "continuous rubble plinth",
+          "polygon": [
+            [
+              -3,
+              -2.5
+            ],
+            [
+              3,
+              -2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              -3,
+              2.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "covered loading deck",
+          "polygon": [
+            [
+              -3,
+              2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              3,
+              3.8
+            ],
+            [
+              -3,
+              3.8
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        }
+      ],
+      "enclosedShell": null,
+      "handlingArea": {
+        "polygon": [
+          [
+            -3.5,
+            3.8000000000000003
+          ],
+          [
+            3.5,
+            3.8000000000000003
+          ],
+          [
+            3.5,
+            7.6
+          ],
+          [
+            -3.5,
+            7.6
+          ]
+        ],
+        "cartApproachWidth": 2.8,
+        "standingGrade": 0,
+        "loadingEdgeY": 0.32
+      },
+      "fit": "Uniform 2.8 conversion only. Test yard, roof, side stairs and cargo clearances at rotated site. No automatic upgrade fit.",
+      "node": "storehouse-frame-normal",
+      "boundsMin": [
+        -3.119999885559082,
+        3.5762786065873797e-9,
+        -2.619999885559082
+      ],
+      "boundsMax": [
+        3.119999885559082,
+        4.4746994972229,
+        3.799999952316284
+      ],
+      "triangles": 396,
+      "materialGroups": 3,
+      "textureBytes": 0
+    },
+    {
+      "id": "person",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "flat review ground seat",
+          "polygon": [
+            [
+              -0.2875528335571289,
+              -0.18000000715255737
+            ],
+            [
+              0.2875528335571289,
+              -0.18000000715255737
+            ],
+            [
+              0.2875528335571289,
+              0.18000000715255737
+            ],
+            [
+              -0.2875528335571289,
+              0.18000000715255737
+            ]
+          ],
+          "seatY": 5.9604645663569045e-9,
+          "kind": "ground-envelope",
+          "note": "Seat envelope; not a claim of full-area contact."
+        }
+      ],
+      "node": "person-normal",
+      "boundsMin": [
+        -0.2875528335571289,
+        5.9604645663569045e-9,
+        -0.18000000715255737
+      ],
+      "boundsMax": [
+        0.2875528335571289,
+        1.75,
+        0.18000000715255737
+      ],
+      "triangles": 240,
+      "materialGroups": 1,
+      "textureBytes": 0
+    },
+    {
+      "id": "cart",
+      "quality": "normal",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "flat review ground seat",
+          "polygon": [
+            [
+              -0.8100000023841858,
+              -1
+            ],
+            [
+              0.8100000023841858,
+              -1
+            ],
+            [
+              0.8100000023841858,
+              2.5058467388153076
+            ],
+            [
+              -0.8100000023841858,
+              2.5058467388153076
+            ]
+          ],
+          "seatY": 1.1920929132713809e-8,
+          "kind": "ground-envelope",
+          "note": "Seat envelope; not a claim of full-area contact."
+        }
+      ],
+      "groundContacts": [
+        [
+          -0.75,
+          0,
+          0
+        ],
+        [
+          0.75,
+          0,
+          0
+        ],
+        [
+          -0.45,
+          0.4,
+          2.5
+        ],
+        [
+          0.45,
+          0.4,
+          2.5
+        ]
+      ],
+      "note": "Parked handcart with raised shafts; not freight automation.",
+      "node": "cart-normal",
+      "boundsMin": [
+        -0.8100000023841858,
+        1.1920929132713809e-8,
+        -1
+      ],
+      "boundsMax": [
+        0.8100000023841858,
+        1.274999976158142,
+        2.5058467388153076
+      ],
+      "triangles": 360,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "storehouse-l1",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -3,
+              -2.5
+            ],
+            [
+              3,
+              -2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              -3,
+              2.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        },
+        {
+          "polygon": [
+            [
+              -3,
+              2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              3,
+              3.8
+            ],
+            [
+              -3,
+              3.8
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        }
+      ],
+      "entrances": [
+        {
+          "kind": "personnel",
+          "threshold": [
+            3,
+            0.32,
+            -0.8
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ],
+          "clearWidth": 1,
+          "clearHeight": 2.1,
+          "clearDepth": 2.2,
+          "clearance": [
+            [
+              2.9999999999999996,
+              -1.3
+            ],
+            [
+              5.199999999999999,
+              -1.3
+            ],
+            [
+              5.199999999999999,
+              -0.30000000000000004
+            ],
+            [
+              2.9999999999999996,
+              -0.30000000000000004
+            ]
+          ],
+          "closedLeaf": true
+        },
+        {
+          "kind": "cargo",
+          "threshold": [
+            -1,
+            0.32,
+            2.5
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.6,
+          "clearHeight": 2.55,
+          "clearDepth": 4.8,
+          "clearance": [
+            [
+              -2.3,
+              2.5000000000000004
+            ],
+            [
+              0.30000000000000004,
+              2.5000000000000004
+            ],
+            [
+              0.30000000000000004,
+              7.300000000000001
+            ],
+            [
+              -2.3,
+              7.300000000000001
+            ]
+          ],
+          "doorLeaf": "open inward",
+          "loadingEdgeY": 0.32
+        }
+      ],
+      "steps": [
+        {
+          "polygon": [
+            [
+              3.8999999999999995,
+              -1.4500000000000002
+            ],
+            [
+              4.3,
+              -1.4500000000000002
+            ],
+            [
+              4.3,
+              -0.15000000000000002
+            ],
+            [
+              3.8999999999999995,
+              -0.15000000000000002
+            ]
+          ],
+          "rise": 0.10666666666666667,
+          "tread": 0.4,
+          "topY": 0.21333333333333335
+        },
+        {
+          "polygon": [
+            [
+              4.3,
+              -1.4500000000000002
+            ],
+            [
+              4.7,
+              -1.4500000000000002
+            ],
+            [
+              4.7,
+              -0.15000000000000002
+            ],
+            [
+              4.3,
+              -0.15000000000000002
+            ]
+          ],
+          "rise": 0.10666666666666667,
+          "tread": 0.4,
+          "topY": 0.10666666666666667
+        }
+      ],
+      "roofEnvelope": [
+        [
+          -3.5268452167510986,
+          -3.0199999809265137
+        ],
+        [
+          3.5268452167510986,
+          -3.0199999809265137
+        ],
+        [
+          3.5268452167510986,
+          4.076868534088135
+        ],
+        [
+          -3.5268452167510986,
+          4.076868534088135
+        ]
+      ],
+      "yardEnvelope": [
+        [
+          -4.7,
+          -4.7
+        ],
+        [
+          5.3,
+          -4.7
+        ],
+        [
+          5.3,
+          7.3
+        ],
+        [
+          -4.7,
+          7.3
+        ]
+      ],
+      "supportPoints": [
+        {
+          "position": [
+            -3,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -3,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            0,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            0,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            3,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            3,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -3,
+            0.16,
+            3.8
+          ],
+          "seat": "canopy stone foot"
+        },
+        {
+          "position": [
+            3,
+            0.16,
+            3.8
+          ],
+          "seat": "canopy stone foot"
+        }
+      ],
+      "optionalPropSeats": [
+        {
+          "id": "west-stack",
+          "polygon": [
+            [
+              -4.6,
+              -2.1
+            ],
+            [
+              -3.2,
+              -2.1
+            ],
+            [
+              -3.2,
+              0.10000000000000009
+            ],
+            [
+              -4.6,
+              0.10000000000000009
+            ]
+          ],
+          "seatY": 0
+        },
+        {
+          "id": "rear-cargo",
+          "polygon": [
+            [
+              -1.5,
+              -4.3
+            ],
+            [
+              1.5,
+              -4.3
+            ],
+            [
+              1.5,
+              -2.9000000000000004
+            ],
+            [
+              -1.5,
+              -2.9000000000000004
+            ]
+          ],
+          "seatY": 0
+        }
+      ],
+      "localSeats": [
+        {
+          "name": "continuous rubble plinth",
+          "polygon": [
+            [
+              -3,
+              -2.5
+            ],
+            [
+              3,
+              -2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              -3,
+              2.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "covered loading deck",
+          "polygon": [
+            [
+              -3,
+              2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              3,
+              3.8
+            ],
+            [
+              -3,
+              3.8
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel landing",
+          "polygon": [
+            [
+              3,
+              -1.4500000000000002
+            ],
+            [
+              3.9000000000000004,
+              -1.4500000000000002
+            ],
+            [
+              3.9000000000000004,
+              -0.15000000000000002
+            ],
+            [
+              3,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel stair 0",
+          "polygon": [
+            [
+              3.8999999999999995,
+              -1.4500000000000002
+            ],
+            [
+              4.3,
+              -1.4500000000000002
+            ],
+            [
+              4.3,
+              -0.15000000000000002
+            ],
+            [
+              3.8999999999999995,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.21333333333333335,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel stair 1",
+          "polygon": [
+            [
+              4.3,
+              -1.4500000000000002
+            ],
+            [
+              4.7,
+              -1.4500000000000002
+            ],
+            [
+              4.7,
+              -0.15000000000000002
+            ],
+            [
+              4.3,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.10666666666666667,
+          "kind": "ground"
+        },
+        {
+          "name": "canopy stone foot",
+          "polygon": [
+            [
+              -3.17,
+              3.63
+            ],
+            [
+              -2.83,
+              3.63
+            ],
+            [
+              -2.83,
+              3.9699999999999998
+            ],
+            [
+              -3.17,
+              3.9699999999999998
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.16,
+          "kind": "ground"
+        },
+        {
+          "name": "canopy stone foot",
+          "polygon": [
+            [
+              2.83,
+              3.63
+            ],
+            [
+              3.17,
+              3.63
+            ],
+            [
+              3.17,
+              3.9699999999999998
+            ],
+            [
+              2.83,
+              3.9699999999999998
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.16,
+          "kind": "ground"
+        }
+      ],
+      "enclosedShell": {
+        "width": 6,
+        "depth": 5,
+        "wallTopY": 3.25,
+        "floorY": 0.32
+      },
+      "roofOverhang": {
+        "west": 0.5268452167510986,
+        "east": 0.5268452167510986,
+        "rear": 0.5199999809265137,
+        "front": 1.5768685340881348
+      },
+      "handlingArea": {
+        "polygon": [
+          [
+            -3.5,
+            3.8000000000000003
+          ],
+          [
+            3.5,
+            3.8000000000000003
+          ],
+          [
+            3.5,
+            7.6
+          ],
+          [
+            -3.5,
+            7.6
+          ]
+        ],
+        "cartApproachWidth": 2.8,
+        "standingGrade": 0,
+        "loadingEdgeY": 0.32
+      },
+      "fit": "Uniform 2.8 conversion only. Test yard, roof, side stairs and cargo clearances at rotated site. No automatic upgrade fit.",
+      "node": "storehouse-l1-low",
+      "boundsMin": [
+        -4.699999809265137,
+        -2.582867919542764e-9,
+        -4.699999809265137
+      ],
+      "boundsMax": [
+        5.300000190734863,
+        4.525000095367432,
+        7.300000190734863
+      ],
+      "triangles": 654,
+      "materialGroups": 5,
+      "textureBytes": 0
+    },
+    {
+      "id": "warehouse-l2",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -5,
+              -3.5
+            ],
+            [
+              5,
+              -3.5
+            ],
+            [
+              5,
+              3.5
+            ],
+            [
+              -5,
+              3.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        },
+        {
+          "polygon": [
+            [
+              -5,
+              3.5000000000000004
+            ],
+            [
+              5,
+              3.5000000000000004
+            ],
+            [
+              5,
+              4.800000000000001
+            ],
+            [
+              -5,
+              4.800000000000001
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        }
+      ],
+      "entrances": [
+        {
+          "kind": "personnel",
+          "threshold": [
+            5,
+            0.32,
+            -0.8
+          ],
+          "forward": [
+            1,
+            0,
+            0
+          ],
+          "clearWidth": 1,
+          "clearHeight": 2.1,
+          "clearDepth": 2.2,
+          "clearance": [
+            [
+              5,
+              -1.3
+            ],
+            [
+              7.199999999999999,
+              -1.3
+            ],
+            [
+              7.199999999999999,
+              -0.30000000000000004
+            ],
+            [
+              5,
+              -0.30000000000000004
+            ]
+          ],
+          "closedLeaf": true
+        },
+        {
+          "kind": "cargo",
+          "threshold": [
+            -3.3,
+            0.32,
+            3.5
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.4,
+          "clearHeight": 2.55,
+          "clearDepth": 4.8,
+          "clearance": [
+            [
+              -4.5,
+              3.5000000000000004
+            ],
+            [
+              -2.0999999999999996,
+              3.5000000000000004
+            ],
+            [
+              -2.0999999999999996,
+              8.3
+            ],
+            [
+              -4.5,
+              8.3
+            ]
+          ],
+          "doorLeaf": "open inward",
+          "loadingEdgeY": 0.32
+        },
+        {
+          "kind": "cargo",
+          "threshold": [
+            0,
+            0.32,
+            3.5
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.4,
+          "clearHeight": 2.55,
+          "clearDepth": 4.8,
+          "clearance": [
+            [
+              -1.2,
+              3.5000000000000004
+            ],
+            [
+              1.2,
+              3.5000000000000004
+            ],
+            [
+              1.2,
+              8.3
+            ],
+            [
+              -1.2,
+              8.3
+            ]
+          ],
+          "doorLeaf": "open inward",
+          "loadingEdgeY": 0.32
+        },
+        {
+          "kind": "cargo",
+          "threshold": [
+            3.3,
+            0.32,
+            3.5
+          ],
+          "forward": [
+            0,
+            0,
+            1
+          ],
+          "clearWidth": 2.4,
+          "clearHeight": 2.55,
+          "clearDepth": 4.8,
+          "clearance": [
+            [
+              2.0999999999999996,
+              3.5000000000000004
+            ],
+            [
+              4.5,
+              3.5000000000000004
+            ],
+            [
+              4.5,
+              8.3
+            ],
+            [
+              2.0999999999999996,
+              8.3
+            ]
+          ],
+          "doorLeaf": "open inward",
+          "loadingEdgeY": 0.32
+        }
+      ],
+      "steps": [
+        {
+          "polygon": [
+            [
+              5.9,
+              -1.4500000000000002
+            ],
+            [
+              6.300000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.300000000000001,
+              -0.15000000000000002
+            ],
+            [
+              5.9,
+              -0.15000000000000002
+            ]
+          ],
+          "rise": 0.10666666666666667,
+          "tread": 0.4,
+          "topY": 0.21333333333333335
+        },
+        {
+          "polygon": [
+            [
+              6.300000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.700000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.700000000000001,
+              -0.15000000000000002
+            ],
+            [
+              6.300000000000001,
+              -0.15000000000000002
+            ]
+          ],
+          "rise": 0.10666666666666667,
+          "tread": 0.4,
+          "topY": 0.10666666666666667
+        }
+      ],
+      "roofEnvelope": [
+        [
+          -5.523503303527832,
+          -4.019999980926514
+        ],
+        [
+          5.523503303527832,
+          -4.019999980926514
+        ],
+        [
+          5.523503303527832,
+          5.076868534088135
+        ],
+        [
+          -5.523503303527832,
+          5.076868534088135
+        ]
+      ],
+      "yardEnvelope": [
+        [
+          -7.7,
+          -6.2
+        ],
+        [
+          8.3,
+          -6.2
+        ],
+        [
+          8.3,
+          8.8
+        ],
+        [
+          -7.7,
+          8.8
+        ]
+      ],
+      "supportPoints": [
+        {
+          "position": [
+            -5,
+            0.32,
+            -3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -5,
+            0.32,
+            3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -1.65,
+            0.32,
+            -3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -1.65,
+            0.32,
+            3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            1.65,
+            0.32,
+            -3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            1.65,
+            0.32,
+            3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            5,
+            0.32,
+            -3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            5,
+            0.32,
+            3.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -5,
+            0.16,
+            4.8
+          ],
+          "seat": "canopy stone foot"
+        },
+        {
+          "position": [
+            5,
+            0.16,
+            4.8
+          ],
+          "seat": "canopy stone foot"
+        }
+      ],
+      "optionalPropSeats": [
+        {
+          "id": "west-stack",
+          "polygon": [
+            [
+              -6.6000000000000005,
+              -2.1
+            ],
+            [
+              -5.2,
+              -2.1
+            ],
+            [
+              -5.2,
+              0.10000000000000009
+            ],
+            [
+              -6.6000000000000005,
+              0.10000000000000009
+            ]
+          ],
+          "seatY": 0
+        },
+        {
+          "id": "rear-cargo",
+          "polygon": [
+            [
+              -1.5,
+              -5.3
+            ],
+            [
+              1.5,
+              -5.3
+            ],
+            [
+              1.5,
+              -3.8999999999999995
+            ],
+            [
+              -1.5,
+              -3.8999999999999995
+            ]
+          ],
+          "seatY": 0
+        }
+      ],
+      "localSeats": [
+        {
+          "name": "continuous rubble plinth",
+          "polygon": [
+            [
+              -5,
+              -3.5
+            ],
+            [
+              5,
+              -3.5
+            ],
+            [
+              5,
+              3.5
+            ],
+            [
+              -5,
+              3.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "covered loading deck",
+          "polygon": [
+            [
+              -5,
+              3.5000000000000004
+            ],
+            [
+              5,
+              3.5000000000000004
+            ],
+            [
+              5,
+              4.800000000000001
+            ],
+            [
+              -5,
+              4.800000000000001
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel landing",
+          "polygon": [
+            [
+              5,
+              -1.4500000000000002
+            ],
+            [
+              5.9,
+              -1.4500000000000002
+            ],
+            [
+              5.9,
+              -0.15000000000000002
+            ],
+            [
+              5,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel stair 0",
+          "polygon": [
+            [
+              5.9,
+              -1.4500000000000002
+            ],
+            [
+              6.300000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.300000000000001,
+              -0.15000000000000002
+            ],
+            [
+              5.9,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.21333333333333335,
+          "kind": "ground"
+        },
+        {
+          "name": "personnel stair 1",
+          "polygon": [
+            [
+              6.300000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.700000000000001,
+              -1.4500000000000002
+            ],
+            [
+              6.700000000000001,
+              -0.15000000000000002
+            ],
+            [
+              6.300000000000001,
+              -0.15000000000000002
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.10666666666666667,
+          "kind": "ground"
+        },
+        {
+          "name": "canopy stone foot",
+          "polygon": [
+            [
+              -5.17,
+              4.63
+            ],
+            [
+              -4.83,
+              4.63
+            ],
+            [
+              -4.83,
+              4.97
+            ],
+            [
+              -5.17,
+              4.97
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.16,
+          "kind": "ground"
+        },
+        {
+          "name": "canopy stone foot",
+          "polygon": [
+            [
+              4.83,
+              4.63
+            ],
+            [
+              5.17,
+              4.63
+            ],
+            [
+              5.17,
+              4.97
+            ],
+            [
+              4.83,
+              4.97
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.16,
+          "kind": "ground"
+        }
+      ],
+      "enclosedShell": {
+        "width": 10,
+        "depth": 7,
+        "wallTopY": 4.1,
+        "floorY": 0.32
+      },
+      "roofOverhang": {
+        "west": 0.523503303527832,
+        "east": 0.523503303527832,
+        "rear": 0.5199999809265137,
+        "front": 1.5768685340881348
+      },
+      "handlingArea": {
+        "polygon": [
+          [
+            -5.5,
+            4.800000000000001
+          ],
+          [
+            5.5,
+            4.800000000000001
+          ],
+          [
+            5.5,
+            8.6
+          ],
+          [
+            -5.5,
+            8.6
+          ]
+        ],
+        "cartApproachWidth": 3,
+        "standingGrade": 0,
+        "loadingEdgeY": 0.32
+      },
+      "fit": "Uniform 2.8 conversion only. Test yard, roof, side stairs and cargo clearances at rotated site. No automatic upgrade fit.",
+      "node": "warehouse-l2-low",
+      "boundsMin": [
+        -7.699999809265137,
+        -2.582867919542764e-9,
+        -6.199999809265137
+      ],
+      "boundsMax": [
+        8.300000190734863,
+        5.875,
+        8.800000190734863
+      ],
+      "triangles": 870,
+      "materialGroups": 5,
+      "textureBytes": 0
+    },
+    {
+      "id": "lumber",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "stack bearer",
+          "polygon": [
+            [
+              -0.725,
+              -0.6
+            ],
+            [
+              -0.5750000000000001,
+              -0.6
+            ],
+            [
+              -0.5750000000000001,
+              0.6
+            ],
+            [
+              -0.725,
+              0.6
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.12,
+          "kind": "ground"
+        },
+        {
+          "name": "stack bearer",
+          "polygon": [
+            [
+              0.5750000000000001,
+              -0.6
+            ],
+            [
+              0.725,
+              -0.6
+            ],
+            [
+              0.725,
+              0.6
+            ],
+            [
+              0.5750000000000001,
+              0.6
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.12,
+          "kind": "ground"
+        }
+      ],
+      "node": "lumber-low",
+      "boundsMin": [
+        -1,
+        1.3411045607369942e-9,
+        -0.6000000238418579
+      ],
+      "boundsMax": [
+        1,
+        0.5950000286102295,
+        0.6000000238418579
+      ],
+      "triangles": 132,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "tools",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "tool crate seat",
+          "polygon": [
+            [
+              -0.6,
+              -0.325
+            ],
+            [
+              0.6,
+              -0.325
+            ],
+            [
+              0.6,
+              0.325
+            ],
+            [
+              -0.6,
+              0.325
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.16,
+          "kind": "ground"
+        }
+      ],
+      "node": "tools-low",
+      "boundsMin": [
+        -0.6050000190734863,
+        1.7881393032936899e-9,
+        -0.39000001549720764
+      ],
+      "boundsMax": [
+        0.6050000190734863,
+        1.399999976158142,
+        0.39000001549720764
+      ],
+      "triangles": 108,
+      "materialGroups": 3,
+      "textureBytes": 0
+    },
+    {
+      "id": "sacks",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "flat review ground seat",
+          "polygon": [
+            [
+              -0.4838268756866455,
+              -0.3700000047683716
+            ],
+            [
+              0.49382686614990234,
+              -0.3700000047683716
+            ],
+            [
+              0.49382686614990234,
+              0.3700000047683716
+            ],
+            [
+              -0.4838268756866455,
+              0.3700000047683716
+            ]
+          ],
+          "seatY": -2.38418573772492e-9,
+          "kind": "ground-envelope",
+          "note": "Seat envelope; not a claim of full-area contact."
+        }
+      ],
+      "node": "sacks-low",
+      "boundsMin": [
+        -0.4838268756866455,
+        -2.38418573772492e-9,
+        -0.3700000047683716
+      ],
+      "boundsMax": [
+        0.49382686614990234,
+        0.7200000286102295,
+        0.3700000047683716
+      ],
+      "triangles": 96,
+      "materialGroups": 1,
+      "textureBytes": 0
+    },
+    {
+      "id": "barrel",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "flat review ground seat",
+          "polygon": [
+            [
+              -0.277128130197525,
+              -0.3199999928474426
+            ],
+            [
+              0.277128130197525,
+              -0.3199999928474426
+            ],
+            [
+              0.277128130197525,
+              0.3199999928474426
+            ],
+            [
+              -0.277128130197525,
+              0.3199999928474426
+            ]
+          ],
+          "seatY": -1.1920929132713809e-8,
+          "kind": "ground-envelope",
+          "note": "Seat envelope; not a claim of full-area contact."
+        }
+      ],
+      "node": "barrel-low",
+      "boundsMin": [
+        -0.277128130197525,
+        -1.1920929132713809e-8,
+        -0.3199999928474426
+      ],
+      "boundsMax": [
+        0.277128130197525,
+        0.8500000238418579,
+        0.3199999928474426
+      ],
+      "triangles": 96,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "cargo",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "cargo pallet",
+          "polygon": [
+            [
+              -0.75,
+              -0.5
+            ],
+            [
+              0.75,
+              -0.5
+            ],
+            [
+              0.75,
+              0.5
+            ],
+            [
+              -0.75,
+              0.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.12,
+          "kind": "ground"
+        }
+      ],
+      "node": "cargo-low",
+      "boundsMin": [
+        -0.75,
+        1.3411045607369942e-9,
+        -0.5
+      ],
+      "boundsMax": [
+        0.75,
+        0.8299999833106995,
+        0.5
+      ],
+      "triangles": 96,
+      "materialGroups": 3,
+      "textureBytes": 0
+    },
+    {
+      "id": "well",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "well upright",
+          "polygon": [
+            [
+              -0.8700000000000001,
+              -0.09
+            ],
+            [
+              -0.73,
+              -0.09
+            ],
+            [
+              -0.73,
+              0.09
+            ],
+            [
+              -0.8700000000000001,
+              0.09
+            ]
+          ],
+          "seatY": 0,
+          "topY": 2.1,
+          "kind": "ground"
+        },
+        {
+          "name": "well upright",
+          "polygon": [
+            [
+              0.73,
+              -0.09
+            ],
+            [
+              0.8700000000000001,
+              -0.09
+            ],
+            [
+              0.8700000000000001,
+              0.09
+            ],
+            [
+              0.73,
+              0.09
+            ]
+          ],
+          "seatY": 0,
+          "topY": 2.1,
+          "kind": "ground"
+        }
+      ],
+      "node": "well-low",
+      "boundsMin": [
+        -0.8999999761581421,
+        5.9604645663569045e-9,
+        -0.7250000238418579
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        2.0999999046325684,
+        0.7250000238418579
+      ],
+      "triangles": 168,
+      "materialGroups": 4,
+      "textureBytes": 0
+    },
+    {
+      "id": "bench",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "bench leg",
+          "polygon": [
+            [
+              -0.73,
+              -0.24
+            ],
+            [
+              -0.5700000000000001,
+              -0.24
+            ],
+            [
+              -0.5700000000000001,
+              0.24
+            ],
+            [
+              -0.73,
+              0.24
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.45,
+          "kind": "ground"
+        },
+        {
+          "name": "bench leg",
+          "polygon": [
+            [
+              0.5700000000000001,
+              -0.24
+            ],
+            [
+              0.73,
+              -0.24
+            ],
+            [
+              0.73,
+              0.24
+            ],
+            [
+              0.5700000000000001,
+              0.24
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.45,
+          "kind": "ground"
+        }
+      ],
+      "node": "bench-low",
+      "boundsMin": [
+        -0.8999999761581421,
+        5.9604645663569045e-9,
+        -0.27000001072883606
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        1.0099999904632568,
+        0.25
+      ],
+      "triangles": 48,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "noticeboard",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "notice post",
+          "polygon": [
+            [
+              -0.6699999999999999,
+              -0.08
+            ],
+            [
+              -0.53,
+              -0.08
+            ],
+            [
+              -0.53,
+              0.08
+            ],
+            [
+              -0.6699999999999999,
+              0.08
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.8,
+          "kind": "ground"
+        },
+        {
+          "name": "notice post",
+          "polygon": [
+            [
+              0.53,
+              -0.08
+            ],
+            [
+              0.6699999999999999,
+              -0.08
+            ],
+            [
+              0.6699999999999999,
+              0.08
+            ],
+            [
+              0.53,
+              0.08
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.8,
+          "kind": "ground"
+        }
+      ],
+      "node": "noticeboard-low",
+      "boundsMin": [
+        -0.824999988079071,
+        2.3841858265427618e-8,
+        -0.2750000059604645
+      ],
+      "boundsMax": [
+        0.824999988079071,
+        1.909999966621399,
+        0.2750000059604645
+      ],
+      "triangles": 60,
+      "materialGroups": 4,
+      "textureBytes": 0
+    },
+    {
+      "id": "trough",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "trough base",
+          "polygon": [
+            [
+              -0.9,
+              -0.35
+            ],
+            [
+              0.9,
+              -0.35
+            ],
+            [
+              0.9,
+              0.35
+            ],
+            [
+              -0.9,
+              0.35
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.14,
+          "kind": "ground"
+        }
+      ],
+      "node": "trough-low",
+      "boundsMin": [
+        -0.8999999761581421,
+        -2.98023217215615e-10,
+        -0.3799999952316284
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        0.5,
+        0.3799999952316284
+      ],
+      "triangles": 72,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "wall",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "short rubble wall",
+          "polygon": [
+            [
+              -1.1,
+              -0.19
+            ],
+            [
+              1.1,
+              -0.19
+            ],
+            [
+              1.1,
+              0.19
+            ],
+            [
+              -1.1,
+              0.19
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.65,
+          "kind": "ground"
+        }
+      ],
+      "node": "wall-low",
+      "boundsMin": [
+        -1.100000023841858,
+        1.1920929132713809e-8,
+        -0.1899999976158142
+      ],
+      "boundsMax": [
+        1.100000023841858,
+        0.6499999761581421,
+        0.1899999976158142
+      ],
+      "triangles": 12,
+      "materialGroups": 1,
+      "textureBytes": 0
+    },
+    {
+      "id": "fence",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              -1.065,
+              -0.075
+            ],
+            [
+              -0.935,
+              -0.075
+            ],
+            [
+              -0.935,
+              0.075
+            ],
+            [
+              -1.065,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        },
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              0.935,
+              -0.075
+            ],
+            [
+              1.065,
+              -0.075
+            ],
+            [
+              1.065,
+              0.075
+            ],
+            [
+              0.935,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        }
+      ],
+      "node": "fence-low",
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -0.07500000298023224
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "triangles": 48,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "gate-open",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              -1.065,
+              -0.075
+            ],
+            [
+              -0.935,
+              -0.075
+            ],
+            [
+              -0.935,
+              0.075
+            ],
+            [
+              -1.065,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        },
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              0.935,
+              -0.075
+            ],
+            [
+              1.065,
+              -0.075
+            ],
+            [
+              1.065,
+              0.075
+            ],
+            [
+              0.935,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        }
+      ],
+      "opening": {
+        "clearWidth": 1.87,
+        "open": true,
+        "swingEnvelope": [
+          [
+            -1,
+            -2
+          ],
+          [
+            1,
+            -2
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      },
+      "node": "gate-open-low",
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -1.8799999952316284
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "triangles": 108,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "gate-closed",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              -1.065,
+              -0.075
+            ],
+            [
+              -0.935,
+              -0.075
+            ],
+            [
+              -0.935,
+              0.075
+            ],
+            [
+              -1.065,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        },
+        {
+          "name": "boundary post",
+          "polygon": [
+            [
+              0.935,
+              -0.075
+            ],
+            [
+              1.065,
+              -0.075
+            ],
+            [
+              1.065,
+              0.075
+            ],
+            [
+              0.935,
+              0.075
+            ]
+          ],
+          "seatY": 0,
+          "topY": 1.05,
+          "kind": "ground"
+        }
+      ],
+      "opening": {
+        "clearWidth": 1.87,
+        "open": false,
+        "swingEnvelope": [
+          [
+            -1,
+            -2
+          ],
+          [
+            1,
+            -2
+          ],
+          [
+            1,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ]
+      },
+      "node": "gate-closed-low",
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -0.07500000298023224
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "triangles": 108,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "planted-common",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "small planted stone seat",
+          "polygon": [
+            [
+              -0.55,
+              -0.35
+            ],
+            [
+              0.55,
+              -0.35
+            ],
+            [
+              0.55,
+              0.35
+            ],
+            [
+              -0.55,
+              0.35
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.2,
+          "kind": "ground"
+        }
+      ],
+      "note": "Small planted accent only; not a nature asset collection or an enclosed park.",
+      "node": "planted-common-low",
+      "boundsMin": [
+        -0.550000011920929,
+        -1.4901161415892261e-9,
+        -0.3499999940395355
+      ],
+      "boundsMax": [
+        0.550000011920929,
+        0.5049999952316284,
+        0.3499999940395355
+      ],
+      "triangles": 96,
+      "materialGroups": 3,
+      "textureBytes": 0
+    },
+    {
+      "id": "scaffold",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "scaffold foot",
+          "polygon": [
+            [
+              -1.065,
+              -0.515
+            ],
+            [
+              -0.935,
+              -0.515
+            ],
+            [
+              -0.935,
+              -0.385
+            ],
+            [
+              -1.065,
+              -0.385
+            ]
+          ],
+          "seatY": 0,
+          "topY": 3.5,
+          "kind": "ground"
+        },
+        {
+          "name": "scaffold foot",
+          "polygon": [
+            [
+              -1.065,
+              0.385
+            ],
+            [
+              -0.935,
+              0.385
+            ],
+            [
+              -0.935,
+              0.515
+            ],
+            [
+              -1.065,
+              0.515
+            ]
+          ],
+          "seatY": 0,
+          "topY": 3.5,
+          "kind": "ground"
+        },
+        {
+          "name": "scaffold foot",
+          "polygon": [
+            [
+              0.935,
+              -0.515
+            ],
+            [
+              1.065,
+              -0.515
+            ],
+            [
+              1.065,
+              -0.385
+            ],
+            [
+              0.935,
+              -0.385
+            ]
+          ],
+          "seatY": 0,
+          "topY": 3.5,
+          "kind": "ground"
+        },
+        {
+          "name": "scaffold foot",
+          "polygon": [
+            [
+              0.935,
+              0.385
+            ],
+            [
+              1.065,
+              0.385
+            ],
+            [
+              1.065,
+              0.515
+            ],
+            [
+              0.935,
+              0.515
+            ]
+          ],
+          "seatY": 0,
+          "topY": 3.5,
+          "kind": "ground"
+        }
+      ],
+      "note": "Display construction only; no clock, turn or simulated duration.",
+      "node": "scaffold-low",
+      "boundsMin": [
+        -1.149999976158142,
+        -2.3841858265427618e-8,
+        -0.5149999856948853
+      ],
+      "boundsMax": [
+        1.149999976158142,
+        3.5,
+        0.6299999952316284
+      ],
+      "triangles": 240,
+      "materialGroups": 2,
+      "textureBytes": 0
+    },
+    {
+      "id": "storehouse-frame",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [
+        {
+          "polygon": [
+            [
+              -3,
+              -2.5
+            ],
+            [
+              3,
+              -2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              -3,
+              2.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        },
+        {
+          "polygon": [
+            [
+              -3,
+              2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              3,
+              3.8
+            ],
+            [
+              -3,
+              3.8
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32
+        }
+      ],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [
+        [
+          -4.7,
+          -4.7
+        ],
+        [
+          5.3,
+          -4.7
+        ],
+        [
+          5.3,
+          7.3
+        ],
+        [
+          -4.7,
+          7.3
+        ]
+      ],
+      "supportPoints": [
+        {
+          "position": [
+            -3,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            -3,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            0,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            0,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            3,
+            0.32,
+            -2.5
+          ],
+          "seat": "continuous rubble plinth"
+        },
+        {
+          "position": [
+            3,
+            0.32,
+            2.5
+          ],
+          "seat": "continuous rubble plinth"
+        }
+      ],
+      "optionalPropSeats": [
+        {
+          "id": "west-stack",
+          "polygon": [
+            [
+              -4.6,
+              -2.1
+            ],
+            [
+              -3.2,
+              -2.1
+            ],
+            [
+              -3.2,
+              0.10000000000000009
+            ],
+            [
+              -4.6,
+              0.10000000000000009
+            ]
+          ],
+          "seatY": 0
+        },
+        {
+          "id": "rear-cargo",
+          "polygon": [
+            [
+              -1.5,
+              -4.3
+            ],
+            [
+              1.5,
+              -4.3
+            ],
+            [
+              1.5,
+              -2.9000000000000004
+            ],
+            [
+              -1.5,
+              -2.9000000000000004
+            ]
+          ],
+          "seatY": 0
+        }
+      ],
+      "localSeats": [
+        {
+          "name": "continuous rubble plinth",
+          "polygon": [
+            [
+              -3,
+              -2.5
+            ],
+            [
+              3,
+              -2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              -3,
+              2.5
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        },
+        {
+          "name": "covered loading deck",
+          "polygon": [
+            [
+              -3,
+              2.5
+            ],
+            [
+              3,
+              2.5
+            ],
+            [
+              3,
+              3.8
+            ],
+            [
+              -3,
+              3.8
+            ]
+          ],
+          "seatY": 0,
+          "topY": 0.32,
+          "kind": "ground"
+        }
+      ],
+      "enclosedShell": null,
+      "handlingArea": {
+        "polygon": [
+          [
+            -3.5,
+            3.8000000000000003
+          ],
+          [
+            3.5,
+            3.8000000000000003
+          ],
+          [
+            3.5,
+            7.6
+          ],
+          [
+            -3.5,
+            7.6
+          ]
+        ],
+        "cartApproachWidth": 2.8,
+        "standingGrade": 0,
+        "loadingEdgeY": 0.32
+      },
+      "fit": "Uniform 2.8 conversion only. Test yard, roof, side stairs and cargo clearances at rotated site. No automatic upgrade fit.",
+      "node": "storehouse-frame-low",
+      "boundsMin": [
+        -3.119999885559082,
+        3.5762786065873797e-9,
+        -2.619999885559082
+      ],
+      "boundsMax": [
+        3.119999885559082,
+        4.4746994972229,
+        3.799999952316284
+      ],
+      "triangles": 312,
+      "materialGroups": 3,
+      "textureBytes": 0
+    },
+    {
+      "id": "person",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "flat review ground seat",
+          "polygon": [
+            [
+              -0.2833012640476227,
+              -0.18000000715255737
+            ],
+            [
+              0.2833012640476227,
+              -0.18000000715255737
+            ],
+            [
+              0.2833012640476227,
+              0.18000000715255737
+            ],
+            [
+              -0.2833012640476227,
+              0.18000000715255737
+            ]
+          ],
+          "seatY": 5.9604645663569045e-9,
+          "kind": "ground-envelope",
+          "note": "Seat envelope; not a claim of full-area contact."
+        }
+      ],
+      "node": "person-low",
+      "boundsMin": [
+        -0.2833012640476227,
+        5.9604645663569045e-9,
+        -0.18000000715255737
+      ],
+      "boundsMax": [
+        0.2833012640476227,
+        1.75,
+        0.18000000715255737
+      ],
+      "triangles": 144,
+      "materialGroups": 1,
+      "textureBytes": 0
+    },
+    {
+      "id": "cart",
+      "quality": "low",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "structuralSeats": [],
+      "entrances": [],
+      "steps": [],
+      "roofEnvelope": [],
+      "yardEnvelope": [],
+      "supportPoints": [],
+      "optionalPropSeats": [],
+      "localSeats": [
+        {
+          "name": "flat review ground seat",
+          "polygon": [
+            [
+              -0.8100000023841858,
+              -1
+            ],
+            [
+              0.8100000023841858,
+              -1
+            ],
+            [
+              0.8100000023841858,
+              2.5058467388153076
+            ],
+            [
+              -0.8100000023841858,
+              2.5058467388153076
+            ]
+          ],
+          "seatY": 1.1920929132713809e-8,
+          "kind": "ground-envelope",
+          "note": "Seat envelope; not a claim of full-area contact."
+        }
+      ],
+      "groundContacts": [
+        [
+          -0.75,
+          0,
+          0
+        ],
+        [
+          0.75,
+          0,
+          0
+        ],
+        [
+          -0.45,
+          0.4,
+          2.5
+        ],
+        [
+          0.45,
+          0.4,
+          2.5
+        ]
+      ],
+      "note": "Parked handcart with raised shafts; not freight automation.",
+      "node": "cart-low",
+      "boundsMin": [
+        -0.8100000023841858,
+        1.1920929132713809e-8,
+        -1
+      ],
+      "boundsMax": [
+        0.8100000023841858,
+        1.274999976158142,
+        2.5058467388153076
+      ],
+      "triangles": 136,
+      "materialGroups": 2,
+      "textureBytes": 0
+    }
+  ]
+}
