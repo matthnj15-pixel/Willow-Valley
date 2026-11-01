@@ -1,0 +1,283 @@
+{
+  "recipe": "wv006-a-1",
+  "runtimeReady": false,
+  "newTextures": 0,
+  "newMeshAssets": 0,
+  "dependencies": [
+    {
+      "path": "asset-registry.mjs",
+      "bytes": 2684,
+      "sha256": "e6e41b1f3ddb635b18ed7540246ed12538ed034017a527b590c59af888ff4046"
+    },
+    {
+      "path": "assets/vendor/three.module.mjs",
+      "bytes": 795147,
+      "sha256": "ddccd4615947d8e44b8eac538d2a94153956a153705a596376557101f02ae6db"
+    },
+    {
+      "path": "assets/wv/architecture-v1/facility-farm.glb",
+      "bytes": 53844,
+      "sha256": "694a9d82c8d35c5124b433b05b365374532fa65d091c94729caae2deb8c6900c"
+    },
+    {
+      "path": "assets/wv/architecture-v1/facility-granary.glb",
+      "bytes": 42680,
+      "sha256": "bccaf700ba67fd63298543c04577590509bb117780b42a6ace9ab0c5c2eec406"
+    },
+    {
+      "path": "assets/wv/architecture-v1/facility-lumber.glb",
+      "bytes": 41268,
+      "sha256": "f681f0eeea83b3ce27a7512210607e1fb2a65e05ed8a786a91ff1dd7326ab5f4"
+    },
+    {
+      "path": "assets/wv/architecture-v1/facility-market.glb",
+      "bytes": 104612,
+      "sha256": "394de593a127014edfdff6f1c19efb73f9ca80d726c81f92c1b627affc1c7fdc"
+    },
+    {
+      "path": "assets/wv/architecture-v1/facility-park.glb",
+      "bytes": 46484,
+      "sha256": "83dbe6d9fccb9add1311f7e762dc57b467ccb1917f9edc949674f0342a11941b"
+    },
+    {
+      "path": "assets/wv/architecture-v1/facility-plaza.glb",
+      "bytes": 27076,
+      "sha256": "4043519e0de419ee1b2f75f32cca2ba6616d376a14c1af87bdc1d1c6b398b27a"
+    },
+    {
+      "path": "assets/wv/architecture-v1/facility-smith.glb",
+      "bytes": 99548,
+      "sha256": "1fd511c6bf9ea9972f63870a52f8ac9a9d8d54f614c0a9dbadb47591ed62a057"
+    },
+    {
+      "path": "assets/wv/architecture-v1/home-crooked-wing.glb",
+      "bytes": 45300,
+      "sha256": "2eb5a8ca4b3079eee9111dd5817dcb10d98161c12f8bd7719bce65353dce6328"
+    },
+    {
+      "path": "assets/wv/architecture-v1/home-long-ridge.glb",
+      "bytes": 49856,
+      "sha256": "2a36c70e36cf9a073901fcf7504673447192c39abef4374b575f92b563243b72"
+    },
+    {
+      "path": "assets/wv/architecture-v1/home-low-hip.glb",
+      "bytes": 47060,
+      "sha256": "0a1e498cb646ab8b62b314861fab93fb6a4510c45be7699545e0ad6d9eaa2b9f"
+    },
+    {
+      "path": "assets/wv/architecture-v1/home-offset-gables.glb",
+      "bytes": 53504,
+      "sha256": "4a291778fa5b02b891d66b6c8e288f53345b208c67de350043a79df66c97e489"
+    },
+    {
+      "path": "assets/wv/architecture-v1/home-porch-cabin.glb",
+      "bytes": 52952,
+      "sha256": "7d87660f34cfc91ac340ef36791be46757ca876bc5f35d33906529090a2a24e0"
+    },
+    {
+      "path": "assets/wv/architecture-v1/home-steep-gable.glb",
+      "bytes": 50160,
+      "sha256": "4ec9fbca7418d07e2e52e7a908d704d35e51cc5a5c65de422142ea7ace2b7984"
+    },
+    {
+      "path": "assets/wv/architecture-v1/manifest.json",
+      "bytes": 29880,
+      "sha256": "e4cc214f6c437bdaca365c4ca7cb0aad41b91b676e4315e4aecdd7a3f0921ec9"
+    },
+    {
+      "path": "assets/wv/architecture-v1/tree-oak.glb",
+      "bytes": 10732,
+      "sha256": "ced2e01f169d53dd0270543500ae5f6889e1aa95125dbec2b0a2a3f977826e96"
+    },
+    {
+      "path": "assets/wv/environment-v1/LICENSE.txt",
+      "bytes": 602,
+      "sha256": "6e9f446eca12e7de5e104e7462c560a71172d73f9819191b1bcd880a484e9915"
+    },
+    {
+      "path": "assets/wv/environment-v1/grass.jpg",
+      "bytes": 107694,
+      "sha256": "8968c4a760f5d7fde6c9c252c80f3567a9114f61a7793c053c5593f5abba4638"
+    },
+    {
+      "path": "assets/wv/environment-v1/soil.jpg",
+      "bytes": 37206,
+      "sha256": "0c1ca435dff526c06474cf107755c6dca8deeacf890fc9bef745424d856d5063"
+    },
+    {
+      "path": "assets/wv/megakit-catalog-v1/catalog.glb",
+      "bytes": 3135732,
+      "sha256": "d8926948018bb382ab82d9a437fae0b20e71a60d195c56960652ad0b0aedf5c7"
+    },
+    {
+      "path": "assets/wv/megakit-catalog-v1/manifest.json",
+      "bytes": 142247,
+      "sha256": "f4bbe2a2fce19244f334b41f1e667e84bbfaba3d46c74a7e100cd2f248cef8c4"
+    },
+    {
+      "path": "building-visuals.mjs",
+      "bytes": 6004,
+      "sha256": "9ea8df3432322e3e4adca420e1580bc5a3a0982f4c22cc3dc46165f6bf58320c"
+    },
+    {
+      "path": "camera-gestures.mjs",
+      "bytes": 2426,
+      "sha256": "1493fab5576e84c303ccfc81186a87fb8486b3f350324ef8bf19ff20bae22435"
+    },
+    {
+      "path": "desire-paths.mjs",
+      "bytes": 4451,
+      "sha256": "04786b9ac115f195b29fb3a182bb77224f6560a82d8612cd7ab218a6a1e23ecf"
+    },
+    {
+      "path": "editor-overlays.mjs",
+      "bytes": 1804,
+      "sha256": "fe7a6303a40e99bd9b0e92c10a12961700818635b36eb48e19b09e641ecb3c1f"
+    },
+    {
+      "path": "environment-materials.mjs",
+      "bytes": 6036,
+      "sha256": "bcc7c13523fc691aca1569f86eb2f90c7078096ad79691f42cbda654519261ec"
+    },
+    {
+      "path": "environment-next/atmosphere.mjs",
+      "bytes": 1706,
+      "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+    },
+    {
+      "path": "environment-next/materials.mjs",
+      "bytes": 7135,
+      "sha256": "5c3da31b06e602f0f734fd14bcdb95ac60d80f33ca3577d3dd041389efefe919"
+    },
+    {
+      "path": "environment-next/preset.mjs",
+      "bytes": 401,
+      "sha256": "ba6ec06e5c9643a990b8e1b561fb8d62af4f172555388b75c750c565db2ef2ad"
+    },
+    {
+      "path": "environment-next/review-page.mjs",
+      "bytes": 5810,
+      "sha256": "e29f09efa3a2666c5708bde13c830f1e39621a4afe8c7b7d116e57471e63689f"
+    },
+    {
+      "path": "environment-next/review-renderer.mjs",
+      "bytes": 12105,
+      "sha256": "39f6edc14370376182f7472683476966dcfc17ecc268809cc803e9cd1ba7b013"
+    },
+    {
+      "path": "environment-next/scale-context.mjs",
+      "bytes": 2848,
+      "sha256": "e459cf49fab869136ea7612451feedae6d96c366dbf3ea0513144c3b29168ce2"
+    },
+    {
+      "path": "environment-next/visual-field.mjs",
+      "bytes": 2636,
+      "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+    },
+    {
+      "path": "foundation-system.mjs",
+      "bytes": 2574,
+      "sha256": "d6e3037cdb4731a69f24cdc93a5a0e12ba2324ec6796438ee0b7026afe3d3490"
+    },
+    {
+      "path": "game-3d-mesh.mjs",
+      "bytes": 15834,
+      "sha256": "6b272ab877fb529882e0a20fcf04ae627843ab01844a59aeaca9d9eee1f230ba"
+    },
+    {
+      "path": "nature-visuals.mjs",
+      "bytes": 1404,
+      "sha256": "b63aa0b598ffa504a31cd5a060682a6f57254ae11b24a9a802f2e33458fa38af"
+    },
+    {
+      "path": "organic-world.mjs",
+      "bytes": 19264,
+      "sha256": "8fdf5fad32a6f1dba6d06ab85da379e19b115e62e6d9c281d68a20ad35bbd6af"
+    },
+    {
+      "path": "road-editor.mjs",
+      "bytes": 3619,
+      "sha256": "388442066c54c9647a44553a842e246a70f1f6e096f8b2a8a8af35d76c208ece"
+    },
+    {
+      "path": "road-junctions.mjs",
+      "bytes": 3304,
+      "sha256": "006e53c4eff16cdc50c888a80ca0d6996c5b70ae11c92253f8f7bb6e12772e01"
+    },
+    {
+      "path": "road-network.mjs",
+      "bytes": 8432,
+      "sha256": "aaa4c8bf4b7bdab34ae549d54b5946f91bce9f0a97d9fcb73cb3b88c8a5acd27"
+    },
+    {
+      "path": "road-surface.mjs",
+      "bytes": 1936,
+      "sha256": "495f2ad9950d5d46da2d1898ff29545168516bdc30c56b8d66097c822acfd2dc"
+    },
+    {
+      "path": "road-visual-offsets.mjs",
+      "bytes": 1196,
+      "sha256": "f4860f58e48453da1d4ff522e483f01ccad6c95770d3b7cc82eaa6eb11d9cecd"
+    },
+    {
+      "path": "scene-batches.mjs",
+      "bytes": 2272,
+      "sha256": "29bf23afbe0c3ee74111b0e92f33e693d20e220573e51ea9b37166a1d95fac82"
+    },
+    {
+      "path": "settlement-architecture.mjs",
+      "bytes": 1976,
+      "sha256": "b9cbd242ab745617174f4b9041003109116adc5732a959180a40ca9fb8e7c457"
+    },
+    {
+      "path": "settlement-play.mjs",
+      "bytes": 14946,
+      "sha256": "f81532c1e7b2b621919fcefc218901ef858410aa42c56174410747226c229584"
+    },
+    {
+      "path": "settlement-render-fixtures.mjs",
+      "bytes": 1462,
+      "sha256": "7000ebbb24197a854ee519c07267774e7f0c5269bd0710f4b5d10e0f0c20530f"
+    },
+    {
+      "path": "simulation.mjs",
+      "bytes": 19070,
+      "sha256": "2073430cdbbd121f9f2e36251da9835d530fcd30a7671b904962c07b0f31885f"
+    },
+    {
+      "path": "terrain-classification.mjs",
+      "bytes": 2394,
+      "sha256": "a8996943ef3714c32b6b2b637118e2213c0f8b129649dc84cc856464c479954f"
+    },
+    {
+      "path": "terrain-surface.mjs",
+      "bytes": 2913,
+      "sha256": "9a979aa4e1338c7e8df5fe8d18fad5e4da7410f75e26979d14f2bc17646ca705"
+    },
+    {
+      "path": "turn-highlights.mjs",
+      "bytes": 1956,
+      "sha256": "f8af172ac8a777992a85b9ff480a55b4ec09ba4f8f1edd5462ea40ed9e5aba2b"
+    },
+    {
+      "path": "ui-kit/kenney-models.mjs",
+      "bytes": 14363,
+      "sha256": "d9d8758e7a4f0b531d07f29e51d029ceb84eb12415f1d1a177a64cb9397633cf"
+    },
+    {
+      "path": "ui-kit/render-3d.mjs",
+      "bytes": 16329,
+      "sha256": "17807fca731944e6d932872036f530c65f652e50f4f6a9ee1b4691602a4c7e30"
+    },
+    {
+      "path": "world-gen.mjs",
+      "bytes": 15258,
+      "sha256": "5f18a0fbe9377de6d4153c2bb8e557d609a68409e65caec62728ea41d4f9b345"
+    },
+    {
+      "path": "world-renderer-three.mjs",
+      "bytes": 11081,
+      "sha256": "22ff6cc026823dceae67637a7ffceb21ca81a92a383286d59273bf83e257fcdf"
+    }
+  ]
+}

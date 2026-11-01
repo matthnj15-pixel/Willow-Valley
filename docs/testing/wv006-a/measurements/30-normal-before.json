@@ -1,0 +1,36 @@
+{
+  "seed": "WV-C01-hamlet30",
+  "count": 30,
+  "quality": "normal",
+  "treatment": "before",
+  "viewport": {
+    "width": 574,
+    "height": 580
+  },
+  "devicePixelRatio": 2,
+  "renderDPR": 1.5,
+  "cameraPath": "orbit-v1",
+  "initialCamera": {
+    "yaw": 0.71,
+    "pitch": 0.86,
+    "zoom": 546,
+    "focusX": -21,
+    "focusZ": -13
+  },
+  "warmupSeconds": 2,
+  "durationSeconds": 8,
+  "frameCount": 28,
+  "medianMs": 283.40000000000055,
+  "p95Ms": 366.7000000000007,
+  "p99Ms": 383.39999999999964,
+  "peakDrawCalls": 96,
+  "peakTriangles": 78514,
+  "textureBytes": 23795371,
+  "surfaceTextureBytes": 2823850.6666666665,
+  "geometryBytes": 2284644,
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "shadows": false,
+  "cancelled": false,
+  "phonePerformanceVerified": false,
+  "sourceRevision": "wv006-a-1"
+}

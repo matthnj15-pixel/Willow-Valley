@@ -1,0 +1,36 @@
+{
+  "seed": "WV-D01-town100",
+  "count": 100,
+  "quality": "low",
+  "treatment": "after",
+  "viewport": {
+    "width": 574,
+    "height": 580
+  },
+  "devicePixelRatio": 2,
+  "renderDPR": 1,
+  "cameraPath": "orbit-v1",
+  "initialCamera": {
+    "yaw": 0.71,
+    "pitch": 0.86,
+    "zoom": 798,
+    "focusX": -33,
+    "focusZ": -19
+  },
+  "warmupSeconds": 2,
+  "durationSeconds": 8,
+  "frameCount": 28,
+  "medianMs": 299.90000000000146,
+  "p95Ms": 350,
+  "p99Ms": 350,
+  "peakDrawCalls": 97,
+  "peakTriangles": 121882,
+  "textureBytes": 23792299,
+  "surfaceTextureBytes": 2820779,
+  "geometryBytes": 2512888,
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "shadows": false,
+  "cancelled": false,
+  "phonePerformanceVerified": false,
+  "sourceRevision": "wv006-a-1"
+}
