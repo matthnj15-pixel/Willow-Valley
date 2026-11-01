@@ -1,0 +1,11 @@
+Poly Haven Leafy Grass, Dirt and Rock Face 03 are CC0 1.0.
+Asset pages:
+https://polyhaven.com/a/leafy_grass
+https://polyhaven.com/a/dirt
+https://polyhaven.com/a/rock_face_03
+Publisher license statement: https://polyhaven.com/license
+CC0 text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+Acquired publisher byte counts/MD5s, source SHA256s and derivative SHA256s are
+recorded in detail-manifest.json. Source images are not committed. Derivatives
+are made by scripts/build-wv006-environment.mjs --import-textures SOURCE_DIRECTORY.
+All runtime files are local. No publisher URL is requested by the running page.

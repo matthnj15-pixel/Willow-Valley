@@ -1,0 +1,157 @@
+{
+  "revision": "wv006-a-2",
+  "runtimeReady": false,
+  "sources": [
+    {
+      "id": "grass-color",
+      "assetURL": "https://polyhaven.com/a/leafy_grass",
+      "metadataURL": "https://api.polyhaven.com/files/leafy_grass",
+      "metadataSHA256": "e92cf48209fc3df091d841b2e5a1bb7e74bd9490d899921161eafcbb3fd8e935",
+      "sourceURL": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/leafy_grass/leafy_grass_diff_1k.jpg",
+      "sourceBytes": 1195394,
+      "sourceSHA256": "cfa40bc9d9417d1852db8753a8d5917f110c40101179f63543c382e39bc05e4a",
+      "publisherMD5": "0dbc071e91d6905edfcfbe8eb785a1ab",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license"
+    },
+    {
+      "id": "grass-normal",
+      "assetURL": "https://polyhaven.com/a/leafy_grass",
+      "metadataURL": "https://api.polyhaven.com/files/leafy_grass",
+      "metadataSHA256": "e92cf48209fc3df091d841b2e5a1bb7e74bd9490d899921161eafcbb3fd8e935",
+      "sourceURL": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/leafy_grass/leafy_grass_nor_gl_1k.png",
+      "sourceBytes": 6111876,
+      "sourceSHA256": "7cba8d8a3cbd14663fd974b73ecebcbb42e0cc258d912867e9dd67a5582ca4d9",
+      "publisherMD5": "a98f306f4dafb1e956d562b78503e174",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license"
+    },
+    {
+      "id": "soil-color",
+      "assetURL": "https://polyhaven.com/a/dirt",
+      "metadataURL": "https://api.polyhaven.com/files/dirt",
+      "metadataSHA256": "f621ac1ef1251b19f4c9669d282a9a702e5b7c1680b7d928ce04515fa084e4ba",
+      "sourceURL": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/dirt/dirt_diff_1k.jpg",
+      "sourceBytes": 730425,
+      "sourceSHA256": "6ce6ca7e28ed046f7f93fa60dcb29f8cf42cd5a539adc5676675acccfa34efd3",
+      "publisherMD5": "cb37e24797597b1dd1ae3819fa80f076",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license"
+    },
+    {
+      "id": "soil-normal",
+      "assetURL": "https://polyhaven.com/a/dirt",
+      "metadataURL": "https://api.polyhaven.com/files/dirt",
+      "metadataSHA256": "f621ac1ef1251b19f4c9669d282a9a702e5b7c1680b7d928ce04515fa084e4ba",
+      "sourceURL": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/dirt/dirt_nor_gl_1k.png",
+      "sourceBytes": 5904305,
+      "sourceSHA256": "be315cdb7667d58df160a92be2b22423480912ac5668188f3c8360d464203f47",
+      "publisherMD5": "e1d855d9d6b1c9b39681ee4f4097303b",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license"
+    },
+    {
+      "id": "rock-color",
+      "assetURL": "https://polyhaven.com/a/rock_face_03",
+      "metadataURL": "https://api.polyhaven.com/files/rock_face_03",
+      "metadataSHA256": "7573b890cad31b20b61e55a42d8a3095948358efd462d91cbeee790dbc07738f",
+      "sourceURL": "https://dl.polyhaven.org/file/ph-assets/Textures/jpg/1k/rock_face_03/rock_face_03_diff_1k.jpg",
+      "sourceBytes": 927082,
+      "sourceSHA256": "ea48e0e47ad42c8bd312476178b1248ec66f0eb19156a26a1c222f2a40caaf2d",
+      "publisherMD5": "e4c34abb1aad5befe12754fad507147a",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license"
+    },
+    {
+      "id": "rock-normal",
+      "assetURL": "https://polyhaven.com/a/rock_face_03",
+      "metadataURL": "https://api.polyhaven.com/files/rock_face_03",
+      "metadataSHA256": "7573b890cad31b20b61e55a42d8a3095948358efd462d91cbeee790dbc07738f",
+      "sourceURL": "https://dl.polyhaven.org/file/ph-assets/Textures/png/1k/rock_face_03/rock_face_03_nor_gl_1k.png",
+      "sourceBytes": 5841646,
+      "sourceSHA256": "69cb133b4c6e7d046820bf5d1642dde3bbbaa56e5d4c889992ba251db8cf5218",
+      "publisherMD5": "17a4feb957478ce571e1146c1e278e31",
+      "license": "CC0-1.0",
+      "licenseURL": "https://polyhaven.com/license"
+    }
+  ],
+  "entries": [
+    {
+      "id": "grass-color",
+      "file": "grass-color.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 604885,
+      "sha256": "311fd4613832a9fde1a32953d099c025a9782e6c38df4aed552948ce5a6615da",
+      "colorSpace": "srgb",
+      "source": "grass-color",
+      "processing": "sharp 0.35.5 Lanczos3, JPEG quality 90 4:4:4"
+    },
+    {
+      "id": "grass-normal",
+      "file": "grass-normal.png",
+      "width": 512,
+      "height": 512,
+      "bytes": 638902,
+      "sha256": "c0f6c7d6fe897651b4c21a08d2ab84f6c15d7491af1ff428face8849350b48e2",
+      "colorSpace": "linear",
+      "source": "grass-normal",
+      "processing": "sharp 0.35.5 Lanczos3, lossless PNG, no sRGB conversion"
+    },
+    {
+      "id": "soil-color",
+      "file": "soil-color.jpg",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 278671,
+      "sha256": "96b3c6dbf8dca43e38f2db4ae398071d0a8770491d69c31abdd84375a87da955",
+      "colorSpace": "srgb",
+      "source": "soil-color",
+      "processing": "sharp 0.35.5 Lanczos3, JPEG quality 90 4:4:4"
+    },
+    {
+      "id": "soil-normal",
+      "file": "soil-normal.png",
+      "width": 512,
+      "height": 512,
+      "bytes": 551093,
+      "sha256": "e9133062bad5fbafa530e55b1f0f9a205b3572448cd4b456f272d90f04b566f2",
+      "colorSpace": "linear",
+      "source": "soil-normal",
+      "processing": "sharp 0.35.5 Lanczos3, lossless PNG, no sRGB conversion"
+    },
+    {
+      "id": "rock-color",
+      "file": "rock-color.jpg",
+      "width": 512,
+      "height": 512,
+      "bytes": 100387,
+      "sha256": "0aaa8fcbdf0144d529aa108e97819efa40fdb5e251c05d5622d3d005784b695f",
+      "colorSpace": "srgb",
+      "source": "rock-color",
+      "processing": "sharp 0.35.5 Lanczos3, JPEG quality 90 4:4:4"
+    },
+    {
+      "id": "rock-low",
+      "file": "rock-low.jpg",
+      "width": 256,
+      "height": 256,
+      "bytes": 18629,
+      "sha256": "c78ca87b5f71747b169ca1a43e97e7601655f614ef63ae5c8683c671bf09d377",
+      "colorSpace": "srgb",
+      "source": "rock-color",
+      "processing": "sharp 0.35.5 Lanczos3, JPEG quality 85 4:4:4"
+    },
+    {
+      "id": "rock-normal",
+      "file": "rock-normal.png",
+      "width": 256,
+      "height": 256,
+      "bytes": 132147,
+      "sha256": "b8551331f7fd2c41ede6393f220d0892ead463e93090aacc5fb8b9cfe96d711b",
+      "colorSpace": "linear",
+      "source": "rock-normal",
+      "processing": "sharp 0.35.5 Lanczos3, lossless PNG, no sRGB conversion"
+    }
+  ]
+}
