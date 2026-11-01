@@ -611,7 +611,7 @@
     },
     {
       "command": "npm test",
-      "result": "195 passed; one existing icon skip (separately verified after build:icons)"
+      "result": "205 passed; one existing icon skip, separately verified after generation; refreshed develop includes ten new plot unit tests."
     },
     {
       "command": "npm run build:assets",
@@ -683,5 +683,7 @@
     "correction": "Main C2 GLB restored byte-for-byte; expanded market-civic-square exported separately and explicitly selected by C gallery",
     "targetedVerification": "4 passed: civic choices at / and /dev/, complete hamlet growth/quality/contact/budget test and failed-import scope check"
   },
-  "candidateSeparation": "civic.glb now contains nine candidates, while all ten main C2 roots are unchanged. Gallery display roots/bounds/materials are equivalent to the earlier bulk views; final root mapping is verified by focused/browser checks. Full scene fixtures remeasured after separation."
+  "candidateSeparation": "civic.glb now contains nine candidates, while all ten main C2 roots are unchanged. Gallery display roots/bounds/materials are equivalent to the earlier bulk views; final root mapping is verified by focused/browser checks. Full scene fixtures remeasured after separation.",
+  "refreshedDevelop": "c2a3ab47858363efb8f1558846942f7d87db8fb3",
+  "refreshedChecks": "205 unit tests pass, one existing icon skip verified separately; asset/icon/offline builds pass. Full 127-test run is followed by affected hamlet/plot tests introduced by the refreshed develop; current PR CI repeats the combined 129-test suite."
 }
