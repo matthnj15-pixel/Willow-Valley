@@ -3304,7 +3304,7 @@ var views = { ground: () => {
   viewer.setCamera({ ...viewer.getCamera(), zoom: 7, pitch: 1.1, yaw: 0.6, focusY: world.sample(x2, z).height });
 }, detail: () => {
   viewer.focusOn(center.x - 52, center.y - 52);
-  viewer.setCamera({ ...viewer.getCamera(), zoom: 17, pitch: 0.58, yaw: 0.6 });
+  viewer.setCamera({ ...viewer.getCamera(), zoom: 17, pitch: 0.58, yaw: 0.6, focusY: 17 });
 }, wide: () => focus(world.width * 0.5, world.depth * 0.5, world.depth * 0.7, 0.85), near: () => focus(center.x, center.y, 105, 0.42), junction: () => focus(center.x, center.y, 110, 0.78), forest: () => {
   const p = world.trees.find((t) => world.sample(t.x, t.z).water === null) || { x: center.x, z: center.y };
   focus(p.x, p.z, 130, 0.55);
@@ -3336,7 +3336,7 @@ for (const [id, action] of Object.entries(views)) $(id).onclick = () => {
   action();
   params.set("view", id);
 };
-var benchmarkCamera = { yaw: 0.71, pitch: 0.86, zoom: world.depth * 0.84, focusX: world.width * -0.03, focusZ: world.depth * -0.02 };
+var benchmarkCamera = { focusY: 17, yaw: 0.71, pitch: 0.86, zoom: world.depth * 0.84, focusX: world.width * -0.03, focusZ: world.depth * -0.02 };
 if (count) viewer.setCamera(benchmarkCamera);
 else (views[params.get("view")] || views.detail)();
 if (params.has("camera")) try {
