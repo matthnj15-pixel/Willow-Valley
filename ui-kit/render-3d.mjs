@@ -114,8 +114,8 @@ export function mountWorld3D(canvas,initialWorld,{
   if(settlement)updateSettlement();
   if(reset)resetCamera();else render();
  }
- function put(index,data){
-  if(presentation){presentation.upload(index,data);return;}
+ function put(index,data,surfaceKinds=null,surfaceOffsets=null){
+  if(presentation){presentation.upload(index,data,surfaceKinds,surfaceOffsets);return;}
   gl.bindBuffer(gl.ARRAY_BUFFER,buffers[index]);gl.bufferData(gl.ARRAY_BUFFER,data,gl.STATIC_DRAW);
  }
  function updateKenney(){
@@ -210,7 +210,7 @@ function updateSettlement(){
   touchFocus:settlementTouchFocus,
   liveGesture:settlementLiveGesture,pendingControl:settlementPendingControl});
  for(const [index,vertices] of [[5,data.surfaces],[6,data.zones],[7,data.structures],[8,data.guides]]){
-  put(index,vertices);
+  put(index,vertices,index===5?data.surfaceKinds:null,index===5?data.surfaceOffsets:null);
   counts[index]=vertices.length/9;
  }
  editorMarkers=data.editorMarkers;
