@@ -1,0 +1,367 @@
+{
+  "baseDevelop": "5e39c72ff5e205dea166fa18febdfa89aaa5aec8",
+  "output": {
+    "url": "assets/wv/buildings-next/catalog.glb",
+    "bytes": 3499164,
+    "sha256": "47bb946da13849f77491a08b7f66fa6413e10bb3a26fb5c4351b7d3b8449a520"
+  },
+  "units": "visual metres",
+  "gameUnitsPerMetre": 2.8,
+  "entries": [
+    {
+      "id": "home-steep-gable",
+      "dimensions": [
+        5.513076305389404,
+        6.853674286454916,
+        5.6157066822052
+      ],
+      "triangles": 4937,
+      "lowTriangles": 3476,
+      "materialGroups": 8,
+      "fixedScaleFit": null,
+      "budgetExceptions": [
+        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ]
+    },
+    {
+      "id": "home-long-ridge",
+      "dimensions": [
+        5.7028889656066895,
+        6.646391743272543,
+        7.588279604911804
+      ],
+      "triangles": 6340,
+      "lowTriangles": 4522,
+      "materialGroups": 8,
+      "fixedScaleFit": null,
+      "budgetExceptions": [
+        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ]
+    },
+    {
+      "id": "home-low-hip",
+      "dimensions": [
+        5,
+        4.855000132173299,
+        5
+      ],
+      "triangles": 5793,
+      "lowTriangles": 2538,
+      "materialGroups": 8,
+      "fixedScaleFit": null,
+      "budgetExceptions": [
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ]
+    },
+    {
+      "id": "home-porch-cabin",
+      "dimensions": [
+        5.534493923187256,
+        6.64763700351119,
+        6.313289284706116
+      ],
+      "triangles": 5790,
+      "lowTriangles": 4118,
+      "materialGroups": 7,
+      "fixedScaleFit": null,
+      "budgetExceptions": [
+        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ]
+    },
+    {
+      "id": "home-offset-gables",
+      "dimensions": [
+        7.299776077270508,
+        6.853674286454916,
+        5.6157066822052
+      ],
+      "triangles": 7189,
+      "lowTriangles": 5057,
+      "materialGroups": 9,
+      "fixedScaleFit": null,
+      "budgetExceptions": [
+        "Accepted PR81 geometry and textures retained; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ]
+    },
+    {
+      "id": "facility-farm",
+      "dimensions": [
+        8.50442361831665,
+        5.594642274081707,
+        5.940000057220459
+      ],
+      "triangles": 1168,
+      "lowTriangles": 808,
+      "materialGroups": 1,
+      "fixedScaleFit": {
+        "availableGameUnits": [
+          46,
+          41.2
+        ],
+        "fullGameUnits": [
+          23.81238613128662,
+          16.632000160217284
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      },
+      "budgetExceptions": []
+    },
+    {
+      "id": "facility-smith",
+      "dimensions": [
+        5.900000095367432,
+        5.619999997317791,
+        5.317872047424316
+      ],
+      "triangles": 688,
+      "lowTriangles": 640,
+      "materialGroups": 1,
+      "fixedScaleFit": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          16.52000026702881,
+          14.890041732788085
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      },
+      "budgetExceptions": []
+    },
+    {
+      "id": "facility-granary",
+      "dimensions": [
+        7.520538330078125,
+        6.039914548397064,
+        6.694999933242798
+      ],
+      "triangles": 1408,
+      "lowTriangles": 1108,
+      "materialGroups": 1,
+      "fixedScaleFit": {
+        "availableGameUnits": [
+          30,
+          26.8
+        ],
+        "fullGameUnits": [
+          21.057507324218747,
+          18.745999813079834
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      },
+      "budgetExceptions": []
+    },
+    {
+      "id": "facility-lumber",
+      "dimensions": [
+        8.199999809265137,
+        3.4550000354647636,
+        4.550000071525574
+      ],
+      "triangles": 756,
+      "lowTriangles": 720,
+      "materialGroups": 1,
+      "fixedScaleFit": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          22.95999946594238,
+          12.740000200271606
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      },
+      "budgetExceptions": []
+    },
+    {
+      "id": "facility-market",
+      "dimensions": [
+        9.925000190734863,
+        2.8832505866885185,
+        3.921643942594528
+      ],
+      "triangles": 636,
+      "lowTriangles": 528,
+      "materialGroups": 1,
+      "fixedScaleFit": {
+        "availableGameUnits": [
+          46,
+          41.2
+        ],
+        "fullGameUnits": [
+          27.790000534057615,
+          10.980603039264679
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      },
+      "budgetExceptions": []
+    }
+  ],
+  "textureBytes": 162055,
+  "estimatedMipRGBA8Bytes": 5068122,
+  "probes": [
+    {
+      "quality": "normal",
+      "count": 32,
+      "failures": []
+    },
+    {
+      "quality": "low",
+      "count": 32,
+      "failures": []
+    }
+  ],
+  "cameraBoundsChecks": {
+    "count": 48,
+    "failed": []
+  },
+  "scenes": [
+    {
+      "count": 30,
+      "quality": "normal",
+      "drawCalls": 67,
+      "triangles": 192440,
+      "textures": 21,
+      "geometries": 139,
+      "submissions": 156,
+      "medianSubmissionMs": 1.3000000000465661,
+      "p95SubmissionMs": 2.699999999953434,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 150,
+        "triangles": 250000
+      },
+      "phonePerformanceVerified": false,
+      "passes": true
+    },
+    {
+      "count": 100,
+      "quality": "normal",
+      "drawCalls": 67,
+      "triangles": 630990,
+      "textures": 21,
+      "geometries": 139,
+      "submissions": 171,
+      "medianSubmissionMs": 1,
+      "p95SubmissionMs": 1.3000000000465661,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 150,
+        "triangles": 250000
+      },
+      "phonePerformanceVerified": false,
+      "passes": false
+    },
+    {
+      "count": 30,
+      "quality": "low",
+      "drawCalls": 65,
+      "triangles": 127412,
+      "textures": 21,
+      "geometries": 155,
+      "submissions": 191,
+      "medianSubmissionMs": 1.0999999998603016,
+      "p95SubmissionMs": 1.3999999999068677,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 100,
+        "triangles": 150000
+      },
+      "phonePerformanceVerified": false,
+      "passes": true
+    },
+    {
+      "count": 100,
+      "quality": "low",
+      "drawCalls": 65,
+      "triangles": 415826,
+      "textures": 21,
+      "geometries": 155,
+      "submissions": 206,
+      "medianSubmissionMs": 1.0999999998603016,
+      "p95SubmissionMs": 3.4000000001396984,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 100,
+        "triangles": 150000
+      },
+      "phonePerformanceVerified": false,
+      "passes": false
+    }
+  ],
+  "commands": [
+    {
+      "command": "node scripts/build-wv006-baselines.mjs",
+      "result": "pass; checkout-only; deterministic GLB and manifest"
+    },
+    {
+      "command": "node --test tests/wv006-baselines.test.mjs",
+      "result": "4 passed; glTF 0 errors / 0 warnings"
+    },
+    {
+      "command": "npm test",
+      "result": "171 passed; 1 skipped"
+    },
+    {
+      "command": "npm run build:assets",
+      "result": "pass; no tracked regenerated artifacts changed"
+    },
+    {
+      "command": "npm run build:icons",
+      "result": "pass"
+    },
+    {
+      "command": "npm run build:offline",
+      "result": "pass"
+    },
+    {
+      "command": "npm run test:e2e",
+      "result": "102 passed; final isolated run"
+    },
+    {
+      "command": "WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity",
+      "result": "16 passed"
+    },
+    {
+      "command": "node scripts/measure-wv006-baselines.mjs",
+      "result": "pass; 64 geometry probes and all camera bounds pass; 100-home triangle gates explicitly fail"
+    }
+  ],
+  "earlierRun": {
+    "result": "98 passed / 4 failed during concurrent software-rendered evidence capture",
+    "affected": "B3 read-only scene, C1 hamlet, C2 workplaces, C3 marketplace",
+    "resolution": "All four passed in the sequential full-suite rerun; no shared source or test changes."
+  },
+  "remaining": [
+    "human art review",
+    "F final-ground repeat",
+    "F actual parcel/slope/road/water placement",
+    "F combined scene / 100-home triangle budget",
+    "F runtime offline integration / physical phone UAT"
+  ],
+  "runtimeReady": false
+}
