@@ -1,0 +1,81 @@
+{
+  "seed": "WILLOW-1048",
+  "quality": "low",
+  "look": "context",
+  "grass": true,
+  "scene": "unchanged B/C four-home context",
+  "initialCamera": {
+    "yaw": 0.63,
+    "pitch": 0.5,
+    "zoom": 30,
+    "focusX": -56,
+    "focusZ": 11.199999999999989,
+    "focusY": 10
+  },
+  "cameraPath": "meadow-orbit-v1",
+  "viewport": {
+    "width": 574,
+    "height": 580
+  },
+  "devicePixelRatio": 2,
+  "renderDPR": 1,
+  "warmupSeconds": 2,
+  "durationSeconds": 8,
+  "frameCount": 44,
+  "medianMs": 183.39999999999964,
+  "p95Ms": 216.69999999999982,
+  "p99Ms": 316.6999999999998,
+  "peakDrawCalls": 35,
+  "peakTriangles": 27711,
+  "textureBytes": 6498304,
+  "geometryBytes": 1764082,
+  "meadowInstances": 595,
+  "meadowTextureBytes": 731136,
+  "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+  "shadows": false,
+  "phonePerformanceVerified": false,
+  "serializationUnchanged": true,
+  "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+  "encodedBytes": 10113792,
+  "transferBytes": 10115892,
+  "resources": [
+    {
+      "path": "/ui-kit/wv006-environment.css",
+      "encodedBytes": 1328,
+      "transferBytes": 1628
+    },
+    {
+      "path": "/ui-kit/wv006-environment.mjs",
+      "encodedBytes": 279801,
+      "transferBytes": 280101
+    },
+    {
+      "path": "/assets/vendor/three.module.mjs",
+      "encodedBytes": 795147,
+      "transferBytes": 795447
+    },
+    {
+      "path": "/assets/wv/buildings-next/manifest.json",
+      "encodedBytes": 92343,
+      "transferBytes": 92643
+    },
+    {
+      "path": "/assets/wv/landscape-next/manifest.json",
+      "encodedBytes": 157029,
+      "transferBytes": 157329
+    },
+    {
+      "path": "/assets/wv/buildings-next/catalog.glb",
+      "encodedBytes": 7527564,
+      "transferBytes": 7527864
+    },
+    {
+      "path": "/assets/wv/landscape-next/landscape.glb",
+      "encodedBytes": 1260580,
+      "transferBytes": 1260880
+    }
+  ],
+  "browserVersion": "141.0.7390.37",
+  "recordedAt": "2026-11-02T01:00:43.980Z",
+  "sourceRevision": "d0cce2ce682d8e6b21d676f5a3278f468ad0da0e"
+}
