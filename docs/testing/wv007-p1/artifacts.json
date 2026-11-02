@@ -1,0 +1,4433 @@
+{
+  "sourcePins": [
+    {
+      "path": "scripts/build-wv007-buildings.mjs",
+      "sha256": "c286608ae0c3f1e766876b1b0e946245ab7f4c2d4645bd502761e99771ba352c"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "39035df40cc4c6fb6ec49bcfe0b1e1c09fe51b9c69d17e5288aa533ab4d3775e"
+    },
+    {
+      "path": "assets/wv/buildings-next/kit-detail-manifest.json",
+      "sha256": "f5d50ba92ff61a7713390581ea41b8d89cd2057a9a119d6399256bf58305e11d"
+    },
+    {
+      "path": "assets/wv/buildings-next/kit-detail.glb",
+      "sha256": "7008c62c3563029eced76654fb9556fa5da0262e841953a1d92d86075e820f3a"
+    },
+    {
+      "path": "assets/wv/storage-next/manifest.json",
+      "sha256": "b6bd6ca837aab9ec30750cfdaeac7d710bfc33aa0908c9d0fd7dabae37e668ed"
+    },
+    {
+      "path": "assets/wv/storage-next/storage.glb",
+      "sha256": "638fe141f28ca83e23926e21c9f7b2b7c03d7ec14770f64275413f7d46cd36d6"
+    },
+    {
+      "path": "assets/wv/buildings-next/License_Source.txt",
+      "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+    },
+    {
+      "path": "assets/wv/buildings-next/License_Kit_Source.txt",
+      "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+    },
+    {
+      "path": "assets/wv/storage-next/LICENSE.txt",
+      "sha256": "1efe667036d83e52916cc341e0965221f788f5fcc4bbe8bb11984dc606ffb08e"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "assets/wv/runtime-buildings-v1/.gitattributes",
+      "bytes": 33,
+      "sha256": "1ed6c8a1dfd0361b7e9fd5335dadef2566a85a2c8e0749e90b15bb4919c4c46b"
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/buildings-next-License_Kit_Source.txt",
+      "bytes": 897,
+      "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/buildings-next-License_Source.txt",
+      "bytes": 897,
+      "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "bytes": 2964484,
+      "sha256": "df8e73707d4c86d3a70ee7d04fd050a7e34912c0e58b424ccce2f5164965c8f3"
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "bytes": 3045888,
+      "sha256": "37d632f2b69477954853ac9b37e209b2044f1ed51a15cc602cfaa5e5d98d5b44"
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "bytes": 11024000,
+      "sha256": "6df5b7d03b075ddbce6ef7792a378ee87ce96237c83078ec462c6cc7ec6867dc"
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "bytes": 189696,
+      "sha256": "b8c4084a6b96f44b5a27a2bc0abb121f38ec7d85abfa8e172971eeaeef2e302c"
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "bytes": 352960,
+      "sha256": "ef66ab1cd1d1c89c9c915edc16fefd2dac517cb9cc997fafb3cf8ef665942ccf"
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/manifest.json",
+      "bytes": 1627434,
+      "sha256": "8cab8fa2f28eaed84600fb59ede21420b97724249c81b18f601f51201ba7f57b"
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/storage-next-LICENSE.txt",
+      "bytes": 602,
+      "sha256": "1efe667036d83e52916cc341e0965221f788f5fcc4bbe8bb11984dc606ffb08e"
+    }
+  ],
+  "bundles": [
+    {
+      "family": "C4",
+      "quality": "normal",
+      "url": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "sha256": "6df5b7d03b075ddbce6ef7792a378ee87ce96237c83078ec462c6cc7ec6867dc",
+      "bytes": 11024000,
+      "textures": [
+        {
+          "name": "T_VineLeaf.png",
+          "sha256": "fd471c5bd8e0b02ad2b57b7e9e89b14909d44b6f10430b89b324bdca043acaf8",
+          "bytes": 18887,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "C4 kit-derived structural roughness",
+          "sha256": "5b647366d31ea7a77682b20ba9a5c68964ee19356ab5a92c1905383d2208b42b",
+          "bytes": 27506,
+          "dimensions": [
+            384,
+            288
+          ],
+          "estimatedDecodedMipBytes": 589824
+        },
+        {
+          "name": "C4 kit-derived structural normals",
+          "sha256": "3724fe966e58bd57d0a9666b44591669990c69629fcfad88f35302f043cf6923",
+          "bytes": 306802,
+          "dimensions": [
+            768,
+            576
+          ],
+          "estimatedDecodedMipBytes": 2359296
+        },
+        {
+          "name": "C4 kit-derived structural color atlas",
+          "sha256": "4e0c9f4415785467cd2c0ebfb1d1691441f382200a9159bc1f2c2335062acec3",
+          "bytes": 651792,
+          "dimensions": [
+            1536,
+            1152
+          ],
+          "estimatedDecodedMipBytes": 9437184
+        },
+        {
+          "name": "MegaKit RoundTilesrough",
+          "sha256": "0812a778da9adf70a512baf5baa9cdef5150f173e730ee65e967bc31d92b59f2",
+          "bytes": 34563,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit RoundTilesnormal",
+          "sha256": "fed06a264e7f3db1d4f5cba11c42eeada5cfb2a66a5993c55e9b5f8b624c8e71",
+          "bytes": 306686,
+          "dimensions": [
+            512,
+            512
+          ],
+          "estimatedDecodedMipBytes": 1398102
+        },
+        {
+          "name": "T_RoundTiles_BaseColor",
+          "sha256": "36b5244cc98f3369cb062beaae232a6bef63fe7393db8536d376b604d8bf6da2",
+          "bytes": 7091,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit Brickrough",
+          "sha256": "9c7117edd640f674d2555c4e63aa5038c379747d981b9469db0a7379f7e23df5",
+          "bytes": 21910,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit Bricknormal",
+          "sha256": "d61bc3a4b8002ce722e39de94f47d7b0c7efff968f675586c8be26435a34478d",
+          "bytes": 504052,
+          "dimensions": [
+            512,
+            512
+          ],
+          "estimatedDecodedMipBytes": 1398102
+        },
+        {
+          "name": "T_Brick_BaseColor",
+          "sha256": "4ffd0cabc7a9370f2859e0a94a6f390bf4b9f50aa10837f91a997b0fd0a8cc45",
+          "bytes": 9376,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit Plasterrough",
+          "sha256": "5fdc58a7af42b6e6315bd3f91b77be4a4cb9d654906a4fe07da1019998f96780",
+          "bytes": 50389,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit Plasternormal",
+          "sha256": "0a9a45f1e736147ba04e3b52bb4e44b7b4a91d1e88a65b58e7538835dfa79d6b",
+          "bytes": 373650,
+          "dimensions": [
+            512,
+            512
+          ],
+          "estimatedDecodedMipBytes": 1398102
+        },
+        {
+          "name": "T_Plaster_BaseColor",
+          "sha256": "4cd5dd3883f8137bca294f011a94cf3c1eab05a0fc2446862333b037a2bbc8fa",
+          "bytes": 3422,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit WoodTrimrough",
+          "sha256": "53af3a4efb30c70d2a634d0a45d79cfa81e3cf0c8bb7730f75e02868b85c6045",
+          "bytes": 45946,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit WoodTrimnormal",
+          "sha256": "d23112da5e5ddd88e2fea48c8386b83bb03c0c5a92b6496e9cd0f4a7a27e56b6",
+          "bytes": 428380,
+          "dimensions": [
+            512,
+            512
+          ],
+          "estimatedDecodedMipBytes": 1398102
+        },
+        {
+          "name": "T_WoodTrim_BaseColor",
+          "sha256": "877bd33004d33b005a6a2ef87cc68977b9c0b179369b91f9b0d7d6707ba51d83",
+          "bytes": 29346,
+          "dimensions": [
+            512,
+            512
+          ],
+          "estimatedDecodedMipBytes": 1398102
+        },
+        {
+          "name": "MegaKit RockTrimrough",
+          "sha256": "12eee438e32cea80aef4f0153a2227da04d6df1d662a87dbffe28d98da6137e7",
+          "bytes": 12990,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit RockTrimnormal",
+          "sha256": "18457bb0dbea21d6bae286cf4bdfd854ef7f974872dff9cf113ded0c258c1341",
+          "bytes": 494116,
+          "dimensions": [
+            512,
+            512
+          ],
+          "estimatedDecodedMipBytes": 1398102
+        },
+        {
+          "name": "T_RockTrim_BaseColor",
+          "sha256": "e7e916bec6980f13400077b1975eaf54d85aeeed02fade779559333ff0d13737",
+          "bytes": 9024,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit UnevenBrickrough",
+          "sha256": "4ed7972796ba2f9092dda7198c049f1d5e94fef83b9a11ba5ce45b5732a31bee",
+          "bytes": 36963,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit UnevenBricknormal",
+          "sha256": "38262c9d8c289fe4829f68d73899d2e597261f18e4a140b6f2dbeb1f422b5905",
+          "bytes": 426644,
+          "dimensions": [
+            512,
+            512
+          ],
+          "estimatedDecodedMipBytes": 1398102
+        },
+        {
+          "name": "T_UnevenBrick_BaseColor",
+          "sha256": "b14844bb18eb02d8b51d587dccce6c8f884ec12c035b3ff8c623ad7f4b0f0808",
+          "bytes": 10071,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit FlatTilesrough",
+          "sha256": "5e0650cc933de60b75b8ebe381f57c32b59c530488f00abbeb08d9f54fa185b8",
+          "bytes": 31898,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "MegaKit FlatTilesnormal",
+          "sha256": "c82cf8d1153c4cc566fe516adbc376ce18d7caf0ce96e605bcd2b48562ed1da3",
+          "bytes": 354607,
+          "dimensions": [
+            512,
+            512
+          ],
+          "estimatedDecodedMipBytes": 1398102
+        },
+        {
+          "name": "T_FlatTiles_BaseColor",
+          "sha256": "b94580fcf6b7dbf314630f3f581cd8ed05169a3ddc210535bfdee3db7936e59b",
+          "bytes": 7287,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "WV006 civic path",
+          "sha256": "c09054e92e5d1ce2c948cda92feb79b39307cfbb731046f41fa32011c9fd32a3",
+          "bytes": 2787,
+          "dimensions": [
+            128,
+            128
+          ],
+          "estimatedDecodedMipBytes": 87382
+        },
+        {
+          "name": "WV006 civic original flagstones",
+          "sha256": "f9b67d2abb2bdc7199afeb0730f7c75b10108e3c4ba6f1a39b8eb87d44349ab2",
+          "bytes": 1409,
+          "dimensions": [
+            128,
+            128
+          ],
+          "estimatedDecodedMipBytes": 87382
+        }
+      ],
+      "estimatedDecodedMipBytes": 28639248,
+      "validation": {
+        "errors": 0,
+        "warnings": 0,
+        "messages": [
+          {
+            "code": "IMAGE_NPOT_DIMENSIONS",
+            "message": "Image has non-power-of-two dimensions: 384x288.",
+            "severity": 2,
+            "pointer": "/images/1"
+          },
+          {
+            "code": "IMAGE_NPOT_DIMENSIONS",
+            "message": "Image has non-power-of-two dimensions: 768x576.",
+            "severity": 2,
+            "pointer": "/images/2"
+          },
+          {
+            "code": "IMAGE_NPOT_DIMENSIONS",
+            "message": "Image has non-power-of-two dimensions: 1536x1152.",
+            "severity": 2,
+            "pointer": "/images/3"
+          }
+        ]
+      }
+    },
+    {
+      "family": "C4",
+      "quality": "low",
+      "url": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "sha256": "37d632f2b69477954853ac9b37e209b2044f1ed51a15cc602cfaa5e5d98d5b44",
+      "bytes": 3045888,
+      "textures": [
+        {
+          "name": "C4 low kit-derived color atlas",
+          "sha256": "5811c537007c26e928403c24a88d35839499a7fb4448a1b393b2ef9223979a18",
+          "bytes": 234307,
+          "dimensions": [
+            768,
+            576
+          ],
+          "estimatedDecodedMipBytes": 2359296
+        },
+        {
+          "name": "T_RoundTiles_BaseColor",
+          "sha256": "36b5244cc98f3369cb062beaae232a6bef63fe7393db8536d376b604d8bf6da2",
+          "bytes": 7091,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "T_Brick_BaseColor",
+          "sha256": "4ffd0cabc7a9370f2859e0a94a6f390bf4b9f50aa10837f91a997b0fd0a8cc45",
+          "bytes": 9376,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "T_Plaster_BaseColor",
+          "sha256": "4cd5dd3883f8137bca294f011a94cf3c1eab05a0fc2446862333b037a2bbc8fa",
+          "bytes": 3422,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "T_WoodTrim_BaseColor",
+          "sha256": "877bd33004d33b005a6a2ef87cc68977b9c0b179369b91f9b0d7d6707ba51d83",
+          "bytes": 29346,
+          "dimensions": [
+            512,
+            512
+          ],
+          "estimatedDecodedMipBytes": 1398102
+        },
+        {
+          "name": "T_RockTrim_BaseColor",
+          "sha256": "e7e916bec6980f13400077b1975eaf54d85aeeed02fade779559333ff0d13737",
+          "bytes": 9024,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "T_UnevenBrick_BaseColor",
+          "sha256": "b14844bb18eb02d8b51d587dccce6c8f884ec12c035b3ff8c623ad7f4b0f0808",
+          "bytes": 10071,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "T_FlatTiles_BaseColor",
+          "sha256": "b94580fcf6b7dbf314630f3f581cd8ed05169a3ddc210535bfdee3db7936e59b",
+          "bytes": 7287,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "WV006 civic path",
+          "sha256": "c09054e92e5d1ce2c948cda92feb79b39307cfbb731046f41fa32011c9fd32a3",
+          "bytes": 2787,
+          "dimensions": [
+            128,
+            128
+          ],
+          "estimatedDecodedMipBytes": 87382
+        },
+        {
+          "name": "WV006 civic original flagstones",
+          "sha256": "f9b67d2abb2bdc7199afeb0730f7c75b10108e3c4ba6f1a39b8eb87d44349ab2",
+          "bytes": 1409,
+          "dimensions": [
+            128,
+            128
+          ],
+          "estimatedDecodedMipBytes": 87382
+        }
+      ],
+      "estimatedDecodedMipBytes": 6029318,
+      "validation": {
+        "errors": 0,
+        "warnings": 0,
+        "messages": [
+          {
+            "code": "IMAGE_NPOT_DIMENSIONS",
+            "message": "Image has non-power-of-two dimensions: 768x576.",
+            "severity": 2,
+            "pointer": "/images/0"
+          }
+        ]
+      }
+    },
+    {
+      "family": "C4",
+      "quality": "distance",
+      "url": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "sha256": "df8e73707d4c86d3a70ee7d04fd050a7e34912c0e58b424ccce2f5164965c8f3",
+      "bytes": 2964484,
+      "textures": [
+        {
+          "name": "C4 low kit-derived color atlas",
+          "sha256": "5811c537007c26e928403c24a88d35839499a7fb4448a1b393b2ef9223979a18",
+          "bytes": 234307,
+          "dimensions": [
+            768,
+            576
+          ],
+          "estimatedDecodedMipBytes": 2359296
+        },
+        {
+          "name": "T_RoundTiles_BaseColor",
+          "sha256": "36b5244cc98f3369cb062beaae232a6bef63fe7393db8536d376b604d8bf6da2",
+          "bytes": 7091,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "T_Brick_BaseColor",
+          "sha256": "4ffd0cabc7a9370f2859e0a94a6f390bf4b9f50aa10837f91a997b0fd0a8cc45",
+          "bytes": 9376,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "T_Plaster_BaseColor",
+          "sha256": "4cd5dd3883f8137bca294f011a94cf3c1eab05a0fc2446862333b037a2bbc8fa",
+          "bytes": 3422,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "T_WoodTrim_BaseColor",
+          "sha256": "877bd33004d33b005a6a2ef87cc68977b9c0b179369b91f9b0d7d6707ba51d83",
+          "bytes": 29346,
+          "dimensions": [
+            512,
+            512
+          ],
+          "estimatedDecodedMipBytes": 1398102
+        },
+        {
+          "name": "T_RockTrim_BaseColor",
+          "sha256": "e7e916bec6980f13400077b1975eaf54d85aeeed02fade779559333ff0d13737",
+          "bytes": 9024,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "T_UnevenBrick_BaseColor",
+          "sha256": "b14844bb18eb02d8b51d587dccce6c8f884ec12c035b3ff8c623ad7f4b0f0808",
+          "bytes": 10071,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "T_FlatTiles_BaseColor",
+          "sha256": "b94580fcf6b7dbf314630f3f581cd8ed05169a3ddc210535bfdee3db7936e59b",
+          "bytes": 7287,
+          "dimensions": [
+            256,
+            256
+          ],
+          "estimatedDecodedMipBytes": 349526
+        },
+        {
+          "name": "WV006 civic path",
+          "sha256": "c09054e92e5d1ce2c948cda92feb79b39307cfbb731046f41fa32011c9fd32a3",
+          "bytes": 2787,
+          "dimensions": [
+            128,
+            128
+          ],
+          "estimatedDecodedMipBytes": 87382
+        },
+        {
+          "name": "WV006 civic original flagstones",
+          "sha256": "f9b67d2abb2bdc7199afeb0730f7c75b10108e3c4ba6f1a39b8eb87d44349ab2",
+          "bytes": 1409,
+          "dimensions": [
+            128,
+            128
+          ],
+          "estimatedDecodedMipBytes": 87382
+        }
+      ],
+      "estimatedDecodedMipBytes": 6029318,
+      "validation": {
+        "errors": 0,
+        "warnings": 0,
+        "messages": [
+          {
+            "code": "IMAGE_NPOT_DIMENSIONS",
+            "message": "Image has non-power-of-two dimensions: 768x576.",
+            "severity": 2,
+            "pointer": "/images/0"
+          }
+        ]
+      }
+    },
+    {
+      "family": "D",
+      "quality": "normal",
+      "url": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "sha256": "ef66ab1cd1d1c89c9c915edc16fefd2dac517cb9cc997fafb3cf8ef665942ccf",
+      "bytes": 352960,
+      "textures": [],
+      "estimatedDecodedMipBytes": 0,
+      "validation": {
+        "errors": 0,
+        "warnings": 0,
+        "messages": []
+      }
+    },
+    {
+      "family": "D",
+      "quality": "low",
+      "url": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "sha256": "b8c4084a6b96f44b5a27a2bc0abb121f38ec7d85abfa8e172971eeaeef2e302c",
+      "bytes": 189696,
+      "textures": [],
+      "estimatedDecodedMipBytes": 0,
+      "validation": {
+        "errors": 0,
+        "warnings": 0,
+        "messages": []
+      }
+    }
+  ],
+  "entries": [
+    {
+      "family": "C4",
+      "id": "home-steep-gable",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "home-steep-gable",
+      "node": "home-steep-gable",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 5351,
+      "primitives": 12,
+      "boundsMin": [
+        -2.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.756538152694702,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-steep-gable",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 486,
+            "maxMetres": 4.9094661899592405e-8,
+            "rmsMetres": 3.0580173447309564e-9
+          },
+          "derivativeToNormal": {
+            "samples": 486,
+            "maxMetres": 4.9094661899592405e-8,
+            "rmsMetres": 3.0580173447309564e-9
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-long-ridge",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "home-long-ridge",
+      "node": "home-long-ridge",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 6754,
+      "primitives": 12,
+      "boundsMin": [
+        -2.8514444828033447,
+        -0.11999999865889549,
+        -3.794139862060547
+      ],
+      "boundsMax": [
+        2.8514444828033447,
+        6.5263917446136475,
+        3.7941397428512573
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-long-ridge",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 502,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 502,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-low-hip",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "home-low-hip",
+      "node": "home-low-hip",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 6231,
+      "primitives": 12,
+      "boundsMin": [
+        -2.5,
+        -0.11999999865889549,
+        -2.5
+      ],
+      "boundsMax": [
+        2.5,
+        4.735000133514404,
+        2.5
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-low-hip",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 495,
+            "maxMetres": 7.39148100501819e-8,
+            "rmsMetres": 3.3222236513219534e-9
+          },
+          "derivativeToNormal": {
+            "samples": 495,
+            "maxMetres": 7.39148100501819e-8,
+            "rmsMetres": 3.3222236513219534e-9
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-porch-cabin",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "home-porch-cabin",
+      "node": "home-porch-cabin",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 6204,
+      "primitives": 11,
+      "boundsMin": [
+        -2.767246961593628,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.767246961593628,
+        6.527637004852295,
+        3.519149422645569
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-porch-cabin",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 506,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 506,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-offset-gables",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "home-offset-gables",
+      "node": "home-offset-gables",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 7603,
+      "primitives": 13,
+      "boundsMin": [
+        -3.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        3.5432379245758057,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-offset-gables",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 506,
+            "maxMetres": 1.341104505225843e-9,
+            "rmsMetres": 5.961936732597811e-11
+          },
+          "derivativeToNormal": {
+            "samples": 506,
+            "maxMetres": 1.341104505225843e-9,
+            "rmsMetres": 5.961936732597811e-11
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-farm",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "facility-farm",
+      "node": "facility-farm",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 5994,
+      "primitives": 13,
+      "boundsMin": [
+        -4.031840801239014,
+        -0.11999999731779099,
+        -3.005000114440918
+      ],
+      "boundsMax": [
+        4.569883823394775,
+        5.53000020980835,
+        3.005000114440918
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-farm",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 499,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 499,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-smith",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "facility-smith",
+      "node": "facility-smith",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 5908,
+      "primitives": 6,
+      "boundsMin": [
+        -2.950000047683716,
+        -0.11999999731779099,
+        -2.658936023712158
+      ],
+      "boundsMax": [
+        2.950000047683716,
+        5.5,
+        2.6887221336364746
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-smith",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 502,
+            "maxMetres": 5.960464477539063e-8,
+            "rmsMetres": 3.7622118180859275e-9
+          },
+          "derivativeToNormal": {
+            "samples": 502,
+            "maxMetres": 5.960464477539063e-8,
+            "rmsMetres": 3.7622118180859275e-9
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-granary",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "facility-granary",
+      "node": "facility-granary",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 4842,
+      "primitives": 10,
+      "boundsMin": [
+        -4.684999942779541,
+        -0.1687883734703064,
+        -2.930000066757202
+      ],
+      "boundsMax": [
+        2.9269230365753174,
+        5.929999828338623,
+        3.799999952316284
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-granary",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 490,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 490,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-lumber",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "facility-lumber",
+      "node": "facility-lumber",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 2245,
+      "primitives": 6,
+      "boundsMin": [
+        -4.099999904632568,
+        -0.11999999731779099,
+        -1.975000023841858
+      ],
+      "boundsMax": [
+        4.099999904632568,
+        3.3595380783081055,
+        2.575000047683716
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-lumber",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 475,
+            "maxMetres": 8.57252763722393e-18,
+            "rmsMetres": 3.9333454380388016e-19
+          },
+          "derivativeToNormal": {
+            "samples": 475,
+            "maxMetres": 8.57252763722393e-18,
+            "rmsMetres": 3.9333454380388016e-19
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-market",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "facility-market",
+      "node": "facility-market",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 5828,
+      "primitives": 43,
+      "boundsMin": [
+        -8,
+        -0.12000003457069397,
+        -7
+      ],
+      "boundsMax": [
+        8,
+        2.430000066757202,
+        7
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-market",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 478,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 478,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-promenade",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "park-promenade",
+      "node": "park-promenade",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 3430,
+      "primitives": 21,
+      "boundsMin": [
+        -5.085008144378662,
+        -0.12162365764379501,
+        -4.800000190734863
+      ],
+      "boundsMax": [
+        5.081623554229736,
+        4.189000129699707,
+        4.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-promenade",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 501,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 501,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "park-sitting-garden",
+      "node": "park-sitting-garden",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 2832,
+      "primitives": 23,
+      "boundsMin": [
+        -5.400000095367432,
+        -0.12162365764379501,
+        -4.800000190734863
+      ],
+      "boundsMax": [
+        5.400000095367432,
+        4.189000129699707,
+        4.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-sitting-garden",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 511,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 511,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-village-green",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "park-village-green",
+      "node": "park-village-green",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 2178,
+      "primitives": 11,
+      "boundsMin": [
+        -5,
+        -0.11999998986721039,
+        -4.254093647003174
+      ],
+      "boundsMax": [
+        4.792171955108643,
+        4.189000129699707,
+        4.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-village-green",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 438,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 438,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "park-woodland-walk",
+      "node": "park-woodland-walk",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 3024,
+      "primitives": 16,
+      "boundsMin": [
+        -5.235008239746094,
+        -0.12162365764379501,
+        -5.124093055725098
+      ],
+      "boundsMax": [
+        5.181623458862305,
+        4.259999752044678,
+        5.346732139587402
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-woodland-walk",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 511,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 511,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "plaza-town-square",
+      "node": "plaza-town-square",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 1858,
+      "primitives": 11,
+      "boundsMin": [
+        -5.835008144378662,
+        -0.12000000476837158,
+        -4.900000095367432
+      ],
+      "boundsMax": [
+        5.662182807922363,
+        4.189000129699707,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-town-square",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 492,
+            "maxMetres": 7.450580596923828e-9,
+            "rmsMetres": 3.358981142444284e-10
+          },
+          "derivativeToNormal": {
+            "samples": 492,
+            "maxMetres": 7.450580596923828e-9,
+            "rmsMetres": 3.358981142444284e-10
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "plaza-fountain-court",
+      "node": "plaza-fountain-court",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 2082,
+      "primitives": 13,
+      "boundsMin": [
+        -5.599999904632568,
+        -0.11999999731779099,
+        -5.2491559982299805
+      ],
+      "boundsMax": [
+        5.599999904632568,
+        4.189000129699707,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-fountain-court",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 503,
+            "maxMetres": 5.587935447692871e-9,
+            "rmsMetres": 5.632809309189432e-10
+          },
+          "derivativeToNormal": {
+            "samples": 503,
+            "maxMetres": 5.587935447692871e-9,
+            "rmsMetres": 5.693706314762947e-10
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "plaza-flower-court",
+      "node": "plaza-flower-court",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 1316,
+      "primitives": 14,
+      "boundsMin": [
+        -5.599999904632568,
+        -0.11999999731779099,
+        -4.900000095367432
+      ],
+      "boundsMax": [
+        5.599999904632568,
+        0.8700000047683716,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-flower-court",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 467,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 467,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "plaza-festival-court",
+      "node": "plaza-festival-court",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "triangles": 2112,
+      "primitives": 13,
+      "boundsMin": [
+        -5.735008239746094,
+        -0.12000000476837158,
+        -4.900000095367432
+      ],
+      "boundsMax": [
+        5.599999904632568,
+        4.189000129699707,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-festival-court",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 493,
+            "maxMetres": 7.450580596923828e-9,
+            "rmsMetres": 3.355572738580741e-10
+          },
+          "derivativeToNormal": {
+            "samples": 493,
+            "maxMetres": 7.450580596923828e-9,
+            "rmsMetres": 3.355572738580741e-10
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-steep-gable",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "home-steep-gable__low",
+      "node": "home-steep-gable__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 3488,
+      "primitives": 9,
+      "boundsMin": [
+        -2.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.756538152694702,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-steep-gable__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 486,
+            "maxMetres": 0.6372685215038635,
+            "rmsMetres": 0.11544254412584325
+          },
+          "derivativeToNormal": {
+            "samples": 483,
+            "maxMetres": 4.618149056579921e-8,
+            "rmsMetres": 2.2080103788230197e-9
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-long-ridge",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "home-long-ridge__low",
+      "node": "home-long-ridge__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 4534,
+      "primitives": 9,
+      "boundsMin": [
+        -2.8514444828033447,
+        -0.11999999865889549,
+        -3.794139862060547
+      ],
+      "boundsMax": [
+        2.8514444828033447,
+        6.5263917446136475,
+        3.7941397428512573
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-long-ridge__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 502,
+            "maxMetres": 0.8310794861341927,
+            "rmsMetres": 0.1421315153488019
+          },
+          "derivativeToNormal": {
+            "samples": 482,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-low-hip",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "home-low-hip__low",
+      "node": "home-low-hip__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 2574,
+      "primitives": 9,
+      "boundsMin": [
+        -2.5,
+        -0.11999999865889549,
+        -2.5
+      ],
+      "boundsMax": [
+        2.5,
+        4.730000019073486,
+        2.5
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-low-hip__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 495,
+            "maxMetres": 0.5106954466768636,
+            "rmsMetres": 0.1839227721629721
+          },
+          "derivativeToNormal": {
+            "samples": 503,
+            "maxMetres": 0.2558704545768106,
+            "rmsMetres": 0.0645223766187562
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-porch-cabin",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "home-porch-cabin__low",
+      "node": "home-porch-cabin__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 4130,
+      "primitives": 8,
+      "boundsMin": [
+        -2.767246961593628,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.767246961593628,
+        6.527637004852295,
+        3.519149422645569
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-porch-cabin__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 506,
+            "maxMetres": 0.8310794830322227,
+            "rmsMetres": 0.13152835161519658
+          },
+          "derivativeToNormal": {
+            "samples": 492,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-offset-gables",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "home-offset-gables__low",
+      "node": "home-offset-gables__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 5069,
+      "primitives": 10,
+      "boundsMin": [
+        -3.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        3.5431374311447144,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-offset-gables__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 506,
+            "maxMetres": 0.7560270947423009,
+            "rmsMetres": 0.10974572993841461
+          },
+          "derivativeToNormal": {
+            "samples": 500,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-farm",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "facility-farm__low",
+      "node": "facility-farm__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 3108,
+      "primitives": 11,
+      "boundsMin": [
+        -4.031825542449951,
+        -0.11999999731779099,
+        -3.1050000190734863
+      ],
+      "boundsMax": [
+        4.569878101348877,
+        5.53000020980835,
+        3.005000114440918
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-farm__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 499,
+            "maxMetres": 1.0090651053734392,
+            "rmsMetres": 0.22749946471811813
+          },
+          "derivativeToNormal": {
+            "samples": 492,
+            "maxMetres": 0.2797688126449531,
+            "rmsMetres": 0.12927219037816484
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-smith",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "facility-smith__low",
+      "node": "facility-smith__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 2252,
+      "primitives": 6,
+      "boundsMin": [
+        -2.950000047683716,
+        -0.11999999731779099,
+        -2.658936023712158
+      ],
+      "boundsMax": [
+        2.950000047683716,
+        5.5,
+        2.6887223720550537
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-smith__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 502,
+            "maxMetres": 1.36318817484769,
+            "rmsMetres": 0.3520270931470045
+          },
+          "derivativeToNormal": {
+            "samples": 469,
+            "maxMetres": 0.27976894778807726,
+            "rmsMetres": 0.11657841565691528
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-granary",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "facility-granary__low",
+      "node": "facility-granary__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 2548,
+      "primitives": 9,
+      "boundsMin": [
+        -4.684999942779541,
+        -0.1687883734703064,
+        -3.0299999713897705
+      ],
+      "boundsMax": [
+        2.926908493041992,
+        5.929999828338623,
+        3.799999952316284
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-granary__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 490,
+            "maxMetres": 0.580199671381025,
+            "rmsMetres": 0.21953311166074826
+          },
+          "derivativeToNormal": {
+            "samples": 502,
+            "maxMetres": 0.27976874160764564,
+            "rmsMetres": 0.11582875666391297
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-lumber",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "facility-lumber__low",
+      "node": "facility-lumber__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 1292,
+      "primitives": 4,
+      "boundsMin": [
+        -4.099999904632568,
+        -0.11999999731779099,
+        -1.975000023841858
+      ],
+      "boundsMax": [
+        4.099999904632568,
+        3.3595380783081055,
+        2.575000047683716
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-lumber__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 475,
+            "maxMetres": 0.38999998569488525,
+            "rmsMetres": 0.09059433043429231
+          },
+          "derivativeToNormal": {
+            "samples": 488,
+            "maxMetres": 0.08199995756149292,
+            "rmsMetres": 0.02772610875419538
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-market",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "facility-market__low",
+      "node": "facility-market__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 3086,
+      "primitives": 31,
+      "boundsMin": [
+        -8,
+        -0.12000003457069397,
+        -7
+      ],
+      "boundsMax": [
+        8,
+        2.430000066757202,
+        7
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-market__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 478,
+            "maxMetres": 1.2855123373016097,
+            "rmsMetres": 0.1702052684064971
+          },
+          "derivativeToNormal": {
+            "samples": 506,
+            "maxMetres": 0.06500007931328641,
+            "rmsMetres": 0.007095483628290511
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-promenade",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "park-promenade__low",
+      "node": "park-promenade__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 1478,
+      "primitives": 21,
+      "boundsMin": [
+        -5.085008144378662,
+        -0.12162365764379501,
+        -4.800000190734863
+      ],
+      "boundsMax": [
+        5.081623554229736,
+        3.8550593852996826,
+        4.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-promenade__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 501,
+            "maxMetres": 0.6707672422503571,
+            "rmsMetres": 0.15404755761851738
+          },
+          "derivativeToNormal": {
+            "samples": 452,
+            "maxMetres": 0.06499981880187988,
+            "rmsMetres": 0.010755255734298853
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-sitting-garden",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "park-sitting-garden__low",
+      "node": "park-sitting-garden__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 1512,
+      "primitives": 23,
+      "boundsMin": [
+        -5.400000095367432,
+        -0.12162365764379501,
+        -4.800000190734863
+      ],
+      "boundsMax": [
+        5.400000095367432,
+        3.8550593852996826,
+        4.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-sitting-garden__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 511,
+            "maxMetres": 0.8179272643384732,
+            "rmsMetres": 0.1325110275481689
+          },
+          "derivativeToNormal": {
+            "samples": 459,
+            "maxMetres": 0.06499981880187988,
+            "rmsMetres": 0.010865903174842904
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-village-green",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "park-village-green__low",
+      "node": "park-village-green__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 666,
+      "primitives": 11,
+      "boundsMin": [
+        -5,
+        -0.11999998986721039,
+        -4.254093647003174
+      ],
+      "boundsMax": [
+        4.792171955108643,
+        3.8550593852996826,
+        4.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-village-green__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 438,
+            "maxMetres": 0.6675659917140595,
+            "rmsMetres": 0.22936933096866086
+          },
+          "derivativeToNormal": {
+            "samples": 501,
+            "maxMetres": 0.06500005722045898,
+            "rmsMetres": 0.012813316222383301
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-woodland-walk",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "park-woodland-walk__low",
+      "node": "park-woodland-walk__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 988,
+      "primitives": 16,
+      "boundsMin": [
+        -5.235008239746094,
+        -0.12162365764379501,
+        -5.15008544921875
+      ],
+      "boundsMax": [
+        5.181623458862305,
+        3.9154555797576904,
+        5.37178373336792
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-woodland-walk__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 511,
+            "maxMetres": 0.8179273742047087,
+            "rmsMetres": 0.1977813389549013
+          },
+          "derivativeToNormal": {
+            "samples": 471,
+            "maxMetres": 0.06500005722045898,
+            "rmsMetres": 0.013995219449175358
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-town-square",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "plaza-town-square__low",
+      "node": "plaza-town-square__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 774,
+      "primitives": 11,
+      "boundsMin": [
+        -5.835008144378662,
+        -0.12000000476837158,
+        -4.900000095367432
+      ],
+      "boundsMax": [
+        5.618155002593994,
+        3.8550593852996826,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-town-square__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 492,
+            "maxMetres": 1.2198975460730397,
+            "rmsMetres": 0.260111535194701
+          },
+          "derivativeToNormal": {
+            "samples": 448,
+            "maxMetres": 0.06500005722045898,
+            "rmsMetres": 0.01106352582656901
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-fountain-court",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "plaza-fountain-court__low",
+      "node": "plaza-fountain-court__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 1018,
+      "primitives": 13,
+      "boundsMin": [
+        -5.599999904632568,
+        -0.11999999731779099,
+        -4.93389892578125
+      ],
+      "boundsMax": [
+        5.599999904632568,
+        3.8550593852996826,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-fountain-court__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 503,
+            "maxMetres": 0.7261912310370312,
+            "rmsMetres": 0.16429690108254513
+          },
+          "derivativeToNormal": {
+            "samples": 502,
+            "maxMetres": 0.29237867779275617,
+            "rmsMetres": 0.04300891390896077
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-flower-court",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "plaza-flower-court__low",
+      "node": "plaza-flower-court__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 972,
+      "primitives": 14,
+      "boundsMin": [
+        -5.599999904632568,
+        -0.11999999731779099,
+        -4.900000095367432
+      ],
+      "boundsMax": [
+        5.599999904632568,
+        0.8700000047683716,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-flower-court__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 467,
+            "maxMetres": 0.5199999809265137,
+            "rmsMetres": 0.1926504450035039
+          },
+          "derivativeToNormal": {
+            "samples": 452,
+            "maxMetres": 0.06500005722045898,
+            "rmsMetres": 0.006182159072292197
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-festival-court",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "plaza-festival-court__low",
+      "node": "plaza-festival-court__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "triangles": 968,
+      "primitives": 13,
+      "boundsMin": [
+        -5.735008239746094,
+        -0.12000000476837158,
+        -4.900000095367432
+      ],
+      "boundsMax": [
+        5.599999904632568,
+        3.8550593852996826,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-festival-court__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 493,
+            "maxMetres": 1.537006815711184,
+            "rmsMetres": 0.29515007875158983
+          },
+          "derivativeToNormal": {
+            "samples": 436,
+            "maxMetres": 0.06500005722045898,
+            "rmsMetres": 0.01427859812191458
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-steep-gable",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "home-steep-gable__low",
+      "node": "home-steep-gable__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 3488,
+      "primitives": 9,
+      "boundsMin": [
+        -2.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.756538152694702,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-steep-gable__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 486,
+            "maxMetres": 0.6372685215038635,
+            "rmsMetres": 0.11544254412584325
+          },
+          "derivativeToNormal": {
+            "samples": 483,
+            "maxMetres": 4.618149056579921e-8,
+            "rmsMetres": 2.2080103788230197e-9
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-long-ridge",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "home-long-ridge__low",
+      "node": "home-long-ridge__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 4534,
+      "primitives": 9,
+      "boundsMin": [
+        -2.8514444828033447,
+        -0.11999999865889549,
+        -3.794139862060547
+      ],
+      "boundsMax": [
+        2.8514444828033447,
+        6.5263917446136475,
+        3.7941397428512573
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-long-ridge__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 502,
+            "maxMetres": 0.8310794861341927,
+            "rmsMetres": 0.1421315153488019
+          },
+          "derivativeToNormal": {
+            "samples": 482,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-low-hip",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "home-low-hip__low",
+      "node": "home-low-hip__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 2574,
+      "primitives": 9,
+      "boundsMin": [
+        -2.5,
+        -0.11999999865889549,
+        -2.5
+      ],
+      "boundsMax": [
+        2.5,
+        4.730000019073486,
+        2.5
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-low-hip__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 495,
+            "maxMetres": 0.5106954466768636,
+            "rmsMetres": 0.1839227721629721
+          },
+          "derivativeToNormal": {
+            "samples": 503,
+            "maxMetres": 0.2558704545768106,
+            "rmsMetres": 0.0645223766187562
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-porch-cabin",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "home-porch-cabin__low",
+      "node": "home-porch-cabin__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 4130,
+      "primitives": 8,
+      "boundsMin": [
+        -2.767246961593628,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        2.767246961593628,
+        6.527637004852295,
+        3.519149422645569
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-porch-cabin__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 506,
+            "maxMetres": 0.8310794830322227,
+            "rmsMetres": 0.13152835161519658
+          },
+          "derivativeToNormal": {
+            "samples": 492,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "home-offset-gables",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "home-offset-gables__low",
+      "node": "home-offset-gables__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 5069,
+      "primitives": 10,
+      "boundsMin": [
+        -3.756538152694702,
+        -0.11999999865889549,
+        -2.794139862060547
+      ],
+      "boundsMax": [
+        3.5431374311447144,
+        6.7336742877960205,
+        2.8215668201446533
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "home-offset-gables__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 506,
+            "maxMetres": 0.7560270947423009,
+            "rmsMetres": 0.10974572993841461
+          },
+          "derivativeToNormal": {
+            "samples": 500,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-farm",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "facility-farm__low",
+      "node": "facility-farm__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 3108,
+      "primitives": 11,
+      "boundsMin": [
+        -4.031825542449951,
+        -0.11999999731779099,
+        -3.1050000190734863
+      ],
+      "boundsMax": [
+        4.569878101348877,
+        5.53000020980835,
+        3.005000114440918
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-farm__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 499,
+            "maxMetres": 1.0090651053734392,
+            "rmsMetres": 0.22749946471811813
+          },
+          "derivativeToNormal": {
+            "samples": 492,
+            "maxMetres": 0.2797688126449531,
+            "rmsMetres": 0.12927219037816484
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-smith",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "facility-smith__low",
+      "node": "facility-smith__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 2252,
+      "primitives": 6,
+      "boundsMin": [
+        -2.950000047683716,
+        -0.11999999731779099,
+        -2.658936023712158
+      ],
+      "boundsMax": [
+        2.950000047683716,
+        5.5,
+        2.6887223720550537
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-smith__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 502,
+            "maxMetres": 1.36318817484769,
+            "rmsMetres": 0.3520270931470045
+          },
+          "derivativeToNormal": {
+            "samples": 469,
+            "maxMetres": 0.27976894778807726,
+            "rmsMetres": 0.11657841565691528
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-granary",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "facility-granary__low",
+      "node": "facility-granary__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 2548,
+      "primitives": 9,
+      "boundsMin": [
+        -4.684999942779541,
+        -0.1687883734703064,
+        -3.0299999713897705
+      ],
+      "boundsMax": [
+        2.926908493041992,
+        5.929999828338623,
+        3.799999952316284
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-granary__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 490,
+            "maxMetres": 0.580199671381025,
+            "rmsMetres": 0.21953311166074826
+          },
+          "derivativeToNormal": {
+            "samples": 502,
+            "maxMetres": 0.27976874160764564,
+            "rmsMetres": 0.11582875666391297
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-lumber",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "facility-lumber__low",
+      "node": "facility-lumber__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 1292,
+      "primitives": 4,
+      "boundsMin": [
+        -4.099999904632568,
+        -0.11999999731779099,
+        -1.975000023841858
+      ],
+      "boundsMax": [
+        4.099999904632568,
+        3.3595380783081055,
+        2.575000047683716
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-lumber__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 475,
+            "maxMetres": 0.38999998569488525,
+            "rmsMetres": 0.09059433043429231
+          },
+          "derivativeToNormal": {
+            "samples": 488,
+            "maxMetres": 0.08199995756149292,
+            "rmsMetres": 0.02772610875419538
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "facility-market",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "facility-market__low",
+      "node": "facility-market__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 2118,
+      "primitives": 30,
+      "boundsMin": [
+        -8,
+        -0.12000003457069397,
+        -7
+      ],
+      "boundsMax": [
+        8,
+        2.430000066757202,
+        7
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "facility-market__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 478,
+            "maxMetres": 1.2855123373016097,
+            "rmsMetres": 0.1702052684064971
+          },
+          "derivativeToNormal": {
+            "samples": 506,
+            "maxMetres": 0.06500007931328641,
+            "rmsMetres": 0.007095483628290511
+          }
+        },
+        "omittedOptionalTriangles": 968,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-promenade",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "park-promenade__low",
+      "node": "park-promenade__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 1478,
+      "primitives": 21,
+      "boundsMin": [
+        -5.085008144378662,
+        -0.12162365764379501,
+        -4.800000190734863
+      ],
+      "boundsMax": [
+        5.081623554229736,
+        3.8550593852996826,
+        4.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-promenade__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 501,
+            "maxMetres": 0.6707672422503571,
+            "rmsMetres": 0.15404755761851738
+          },
+          "derivativeToNormal": {
+            "samples": 452,
+            "maxMetres": 0.06499981880187988,
+            "rmsMetres": 0.010755255734298853
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-sitting-garden",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "park-sitting-garden__low",
+      "node": "park-sitting-garden__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 1512,
+      "primitives": 23,
+      "boundsMin": [
+        -5.400000095367432,
+        -0.12162365764379501,
+        -4.800000190734863
+      ],
+      "boundsMax": [
+        5.400000095367432,
+        3.8550593852996826,
+        4.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-sitting-garden__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 511,
+            "maxMetres": 0.8179272643384732,
+            "rmsMetres": 0.1325110275481689
+          },
+          "derivativeToNormal": {
+            "samples": 459,
+            "maxMetres": 0.06499981880187988,
+            "rmsMetres": 0.010865903174842904
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-village-green",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "park-village-green__low",
+      "node": "park-village-green__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 666,
+      "primitives": 11,
+      "boundsMin": [
+        -5,
+        -0.11999998986721039,
+        -4.254093647003174
+      ],
+      "boundsMax": [
+        4.792171955108643,
+        3.8550593852996826,
+        4.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-village-green__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 438,
+            "maxMetres": 0.6675659917140595,
+            "rmsMetres": 0.22936933096866086
+          },
+          "derivativeToNormal": {
+            "samples": 501,
+            "maxMetres": 0.06500005722045898,
+            "rmsMetres": 0.012813316222383301
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "park-woodland-walk",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "park-woodland-walk__low",
+      "node": "park-woodland-walk__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 988,
+      "primitives": 16,
+      "boundsMin": [
+        -5.235008239746094,
+        -0.12162365764379501,
+        -5.15008544921875
+      ],
+      "boundsMax": [
+        5.181623458862305,
+        3.9154555797576904,
+        5.37178373336792
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "park-woodland-walk__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 511,
+            "maxMetres": 0.8179273742047087,
+            "rmsMetres": 0.1977813389549013
+          },
+          "derivativeToNormal": {
+            "samples": 471,
+            "maxMetres": 0.06500005722045898,
+            "rmsMetres": 0.013995219449175358
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-town-square",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "plaza-town-square__low",
+      "node": "plaza-town-square__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 774,
+      "primitives": 11,
+      "boundsMin": [
+        -5.835008144378662,
+        -0.12000000476837158,
+        -4.900000095367432
+      ],
+      "boundsMax": [
+        5.618155002593994,
+        3.8550593852996826,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-town-square__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 492,
+            "maxMetres": 1.2198975460730397,
+            "rmsMetres": 0.260111535194701
+          },
+          "derivativeToNormal": {
+            "samples": 448,
+            "maxMetres": 0.06500005722045898,
+            "rmsMetres": 0.01106352582656901
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-fountain-court",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "plaza-fountain-court__low",
+      "node": "plaza-fountain-court__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 1018,
+      "primitives": 13,
+      "boundsMin": [
+        -5.599999904632568,
+        -0.11999999731779099,
+        -4.93389892578125
+      ],
+      "boundsMax": [
+        5.599999904632568,
+        3.8550593852996826,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-fountain-court__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 503,
+            "maxMetres": 0.7261912310370312,
+            "rmsMetres": 0.16429690108254513
+          },
+          "derivativeToNormal": {
+            "samples": 502,
+            "maxMetres": 0.29237867779275617,
+            "rmsMetres": 0.04300891390896077
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-flower-court",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "plaza-flower-court__low",
+      "node": "plaza-flower-court__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 972,
+      "primitives": 14,
+      "boundsMin": [
+        -5.599999904632568,
+        -0.11999999731779099,
+        -4.900000095367432
+      ],
+      "boundsMax": [
+        5.599999904632568,
+        0.8700000047683716,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-flower-court__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 467,
+            "maxMetres": 0.5199999809265137,
+            "rmsMetres": 0.1926504450035039
+          },
+          "derivativeToNormal": {
+            "samples": 452,
+            "maxMetres": 0.06500005722045898,
+            "rmsMetres": 0.006182159072292197
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "C4",
+      "id": "plaza-festival-court",
+      "quality": "distance",
+      "sourceQuality": "low",
+      "sourceNode": "plaza-festival-court__low",
+      "node": "plaza-festival-court__low",
+      "bundle": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "triangles": 968,
+      "primitives": 13,
+      "boundsMin": [
+        -5.735008239746094,
+        -0.12000000476837158,
+        -4.900000095367432
+      ],
+      "boundsMax": [
+        5.599999904632568,
+        3.8550593852996826,
+        4.900000095367432
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "plaza-festival-court__low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 493,
+            "maxMetres": 1.537006815711184,
+            "rmsMetres": 0.29515007875158983
+          },
+          "derivativeToNormal": {
+            "samples": 436,
+            "maxMetres": 0.06500005722045898,
+            "rmsMetres": 0.01427859812191458
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "storehouse-l1",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "storehouse-l1-normal",
+      "node": "storehouse-l1-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 1578,
+      "primitives": 6,
+      "boundsMin": [
+        -4.699999809265137,
+        -2.582867919542764e-9,
+        -4.699999809265137
+      ],
+      "boundsMax": [
+        5.300000190734863,
+        4.525000095367432,
+        7.300000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "storehouse-l1-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 474,
+            "maxMetres": 6.159146526130144e-9,
+            "rmsMetres": 2.890508532879303e-10
+          },
+          "derivativeToNormal": {
+            "samples": 474,
+            "maxMetres": 6.159146526130144e-9,
+            "rmsMetres": 2.890508532879303e-10
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "warehouse-l2",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "warehouse-l2-normal",
+      "node": "warehouse-l2-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 2238,
+      "primitives": 6,
+      "boundsMin": [
+        -7.699999809265137,
+        -2.582867919542764e-9,
+        -6.199999809265137
+      ],
+      "boundsMax": [
+        8.300000190734863,
+        5.875,
+        8.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "warehouse-l2-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 480,
+            "maxMetres": 6.159146526130144e-9,
+            "rmsMetres": 2.811252906117551e-10
+          },
+          "derivativeToNormal": {
+            "samples": 480,
+            "maxMetres": 6.159146526130144e-9,
+            "rmsMetres": 2.811252906117551e-10
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "lumber",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "lumber-normal",
+      "node": "lumber-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 168,
+      "primitives": 2,
+      "boundsMin": [
+        -1,
+        1.3411045607369942e-9,
+        -0.6000000238418579
+      ],
+      "boundsMax": [
+        1,
+        0.7549999952316284,
+        0.6000000238418579
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "lumber-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 504,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 504,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "tools",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "tools-normal",
+      "node": "tools-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 180,
+      "primitives": 3,
+      "boundsMin": [
+        -0.6050000190734863,
+        1.7881393032936899e-9,
+        -0.39000001549720764
+      ],
+      "boundsMax": [
+        0.6050000190734863,
+        1.399999976158142,
+        0.39000001549720764
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "tools-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 270,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 270,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "sacks",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "sacks-normal",
+      "node": "sacks-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 160,
+      "primitives": 1,
+      "boundsMin": [
+        -0.5067852735519409,
+        -2.38418573772492e-9,
+        -0.3700000047683716
+      ],
+      "boundsMax": [
+        0.5167852640151978,
+        0.7200000286102295,
+        0.3700000047683716
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "sacks-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 480,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 480,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "barrel",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "barrel-normal",
+      "node": "barrel-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 160,
+      "primitives": 2,
+      "boundsMin": [
+        -0.30433809757232666,
+        -1.1920929132713809e-8,
+        -0.3199999928474426
+      ],
+      "boundsMax": [
+        0.30433809757232666,
+        0.8500000238418579,
+        0.3199999928474426
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "barrel-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 480,
+            "maxMetres": 7.83773945949838e-17,
+            "rmsMetres": 1.5015455262431692e-17
+          },
+          "derivativeToNormal": {
+            "samples": 480,
+            "maxMetres": 7.83773945949838e-17,
+            "rmsMetres": 1.5015455262431692e-17
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "cargo",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "cargo-normal",
+      "node": "cargo-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 96,
+      "primitives": 3,
+      "boundsMin": [
+        -0.75,
+        1.3411045607369942e-9,
+        -0.5
+      ],
+      "boundsMax": [
+        0.75,
+        0.8299999833106995,
+        0.5
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "cargo-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 288,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 288,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "well",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "well-normal",
+      "node": "well-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 232,
+      "primitives": 4,
+      "boundsMin": [
+        -0.8999999761581421,
+        5.9604645663569045e-9,
+        -0.7250000238418579
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        2.0999999046325684,
+        0.7250000238418579
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "well-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 348,
+            "maxMetres": 1.1756609520119815e-16,
+            "rmsMetres": 1.0915737903270983e-17
+          },
+          "derivativeToNormal": {
+            "samples": 348,
+            "maxMetres": 1.1756609520119815e-16,
+            "rmsMetres": 1.0915737903270983e-17
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "bench",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "bench-normal",
+      "node": "bench-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 108,
+      "primitives": 2,
+      "boundsMin": [
+        -0.8999999761581421,
+        5.9604645663569045e-9,
+        -0.27000001072883606
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        1.0099999904632568,
+        0.25
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "bench-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "noticeboard",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "noticeboard-normal",
+      "node": "noticeboard-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 108,
+      "primitives": 4,
+      "boundsMin": [
+        -0.824999988079071,
+        2.3841858265427618e-8,
+        -0.2750000059604645
+      ],
+      "boundsMax": [
+        0.824999988079071,
+        1.909999966621399,
+        0.2750000059604645
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "noticeboard-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "trough",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "trough-normal",
+      "node": "trough-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 72,
+      "primitives": 2,
+      "boundsMin": [
+        -0.8999999761581421,
+        -2.98023217215615e-10,
+        -0.3799999952316284
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        0.5,
+        0.3799999952316284
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "trough-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 216,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 216,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "wall",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "wall-normal",
+      "node": "wall-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 48,
+      "primitives": 1,
+      "boundsMin": [
+        -1.1399999856948853,
+        1.1920929132713809e-8,
+        -0.2199999988079071
+      ],
+      "boundsMax": [
+        1.1399999856948853,
+        0.7699999809265137,
+        0.2199999988079071
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "wall-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 144,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 144,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "fence",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "fence-normal",
+      "node": "fence-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 48,
+      "primitives": 2,
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -0.07500000298023224
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "fence-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 144,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 144,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "gate-open",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "gate-open-normal",
+      "node": "gate-open-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 108,
+      "primitives": 2,
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -1.8799999952316284
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "gate-open-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "gate-closed",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "gate-closed-normal",
+      "node": "gate-closed-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 108,
+      "primitives": 2,
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -0.07500000298023224
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "gate-closed-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "planted-common",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "planted-common-normal",
+      "node": "planted-common-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 144,
+      "primitives": 3,
+      "boundsMin": [
+        -0.550000011920929,
+        -1.4901161415892261e-9,
+        -0.3499999940395355
+      ],
+      "boundsMax": [
+        0.550000011920929,
+        0.5049999952316284,
+        0.3499999940395355
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "planted-common-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 432,
+            "maxMetres": 4.8985870794684264e-17,
+            "rmsMetres": 4.136226610842875e-18
+          },
+          "derivativeToNormal": {
+            "samples": 432,
+            "maxMetres": 4.8985870794684264e-17,
+            "rmsMetres": 4.136226610842875e-18
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "scaffold",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "scaffold-normal",
+      "node": "scaffold-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 240,
+      "primitives": 2,
+      "boundsMin": [
+        -1.149999976158142,
+        -2.3841858265427618e-8,
+        -0.5149999856948853
+      ],
+      "boundsMax": [
+        1.149999976158142,
+        3.5,
+        0.6299999952316284
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "scaffold-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 360,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 360,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "storehouse-frame",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "storehouse-frame-normal",
+      "node": "storehouse-frame-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 396,
+      "primitives": 3,
+      "boundsMin": [
+        -3.119999885559082,
+        3.5762786065873797e-9,
+        -2.619999885559082
+      ],
+      "boundsMax": [
+        3.119999885559082,
+        4.4746994972229,
+        3.799999952316284
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "storehouse-frame-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 396,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 396,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "person",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "person-normal",
+      "node": "person-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 240,
+      "primitives": 1,
+      "boundsMin": [
+        -0.2875528335571289,
+        5.9604645663569045e-9,
+        -0.18000000715255737
+      ],
+      "boundsMax": [
+        0.2875528335571289,
+        1.75,
+        0.18000000715255737
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "person-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 360,
+            "maxMetres": 4.408728404608808e-17,
+            "rmsMetres": 4.547070995494362e-18
+          },
+          "derivativeToNormal": {
+            "samples": 360,
+            "maxMetres": 4.408728404608808e-17,
+            "rmsMetres": 4.547070995494362e-18
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "cart",
+      "quality": "normal",
+      "sourceQuality": "normal",
+      "sourceNode": "cart-normal",
+      "node": "cart-normal",
+      "bundle": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "triangles": 360,
+      "primitives": 2,
+      "boundsMin": [
+        -0.8100000023841858,
+        1.1920929132713809e-8,
+        -1
+      ],
+      "boundsMax": [
+        0.8100000023841858,
+        1.274999976158142,
+        2.5058467388153076
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "cart-normal",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 360,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 360,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "storehouse-l1",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "storehouse-l1-low",
+      "node": "storehouse-l1-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 654,
+      "primitives": 5,
+      "boundsMin": [
+        -4.699999809265137,
+        -2.582867919542764e-9,
+        -4.699999809265137
+      ],
+      "boundsMax": [
+        5.300000190734863,
+        4.525000095367432,
+        7.300000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "storehouse-l1-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 491,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 491,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "warehouse-l2",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "warehouse-l2-low",
+      "node": "warehouse-l2-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 870,
+      "primitives": 5,
+      "boundsMin": [
+        -7.699999809265137,
+        -2.582867919542764e-9,
+        -6.199999809265137
+      ],
+      "boundsMax": [
+        8.300000190734863,
+        5.875,
+        8.800000190734863
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "warehouse-l2-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 435,
+            "maxMetres": 6.159146526130144e-9,
+            "rmsMetres": 3.017302121531057e-10
+          },
+          "derivativeToNormal": {
+            "samples": 435,
+            "maxMetres": 6.159146526130144e-9,
+            "rmsMetres": 3.017302121531057e-10
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "lumber",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "lumber-low",
+      "node": "lumber-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 132,
+      "primitives": 2,
+      "boundsMin": [
+        -1,
+        1.3411045607369942e-9,
+        -0.6000000238418579
+      ],
+      "boundsMax": [
+        1,
+        0.5950000286102295,
+        0.6000000238418579
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "lumber-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 396,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 396,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "tools",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "tools-low",
+      "node": "tools-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 108,
+      "primitives": 3,
+      "boundsMin": [
+        -0.6050000190734863,
+        1.7881393032936899e-9,
+        -0.39000001549720764
+      ],
+      "boundsMax": [
+        0.6050000190734863,
+        1.399999976158142,
+        0.39000001549720764
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "tools-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "sacks",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "sacks-low",
+      "node": "sacks-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 96,
+      "primitives": 1,
+      "boundsMin": [
+        -0.4838268756866455,
+        -2.38418573772492e-9,
+        -0.3700000047683716
+      ],
+      "boundsMax": [
+        0.49382686614990234,
+        0.7200000286102295,
+        0.3700000047683716
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "sacks-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 288,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 288,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "barrel",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "barrel-low",
+      "node": "barrel-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 96,
+      "primitives": 2,
+      "boundsMin": [
+        -0.277128130197525,
+        -1.1920929132713809e-8,
+        -0.3199999928474426
+      ],
+      "boundsMax": [
+        0.277128130197525,
+        0.8500000238418579,
+        0.3199999928474426
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "barrel-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 288,
+            "maxMetres": 7.83773945949838e-17,
+            "rmsMetres": 1.9384869389040154e-17
+          },
+          "derivativeToNormal": {
+            "samples": 288,
+            "maxMetres": 7.83773945949838e-17,
+            "rmsMetres": 1.9384869389040154e-17
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "cargo",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "cargo-low",
+      "node": "cargo-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 96,
+      "primitives": 3,
+      "boundsMin": [
+        -0.75,
+        1.3411045607369942e-9,
+        -0.5
+      ],
+      "boundsMax": [
+        0.75,
+        0.8299999833106995,
+        0.5
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "cargo-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 288,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 288,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "well",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "well-low",
+      "node": "well-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 168,
+      "primitives": 4,
+      "boundsMin": [
+        -0.8999999761581421,
+        5.9604645663569045e-9,
+        -0.7250000238418579
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        2.0999999046325684,
+        0.7250000238418579
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "well-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 504,
+            "maxMetres": 1.1756609520119815e-16,
+            "rmsMetres": 1.1709863372683583e-17
+          },
+          "derivativeToNormal": {
+            "samples": 504,
+            "maxMetres": 1.1756609520119815e-16,
+            "rmsMetres": 1.1709863372683583e-17
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "bench",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "bench-low",
+      "node": "bench-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 48,
+      "primitives": 2,
+      "boundsMin": [
+        -0.8999999761581421,
+        5.9604645663569045e-9,
+        -0.27000001072883606
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        1.0099999904632568,
+        0.25
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "bench-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 144,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 144,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "noticeboard",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "noticeboard-low",
+      "node": "noticeboard-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 60,
+      "primitives": 4,
+      "boundsMin": [
+        -0.824999988079071,
+        2.3841858265427618e-8,
+        -0.2750000059604645
+      ],
+      "boundsMax": [
+        0.824999988079071,
+        1.909999966621399,
+        0.2750000059604645
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "noticeboard-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 180,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 180,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "trough",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "trough-low",
+      "node": "trough-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 72,
+      "primitives": 2,
+      "boundsMin": [
+        -0.8999999761581421,
+        -2.98023217215615e-10,
+        -0.3799999952316284
+      ],
+      "boundsMax": [
+        0.8999999761581421,
+        0.5,
+        0.3799999952316284
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "trough-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 216,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 216,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "wall",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "wall-low",
+      "node": "wall-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 12,
+      "primitives": 1,
+      "boundsMin": [
+        -1.100000023841858,
+        1.1920929132713809e-8,
+        -0.1899999976158142
+      ],
+      "boundsMax": [
+        1.100000023841858,
+        0.6499999761581421,
+        0.1899999976158142
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "wall-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 36,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 36,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "fence",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "fence-low",
+      "node": "fence-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 48,
+      "primitives": 2,
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -0.07500000298023224
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "fence-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 144,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 144,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "gate-open",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "gate-open-low",
+      "node": "gate-open-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 108,
+      "primitives": 2,
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -1.8799999952316284
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "gate-open-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "gate-closed",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "gate-closed-low",
+      "node": "gate-closed-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 108,
+      "primitives": 2,
+      "boundsMin": [
+        -1.065000057220459,
+        2.3841858265427618e-8,
+        -0.07500000298023224
+      ],
+      "boundsMax": [
+        1.065000057220459,
+        1.0499999523162842,
+        0.07500000298023224
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "gate-closed-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 324,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "planted-common",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "planted-common-low",
+      "node": "planted-common-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 96,
+      "primitives": 3,
+      "boundsMin": [
+        -0.550000011920929,
+        -1.4901161415892261e-9,
+        -0.3499999940395355
+      ],
+      "boundsMax": [
+        0.550000011920929,
+        0.5049999952316284,
+        0.3499999940395355
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "planted-common-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 288,
+            "maxMetres": 4.8985870794684264e-17,
+            "rmsMetres": 5.065822328543225e-18
+          },
+          "derivativeToNormal": {
+            "samples": 288,
+            "maxMetres": 4.8985870794684264e-17,
+            "rmsMetres": 5.065822328543225e-18
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "scaffold",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "scaffold-low",
+      "node": "scaffold-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 240,
+      "primitives": 2,
+      "boundsMin": [
+        -1.149999976158142,
+        -2.3841858265427618e-8,
+        -0.5149999856948853
+      ],
+      "boundsMax": [
+        1.149999976158142,
+        3.5,
+        0.6299999952316284
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "scaffold-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 360,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 360,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "storehouse-frame",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "storehouse-frame-low",
+      "node": "storehouse-frame-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 312,
+      "primitives": 3,
+      "boundsMin": [
+        -3.119999885559082,
+        3.5762786065873797e-9,
+        -2.619999885559082
+      ],
+      "boundsMax": [
+        3.119999885559082,
+        4.4746994972229,
+        3.799999952316284
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "storehouse-frame-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 468,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 468,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "person",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "person-low",
+      "node": "person-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 144,
+      "primitives": 1,
+      "boundsMin": [
+        -0.2833012640476227,
+        5.9604645663569045e-9,
+        -0.18000000715255737
+      ],
+      "boundsMax": [
+        0.2833012640476227,
+        1.75,
+        0.18000000715255737
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "person-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 432,
+            "maxMetres": 4.408728404608808e-17,
+            "rmsMetres": 5.303203479173993e-18
+          },
+          "derivativeToNormal": {
+            "samples": 432,
+            "maxMetres": 4.408728404608808e-17,
+            "rmsMetres": 5.303203479173993e-18
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    },
+    {
+      "family": "D",
+      "id": "cart",
+      "quality": "low",
+      "sourceQuality": "low",
+      "sourceNode": "cart-low",
+      "node": "cart-low",
+      "bundle": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "triangles": 136,
+      "primitives": 2,
+      "boundsMin": [
+        -0.8100000023841858,
+        1.1920929132713809e-8,
+        -1
+      ],
+      "boundsMax": [
+        0.8100000023841858,
+        1.274999976158142,
+        2.5058467388153076
+      ],
+      "error": {
+        "retainedVertexDisplacementMetres": 0,
+        "relativeTo": "cart-low",
+        "normalReference": {
+          "method": "deterministic sampled nearest structural vertex; not surface Hausdorff or pixel error",
+          "normalToDerivative": {
+            "samples": 408,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          },
+          "derivativeToNormal": {
+            "samples": 408,
+            "maxMetres": 0,
+            "rmsMetres": 0
+          }
+        },
+        "omittedOptionalTriangles": 0,
+        "boundsDeltaMetres": 0
+      }
+    }
+  ],
+  "determinism": "Two successive builds byte-identical including manifest and licenses"
+}

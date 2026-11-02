@@ -1,0 +1,580 @@
+{
+  "fixture": "synthetic isolated regression; actual-state coverage is separate",
+  "deviceAcceptance": false,
+  "unchanged": true,
+  "metrics": [
+    {
+      "requestedQuality": "normal",
+      "policy": "normal",
+      "updateAndSoftwareDrawMs": 352.70000000018626,
+      "status": {
+        "contractRevision": 1,
+        "sourceFamily": "C4",
+        "sourceRevision": "wv007-p1-1",
+        "sourcePins": [
+          {
+            "path": "scripts/build-wv007-buildings.mjs",
+            "sha256": "c286608ae0c3f1e766876b1b0e946245ab7f4c2d4645bd502761e99771ba352c"
+          },
+          {
+            "path": "package-lock.json",
+            "sha256": "39035df40cc4c6fb6ec49bcfe0b1e1c09fe51b9c69d17e5288aa533ab4d3775e"
+          },
+          {
+            "path": "assets/wv/buildings-next/kit-detail-manifest.json",
+            "sha256": "f5d50ba92ff61a7713390581ea41b8d89cd2057a9a119d6399256bf58305e11d"
+          },
+          {
+            "path": "assets/wv/buildings-next/kit-detail.glb",
+            "sha256": "7008c62c3563029eced76654fb9556fa5da0262e841953a1d92d86075e820f3a"
+          },
+          {
+            "path": "assets/wv/storage-next/manifest.json",
+            "sha256": "b6bd6ca837aab9ec30750cfdaeac7d710bfc33aa0908c9d0fd7dabae37e668ed"
+          },
+          {
+            "path": "assets/wv/storage-next/storage.glb",
+            "sha256": "638fe141f28ca83e23926e21c9f7b2b7c03d7ec14770f64275413f7d46cd36d6"
+          },
+          {
+            "path": "assets/wv/buildings-next/License_Source.txt",
+            "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+          },
+          {
+            "path": "assets/wv/buildings-next/License_Kit_Source.txt",
+            "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+          },
+          {
+            "path": "assets/wv/storage-next/LICENSE.txt",
+            "sha256": "1efe667036d83e52916cc341e0965221f788f5fcc4bbe8bb11984dc606ffb08e"
+          }
+        ],
+        "viewRevision": "100-C4-regression",
+        "quality": "normal",
+        "effectiveLods": {
+          "normal": 100
+        },
+        "pendingLoads": 0,
+        "bundles": [
+          {
+            "family": "C4",
+            "quality": "normal",
+            "state": "ready",
+            "transferBytes": 11024000,
+            "estimatedDecodedMipBytes": 28639248
+          }
+        ],
+        "transferBytes": 11024000,
+        "estimatedDecodedMipBytes": 28639248,
+        "resourceStats": {
+          "geometryBytes": 2763634,
+          "textureBytes": 28464470,
+          "triangles": 645168
+        },
+        "disposed": false,
+        "ready": true,
+        "visible": true,
+        "admitted": [
+          "benchmark-0",
+          "benchmark-1",
+          "benchmark-10",
+          "benchmark-11",
+          "benchmark-12",
+          "benchmark-13",
+          "benchmark-14",
+          "benchmark-15",
+          "benchmark-16",
+          "benchmark-17",
+          "benchmark-18",
+          "benchmark-19",
+          "benchmark-2",
+          "benchmark-20",
+          "benchmark-21",
+          "benchmark-22",
+          "benchmark-23",
+          "benchmark-24",
+          "benchmark-25",
+          "benchmark-26",
+          "benchmark-27",
+          "benchmark-28",
+          "benchmark-29",
+          "benchmark-3",
+          "benchmark-30",
+          "benchmark-31",
+          "benchmark-32",
+          "benchmark-33",
+          "benchmark-34",
+          "benchmark-35",
+          "benchmark-36",
+          "benchmark-37",
+          "benchmark-38",
+          "benchmark-39",
+          "benchmark-4",
+          "benchmark-40",
+          "benchmark-41",
+          "benchmark-42",
+          "benchmark-43",
+          "benchmark-44",
+          "benchmark-45",
+          "benchmark-46",
+          "benchmark-47",
+          "benchmark-48",
+          "benchmark-49",
+          "benchmark-5",
+          "benchmark-50",
+          "benchmark-51",
+          "benchmark-52",
+          "benchmark-53",
+          "benchmark-54",
+          "benchmark-55",
+          "benchmark-56",
+          "benchmark-57",
+          "benchmark-58",
+          "benchmark-59",
+          "benchmark-6",
+          "benchmark-60",
+          "benchmark-61",
+          "benchmark-62",
+          "benchmark-63",
+          "benchmark-64",
+          "benchmark-65",
+          "benchmark-66",
+          "benchmark-67",
+          "benchmark-68",
+          "benchmark-69",
+          "benchmark-7",
+          "benchmark-70",
+          "benchmark-71",
+          "benchmark-72",
+          "benchmark-73",
+          "benchmark-74",
+          "benchmark-75",
+          "benchmark-76",
+          "benchmark-77",
+          "benchmark-78",
+          "benchmark-79",
+          "benchmark-8",
+          "benchmark-80",
+          "benchmark-81",
+          "benchmark-82",
+          "benchmark-83",
+          "benchmark-84",
+          "benchmark-85",
+          "benchmark-86",
+          "benchmark-87",
+          "benchmark-88",
+          "benchmark-89",
+          "benchmark-9",
+          "benchmark-90",
+          "benchmark-91",
+          "benchmark-92",
+          "benchmark-93",
+          "benchmark-94",
+          "benchmark-95",
+          "benchmark-96",
+          "benchmark-97",
+          "benchmark-98",
+          "benchmark-99"
+        ],
+        "fallback": [],
+        "failures": [],
+        "drawBatches": 48,
+        "deviceAcceptance": "pending-P5",
+        "offlineInstalled": false
+      },
+      "renderer": {
+        "frame": 4,
+        "calls": 52,
+        "triangles": 670688,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 49,
+        "textures": 26
+      }
+    },
+    {
+      "requestedQuality": "low",
+      "policy": "low",
+      "updateAndSoftwareDrawMs": 1333.6999999999534,
+      "status": {
+        "contractRevision": 1,
+        "sourceFamily": "C4",
+        "sourceRevision": "wv007-p1-1",
+        "sourcePins": [
+          {
+            "path": "scripts/build-wv007-buildings.mjs",
+            "sha256": "c286608ae0c3f1e766876b1b0e946245ab7f4c2d4645bd502761e99771ba352c"
+          },
+          {
+            "path": "package-lock.json",
+            "sha256": "39035df40cc4c6fb6ec49bcfe0b1e1c09fe51b9c69d17e5288aa533ab4d3775e"
+          },
+          {
+            "path": "assets/wv/buildings-next/kit-detail-manifest.json",
+            "sha256": "f5d50ba92ff61a7713390581ea41b8d89cd2057a9a119d6399256bf58305e11d"
+          },
+          {
+            "path": "assets/wv/buildings-next/kit-detail.glb",
+            "sha256": "7008c62c3563029eced76654fb9556fa5da0262e841953a1d92d86075e820f3a"
+          },
+          {
+            "path": "assets/wv/storage-next/manifest.json",
+            "sha256": "b6bd6ca837aab9ec30750cfdaeac7d710bfc33aa0908c9d0fd7dabae37e668ed"
+          },
+          {
+            "path": "assets/wv/storage-next/storage.glb",
+            "sha256": "638fe141f28ca83e23926e21c9f7b2b7c03d7ec14770f64275413f7d46cd36d6"
+          },
+          {
+            "path": "assets/wv/buildings-next/License_Source.txt",
+            "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+          },
+          {
+            "path": "assets/wv/buildings-next/License_Kit_Source.txt",
+            "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+          },
+          {
+            "path": "assets/wv/storage-next/LICENSE.txt",
+            "sha256": "1efe667036d83e52916cc341e0965221f788f5fcc4bbe8bb11984dc606ffb08e"
+          }
+        ],
+        "viewRevision": "100-C4-regression",
+        "quality": "low",
+        "effectiveLods": {
+          "low": 100
+        },
+        "pendingLoads": 0,
+        "bundles": [
+          {
+            "family": "C4",
+            "quality": "low",
+            "state": "ready",
+            "transferBytes": 3045888,
+            "estimatedDecodedMipBytes": 6029318
+          }
+        ],
+        "transferBytes": 3045888,
+        "estimatedDecodedMipBytes": 6029318,
+        "resourceStats": {
+          "geometryBytes": 1359866,
+          "textureBytes": 5854550,
+          "triangles": 398208
+        },
+        "disposed": false,
+        "ready": true,
+        "visible": true,
+        "admitted": [
+          "benchmark-0",
+          "benchmark-1",
+          "benchmark-10",
+          "benchmark-11",
+          "benchmark-12",
+          "benchmark-13",
+          "benchmark-14",
+          "benchmark-15",
+          "benchmark-16",
+          "benchmark-17",
+          "benchmark-18",
+          "benchmark-19",
+          "benchmark-2",
+          "benchmark-20",
+          "benchmark-21",
+          "benchmark-22",
+          "benchmark-23",
+          "benchmark-24",
+          "benchmark-25",
+          "benchmark-26",
+          "benchmark-27",
+          "benchmark-28",
+          "benchmark-29",
+          "benchmark-3",
+          "benchmark-30",
+          "benchmark-31",
+          "benchmark-32",
+          "benchmark-33",
+          "benchmark-34",
+          "benchmark-35",
+          "benchmark-36",
+          "benchmark-37",
+          "benchmark-38",
+          "benchmark-39",
+          "benchmark-4",
+          "benchmark-40",
+          "benchmark-41",
+          "benchmark-42",
+          "benchmark-43",
+          "benchmark-44",
+          "benchmark-45",
+          "benchmark-46",
+          "benchmark-47",
+          "benchmark-48",
+          "benchmark-49",
+          "benchmark-5",
+          "benchmark-50",
+          "benchmark-51",
+          "benchmark-52",
+          "benchmark-53",
+          "benchmark-54",
+          "benchmark-55",
+          "benchmark-56",
+          "benchmark-57",
+          "benchmark-58",
+          "benchmark-59",
+          "benchmark-6",
+          "benchmark-60",
+          "benchmark-61",
+          "benchmark-62",
+          "benchmark-63",
+          "benchmark-64",
+          "benchmark-65",
+          "benchmark-66",
+          "benchmark-67",
+          "benchmark-68",
+          "benchmark-69",
+          "benchmark-7",
+          "benchmark-70",
+          "benchmark-71",
+          "benchmark-72",
+          "benchmark-73",
+          "benchmark-74",
+          "benchmark-75",
+          "benchmark-76",
+          "benchmark-77",
+          "benchmark-78",
+          "benchmark-79",
+          "benchmark-8",
+          "benchmark-80",
+          "benchmark-81",
+          "benchmark-82",
+          "benchmark-83",
+          "benchmark-84",
+          "benchmark-85",
+          "benchmark-86",
+          "benchmark-87",
+          "benchmark-88",
+          "benchmark-89",
+          "benchmark-9",
+          "benchmark-90",
+          "benchmark-91",
+          "benchmark-92",
+          "benchmark-93",
+          "benchmark-94",
+          "benchmark-95",
+          "benchmark-96",
+          "benchmark-97",
+          "benchmark-98",
+          "benchmark-99"
+        ],
+        "fallback": [],
+        "failures": [],
+        "drawBatches": 39,
+        "deviceAcceptance": "pending-P5",
+        "offlineInstalled": false
+      },
+      "renderer": {
+        "frame": 5,
+        "calls": 43,
+        "triangles": 416008,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 40,
+        "textures": 9
+      }
+    },
+    {
+      "requestedQuality": "low",
+      "policy": "distance",
+      "updateAndSoftwareDrawMs": 738.6000000000931,
+      "status": {
+        "contractRevision": 1,
+        "sourceFamily": "C4",
+        "sourceRevision": "wv007-p1-1",
+        "sourcePins": [
+          {
+            "path": "scripts/build-wv007-buildings.mjs",
+            "sha256": "c286608ae0c3f1e766876b1b0e946245ab7f4c2d4645bd502761e99771ba352c"
+          },
+          {
+            "path": "package-lock.json",
+            "sha256": "39035df40cc4c6fb6ec49bcfe0b1e1c09fe51b9c69d17e5288aa533ab4d3775e"
+          },
+          {
+            "path": "assets/wv/buildings-next/kit-detail-manifest.json",
+            "sha256": "f5d50ba92ff61a7713390581ea41b8d89cd2057a9a119d6399256bf58305e11d"
+          },
+          {
+            "path": "assets/wv/buildings-next/kit-detail.glb",
+            "sha256": "7008c62c3563029eced76654fb9556fa5da0262e841953a1d92d86075e820f3a"
+          },
+          {
+            "path": "assets/wv/storage-next/manifest.json",
+            "sha256": "b6bd6ca837aab9ec30750cfdaeac7d710bfc33aa0908c9d0fd7dabae37e668ed"
+          },
+          {
+            "path": "assets/wv/storage-next/storage.glb",
+            "sha256": "638fe141f28ca83e23926e21c9f7b2b7c03d7ec14770f64275413f7d46cd36d6"
+          },
+          {
+            "path": "assets/wv/buildings-next/License_Source.txt",
+            "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+          },
+          {
+            "path": "assets/wv/buildings-next/License_Kit_Source.txt",
+            "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+          },
+          {
+            "path": "assets/wv/storage-next/LICENSE.txt",
+            "sha256": "1efe667036d83e52916cc341e0965221f788f5fcc4bbe8bb11984dc606ffb08e"
+          }
+        ],
+        "viewRevision": "100-C4-regression",
+        "quality": "low",
+        "effectiveLods": {
+          "distance": 100
+        },
+        "pendingLoads": 0,
+        "bundles": [
+          {
+            "family": "C4",
+            "quality": "distance",
+            "state": "ready",
+            "transferBytes": 2964484,
+            "estimatedDecodedMipBytes": 6029318
+          }
+        ],
+        "transferBytes": 2964484,
+        "estimatedDecodedMipBytes": 6029318,
+        "resourceStats": {
+          "geometryBytes": 1359866,
+          "textureBytes": 5854550,
+          "triangles": 398208
+        },
+        "disposed": false,
+        "ready": true,
+        "visible": true,
+        "admitted": [
+          "benchmark-0",
+          "benchmark-1",
+          "benchmark-10",
+          "benchmark-11",
+          "benchmark-12",
+          "benchmark-13",
+          "benchmark-14",
+          "benchmark-15",
+          "benchmark-16",
+          "benchmark-17",
+          "benchmark-18",
+          "benchmark-19",
+          "benchmark-2",
+          "benchmark-20",
+          "benchmark-21",
+          "benchmark-22",
+          "benchmark-23",
+          "benchmark-24",
+          "benchmark-25",
+          "benchmark-26",
+          "benchmark-27",
+          "benchmark-28",
+          "benchmark-29",
+          "benchmark-3",
+          "benchmark-30",
+          "benchmark-31",
+          "benchmark-32",
+          "benchmark-33",
+          "benchmark-34",
+          "benchmark-35",
+          "benchmark-36",
+          "benchmark-37",
+          "benchmark-38",
+          "benchmark-39",
+          "benchmark-4",
+          "benchmark-40",
+          "benchmark-41",
+          "benchmark-42",
+          "benchmark-43",
+          "benchmark-44",
+          "benchmark-45",
+          "benchmark-46",
+          "benchmark-47",
+          "benchmark-48",
+          "benchmark-49",
+          "benchmark-5",
+          "benchmark-50",
+          "benchmark-51",
+          "benchmark-52",
+          "benchmark-53",
+          "benchmark-54",
+          "benchmark-55",
+          "benchmark-56",
+          "benchmark-57",
+          "benchmark-58",
+          "benchmark-59",
+          "benchmark-6",
+          "benchmark-60",
+          "benchmark-61",
+          "benchmark-62",
+          "benchmark-63",
+          "benchmark-64",
+          "benchmark-65",
+          "benchmark-66",
+          "benchmark-67",
+          "benchmark-68",
+          "benchmark-69",
+          "benchmark-7",
+          "benchmark-70",
+          "benchmark-71",
+          "benchmark-72",
+          "benchmark-73",
+          "benchmark-74",
+          "benchmark-75",
+          "benchmark-76",
+          "benchmark-77",
+          "benchmark-78",
+          "benchmark-79",
+          "benchmark-8",
+          "benchmark-80",
+          "benchmark-81",
+          "benchmark-82",
+          "benchmark-83",
+          "benchmark-84",
+          "benchmark-85",
+          "benchmark-86",
+          "benchmark-87",
+          "benchmark-88",
+          "benchmark-89",
+          "benchmark-9",
+          "benchmark-90",
+          "benchmark-91",
+          "benchmark-92",
+          "benchmark-93",
+          "benchmark-94",
+          "benchmark-95",
+          "benchmark-96",
+          "benchmark-97",
+          "benchmark-98",
+          "benchmark-99"
+        ],
+        "fallback": [],
+        "failures": [],
+        "drawBatches": 39,
+        "deviceAcceptance": "pending-P5",
+        "offlineInstalled": false
+      },
+      "renderer": {
+        "frame": 6,
+        "calls": 43,
+        "triangles": 416008,
+        "points": 0,
+        "lines": 0
+      },
+      "memory": {
+        "geometries": 40,
+        "textures": 9
+      }
+    }
+  ]
+}
