@@ -1,0 +1,24 @@
+# P2 automated evidence
+
+Managed cloud, 2026-11-02. Node 24.19.0, Playwright 1.56.1 / Chromium 141 headless software rendering. Mobile viewport 600×850, emulated DPR 2; review caps drawing DPR at 1.5 normal / 1 low. No physical phone or installed PWA acceptance occurred.
+
+- Selected-source validator: passed, all 14 WV007 pins unchanged.
+- `npm ci --cache /tmp/wv007-npm-cache`: passed; no package/lock changes.
+- `npm test`: 232 tests, 231 passed, one existing skip. Includes ten P2 tests for two real generated seeds/qualities, full large-world atlas dimensions, immutable state, actual paint/erase/reload, rotated exclusions, protected obstacles, actual-width curved/T/acute road cases, field holes, stale/failed/late updates, quality changes, exact displayed root contacts and idempotent resource disposal.
+- `npm run build:assets`: passed; explicit existing GLB validator reported zero errors/warnings. No new GLBs exist in P2. `git diff --exit-code` confirms borrowed/shared generated assets and cache remain unchanged.
+- `npm run build:icons` and `CHECK_BUILT_ICONS=1 node --test tests/icon-artifacts.test.mjs`: passed.
+- `npm run build:offline`: passed for the existing game. This does not include/install P2.
+- `npm run test:e2e`: all 143 passed, including five P2 browser cases.
+- Required Three.js parity selection: all 16 passed (`camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes`, `WV_RENDERER=three`).
+- The final focused rerun also verifies the numeric LOD/output-pin/resource fields consumed by P4 PR 94. After inspecting screenshots, close grass was made uniform across up to 16 visible near chunks rather than placing four denser chunks in a square. Focused P2 unit/browser checks were rerun on that final derivative; baseline shared code is unchanged. Current-head CI repeats the full suites before merge.
+- Two executions of `node scripts/build-wv007-world.mjs` reproduce all P2 outputs byte-for-byte. Exact source, module and separate review hashes are in `assets/wv/runtime-environment-v1/provenance.json`.
+
+Each of the four raw `*-metrics.json` files records actual found points for homes, meadow, forest edge, exposed rock, bank, lake, river and wide views, actual renderer work, effective grass LOD, decoded field/buffer bytes, resource/sample counts and frame intervals. `summary.json` aggregates them without dropping absent metrics. Twelve images retain homes/meadow/wide for both seeds and qualities. The review renders actual `startWorldGame` state with the shared legacy settlement buffers; it makes no C4/P3 combined composition claim. Conservative review site blockers are explicitly test-only. Actual curved/T/acute width preservation/exclusion assertions use immutable supplementary real-world dry-patch fixtures in the unit test; P5 still reviews the final combined road/cottage scenes.
+
+Contacts: both root-edge vertices of every generated blade in the normal/low ribbon recipe were checked across a displayed mesh diagonal at a nonzero world offset, tolerance <.001 game units (~0.36 mm). Terrain/water/roads retain the host's existing geometry, including clipped wet boundaries and draped road triangles. Ground and grass include their correct shader/Standard-material color-space/fog paths; browser console/page errors and external requests were empty. Camera changes leave field build count and drawing-buffer resize count unchanged. Hidden scenes stop draws; neither quality draws while idle without host requests. Normal water uses only an explicit host cadence with bounded delta; low has no animation.
+
+Measured texture bandwidth inputs: two generated atlas textures, zero image transfer/decode, no mipmaps, render targets or normal maps. Terrain and water each use one lookup per shaded fragment; roads/grass use zero. Small worlds use 209×161×8 = 269,192 decoded field bytes normal; 105×81×8 = 68,040 low. Buffer/frame measurements are in raw evidence. Timed frames include real draw work, camera visibility processing, synchronous browser execution and test scheduling overhead; these software-rendered intervals are slow and **do not establish 30 FPS, GPU-only timings or phone limits**. No speculative triangle budget was changed.
+
+Initial environment-only failures: npm's default cache was outside writable roots; retrying with a `/tmp` cache succeeded. Child-process tests needed the environment's allowed execution/network context. One overlapping browser run lost its reused server when the first suite exited; it was stopped and replaced by the successful isolated-server full run above. No test expectations were relaxed for these failures.
+
+Remaining acceptance: P5's published runtime-module/asset closure and offline installation, C4/P3 combined fits and category visuals, full settlement scaling, target-device frame pacing/fragment bandwidth/heat and saved-slot offline UAT. P2 leaves app/renderer/registry/placement/cache/offline/workflow/package files untouched.

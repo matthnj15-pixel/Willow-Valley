@@ -1,0 +1,1512 @@
+{
+  "seed": "WILLOW-1048",
+  "quality": "low",
+  "measurements": [
+    {
+      "name": "homes",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 627,
+          "y": 620
+        }
+      },
+      "status": {
+        "contractRevision": "wv007-layer-1",
+        "sourceFamily": "A3+A1",
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "outputPins": [
+          {
+            "path": "render-adoption/world/atmosphere.mjs",
+            "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+          },
+          {
+            "path": "render-adoption/world/classification.mjs",
+            "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+          },
+          {
+            "path": "render-adoption/world/fields.mjs",
+            "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+          },
+          {
+            "path": "render-adoption/world/grass.mjs",
+            "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+          },
+          {
+            "path": "render-adoption/world/index.mjs",
+            "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
+          },
+          {
+            "path": "render-adoption/world/materials.mjs",
+            "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+          },
+          {
+            "path": "render-adoption/world/preset.mjs",
+            "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+          },
+          {
+            "path": "render-adoption/world/recipe.mjs",
+            "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+          },
+          {
+            "path": "render-adoption/world/source-pins.mjs",
+            "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+          },
+          {
+            "path": "render-adoption/world/spatial.mjs",
+            "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+          }
+        ],
+        "viewRevision": "WILLOW-1048:initial",
+        "terrainRevision": "48:36",
+        "quality": "low",
+        "effectiveLods": {
+          "grassNear": 0,
+          "grassMid": 0,
+          "grassLow": 5
+        },
+        "effectiveMaterialLods": {
+          "worldLow": 3,
+          "grass": 1
+        },
+        "materialSources": {
+          "terrain": "A3-field-low",
+          "water": "A1-static"
+        },
+        "pendingLoads": 0,
+        "failedLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 8,
+          "columns": 13,
+          "rows": 10,
+          "width": 105,
+          "height": 81,
+          "decodedBytes": 68040,
+          "counts": {
+            "meadow": 5476,
+            "forest": 2088,
+            "bank": 104,
+            "lake": 419,
+            "rock": 128,
+            "river": 219,
+            "road": 71
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 5,
+          "visibleChunks": 5,
+          "tufts": 133,
+          "triangles": 1995,
+          "vertices": 3325,
+          "geometryBytes": 131670,
+          "geometryBuilds": 5,
+          "lods": {
+            "near": 0,
+            "mid": 0,
+            "low": 5
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 68040,
+          "bufferBytesEstimate": 131670,
+          "textureBytesEstimate": 68040,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ],
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 2,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 2,
+          "calls": 9,
+          "triangles": 7332,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 600,
+          "drawingBufferHeight": 553,
+          "outputColorSpace": "srgb",
+          "geometries": 9,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "meadow",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 140,
+          "y": 140
+        }
+      },
+      "status": {
+        "contractRevision": "wv007-layer-1",
+        "sourceFamily": "A3+A1",
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "outputPins": [
+          {
+            "path": "render-adoption/world/atmosphere.mjs",
+            "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+          },
+          {
+            "path": "render-adoption/world/classification.mjs",
+            "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+          },
+          {
+            "path": "render-adoption/world/fields.mjs",
+            "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+          },
+          {
+            "path": "render-adoption/world/grass.mjs",
+            "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+          },
+          {
+            "path": "render-adoption/world/index.mjs",
+            "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
+          },
+          {
+            "path": "render-adoption/world/materials.mjs",
+            "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+          },
+          {
+            "path": "render-adoption/world/preset.mjs",
+            "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+          },
+          {
+            "path": "render-adoption/world/recipe.mjs",
+            "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+          },
+          {
+            "path": "render-adoption/world/source-pins.mjs",
+            "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+          },
+          {
+            "path": "render-adoption/world/spatial.mjs",
+            "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+          }
+        ],
+        "viewRevision": "WILLOW-1048:initial",
+        "terrainRevision": "48:36",
+        "quality": "low",
+        "effectiveLods": {
+          "grassNear": 0,
+          "grassMid": 0,
+          "grassLow": 12
+        },
+        "effectiveMaterialLods": {
+          "worldLow": 3,
+          "grass": 1
+        },
+        "materialSources": {
+          "terrain": "A3-field-low",
+          "water": "A1-static"
+        },
+        "pendingLoads": 0,
+        "failedLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 8,
+          "columns": 13,
+          "rows": 10,
+          "width": 105,
+          "height": 81,
+          "decodedBytes": 68040,
+          "counts": {
+            "meadow": 5476,
+            "forest": 2088,
+            "bank": 104,
+            "lake": 419,
+            "rock": 128,
+            "river": 219,
+            "road": 71
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 12,
+          "visibleChunks": 12,
+          "tufts": 384,
+          "triangles": 5760,
+          "vertices": 9600,
+          "geometryBytes": 380160,
+          "geometryBuilds": 17,
+          "lods": {
+            "near": 0,
+            "mid": 0,
+            "low": 12
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 68040,
+          "bufferBytesEstimate": 380160,
+          "textureBytesEstimate": 68040,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ],
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 3,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 3,
+          "calls": 15,
+          "triangles": 9796,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 600,
+          "drawingBufferHeight": 553,
+          "outputColorSpace": "srgb",
+          "geometries": 17,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "forest",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 245,
+          "y": 140
+        }
+      },
+      "status": {
+        "contractRevision": "wv007-layer-1",
+        "sourceFamily": "A3+A1",
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "outputPins": [
+          {
+            "path": "render-adoption/world/atmosphere.mjs",
+            "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+          },
+          {
+            "path": "render-adoption/world/classification.mjs",
+            "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+          },
+          {
+            "path": "render-adoption/world/fields.mjs",
+            "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+          },
+          {
+            "path": "render-adoption/world/grass.mjs",
+            "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+          },
+          {
+            "path": "render-adoption/world/index.mjs",
+            "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
+          },
+          {
+            "path": "render-adoption/world/materials.mjs",
+            "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+          },
+          {
+            "path": "render-adoption/world/preset.mjs",
+            "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+          },
+          {
+            "path": "render-adoption/world/recipe.mjs",
+            "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+          },
+          {
+            "path": "render-adoption/world/source-pins.mjs",
+            "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+          },
+          {
+            "path": "render-adoption/world/spatial.mjs",
+            "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+          }
+        ],
+        "viewRevision": "WILLOW-1048:initial",
+        "terrainRevision": "48:36",
+        "quality": "low",
+        "effectiveLods": {
+          "grassNear": 0,
+          "grassMid": 0,
+          "grassLow": 12
+        },
+        "effectiveMaterialLods": {
+          "worldLow": 3,
+          "grass": 1
+        },
+        "materialSources": {
+          "terrain": "A3-field-low",
+          "water": "A1-static"
+        },
+        "pendingLoads": 0,
+        "failedLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 8,
+          "columns": 13,
+          "rows": 10,
+          "width": 105,
+          "height": 81,
+          "decodedBytes": 68040,
+          "counts": {
+            "meadow": 5476,
+            "forest": 2088,
+            "bank": 104,
+            "lake": 419,
+            "rock": 128,
+            "river": 219,
+            "road": 71
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 12,
+          "visibleChunks": 12,
+          "tufts": 384,
+          "triangles": 5760,
+          "vertices": 9600,
+          "geometryBytes": 380160,
+          "geometryBuilds": 23,
+          "lods": {
+            "near": 0,
+            "mid": 0,
+            "low": 12
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 68040,
+          "bufferBytesEstimate": 380160,
+          "textureBytesEstimate": 68040,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ],
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 4,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 4,
+          "calls": 15,
+          "triangles": 9796,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 600,
+          "drawingBufferHeight": 553,
+          "outputColorSpace": "srgb",
+          "geometries": 17,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "rock",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 1130,
+          "y": 440
+        }
+      },
+      "status": {
+        "contractRevision": "wv007-layer-1",
+        "sourceFamily": "A3+A1",
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "outputPins": [
+          {
+            "path": "render-adoption/world/atmosphere.mjs",
+            "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+          },
+          {
+            "path": "render-adoption/world/classification.mjs",
+            "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+          },
+          {
+            "path": "render-adoption/world/fields.mjs",
+            "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+          },
+          {
+            "path": "render-adoption/world/grass.mjs",
+            "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+          },
+          {
+            "path": "render-adoption/world/index.mjs",
+            "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
+          },
+          {
+            "path": "render-adoption/world/materials.mjs",
+            "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+          },
+          {
+            "path": "render-adoption/world/preset.mjs",
+            "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+          },
+          {
+            "path": "render-adoption/world/recipe.mjs",
+            "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+          },
+          {
+            "path": "render-adoption/world/source-pins.mjs",
+            "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+          },
+          {
+            "path": "render-adoption/world/spatial.mjs",
+            "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+          }
+        ],
+        "viewRevision": "WILLOW-1048:initial",
+        "terrainRevision": "48:36",
+        "quality": "low",
+        "effectiveLods": {
+          "grassNear": 0,
+          "grassMid": 0,
+          "grassLow": 12
+        },
+        "effectiveMaterialLods": {
+          "worldLow": 3,
+          "grass": 1
+        },
+        "materialSources": {
+          "terrain": "A3-field-low",
+          "water": "A1-static"
+        },
+        "pendingLoads": 0,
+        "failedLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 8,
+          "columns": 13,
+          "rows": 10,
+          "width": 105,
+          "height": 81,
+          "decodedBytes": 68040,
+          "counts": {
+            "meadow": 5476,
+            "forest": 2088,
+            "bank": 104,
+            "lake": 419,
+            "rock": 128,
+            "river": 219,
+            "road": 71
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 12,
+          "visibleChunks": 12,
+          "tufts": 361,
+          "triangles": 5415,
+          "vertices": 9025,
+          "geometryBytes": 357390,
+          "geometryBuilds": 35,
+          "lods": {
+            "near": 0,
+            "mid": 0,
+            "low": 12
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 68040,
+          "bufferBytesEstimate": 357390,
+          "textureBytesEstimate": 68040,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ],
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 5,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 5,
+          "calls": 16,
+          "triangles": 10581,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 600,
+          "drawingBufferHeight": 553,
+          "outputColorSpace": "srgb",
+          "geometries": 17,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "bank",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 1250,
+          "y": 140
+        }
+      },
+      "status": {
+        "contractRevision": "wv007-layer-1",
+        "sourceFamily": "A3+A1",
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "outputPins": [
+          {
+            "path": "render-adoption/world/atmosphere.mjs",
+            "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+          },
+          {
+            "path": "render-adoption/world/classification.mjs",
+            "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+          },
+          {
+            "path": "render-adoption/world/fields.mjs",
+            "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+          },
+          {
+            "path": "render-adoption/world/grass.mjs",
+            "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+          },
+          {
+            "path": "render-adoption/world/index.mjs",
+            "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
+          },
+          {
+            "path": "render-adoption/world/materials.mjs",
+            "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+          },
+          {
+            "path": "render-adoption/world/preset.mjs",
+            "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+          },
+          {
+            "path": "render-adoption/world/recipe.mjs",
+            "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+          },
+          {
+            "path": "render-adoption/world/source-pins.mjs",
+            "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+          },
+          {
+            "path": "render-adoption/world/spatial.mjs",
+            "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+          }
+        ],
+        "viewRevision": "WILLOW-1048:initial",
+        "terrainRevision": "48:36",
+        "quality": "low",
+        "effectiveLods": {
+          "grassNear": 0,
+          "grassMid": 0,
+          "grassLow": 11
+        },
+        "effectiveMaterialLods": {
+          "worldLow": 3,
+          "grass": 1
+        },
+        "materialSources": {
+          "terrain": "A3-field-low",
+          "water": "A1-static"
+        },
+        "pendingLoads": 0,
+        "failedLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 8,
+          "columns": 13,
+          "rows": 10,
+          "width": 105,
+          "height": 81,
+          "decodedBytes": 68040,
+          "counts": {
+            "meadow": 5476,
+            "forest": 2088,
+            "bank": 104,
+            "lake": 419,
+            "rock": 128,
+            "river": 219,
+            "road": 71
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 11,
+          "visibleChunks": 11,
+          "tufts": 341,
+          "triangles": 5115,
+          "vertices": 8525,
+          "geometryBytes": 337590,
+          "geometryBuilds": 46,
+          "lods": {
+            "near": 0,
+            "mid": 0,
+            "low": 11
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 68040,
+          "bufferBytesEstimate": 337590,
+          "textureBytesEstimate": 68040,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ],
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 6,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 6,
+          "calls": 14,
+          "triangles": 9151,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 600,
+          "drawingBufferHeight": 553,
+          "outputColorSpace": "srgb",
+          "geometries": 16,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "lake",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 980,
+          "y": 140
+        }
+      },
+      "status": {
+        "contractRevision": "wv007-layer-1",
+        "sourceFamily": "A3+A1",
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "outputPins": [
+          {
+            "path": "render-adoption/world/atmosphere.mjs",
+            "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+          },
+          {
+            "path": "render-adoption/world/classification.mjs",
+            "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+          },
+          {
+            "path": "render-adoption/world/fields.mjs",
+            "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+          },
+          {
+            "path": "render-adoption/world/grass.mjs",
+            "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+          },
+          {
+            "path": "render-adoption/world/index.mjs",
+            "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
+          },
+          {
+            "path": "render-adoption/world/materials.mjs",
+            "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+          },
+          {
+            "path": "render-adoption/world/preset.mjs",
+            "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+          },
+          {
+            "path": "render-adoption/world/recipe.mjs",
+            "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+          },
+          {
+            "path": "render-adoption/world/source-pins.mjs",
+            "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+          },
+          {
+            "path": "render-adoption/world/spatial.mjs",
+            "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+          }
+        ],
+        "viewRevision": "WILLOW-1048:initial",
+        "terrainRevision": "48:36",
+        "quality": "low",
+        "effectiveLods": {
+          "grassNear": 0,
+          "grassMid": 0,
+          "grassLow": 9
+        },
+        "effectiveMaterialLods": {
+          "worldLow": 3,
+          "grass": 1
+        },
+        "materialSources": {
+          "terrain": "A3-field-low",
+          "water": "A1-static"
+        },
+        "pendingLoads": 0,
+        "failedLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 8,
+          "columns": 13,
+          "rows": 10,
+          "width": 105,
+          "height": 81,
+          "decodedBytes": 68040,
+          "counts": {
+            "meadow": 5476,
+            "forest": 2088,
+            "bank": 104,
+            "lake": 419,
+            "rock": 128,
+            "river": 219,
+            "road": 71
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 9,
+          "visibleChunks": 9,
+          "tufts": 242,
+          "triangles": 3630,
+          "vertices": 6050,
+          "geometryBytes": 239580,
+          "geometryBuilds": 55,
+          "lods": {
+            "near": 0,
+            "mid": 0,
+            "low": 9
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 68040,
+          "bufferBytesEstimate": 239580,
+          "textureBytesEstimate": 68040,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ],
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 7,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 7,
+          "calls": 13,
+          "triangles": 8796,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 600,
+          "drawingBufferHeight": 553,
+          "outputColorSpace": "srgb",
+          "geometries": 14,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "river",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 1115,
+          "y": 470
+        }
+      },
+      "status": {
+        "contractRevision": "wv007-layer-1",
+        "sourceFamily": "A3+A1",
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "outputPins": [
+          {
+            "path": "render-adoption/world/atmosphere.mjs",
+            "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+          },
+          {
+            "path": "render-adoption/world/classification.mjs",
+            "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+          },
+          {
+            "path": "render-adoption/world/fields.mjs",
+            "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+          },
+          {
+            "path": "render-adoption/world/grass.mjs",
+            "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+          },
+          {
+            "path": "render-adoption/world/index.mjs",
+            "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
+          },
+          {
+            "path": "render-adoption/world/materials.mjs",
+            "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+          },
+          {
+            "path": "render-adoption/world/preset.mjs",
+            "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+          },
+          {
+            "path": "render-adoption/world/recipe.mjs",
+            "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+          },
+          {
+            "path": "render-adoption/world/source-pins.mjs",
+            "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+          },
+          {
+            "path": "render-adoption/world/spatial.mjs",
+            "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+          }
+        ],
+        "viewRevision": "WILLOW-1048:initial",
+        "terrainRevision": "48:36",
+        "quality": "low",
+        "effectiveLods": {
+          "grassNear": 0,
+          "grassMid": 0,
+          "grassLow": 12
+        },
+        "effectiveMaterialLods": {
+          "worldLow": 3,
+          "grass": 1
+        },
+        "materialSources": {
+          "terrain": "A3-field-low",
+          "water": "A1-static"
+        },
+        "pendingLoads": 0,
+        "failedLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 8,
+          "columns": 13,
+          "rows": 10,
+          "width": 105,
+          "height": 81,
+          "decodedBytes": 68040,
+          "counts": {
+            "meadow": 5476,
+            "forest": 2088,
+            "bank": 104,
+            "lake": 419,
+            "rock": 128,
+            "river": 219,
+            "road": 71
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 12,
+          "visibleChunks": 12,
+          "tufts": 361,
+          "triangles": 5415,
+          "vertices": 9025,
+          "geometryBytes": 357390,
+          "geometryBuilds": 67,
+          "lods": {
+            "near": 0,
+            "mid": 0,
+            "low": 12
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 68040,
+          "bufferBytesEstimate": 357390,
+          "textureBytesEstimate": 68040,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ],
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 8,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 8,
+          "calls": 16,
+          "triangles": 10581,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 600,
+          "drawingBufferHeight": 553,
+          "outputColorSpace": "srgb",
+          "geometries": 17,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "wide",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 627,
+          "y": 620
+        }
+      },
+      "status": {
+        "contractRevision": "wv007-layer-1",
+        "sourceFamily": "A3+A1",
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "outputPins": [
+          {
+            "path": "render-adoption/world/atmosphere.mjs",
+            "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+          },
+          {
+            "path": "render-adoption/world/classification.mjs",
+            "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+          },
+          {
+            "path": "render-adoption/world/fields.mjs",
+            "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+          },
+          {
+            "path": "render-adoption/world/grass.mjs",
+            "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+          },
+          {
+            "path": "render-adoption/world/index.mjs",
+            "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
+          },
+          {
+            "path": "render-adoption/world/materials.mjs",
+            "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+          },
+          {
+            "path": "render-adoption/world/preset.mjs",
+            "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+          },
+          {
+            "path": "render-adoption/world/recipe.mjs",
+            "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+          },
+          {
+            "path": "render-adoption/world/source-pins.mjs",
+            "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+          },
+          {
+            "path": "render-adoption/world/spatial.mjs",
+            "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+          }
+        ],
+        "viewRevision": "WILLOW-1048:initial",
+        "terrainRevision": "48:36",
+        "quality": "low",
+        "effectiveLods": {
+          "grassNear": 0,
+          "grassMid": 0,
+          "grassLow": 5
+        },
+        "effectiveMaterialLods": {
+          "worldLow": 3,
+          "grass": 1
+        },
+        "materialSources": {
+          "terrain": "A3-field-low",
+          "water": "A1-static"
+        },
+        "pendingLoads": 0,
+        "failedLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 8,
+          "columns": 13,
+          "rows": 10,
+          "width": 105,
+          "height": 81,
+          "decodedBytes": 68040,
+          "counts": {
+            "meadow": 5476,
+            "forest": 2088,
+            "bank": 104,
+            "lake": 419,
+            "rock": 128,
+            "river": 219,
+            "road": 71
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 5,
+          "visibleChunks": 5,
+          "tufts": 133,
+          "triangles": 1995,
+          "vertices": 3325,
+          "geometryBytes": 131670,
+          "geometryBuilds": 72,
+          "lods": {
+            "near": 0,
+            "mid": 0,
+            "low": 5
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 68040,
+          "bufferBytesEstimate": 131670,
+          "textureBytesEstimate": 68040,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ],
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 9,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 9,
+          "calls": 10,
+          "triangles": 7407,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 600,
+          "drawingBufferHeight": 553,
+          "outputColorSpace": "srgb",
+          "geometries": 10,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    }
+  ],
+  "trueFrameIntervalsMs": [
+    143.39999999990687,
+    123,
+    122.3000000002794,
+    153.1999999997206,
+    141.10000000009313,
+    151.89999999990687,
+    128.20000000018626
+  ],
+  "device": "cloud Chromium software; no phone acceptance"
+}
