@@ -1,0 +1,250 @@
+{
+  "parent": {
+    "manifest": "assets/wv/landscape-next/manifest.json",
+    "manifestSha256": "9c5d8cc914f6032a742aa8c42a025512da0b8b4efac969e8f5a749d602c3f1c8",
+    "bundle": "assets/wv/landscape-next/landscape.glb",
+    "bundleSha256": "20f878c3630c0389467fb76b02047a40e80a46560f9f46bb3992ad3ace67bb76",
+    "bytes": 1260580
+  },
+  "sourcePins": [
+    {
+      "path": "assets/wv/landscape-next/manifest.json",
+      "sha256": "9c5d8cc914f6032a742aa8c42a025512da0b8b4efac969e8f5a749d602c3f1c8"
+    },
+    {
+      "path": "assets/wv/landscape-next/landscape.glb",
+      "sha256": "20f878c3630c0389467fb76b02047a40e80a46560f9f46bb3992ad3ace67bb76"
+    },
+    {
+      "path": "scripts/build-wv007-landscape.mjs",
+      "sha256": "69d7ad5af0498fa369c88437d38758e68b047be9c1b0ce37cf9bd26c2543fc35"
+    },
+    {
+      "path": "assets/wv/landscape-next/placement.mjs",
+      "sha256": "1e52a9cb1b7cef95ee2346a041793d622c3ba2d3d332f954faf670020f990b46"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-dressing.mjs",
+      "sha256": "03929ac52933697e49f121a8fe1c04d461e9ce8b48452ecb9e519b4022945d1c"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-boundaries.mjs",
+      "sha256": "1a65c94bfaff37b8e8027ed1e2d4bf0de58c79d4731eca38bd3a1d9b944faaf0"
+    },
+    {
+      "path": "assets/wv/landscape-next/painted-fields.mjs",
+      "sha256": "ac74250b7ad543f7e7d1d8c5e24a55958b71f86d400e812940ae0536207598b3"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-fence-view.mjs",
+      "sha256": "dbf276a5a54e15e28552047c42357b762cb924cf9070f88fc87108bcbeb3c10a"
+    },
+    {
+      "path": "assets/wv/landscape-next/hamlet-props.mjs",
+      "sha256": "f9f40588e217052234ee5b8ac711779f81f0302898fd7a279a839e02ccc28fdd"
+    }
+  ],
+  "outputs": {
+    "normal": {
+      "path": "assets/wv/runtime-landscape-v1/normal.glb",
+      "sha256": "f8932832f224195e3cae3685a8e0532b0bc7d9d488f4dc97975325b2c10ce0cd",
+      "bytes": 761888,
+      "textures": 0,
+      "nodes": [
+        "oak-spreading__normal",
+        "beech-upright__normal",
+        "birch-open__normal",
+        "pine-tiered__normal",
+        "oak-young__normal",
+        "pine-young__normal",
+        "hazel-shrub__normal",
+        "thorn-shrub__normal",
+        "hedge-fragment__normal",
+        "fern-cluster__normal",
+        "grass-tuft__normal",
+        "flower-cream__normal",
+        "flower-mauve__normal",
+        "reed-cluster__normal",
+        "rush-cluster__normal",
+        "bank-stones__normal",
+        "boulder-rounded__normal",
+        "outcrop-layered__normal",
+        "stump__normal",
+        "fallen-log__normal"
+      ],
+      "triangles": 6939
+    },
+    "low": {
+      "path": "assets/wv/runtime-landscape-v1/low.glb",
+      "sha256": "b61aa403694cd723afc662665d9205376318713d10ed2c1223199c856b1781bc",
+      "bytes": 270680,
+      "textures": 0,
+      "nodes": [
+        "oak-spreading__low",
+        "beech-upright__low",
+        "birch-open__low",
+        "pine-tiered__low",
+        "oak-young__low",
+        "pine-young__low",
+        "hazel-shrub__low",
+        "thorn-shrub__low",
+        "hedge-fragment__low",
+        "fern-cluster__low",
+        "grass-tuft__low",
+        "flower-cream__low",
+        "flower-mauve__low",
+        "reed-cluster__low",
+        "rush-cluster__low",
+        "bank-stones__low",
+        "boulder-rounded__low",
+        "outcrop-layered__low",
+        "stump__low",
+        "fallen-log__low"
+      ],
+      "triangles": 2393
+    },
+    "far": {
+      "path": "assets/wv/runtime-landscape-v1/far.glb",
+      "sha256": "fdafb0c120b1a4f8e9974cb730c131ebd0c37c31a4de1b39da4bbafa4b751c2f",
+      "bytes": 228336,
+      "textures": 0,
+      "nodes": [
+        "oak-spreading__far",
+        "beech-upright__far",
+        "birch-open__far",
+        "pine-tiered__far",
+        "oak-young__far",
+        "pine-young__far",
+        "hazel-shrub__far",
+        "thorn-shrub__far",
+        "hedge-fragment__far",
+        "fern-cluster__far",
+        "grass-tuft__far",
+        "flower-cream__far",
+        "flower-mauve__far",
+        "reed-cluster__far",
+        "rush-cluster__far",
+        "bank-stones__far",
+        "boulder-rounded__far",
+        "outcrop-layered__far",
+        "stump__far",
+        "fallen-log__far"
+      ],
+      "triangles": 2001
+    }
+  },
+  "closureProfiles": {
+    "normal": {
+      "assets": [
+        {
+          "path": "assets/wv/runtime-landscape-v1/normal.glb",
+          "sha256": "f8932832f224195e3cae3685a8e0532b0bc7d9d488f4dc97975325b2c10ce0cd",
+          "bytes": 761888,
+          "textures": 0,
+          "nodes": [
+            "oak-spreading__normal",
+            "beech-upright__normal",
+            "birch-open__normal",
+            "pine-tiered__normal",
+            "oak-young__normal",
+            "pine-young__normal",
+            "hazel-shrub__normal",
+            "thorn-shrub__normal",
+            "hedge-fragment__normal",
+            "fern-cluster__normal",
+            "grass-tuft__normal",
+            "flower-cream__normal",
+            "flower-mauve__normal",
+            "reed-cluster__normal",
+            "rush-cluster__normal",
+            "bank-stones__normal",
+            "boulder-rounded__normal",
+            "outcrop-layered__normal",
+            "stump__normal",
+            "fallen-log__normal"
+          ],
+          "triangles": 6939
+        }
+      ],
+      "totalBytes": 1864612,
+      "textureBytes": 0
+    },
+    "low": {
+      "assets": [
+        {
+          "path": "assets/wv/runtime-landscape-v1/low.glb",
+          "sha256": "b61aa403694cd723afc662665d9205376318713d10ed2c1223199c856b1781bc",
+          "bytes": 270680,
+          "textures": 0,
+          "nodes": [
+            "oak-spreading__low",
+            "beech-upright__low",
+            "birch-open__low",
+            "pine-tiered__low",
+            "oak-young__low",
+            "pine-young__low",
+            "hazel-shrub__low",
+            "thorn-shrub__low",
+            "hedge-fragment__low",
+            "fern-cluster__low",
+            "grass-tuft__low",
+            "flower-cream__low",
+            "flower-mauve__low",
+            "reed-cluster__low",
+            "rush-cluster__low",
+            "bank-stones__low",
+            "boulder-rounded__low",
+            "outcrop-layered__low",
+            "stump__low",
+            "fallen-log__low"
+          ],
+          "triangles": 2393
+        }
+      ],
+      "totalBytes": 1373404,
+      "textureBytes": 0
+    },
+    "far": {
+      "assets": [
+        {
+          "path": "assets/wv/runtime-landscape-v1/far.glb",
+          "sha256": "fdafb0c120b1a4f8e9974cb730c131ebd0c37c31a4de1b39da4bbafa4b751c2f",
+          "bytes": 228336,
+          "textures": 0,
+          "nodes": [
+            "oak-spreading__far",
+            "beech-upright__far",
+            "birch-open__far",
+            "pine-tiered__far",
+            "oak-young__far",
+            "pine-young__far",
+            "hazel-shrub__far",
+            "thorn-shrub__far",
+            "hedge-fragment__far",
+            "fern-cluster__far",
+            "grass-tuft__far",
+            "flower-cream__far",
+            "flower-mauve__far",
+            "reed-cluster__far",
+            "rush-cluster__far",
+            "bank-stones__far",
+            "boulder-rounded__far",
+            "outcrop-layered__far",
+            "stump__far",
+            "fallen-log__far"
+          ],
+          "triangles": 2001
+        }
+      ],
+      "totalBytes": 1331060,
+      "textureBytes": 0
+    }
+  },
+  "deterministicRebuild": true,
+  "validation": {
+    "errors": 0,
+    "warnings": 0,
+    "validator": "gltf-validator 2.0.0-dev.3.10"
+  },
+  "offlineAdmitted": false
+}

@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>WV007 P3 landscape integration review</title>
+<style>body{margin:0;background:#e5e6d9;color:#263329;font:16px system-ui}header{padding:12px 20px;background:#f5f4ea}h1{font-size:19px;margin:0 0 8px}label{margin-right:16px}canvas{display:block;width:100%;height:76vh}pre{white-space:pre-wrap;font-size:12px;padding:12px}</style>
+<header><h1>P3 landscape layer · integration fixture</h1><label>Quality <select id="quality"><option>normal</option><option>low</option></select></label><label>Distance <select id="distance"><option>near</option><option>far</option></select></label><span>Frozen edge cases supplement saved-state tests. C4 envelopes shown as wireframes.</span></header><canvas id="scene"></canvas><pre id="status">Loading local assets…</pre>
+<script type="module">
+import * as T from '../../assets/vendor/three.module.mjs';
+import {createLandscapeLayer} from './index.mjs';
+import {edgeCaseView,fixturePlacements} from './fixtures/read-view.mjs';
+const view=edgeCaseView(),kit=await fetch('../../assets/wv/buildings-next/kit-detail-manifest.json').then(r=>r.json());
+const placementView=fixturePlacements(view,kit.entries.find(e=>e.id==='home-steep-gable'));
+const scene=new T.Scene();scene.background=new T.Color('#cbd9d9');scene.add(new T.HemisphereLight('#eaf0f3','#76745f',1.8));const sun=new T.DirectionalLight('#fff4e5',2.1);sun.position.set(-80,220,150);scene.add(sun);
+const surface={sample:(x,y)=>({height:(x-600)*.008+(y-450)*.006,water:null,slope:.01,moisture:.8}),drapePolygon:p=>[p]};
+const ground=new T.Mesh(new T.PlaneGeometry(460,340).rotateX(-Math.PI/2),new T.MeshStandardMaterial({color:'#829166',roughness:1}));const points=ground.geometry.attributes.position;for(let i=0;i<points.count;i++)points.setY(i,surface.sample(points.getX(i)+600,points.getZ(i)+450).height);ground.geometry.computeVertexNormals();scene.add(ground);
+for(const p of placementView.placements)for(const e of p.exclusionsMetres){const line=new T.LineLoop(new T.BufferGeometry().setFromPoints(e.polygon.map(p=>new T.Vector3(p.x*2.8,surface.sample(p.x*2.8+600,p.z*2.8+450).height+.12,p.z*2.8))),new T.LineBasicMaterial({color:'#414b44'}));scene.add(line);}
+const canvas=document.querySelector('canvas'),renderer=new T.WebGLRenderer({canvas,antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));const camera=new T.PerspectiveCamera(42,1,.1,2000);camera.position.set(170,280,320);camera.lookAt(0,0,32);
+let drawCount=0;const draw=()=>{drawCount++;renderer.render(scene,camera);};const resize=()=>{const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();draw();};window.addEventListener('resize',resize);
+const initialQuality=new URLSearchParams(location.search).get('quality')==='low'?'low':'normal';document.querySelector('#quality').value=initialQuality;
+const layer=createLandscapeLayer({scene,terrainSurface:surface,world:view.world,invalidate:draw,quality:initialQuality});
+const context=()=>({placementView,distance:document.querySelector('#distance').value,visible:!document.hidden});
+const update=async()=>{await layer.update(view,context());document.querySelector('#status').textContent=JSON.stringify({...layer.status(),sourcePins:'see manifest.json'},null,2);};
+document.querySelector('#quality').onchange=async e=>{await layer.setQuality(e.target.value);await update();};document.querySelector('#distance').onchange=update;document.addEventListener('visibilitychange',update);
+window.p3Review={layer,view,placementView,renderer,scene,camera,surface,draw,update,get drawCount(){return drawCount;}};resize();await update();document.body.dataset.ready=String(layer.status().ready);
+window.addEventListener('pagehide',()=>{layer.dispose();renderer.dispose();});
+</script></html>

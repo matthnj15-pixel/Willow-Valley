@@ -1,0 +1,826 @@
+{
+  "provenance": "startGame, committed residential paint, two advance(events:false); startWorldGame WV007-P3; grown: startGame, residential (250,350)-(700,420) radius90, 12 advance(events:false)",
+  "legacy": {
+    "version": 1,
+    "turn": 2,
+    "people": 35,
+    "gold": 741,
+    "food": 70,
+    "wood": 32,
+    "tools": 9,
+    "roads": [
+      [
+        {
+          "x": 172,
+          "y": 472
+        },
+        {
+          "x": 330,
+          "y": 417
+        }
+      ],
+      [
+        {
+          "x": 330,
+          "y": 417
+        },
+        {
+          "x": 460,
+          "y": 454
+        }
+      ],
+      [
+        {
+          "x": 460,
+          "y": 454
+        },
+        {
+          "x": 656,
+          "y": 383
+        }
+      ]
+    ],
+    "buildings": [
+      {
+        "type": "lumber",
+        "x": 288,
+        "y": 340
+      },
+      {
+        "type": "farm",
+        "x": 530,
+        "y": 553
+      }
+    ],
+    "houses": [
+      {
+        "x": 242,
+        "y": 505
+      },
+      {
+        "x": 350,
+        "y": 374
+      },
+      {
+        "x": 418,
+        "y": 497
+      },
+      {
+        "x": 545,
+        "y": 400
+      },
+      {
+        "x": 708,
+        "y": 407,
+        "orientation": 5.4765,
+        "foundedTurn": 2,
+        "foundedEra": 0,
+        "entrance": {
+          "x": 668,
+          "y": 394
+        },
+        "parcel": {
+          "vertices": [
+            {
+              "x": 735,
+              "y": 386
+            },
+            {
+              "x": 740,
+              "y": 418
+            },
+            {
+              "x": 701,
+              "y": 444
+            },
+            {
+              "x": 665,
+              "y": 413
+            },
+            {
+              "x": 689,
+              "y": 381
+            }
+          ],
+          "orientation": 5.4765
+        }
+      }
+    ],
+    "happiness": 76,
+    "desirePaths": [],
+    "zones": [
+      {
+        "id": 1,
+        "type": "residential",
+        "radius": 54,
+        "points": [
+          {
+            "x": 685,
+            "y": 419
+          },
+          {
+            "x": 705,
+            "y": 425
+          },
+          {
+            "x": 728,
+            "y": 421
+          }
+        ]
+      }
+    ],
+    "localLanes": [
+      {
+        "points": [
+          {
+            "x": 668,
+            "y": 394
+          },
+          {
+            "x": 656,
+            "y": 383
+          }
+        ],
+        "houseX": 708,
+        "houseY": 407,
+        "entrance": {
+          "x": 668,
+          "y": 394
+        },
+        "connectsTo": "road",
+        "foundedTurn": 2
+      }
+    ],
+    "housing": {
+      "housed": 35,
+      "pending": [],
+      "attractiveness": 75,
+      "nextId": 2
+    },
+    "logs": [
+      "May · Year 1: [Spring] +10 food, +8 wood, +0 tools. +23 gold net. +3 residents. 1 farm(s) need painted farmland to improve output.",
+      "May · Year 1: A new cottage was built for a household, using 4 wood and 45 gold.",
+      "April · Year 1: [Spring] +10 food, +8 wood, +0 tools. +23 gold net. +0 residents. 1 farm(s) need painted farmland to improve output.",
+      "The first families establish Willow Valley beside an old forest road."
+    ],
+    "report": "[Spring] +10 food, +8 wood, +0 tools. +23 gold net. +3 residents. 1 farm(s) need painted farmland to improve output.",
+    "roadGraph": {
+      "nodes": [
+        {
+          "id": 1,
+          "x": 172,
+          "y": 472
+        },
+        {
+          "id": 2,
+          "x": 330,
+          "y": 417
+        },
+        {
+          "id": 4,
+          "x": 460,
+          "y": 454
+        },
+        {
+          "id": 6,
+          "x": 656,
+          "y": 383
+        }
+      ],
+      "segments": [
+        {
+          "id": 3,
+          "a": 1,
+          "b": 2,
+          "control": null
+        },
+        {
+          "id": 5,
+          "a": 2,
+          "b": 4,
+          "control": null
+        },
+        {
+          "id": 7,
+          "a": 4,
+          "b": 6,
+          "control": null
+        }
+      ],
+      "nextId": 8,
+      "hubId": 1
+    },
+    "civic": {
+      "tax": "balanced",
+      "rations": "normal",
+      "labor": "balanced",
+      "chapter": 0,
+      "charters": [],
+      "petitions": [],
+      "lastTrade": -1,
+      "steadyMonths": 2,
+      "changed": {},
+      "ledger": {
+        "foodProduction": 10,
+        "woodProduction": 8,
+        "toolProduction": 0,
+        "foodRequired": 8,
+        "balance": 23,
+        "taxes": 48,
+        "upkeep": 25,
+        "marketBonus": 0,
+        "granarySavings": 0,
+        "foodReserveMonths": 8.8,
+        "workers": 16,
+        "employed": 12,
+        "required": 12,
+        "season": "Spring",
+        "fieldsMissing": 1,
+        "laborMissing": 0,
+        "foodForecast": 72,
+        "goldForecast": 809,
+        "notices": [
+          "1 farm(s) need painted farmland to improve output."
+        ]
+      }
+    },
+    "turnHighlights": [
+      {
+        "kind": "home",
+        "text": "A new cottage rose on an irregular parcel.",
+        "turn": 2,
+        "x": 708,
+        "y": 407
+      },
+      {
+        "kind": "lane",
+        "text": "1 new neighborhood approach path formed.",
+        "turn": 2
+      },
+      {
+        "kind": "fields",
+        "text": "Some farms need more cultivated fields.",
+        "turn": 2
+      }
+    ]
+  },
+  "generated": {
+    "version": 1,
+    "turn": 0,
+    "people": 32,
+    "gold": 740,
+    "food": 66,
+    "wood": 20,
+    "tools": 9,
+    "roads": [
+      [
+        {
+          "x": 492,
+          "y": 717
+        },
+        {
+          "x": 650,
+          "y": 662
+        }
+      ],
+      [
+        {
+          "x": 650,
+          "y": 662
+        },
+        {
+          "x": 780,
+          "y": 699
+        }
+      ],
+      [
+        {
+          "x": 780,
+          "y": 699
+        },
+        {
+          "x": 976,
+          "y": 628
+        }
+      ]
+    ],
+    "buildings": [
+      {
+        "type": "lumber",
+        "x": 608,
+        "y": 585
+      },
+      {
+        "type": "farm",
+        "x": 850,
+        "y": 798
+      }
+    ],
+    "houses": [
+      {
+        "x": 562,
+        "y": 750
+      },
+      {
+        "x": 670,
+        "y": 619
+      },
+      {
+        "x": 738,
+        "y": 742
+      },
+      {
+        "x": 865,
+        "y": 645
+      }
+    ],
+    "happiness": 76,
+    "desirePaths": [],
+    "zones": [],
+    "localLanes": [],
+    "housing": {
+      "housed": 32,
+      "pending": [],
+      "attractiveness": 75,
+      "nextId": 1
+    },
+    "logs": [
+      "The founding families arrived in small landscape, seed WV007-P3."
+    ],
+    "report": "The first village has been established on a natural meadow. Expand roads and paint residential land.",
+    "civic": {
+      "tax": "balanced",
+      "rations": "normal",
+      "labor": "balanced",
+      "chapter": 0,
+      "charters": [],
+      "petitions": [],
+      "lastTrade": -1,
+      "steadyMonths": 0,
+      "changed": {},
+      "ledger": {}
+    },
+    "worldOptions": {
+      "seed": "WV007-P3",
+      "size": "small",
+      "lakes": 0,
+      "rivers": 0,
+      "waterLevel": 45,
+      "rolling": 58,
+      "hills": 48,
+      "cliffs": 25,
+      "flatness": 95,
+      "forest": 65
+    },
+    "roadGraph": {
+      "nodes": [
+        {
+          "id": 1,
+          "x": 492,
+          "y": 717
+        },
+        {
+          "id": 2,
+          "x": 650,
+          "y": 662
+        },
+        {
+          "id": 4,
+          "x": 780,
+          "y": 699
+        },
+        {
+          "id": 6,
+          "x": 976,
+          "y": 628
+        }
+      ],
+      "segments": [
+        {
+          "id": 3,
+          "a": 1,
+          "b": 2,
+          "control": null
+        },
+        {
+          "id": 5,
+          "a": 2,
+          "b": 4,
+          "control": null
+        },
+        {
+          "id": 7,
+          "a": 4,
+          "b": 6,
+          "control": null
+        }
+      ],
+      "nextId": 8,
+      "hubId": 1
+    }
+  },
+  "grown": {
+    "version": 1,
+    "turn": 12,
+    "people": 50,
+    "gold": 1019,
+    "food": 71,
+    "wood": 104,
+    "tools": 9,
+    "roads": [
+      [
+        {
+          "x": 172,
+          "y": 472
+        },
+        {
+          "x": 330,
+          "y": 417
+        }
+      ],
+      [
+        {
+          "x": 330,
+          "y": 417
+        },
+        {
+          "x": 460,
+          "y": 454
+        }
+      ],
+      [
+        {
+          "x": 460,
+          "y": 454
+        },
+        {
+          "x": 656,
+          "y": 383
+        }
+      ]
+    ],
+    "buildings": [
+      {
+        "type": "lumber",
+        "x": 288,
+        "y": 340
+      },
+      {
+        "type": "farm",
+        "x": 530,
+        "y": 553
+      }
+    ],
+    "houses": [
+      {
+        "x": 242,
+        "y": 505
+      },
+      {
+        "x": 350,
+        "y": 374
+      },
+      {
+        "x": 418,
+        "y": 497
+      },
+      {
+        "x": 545,
+        "y": 400
+      },
+      {
+        "x": 217,
+        "y": 379,
+        "orientation": 2.9829,
+        "foundedTurn": 2,
+        "foundedEra": 0,
+        "entrance": {
+          "x": 224,
+          "y": 415
+        },
+        "parcel": {
+          "vertices": [
+            {
+              "x": 183,
+              "y": 385
+            },
+            {
+              "x": 200,
+              "y": 358
+            },
+            {
+              "x": 227,
+              "y": 353
+            },
+            {
+              "x": 255,
+              "y": 373
+            },
+            {
+              "x": 238,
+              "y": 405
+            },
+            {
+              "x": 206,
+              "y": 407
+            }
+          ],
+          "orientation": 2.9829
+        }
+      },
+      {
+        "x": 687,
+        "y": 429,
+        "orientation": 5.6382,
+        "foundedTurn": 6,
+        "foundedEra": 0,
+        "entrance": {
+          "x": 658,
+          "y": 399
+        },
+        "parcel": {
+          "vertices": [
+            {
+              "x": 726,
+              "y": 403
+            },
+            {
+              "x": 726,
+              "y": 443
+            },
+            {
+              "x": 692,
+              "y": 468
+            },
+            {
+              "x": 646,
+              "y": 456
+            },
+            {
+              "x": 647,
+              "y": 414
+            },
+            {
+              "x": 682,
+              "y": 397
+            }
+          ],
+          "orientation": 5.6382
+        }
+      },
+      {
+        "x": 718,
+        "y": 367,
+        "orientation": 4.3015,
+        "foundedTurn": 12,
+        "foundedEra": 0,
+        "entrance": {
+          "x": 672,
+          "y": 365
+        },
+        "parcel": {
+          "vertices": [
+            {
+              "x": 700,
+              "y": 333
+            },
+            {
+              "x": 730,
+              "y": 341
+            },
+            {
+              "x": 754,
+              "y": 354
+            },
+            {
+              "x": 751,
+              "y": 378
+            },
+            {
+              "x": 735,
+              "y": 398
+            },
+            {
+              "x": 706,
+              "y": 391
+            },
+            {
+              "x": 689,
+              "y": 377
+            },
+            {
+              "x": 673,
+              "y": 353
+            }
+          ],
+          "orientation": 4.3015
+        }
+      }
+    ],
+    "happiness": 76,
+    "desirePaths": [],
+    "zones": [
+      {
+        "id": 1,
+        "type": "residential",
+        "radius": 90,
+        "points": [
+          {
+            "x": 250,
+            "y": 350
+          },
+          {
+            "x": 700,
+            "y": 420
+          }
+        ]
+      }
+    ],
+    "localLanes": [
+      {
+        "points": [
+          {
+            "x": 224,
+            "y": 415
+          },
+          {
+            "x": 241,
+            "y": 448
+          }
+        ],
+        "houseX": 217,
+        "houseY": 379,
+        "entrance": {
+          "x": 224,
+          "y": 415
+        },
+        "connectsTo": "road",
+        "foundedTurn": 2
+      },
+      {
+        "points": [
+          {
+            "x": 658,
+            "y": 399
+          },
+          {
+            "x": 656,
+            "y": 383
+          }
+        ],
+        "houseX": 687,
+        "houseY": 429,
+        "entrance": {
+          "x": 658,
+          "y": 399
+        },
+        "connectsTo": "road",
+        "foundedTurn": 6
+      },
+      {
+        "points": [
+          {
+            "x": 672,
+            "y": 365
+          },
+          {
+            "x": 656,
+            "y": 383
+          }
+        ],
+        "houseX": 718,
+        "houseY": 367,
+        "entrance": {
+          "x": 672,
+          "y": 365
+        },
+        "connectsTo": "lane",
+        "foundedTurn": 12
+      }
+    ],
+    "housing": {
+      "housed": 50,
+      "pending": [],
+      "attractiveness": 75,
+      "nextId": 7
+    },
+    "logs": [
+      "March · Year 2: [Spring] +10 food, +8 wood, +0 tools. +46 gold net. +3 residents. Council petition: Families on the Road. Open the Council to respond.",
+      "March · Year 2: A new cottage was built for a household, using 4 wood and 45 gold.",
+      "February · Year 1: [Winter] +5 food, +8 wood, +0 tools. +46 gold net. +0 residents. Council petition: Families on the Road. Open the Council to respond.",
+      "January · Year 1: [Winter] +5 food, +8 wood, +0 tools. +41 gold net. +3 residents. Council petition: Families on the Road. Open the Council to respond.",
+      "December · Year 1: [Winter] +5 food, +8 wood, +0 tools. +41 gold net. +0 residents. Council petition: Families on the Road. Open the Council to respond.",
+      "November · Year 1: [Autumn] +13 food, +8 wood, +0 tools. +37 gold net. +3 residents. Council petition: Families on the Road. Open the Council to respond.",
+      "October · Year 1: [Autumn] +13 food, +8 wood, +0 tools. +37 gold net. +0 residents. Council petition: Families on the Road. Open the Council to respond.",
+      "September · Year 1: [Autumn] +13 food, +8 wood, +0 tools. +32 gold net. +3 residents. Council petition: Families on the Road. Open the Council to respond.",
+      "September · Year 1: A new cottage was built for a household, using 4 wood and 45 gold.",
+      "August · Year 1: [Summer] +11 food, +8 wood, +0 tools. +32 gold net. +0 residents. Council petition: Families on the Road. Open the Council to respond.",
+      "July · Year 1: [Summer] +11 food, +8 wood, +0 tools. +28 gold net. +3 residents. Council petition: Families on the Road. Open the Council to respond.",
+      "June · Year 1: [Summer] +11 food, +8 wood, +0 tools. +28 gold net. +0 residents. 1 farm(s) need painted farmland to improve output.",
+      "May · Year 1: [Spring] +10 food, +8 wood, +0 tools. +23 gold net. +3 residents. 1 farm(s) need painted farmland to improve output.",
+      "May · Year 1: A new cottage was built for a household, using 4 wood and 45 gold.",
+      "April · Year 1: [Spring] +10 food, +8 wood, +0 tools. +23 gold net. +0 residents. 1 farm(s) need painted farmland to improve output.",
+      "The first families establish Willow Valley beside an old forest road."
+    ],
+    "report": "[Spring] +10 food, +8 wood, +0 tools. +46 gold net. +3 residents. Council petition: Families on the Road. Open the Council to respond.",
+    "roadGraph": {
+      "nodes": [
+        {
+          "id": 1,
+          "x": 172,
+          "y": 472
+        },
+        {
+          "id": 2,
+          "x": 330,
+          "y": 417
+        },
+        {
+          "id": 4,
+          "x": 460,
+          "y": 454
+        },
+        {
+          "id": 6,
+          "x": 656,
+          "y": 383
+        }
+      ],
+      "segments": [
+        {
+          "id": 3,
+          "a": 1,
+          "b": 2,
+          "control": null
+        },
+        {
+          "id": 5,
+          "a": 2,
+          "b": 4,
+          "control": null
+        },
+        {
+          "id": 7,
+          "a": 4,
+          "b": 6,
+          "control": null
+        }
+      ],
+      "nextId": 8,
+      "hubId": 1
+    },
+    "civic": {
+      "tax": "balanced",
+      "rations": "normal",
+      "labor": "balanced",
+      "chapter": 0,
+      "charters": [],
+      "petitions": [],
+      "lastTrade": -1,
+      "steadyMonths": 12,
+      "changed": {},
+      "ledger": {
+        "foodProduction": 10,
+        "woodProduction": 8,
+        "toolProduction": 0,
+        "foodRequired": 11,
+        "balance": 46,
+        "taxes": 71,
+        "upkeep": 25,
+        "marketBonus": 0,
+        "granarySavings": 0,
+        "foodReserveMonths": 6.5,
+        "workers": 23,
+        "employed": 12,
+        "required": 12,
+        "season": "Spring",
+        "fieldsMissing": 1,
+        "laborMissing": 0,
+        "foodForecast": 70,
+        "goldForecast": 1110,
+        "notices": [
+          "1 farm(s) need painted farmland to improve output."
+        ]
+      }
+    },
+    "turnHighlights": [
+      {
+        "kind": "home",
+        "text": "A new cottage rose on an irregular parcel.",
+        "turn": 12,
+        "x": 718,
+        "y": 367
+      },
+      {
+        "kind": "lane",
+        "text": "1 new neighborhood approach path formed.",
+        "turn": 12
+      },
+      {
+        "kind": "fields",
+        "text": "Some farms need more cultivated fields.",
+        "turn": 12
+      }
+    ]
+  }
+}
