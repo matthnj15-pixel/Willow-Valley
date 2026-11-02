@@ -1,0 +1,62 @@
+# Page snapshot
+
+```yaml
+- main [ref=e2]:
+  - generic [ref=e3]:
+    - link "Willow Valley / art studies" [ref=e4] [cursor=pointer]:
+      - /url: ./building-catalog.html
+    - generic [ref=e5]: WV-006 · A · gallery review
+  - heading "Grass, soil and stone." [level=1] [ref=e6]
+  - paragraph [ref=e7]: Fine grass, soil grain and chipped rock at a consistent material scale. Compare the published A1 and detailed A2 surfaces from the same saved view. Drag to orbit; pinch or scroll to zoom.
+  - region "Comparison settings" [ref=e8]:
+    - generic [ref=e9]:
+      - text: Seed
+      - combobox "Seed" [ref=e10] [cursor=pointer]:
+        - option "WILLOW-1048" [selected]
+        - option "WV-SURFACES-2"
+    - generic [ref=e11]:
+      - text: Quality
+      - combobox "Quality" [ref=e12] [cursor=pointer]:
+        - option "Normal" [selected]
+        - option "Low"
+    - generic [ref=e13]:
+      - text: Treatment
+      - combobox "Treatment" [ref=e14] [cursor=pointer]:
+        - option "Shared game surface"
+        - option "Published A1"
+        - option "Fine-detail A2" [selected]
+    - generic [ref=e15]:
+      - text: Scene
+      - combobox "Scene" [ref=e16] [cursor=pointer]:
+        - option "Sunlit meadow study"
+        - option "Valley/path fixtures" [selected]
+        - option "30-home fixture"
+        - option "100-home fixture"
+  - paragraph [ref=e17]:
+    - link "Open the sunlit meadow study →" [ref=e18] [cursor=pointer]:
+      - /url: "?count=study&look=meadow&revision=a3"
+  - navigation "Saved views" [ref=e19]:
+    - button "Close buildings" [ref=e20] [cursor=pointer]
+    - button "Ground close-up" [ref=e21] [cursor=pointer]
+    - button "Wide valley" [ref=e22] [cursor=pointer]
+    - button "Close buildings" [ref=e23] [cursor=pointer]
+    - button "Low pitch" [ref=e24] [cursor=pointer]
+    - button "High pitch" [ref=e25] [cursor=pointer]
+    - button "Forest edge" [ref=e26] [cursor=pointer]
+    - button "Cliff" [ref=e27] [cursor=pointer]
+    - button "Main-road junction stress" [ref=e28] [cursor=pointer]
+    - button "Lake" [ref=e29] [cursor=pointer]
+    - button "River" [ref=e30] [cursor=pointer]
+  - generic "Environment comparison" [ref=e32]
+  - status [ref=e33]: Local models ready · fine-detail A2 surface
+  - paragraph [ref=e34]:
+    - text: "The close detail view changes only its camera. Terrain silhouettes and legacy tree proxies are unchanged. Unchanged committed architecture at 2.8 units per metre; material witnesses are 1.75 m tall. Water tone uses distance from shore, not measured depth. Shadows disabled. This candidate is separate from the playable game and is not installed by its offline cache. Geometry references:"
+    - link "detailed building study" [ref=e35] [cursor=pointer]:
+      - /url: ./wv006-baselines.html
+    - text: ·
+    - link "inhabited woodland study" [ref=e36] [cursor=pointer]:
+      - /url: ./wv006-landscape.html
+    - text: .
+  - group [ref=e37]:
+    - generic "Measure this device" [ref=e38]
+```
