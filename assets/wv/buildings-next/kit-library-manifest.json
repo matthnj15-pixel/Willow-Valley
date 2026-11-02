@@ -1,0 +1,581 @@
+{
+  "recipeRevision": 1,
+  "license": "CC0-1.0",
+  "publisher": "Quaternius",
+  "downloadPage": "https://quaternius.itch.io/medieval-village-megakit",
+  "sourceTier": "Source",
+  "archiveSha256": "5e60888e2babe418a4618e7815539d9b1b2c3b24c1db2b22cd7a2a7f66140732",
+  "archiveBytes": 708720797,
+  "licenseSha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee",
+  "files": [
+    {
+      "url": "glTF/Prop_Crate.bin",
+      "sha256": "b7dbddf64868c84abd62515caac55ac1a9cd70d897d9bf8a6b9b7191210365c4",
+      "bytes": 16100
+    },
+    {
+      "url": "glTF/Prop_Crate.gltf",
+      "sha256": "fb1d2ae668cc2761f9177110424e0c5c80a6698ef44f9cac642cb4a766d37883",
+      "bytes": 2211
+    },
+    {
+      "url": "glTF/Prop_Support.bin",
+      "sha256": "c0aa629b294c52071f66feb89e7bc771480391bfe012f33c60b5cb4aa9881897",
+      "bytes": 1120
+    },
+    {
+      "url": "glTF/Prop_Support.gltf",
+      "sha256": "c7292aa4f0f73a3d83c2ea5d0f9f3c726e17b13156679c9dfa043646a9f08037",
+      "bytes": 2202
+    },
+    {
+      "url": "glTF/Prop_Vine1.bin",
+      "sha256": "43970bd08ae75708cfa440706e1b4b6ec2164280ec804da6d92bf9e8ac854ece",
+      "bytes": 5580
+    },
+    {
+      "url": "glTF/Prop_Vine1.gltf",
+      "sha256": "5326ab98fef8a68b3b4d980c066d882b21e1d0489ccbc1228fd4b156d5f21ac1",
+      "bytes": 1979
+    },
+    {
+      "url": "glTF/Prop_Vine4.bin",
+      "sha256": "0c0c57c791231ca8d2bf012a1c28556d70a44c94ad994bb44ba4d083e123652a",
+      "bytes": 2140
+    },
+    {
+      "url": "glTF/Prop_Vine4.gltf",
+      "sha256": "6d5f7dee9b28dbbc7c7fc549ba5b5c45a66185e3f76840d6dd7240e81afdafb9",
+      "bytes": 1974
+    },
+    {
+      "url": "glTF/Prop_Wagon.bin",
+      "sha256": "2b5e35c01572b1447bdd3dcf4246fefe5aa5415d4685451b4747b80048d8f544",
+      "bytes": 103272
+    },
+    {
+      "url": "glTF/Prop_Wagon.gltf",
+      "sha256": "f81bf401710cd59f1325a5cdb36d335c2e5277c8416d79eefffdc646ec3fae83",
+      "bytes": 2422
+    },
+    {
+      "url": "glTF/Prop_WoodenFence_Single.bin",
+      "sha256": "aac37141af8f33e762b330486fd1cbd1c12a96b2978f491be4a58e24f1fe9ec1",
+      "bytes": 2800
+    },
+    {
+      "url": "glTF/Prop_WoodenFence_Single.gltf",
+      "sha256": "c9f787c03c62dd94268da84bf3e4dacf554b2a5a9beee38314e37ff5d929c407",
+      "bytes": 2230
+    },
+    {
+      "url": "glTF/T_Brick_Normal.png",
+      "sha256": "6349f1fb3eed9985e6f969c1de04b9e92490020a12ba19a44b96ea808fb27c1a",
+      "bytes": 4474267
+    },
+    {
+      "url": "glTF/T_Brick_Roughness.png",
+      "sha256": "981e7a4f8e3119749b2fb3d557e3d0ba0551e75a39b467cff0a3a948a9392716",
+      "bytes": 689204
+    },
+    {
+      "url": "glTF/T_FlatTiles_BaseColor.png",
+      "sha256": "e99ddf215d4172fb41f288cc1aab92193236206eb109dc260308dcb38c84c71d",
+      "bytes": 3317978
+    },
+    {
+      "url": "glTF/T_FlatTiles_Normal.png",
+      "sha256": "d4bd2fe0e149e8df373a67379623e82d77db32d3e77dfd5dba0154879b30baea",
+      "bytes": 3937764
+    },
+    {
+      "url": "glTF/T_FlatTiles_Roughness.png",
+      "sha256": "f62a2b715a278fc4625e1a946ec50fabdcaca857dd978f550719d2aeca786bf3",
+      "bytes": 1379175
+    },
+    {
+      "url": "glTF/T_Plaster_BaseColor.png",
+      "sha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4",
+      "bytes": 3316410
+    },
+    {
+      "url": "glTF/T_Plaster_Normal.png",
+      "sha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4",
+      "bytes": 4607606
+    },
+    {
+      "url": "glTF/T_Plaster_ORM.png",
+      "sha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7",
+      "bytes": 2381579
+    },
+    {
+      "url": "glTF/T_RockTrim_BaseColor.png",
+      "sha256": "aa571cd612091a8f4c95393f8f938bd6e5d47a8cdfd9c896b60a4b37903e2c7c",
+      "bytes": 1908835
+    },
+    {
+      "url": "glTF/T_RockTrim_Normal.png",
+      "sha256": "f93f82f7e69aa0bf1900f8ab3f252390f091b771f0b84a345c5fefb0f0155cd3",
+      "bytes": 3925938
+    },
+    {
+      "url": "glTF/T_RockTrim_ORM.png",
+      "sha256": "5287dd9a4e9fb7423af8d8440a8de8bdb8910f9f37ba148f619a6eddf58d5bc8",
+      "bytes": 1625807
+    },
+    {
+      "url": "glTF/T_RoundTiles_BaseColor.png",
+      "sha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997",
+      "bytes": 4352034
+    },
+    {
+      "url": "glTF/T_RoundTiles_Normal.png",
+      "sha256": "e8cf202fbc1ec36c3f5389a25ab9c99f015d49ae0ca963d0404614c3e1e8f687",
+      "bytes": 3792369
+    },
+    {
+      "url": "glTF/T_RoundTiles_Roughness.png",
+      "sha256": "02c5cdbb6768de6ac674a343265c020c5bd6ef70fd7ba555d9b9dc7445179366",
+      "bytes": 1624660
+    },
+    {
+      "url": "glTF/T_UnevenBrick_Normal.png",
+      "sha256": "bbf623cc35720d67a02079b20b9a6d9641c3686952b288cda97dec41e4b8acad",
+      "bytes": 3866626
+    },
+    {
+      "url": "glTF/T_UnevenBrick_Roughness.png",
+      "sha256": "da170cb92ac5479b93ca0c0002b783f1186a146e6e3124891ce7bfe6e1a8a942",
+      "bytes": 1246162
+    },
+    {
+      "url": "glTF/T_VineLeaf_png.png",
+      "sha256": "8c80a9835d29cf7b1360ca46c2a96cedc0bfffee59f09db892f64db6825e3188",
+      "bytes": 162432
+    },
+    {
+      "url": "glTF/T_WoodTrim_BaseColor.png",
+      "sha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+      "bytes": 2082310
+    },
+    {
+      "url": "glTF/T_WoodTrim_Normal.png",
+      "sha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8",
+      "bytes": 3596501
+    },
+    {
+      "url": "glTF/T_WoodTrim_Roughness.png",
+      "sha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3",
+      "bytes": 1697111
+    },
+    {
+      "url": "glTF/WindowShutters_Thin_Flat_Open.bin",
+      "sha256": "3cc8ccefb15492c88570e0d88d3bbe0b95e1a201fc3d42fcd2b400448149ec50",
+      "bytes": 8256
+    },
+    {
+      "url": "glTF/WindowShutters_Thin_Flat_Open.gltf",
+      "sha256": "998cc67c1cbc7d00aa4215895732caf3254f64a086dce366ea1df0301a85f410",
+      "bytes": 2442
+    },
+    {
+      "url": "glTF/WindowShutters_Thin_Round_Open.bin",
+      "sha256": "dbffd622221dc83a263a72cdb85fbfeb64ba77a789882f40945ebff168058ffd",
+      "bytes": 9472
+    },
+    {
+      "url": "glTF/WindowShutters_Thin_Round_Open.gltf",
+      "sha256": "6aff6c02fc9670f7623849ccc9a1f55f13f624ac8a9521aa2054a2a23520ec6f",
+      "bytes": 2445
+    },
+    {
+      "url": "glTF/Window_Thin_Flat1.bin",
+      "sha256": "824a3393d73140fde87d37671b24c90a3f098380ef99b3fe77a518715670e51b",
+      "bytes": 7648
+    },
+    {
+      "url": "glTF/Window_Thin_Flat1.gltf",
+      "sha256": "3065d7788d7e844c156f34e1282619acbaa05f433aabdad22b870efec30c5ebf",
+      "bytes": 3514
+    }
+  ],
+  "surfaces": {
+    "WoodTrim": {
+      "base": {
+        "url": "assets/wv/buildings-next/kit-surfaces/WoodTrim-base.jpg",
+        "sha256": "6b665ce50919a0a13b3de1d1a02bd5c45958cce1ed347dd534f69c75f487533e",
+        "source": "glTF/T_WoodTrim_BaseColor.png",
+        "sourceSha256": "a59f410b07a9bc5f0664df3ba7a2c1e37acffc7979795911f3fc8730ab60e33e",
+        "bytes": 38810,
+        "width": 512,
+        "height": 512,
+        "mime": "image/jpeg",
+        "recipe": "resize 512, saturation .68, JPEG90"
+      },
+      "normal": {
+        "url": "assets/wv/buildings-next/kit-surfaces/WoodTrim-normal.png",
+        "sha256": "d23112da5e5ddd88e2fea48c8386b83bb03c0c5a92b6496e9cd0f4a7a27e56b6",
+        "source": "glTF/T_WoodTrim_Normal.png",
+        "sourceSha256": "5847623e4ed6c206e59f32d1718ee75dcb2b49a1d55ede7ef70a254739caf4a8",
+        "bytes": 428380,
+        "width": 512,
+        "height": 512,
+        "mime": "image/png",
+        "recipe": "linear resize 512 and renormalize tangent-space RGB"
+      },
+      "rough": {
+        "url": "assets/wv/buildings-next/kit-surfaces/WoodTrim-rough.png",
+        "sha256": "53af3a4efb30c70d2a634d0a45d79cfa81e3cf0c8bb7730f75e02868b85c6045",
+        "source": "glTF/T_WoodTrim_Roughness.png",
+        "sourceSha256": "e888464fd4199d458d8cf39e00fa07d56f8a0bcb658aa03b4a7c95d466ceefa3",
+        "bytes": 45946,
+        "width": 256,
+        "height": 256,
+        "mime": "image/png",
+        "recipe": "resize 256; keep roughness G; R=255, B=0 (nonmetal)"
+      }
+    },
+    "RockTrim": {
+      "base": {
+        "url": "assets/wv/buildings-next/kit-surfaces/RockTrim-base.jpg",
+        "sha256": "a1ddf657dfaccc424e8d0f2e9ee5e403e1e5ae4ef96a711f236dc62fb819f93e",
+        "source": "glTF/T_RockTrim_BaseColor.png",
+        "sourceSha256": "aa571cd612091a8f4c95393f8f938bd6e5d47a8cdfd9c896b60a4b37903e2c7c",
+        "bytes": 31400,
+        "width": 512,
+        "height": 512,
+        "mime": "image/jpeg",
+        "recipe": "resize 512, saturation .68, JPEG90"
+      },
+      "normal": {
+        "url": "assets/wv/buildings-next/kit-surfaces/RockTrim-normal.png",
+        "sha256": "18457bb0dbea21d6bae286cf4bdfd854ef7f974872dff9cf113ded0c258c1341",
+        "source": "glTF/T_RockTrim_Normal.png",
+        "sourceSha256": "f93f82f7e69aa0bf1900f8ab3f252390f091b771f0b84a345c5fefb0f0155cd3",
+        "bytes": 494116,
+        "width": 512,
+        "height": 512,
+        "mime": "image/png",
+        "recipe": "linear resize 512 and renormalize tangent-space RGB"
+      },
+      "rough": {
+        "url": "assets/wv/buildings-next/kit-surfaces/RockTrim-rough.png",
+        "sha256": "12eee438e32cea80aef4f0153a2227da04d6df1d662a87dbffe28d98da6137e7",
+        "source": "glTF/T_RockTrim_ORM.png",
+        "sourceSha256": "5287dd9a4e9fb7423af8d8440a8de8bdb8910f9f37ba148f619a6eddf58d5bc8",
+        "bytes": 12990,
+        "width": 256,
+        "height": 256,
+        "mime": "image/png",
+        "recipe": "resize 256; keep roughness G; R=255, B=0 (nonmetal)"
+      }
+    },
+    "Plaster": {
+      "base": {
+        "url": "assets/wv/buildings-next/kit-surfaces/Plaster-base.jpg",
+        "sha256": "60c891f004e9c05d725ee9bddd24aef0365b1c9078f6a72e7e2257521c541ff1",
+        "source": "glTF/T_Plaster_BaseColor.png",
+        "sourceSha256": "98547ca83888307e3ffa96384ce058b7622affe0a42add3b36d0b48618c5eda4",
+        "bytes": 16084,
+        "width": 512,
+        "height": 512,
+        "mime": "image/jpeg",
+        "recipe": "resize 512, saturation .68, JPEG90"
+      },
+      "normal": {
+        "url": "assets/wv/buildings-next/kit-surfaces/Plaster-normal.png",
+        "sha256": "0a9a45f1e736147ba04e3b52bb4e44b7b4a91d1e88a65b58e7538835dfa79d6b",
+        "source": "glTF/T_Plaster_Normal.png",
+        "sourceSha256": "8b9617b561466cce00d5a0628eae7bef208dcf63445d72570e7f8e5057fed0d4",
+        "bytes": 373650,
+        "width": 512,
+        "height": 512,
+        "mime": "image/png",
+        "recipe": "linear resize 512 and renormalize tangent-space RGB"
+      },
+      "rough": {
+        "url": "assets/wv/buildings-next/kit-surfaces/Plaster-rough.png",
+        "sha256": "5fdc58a7af42b6e6315bd3f91b77be4a4cb9d654906a4fe07da1019998f96780",
+        "source": "glTF/T_Plaster_ORM.png",
+        "sourceSha256": "7be9d64a6154ba12bb7086e1d6774a7d5bbbc95775efb614f6ff40a4787fe0c7",
+        "bytes": 50389,
+        "width": 256,
+        "height": 256,
+        "mime": "image/png",
+        "recipe": "resize 256; keep roughness G; R=255, B=0 (nonmetal)"
+      }
+    },
+    "RoundTiles": {
+      "base": {
+        "url": "assets/wv/buildings-next/kit-surfaces/RoundTiles-base.jpg",
+        "sha256": "2bbcb07004874d0a28cd2105842dde85d57f70a8ed56550480f6e75f01801b24",
+        "source": "glTF/T_RoundTiles_BaseColor.png",
+        "sourceSha256": "acf388ebd1a97346e1e5b59091cfc609ed15b4f70b83a626089f12a82a2d9997",
+        "bytes": 27189,
+        "width": 512,
+        "height": 512,
+        "mime": "image/jpeg",
+        "recipe": "resize 512, saturation .68, JPEG90"
+      },
+      "normal": {
+        "url": "assets/wv/buildings-next/kit-surfaces/RoundTiles-normal.png",
+        "sha256": "fed06a264e7f3db1d4f5cba11c42eeada5cfb2a66a5993c55e9b5f8b624c8e71",
+        "source": "glTF/T_RoundTiles_Normal.png",
+        "sourceSha256": "e8cf202fbc1ec36c3f5389a25ab9c99f015d49ae0ca963d0404614c3e1e8f687",
+        "bytes": 306686,
+        "width": 512,
+        "height": 512,
+        "mime": "image/png",
+        "recipe": "linear resize 512 and renormalize tangent-space RGB"
+      },
+      "rough": {
+        "url": "assets/wv/buildings-next/kit-surfaces/RoundTiles-rough.png",
+        "sha256": "0812a778da9adf70a512baf5baa9cdef5150f173e730ee65e967bc31d92b59f2",
+        "source": "glTF/T_RoundTiles_Roughness.png",
+        "sourceSha256": "02c5cdbb6768de6ac674a343265c020c5bd6ef70fd7ba555d9b9dc7445179366",
+        "bytes": 34563,
+        "width": 256,
+        "height": 256,
+        "mime": "image/png",
+        "recipe": "resize 256; keep roughness G; R=255, B=0 (nonmetal)"
+      }
+    },
+    "Brick": {
+      "normal": {
+        "url": "assets/wv/buildings-next/kit-surfaces/Brick-normal.png",
+        "sha256": "d61bc3a4b8002ce722e39de94f47d7b0c7efff968f675586c8be26435a34478d",
+        "source": "glTF/T_Brick_Normal.png",
+        "sourceSha256": "6349f1fb3eed9985e6f969c1de04b9e92490020a12ba19a44b96ea808fb27c1a",
+        "bytes": 504052,
+        "width": 512,
+        "height": 512,
+        "mime": "image/png",
+        "recipe": "linear resize 512 and renormalize tangent-space RGB"
+      },
+      "rough": {
+        "url": "assets/wv/buildings-next/kit-surfaces/Brick-rough.png",
+        "sha256": "9c7117edd640f674d2555c4e63aa5038c379747d981b9469db0a7379f7e23df5",
+        "source": "glTF/T_Brick_Roughness.png",
+        "sourceSha256": "981e7a4f8e3119749b2fb3d557e3d0ba0551e75a39b467cff0a3a948a9392716",
+        "bytes": 21910,
+        "width": 256,
+        "height": 256,
+        "mime": "image/png",
+        "recipe": "resize 256; keep roughness G; R=255, B=0 (nonmetal)"
+      }
+    },
+    "UnevenBrick": {
+      "normal": {
+        "url": "assets/wv/buildings-next/kit-surfaces/UnevenBrick-normal.png",
+        "sha256": "38262c9d8c289fe4829f68d73899d2e597261f18e4a140b6f2dbeb1f422b5905",
+        "source": "glTF/T_UnevenBrick_Normal.png",
+        "sourceSha256": "bbf623cc35720d67a02079b20b9a6d9641c3686952b288cda97dec41e4b8acad",
+        "bytes": 426644,
+        "width": 512,
+        "height": 512,
+        "mime": "image/png",
+        "recipe": "linear resize 512 and renormalize tangent-space RGB"
+      },
+      "rough": {
+        "url": "assets/wv/buildings-next/kit-surfaces/UnevenBrick-rough.png",
+        "sha256": "4ed7972796ba2f9092dda7198c049f1d5e94fef83b9a11ba5ce45b5732a31bee",
+        "source": "glTF/T_UnevenBrick_Roughness.png",
+        "sourceSha256": "da170cb92ac5479b93ca0c0002b783f1186a146e6e3124891ce7bfe6e1a8a942",
+        "bytes": 36963,
+        "width": 256,
+        "height": 256,
+        "mime": "image/png",
+        "recipe": "resize 256; keep roughness G; R=255, B=0 (nonmetal)"
+      }
+    },
+    "FlatTiles": {
+      "base": {
+        "url": "assets/wv/buildings-next/kit-surfaces/FlatTiles-base.jpg",
+        "sha256": "90f419e3d6ebb13d0ddcefb8dbfeb98a91f8c87d367ee1ab6934b4f3b3dde511",
+        "source": "glTF/T_FlatTiles_BaseColor.png",
+        "sourceSha256": "e99ddf215d4172fb41f288cc1aab92193236206eb109dc260308dcb38c84c71d",
+        "bytes": 29377,
+        "width": 512,
+        "height": 512,
+        "mime": "image/jpeg",
+        "recipe": "resize 512, saturation .68, JPEG90"
+      },
+      "normal": {
+        "url": "assets/wv/buildings-next/kit-surfaces/FlatTiles-normal.png",
+        "sha256": "c82cf8d1153c4cc566fe516adbc376ce18d7caf0ce96e605bcd2b48562ed1da3",
+        "source": "glTF/T_FlatTiles_Normal.png",
+        "sourceSha256": "d4bd2fe0e149e8df373a67379623e82d77db32d3e77dfd5dba0154879b30baea",
+        "bytes": 354607,
+        "width": 512,
+        "height": 512,
+        "mime": "image/png",
+        "recipe": "linear resize 512 and renormalize tangent-space RGB"
+      },
+      "rough": {
+        "url": "assets/wv/buildings-next/kit-surfaces/FlatTiles-rough.png",
+        "sha256": "5e0650cc933de60b75b8ebe381f57c32b59c530488f00abbeb08d9f54fa185b8",
+        "source": "glTF/T_FlatTiles_Roughness.png",
+        "sourceSha256": "f62a2b715a278fc4625e1a946ec50fabdcaca857dd978f550719d2aeca786bf3",
+        "bytes": 31898,
+        "width": 256,
+        "height": 256,
+        "mime": "image/png",
+        "recipe": "resize 256; keep roughness G; R=255, B=0 (nonmetal)"
+      }
+    }
+  },
+  "entries": [
+    {
+      "id": "Prop_Crate",
+      "boundsMin": [
+        -0.5417912602424622,
+        0.003361523151397705,
+        -0.5417911410331726
+      ],
+      "boundsMax": [
+        0.5417912006378174,
+        1.0629422664642334,
+        0.5417912006378174
+      ],
+      "triangles": 230,
+      "materialGroups": 1,
+      "source": "glTF/Prop_Crate.gltf"
+    },
+    {
+      "id": "Prop_Wagon",
+      "boundsMin": [
+        -0.9793591499328613,
+        0.00312984362244606,
+        -3.1504321098327637
+      ],
+      "boundsMax": [
+        0.9720492362976074,
+        1.5323269367218018,
+        0.8735843896865845
+      ],
+      "triangles": 1672,
+      "materialGroups": 1,
+      "source": "glTF/Prop_Wagon.gltf"
+    },
+    {
+      "id": "Prop_WoodenFence_Single",
+      "boundsMin": [
+        -1.0314507484436035,
+        -0.02825251966714859,
+        -0.059909969568252563
+      ],
+      "boundsMax": [
+        1.0326489210128784,
+        0.8098565340042114,
+        0.059910036623477936
+      ],
+      "triangles": 40,
+      "materialGroups": 1,
+      "source": "glTF/Prop_WoodenFence_Single.gltf"
+    },
+    {
+      "id": "Prop_Support",
+      "boundsMin": [
+        -0.09930182993412018,
+        1.2113893032073975,
+        -0.11812299489974976
+      ],
+      "boundsMax": [
+        0.09930171072483063,
+        2.9200263023376465,
+        1.9181500673294067
+      ],
+      "triangles": 16,
+      "materialGroups": 1,
+      "source": "glTF/Prop_Support.gltf"
+    },
+    {
+      "id": "Prop_Vine1",
+      "boundsMin": [
+        -0.7831392884254456,
+        -2.1205222606658936,
+        -0.04470796883106232
+      ],
+      "boundsMax": [
+        0.7526196837425232,
+        0.48202916979789734,
+        0.17425554990768433
+      ],
+      "triangles": 82,
+      "materialGroups": 1,
+      "source": "glTF/Prop_Vine1.gltf"
+    },
+    {
+      "id": "Prop_Vine4",
+      "boundsMin": [
+        -0.7181261777877808,
+        -1.0138827562332153,
+        -0.02677658572793007
+      ],
+      "boundsMax": [
+        0.2984466254711151,
+        0.5742899179458618,
+        0.12323993444442749
+      ],
+      "triangles": 31,
+      "materialGroups": 1,
+      "source": "glTF/Prop_Vine4.gltf"
+    },
+    {
+      "id": "WindowShutters_Thin_Round_Open",
+      "boundsMin": [
+        -0.8195725083351135,
+        1.0932440757751465,
+        0.059017062187194824
+      ],
+      "boundsMax": [
+        0.7867056131362915,
+        2.6116669178009033,
+        0.4355051815509796
+      ],
+      "triangles": 112,
+      "materialGroups": 1,
+      "source": "glTF/WindowShutters_Thin_Round_Open.gltf"
+    },
+    {
+      "id": "WindowShutters_Thin_Flat_Open",
+      "boundsMin": [
+        -0.6934646368026733,
+        1.0932440757751465,
+        0.13653387129306793
+      ],
+      "boundsMax": [
+        0.6605413556098938,
+        2.5174386501312256,
+        0.5136077404022217
+      ],
+      "triangles": 96,
+      "materialGroups": 1,
+      "source": "glTF/WindowShutters_Thin_Flat_Open.gltf"
+    },
+    {
+      "id": "Window_Thin_Flat1",
+      "boundsMin": [
+        -0.4050583243370056,
+        0.9747479557991028,
+        -0.26658084988594055
+      ],
+      "boundsMax": [
+        0.3829127252101898,
+        2.532715082168579,
+        0.16916218400001526
+      ],
+      "triangles": 112,
+      "materialGroups": 2,
+      "source": "glTF/Window_Thin_Flat1.gltf"
+    }
+  ],
+  "output": {
+    "url": "assets/wv/buildings-next/kit-library.glb",
+    "sha256": "e422749b1caf60420a5ec624d970e98bed2f9b39d0b0728615472a4cb2d52c69",
+    "bytes": 341568
+  },
+  "notice": "assets/wv/buildings-next/License_Kit_Source.txt",
+  "privateArchiveUsed": true,
+  "missingSourceMaps": []
+}

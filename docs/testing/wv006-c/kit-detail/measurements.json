@@ -1,0 +1,2404 @@
+{
+  "viewport": {
+    "width": 1400,
+    "height": 1050
+  },
+  "dpr": 1,
+  "ground": "existing environment-materials fixture, seed WV-CATALOG-02; repeat final ground in F",
+  "cameraChecks": [
+    {
+      "id": "home-steep-gable",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 5873,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 43
+      }
+    },
+    {
+      "id": "home-steep-gable",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 5873,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 44
+      }
+    },
+    {
+      "id": "home-steep-gable",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 5873,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 45
+      }
+    },
+    {
+      "id": "home-steep-gable",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 5873,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 46
+      }
+    },
+    {
+      "id": "home-steep-gable",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 5873,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 47
+      }
+    },
+    {
+      "id": "home-steep-gable",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 5873,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 48
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 7276,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 60
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 7276,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 61
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 7276,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 62
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 7276,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 63
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 7276,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 64
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 7276,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 65
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 6753,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 77
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 6753,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 78
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 6753,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 79
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 6753,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 80
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 6753,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 81
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 6753,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 82
+      }
+    },
+    {
+      "id": "home-porch-cabin",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 14,
+        "triangles": 6726,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 94
+      }
+    },
+    {
+      "id": "home-porch-cabin",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 14,
+        "triangles": 6726,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 95
+      }
+    },
+    {
+      "id": "home-porch-cabin",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 14,
+        "triangles": 6726,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 96
+      }
+    },
+    {
+      "id": "home-porch-cabin",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 14,
+        "triangles": 6726,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 97
+      }
+    },
+    {
+      "id": "home-porch-cabin",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 14,
+        "triangles": 6726,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 98
+      }
+    },
+    {
+      "id": "home-porch-cabin",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 14,
+        "triangles": 6726,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 99
+      }
+    },
+    {
+      "id": "home-offset-gables",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 16,
+        "triangles": 8141,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 111
+      }
+    },
+    {
+      "id": "home-offset-gables",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 16,
+        "triangles": 8141,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 112
+      }
+    },
+    {
+      "id": "home-offset-gables",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 16,
+        "triangles": 8141,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 113
+      }
+    },
+    {
+      "id": "home-offset-gables",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 16,
+        "triangles": 8141,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 114
+      }
+    },
+    {
+      "id": "home-offset-gables",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 16,
+        "triangles": 8141,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 115
+      }
+    },
+    {
+      "id": "home-offset-gables",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 16,
+        "triangles": 8141,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 116
+      }
+    },
+    {
+      "id": "facility-farm",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 17,
+        "triangles": 6288,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 128
+      }
+    },
+    {
+      "id": "facility-farm",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 17,
+        "triangles": 6288,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 129
+      }
+    },
+    {
+      "id": "facility-farm",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 17,
+        "triangles": 6288,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 130
+      }
+    },
+    {
+      "id": "facility-farm",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 17,
+        "triangles": 6288,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 131
+      }
+    },
+    {
+      "id": "facility-farm",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 17,
+        "triangles": 6288,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 132
+      }
+    },
+    {
+      "id": "facility-farm",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 17,
+        "triangles": 6288,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 133
+      }
+    },
+    {
+      "id": "facility-smith",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 6178,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 145
+      }
+    },
+    {
+      "id": "facility-smith",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 6178,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 146
+      }
+    },
+    {
+      "id": "facility-smith",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 6178,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 147
+      }
+    },
+    {
+      "id": "facility-smith",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 6178,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 148
+      }
+    },
+    {
+      "id": "facility-smith",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 6178,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 149
+      }
+    },
+    {
+      "id": "facility-smith",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 6178,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 150
+      }
+    },
+    {
+      "id": "facility-granary",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 5112,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 162
+      }
+    },
+    {
+      "id": "facility-granary",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 5112,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 163
+      }
+    },
+    {
+      "id": "facility-granary",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 5112,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 164
+      }
+    },
+    {
+      "id": "facility-granary",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 5112,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 165
+      }
+    },
+    {
+      "id": "facility-granary",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 5112,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 166
+      }
+    },
+    {
+      "id": "facility-granary",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 5112,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 167
+      }
+    },
+    {
+      "id": "facility-lumber",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 2515,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 179
+      }
+    },
+    {
+      "id": "facility-lumber",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 2515,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 180
+      }
+    },
+    {
+      "id": "facility-lumber",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 2515,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 181
+      }
+    },
+    {
+      "id": "facility-lumber",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 2515,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 182
+      }
+    },
+    {
+      "id": "facility-lumber",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 2515,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 183
+      }
+    },
+    {
+      "id": "facility-lumber",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 2515,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 184
+      }
+    },
+    {
+      "id": "facility-market",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 6098,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 196
+      }
+    },
+    {
+      "id": "facility-market",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 6098,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 197
+      }
+    },
+    {
+      "id": "facility-market",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 6098,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 198
+      }
+    },
+    {
+      "id": "facility-market",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 6098,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 199
+      }
+    },
+    {
+      "id": "facility-market",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 6098,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 200
+      }
+    },
+    {
+      "id": "facility-market",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 6098,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 201
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 213
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 214
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 215
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 216
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 217
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 218
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 3102,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 230
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 3102,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 231
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 3102,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 232
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 3102,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 233
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 3102,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 234
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 3102,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 235
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 247
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 248
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 249
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 250
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 251
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 252
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 264
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 265
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 266
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 267
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 268
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 269
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 281
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 282
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 283
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 284
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 285
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 286
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 2352,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 298
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 2352,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 299
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 2352,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 300
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 2352,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 301
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 2352,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 302
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 2352,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 303
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 10,
+        "triangles": 1586,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 315
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 10,
+        "triangles": 1586,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 316
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 10,
+        "triangles": 1586,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 317
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 10,
+        "triangles": 1586,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 318
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 10,
+        "triangles": 1586,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 319
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 10,
+        "triangles": 1586,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 320
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 332
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 333
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 334
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 335
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 336
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 44,
+        "geometries": 251,
+        "submissions": 337
+      }
+    },
+    {
+      "id": "home-steep-gable",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 3934,
+        "textures": 45,
+        "geometries": 263,
+        "submissions": 350
+      }
+    },
+    {
+      "id": "home-steep-gable",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 3934,
+        "textures": 45,
+        "geometries": 263,
+        "submissions": 351
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 4980,
+        "textures": 45,
+        "geometries": 270,
+        "submissions": 353
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 4980,
+        "textures": 45,
+        "geometries": 270,
+        "submissions": 354
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 3020,
+        "textures": 45,
+        "geometries": 273,
+        "submissions": 356
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 3020,
+        "textures": 45,
+        "geometries": 273,
+        "submissions": 357
+      }
+    },
+    {
+      "id": "home-porch-cabin",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 4576,
+        "textures": 45,
+        "geometries": 278,
+        "submissions": 359
+      }
+    },
+    {
+      "id": "home-porch-cabin",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 4576,
+        "textures": 45,
+        "geometries": 278,
+        "submissions": 360
+      }
+    },
+    {
+      "id": "home-offset-gables",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 13,
+        "triangles": 5525,
+        "textures": 45,
+        "geometries": 285,
+        "submissions": 362
+      }
+    },
+    {
+      "id": "home-offset-gables",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 13,
+        "triangles": 5525,
+        "textures": 45,
+        "geometries": 285,
+        "submissions": 363
+      }
+    },
+    {
+      "id": "facility-farm",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 3402,
+        "textures": 45,
+        "geometries": 294,
+        "submissions": 365
+      }
+    },
+    {
+      "id": "facility-farm",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 15,
+        "triangles": 3402,
+        "textures": 45,
+        "geometries": 294,
+        "submissions": 366
+      }
+    },
+    {
+      "id": "facility-smith",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 2522,
+        "textures": 45,
+        "geometries": 300,
+        "submissions": 368
+      }
+    },
+    {
+      "id": "facility-smith",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 8,
+        "triangles": 2522,
+        "textures": 45,
+        "geometries": 300,
+        "submissions": 369
+      }
+    },
+    {
+      "id": "facility-granary",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 2818,
+        "textures": 45,
+        "geometries": 309,
+        "submissions": 371
+      }
+    },
+    {
+      "id": "facility-granary",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 2818,
+        "textures": 45,
+        "geometries": 309,
+        "submissions": 372
+      }
+    },
+    {
+      "id": "facility-lumber",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1562,
+        "textures": 45,
+        "geometries": 313,
+        "submissions": 374
+      }
+    },
+    {
+      "id": "facility-lumber",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1562,
+        "textures": 45,
+        "geometries": 313,
+        "submissions": 375
+      }
+    },
+    {
+      "id": "facility-market",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 10,
+        "triangles": 3356,
+        "textures": 45,
+        "geometries": 319,
+        "submissions": 377
+      }
+    },
+    {
+      "id": "facility-market",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 10,
+        "triangles": 3356,
+        "textures": 45,
+        "geometries": 319,
+        "submissions": 378
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1748,
+        "textures": 45,
+        "geometries": 322,
+        "submissions": 380
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1748,
+        "textures": 45,
+        "geometries": 322,
+        "submissions": 381
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 1782,
+        "textures": 45,
+        "geometries": 330,
+        "submissions": 383
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 1782,
+        "textures": 45,
+        "geometries": 330,
+        "submissions": 384
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 936,
+        "textures": 45,
+        "geometries": 333,
+        "submissions": 386
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 936,
+        "textures": 45,
+        "geometries": 333,
+        "submissions": 387
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1258,
+        "textures": 45,
+        "geometries": 337,
+        "submissions": 389
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1258,
+        "textures": 45,
+        "geometries": 337,
+        "submissions": 390
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 1044,
+        "textures": 45,
+        "geometries": 342,
+        "submissions": 392
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 1044,
+        "textures": 45,
+        "geometries": 342,
+        "submissions": 393
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 1288,
+        "textures": 45,
+        "geometries": 349,
+        "submissions": 395
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 1288,
+        "textures": 45,
+        "geometries": 349,
+        "submissions": 396
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 10,
+        "triangles": 1242,
+        "textures": 45,
+        "geometries": 351,
+        "submissions": 398
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 10,
+        "triangles": 1242,
+        "textures": 45,
+        "geometries": 351,
+        "submissions": 399
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 1238,
+        "textures": 45,
+        "geometries": 351,
+        "submissions": 401
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 1238,
+        "textures": 45,
+        "geometries": 351,
+        "submissions": 402
+      }
+    }
+  ],
+  "probes": [
+    {
+      "quality": "normal",
+      "results": [
+        {
+          "id": "home-steep-gable",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999576115977
+        },
+        {
+          "id": "home-steep-gable",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999268505624
+        },
+        {
+          "id": "home-steep-gable",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999999999997
+        },
+        {
+          "id": "home-steep-gable",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999311879135
+        },
+        {
+          "id": "home-long-ridge",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.999999699120415
+        },
+        {
+          "id": "home-long-ridge",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999996991204153
+        },
+        {
+          "id": "home-long-ridge",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.999999755343459
+        },
+        {
+          "id": "home-long-ridge",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.999999699059026
+        },
+        {
+          "id": "home-low-hip",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999576115977
+        },
+        {
+          "id": "home-low-hip",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999268505624
+        },
+        {
+          "id": "home-low-hip",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999999999997
+        },
+        {
+          "id": "home-low-hip",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999311879135
+        },
+        {
+          "id": "home-low-hip",
+          "name": "weather coverage",
+          "ok": true,
+          "nearestMetres": 2.279999971389769
+        },
+        {
+          "id": "home-low-hip",
+          "name": "weather coverage",
+          "ok": true,
+          "nearestMetres": 3.591448945057063
+        },
+        {
+          "id": "home-low-hip",
+          "name": "weather coverage",
+          "ok": true,
+          "nearestMetres": 3.576159983726546
+        },
+        {
+          "id": "home-low-hip",
+          "name": "weather coverage",
+          "ok": true,
+          "nearestMetres": 3.593892607657892
+        },
+        {
+          "id": "home-low-hip",
+          "name": "weather coverage",
+          "ok": true,
+          "nearestMetres": 3.558869525405766
+        },
+        {
+          "id": "home-porch-cabin",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999309129591
+        },
+        {
+          "id": "home-porch-cabin",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999996991203081
+        },
+        {
+          "id": "home-porch-cabin",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999997553434595
+        },
+        {
+          "id": "home-porch-cabin",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999996990590253
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999576115977
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.7978011100906978
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999311879135
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999996991182661
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999999999997
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9337092638224751
+        },
+        {
+          "id": "facility-smith",
+          "name": "open stack throat",
+          "ok": true,
+          "nearestMetres": 5.095000028610228
+        },
+        {
+          "id": "facility-smith",
+          "name": "solid stack face",
+          "ok": true,
+          "nearestMetres": 1.379000008106232
+        },
+        {
+          "id": "facility-granary",
+          "name": "open undercroft",
+          "ok": true,
+          "nearestMetres": null
+        },
+        {
+          "id": "facility-granary",
+          "name": "closed underside",
+          "ok": true,
+          "nearestMetres": 0.4499999761581421
+        },
+        {
+          "id": "facility-granary",
+          "name": "closed cargo doors",
+          "ok": true,
+          "nearestMetres": 2.4175000190734868
+        }
+      ]
+    },
+    {
+      "quality": "low",
+      "results": [
+        {
+          "id": "home-steep-gable",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999634252809
+        },
+        {
+          "id": "home-steep-gable",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999268505624
+        },
+        {
+          "id": "home-steep-gable",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999999999997
+        },
+        {
+          "id": "home-steep-gable",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999311879135
+        },
+        {
+          "id": "home-long-ridge",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999997371105305
+        },
+        {
+          "id": "home-long-ridge",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999997371105305
+        },
+        {
+          "id": "home-long-ridge",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999997042472358
+        },
+        {
+          "id": "home-long-ridge",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999997370491932
+        },
+        {
+          "id": "home-low-hip",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999634252809
+        },
+        {
+          "id": "home-low-hip",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999268505624
+        },
+        {
+          "id": "home-low-hip",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999999999997
+        },
+        {
+          "id": "home-low-hip",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999311879135
+        },
+        {
+          "id": "home-low-hip",
+          "name": "weather coverage",
+          "ok": true,
+          "nearestMetres": 2.279999971389769
+        },
+        {
+          "id": "home-low-hip",
+          "name": "weather coverage",
+          "ok": true,
+          "nearestMetres": 3.53179797113983
+        },
+        {
+          "id": "home-low-hip",
+          "name": "weather coverage",
+          "ok": true,
+          "nearestMetres": 3.580674440363198
+        },
+        {
+          "id": "home-low-hip",
+          "name": "weather coverage",
+          "ok": true,
+          "nearestMetres": 3.542651613160764
+        },
+        {
+          "id": "home-low-hip",
+          "name": "weather coverage",
+          "ok": true,
+          "nearestMetres": 3.5662812641870936
+        },
+        {
+          "id": "home-porch-cabin",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 1.2000000052285051
+        },
+        {
+          "id": "home-porch-cabin",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 1.1999999284744258
+        },
+        {
+          "id": "home-porch-cabin",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 1.1999999284744258
+        },
+        {
+          "id": "home-porch-cabin",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 1.1999999989940129
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999634252812
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999999999997
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999999311879135
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 1.1999998092651365
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9999998685563399
+        },
+        {
+          "id": "home-offset-gables",
+          "name": "retained wall closure",
+          "ok": true,
+          "nearestMetres": 0.9337092638224751
+        },
+        {
+          "id": "facility-smith",
+          "name": "open stack throat",
+          "ok": true,
+          "nearestMetres": 5.095000028610228
+        },
+        {
+          "id": "facility-smith",
+          "name": "solid stack face",
+          "ok": true,
+          "nearestMetres": 1.4399999976158147
+        },
+        {
+          "id": "facility-granary",
+          "name": "open undercroft",
+          "ok": true,
+          "nearestMetres": null
+        },
+        {
+          "id": "facility-granary",
+          "name": "closed underside",
+          "ok": true,
+          "nearestMetres": 0.4499999761581421
+        },
+        {
+          "id": "facility-granary",
+          "name": "closed cargo doors",
+          "ok": true,
+          "nearestMetres": 2.4175000190734868
+        }
+      ]
+    }
+  ],
+  "scenes": [
+    {
+      "count": 30,
+      "quality": "normal",
+      "drawCalls": 109,
+      "triangles": 229345,
+      "textures": 45,
+      "geometries": 351,
+      "submissions": 425,
+      "medianSubmissionMs": 3,
+      "p95SubmissionMs": 6.5,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 150,
+        "triangles": 250000
+      },
+      "phonePerformanceVerified": false,
+      "passes": true
+    },
+    {
+      "count": 100,
+      "quality": "normal",
+      "drawCalls": 109,
+      "triangles": 697211,
+      "textures": 45,
+      "geometries": 351,
+      "submissions": 440,
+      "medianSubmissionMs": 2,
+      "p95SubmissionMs": 3.7999999970197678,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 150,
+        "triangles": 250000
+      },
+      "phonePerformanceVerified": false,
+      "passes": false
+    },
+    {
+      "count": 30,
+      "quality": "low",
+      "drawCalls": 94,
+      "triangles": 137862,
+      "textures": 45,
+      "geometries": 351,
+      "submissions": 463,
+      "medianSubmissionMs": 2.100000001490116,
+      "p95SubmissionMs": 3.2000000029802322,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 100,
+        "triangles": 150000
+      },
+      "phonePerformanceVerified": false,
+      "passes": true
+    },
+    {
+      "count": 100,
+      "quality": "low",
+      "drawCalls": 94,
+      "triangles": 427452,
+      "textures": 45,
+      "geometries": 351,
+      "submissions": 478,
+      "medianSubmissionMs": 1.6000000014901161,
+      "p95SubmissionMs": 3.0999999940395355,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 100,
+        "triangles": 150000
+      },
+      "phonePerformanceVerified": false,
+      "passes": false
+    }
+  ],
+  "phonePerformanceVerified": false,
+  "output": {
+    "url": "assets/wv/buildings-next/kit-detail.glb",
+    "bytes": 14560556,
+    "sha256": "7008c62c3563029eced76654fb9556fa5da0262e841953a1d92d86075e820f3a"
+  },
+  "civicOutput": {
+    "url": "assets/wv/buildings-next/civic.glb",
+    "bytes": 3251052,
+    "sha256": "d30eb5d17b29a937c3d432265108b2306065c5764016985f9b64a8653f45bb1a"
+  },
+  "reference": {
+    "main": {
+      "url": "assets/wv/buildings-next/catalog.glb",
+      "bytes": 7527564,
+      "sha256": "38c88a54bed04bc7a2dcf97a9c4a628c119cc6ec03d212247ffc4ebfb5c3d95c"
+    },
+    "civic": {
+      "url": "assets/wv/buildings-next/civic.glb",
+      "bytes": 3251052,
+      "sha256": "d30eb5d17b29a937c3d432265108b2306065c5764016985f9b64a8653f45bb1a"
+    }
+  },
+  "recipeRevision": 4,
+  "mobileViewport": {
+    "width": 600,
+    "height": 850
+  }
+}

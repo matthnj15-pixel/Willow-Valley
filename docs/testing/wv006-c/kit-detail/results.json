@@ -1,0 +1,495 @@
+{
+  "recipeRevision": 4,
+  "baseDevelop": "8055d769df3969b7e49c114a45877205be0aacef",
+  "output": {
+    "url": "assets/wv/buildings-next/kit-detail.glb",
+    "bytes": 14560556,
+    "sha256": "7008c62c3563029eced76654fb9556fa5da0262e841953a1d92d86075e820f3a"
+  },
+  "libraryOutput": {
+    "url": "assets/wv/buildings-next/kit-library.glb",
+    "sha256": "e422749b1caf60420a5ec624d970e98bed2f9b39d0b0728615472a4cb2d52c69",
+    "bytes": 341568
+  },
+  "verifiedSource": {
+    "archiveSha256": "5e60888e2babe418a4618e7815539d9b1b2c3b24c1db2b22cd7a2a7f66140732",
+    "archiveBytes": 708720797,
+    "licenseSha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee",
+    "selectedFiles": 38,
+    "sourceTier": "Source",
+    "privateShareCommitted": false
+  },
+  "entries": [
+    {
+      "id": "home-steep-gable",
+      "existingIdentity": "home-steep-gable",
+      "role": "residential",
+      "triangles": 5351,
+      "lowTriangles": 3488,
+      "materialGroups": 10,
+      "dimensions": [
+        5.513076305389404,
+        6.853674286454916,
+        5.6157066822052
+      ],
+      "kitInstances": 3,
+      "budgetExceptions": [
+        "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ]
+    },
+    {
+      "id": "home-long-ridge",
+      "existingIdentity": "home-long-ridge",
+      "role": "residential",
+      "triangles": 6754,
+      "lowTriangles": 4534,
+      "materialGroups": 10,
+      "dimensions": [
+        5.7028889656066895,
+        6.646391743272543,
+        7.588279604911804
+      ],
+      "kitInstances": 3,
+      "budgetExceptions": [
+        "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ]
+    },
+    {
+      "id": "home-low-hip",
+      "existingIdentity": "home-low-hip",
+      "role": "residential",
+      "triangles": 6231,
+      "lowTriangles": 2574,
+      "materialGroups": 9,
+      "dimensions": [
+        5,
+        4.855000132173299,
+        5
+      ],
+      "kitInstances": 3,
+      "budgetExceptions": [
+        "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ]
+    },
+    {
+      "id": "home-porch-cabin",
+      "existingIdentity": "home-porch-cabin",
+      "role": "residential",
+      "triangles": 6204,
+      "lowTriangles": 4130,
+      "materialGroups": 9,
+      "dimensions": [
+        5.534493923187256,
+        6.64763700351119,
+        6.313289284706116
+      ],
+      "kitInstances": 3,
+      "budgetExceptions": [
+        "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ]
+    },
+    {
+      "id": "home-offset-gables",
+      "existingIdentity": "home-offset-gables",
+      "role": "residential",
+      "triangles": 7603,
+      "lowTriangles": 5069,
+      "materialGroups": 11,
+      "dimensions": [
+        7.299776077270508,
+        6.853674286454916,
+        5.6157066822052
+      ],
+      "kitInstances": 3,
+      "budgetExceptions": [
+        "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
+        "Measured authoring target exception; gallery review only, F must budget before adoption."
+      ]
+    },
+    {
+      "id": "facility-farm",
+      "existingIdentity": "facility-farm",
+      "role": "farm",
+      "triangles": 5994,
+      "lowTriangles": 3108,
+      "materialGroups": 2,
+      "dimensions": [
+        8.601724624633789,
+        5.650000207126141,
+        6.010000228881836
+      ],
+      "kitInstances": 4,
+      "budgetExceptions": []
+    },
+    {
+      "id": "facility-smith",
+      "existingIdentity": "facility-smith",
+      "role": "smith",
+      "triangles": 5908,
+      "lowTriangles": 2252,
+      "materialGroups": 1,
+      "dimensions": [
+        5.900000095367432,
+        5.619999997317791,
+        5.347658157348633
+      ],
+      "kitInstances": 0,
+      "budgetExceptions": []
+    },
+    {
+      "id": "facility-granary",
+      "existingIdentity": "facility-granary",
+      "role": "granary",
+      "triangles": 4842,
+      "lowTriangles": 2548,
+      "materialGroups": 1,
+      "dimensions": [
+        7.611922979354858,
+        6.098788201808929,
+        6.730000019073486
+      ],
+      "kitInstances": 1,
+      "budgetExceptions": []
+    },
+    {
+      "id": "facility-lumber",
+      "existingIdentity": "facility-lumber",
+      "role": "lumber",
+      "triangles": 2245,
+      "lowTriangles": 1292,
+      "materialGroups": 2,
+      "dimensions": [
+        8.199999809265137,
+        3.4795380756258965,
+        4.550000071525574
+      ],
+      "kitInstances": 2,
+      "budgetExceptions": []
+    },
+    {
+      "id": "facility-market",
+      "existingIdentity": "facility-market",
+      "role": "market",
+      "triangles": 5828,
+      "lowTriangles": 3086,
+      "materialGroups": 3,
+      "dimensions": [
+        16,
+        2.550000101327896,
+        14
+      ],
+      "kitInstances": 2,
+      "budgetExceptions": []
+    },
+    {
+      "id": "park-promenade",
+      "existingIdentity": "facility-park",
+      "role": "park",
+      "triangles": 3430,
+      "lowTriangles": 1478,
+      "materialGroups": 3,
+      "dimensions": [
+        10.166631698608398,
+        4.310623787343502,
+        9.600000381469727
+      ],
+      "kitInstances": 0,
+      "budgetExceptions": []
+    },
+    {
+      "id": "park-sitting-garden",
+      "existingIdentity": "facility-park",
+      "role": "park",
+      "triangles": 2832,
+      "lowTriangles": 1512,
+      "materialGroups": 3,
+      "dimensions": [
+        10.800000190734863,
+        4.310623787343502,
+        9.600000381469727
+      ],
+      "kitInstances": 4,
+      "budgetExceptions": []
+    },
+    {
+      "id": "park-village-green",
+      "existingIdentity": "facility-park",
+      "role": "park",
+      "triangles": 2178,
+      "lowTriangles": 666,
+      "materialGroups": 3,
+      "dimensions": [
+        9.792171955108643,
+        4.309000119566917,
+        9.054093837738037
+      ],
+      "kitInstances": 0,
+      "budgetExceptions": []
+    },
+    {
+      "id": "park-woodland-walk",
+      "existingIdentity": "facility-park",
+      "role": "park",
+      "triangles": 3024,
+      "lowTriangles": 988,
+      "materialGroups": 3,
+      "dimensions": [
+        10.416631698608398,
+        4.381623409688473,
+        10.4708251953125
+      ],
+      "kitInstances": 0,
+      "budgetExceptions": []
+    },
+    {
+      "id": "plaza-town-square",
+      "existingIdentity": "facility-plaza",
+      "role": "plaza",
+      "triangles": 1858,
+      "lowTriangles": 774,
+      "materialGroups": 4,
+      "dimensions": [
+        11.497190952301025,
+        4.309000134468079,
+        9.800000190734863
+      ],
+      "kitInstances": 0,
+      "budgetExceptions": [
+        "Four public-space materials separate matte foliage, structure, gravel and paving. Gallery only; F must batch and budget before adoption."
+      ]
+    },
+    {
+      "id": "plaza-fountain-court",
+      "existingIdentity": "facility-plaza",
+      "role": "plaza",
+      "triangles": 2082,
+      "lowTriangles": 1018,
+      "materialGroups": 4,
+      "dimensions": [
+        11.199999809265137,
+        4.309000127017498,
+        10.149156093597412
+      ],
+      "kitInstances": 2,
+      "budgetExceptions": [
+        "Four public-space materials separate matte foliage, structure, gravel and paving. Gallery only; F must batch and budget before adoption."
+      ]
+    },
+    {
+      "id": "plaza-flower-court",
+      "existingIdentity": "facility-plaza",
+      "role": "plaza",
+      "triangles": 1316,
+      "lowTriangles": 972,
+      "materialGroups": 3,
+      "dimensions": [
+        11.199999809265137,
+        0.9900000020861626,
+        9.800000190734863
+      ],
+      "kitInstances": 4,
+      "budgetExceptions": []
+    },
+    {
+      "id": "plaza-festival-court",
+      "existingIdentity": "facility-plaza",
+      "role": "plaza",
+      "triangles": 2112,
+      "lowTriangles": 968,
+      "materialGroups": 4,
+      "dimensions": [
+        11.335008144378662,
+        4.309000134468079,
+        9.800000190734863
+      ],
+      "kitInstances": 0,
+      "budgetExceptions": [
+        "Four public-space materials separate matte foliage, structure, gravel and paving. Gallery only; F must batch and budget before adoption."
+      ]
+    }
+  ],
+  "textureBytes": 4441901,
+  "estimatedMipRGBA8Bytes": 30998544,
+  "probes": [
+    {
+      "quality": "normal",
+      "count": 32,
+      "failed": []
+    },
+    {
+      "quality": "low",
+      "count": 32,
+      "failed": []
+    }
+  ],
+  "cameraChecks": {
+    "count": 144,
+    "failed": []
+  },
+  "scenes": [
+    {
+      "count": 30,
+      "quality": "normal",
+      "drawCalls": 109,
+      "triangles": 229345,
+      "textures": 45,
+      "geometries": 351,
+      "submissions": 425,
+      "medianSubmissionMs": 3,
+      "p95SubmissionMs": 6.5,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 150,
+        "triangles": 250000
+      },
+      "phonePerformanceVerified": false,
+      "passes": true
+    },
+    {
+      "count": 100,
+      "quality": "normal",
+      "drawCalls": 109,
+      "triangles": 697211,
+      "textures": 45,
+      "geometries": 351,
+      "submissions": 440,
+      "medianSubmissionMs": 2,
+      "p95SubmissionMs": 3.7999999970197678,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 150,
+        "triangles": 250000
+      },
+      "phonePerformanceVerified": false,
+      "passes": false
+    },
+    {
+      "count": 30,
+      "quality": "low",
+      "drawCalls": 94,
+      "triangles": 137862,
+      "textures": 45,
+      "geometries": 351,
+      "submissions": 463,
+      "medianSubmissionMs": 2.100000001490116,
+      "p95SubmissionMs": 3.2000000029802322,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 100,
+        "triangles": 150000
+      },
+      "phonePerformanceVerified": false,
+      "passes": true
+    },
+    {
+      "count": 100,
+      "quality": "low",
+      "drawCalls": 94,
+      "triangles": 427452,
+      "textures": 45,
+      "geometries": 351,
+      "submissions": 478,
+      "medianSubmissionMs": 1.6000000014901161,
+      "p95SubmissionMs": 3.0999999940395355,
+      "actualTown": false,
+      "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
+      "sixthFallbackMeasured": false,
+      "guardrails": {
+        "drawCalls": 100,
+        "triangles": 150000
+      },
+      "phonePerformanceVerified": false,
+      "passes": false
+    }
+  ],
+  "commands": [
+    {
+      "command": "node buildings-next/kit-details.mjs --import-kit /private/path/Source.zip",
+      "result": "pass; exact Source archive/notice and all selected inputs checked before derivation; 24 checkpoint/candidate files reproduced byte-for-byte"
+    },
+    {
+      "command": "node scripts/build-wv006-baselines.mjs && node buildings-next/kit-details.mjs",
+      "result": "pass; checkout-only rebuild"
+    },
+    {
+      "command": "node --test tests/wv006-baselines*.test.mjs",
+      "result": "13 passed; C2/C3/library/C4 glTF errors=0, warnings=0; final hash-identical rebuild"
+    },
+    {
+      "command": "npm test",
+      "result": "217 passed after refresh to PR #91; one existing icon skip verified separately"
+    },
+    {
+      "command": "npm run build:assets",
+      "result": "pass; no shared tracked regeneration"
+    },
+    {
+      "command": "npm run build:icons",
+      "result": "pass"
+    },
+    {
+      "command": "CHECK_BUILT_ICONS=1 node --test tests/icon-artifacts.test.mjs",
+      "result": "1 passed"
+    },
+    {
+      "command": "npm run build:offline",
+      "result": "pass"
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-baselines*.spec.mjs",
+      "result": "6 passed; both scopes, real rendered relief and low no-normal materials"
+    },
+    {
+      "command": "node scripts/measure-wv006-baselines.mjs",
+      "result": "pass; 64 probes and 144 framing checks; all eighteen C3/C4 pairs captured"
+    },
+    {
+      "command": "npm run test:e2e",
+      "result": "134 passed on initial C4 base; newly merged meadow and affected gallery checks repeated after develop refresh; final full current-head CI recorded on delivery PR"
+    },
+    {
+      "command": "WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity",
+      "result": "16 passed; current-head CI repeats parity before merge"
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-baselines*.spec.mjs tests/browser/wv006-environment*.spec.mjs",
+      "result": "23 passed after refresh to develop PR #91; six C checks plus seventeen A checks"
+    }
+  ],
+  "runtimeReady": false,
+  "remaining": [
+    "human visual acceptance",
+    "F full-scene placement/terrain partition and final ground",
+    "100-home triangle budgets and inherited source-home material exceptions",
+    "31 MB full candidate texture-set admission / physical-device UAT",
+    "F installed offline closure and gameplay adoption"
+  ],
+  "refreshedDevelop": "7f4b638165d3c89c935188dc70c4f768f4917335",
+  "captureCount": 210
+}
