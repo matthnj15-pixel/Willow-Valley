@@ -18,7 +18,7 @@ export const OUTPUT_PINS = Object.freeze([
   },
   {
     "path": "render-adoption/world/index.mjs",
-    "sha256": "bfed8aacf40c730cc44a165d72549b92cbef6dada189fb06847d084ec199206d"
+    "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
   },
   {
     "path": "render-adoption/world/materials.mjs",

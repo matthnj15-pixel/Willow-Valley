@@ -54,8 +54,8 @@
     },
     {
       "path": "render-adoption/world/index.mjs",
-      "bytes": 6183,
-      "sha256": "bfed8aacf40c730cc44a165d72549b92cbef6dada189fb06847d084ec199206d"
+      "bytes": 6285,
+      "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
     },
     {
       "path": "render-adoption/world/materials.mjs",
@@ -65,7 +65,7 @@
     {
       "path": "render-adoption/world/output-pins.mjs",
       "bytes": 1536,
-      "sha256": "c7c9494d28ec745e8a267e43f084b217260b8b84c52a36ad51f32c6a42308b34"
+      "sha256": "d6f255b04fe41279343152ef5dafea74463d92bf85c052f7cba59762fb3ee072"
     },
     {
       "path": "render-adoption/world/preset.mjs",
@@ -121,8 +121,8 @@
     },
     {
       "path": "assets/wv/runtime-environment-v1/review.mjs",
-      "bytes": 101189,
-      "sha256": "f9f551cbe6ccbf5a1d2911c7c3bd8cc460396d24d1298896593aaed9a02462ed"
+      "bytes": 101307,
+      "sha256": "bc1cc5b436713609dd179531d73dedb7a8e96b4f876f8f4ee0077d5da4cd1db4"
     }
   ]
 }

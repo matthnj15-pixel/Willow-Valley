@@ -63,9 +63,9 @@ export function createWorldLayer({scene,terrainSurface,world,invalidate=()=>{},q
   status(){const grass=current?.grass.status()??null;return {
    contractRevision:'wv007-layer-1',sourceFamily:'A3+A1',sourcePins:SOURCE_PINS,outputPins:OUTPUT_PINS,viewRevision,terrainRevision:lastView?.world.terrainRevision??null,quality,
    effectiveLods:{grassNear:grass?.lods.near??0,grassMid:grass?.lods.mid??0,grassLow:grass?.lods.low??0},
-   effectiveMaterialLods:{[quality==='low'?'worldLow':'worldNormal']:3,grass:1},
+   effectiveMaterialLods:{[quality==='low'?'worldLow':'worldNormal']:disposed?0:3,grass:disposed?0:1},
    materialSources:{terrain:quality==='low'?'A3-field-low':'A3-field-normal',water:quality==='low'?'A1-static':'A1-bounded-ripple'},
-   pendingLoads:pending,failedLoads:error?1:0,disposed,ready:!!current&&!pending&&!error,runtimeReady:false,error,
+   pendingLoads:pending,failedLoads:error?1:0,disposed,ready:!!current&&!pending&&!error&&current.classification.safeCover&&current.classification.unknownRoadWidths===0,runtimeReady:false,error,
    fields:current?.fields.status??null,fieldBuilds:builds,grass,coverDeferred:!current?.classification.safeCover,
    unknownRoadWidths:current?.classification.unknownRoadWidths??0,
    resources:{textures:current?2:0,decodedTextureBytes:current?.fields.status.decodedBytes??0,bufferBytesEstimate:grass?.geometryBytes??0,textureBytesEstimate:current?.fields.status.decodedBytes??0,loadedQualityImages:[{quality,loaded:0,expected:0,decodedBytesEstimate:0}],externalImages:0,transferImageBytes:0,normalMaps:0,renderTargets:0},

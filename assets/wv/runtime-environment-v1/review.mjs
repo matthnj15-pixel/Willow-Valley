@@ -1301,7 +1301,7 @@ var OUTPUT_PINS = Object.freeze([
   },
   {
     "path": "render-adoption/world/index.mjs",
-    "sha256": "bfed8aacf40c730cc44a165d72549b92cbef6dada189fb06847d084ec199206d"
+    "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
   },
   {
     "path": "render-adoption/world/materials.mjs",
@@ -1473,12 +1473,12 @@ function createWorldLayer({ scene: scene2, terrainSurface, world: world2, invali
         terrainRevision: lastView?.world.terrainRevision ?? null,
         quality: quality2,
         effectiveLods: { grassNear: grass?.lods.near ?? 0, grassMid: grass?.lods.mid ?? 0, grassLow: grass?.lods.low ?? 0 },
-        effectiveMaterialLods: { [quality2 === "low" ? "worldLow" : "worldNormal"]: 3, grass: 1 },
+        effectiveMaterialLods: { [quality2 === "low" ? "worldLow" : "worldNormal"]: disposed2 ? 0 : 3, grass: disposed2 ? 0 : 1 },
         materialSources: { terrain: quality2 === "low" ? "A3-field-low" : "A3-field-normal", water: quality2 === "low" ? "A1-static" : "A1-bounded-ripple" },
         pendingLoads: pending,
         failedLoads: error ? 1 : 0,
         disposed: disposed2,
-        ready: !!current && !pending && !error,
+        ready: !!current && !pending && !error && current.classification.safeCover && current.classification.unknownRoadWidths === 0,
         runtimeReady: false,
         error,
         fields: current?.fields.status ?? null,

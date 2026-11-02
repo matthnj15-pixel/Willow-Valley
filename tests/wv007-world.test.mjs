@@ -13,8 +13,8 @@ const scene=()=>new T.Scene();
 for(const seed of ['WILLOW-1048','WV007-RIVER-2099'])for(const quality of ['normal','low'])test(`P2 real frozen ${seed} ${quality}: classification, ownership, contacts, lifecycle`,async()=>{
  const f=realWorldFixture(seed,quality),s=scene(),originalFog=new T.Fog('red',1,2);s.fog=originalFog;
  let invalidates=0;const layer=createWorldLayer({scene:s,world:f.world,terrainSurface:f.surface,quality,invalidate:()=>invalidates++});
- await layer.update(f.view);assert.equal(layer.status().coverDeferred,true);assert.equal(layer.status().grass.tufts,0);
- await layer.update(f.view,f.context);assert.equal(layer.status().coverDeferred,false);
+ await layer.update(f.view);assert.equal(layer.status().coverDeferred,true);assert.equal(layer.status().ready,false);assert.equal(layer.status().grass.tufts,0);
+ await layer.update(f.view,f.context);assert.equal(layer.status().coverDeferred,false);assert.equal(layer.status().ready,true);
  const coverage=layer.getCoverage(),camera=new T.OrthographicCamera(-90,90,90,-90,.1,5400),h=f.state.houses[0];
  camera.position.set(h.x-f.world.width/2,350,h.y-f.world.depth/2+300);camera.lookAt(h.x-f.world.width/2,30,h.y-f.world.depth/2);camera.updateProjectionMatrix();
  layer.setCamera(camera);const status=layer.status();assert.ok(status.grass.tufts>0);assert.equal(status.fieldBuilds,2);assert.equal(status.resources.externalImages,0);assert.equal(status.contractRevision,'wv007-layer-1');assert.equal(status.failedLoads,0);assert.ok(status.outputPins.length);assert.ok(Object.values(status.effectiveLods).every(Number.isFinite));assert.ok(Object.values(status.effectiveMaterialLods).every(Number.isFinite));assert.equal(status.resources.textureBytesEstimate,status.fields.decodedBytes);assert.deepEqual(status.resources.loadedQualityImages,[{quality,loaded:0,expected:0,decodedBytesEstimate:0}]);
