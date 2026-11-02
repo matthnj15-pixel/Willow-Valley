@@ -8,7 +8,8 @@ import * as T from '../assets/vendor/three.module.mjs';
 import {HOME_IDS,visualIdentity} from '../asset-registry.mjs';
 import {assetFor,admit,fits,rectangle,transformLocal} from '../render-adoption/buildings/placement.mjs';
 import {createBuildingLayer,createPreviewAssetLibrary,entityKeyForIntersection} from '../render-adoption/buildings/index.mjs';
-import {snapshotForBuildings,legacyExclusions} from '../render-adoption/buildings/fixtures.mjs';
+import {snapshotForBuildings,legacyExclusions,facilityYaw} from '../render-adoption/buildings/fixtures.mjs';
+import {facilityPlacement} from '../building-visuals.mjs';
 import {startGame,startWorldGame,generatedWorld,advance} from '../simulation.mjs';
 import {paintZones} from '../organic-world.mjs';
 import {createTerrainSurface} from '../terrain-surface.mjs';
@@ -27,6 +28,11 @@ test('P1 selected IDs retain HOME_IDS/visualIdentity; work roles and civic defau
  for(const id of ['farm','smith','granary','lumber','market'])assert.ok(entry(assetFor({type:id},0)));
  for(const e of manifest.entries.filter(e=>e.quality==='normal'&&['park','plaza'].includes(e.metadata.role)))assert.equal(assetFor({type:e.metadata.role,preferredVisualId:e.id},0),e.id);
  const e={id:7,x:242,y:505,foundedEra:1};assert.equal(visualIdentity(123,e),2477121892);
+});
+test('P1 fixture facility rotations match the application road/lane-facing legacy rule',async()=>{
+ const state=startGame(),legacy=JSON.parse(await readFile('assets/wv/architecture-v1/manifest.json'));
+ for(const type of ['farm','smith','granary','lumber','market','park','plaza']){const b={type,x:700,y:620};assert.equal(facilityYaw(state,b),facilityPlacement(world,b,state,legacy.entries).yaw);}
+ const b={type:'smith',x:200,y:300},laneState={roads:[],localLanes:[{points:[{x:180,y:320},{x:240,y:350}]}]};assert.equal(facilityYaw(laneState,b),facilityPlacement(world,b,laneState,legacy.entries).yaw);
 });
 test('P1 full rotated parcel, holes, concave notch and entrance/neighbor clearance',()=>{
  const h=house(),e=entry('home-long-ridge');const p=admit(h,e,{world,terrainSurface:surface});assert.equal(p.scale,2.8);assert.equal(p.yaw,h.yaw);assert.equal(p.reason,undefined);

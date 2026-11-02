@@ -6,7 +6,7 @@
     {
       "requestedQuality": "normal",
       "policy": "normal",
-      "updateAndSoftwareDrawMs": 590.6999999999534,
+      "updateAndSoftwareDrawMs": 352.70000000018626,
       "status": {
         "contractRevision": 1,
         "sourceFamily": "C4",
@@ -197,7 +197,7 @@
     {
       "requestedQuality": "low",
       "policy": "low",
-      "updateAndSoftwareDrawMs": 1787.6000000000931,
+      "updateAndSoftwareDrawMs": 1333.6999999999534,
       "status": {
         "contractRevision": 1,
         "sourceFamily": "C4",
@@ -388,7 +388,7 @@
     {
       "requestedQuality": "low",
       "policy": "distance",
-      "updateAndSoftwareDrawMs": 914.8000000000466,
+      "updateAndSoftwareDrawMs": 738.6000000000931,
       "status": {
         "contractRevision": 1,
         "sourceFamily": "C4",

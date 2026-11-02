@@ -1,11 +1,11 @@
 # P1 delivery status
 
-Implementation commit: `18fd6ec381a5509d590e169bad14a1f8d85879db`. The following documentation-only commit adds the final inventory/provenance. The PR targets develop; P5 application/offline integration and actual-device acceptance remain pending.
+Initial implementation commit: `18fd6ec381a5509d590e169bad14a1f8d85879db`. A later tested correction aligns fixture facility yaw with facilityPlacement; the PR head includes that correction and the final inventory. The PR targets develop; P5 application/offline integration and actual-device acceptance remain pending.
 
 Local validation on 2026-11-02:
 
 - `npm ci` succeeded with the committed lockfile.
-- Full unit suite: 231 passed, one existing skip, zero failures (232 tests).
+- Full unit suite: 232 passed, one existing skip, zero failures (233 tests).
 - All five new GLBs: zero glTF errors and warnings; independent validation is included in the new unit suite.
 - Two successive P1 builds: all outputs, manifest and notices byte-identical.
 - `npm run build:assets`, `npm run build:icons`, checked icon artifacts, `npm run build:offline` succeeded; existing shared generated outputs have no Git diff.
