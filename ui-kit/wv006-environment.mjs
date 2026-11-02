@@ -4970,7 +4970,7 @@ async function mountMeadowStudy(canvas, { low = false, seed: seed2 = "WV-MEADOW"
   sun.position.set(-40, 86, 25);
   scene.add(sun, new T10.HemisphereLight(HAMLET_LIGHT.sky, HAMLET_LIGHT.ground, HAMLET_LIGHT.fill));
   let library, component, layer, controller, releaseInspection = () => {
-  }, disposed = false, draws = 0;
+  }, disposed = false, draws = 0, viewportWidth = 0, viewportHeight = 0, renderDPR = 0, viewportResizes = 0;
   const ready = loadHamletLibrary();
   const abort = () => {
     if (controller) controller.dispose();
@@ -5006,11 +5006,18 @@ async function mountMeadowStudy(canvas, { low = false, seed: seed2 = "WV-MEADOW"
       camera.position.copy(target).add(new T10.Vector3(-Math.sin(view.yaw) * Math.cos(view.pitch), Math.sin(view.pitch), Math.cos(view.yaw) * Math.cos(view.pitch)).multiplyScalar(1600));
       camera.lookAt(target);
       camera.updateProjectionMatrix();
-      renderer.setPixelRatio(Math.min(devicePixelRatio || 1, low ? 1 : 1.5));
-      renderer.setSize(rect.width, rect.height, false);
+      const dpr = Math.min(devicePixelRatio || 1, low ? 1 : 1.5);
+      if (rect.width !== viewportWidth || rect.height !== viewportHeight || dpr !== renderDPR) {
+        renderer.setPixelRatio(dpr);
+        renderer.setSize(rect.width, rect.height, false);
+        viewportWidth = rect.width;
+        viewportHeight = rect.height;
+        renderDPR = dpr;
+        viewportResizes++;
+      }
       renderer.render(scene, camera);
       draws++;
-    }, screenToWorld: () => null, assetStatus: () => ({ ready: true, draws, drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles, quality: low ? "low" : "normal", ...estimateSceneBytes(scene), ...layer.status() }), dispose() {
+    }, screenToWorld: () => null, assetStatus: () => ({ ready: true, draws, viewportResizes, drawCalls: renderer.info.render.calls, triangles: renderer.info.render.triangles, quality: low ? "low" : "normal", ...estimateSceneBytes(scene), ...layer.status() }), dispose() {
       if (disposed) return;
       disposed = true;
       signal?.removeEventListener("abort", abort);

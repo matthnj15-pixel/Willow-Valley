@@ -311,8 +311,8 @@
     },
     {
       "path": "environment-next/meadow-study.mjs",
-      "bytes": 6139,
-      "sha256": "93d2ce5cba2eefddc39a7a475350c10aa1e53281d1317fa3f5da7d7bc4e72a03"
+      "bytes": 6395,
+      "sha256": "e91df4d90d527e1ce658e404ecb1e28245144d01f370a1d94a19b3728d68bbb1"
     },
     {
       "path": "environment-next/preset.mjs",
