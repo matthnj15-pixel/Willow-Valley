@@ -1,6 +1,6 @@
 # WV006 A: environment candidate integration contract
 
-A2 supersedes the quality/resource/readiness details below. See [fine surface detail revision](detail-v2.md); the factory name and ownership interface remain compatible.
+Current art direction: the user prefers A1 to A2 and supplied brighter, individual-grass references. See [A3 meadow study and path repair](meadow-study.md). A2 remains an opt-in historical comparison; do not infer adoption approval from the default factory filename. Its quality/resource details are in [A2](detail-v2.md); the lifecycle interface below remains compatible.
 
 Gallery-review, `runtimeReady:false`. A owns this candidate only; F owns shared adoption. No shared renderer, save, simulation, road, zoning, registry, cache manifest, package or workflow edits are included. Baseline: develop `5e39c72ff5e205dea166fa18febdfa89aaa5aec8` (PR 81). No applicable AGENTS.md was present in the checkout or ancestor workspace.
 

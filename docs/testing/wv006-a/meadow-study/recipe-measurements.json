@@ -1,0 +1,101 @@
+{
+  "sourceRevision": "0f157f11c973a110d01ff884dbec73edf9ab58d1",
+  "recipe": "wv006-a-3-study",
+  "sourceSha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0",
+  "units": "visual metres, Y up, 2.8 game units/metre",
+  "status": "gallery-review",
+  "runtimeReady": false,
+  "originalArtwork": true,
+  "newImageAssets": 0,
+  "newGLBOutputs": 0,
+  "records": {
+    "normal": {
+      "instances": 1900,
+      "tuftTriangles": 95,
+      "vertices": 133,
+      "boundsMetres": {
+        "min": [
+          -0.3165566027164459,
+          0,
+          -0.2682470977306366
+        ],
+        "max": [
+          0.3180354833602905,
+          0.4788411259651184,
+          0.2624828517436981
+        ]
+      },
+      "rootContactMaxErrorGameUnits": 0.0018488442238110414,
+      "geometrySha256": "a65a6a6a6f6f04f63deb4fab5b80bf89a0aaaf3d7bb295e22b1dc615081d8454",
+      "geometryBytes": 3762
+    },
+    "low": {
+      "instances": 595,
+      "tuftTriangles": 15,
+      "vertices": 25,
+      "boundsMetres": {
+        "min": [
+          -0.21753455698490143,
+          0,
+          -0.23788848519325256
+        ],
+        "max": [
+          0.29097485542297363,
+          0.47881296277046204,
+          0.11510805785655975
+        ]
+      },
+      "rootContactMaxErrorGameUnits": 0.0011940766407954,
+      "geometrySha256": "09e6d64823981f1f6823b6c24ede3f2cb43424e1e7effcde1d66dd38a4ae4042",
+      "geometryBytes": 690
+    }
+  },
+  "fixtures": {
+    "WILLOW-1048": {
+      "center": {
+        "x": 715,
+        "y": 390,
+        "half": 65,
+        "score": 12.140569357547502,
+        "heightSpread": 9.97483198057451,
+        "maxGrade": 0.1710385224484083
+      },
+      "audits": [
+        {
+          "ok": true,
+          "maxGrade": 0.132283695610088,
+          "samples": 210
+        },
+        {
+          "ok": true,
+          "maxGrade": 0.12262281381793293,
+          "samples": 114
+        }
+      ],
+      "hasJunctionStress": true
+    },
+    "WV-SURFACES-2": {
+      "center": {
+        "x": 585,
+        "y": 1040,
+        "half": 32,
+        "score": 7.654941039739509,
+        "heightSpread": 4.940553695744256,
+        "maxGrade": 0.20579397419298698
+      },
+      "audits": [
+        {
+          "ok": true,
+          "maxGrade": 0.1750699767748819,
+          "samples": 120
+        },
+        {
+          "ok": true,
+          "maxGrade": 0.09218395262093329,
+          "samples": 60
+        }
+      ],
+      "hasJunctionStress": true
+    }
+  }
+}

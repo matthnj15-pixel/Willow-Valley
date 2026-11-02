@@ -1,5 +1,7 @@
 # A2: fine surface detail revision
 
+Historical candidate. Latest user feedback prefers A1 and rejects the photographic direction of both; see [A3 meadow study](meadow-study.md). A1 is restored as the valley review default.
+
 A1's broad-scale blend softened the grass and soil, and its procedural cliff grade lacked mineral structure. The user rejected the coarse, blurry result. A2 keeps the same terrain/road/water geometry, camera type, simulation, saves, source models and atmosphere while correcting surface scale and relief. It remains gallery-review, runtimeReady:false; F owns shared adoption. The review still contains unchanged legacy tree proxies and angular terrain silhouettes. These require their owners' geometry/adoption work; texture changes do not repair silhouettes or the existing architecture's UVs.
 
 ## Factory and quality changes

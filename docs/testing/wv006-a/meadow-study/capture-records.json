@@ -1,0 +1,62 @@
+[
+  {
+    "path": "captures/normal-meadow.png",
+    "bytes": 851178,
+    "sha256": "d60a6871c72b66a671f96120f301c305f07a6f410d332312c6ceb99145e66b8e",
+    "sourceRevision": "d0cce2ce682d8e6b21d676f5a3278f468ad0da0e",
+    "seed": "WILLOW-1048",
+    "viewportCSS": [
+      600,
+      850
+    ],
+    "deviceScaleFactor": 2,
+    "quality": "normal",
+    "look": "meadow",
+    "view": "detail"
+  },
+  {
+    "path": "captures/normal-context.png",
+    "bytes": 818517,
+    "sha256": "3caccb6c9be2a9f501be6d6f5a74dbf8ec90a945b104d7c28ead1990fb422ec1",
+    "sourceRevision": "d0cce2ce682d8e6b21d676f5a3278f468ad0da0e",
+    "seed": "WILLOW-1048",
+    "viewportCSS": [
+      600,
+      850
+    ],
+    "deviceScaleFactor": 2,
+    "quality": "normal",
+    "look": "context",
+    "view": "detail"
+  },
+  {
+    "path": "captures/normal-grass.png",
+    "bytes": 377568,
+    "sha256": "ffefd193368d7a44fe09bb534d08f1498b265f06521fe612be751879a708f8b6",
+    "sourceRevision": "d0cce2ce682d8e6b21d676f5a3278f468ad0da0e",
+    "seed": "WILLOW-1048",
+    "viewportCSS": [
+      600,
+      850
+    ],
+    "deviceScaleFactor": 2,
+    "quality": "normal",
+    "look": "meadow",
+    "view": "ground"
+  },
+  {
+    "path": "captures/low-meadow.png",
+    "bytes": 491036,
+    "sha256": "e31a359e2f14f4297920efa3f5426f28a9654b4f8e8774b8a1de02073139f304",
+    "sourceRevision": "d0cce2ce682d8e6b21d676f5a3278f468ad0da0e",
+    "seed": "WILLOW-1048",
+    "viewportCSS": [
+      600,
+      850
+    ],
+    "deviceScaleFactor": 2,
+    "quality": "low",
+    "look": "meadow",
+    "view": "detail"
+  }
+]
