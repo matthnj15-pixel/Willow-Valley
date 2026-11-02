@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Willow Valley · Local diagnostics</title><link rel="stylesheet" href="wv007-diagnostics.css"></head>
+<body><main><p class="eyebrow">Willow Valley · WV007 P4</p><h1>Local device diagnostics</h1>
+<p>This standalone page inspects isolated test settlements. P5 must attach the controller to the adopted game renderer and install its offline dependencies before combined measurements are available.</p>
+<p class="notice" id="status" role="status">Loading local fixtures…</p>
+<form id="controls"><label>Test settlement<select id="homes"><option value="30">30 homes</option><option value="100">100 homes</option></select></label>
+<label>Requested quality<select id="quality"><option>normal</option><option>low</option></select></label>
+<label>Scenario<select id="scenario"><option>idle</option><option>orbit</option><option>zoom</option><option>month</option></select></label>
+<button type="submit">Inspect fixture</button></form>
+<p id="fixture-label"></p><pre id="inspection" aria-label="Fixture and capability report"></pre>
+<button id="export" type="button" disabled>Download local inspection</button>
+<h2>Installed-device recording</h2><p>Use a 30–60 second warmup and measure for at least 60 seconds. Test a cold airplane-mode launch, all three save slots, input, background/restore and context loss, followed by sustained play. Report input lag, battery, low-power mode and heat manually. No phone measurements have been collected here.</p>
+<p>Records stay on this device. This page has no telemetry and reads no player saves. Chromium mobile emulation does not verify Safari or physical phone performance.</p>
+</main><script type="module" src="wv007-diagnostics.mjs"></script></body></html>
