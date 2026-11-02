@@ -94,6 +94,21 @@ test('late loads, repeated updates and quality changes remain evidence even afte
   assert.ok(r.issues.includes('quality-changed'));assert.equal(r.statuses.length,3);h.controller.dispose();
 });
 
+test('low admission checks actual geometry/material/image quality, with shared resources allowed',()=>{
+  const low=()=>{
+    const h=setup();h.view.quality='low';
+    for(const s of Object.values(h.states))Object.assign(s,{quality:'low',effectiveLods:{low:37},
+      effectiveHomeLods:{low:30},visibleHomeLods:{low:30},effectiveMaterialLods:{low:1},
+      resources:{...s.resources,loadedQualityImages:[{quality:'shared',loaded:1,expected:1,decodedBytesEstimate:100}]}});
+    return h;
+  };
+  const ok=low();ok.start();assert.equal(ok.complete().valid,true);ok.controller.dispose();
+  for(const mutate of [s=>s.effectiveLods.normal=1,s=>s.effectiveMaterialLods.normal=1,s=>s.resources.loadedQualityImages[0].quality='normal']) {
+    const h=low();mutate(h.states.buildings);h.start();
+    assert.ok(h.complete().issues.includes('wrong-effective-low-quality:buildings'));h.controller.dispose();
+  }
+});
+
 test('context loss is recorded, disposal stops sampling and never disposes the host',()=>{
   const h=setup();h.start();h.frame(0);h.renderer.domElement.dispatchEvent(new Event('webglcontextlost'));
   assert.equal(h.controller.status().paused,true);assert.ok(h.controller.record().issues.includes('webgl-context-lost'));

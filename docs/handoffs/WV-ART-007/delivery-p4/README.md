@@ -59,6 +59,8 @@ The example is a schema, not measured values. `renderedHomes` and `effectiveHome
 
 `estimateResources({roots,loadedTextures,retainedBuffers})` in `resources.mjs` deduplicates backing buffers and referenced textures, includes explicitly supplied loader-retained allocations and estimates full mip chains. Supply **all parsed textures**, including unused roots, to avoid asserting that low quality avoided normal image allocation. A scene-only estimate cannot establish that. Unknown image sizes return unknown texture bytes. RGBA8/mipmap estimates exclude driver copies, render targets and unprovided/JS allocations; renderer.info supplies counts, not exact memory.
 
+Low admission rejects any normal geometry/home/material count or loaded normal-quality image, regardless of the requested-quality label. Quality-independent resources must be labeled `shared`; zero normal allocations may be reported explicitly. Normal runs may use measured distance LODs, but cannot pass without visible normal homes during measurement.
+
 ## Actual-state scenarios
 
 Use a dedicated isolated fixture game/context; do not swap fixtures into any of the three player slots. `createFixtureSession(fixture,{quality})` clones committed application state and returns `{world,cameraPlan,getReadView,snapshot,metadata,advanceMonth}`. Creation and explicit month advancement configure the existing simulation's module-level world bounds. **Do not run a fixture session alongside an active live simulation**: P5 must isolate the diagnostics route/context or serialize application ownership. Merely calling the controller or camera does not configure world bounds or mutate state.

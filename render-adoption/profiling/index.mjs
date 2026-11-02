@@ -78,6 +78,9 @@ export function measurementIssues(snapshot,fixture) {
     if (!Object.keys(s.effectiveLods).length) reasons.push(`missing-effective-lod:${key}`);
     if (!Object.keys(s.effectiveMaterialLods).length) reasons.push(`missing-material-lod:${key}`);
     const res=s.resources;
+    if (snapshot.requestedQuality==='low' && ((s.effectiveLods.normal??0)>0||
+      (s.effectiveHomeLods.normal??0)>0||(s.visibleHomeLods.normal??0)>0||
+      (s.effectiveMaterialLods.normal??0)>0||res.loadedQualityImages?.some(i=>i.quality==='normal'&&i.loaded>0))) reasons.push(`wrong-effective-low-quality:${key}`);
     if (res.bufferBytesEstimate===null||res.textureBytesEstimate===null||!res.loadedQualityImages?.length||
       res.loadedQualityImages.some(i=>!i.quality||i.loaded===null||i.expected===null||i.loaded!==i.expected||i.decodedBytesEstimate===null)) reasons.push(`incomplete-resources:${key}`);
     if (key==='buildings' && (s.renderedHomes!==fixture?.expectedHomes||Object.values(s.effectiveLods).reduce((a,b)=>a+b,0)<s.renderedHomes)) reasons.push('incomplete-rendered-homes');
