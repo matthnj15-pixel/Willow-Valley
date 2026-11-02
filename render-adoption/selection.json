@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "revision": "wv007-adoption-1",
+  "sourceDevelop": "55eb7199b663166b3cfb9ad97dbd96a3fc693624",
+  "status": "selected-for-integration",
+  "runtimeReady": false,
+  "sources": {
+    "buildings": {
+      "manifest": "assets/wv/buildings-next/kit-detail-manifest.json",
+      "manifestSha256": "f5d50ba92ff61a7713390581ea41b8d89cd2057a9a119d6399256bf58305e11d",
+      "bundle": "assets/wv/buildings-next/kit-detail.glb",
+      "bundleSha256": "7008c62c3563029eced76654fb9556fa5da0262e841953a1d92d86075e820f3a",
+      "bytes": 14560556
+    },
+    "landscape": {
+      "manifest": "assets/wv/landscape-next/manifest.json",
+      "manifestSha256": "9c5d8cc914f6032a742aa8c42a025512da0b8b4efac969e8f5a749d602c3f1c8",
+      "bundle": "assets/wv/landscape-next/landscape.glb",
+      "bundleSha256": "20f878c3630c0389467fb76b02047a40e80a46560f9f46bb3992ad3ace67bb76",
+      "bytes": 1260580
+    },
+    "storage": {
+      "manifest": "assets/wv/storage-next/manifest.json",
+      "manifestSha256": "b6bd6ca837aab9ec30750cfdaeac7d710bfc33aa0908c9d0fd7dabae37e668ed",
+      "bundle": "assets/wv/storage-next/storage.glb",
+      "bundleSha256": "638fe141f28ca83e23926e21c9f7b2b7c03d7ec14770f64275413f7d46cd36d6",
+      "bytes": 798068
+    }
+  },
+  "sourcePins": [
+    {
+      "path": "environment-next/meadow-layer.mjs",
+      "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+    },
+    {
+      "path": "environment-next/meadow-study.mjs",
+      "sha256": "e91df4d90d527e1ce658e404ecb1e28245144d01f370a1d94a19b3728d68bbb1"
+    },
+    {
+      "path": "environment-next/previous-materials.mjs",
+      "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+    },
+    {
+      "path": "environment-next/atmosphere.mjs",
+      "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+    },
+    {
+      "path": "environment-next/visual-field.mjs",
+      "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+    },
+    {
+      "path": "environment-next/preset.mjs",
+      "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+    },
+    {
+      "path": "assets/wv/landscape-next/placement.mjs",
+      "sha256": "1e52a9cb1b7cef95ee2346a041793d622c3ba2d3d332f954faf670020f990b46"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-dressing.mjs",
+      "sha256": "03929ac52933697e49f121a8fe1c04d461e9ce8b48452ecb9e519b4022945d1c"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-boundaries.mjs",
+      "sha256": "1a65c94bfaff37b8e8027ed1e2d4bf0de58c79d4731eca38bd3a1d9b944faaf0"
+    },
+    {
+      "path": "assets/wv/landscape-next/painted-fields.mjs",
+      "sha256": "ac74250b7ad543f7e7d1d8c5e24a55958b71f86d400e812940ae0536207598b3"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-fence-view.mjs",
+      "sha256": "dbf276a5a54e15e28552047c42357b762cb924cf9070f88fc87108bcbeb3c10a"
+    },
+    {
+      "path": "assets/wv/landscape-next/hamlet-props.mjs",
+      "sha256": "f9f40588e217052234ee5b8ac711779f81f0302898fd7a279a839e02ccc28fdd"
+    },
+    {
+      "path": "assets/wv/landscape-next/hamlet-scene.mjs",
+      "sha256": "e67be2776468881543490d6c040691fc8e2aad58aa0f18a0c8bae8a379cf1611"
+    },
+    {
+      "path": "assets/wv/architecture-v1/home-crooked-wing.glb",
+      "sha256": "2eb5a8ca4b3079eee9111dd5817dcb10d98161c12f8bd7719bce65353dce6328"
+    }
+  ],
+  "architecture": {
+    "family": "C4",
+    "manifestKey": "buildings",
+    "entryIds": [
+      "home-steep-gable",
+      "home-long-ridge",
+      "home-low-hip",
+      "home-porch-cabin",
+      "home-offset-gables",
+      "facility-farm",
+      "facility-smith",
+      "facility-granary",
+      "facility-lumber",
+      "facility-market",
+      "park-promenade",
+      "park-sitting-garden",
+      "park-village-green",
+      "park-woodland-walk",
+      "plaza-town-square",
+      "plaza-fountain-court",
+      "plaza-flower-court",
+      "plaza-festival-court"
+    ],
+    "legacyFallback": {
+      "id": "home-crooked-wing",
+      "mode": "existing-architecture-v1-placement"
+    },
+    "defaultCivicVariants": {
+      "park": "park-village-green",
+      "plaza": "plaza-town-square"
+    },
+    "selectionRule": "C4 entries only; do not overlay C3 market override or C2 roots on the same entity"
+  },
+  "environment": {
+    "meadow": "A3",
+    "meadowModule": "environment-next/meadow-layer.mjs",
+    "worldSystems": "A1",
+    "worldFactory": "environment-next/previous-materials.mjs",
+    "rejectedDefault": "environment-next/materials.mjs",
+    "a2Policy": "comparison-only",
+    "roadWidths": "existing authoritative road/lane semantics; no fixture-width substitution"
+  },
+  "landscape": {
+    "collection": "B",
+    "plots": "latest-plot-aware",
+    "required": true,
+    "fieldInput": "committed land-use classification including erasure and holes"
+  },
+  "storage": {
+    "warehouseIds": [
+      "storehouse-l1",
+      "warehouse-l2"
+    ],
+    "adoption": "preview-only-until-gameplay",
+    "tradePanel": "illustrative-only"
+  },
+  "units": {
+    "newAssets": "visual metres, Y up",
+    "newAssetGameScale": 2.8,
+    "canonicalLayerCoordinates": "centered game units, X/Z horizontal, Y up",
+    "savedXY": "unchanged; saved Y maps to scene Z",
+    "plotApi": "centered visual metres; divide centered game coordinates and displayed heights by 2.8 exactly once",
+    "originalLandscapeApi": "existing world/game-unit coordinates; do not pass metre-space records directly",
+    "legacyAssets": "retain existing placement contract"
+  },
+  "ownership": {
+    "continuousGrass": "world-layer-A3",
+    "plotAndFieldBoundaries": "landscape-layer-B",
+    "siteIntegralDetails": "building-layer-C4",
+    "freestandingCommonProps": "storage-D",
+    "civicIntegralFurniture": "building-layer-C4",
+    "retainedTrees": "authoritative current tree candidates; B supplies visual variants"
+  },
+  "duplicateRules": [
+    "Disable B grass-tuft generation inside A3-covered meadow regions.",
+    "Register C4 fixed boundary fragments as occupied/retained spans before B generates plot boundaries; render each physical span once.",
+    "Do not overlay D cargo/props on matching C4 integral props; count both in exclusion envelopes.",
+    "Use D freestanding well/bench/cart when a new generic common prop is needed; B hamlet reference props are not a second global library.",
+    "Retain C4 civic furniture and plants; B dressing respects their actual bounds and contacts.",
+    "Rebuild derived field boundaries after Commit/erase; do not retain obsolete derived outlines as authoritative fences."
+  ],
+  "excludedFromRuntime": [
+    "A/B authored demo layouts",
+    "comparison UI and reference people",
+    "C1/C2/C3 comparison GLBs",
+    "private source archive",
+    "kit-library and kit-surfaces authoring checkpoints",
+    "illustrative storage stock values"
+  ],
+  "deferredGameplay": [
+    "physical inventories and warehouse construction",
+    "trade automation and merchant rules",
+    "housing/workplace upgrades and goods needs",
+    "persistent visual-variant picker migration",
+    "new production chains"
+  ],
+  "performancePolicy": {
+    "triangleLimits": "provisional regression guardrails, not proven phone capacity",
+    "existingNormalTriangles": 250000,
+    "existingLowTriangles": 150000,
+    "existingNormalDrawCalls": 150,
+    "existingLowDrawCalls": 100,
+    "targetSustainedFps": 30,
+    "doNotSilentlyRelaxTests": true,
+    "deviceApproval": "actual installed target-device measurements; report browser/OS/viewport/DPR, frame pacing, memory estimates, heat and cold offline; no chip-specific guarantee",
+    "preserve": "C4 close-view identity, layered roofs, coherent chimney, open granary supports and plot-aware composition"
+  },
+  "nextTasks": {
+    "P1": "buildings/storage library",
+    "P2": "world environment",
+    "P3": "plot-aware landscape",
+    "P4": "device/performance harness",
+    "P5": "final shared integration and offline"
+  }
+}

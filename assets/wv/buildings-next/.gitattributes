@@ -1,0 +1,3 @@
+# Preserve acquired notices byte-for-byte, including source CRLF and whitespace.
+License_Source.txt -text -whitespace
+License_Kit_Source.txt -text -whitespace
