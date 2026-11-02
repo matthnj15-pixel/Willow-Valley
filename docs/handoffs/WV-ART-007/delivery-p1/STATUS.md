@@ -1,6 +1,6 @@
 # P1 delivery status
 
-Implementation is ready for its own PR into develop, with P5 application/offline integration and actual-device acceptance pending.
+Implementation commit: `18fd6ec381a5509d590e169bad14a1f8d85879db`. The following documentation-only commit adds the final inventory/provenance. The PR targets develop; P5 application/offline integration and actual-device acceptance remain pending.
 
 Local validation on 2026-11-02:
 
