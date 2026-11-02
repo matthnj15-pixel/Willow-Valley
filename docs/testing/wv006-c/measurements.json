@@ -14,9 +14,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 5903,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 17
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 27
       }
     },
     {
@@ -27,9 +27,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 5903,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 18
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 28
       }
     },
     {
@@ -40,9 +40,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 5903,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 19
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 29
       }
     },
     {
@@ -53,9 +53,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 5903,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 20
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 30
       }
     },
     {
@@ -66,9 +66,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 5903,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 21
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 31
       }
     },
     {
@@ -79,9 +79,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 5903,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 22
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 32
       }
     },
     {
@@ -92,9 +92,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 7306,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 34
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 44
       }
     },
     {
@@ -105,9 +105,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 7306,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 35
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 45
       }
     },
     {
@@ -118,9 +118,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 7306,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 36
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 46
       }
     },
     {
@@ -131,9 +131,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 7306,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 37
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 47
       }
     },
     {
@@ -144,9 +144,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 7306,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 38
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 48
       }
     },
     {
@@ -157,9 +157,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 7306,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 39
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 49
       }
     },
     {
@@ -170,9 +170,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 6783,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 51
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 61
       }
     },
     {
@@ -183,9 +183,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 6783,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 52
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 62
       }
     },
     {
@@ -196,9 +196,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 6783,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 53
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 63
       }
     },
     {
@@ -209,9 +209,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 6783,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 54
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 64
       }
     },
     {
@@ -222,9 +222,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 6783,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 55
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 65
       }
     },
     {
@@ -235,9 +235,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 6783,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 56
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 66
       }
     },
     {
@@ -248,9 +248,9 @@
       "stats": {
         "drawCalls": 11,
         "triangles": 6756,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 68
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 78
       }
     },
     {
@@ -261,9 +261,9 @@
       "stats": {
         "drawCalls": 11,
         "triangles": 6756,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 69
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 79
       }
     },
     {
@@ -274,9 +274,9 @@
       "stats": {
         "drawCalls": 11,
         "triangles": 6756,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 70
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 80
       }
     },
     {
@@ -287,9 +287,9 @@
       "stats": {
         "drawCalls": 11,
         "triangles": 6756,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 71
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 81
       }
     },
     {
@@ -300,9 +300,9 @@
       "stats": {
         "drawCalls": 11,
         "triangles": 6756,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 72
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 82
       }
     },
     {
@@ -313,9 +313,9 @@
       "stats": {
         "drawCalls": 11,
         "triangles": 6756,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 73
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 83
       }
     },
     {
@@ -326,9 +326,9 @@
       "stats": {
         "drawCalls": 13,
         "triangles": 8171,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 85
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 95
       }
     },
     {
@@ -339,9 +339,9 @@
       "stats": {
         "drawCalls": 13,
         "triangles": 8171,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 86
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 96
       }
     },
     {
@@ -352,9 +352,9 @@
       "stats": {
         "drawCalls": 13,
         "triangles": 8171,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 87
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 97
       }
     },
     {
@@ -365,9 +365,9 @@
       "stats": {
         "drawCalls": 13,
         "triangles": 8171,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 88
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 98
       }
     },
     {
@@ -378,9 +378,9 @@
       "stats": {
         "drawCalls": 13,
         "triangles": 8171,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 89
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 99
       }
     },
     {
@@ -391,9 +391,9 @@
       "stats": {
         "drawCalls": 13,
         "triangles": 8171,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 90
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 100
       }
     },
     {
@@ -404,9 +404,9 @@
       "stats": {
         "drawCalls": 9,
         "triangles": 6142,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 102
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 112
       }
     },
     {
@@ -417,9 +417,9 @@
       "stats": {
         "drawCalls": 9,
         "triangles": 6142,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 103
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 113
       }
     },
     {
@@ -430,9 +430,9 @@
       "stats": {
         "drawCalls": 9,
         "triangles": 6142,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 104
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 114
       }
     },
     {
@@ -443,9 +443,9 @@
       "stats": {
         "drawCalls": 9,
         "triangles": 6142,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 105
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 115
       }
     },
     {
@@ -456,9 +456,9 @@
       "stats": {
         "drawCalls": 9,
         "triangles": 6142,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 106
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 116
       }
     },
     {
@@ -469,9 +469,9 @@
       "stats": {
         "drawCalls": 9,
         "triangles": 6142,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 107
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 117
       }
     },
     {
@@ -482,9 +482,9 @@
       "stats": {
         "drawCalls": 8,
         "triangles": 6178,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 119
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 129
       }
     },
     {
@@ -495,9 +495,9 @@
       "stats": {
         "drawCalls": 8,
         "triangles": 6178,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 120
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 130
       }
     },
     {
@@ -508,9 +508,9 @@
       "stats": {
         "drawCalls": 8,
         "triangles": 6178,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 121
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 131
       }
     },
     {
@@ -521,9 +521,9 @@
       "stats": {
         "drawCalls": 8,
         "triangles": 6178,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 122
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 132
       }
     },
     {
@@ -534,9 +534,9 @@
       "stats": {
         "drawCalls": 8,
         "triangles": 6178,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 123
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 133
       }
     },
     {
@@ -547,9 +547,9 @@
       "stats": {
         "drawCalls": 8,
         "triangles": 6178,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 124
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 134
       }
     },
     {
@@ -560,9 +560,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 4894,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 136
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 146
       }
     },
     {
@@ -573,9 +573,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 4894,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 137
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 147
       }
     },
     {
@@ -586,9 +586,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 4894,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 138
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 148
       }
     },
     {
@@ -599,9 +599,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 4894,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 139
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 149
       }
     },
     {
@@ -612,9 +612,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 4894,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 140
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 150
       }
     },
     {
@@ -625,9 +625,9 @@
       "stats": {
         "drawCalls": 12,
         "triangles": 4894,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 141
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 151
       }
     },
     {
@@ -638,9 +638,9 @@
       "stats": {
         "drawCalls": 6,
         "triangles": 2254,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 153
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 163
       }
     },
     {
@@ -651,9 +651,9 @@
       "stats": {
         "drawCalls": 6,
         "triangles": 2254,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 154
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 164
       }
     },
     {
@@ -664,9 +664,9 @@
       "stats": {
         "drawCalls": 6,
         "triangles": 2254,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 155
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 165
       }
     },
     {
@@ -677,9 +677,9 @@
       "stats": {
         "drawCalls": 6,
         "triangles": 2254,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 156
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 166
       }
     },
     {
@@ -690,9 +690,9 @@
       "stats": {
         "drawCalls": 6,
         "triangles": 2254,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 157
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 167
       }
     },
     {
@@ -703,9 +703,9 @@
       "stats": {
         "drawCalls": 6,
         "triangles": 2254,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 158
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 168
       }
     },
     {
@@ -714,11 +714,11 @@
       "angle": "front",
       "fullBoundsInFrame": true,
       "stats": {
-        "drawCalls": 8,
-        "triangles": 1866,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 170
+        "drawCalls": 10,
+        "triangles": 4512,
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 180
       }
     },
     {
@@ -727,11 +727,11 @@
       "angle": "rear",
       "fullBoundsInFrame": true,
       "stats": {
-        "drawCalls": 8,
-        "triangles": 1866,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 171
+        "drawCalls": 10,
+        "triangles": 4512,
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 181
       }
     },
     {
@@ -740,11 +740,11 @@
       "angle": "left",
       "fullBoundsInFrame": true,
       "stats": {
-        "drawCalls": 8,
-        "triangles": 1866,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 172
+        "drawCalls": 10,
+        "triangles": 4512,
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 182
       }
     },
     {
@@ -753,11 +753,11 @@
       "angle": "side",
       "fullBoundsInFrame": true,
       "stats": {
-        "drawCalls": 8,
-        "triangles": 1866,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 173
+        "drawCalls": 10,
+        "triangles": 4512,
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 183
       }
     },
     {
@@ -766,11 +766,11 @@
       "angle": "roof",
       "fullBoundsInFrame": true,
       "stats": {
-        "drawCalls": 8,
-        "triangles": 1866,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 174
+        "drawCalls": 10,
+        "triangles": 4512,
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 184
       }
     },
     {
@@ -779,105 +779,651 @@
       "angle": "eye",
       "fullBoundsInFrame": true,
       "stats": {
-        "drawCalls": 8,
-        "triangles": 1866,
-        "textures": 21,
-        "geometries": 138,
-        "submissions": 175
+        "drawCalls": 10,
+        "triangles": 4512,
+        "textures": 23,
+        "geometries": 140,
+        "submissions": 185
       }
     },
     {
-      "id": "home-steep-gable",
-      "quality": "low",
+      "id": "park-promenade",
+      "quality": "normal",
       "angle": "front",
       "fullBoundsInFrame": true,
       "stats": {
-        "drawCalls": 12,
-        "triangles": 4126,
-        "textures": 21,
-        "geometries": 145,
-        "submissions": 188
-      }
-    },
-    {
-      "id": "home-steep-gable",
-      "quality": "low",
-      "angle": "roof",
-      "fullBoundsInFrame": true,
-      "stats": {
-        "drawCalls": 12,
-        "triangles": 4126,
-        "textures": 21,
-        "geometries": 145,
-        "submissions": 189
-      }
-    },
-    {
-      "id": "home-long-ridge",
-      "quality": "low",
-      "angle": "front",
-      "fullBoundsInFrame": true,
-      "stats": {
-        "drawCalls": 12,
-        "triangles": 5172,
-        "textures": 21,
-        "geometries": 150,
-        "submissions": 191
-      }
-    },
-    {
-      "id": "home-long-ridge",
-      "quality": "low",
-      "angle": "roof",
-      "fullBoundsInFrame": true,
-      "stats": {
-        "drawCalls": 12,
-        "triangles": 5172,
-        "textures": 21,
-        "geometries": 150,
-        "submissions": 192
-      }
-    },
-    {
-      "id": "home-low-hip",
-      "quality": "low",
-      "angle": "front",
-      "fullBoundsInFrame": true,
-      "stats": {
-        "drawCalls": 12,
-        "triangles": 3212,
-        "textures": 21,
-        "geometries": 153,
-        "submissions": 194
-      }
-    },
-    {
-      "id": "home-low-hip",
-      "quality": "low",
-      "angle": "roof",
-      "fullBoundsInFrame": true,
-      "stats": {
-        "drawCalls": 12,
-        "triangles": 3212,
-        "textures": 21,
-        "geometries": 153,
-        "submissions": 195
-      }
-    },
-    {
-      "id": "home-porch-cabin",
-      "quality": "low",
-      "angle": "front",
-      "fullBoundsInFrame": true,
-      "stats": {
-        "drawCalls": 11,
-        "triangles": 4768,
-        "textures": 21,
-        "geometries": 157,
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 26,
+        "geometries": 144,
         "submissions": 197
       }
     },
     {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 26,
+        "geometries": 144,
+        "submissions": 198
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 26,
+        "geometries": 144,
+        "submissions": 199
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 26,
+        "geometries": 144,
+        "submissions": 200
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 26,
+        "geometries": 144,
+        "submissions": 201
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3700,
+        "textures": 26,
+        "geometries": 144,
+        "submissions": 202
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 7,
+        "triangles": 2942,
+        "textures": 26,
+        "geometries": 149,
+        "submissions": 214
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 7,
+        "triangles": 2942,
+        "textures": 26,
+        "geometries": 149,
+        "submissions": 215
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 7,
+        "triangles": 2942,
+        "textures": 26,
+        "geometries": 149,
+        "submissions": 216
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 7,
+        "triangles": 2942,
+        "textures": 26,
+        "geometries": 149,
+        "submissions": 217
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 7,
+        "triangles": 2942,
+        "textures": 26,
+        "geometries": 149,
+        "submissions": 218
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 7,
+        "triangles": 2942,
+        "textures": 26,
+        "geometries": 149,
+        "submissions": 219
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 26,
+        "geometries": 153,
+        "submissions": 231
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 26,
+        "geometries": 153,
+        "submissions": 232
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 26,
+        "geometries": 153,
+        "submissions": 233
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 26,
+        "geometries": 153,
+        "submissions": 234
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 26,
+        "geometries": 153,
+        "submissions": 235
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 2448,
+        "textures": 26,
+        "geometries": 153,
+        "submissions": 236
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 26,
+        "geometries": 157,
+        "submissions": 248
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 26,
+        "geometries": 157,
+        "submissions": 249
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 26,
+        "geometries": 157,
+        "submissions": 250
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 26,
+        "geometries": 157,
+        "submissions": 251
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 26,
+        "geometries": 157,
+        "submissions": 252
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 3294,
+        "textures": 26,
+        "geometries": 157,
+        "submissions": 253
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 27,
+        "geometries": 164,
+        "submissions": 265
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 27,
+        "geometries": 164,
+        "submissions": 266
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 27,
+        "geometries": 164,
+        "submissions": 267
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 27,
+        "geometries": 164,
+        "submissions": 268
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 27,
+        "geometries": 164,
+        "submissions": 269
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2128,
+        "textures": 27,
+        "geometries": 164,
+        "submissions": 270
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1426,
+        "textures": 27,
+        "geometries": 173,
+        "submissions": 299
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1426,
+        "textures": 27,
+        "geometries": 173,
+        "submissions": 300
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1426,
+        "textures": 27,
+        "geometries": 173,
+        "submissions": 301
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1426,
+        "textures": 27,
+        "geometries": 173,
+        "submissions": 302
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1426,
+        "textures": 27,
+        "geometries": 173,
+        "submissions": 303
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1426,
+        "textures": 27,
+        "geometries": 173,
+        "submissions": 304
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 27,
+        "geometries": 179,
+        "submissions": 316
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 27,
+        "geometries": 179,
+        "submissions": 317
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 27,
+        "geometries": 179,
+        "submissions": 318
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 27,
+        "geometries": 179,
+        "submissions": 319
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 27,
+        "geometries": 179,
+        "submissions": 320
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2382,
+        "textures": 27,
+        "geometries": 179,
+        "submissions": 321
+      }
+    },
+    {
+      "id": "home-steep-gable",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 4126,
+        "textures": 27,
+        "geometries": 189,
+        "submissions": 334
+      }
+    },
+    {
+      "id": "home-steep-gable",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 4126,
+        "textures": 27,
+        "geometries": 189,
+        "submissions": 335
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 5172,
+        "textures": 27,
+        "geometries": 194,
+        "submissions": 337
+      }
+    },
+    {
+      "id": "home-long-ridge",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 5172,
+        "textures": 27,
+        "geometries": 194,
+        "submissions": 338
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 3212,
+        "textures": 27,
+        "geometries": 197,
+        "submissions": 340
+      }
+    },
+    {
+      "id": "home-low-hip",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 12,
+        "triangles": 3212,
+        "textures": 27,
+        "geometries": 197,
+        "submissions": 341
+      }
+    },
+    {
+      "id": "home-porch-cabin",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 11,
+        "triangles": 4768,
+        "textures": 27,
+        "geometries": 201,
+        "submissions": 343
+      }
+    },
+    {
       "id": "home-porch-cabin",
       "quality": "low",
       "angle": "roof",
@@ -885,9 +1431,9 @@
       "stats": {
         "drawCalls": 11,
         "triangles": 4768,
-        "textures": 21,
-        "geometries": 157,
-        "submissions": 198
+        "textures": 27,
+        "geometries": 201,
+        "submissions": 344
       }
     },
     {
@@ -898,9 +1444,9 @@
       "stats": {
         "drawCalls": 13,
         "triangles": 5717,
-        "textures": 21,
-        "geometries": 163,
-        "submissions": 200
+        "textures": 27,
+        "geometries": 207,
+        "submissions": 346
       }
     },
     {
@@ -911,9 +1457,9 @@
       "stats": {
         "drawCalls": 13,
         "triangles": 5717,
-        "textures": 21,
-        "geometries": 163,
-        "submissions": 201
+        "textures": 27,
+        "geometries": 207,
+        "submissions": 347
       }
     },
     {
@@ -924,9 +1470,9 @@
       "stats": {
         "drawCalls": 8,
         "triangles": 3342,
-        "textures": 21,
-        "geometries": 166,
-        "submissions": 203
+        "textures": 27,
+        "geometries": 210,
+        "submissions": 349
       }
     },
     {
@@ -937,9 +1483,9 @@
       "stats": {
         "drawCalls": 8,
         "triangles": 3342,
-        "textures": 21,
-        "geometries": 166,
-        "submissions": 204
+        "textures": 27,
+        "geometries": 210,
+        "submissions": 350
       }
     },
     {
@@ -950,9 +1496,9 @@
       "stats": {
         "drawCalls": 8,
         "triangles": 2522,
-        "textures": 21,
-        "geometries": 171,
-        "submissions": 206
+        "textures": 27,
+        "geometries": 215,
+        "submissions": 352
       }
     },
     {
@@ -963,9 +1509,9 @@
       "stats": {
         "drawCalls": 8,
         "triangles": 2522,
-        "textures": 21,
-        "geometries": 171,
-        "submissions": 207
+        "textures": 27,
+        "geometries": 215,
+        "submissions": 353
       }
     },
     {
@@ -976,9 +1522,9 @@
       "stats": {
         "drawCalls": 11,
         "triangles": 2818,
-        "textures": 21,
-        "geometries": 174,
-        "submissions": 209
+        "textures": 27,
+        "geometries": 218,
+        "submissions": 355
       }
     },
     {
@@ -989,9 +1535,9 @@
       "stats": {
         "drawCalls": 11,
         "triangles": 2818,
-        "textures": 21,
-        "geometries": 174,
-        "submissions": 210
+        "textures": 27,
+        "geometries": 218,
+        "submissions": 356
       }
     },
     {
@@ -1002,9 +1548,9 @@
       "stats": {
         "drawCalls": 6,
         "triangles": 1562,
-        "textures": 21,
-        "geometries": 177,
-        "submissions": 212
+        "textures": 27,
+        "geometries": 221,
+        "submissions": 358
       }
     },
     {
@@ -1015,9 +1561,9 @@
       "stats": {
         "drawCalls": 6,
         "triangles": 1562,
-        "textures": 21,
-        "geometries": 177,
-        "submissions": 213
+        "textures": 27,
+        "geometries": 221,
+        "submissions": 359
       }
     },
     {
@@ -1026,11 +1572,11 @@
       "angle": "front",
       "fullBoundsInFrame": true,
       "stats": {
-        "drawCalls": 7,
-        "triangles": 1158,
-        "textures": 21,
-        "geometries": 177,
-        "submissions": 215
+        "drawCalls": 9,
+        "triangles": 2560,
+        "textures": 27,
+        "geometries": 226,
+        "submissions": 361
       }
     },
     {
@@ -1039,11 +1585,297 @@
       "angle": "roof",
       "fullBoundsInFrame": true,
       "stats": {
+        "drawCalls": 9,
+        "triangles": 2560,
+        "textures": 27,
+        "geometries": 226,
+        "submissions": 362
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1748,
+        "textures": 27,
+        "geometries": 229,
+        "submissions": 364
+      }
+    },
+    {
+      "id": "park-promenade",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1748,
+        "textures": 27,
+        "geometries": 229,
+        "submissions": 365
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
         "drawCalls": 7,
-        "triangles": 1158,
-        "textures": 21,
-        "geometries": 177,
-        "submissions": 216
+        "triangles": 1622,
+        "textures": 27,
+        "geometries": 233,
+        "submissions": 367
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 7,
+        "triangles": 1622,
+        "textures": 27,
+        "geometries": 233,
+        "submissions": 368
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 936,
+        "textures": 27,
+        "geometries": 236,
+        "submissions": 370
+      }
+    },
+    {
+      "id": "park-village-green",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 936,
+        "textures": 27,
+        "geometries": 236,
+        "submissions": 371
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1258,
+        "textures": 27,
+        "geometries": 240,
+        "submissions": 373
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1258,
+        "textures": 27,
+        "geometries": 240,
+        "submissions": 374
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 1044,
+        "textures": 27,
+        "geometries": 245,
+        "submissions": 376
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 1044,
+        "textures": 27,
+        "geometries": 245,
+        "submissions": 377
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1082,
+        "textures": 27,
+        "geometries": 252,
+        "submissions": 382
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 6,
+        "triangles": 1082,
+        "textures": 27,
+        "geometries": 252,
+        "submissions": 383
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 1238,
+        "textures": 27,
+        "geometries": 252,
+        "submissions": 385
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 1238,
+        "textures": 27,
+        "geometries": 252,
+        "submissions": 386
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2272,
+        "textures": 9,
+        "geometries": 22,
+        "submissions": 21
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "rear",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2272,
+        "textures": 9,
+        "geometries": 22,
+        "submissions": 22
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "left",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2272,
+        "textures": 9,
+        "geometries": 22,
+        "submissions": 23
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "side",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2272,
+        "textures": 9,
+        "geometries": 22,
+        "submissions": 24
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2272,
+        "textures": 9,
+        "geometries": 22,
+        "submissions": 25
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "normal",
+      "angle": "eye",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 2272,
+        "textures": 9,
+        "geometries": 22,
+        "submissions": 26
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "low",
+      "angle": "front",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 1208,
+        "textures": 9,
+        "geometries": 27,
+        "submissions": 28
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "quality": "low",
+      "angle": "roof",
+      "fullBoundsInFrame": true,
+      "stats": {
+        "drawCalls": 9,
+        "triangles": 1208,
+        "textures": 9,
+        "geometries": 27,
+        "submissions": 29
       }
     }
   ],
@@ -1447,15 +2279,19 @@
     {
       "count": 30,
       "quality": "normal",
-      "drawCalls": 73,
-      "triangles": 221232,
-      "textures": 21,
-      "geometries": 177,
-      "submissions": 236,
-      "medianSubmissionMs": 1.299999998882413,
-      "p95SubmissionMs": 2.200000001117587,
+      "drawCalls": 87,
+      "triangles": 228022,
+      "textures": 18,
+      "geometries": 100,
+      "submissions": 59,
+      "medianSubmissionMs": 1.7999999970197678,
+      "p95SubmissionMs": 8.200000002980232,
       "actualTown": false,
       "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
       "sixthFallbackMeasured": false,
       "guardrails": {
         "drawCalls": 150,
@@ -1467,15 +2303,19 @@
     {
       "count": 100,
       "quality": "normal",
-      "drawCalls": 73,
-      "triangles": 691198,
-      "textures": 21,
-      "geometries": 177,
-      "submissions": 251,
-      "medianSubmissionMs": 1,
-      "p95SubmissionMs": 2.599999999627471,
+      "drawCalls": 87,
+      "triangles": 697988,
+      "textures": 18,
+      "geometries": 100,
+      "submissions": 74,
+      "medianSubmissionMs": 1.8999999985098839,
+      "p95SubmissionMs": 3,
       "actualTown": false,
       "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
       "sixthFallbackMeasured": false,
       "guardrails": {
         "drawCalls": 150,
@@ -1487,15 +2327,19 @@
     {
       "count": 30,
       "quality": "low",
-      "drawCalls": 73,
-      "triangles": 139924,
-      "textures": 21,
-      "geometries": 177,
-      "submissions": 271,
-      "medianSubmissionMs": 1.099999999627471,
-      "p95SubmissionMs": 1.3999999985098839,
+      "drawCalls": 86,
+      "triangles": 142766,
+      "textures": 18,
+      "geometries": 149,
+      "submissions": 89,
+      "medianSubmissionMs": 2.600000001490116,
+      "p95SubmissionMs": 8.300000000745058,
       "actualTown": false,
       "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
       "sixthFallbackMeasured": false,
       "guardrails": {
         "drawCalls": 100,
@@ -1507,15 +2351,19 @@
     {
       "count": 100,
       "quality": "low",
-      "drawCalls": 73,
-      "triangles": 442954,
-      "textures": 21,
-      "geometries": 177,
-      "submissions": 286,
-      "medianSubmissionMs": 1.5,
-      "p95SubmissionMs": 3.699999999254942,
+      "drawCalls": 86,
+      "triangles": 445796,
+      "textures": 18,
+      "geometries": 149,
+      "submissions": 104,
+      "medianSubmissionMs": 1.5999999977648258,
+      "p95SubmissionMs": 1.800000000745058,
       "actualTown": false,
       "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
       "sixthFallbackMeasured": false,
       "guardrails": {
         "drawCalls": 100,
@@ -1531,8 +2379,16 @@
     "bytes": 7527564,
     "sha256": "38c88a54bed04bc7a2dcf97a9c4a628c119cc6ec03d212247ffc4ebfb5c3d95c"
   },
+  "civicOutput": {
+    "url": "assets/wv/buildings-next/civic.glb",
+    "bytes": 3251052,
+    "sha256": "d30eb5d17b29a937c3d432265108b2306065c5764016985f9b64a8653f45bb1a"
+  },
   "mobileViewport": {
     "width": 600,
     "height": 850
-  }
+  },
+  "visibilityRevision": "Late corrections: optional flag on market goods (geometry/BIN unchanged), plus a 0.10 m grounded fountain footing/contact. Bounds remain unchanged; synthetic fixture uses town square, so scene budgets remain unchanged. Final market identity and fountain views refreshed separately.",
+  "finalRefresh": "Market loose-prop identity/wire views and all fountain normal/low/mobile views refreshed after final metadata/footing fixes; all four scene budgets remeasured sequentially after full browser/parity suites.",
+  "candidateSeparation": "civic.glb now contains nine candidates, while all ten main C2 roots are unchanged. Gallery display roots/bounds/materials are equivalent to the earlier bulk views; final root mapping is verified by focused/browser checks. Full scene fixtures remeasured after separation."
 }

@@ -1,0 +1,8 @@
+Poly Haven assets Leafy Grass and Dirt are CC0 1.0.
+Publisher statement verified 2026-11-01 at https://polyhaven.com/license:
+"Our assets are all licensed as CC0, which is effectively Public Domain even in jurisdictions that do not support the Public Domain."
+CC0 legal text: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+Exact download URLs, publisher checksums, acquired source SHA256 and derivative hashes:
+../../../environment-asset-manifest.json (repository root).
+512px JPEG derivatives made with scripts/import-environment.mjs.
+No texture is fetched from a third party at runtime.

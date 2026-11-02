@@ -1,10 +1,15 @@
 {
-  "recipeRevision": 2,
-  "baseDevelop": "dfce320",
+  "recipeRevision": 3,
+  "baseDevelop": "bf40203576e8f12478729d7ae7bf967db89849e5",
   "output": {
     "url": "assets/wv/buildings-next/catalog.glb",
     "bytes": 7527564,
     "sha256": "38c88a54bed04bc7a2dcf97a9c4a628c119cc6ec03d212247ffc4ebfb5c3d95c"
+  },
+  "civicOutput": {
+    "url": "assets/wv/buildings-next/civic.glb",
+    "bytes": 3251052,
+    "sha256": "d30eb5d17b29a937c3d432265108b2306065c5764016985f9b64a8653f45bb1a"
   },
   "comparison": {
     "recipeRevision": 1,
@@ -16,404 +21,471 @@
   "entries": [
     {
       "id": "home-steep-gable",
+      "role": "residential",
+      "existingIdentity": "home-steep-gable",
       "triangles": 5381,
-      "lowTriangles": 3680,
       "materialGroups": 9,
       "dimensions": [
         5.513076305389404,
         6.853674286454916,
         5.6157066822052
       ],
-      "detailFeatures": {
-        "dark window recess": 2,
-        "window jamb": 4,
-        "projecting window sill": 2,
-        "window drip hood": 2,
-        "glazing mullion": 4,
-        "open boarded shutter": 4,
-        "shutter hinge": 8,
-        "window transom": 2,
-        "entry latch plate": 1,
-        "bevelled dressed stone": 8
-      },
       "budgetExceptions": [
         "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
         "Measured authoring target exception; gallery review only, F must budget before adoption."
-      ]
+      ],
+      "lowTriangles": 3680,
+      "fullEnvelopeCheck": null
     },
     {
       "id": "home-long-ridge",
+      "role": "residential",
+      "existingIdentity": "home-long-ridge",
       "triangles": 6784,
-      "lowTriangles": 4726,
       "materialGroups": 9,
       "dimensions": [
         5.7028889656066895,
         6.646391743272543,
         7.588279604911804
       ],
-      "detailFeatures": {
-        "dark window recess": 2,
-        "window jamb": 4,
-        "projecting window sill": 2,
-        "window drip hood": 2,
-        "glazing mullion": 4,
-        "open boarded shutter": 4,
-        "shutter hinge": 8,
-        "window transom": 2,
-        "entry latch plate": 1,
-        "bevelled dressed stone": 8
-      },
       "budgetExceptions": [
         "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
         "Measured authoring target exception; gallery review only, F must budget before adoption."
-      ]
+      ],
+      "lowTriangles": 4726,
+      "fullEnvelopeCheck": null
     },
     {
       "id": "home-low-hip",
+      "role": "residential",
+      "existingIdentity": "home-low-hip",
       "triangles": 6261,
-      "lowTriangles": 2766,
       "materialGroups": 8,
       "dimensions": [
         5,
         4.855000132173299,
         5
       ],
-      "detailFeatures": {
-        "overlapping continuous thatch course 0": 1,
-        "overlapping continuous thatch course 1": 1,
-        "overlapping continuous thatch course 2": 1,
-        "overlapping continuous thatch course 3": 1,
-        "overlapping continuous thatch course 4": 1,
-        "overlapping continuous thatch course 5": 1,
-        "overlapping continuous thatch course 6": 1,
-        "overlapping continuous thatch course 7": 1,
-        "overlapping continuous thatch course 8": 1,
-        "bound ridge": 1,
-        "ridge binding": 6,
-        "closed ridge weather cap": 1,
-        "closed ceiling": 1,
-        "dark window recess": 2,
-        "window jamb": 4,
-        "projecting window sill": 2,
-        "window drip hood": 2,
-        "glazing mullion": 4,
-        "open boarded shutter": 4,
-        "shutter hinge": 8,
-        "window transom": 2,
-        "entry latch plate": 1,
-        "bevelled dressed stone": 8,
-        "thatched cottage eave bearer": 2
-      },
       "budgetExceptions": [
         "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
         "Measured authoring target exception; gallery review only, F must budget before adoption."
-      ]
+      ],
+      "lowTriangles": 2766,
+      "fullEnvelopeCheck": null
     },
     {
       "id": "home-porch-cabin",
+      "role": "residential",
+      "existingIdentity": "home-porch-cabin",
       "triangles": 6234,
-      "lowTriangles": 4322,
       "materialGroups": 8,
       "dimensions": [
         5.534493923187256,
         6.64763700351119,
         6.313289284706116
       ],
-      "detailFeatures": {
-        "dark window recess": 2,
-        "window jamb": 4,
-        "projecting window sill": 2,
-        "window drip hood": 2,
-        "glazing mullion": 4,
-        "open boarded shutter": 4,
-        "shutter hinge": 8,
-        "window transom": 2,
-        "entry latch plate": 1,
-        "bevelled dressed stone": 8
-      },
       "budgetExceptions": [
         "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
         "Measured authoring target exception; gallery review only, F must budget before adoption."
-      ]
+      ],
+      "lowTriangles": 4322,
+      "fullEnvelopeCheck": null
     },
     {
       "id": "home-offset-gables",
+      "role": "residential",
+      "existingIdentity": "home-offset-gables",
       "triangles": 7633,
-      "lowTriangles": 5261,
       "materialGroups": 10,
       "dimensions": [
         7.299776077270508,
         6.853674286454916,
         5.6157066822052
       ],
-      "detailFeatures": {
-        "dark window recess": 2,
-        "window jamb": 4,
-        "projecting window sill": 2,
-        "window drip hood": 2,
-        "glazing mullion": 4,
-        "open boarded shutter": 4,
-        "shutter hinge": 8,
-        "window transom": 2,
-        "entry latch plate": 1,
-        "bevelled dressed stone": 8
-      },
       "budgetExceptions": [
         "PR81 core geometry and texture bytes retained beneath additive detail; existing excess detail/materials stays out of mass adoption pending F. Low uses Three.js r187 SimplifyModifier, reducing 30% of vertices in primitives with at least 150 vertices; no scaling or normal-detail edits.",
         "Measured authoring target exception; gallery review only, F must budget before adoption."
-      ]
+      ],
+      "lowTriangles": 5261,
+      "fullEnvelopeCheck": null
     },
     {
       "id": "facility-farm",
+      "role": "farm",
+      "existingIdentity": "facility-farm",
       "triangles": 5872,
-      "lowTriangles": 3072,
       "materialGroups": 1,
       "dimensions": [
         8.601724624633789,
         5.650000207126141,
         6.010000228881836
       ],
-      "detailFeatures": {
-        "barn rubble seat": 1,
-        "closed barn floor": 1,
-        "rear barn wall": 1,
-        "barn side": 2,
-        "broad door side infill": 2,
-        "door head infill": 1,
-        "closed cargo leaf": 2,
-        "door diagonal": 2,
-        "forged strap": 4,
-        "door handle": 2,
-        "cargo door seam cover": 1,
-        "heavy jamb": 2,
-        "lintel": 1,
-        "individual stone foot": 9,
-        "bearing post": 9,
-        "barn side brace": 6,
-        "closed pitched roof": 2,
-        "ridge": 1,
-        "verge": 4,
-        "tie": 2,
-        "king post": 2,
-        "principal rafter": 4,
-        "knee brace": 4,
-        "barn gable infill": 2,
-        "bay cross beam": 3,
-        "bay brace": 3,
-        "hay bay roof": 1,
-        "work bench": 1,
-        "bench trestle": 2,
-        "bench stretcher": 1,
-        "integral hay loft": 1,
-        "stored hay mass": 2,
-        "hay fork handle": 1,
-        "fork tine": 3,
-        "curved overlapping clay tile": 150,
-        "overlapping barrel ridge cap": 12,
-        "deep bargeboard": 4,
-        "separate cargo door plank": 16,
-        "door hinge rivet": 8,
-        "forged door latch": 1,
-        "dark ventilation opening": 1,
-        "sloping weather louvre": 6,
-        "vent framing": 2,
-        "dark window recess": 2,
-        "window jamb": 4,
-        "projecting window sill": 2,
-        "window drip hood": 2,
-        "glazing mullion": 4,
-        "open boarded shutter": 4,
-        "shutter hinge": 8,
-        "window transom": 2,
-        "barn panel diagonal": 4,
-        "barn wall board batten": 20,
-        "bevelled dressed stone": 18,
-        "post base iron shoe": 8
-      },
-      "budgetExceptions": []
+      "budgetExceptions": [],
+      "lowTriangles": 3072,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          46,
+          41.2
+        ],
+        "fullGameUnits": [
+          24.084828948974607,
+          16.82800064086914
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      }
     },
     {
       "id": "facility-smith",
+      "role": "smith",
+      "existingIdentity": "facility-smith",
       "triangles": 5908,
-      "lowTriangles": 2252,
       "materialGroups": 1,
       "dimensions": [
         5.900000095367432,
         5.619999997317791,
         5.347658157348633
       ],
-      "detailFeatures": {
-        "hearth room seat": 1,
-        "closed working floor": 1,
-        "masonry rear": 1,
-        "masonry side return": 2,
-        "individual stone foot": 4,
-        "bearing post": 4,
-        "forge knee brace": 4,
-        "front bressummer": 1,
-        "substantial hearth": 1,
-        "dark fire bed": 1,
-        "fire back": 1,
-        "hood masonry pier": 2,
-        "tapered open forge hood": 4,
-        "continuous stack side": 2,
-        "continuous stack face": 2,
-        "open stack crown": 4,
-        "roof around flue": 4,
-        "metal flashing": 4,
-        "shed roof edging": 2,
-        "anvil stump": 1,
-        "anvil waist": 1,
-        "anvil face": 1,
-        "anvil horn": 1,
-        "work bench": 1,
-        "bench trestle": 2,
-        "bench stretcher": 1,
-        "tool rack rail": 1,
-        "stored tool shaft": 3,
-        "hammer head": 3,
-        "curved overlapping clay tile": 94,
-        "stepped chimney apron flashing": 4,
-        "bevelled dressed stone": 263,
-        "dark ventilation opening": 1,
-        "sloping weather louvre": 5,
-        "vent framing": 2,
-        "post iron collar": 2,
-        "post base iron shoe": 4
-      },
-      "budgetExceptions": []
+      "budgetExceptions": [],
+      "lowTriangles": 2252,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          16.52000026702881,
+          14.97344284057617
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      }
     },
     {
       "id": "facility-granary",
+      "role": "granary",
+      "existingIdentity": "facility-granary",
       "triangles": 4624,
-      "lowTriangles": 2548,
       "materialGroups": 1,
       "dimensions": [
         7.611922979354858,
         6.098788201808929,
         6.730000019073486
       ],
-      "detailFeatures": {
-        "individual stone foot": 8,
-        "bearing post": 8,
-        "floor bearer": 2,
-        "floor joist": 3,
-        "undercroft diagonal": 4,
-        "front rear brace": 4,
-        "closed floor and underside": 1,
-        "rear storage wall": 1,
-        "storage side": 2,
-        "door side infill": 2,
-        "door head infill": 1,
-        "closed cargo leaf": 2,
-        "door diagonal": 2,
-        "forged strap": 4,
-        "door handle": 2,
-        "cargo door seam cover": 1,
-        "heavy jamb": 2,
-        "lintel": 1,
-        "store corner": 4,
-        "upper corner brace": 4,
-        "closed pitched roof": 2,
-        "ridge": 1,
-        "verge": 4,
-        "tie": 2,
-        "king post": 2,
-        "principal rafter": 4,
-        "knee brace": 4,
-        "closed storage gable": 2,
-        "supported loading landing": 1,
-        "safe stair tread": 8,
-        "stair stringer": 2,
-        "stair handrail": 2,
-        "rail upright": 6,
-        "landing guard post": 2,
-        "landing front rail": 2,
-        "landing end rail": 2,
-        "optional crate": 1,
-        "curved overlapping clay tile": 102,
-        "overlapping barrel ridge cap": 12,
-        "deep bargeboard": 4,
-        "separate cargo door plank": 16,
-        "door hinge rivet": 8,
-        "forged door latch": 1,
-        "dark ventilation opening": 1,
-        "sloping weather louvre": 4,
-        "vent framing": 2,
-        "store side diagonal": 4,
-        "storage board batten": 20,
-        "storage binding rail": 4,
-        "post base iron shoe": 8
-      },
-      "budgetExceptions": []
+      "budgetExceptions": [],
+      "lowTriangles": 2548,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          30,
+          26.8
+        ],
+        "fullGameUnits": [
+          21.3133843421936,
+          18.84400005340576
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      }
     },
     {
       "id": "facility-lumber",
+      "role": "lumber",
+      "existingIdentity": "facility-lumber",
       "triangles": 1984,
-      "lowTriangles": 1292,
       "materialGroups": 1,
       "dimensions": [
         8.199999809265137,
         3.4795380756258965,
         4.550000071525574
       ],
-      "detailFeatures": {
-        "individual stone foot": 6,
-        "bearing post": 6,
-        "rack shelter brace": 6,
-        "long timber roof": 2,
-        "long eave edging": 2,
-        "long roof ridge": 1,
-        "cross tie": 3,
-        "rafter": 6,
-        "rack rail": 4,
-        "rack arm": 12,
-        "integral stacked timber": 6,
-        "work bench": 1,
-        "bench trestle": 2,
-        "bench stretcher": 1,
-        "cutting trestle": 4,
-        "cutting timber": 1,
-        "separate weathered roof board": 44,
-        "exposed rafter tail": 6,
-        "rack iron tie": 3,
-        "wooden joint peg": 6,
-        "bench vise jaw": 2,
-        "post base iron shoe": 6
-      },
-      "budgetExceptions": []
+      "budgetExceptions": [],
+      "lowTriangles": 1292,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          22.95999946594238,
+          12.740000200271606
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      }
     },
     {
       "id": "facility-market",
+      "role": "market",
+      "existingIdentity": "facility-market",
       "triangles": 1596,
-      "lowTriangles": 888,
       "materialGroups": 1,
       "dimensions": [
         9.960000038146973,
         2.8300000354647636,
         3.9400000274181366
       ],
-      "detailFeatures": {
-        "individual stone foot": 12,
-        "bearing post": 12,
-        "canvas valance": 3,
-        "stall header": 3,
-        "open counter": 3,
-        "counter leg": 6,
-        "boarded counter front": 2,
-        "optional produce bin": 9,
-        "draped canvas canopy": 3,
-        "canvas folded hem": 3,
-        "awning rear support": 3,
-        "awning rope tie": 6,
-        "counter face board": 15,
-        "post base iron shoe": 8
-      },
-      "budgetExceptions": []
+      "budgetExceptions": [],
+      "lowTriangles": 888,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          46,
+          41.2
+        ],
+        "fullGameUnits": [
+          27.88800010681152,
+          11.032000076770782
+        ],
+        "axisAlignedFit": true,
+        "heightCap": 48,
+        "heightFits": true
+      }
+    },
+    {
+      "id": "park-promenade",
+      "role": "park",
+      "existingIdentity": "facility-park",
+      "triangles": 3430,
+      "materialGroups": 3,
+      "dimensions": [
+        10.166631698608398,
+        4.310623787343502,
+        9.600000381469727
+      ],
+      "budgetExceptions": [],
+      "lowTriangles": 1478,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          28.466568756103513,
+          26.880001068115234
+        ],
+        "axisAlignedFit": true
+      }
+    },
+    {
+      "id": "park-sitting-garden",
+      "role": "park",
+      "existingIdentity": "facility-park",
+      "triangles": 2672,
+      "materialGroups": 3,
+      "dimensions": [
+        10.800000190734863,
+        4.310623787343502,
+        9.600000381469727
+      ],
+      "budgetExceptions": [],
+      "lowTriangles": 1352,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          30.240000534057614,
+          26.880001068115234
+        ],
+        "axisAlignedFit": true
+      }
+    },
+    {
+      "id": "park-village-green",
+      "role": "park",
+      "existingIdentity": "facility-park",
+      "triangles": 2178,
+      "materialGroups": 3,
+      "dimensions": [
+        9.792171955108643,
+        4.309000119566917,
+        9.054093837738037
+      ],
+      "budgetExceptions": [],
+      "lowTriangles": 666,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          27.4180814743042,
+          25.351462745666502
+        ],
+        "axisAlignedFit": true
+      }
+    },
+    {
+      "id": "park-woodland-walk",
+      "role": "park",
+      "existingIdentity": "facility-park",
+      "triangles": 3024,
+      "materialGroups": 3,
+      "dimensions": [
+        10.416631698608398,
+        4.381623409688473,
+        10.4708251953125
+      ],
+      "budgetExceptions": [],
+      "lowTriangles": 988,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          29.166568756103512,
+          29.318310546874997
+        ],
+        "axisAlignedFit": true
+      }
+    },
+    {
+      "id": "plaza-town-square",
+      "role": "plaza",
+      "existingIdentity": "facility-plaza",
+      "triangles": 1858,
+      "materialGroups": 4,
+      "dimensions": [
+        11.497190952301025,
+        4.309000134468079,
+        9.800000190734863
+      ],
+      "budgetExceptions": [
+        "Four public-space materials separate matte foliage, structure, gravel and paving. Gallery only; F must batch and budget before adoption."
+      ],
+      "lowTriangles": 774,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          32.19213466644287,
+          27.440000534057617
+        ],
+        "axisAlignedFit": true
+      }
+    },
+    {
+      "id": "plaza-fountain-court",
+      "role": "plaza",
+      "existingIdentity": "facility-plaza",
+      "triangles": 2002,
+      "materialGroups": 4,
+      "dimensions": [
+        11.199999809265137,
+        4.309000127017498,
+        10.149156093597412
+      ],
+      "budgetExceptions": [
+        "Four public-space materials separate matte foliage, structure, gravel and paving. Gallery only; F must batch and budget before adoption."
+      ],
+      "lowTriangles": 938,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          31.35999946594238,
+          28.417637062072753
+        ],
+        "axisAlignedFit": true
+      }
+    },
+    {
+      "id": "plaza-flower-court",
+      "role": "plaza",
+      "existingIdentity": "facility-plaza",
+      "triangles": 1156,
+      "materialGroups": 3,
+      "dimensions": [
+        11.199999809265137,
+        0.9900000020861626,
+        9.800000190734863
+      ],
+      "budgetExceptions": [],
+      "lowTriangles": 812,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          31.35999946594238,
+          27.440000534057617
+        ],
+        "axisAlignedFit": true
+      }
+    },
+    {
+      "id": "plaza-festival-court",
+      "role": "plaza",
+      "existingIdentity": "facility-plaza",
+      "triangles": 2112,
+      "materialGroups": 4,
+      "dimensions": [
+        11.335008144378662,
+        4.309000134468079,
+        9.800000190734863
+      ],
+      "budgetExceptions": [
+        "Four public-space materials separate matte foliage, structure, gravel and paving. Gallery only; F must batch and budget before adoption."
+      ],
+      "lowTriangles": 968,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          33,
+          29.5
+        ],
+        "fullGameUnits": [
+          31.73802280426025,
+          27.440000534057617
+        ],
+        "axisAlignedFit": true
+      }
+    },
+    {
+      "id": "market-civic-square",
+      "role": "market",
+      "existingIdentity": "facility-market",
+      "triangles": 4242,
+      "materialGroups": 3,
+      "dimensions": [
+        16,
+        2.550000101327896,
+        14
+      ],
+      "budgetExceptions": [],
+      "lowTriangles": 2290,
+      "fullEnvelopeCheck": {
+        "availableGameUnits": [
+          46,
+          41.2
+        ],
+        "fullGameUnits": [
+          44.8,
+          39.199999999999996
+        ],
+        "axisAlignedFit": true
+      }
     }
   ],
-  "textureBytes": 217199,
-  "estimatedMipRGBA8Bytes": 5767173,
+  "textureFamilies": {
+    "buildings": {
+      "embeddedBytes": 217199,
+      "estimatedMipRGBA8Bytes": 5767173
+    },
+    "civic": {
+      "embeddedBytes": 145778,
+      "estimatedMipRGBA8Bytes": 2446679
+    }
+  },
   "probes": [
     {
       "quality": "normal",
@@ -427,22 +499,26 @@
     }
   ],
   "cameraChecks": {
-    "count": 80,
+    "count": 144,
     "failed": []
   },
   "scenes": [
     {
       "count": 30,
       "quality": "normal",
-      "drawCalls": 73,
-      "triangles": 221232,
-      "textures": 21,
-      "geometries": 177,
-      "submissions": 236,
-      "medianSubmissionMs": 1.299999998882413,
-      "p95SubmissionMs": 2.200000001117587,
+      "drawCalls": 87,
+      "triangles": 228022,
+      "textures": 18,
+      "geometries": 100,
+      "submissions": 59,
+      "medianSubmissionMs": 1.7999999970197678,
+      "p95SubmissionMs": 8.200000002980232,
       "actualTown": false,
       "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
       "sixthFallbackMeasured": false,
       "guardrails": {
         "drawCalls": 150,
@@ -454,15 +530,19 @@
     {
       "count": 100,
       "quality": "normal",
-      "drawCalls": 73,
-      "triangles": 691198,
-      "textures": 21,
-      "geometries": 177,
-      "submissions": 251,
-      "medianSubmissionMs": 1,
-      "p95SubmissionMs": 2.599999999627471,
+      "drawCalls": 87,
+      "triangles": 697988,
+      "textures": 18,
+      "geometries": 100,
+      "submissions": 74,
+      "medianSubmissionMs": 1.8999999985098839,
+      "p95SubmissionMs": 3,
       "actualTown": false,
       "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
       "sixthFallbackMeasured": false,
       "guardrails": {
         "drawCalls": 150,
@@ -474,15 +554,19 @@
     {
       "count": 30,
       "quality": "low",
-      "drawCalls": 73,
-      "triangles": 139924,
-      "textures": 21,
-      "geometries": 177,
-      "submissions": 271,
-      "medianSubmissionMs": 1.099999999627471,
-      "p95SubmissionMs": 1.3999999985098839,
+      "drawCalls": 86,
+      "triangles": 142766,
+      "textures": 18,
+      "geometries": 149,
+      "submissions": 89,
+      "medianSubmissionMs": 2.600000001490116,
+      "p95SubmissionMs": 8.300000000745058,
       "actualTown": false,
       "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
       "sixthFallbackMeasured": false,
       "guardrails": {
         "drawCalls": 100,
@@ -494,15 +578,19 @@
     {
       "count": 100,
       "quality": "low",
-      "drawCalls": 73,
-      "triangles": 442954,
-      "textures": 21,
-      "geometries": 177,
-      "submissions": 286,
-      "medianSubmissionMs": 1.5,
-      "p95SubmissionMs": 3.699999999254942,
+      "drawCalls": 86,
+      "triangles": 445796,
+      "textures": 18,
+      "geometries": 149,
+      "submissions": 104,
+      "medianSubmissionMs": 1.5999999977648258,
+      "p95SubmissionMs": 1.800000000745058,
       "actualTown": false,
       "includesFiveWorkplaces": true,
+      "publicLayouts": [
+        "park-village-green",
+        "plaza-town-square"
+      ],
       "sixthFallbackMeasured": false,
       "guardrails": {
         "drawCalls": 100,
@@ -515,19 +603,19 @@
   "commands": [
     {
       "command": "node scripts/build-wv006-baselines.mjs",
-      "result": "pass; checkout-only; isolated byte-identical GLB and manifest rebuild"
+      "result": "pass; checkout-only; both GLBs/manifests/license notices byte-identical on isolated rebuild"
     },
     {
-      "command": "node --test tests/wv006-baselines.test.mjs",
-      "result": "5 passed; glTF 0 errors / 0 warnings"
+      "command": "node --test tests/wv006-baselines*.test.mjs",
+      "result": "9 passed; both GLBs 0 validator errors / 0 warnings; route sweeps in normal/low"
     },
     {
       "command": "npm test",
-      "result": "187 passed; 1 skipped"
+      "result": "206 passed; one existing icon skip separately verified after generation; latest A/B develop incorporated."
     },
     {
       "command": "npm run build:assets",
-      "result": "pass; no shared tracked regenerated artifacts changed"
+      "result": "pass; shared tracked outputs unchanged"
     },
     {
       "command": "npm run build:icons",
@@ -543,28 +631,71 @@
     },
     {
       "command": "npx playwright test tests/browser/wv006-baselines.spec.mjs",
-      "result": "2 passed; all ten models in all cameras"
+      "result": "2 passed; all eighteen models, all cameras, both root scopes"
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-baselines-civic.spec.mjs",
+      "result": "2 passed; eight choice cards, normal/low framing, preserved local storage, restored market comparison"
     },
     {
       "command": "node scripts/measure-wv006-baselines.mjs",
-      "result": "pass; 64 probes / 80 full-bounds camera checks; 30-home numerical guards pass, 100-home triangle guards fail"
+      "result": "pass; 64 probes / 144 camera checks; 30-home normal/low numerical guards pass; 100-home triangle guards fail"
     },
     {
       "command": "npm run test:e2e",
-      "result": "123 passed locally; final current-head CI repeats the complete suite"
+      "result": "127 passed on the corrected candidate separation; afterward the newer develop is incorporated and affected B/A checks rerun. Current combined 132-test required CI completion is recorded on the delivery PR."
     },
     {
       "command": "WV_RENDERER=three npx playwright test camera-gestures organic-zoning road-3d-drag-fix save-slots organic-lanes --output=test-results-three-parity",
-      "result": "16 passed locally; final current-head CI repeats parity"
+      "result": "16 passed locally; current required CI repeats parity."
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-landscape-hamlet.spec.mjs tests/browser/wv006-baselines-civic.spec.mjs",
+      "result": "4 passed; complete B hamlet preserved, eight public choices and market goods visibility pass"
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-landscape-hamlet.spec.mjs tests/browser/wv006-landscape-plots.spec.mjs",
+      "result": "4 passed after B develop refresh"
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-baselines*.spec.mjs",
+      "result": "4 passed after final loose-goods grouping; both scopes, all eighteen designs and eight choice cards"
+    },
+    {
+      "command": "npx playwright test tests/browser/wv006-environment.spec.mjs",
+      "result": "Affected latest A checks repeated; completion is recorded on the delivery PR."
     }
   ],
   "runtimeReady": false,
   "remaining": [
-    "human art review",
-    "final ground cover in F",
-    "actual parcel/terrain/road/water admission",
-    "100-home triangle budget",
-    "runtime offline integration and physical-phone UAT"
+    "human art acceptance",
+    "F final ground cover, terrain conformance and independent contacts",
+    "real rotated parcel/road/water admission",
+    "100-home triangle budget and inherited home exceptions",
+    "actual game placement selector and save persistence integration",
+    "runtime offline closure and physical-device UAT"
   ],
-  "finalReview": "Rear corner-stone faces corrected to point outward; five focused geometry/rebuild checks and all 64 probes/80 camera checks rerun against the final output. Counts, footprints and performance gates unchanged."
+  "finalReview": "Main C2 GLB remains byte-identical. All loose market display goods now export in one optional group; counters and structural bays stay visible. Both GLBs explicitly validate and deterministic rebuilds pass. Final identity/fountain captures and all four scene fixtures match current output hashes. Baseline local suites and affected current-source checks are reported above; exact CI/deployment is on the delivery PR.",
+  "visibilityRevision": "Late corrections: optional flag on market goods (geometry/BIN unchanged), plus a 0.10 m grounded fountain footing/contact. Bounds remain unchanged; synthetic fixture uses town square, so scene budgets remain unchanged. Final market identity and fountain views refreshed separately.",
+  "finalRefresh": "Market loose-prop identity/wire views and all fountain normal/low/mobile views refreshed after final metadata/footing fixes; all four scene budgets remeasured sequentially after full browser/parity suites.",
+  "candidateOverrides": [
+    {
+      "existingIdentity": "facility-market",
+      "candidateId": "market-civic-square",
+      "manifest": "assets/wv/buildings-next/civic-manifest.json",
+      "status": "gallery-review",
+      "runtimeReady": false,
+      "reason": "Existing consumers retain C2 market until explicit placement/performance adoption."
+    }
+  ],
+  "galleryDisplayedDesigns": 18,
+  "civicCandidateCount": 9,
+  "integrationRegression": {
+    "initialFullRun": "126 passed, one failed: expanded market suppressed B hamlet well",
+    "correction": "Main C2 GLB restored byte-for-byte; expanded market-civic-square exported separately and explicitly selected by C gallery",
+    "targetedVerification": "4 passed: civic choices at / and /dev/, complete hamlet growth/quality/contact/budget test and failed-import scope check"
+  },
+  "candidateSeparation": "civic.glb now contains nine candidates, while all ten main C2 roots are unchanged. Gallery display roots/bounds/materials are equivalent to the earlier bulk views; final root mapping is verified by focused/browser checks. Full scene fixtures remeasured after separation.",
+  "refreshedDevelop": "0f8467f953e5431ffb9646d9858b79b0e0837d09",
+  "refreshedChecks": "206 unit tests pass, one existing icon skip verified separately; required asset/icon/offline builds pass. Full local browser rerun: 127 pass, parity:16 pass. Refreshed B hamlet/plots:4 pass; final C gallery:4 pass. Latest A material checks and current combined 132-test CI are recorded on the delivery PR."
 }

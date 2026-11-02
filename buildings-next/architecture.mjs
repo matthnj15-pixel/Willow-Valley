@@ -1,9 +1,10 @@
 // Original WV006-C architecture, visual metres, Y up. No simulation imports.
 import {BoxGeometry,CylinderGeometry,BufferGeometry,Float32BufferAttribute,Quaternion,Vector3} from 'three';
 import {detailPass} from './details.mjs';
-export const recipeRevision=2;
+export const recipeRevision=3;
 export const polygon=(x,z,w,d)=>[[x-w/2,z-d/2],[x+w/2,z-d/2],[x+w/2,z+d/2],[x-w/2,z+d/2]];
 export function architecture(id,{low=false,floor=1.35}={}){
+
  const parts=[],supports=[],entrances=[],probes=[];const categories={};
  const add=(name,g,pos=[0,0,0],tile=0,category='core',rotation=[0,0,0],tint=1)=>{g.rotateX(rotation[0]);g.rotateY(rotation[1]);g.rotateZ(rotation[2]);g.translate(...pos);parts.push({name,g,tile,category,tint});};
  const box=(name,size,pos,tile=0,category='core',rot,tint)=>add(name,new BoxGeometry(...size),pos,tile,category,rot,tint);

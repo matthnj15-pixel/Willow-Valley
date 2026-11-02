@@ -19,7 +19,7 @@ test('C catalog explicitly validates glTF, hashes, measured geometry, mappings a
  assert.deepEqual(HOME_IDS,['home-long-ridge','home-steep-gable','home-low-hip','home-crooked-wing','home-offset-gables','home-porch-cabin']);assert.equal(m.entries.length,10);assert.equal(m.fallbacks[0].id,'home-crooked-wing');assert.deepEqual(m.entries.filter(e=>e.role!=='residential').map(e=>e.role).sort(),['farm','granary','lumber','market','smith']);
  for(const e of m.entries){assert.equal(e.status,'gallery-review');assert.equal(e.runtimeReady,false);assert.equal(e.existingIdentity,e.id);for(const low of [false,true]){
   const r=d.getRoot().getDefaultScene().listChildren().find(n=>n.getName()===(low?e.lowNode:e.normalNode)),b=getBounds(r),measurement=low?e.low:e;let tri=0;const mats=new Set();r.traverse(n=>{for(const p of n.getMesh()?.listPrimitives()||[]){tri+=(p.getIndices()?.getCount()??p.getAttribute('POSITION').getCount())/3;mats.add(p.getMaterial());}});assert.equal(tri,measurement.triangles);assert.equal(mats.size,measurement.materialGroups);for(let i=0;i<3;i++){assert.ok(Math.abs(b.min[i]-measurement.boundsMin[i])<1e-5);assert.ok(Math.abs(b.max[i]-measurement.boundsMax[i])<1e-5);}
- }assert.ok(e.low.triangles<e.triangles,'actual lower-detail geometry required');if(e.role!=='residential'){assert.ok(e.triangles<=6000);assert.equal(e.materialGroups,1);assert.ok(e.existingEnvelopeCheck.axisAlignedFit);assert.ok(e.low.triangles<e.triangles);}}
+ }assert.ok(e.low.triangles<e.triangles,'actual lower-detail geometry required');if(e.role!=='residential'){assert.ok(e.triangles<=6000);assert.ok(e.materialGroups<=(e.role==='market'?3:1));assert.ok(e.existingEnvelopeCheck.axisAlignedFit);assert.ok(e.low.triangles<e.triangles);}}
  assert.equal(sha(await readFile(path+'License_Source.txt')),m.provenance.sourceLicenseSha256);for(const input of m.inputs)assert.equal(sha(await readFile(input.url)),input.sha256);
  const images=d.getRoot().listTextures();assert.equal(new Set(images.map(t=>sha(t.getImage()))).size,images.length);assert.ok(m.textures.reduce((a,t)=>a+t.estimatedMipRGBA8Bytes,0)<6*1024*1024);
 });
@@ -41,7 +41,7 @@ test('granary supports, full floor-height study and chimney roof opening remain 
  }
 });
 test('detail pass supplies roof relief, closed tile volumes and function-specific openings',()=>{
- assert.equal(m.recipeRevision,2);
+ assert.equal(m.recipeRevision,3);
  for(const e of m.entries){assert.ok(Object.keys(e.detailFeatures).length>0,e.id);if(e.role==='residential')assert.ok(e.detailFeatures['window jamb']);}
  for(const id of ['facility-farm','facility-granary','facility-smith']){
   const a=architecture(id),tiles=a.parts.filter(p=>p.name==='curved overlapping clay tile');assert.ok(tiles.length>50,id);
@@ -53,5 +53,5 @@ test('detail pass supplies roof relief, closed tile volumes and function-specifi
  assert.ok(m.entries.find(e=>e.role==='granary').detailFeatures['sloping weather louvre']);assert.ok(m.entries.find(e=>e.role==='lumber').detailFeatures['separate weathered roof board']);assert.ok(m.entries.find(e=>e.role==='market').detailFeatures['draped canvas canopy']);
 });
 test('checkout-only rebuild reproduces both GLB and measured contract byte-for-byte',async()=>{
- const temp=await mkdtemp(join(tmpdir(),'wv006-c-'));try{execFileSync(process.execPath,['scripts/build-wv006-baselines.mjs'],{env:{...process.env,WV006_OUTPUT:temp},stdio:'pipe'});for(const f of ['catalog.glb','manifest.json','License_Source.txt'])assert.equal(sha(await readFile(join(temp,f))),sha(await readFile(path+f)));}finally{await rm(temp,{recursive:true,force:true});}
+ const temp=await mkdtemp(join(tmpdir(),'wv006-c-'));try{execFileSync(process.execPath,['scripts/build-wv006-baselines.mjs'],{env:{...process.env,WV006_OUTPUT:temp},stdio:'pipe'});for(const f of ['catalog.glb','manifest.json','civic.glb','civic-manifest.json','License_Source.txt','License_Environment.txt'])assert.equal(sha(await readFile(join(temp,f))),sha(await readFile(path+f)));}finally{await rm(temp,{recursive:true,force:true});}
 });
