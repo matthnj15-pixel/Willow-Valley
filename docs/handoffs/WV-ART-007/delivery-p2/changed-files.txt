@@ -28,6 +28,7 @@ render-adoption/world/fixtures.mjs
 render-adoption/world/grass.mjs
 render-adoption/world/index.mjs
 render-adoption/world/materials.mjs
+render-adoption/world/output-pins.mjs
 render-adoption/world/preset.mjs
 render-adoption/world/recipe.mjs
 render-adoption/world/review.mjs

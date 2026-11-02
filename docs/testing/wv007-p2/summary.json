@@ -13,8 +13,8 @@
     "maxReviewCalls": 15,
     "maxGrassBytes": 380160,
     "frameIntervalRangeMs": [
-      144.60000000009313,
-      148.80000000004657
+      143.20000000018626,
+      194
     ],
     "allActualCategoriesFound": true,
     "stateUnchanged": true
@@ -33,8 +33,8 @@
     "maxReviewCalls": 16,
     "maxGrassBytes": 380160,
     "frameIntervalRangeMs": [
-      114,
-      129.29999999981374
+      115.10000000009313,
+      128.5999999998603
     ],
     "allActualCategoriesFound": true,
     "stateUnchanged": true
@@ -53,8 +53,8 @@
     "maxReviewCalls": 19,
     "maxGrassBytes": 10469532,
     "frameIntervalRangeMs": [
-      216.69999999995343,
-      240.20000000018626
+      228,
+      253.80000000004657
     ],
     "allActualCategoriesFound": true,
     "stateUnchanged": true
@@ -73,8 +73,8 @@
     "maxReviewCalls": 19,
     "maxGrassBytes": 10973184,
     "frameIntervalRangeMs": [
-      178.89999999990687,
-      215.5
+      195.80000000004657,
+      263.5
     ],
     "allActualCategoriesFound": true,
     "stateUnchanged": true

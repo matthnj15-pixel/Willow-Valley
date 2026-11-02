@@ -1281,6 +1281,50 @@ var SOURCE_PINS = Object.freeze([
   }
 ].map(Object.freeze));
 
+// render-adoption/world/output-pins.mjs
+var OUTPUT_PINS = Object.freeze([
+  {
+    "path": "render-adoption/world/atmosphere.mjs",
+    "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+  },
+  {
+    "path": "render-adoption/world/classification.mjs",
+    "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+  },
+  {
+    "path": "render-adoption/world/fields.mjs",
+    "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+  },
+  {
+    "path": "render-adoption/world/grass.mjs",
+    "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+  },
+  {
+    "path": "render-adoption/world/index.mjs",
+    "sha256": "bfed8aacf40c730cc44a165d72549b92cbef6dada189fb06847d084ec199206d"
+  },
+  {
+    "path": "render-adoption/world/materials.mjs",
+    "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+  },
+  {
+    "path": "render-adoption/world/preset.mjs",
+    "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+  },
+  {
+    "path": "render-adoption/world/recipe.mjs",
+    "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+  },
+  {
+    "path": "render-adoption/world/source-pins.mjs",
+    "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+  },
+  {
+    "path": "render-adoption/world/spatial.mjs",
+    "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+  }
+].map(Object.freeze));
+
 // render-adoption/world/index.mjs
 var qualityName = (q) => {
   if (!["normal", "low"].includes(q)) throw Error("quality must be normal or low");
@@ -1421,12 +1465,18 @@ function createWorldLayer({ scene: scene2, terrainSurface, world: world2, invali
     status() {
       const grass = current?.grass.status() ?? null;
       return {
-        contractRevision: 1,
+        contractRevision: "wv007-layer-1",
+        sourceFamily: "A3+A1",
         sourcePins: SOURCE_PINS,
+        outputPins: OUTPUT_PINS,
         viewRevision,
+        terrainRevision: lastView?.world.terrainRevision ?? null,
         quality: quality2,
-        effectiveLods: { terrain: quality2 === "low" ? "A3-field-low" : "A3-field-normal", water: quality2 === "low" ? "A1-static" : "A1-bounded-ripple", grass: grass?.lods ?? { near: 0, mid: 0, low: 0 } },
+        effectiveLods: { grassNear: grass?.lods.near ?? 0, grassMid: grass?.lods.mid ?? 0, grassLow: grass?.lods.low ?? 0 },
+        effectiveMaterialLods: { [quality2 === "low" ? "worldLow" : "worldNormal"]: 3, grass: 1 },
+        materialSources: { terrain: quality2 === "low" ? "A3-field-low" : "A3-field-normal", water: quality2 === "low" ? "A1-static" : "A1-bounded-ripple" },
         pendingLoads: pending,
+        failedLoads: error ? 1 : 0,
         disposed: disposed2,
         ready: !!current && !pending && !error,
         runtimeReady: false,
@@ -1436,7 +1486,7 @@ function createWorldLayer({ scene: scene2, terrainSurface, world: world2, invali
         grass,
         coverDeferred: !current?.classification.safeCover,
         unknownRoadWidths: current?.classification.unknownRoadWidths ?? 0,
-        resources: { textures: current ? 2 : 0, decodedTextureBytes: current?.fields.status.decodedBytes ?? 0, externalImages: 0, transferImageBytes: 0, normalMaps: 0, renderTargets: 0 },
+        resources: { textures: current ? 2 : 0, decodedTextureBytes: current?.fields.status.decodedBytes ?? 0, bufferBytesEstimate: grass?.geometryBytes ?? 0, textureBytesEstimate: current?.fields.status.decodedBytes ?? 0, loadedQualityImages: [{ quality: quality2, loaded: 0, expected: 0, decodedBytesEstimate: 0 }], externalImages: 0, transferImageBytes: 0, normalMaps: 0, renderTargets: 0 },
         textureSamplesPerFragment: { terrain: 1, road: 0, water: 1, grass: 0 },
         surfaceTime: materials.uniforms.time.value,
         scheduling: { ownsRAF: false, ownsTimers: false, viewportResizes: 0, visible },
