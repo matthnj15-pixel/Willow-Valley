@@ -1,3 +1,5 @@
+Current review is [C4 purchased-kit detail](kit-detail/README.md). C2/C3 geometry remains unchanged; the earlier evidence below is retained history.
+
 # WV006-C acceptance evidence
 
 Current revision: **C3 market, parks and plazas**, preserving C2's full-building detail pass. [Civic contract](../../handoffs/wv006-c/CIVIC-SPACES.md) and the revision-3 manifests supersede earlier counts. The market now has twelve stands and a stage; eight new leisure layouts map to the existing park/plaza types. The main ten-building C2 GLB remains byte-identical for existing consumers; the gallery explicitly overlays the new market candidate from civic.glb. Accepted home cores remain unchanged.
