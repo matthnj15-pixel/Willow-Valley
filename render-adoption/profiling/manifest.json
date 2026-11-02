@@ -44,7 +44,7 @@
     },
     {
       "path": "render-adoption/profiling/scenarios.mjs",
-      "sha256": "bbf41584ff8903ebbb64a4177a891aaaf170e5114070387a6b9d130e9d24d137"
+      "sha256": "1fa0dbe6e3793d23e166e70ab16f75f5593f361b07c90bcc18865afcf512ccda"
     },
     {
       "path": "render-adoption/profiling/generate-fixtures.mjs",

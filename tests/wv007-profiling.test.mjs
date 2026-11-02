@@ -6,6 +6,7 @@ import {createDiagnosticsController,percentiles,probeCapabilities,SCHEMA} from '
 import {createFixtureSession,validateFixture,cameraAt,createScenarioDriver} from '../render-adoption/profiling/scenarios.mjs';
 import {inspectFixtures} from '../scripts/measure-wv007-runtime.mjs';
 import {estimateResources} from '../render-adoption/profiling/resources.mjs';
+import {facilityPlacement} from '../building-visuals.mjs';
 
 const pin={path:'test/unit-only',sha256:'a'.repeat(64)};
 const expectedSourcePins={buildings:[pin],world:[pin],landscape:[pin]};
@@ -126,6 +127,10 @@ for (const count of [30,100]) test(`actual ${count}-home fixture: immutable view
   const serialized=JSON.stringify(fixture),session=createFixtureSession(fixture),before=JSON.stringify(session.snapshot()),view=session.getReadView();
   assert.equal(validateFixture(fixture).complete,true);assert.equal(view.houses.length,count);assert.equal(view.facilities.length,7);
   assert.ok(view.committedFields.length>0);assert.ok(Object.isFrozen(view.houses[4].parcel.vertices));
+  for(const [i,b] of fixture.state.buildings.entries()) {
+    const placement=facilityPlacement(session.world,b,fixture.state,[{id:`facility-${b.type}`,boundsMin:[-1,0,-1],boundsMax:[1,2,1],entrance:{position:[0,0,1]}}]);
+    assert.ok(placement);assert.equal(view.facilities[i].yaw,placement.yaw,'fixture doorway facing matches application placement');
+  }
   assert.throws(()=>view.houses.push({}),TypeError);
   for (const path of ['idle','orbit','zoom','month']) for (const t of [0,15,30,45,60]) {
     assert.deepEqual(cameraAt(path,t,view),cameraAt(path,t,view));

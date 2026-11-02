@@ -12,6 +12,19 @@ export function deepFreeze(value) {
   return value;
 }
 
+// Match the application's facilityPlacement doorway-facing rule, including
+// lane approaches. Blueprint orientation is only its no-road fallback.
+function facilityYaw(state,building) {
+  let approach=null,nearest=Infinity;
+  for(const line of [...state.roads,...(state.localLanes||[]).map(l=>l.points||[])])for(let i=1;i<line.length;i++) {
+    const a=line[i-1],b=line[i],dx=b.x-a.x,dy=b.y-a.y;
+    const t=Math.max(0,Math.min(1,((building.x-a.x)*dx+(building.y-a.y)*dy)/(dx*dx+dy*dy||1)));
+    const p={x:a.x+dx*t,y:a.y+dy*t},distance=Math.hypot(p.x-building.x,p.y-building.y);
+    if(distance<nearest){nearest=distance;approach=p;}
+  }
+  return approach?-(Math.atan2(approach.y-building.y,approach.x-building.x)-Math.PI/2):-buildingBlueprint(building).orientation;
+}
+
 // Call only in an isolated fixture session or application-owned detached bridge.
 // No saved names, logs, reports, inventories or player data enter this read view.
 export function buildReadView(state, {revision, quality='normal'}={}) {
@@ -36,7 +49,7 @@ export function buildReadView(state, {revision, quality='normal'}={}) {
     savedPosition:{x:h.x,y:h.y}, yaw:-cottageBlueprint(h).orientation, foundedEra:h.foundedEra??0,
     parcel:h.parcel?{vertices:h.parcel.vertices,holes:h.parcel.holes||[]}:null, actualEntrance:h.entrance??null}));
   const facilities=state.buildings.map(b=>({key:key(b.type,b),type:b.type,savedPosition:{x:b.x,y:b.y},
-    yaw:-buildingBlueprint(b).orientation,preferredVisualId:null}));
+    yaw:facilityYaw(state,b),preferredVisualId:null}));
   return deepFreeze(structuredClone({schemaVersion:1,revision,world:{seed:world.options.seed,width:world.width,
     depth:world.depth,terrainRevision:world.signature},quality,houses,facilities,
     roads:state.roads.map(points=>({points,width:34})),
