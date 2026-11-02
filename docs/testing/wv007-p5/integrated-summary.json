@@ -1,0 +1,609 @@
+{
+  "environment": "Headless Chromium/software renderer; actual host frame counts; physical device unverified",
+  "measurements": [
+    {
+      "homes": 30,
+      "quality": "normal",
+      "zoom": 180,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard"
+      ],
+      "stats": {
+        "count": 46,
+        "medianMs": 16.600000000558794,
+        "p95Ms": 20.5,
+        "p99Ms": 257.1000000005588,
+        "rafFps": 45.940277639077756,
+        "longFramesOver33_34Ms": 1,
+        "longFramesOver50Ms": 1,
+        "renderedFrameObservations": 0,
+        "peakCalls": 99,
+        "peakTriangles": 321468
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 6,
+        "calls": 99,
+        "triangles": 321468,
+        "points": 0,
+        "lines": 0,
+        "geometries": 210,
+        "textures": 35,
+        "programs": 17
+      },
+      "buildingLods": {
+        "normal": 14,
+        "low": 0,
+        "distance": 0,
+        "legacy": 16,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 4,
+        "low": 0,
+        "distance": 0,
+        "legacy": 4,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 30,
+      "quality": "normal",
+      "zoom": 650,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "stats": {
+        "count": 60,
+        "medianMs": 16.600000000558794,
+        "p95Ms": 17.200000000186265,
+        "p99Ms": 20.90000000037253,
+        "rafFps": 60,
+        "longFramesOver33_34Ms": 0,
+        "longFramesOver50Ms": 0,
+        "renderedFrameObservations": 0,
+        "peakCalls": 269,
+        "peakTriangles": 382521
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 7,
+        "calls": 269,
+        "triangles": 382521,
+        "points": 0,
+        "lines": 0,
+        "geometries": 210,
+        "textures": 35,
+        "programs": 17
+      },
+      "buildingLods": {
+        "normal": 14,
+        "low": 0,
+        "distance": 0,
+        "legacy": 16,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 10,
+        "low": 0,
+        "distance": 0,
+        "legacy": 12,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 30,
+      "quality": "normal",
+      "zoom": 1200,
+      "issues": [
+        "layer-not-ready:landscape",
+        "missing-effective-lod:landscape",
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "stats": {
+        "count": 1,
+        "medianMs": 1051.2999999998137,
+        "p95Ms": 1051.2999999998137,
+        "p99Ms": 1051.2999999998137,
+        "rafFps": 0.9512032721394247,
+        "longFramesOver33_34Ms": 1,
+        "longFramesOver50Ms": 1,
+        "renderedFrameObservations": 0,
+        "peakCalls": 304,
+        "peakTriangles": 402258
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 8,
+        "calls": 304,
+        "triangles": 402258,
+        "points": 0,
+        "lines": 0,
+        "geometries": 184,
+        "textures": 35,
+        "programs": 14
+      },
+      "buildingLods": {
+        "normal": 14,
+        "low": 0,
+        "distance": 0,
+        "legacy": 16,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 14,
+        "low": 0,
+        "distance": 0,
+        "legacy": 15,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 30,
+      "quality": "low",
+      "zoom": 180,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [],
+      "stats": {
+        "count": 61,
+        "medianMs": 16.699999999254942,
+        "p95Ms": 17,
+        "p99Ms": 17.5,
+        "rafFps": 60.47387726775923,
+        "longFramesOver33_34Ms": 0,
+        "longFramesOver50Ms": 0,
+        "renderedFrameObservations": 0,
+        "peakCalls": 84,
+        "peakTriangles": 145699
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 6,
+        "calls": 84,
+        "triangles": 145699,
+        "points": 0,
+        "lines": 0,
+        "geometries": 171,
+        "textures": 18,
+        "programs": 14
+      },
+      "buildingLods": {
+        "normal": 0,
+        "low": 12,
+        "distance": 0,
+        "legacy": 18,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 3,
+        "distance": 0,
+        "legacy": 5,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 30,
+      "quality": "low",
+      "zoom": 650,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "stats": {
+        "count": 49,
+        "medianMs": 16.699999999254942,
+        "p95Ms": 17.700000000186265,
+        "p99Ms": 210.5,
+        "rafFps": 48.58219313902251,
+        "longFramesOver33_34Ms": 1,
+        "longFramesOver50Ms": 1,
+        "renderedFrameObservations": 0,
+        "peakCalls": 234,
+        "peakTriangles": 177293
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 7,
+        "calls": 234,
+        "triangles": 177293,
+        "points": 0,
+        "lines": 0,
+        "geometries": 171,
+        "textures": 18,
+        "programs": 14
+      },
+      "buildingLods": {
+        "normal": 0,
+        "low": 12,
+        "distance": 0,
+        "legacy": 18,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 9,
+        "distance": 0,
+        "legacy": 13,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 30,
+      "quality": "low",
+      "zoom": 1200,
+      "issues": [
+        "layer-not-ready:landscape",
+        "missing-effective-lod:landscape",
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "stats": {
+        "count": 43,
+        "medianMs": 16.699999999254942,
+        "p95Ms": 17.199999999254942,
+        "p99Ms": 303.29999999981374,
+        "rafFps": 42.92702405909155,
+        "longFramesOver33_34Ms": 1,
+        "longFramesOver50Ms": 1,
+        "renderedFrameObservations": 1,
+        "peakCalls": 270,
+        "peakTriangles": 168712
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 8,
+        "calls": 272,
+        "triangles": 186876,
+        "points": 0,
+        "lines": 0,
+        "geometries": 158,
+        "textures": 18,
+        "programs": 11
+      },
+      "buildingLods": {
+        "normal": 0,
+        "low": 12,
+        "distance": 0,
+        "legacy": 18,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 12,
+        "distance": 0,
+        "legacy": 17,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "normal",
+      "zoom": 180,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard"
+      ],
+      "stats": {
+        "count": 61,
+        "medianMs": 16.600000000558794,
+        "p95Ms": 16.90000000037253,
+        "p99Ms": 17.200000000186265,
+        "rafFps": 60.312438204446835,
+        "longFramesOver33_34Ms": 0,
+        "longFramesOver50Ms": 0,
+        "renderedFrameObservations": 0,
+        "peakCalls": 124,
+        "peakTriangles": 631685
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 6,
+        "calls": 124,
+        "triangles": 631685,
+        "points": 0,
+        "lines": 0,
+        "geometries": 219,
+        "textures": 36,
+        "programs": 17
+      },
+      "buildingLods": {
+        "normal": 59,
+        "low": 0,
+        "distance": 0,
+        "legacy": 41,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 8,
+        "low": 0,
+        "distance": 0,
+        "legacy": 6,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "normal",
+      "zoom": 650,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "stats": {
+        "count": 61,
+        "medianMs": 16.699999999254942,
+        "p95Ms": 17,
+        "p99Ms": 18.399999999441206,
+        "rafFps": 60.02755363121898,
+        "longFramesOver33_34Ms": 0,
+        "longFramesOver50Ms": 0,
+        "renderedFrameObservations": 0,
+        "peakCalls": 406,
+        "peakTriangles": 887805
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 7,
+        "calls": 406,
+        "triangles": 887805,
+        "points": 0,
+        "lines": 0,
+        "geometries": 219,
+        "textures": 36,
+        "programs": 17
+      },
+      "buildingLods": {
+        "normal": 59,
+        "low": 0,
+        "distance": 0,
+        "legacy": 41,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 38,
+        "low": 0,
+        "distance": 0,
+        "legacy": 30,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "normal",
+      "zoom": 1200,
+      "issues": [
+        "layer-not-ready:landscape",
+        "missing-effective-lod:landscape",
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "stats": {
+        "count": 1,
+        "medianMs": 1168.9000000003725,
+        "p95Ms": 1168.9000000003725,
+        "p99Ms": 1168.9000000003725,
+        "rafFps": 0.855505175806041,
+        "longFramesOver33_34Ms": 1,
+        "longFramesOver50Ms": 1,
+        "renderedFrameObservations": 0,
+        "peakCalls": 455,
+        "peakTriangles": 902605
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 8,
+        "calls": 455,
+        "triangles": 902605,
+        "points": 0,
+        "lines": 0,
+        "geometries": 200,
+        "textures": 36,
+        "programs": 16
+      },
+      "buildingLods": {
+        "normal": 59,
+        "low": 0,
+        "distance": 0,
+        "legacy": 41,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 59,
+        "low": 0,
+        "distance": 0,
+        "legacy": 40,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "low",
+      "zoom": 180,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "stats": {
+        "count": 61,
+        "medianMs": 16.600000000558794,
+        "p95Ms": 16.899999999441206,
+        "p99Ms": 17.40000000037253,
+        "rafFps": 60.18746916625555,
+        "longFramesOver33_34Ms": 0,
+        "longFramesOver50Ms": 0,
+        "renderedFrameObservations": 0,
+        "peakCalls": 114,
+        "peakTriangles": 301849
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 6,
+        "calls": 114,
+        "triangles": 301849,
+        "points": 0,
+        "lines": 0,
+        "geometries": 189,
+        "textures": 19,
+        "programs": 14
+      },
+      "buildingLods": {
+        "normal": 0,
+        "low": 56,
+        "distance": 0,
+        "legacy": 44,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 7,
+        "distance": 0,
+        "legacy": 7,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "low",
+      "zoom": 650,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "stats": {
+        "count": 60,
+        "medianMs": 16.699999999254942,
+        "p95Ms": 16.90000000037253,
+        "p99Ms": 32.200000000186265,
+        "rafFps": 59.18327086211385,
+        "longFramesOver33_34Ms": 0,
+        "longFramesOver50Ms": 0,
+        "renderedFrameObservations": 0,
+        "peakCalls": 361,
+        "peakTriangles": 456063
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 7,
+        "calls": 361,
+        "triangles": 456063,
+        "points": 0,
+        "lines": 0,
+        "geometries": 189,
+        "textures": 19,
+        "programs": 14
+      },
+      "buildingLods": {
+        "normal": 0,
+        "low": 56,
+        "distance": 0,
+        "legacy": 44,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 38,
+        "distance": 0,
+        "legacy": 30,
+        "culled": 0
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "low",
+      "zoom": 1200,
+      "issues": [
+        "layer-not-ready:landscape",
+        "missing-effective-lod:landscape",
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "stats": {
+        "count": 2,
+        "medianMs": 539.2999999998137,
+        "p95Ms": 1204.0999999996275,
+        "p99Ms": 1204.0999999996275,
+        "rafFps": 1.1471836641049908,
+        "longFramesOver33_34Ms": 2,
+        "longFramesOver50Ms": 2,
+        "renderedFrameObservations": 0,
+        "peakCalls": 406,
+        "peakTriangles": 463339
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 8,
+        "calls": 406,
+        "triangles": 463339,
+        "points": 0,
+        "lines": 0,
+        "geometries": 166,
+        "textures": 19,
+        "programs": 11
+      },
+      "buildingLods": {
+        "normal": 0,
+        "low": 56,
+        "distance": 0,
+        "legacy": 44,
+        "culled": 0
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 56,
+        "distance": 0,
+        "legacy": 43,
+        "culled": 0
+      }
+    }
+  ],
+  "errors": []
+}

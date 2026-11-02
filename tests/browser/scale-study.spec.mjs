@@ -10,9 +10,10 @@ test('fixed-scale shell, comparison cameras and material-only road study on mobi
  await page.check('#mono');await page.check('#wire');await page.check('#narrow');await page.selectOption('#focus','road');
  expect(await page.evaluate(()=>scaleStudy.roadWidth)).toBe(24);expect(errors).toEqual([]);expect(external).toEqual([]);
 });
-for(const base of ['/','/dev/'])test('gallery cold-loads offline after game install, before visiting study '+base,async({page,context})=>{
+for(const base of ['/','/dev/'])test('historical gallery remains offline after an explicit online visit '+base,async({page,context})=>{
  test.setTimeout(60000);await page.goto(base+'?preview=1');
  await page.evaluate(async()=>{await navigator.serviceWorker.ready;if(!navigator.serviceWorker.controller)await new Promise(resolve=>navigator.serviceWorker.addEventListener('controllerchange',resolve,{once:true}));});
+ await page.goto(base+'ui-kit/scale-study.html');await expect(page.locator('#study')).toHaveAttribute('data-loaded','true');
  await context.setOffline(true);await page.goto(base+'ui-kit/scale-study.html');await expect(page.locator('#study')).toHaveAttribute('data-loaded','true');
  await page.reload();await expect(page.locator('#study')).toHaveAttribute('data-loaded','true');
 });

@@ -204,7 +204,7 @@ function updateSettlement(){
  if(!settlement)return;
  const placements=presentation?.setSettlement(contactWorld,settlement,updateSettlement);
  const modelHouses=placements?.houses||new Map(),modelBuildings=placements?.buildings||new Map();
- const data=settlementGeometry(contactWorld,settlement,{modelHouses,modelBuildings,cropRows:placements?.cropRows||[],draft:settlementDraft,
+ const data=settlementGeometry(contactWorld,settlement,{modelHouses,modelBuildings,adoptedHouses:placements?.adoptedHouses,adoptedBuildings:placements?.adoptedBuildings,computeSurfaceOffsets:placements?.computeSurfaceOffsets??true,cropRows:placements?.cropRows||[],draft:settlementDraft,
   zoneStrokes:settlementZoneStrokes,zoneType:settlementZoneType,zoneRadius:settlementRadius,
   zoneEdits:settlementEdits,mode:settlementMode,liveCurve:settlementLiveCurve,
   touchFocus:settlementTouchFocus,

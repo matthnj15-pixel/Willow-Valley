@@ -76,7 +76,8 @@ export async function createBuildingLayer({scene,terrainSurface,world,invalidate
     placement.retainedBoundaryFragments=(placement.integralExclusions||[]).filter(p=>p.kind.includes('Fence')).map(p=>({kind:'C4-integral-fence',decorationOnly:true,sourceNode:p.sourceNode,worldGame:p.worldGame,centeredMetres:p.centeredMetres}));
     if(placement.mode==='legacy'){placement.legacyExclusionWorldGame=structuredClone(ctx.legacyPlacements?.find(p=>p.key===placement.key)?.polygonWorldGame??null);placement.transform=null;placement.levelFloorGameY=null;placement.hostRenderRequired=true;}
    }
-   batches=buildBuildingBatches(objects,owned);for(const b of batches)group.add(b);resourceStats={...estimateSceneBytes(group),triangles:batches.reduce((n,b)=>n+(b.geometry.index?.count??b.geometry.attributes.position.count)/3*b.count,0)};placements=next;pool.retain(used);ready=true;invalidate();
+   batches=buildBuildingBatches(objects,owned);for(const b of batches)group.add(b);const ownBuffers=new Set();for(const g of [...owned,footGeometry]){for(const a of [...Object.values(g.attributes),g.index].filter(Boolean)){const buffer=(a.array||a.data?.array)?.buffer;if(buffer)ownBuffers.add(buffer);}}for(const b of batches)ownBuffers.add(b.instanceMatrix.array.buffer);
+   resourceStats={...estimateSceneBytes(group),ownedBufferBytes:[...ownBuffers].reduce((n,b)=>n+b.byteLength,0),triangles:batches.reduce((n,b)=>n+(b.geometry.index?.count??b.geometry.attributes.position.count)/3*b.count,0)};placements=next;pool.retain(used);ready=true;invalidate();
   })();lastPromise=work;return work;
  }
  return {

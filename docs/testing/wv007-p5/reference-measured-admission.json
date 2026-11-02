@@ -1,0 +1,579 @@
+{
+  "schemaVersion": 1,
+  "revision": "wv007-p5-1",
+  "selectionRevision": "wv007-adoption-1",
+  "sourceDevelop": "feb8781ba9fdc347c74b7109fdc70ce078ea72e9",
+  "admittedRenderer": "develop Three opt-in; native/default and main policy unchanged",
+  "sources": {
+    "buildings": "C4",
+    "meadow": "A3",
+    "world": "A1",
+    "landscape": "B",
+    "genericProps": "D; warehouses preview-only"
+  },
+  "sourcePins": [
+    {
+      "path": "scripts/build-wv007-buildings.mjs",
+      "sha256": "c286608ae0c3f1e766876b1b0e946245ab7f4c2d4645bd502761e99771ba352c"
+    },
+    {
+      "path": "package-lock.json",
+      "sha256": "39035df40cc4c6fb6ec49bcfe0b1e1c09fe51b9c69d17e5288aa533ab4d3775e"
+    },
+    {
+      "path": "assets/wv/buildings-next/kit-detail-manifest.json",
+      "sha256": "f5d50ba92ff61a7713390581ea41b8d89cd2057a9a119d6399256bf58305e11d"
+    },
+    {
+      "path": "assets/wv/buildings-next/kit-detail.glb",
+      "sha256": "7008c62c3563029eced76654fb9556fa5da0262e841953a1d92d86075e820f3a"
+    },
+    {
+      "path": "assets/wv/storage-next/manifest.json",
+      "sha256": "b6bd6ca837aab9ec30750cfdaeac7d710bfc33aa0908c9d0fd7dabae37e668ed"
+    },
+    {
+      "path": "assets/wv/storage-next/storage.glb",
+      "sha256": "638fe141f28ca83e23926e21c9f7b2b7c03d7ec14770f64275413f7d46cd36d6"
+    },
+    {
+      "path": "assets/wv/buildings-next/License_Source.txt",
+      "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+    },
+    {
+      "path": "assets/wv/buildings-next/License_Kit_Source.txt",
+      "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+    },
+    {
+      "path": "assets/wv/storage-next/LICENSE.txt",
+      "sha256": "1efe667036d83e52916cc341e0965221f788f5fcc4bbe8bb11984dc606ffb08e"
+    },
+    {
+      "path": "assets/wv/landscape-next/manifest.json",
+      "sha256": "9c5d8cc914f6032a742aa8c42a025512da0b8b4efac969e8f5a749d602c3f1c8"
+    },
+    {
+      "path": "assets/wv/landscape-next/landscape.glb",
+      "sha256": "20f878c3630c0389467fb76b02047a40e80a46560f9f46bb3992ad3ace67bb76"
+    },
+    {
+      "path": "scripts/build-wv007-landscape.mjs",
+      "sha256": "69d7ad5af0498fa369c88437d38758e68b047be9c1b0ce37cf9bd26c2543fc35"
+    },
+    {
+      "path": "assets/wv/landscape-next/placement.mjs",
+      "sha256": "1e52a9cb1b7cef95ee2346a041793d622c3ba2d3d332f954faf670020f990b46"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-dressing.mjs",
+      "sha256": "03929ac52933697e49f121a8fe1c04d461e9ce8b48452ecb9e519b4022945d1c"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-boundaries.mjs",
+      "sha256": "1a65c94bfaff37b8e8027ed1e2d4bf0de58c79d4731eca38bd3a1d9b944faaf0"
+    },
+    {
+      "path": "assets/wv/landscape-next/painted-fields.mjs",
+      "sha256": "ac74250b7ad543f7e7d1d8c5e24a55958b71f86d400e812940ae0536207598b3"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-fence-view.mjs",
+      "sha256": "dbf276a5a54e15e28552047c42357b762cb924cf9070f88fc87108bcbeb3c10a"
+    },
+    {
+      "path": "assets/wv/landscape-next/hamlet-props.mjs",
+      "sha256": "f9f40588e217052234ee5b8ac711779f81f0302898fd7a279a839e02ccc28fdd"
+    },
+    {
+      "path": "environment-next/meadow-layer.mjs",
+      "bytes": 8539,
+      "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+    },
+    {
+      "path": "environment-next/previous-materials.mjs",
+      "bytes": 7517,
+      "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+    },
+    {
+      "path": "environment-next/atmosphere.mjs",
+      "bytes": 1706,
+      "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+    },
+    {
+      "path": "environment-next/preset.mjs",
+      "bytes": 401,
+      "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+    },
+    {
+      "path": "environment-next/visual-field.mjs",
+      "bytes": 2636,
+      "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+    }
+  ],
+  "code": [
+    {
+      "path": "app.mjs",
+      "bytes": 53088,
+      "sha256": "e3b89e172ccc8a5c4dca34770877a2bd49e8a4e19e0ed2dca9b7a6698dfe7ddd"
+    },
+    {
+      "path": "asset-registry.mjs",
+      "bytes": 2684,
+      "sha256": "e6e41b1f3ddb635b18ed7540246ed12538ed034017a527b590c59af888ff4046"
+    },
+    {
+      "path": "assets/vendor/three.module.mjs",
+      "bytes": 795147,
+      "sha256": "ddccd4615947d8e44b8eac538d2a94153956a153705a596376557101f02ae6db"
+    },
+    {
+      "path": "assets/wv/landscape-next/batches.mjs",
+      "bytes": 1597,
+      "sha256": "d472049f3f86daf0e48bdf6a6f7f65d3f64208069f4707a3f8c08711a26792f8"
+    },
+    {
+      "path": "assets/wv/landscape-next/catalog.mjs",
+      "bytes": 1274,
+      "sha256": "8aee3bc249c364f837dcc3bc183f4064bb0e43fdea81f483d871a72af97a41d4"
+    },
+    {
+      "path": "assets/wv/landscape-next/hamlet-plan.mjs",
+      "bytes": 11218,
+      "sha256": "6b6205de56e50dab392f352bd4c83b69fe2b345ff006501df2a63c1b4d11d7e6"
+    },
+    {
+      "path": "assets/wv/landscape-next/hamlet-props.mjs",
+      "bytes": 5907,
+      "sha256": "f9f40588e217052234ee5b8ac711779f81f0302898fd7a279a839e02ccc28fdd"
+    },
+    {
+      "path": "assets/wv/landscape-next/painted-fields.mjs",
+      "bytes": 4660,
+      "sha256": "ac74250b7ad543f7e7d1d8c5e24a55958b71f86d400e812940ae0536207598b3"
+    },
+    {
+      "path": "assets/wv/landscape-next/placement.mjs",
+      "bytes": 7668,
+      "sha256": "1e52a9cb1b7cef95ee2346a041793d622c3ba2d3d332f954faf670020f990b46"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-boundaries.mjs",
+      "bytes": 5151,
+      "sha256": "1a65c94bfaff37b8e8027ed1e2d4bf0de58c79d4731eca38bd3a1d9b944faaf0"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-dressing.mjs",
+      "bytes": 6965,
+      "sha256": "03929ac52933697e49f121a8fe1c04d461e9ce8b48452ecb9e519b4022945d1c"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-fence-view.mjs",
+      "bytes": 2802,
+      "sha256": "dbf276a5a54e15e28552047c42357b762cb924cf9070f88fc87108bcbeb3c10a"
+    },
+    {
+      "path": "assets/wv/landscape-next/plot-geometry.mjs",
+      "bytes": 5851,
+      "sha256": "2bc675997d4f92d057b55c841cbc10136412592da582811621e9351f2b9a3a2b"
+    },
+    {
+      "path": "assets/wv/runtime-landscape-v1/metadata.mjs",
+      "bytes": 74993,
+      "sha256": "76a3452fdf6c5cf9bc47aa19a7e0cd7aab71a5d37ca3cc7a6650045c83dd80e5"
+    },
+    {
+      "path": "building-visuals.mjs",
+      "bytes": 6004,
+      "sha256": "9ea8df3432322e3e4adca420e1580bc5a3a0982f4c22cc3dc46165f6bf58320c"
+    },
+    {
+      "path": "camera-gestures.mjs",
+      "bytes": 2426,
+      "sha256": "1493fab5576e84c303ccfc81186a87fb8486b3f350324ef8bf19ff20bae22435"
+    },
+    {
+      "path": "config.mjs",
+      "bytes": 278,
+      "sha256": "c1b97fc5881f20de21d164e63241e41679d74b8c919ecad3818ac3a78c5843e2"
+    },
+    {
+      "path": "council-ui.mjs",
+      "bytes": 5019,
+      "sha256": "aa15dc78b692574a92e3193a78c95f10e6d195ed4f13bdde5ce57041cc88728f"
+    },
+    {
+      "path": "desire-paths.mjs",
+      "bytes": 4451,
+      "sha256": "04786b9ac115f195b29fb3a182bb77224f6560a82d8612cd7ab218a6a1e23ecf"
+    },
+    {
+      "path": "editor-overlays.mjs",
+      "bytes": 1804,
+      "sha256": "fe7a6303a40e99bd9b0e92c10a12961700818635b36eb48e19b09e641ecb3c1f"
+    },
+    {
+      "path": "environment-materials.mjs",
+      "bytes": 6036,
+      "sha256": "bcc7c13523fc691aca1569f86eb2f90c7078096ad79691f42cbda654519261ec"
+    },
+    {
+      "path": "foundation-system.mjs",
+      "bytes": 2574,
+      "sha256": "d6e3037cdb4731a69f24cdc93a5a0e12ba2324ec6796438ee0b7026afe3d3490"
+    },
+    {
+      "path": "game-3d-mesh.mjs",
+      "bytes": 16058,
+      "sha256": "c8525631e3e582b38c61b96f1c07c0fd61ef2a1c3a51ba487cfafb81bb1149bf"
+    },
+    {
+      "path": "nature-visuals.mjs",
+      "bytes": 1404,
+      "sha256": "b63aa0b598ffa504a31cd5a060682a6f57254ae11b24a9a802f2e33458fa38af"
+    },
+    {
+      "path": "organic-world.mjs",
+      "bytes": 19264,
+      "sha256": "8fdf5fad32a6f1dba6d06ab85da379e19b115e62e6d9c281d68a20ad35bbd6af"
+    },
+    {
+      "path": "render-adoption/buildings/batches.mjs",
+      "bytes": 2022,
+      "sha256": "3faf1c95aa68c3c88d03e7ca82d21804f41d9eed81008bb25de62fd25dd4a51e"
+    },
+    {
+      "path": "render-adoption/buildings/index.mjs",
+      "bytes": 10012,
+      "sha256": "49de68f823860ac349cbc8299821cef56c6f20bce82b4e93599c484805294c4b"
+    },
+    {
+      "path": "render-adoption/buildings/placement.mjs",
+      "bytes": 8069,
+      "sha256": "9ab17482631df4b2772a01ec3614d9ceb0e9459a595225f4e62fd7457b3d2d41"
+    },
+    {
+      "path": "render-adoption/buildings/resources.mjs",
+      "bytes": 3534,
+      "sha256": "c29a1d39d1ab160da1929e15a1e437ca9f3c1b27d80f4f7671c467a3daf6a178"
+    },
+    {
+      "path": "render-adoption/buildings/seating.mjs",
+      "bytes": 5977,
+      "sha256": "4e1be3bb14e967a5d05e45479a5cb54c45e29cccded54a44625c63f6876f6241"
+    },
+    {
+      "path": "render-adoption/integration/presentation.mjs",
+      "bytes": 15942,
+      "sha256": "9d796fa47c7380afffb7f4acc02da2b654d9559f6e82843ad2b53250ef9bfeba"
+    },
+    {
+      "path": "render-adoption/integration/read-view.mjs",
+      "bytes": 8513,
+      "sha256": "cae1d54612af217361f591d21359c667c6baddf6833fd3ffebe60dfda428134d"
+    },
+    {
+      "path": "render-adoption/integration/renderer.mjs",
+      "bytes": 7552,
+      "sha256": "2f8217268405b369f0a47cec7bb233839b0fb08d459ded579c299011d466dd7d"
+    },
+    {
+      "path": "render-adoption/integration/sampling.mjs",
+      "bytes": 718,
+      "sha256": "2b4e14e70a08bacbcf0beaeec82296c7367039fec7abcc1037cefd52b8d3b96a"
+    },
+    {
+      "path": "render-adoption/integration/visibility.mjs",
+      "bytes": 837,
+      "sha256": "5fc36a60c1127504e7bed3fe3eb34488d8ad37afbf0f41f09d68010ba95bd6a4"
+    },
+    {
+      "path": "render-adoption/landscape/bridge.mjs",
+      "bytes": 1542,
+      "sha256": "0926cd21ddb02c79632af0a5b9642bf0012dcb2b2ff0da19713bf52a08e84aa6"
+    },
+    {
+      "path": "render-adoption/landscape/index.mjs",
+      "bytes": 7293,
+      "sha256": "4c438d0dfbda1b0478c1563bd1dbef847e0c02c4ec062727c92f2a415c7c08b0"
+    },
+    {
+      "path": "render-adoption/landscape/plan.mjs",
+      "bytes": 8328,
+      "sha256": "83e2dd3dd524daead02cfad5407b6dfa477d6903b9a327b1e6cb8ad4a81fbfb3"
+    },
+    {
+      "path": "render-adoption/landscape/surfaces.mjs",
+      "bytes": 1797,
+      "sha256": "c3517e05589eaf88323a12cd2c8202648610153e92a06e263cf8e6ac499cebc6"
+    },
+    {
+      "path": "render-adoption/profiling/index.mjs",
+      "bytes": 17805,
+      "sha256": "98fc7d13a87fee53bb162cc0578d2a0dc7ec9d4246d58482c3e12191e15cbd26"
+    },
+    {
+      "path": "render-adoption/profiling/resources.mjs",
+      "bytes": 2538,
+      "sha256": "34a34c58baf194c417c74648013eaf177e2d2b226eafc3e9fb54b6f891dae741"
+    },
+    {
+      "path": "render-adoption/profiling/scenarios.mjs",
+      "bytes": 8990,
+      "sha256": "1fa0dbe6e3793d23e166e70ab16f75f5593f361b07c90bcc18865afcf512ccda"
+    },
+    {
+      "path": "render-adoption/world/atmosphere.mjs",
+      "bytes": 1786,
+      "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+    },
+    {
+      "path": "render-adoption/world/classification.mjs",
+      "bytes": 5358,
+      "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+    },
+    {
+      "path": "render-adoption/world/fields.mjs",
+      "bytes": 3819,
+      "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+    },
+    {
+      "path": "render-adoption/world/grass.mjs",
+      "bytes": 5988,
+      "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+    },
+    {
+      "path": "render-adoption/world/index.mjs",
+      "bytes": 6285,
+      "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
+    },
+    {
+      "path": "render-adoption/world/materials.mjs",
+      "bytes": 3760,
+      "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+    },
+    {
+      "path": "render-adoption/world/output-pins.mjs",
+      "bytes": 1536,
+      "sha256": "d6f255b04fe41279343152ef5dafea74463d92bf85c052f7cba59762fb3ee072"
+    },
+    {
+      "path": "render-adoption/world/preset.mjs",
+      "bytes": 474,
+      "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+    },
+    {
+      "path": "render-adoption/world/recipe.mjs",
+      "bytes": 1584,
+      "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+    },
+    {
+      "path": "render-adoption/world/source-pins.mjs",
+      "bytes": 804,
+      "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+    },
+    {
+      "path": "render-adoption/world/spatial.mjs",
+      "bytes": 2025,
+      "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+    },
+    {
+      "path": "render-preferences.mjs",
+      "bytes": 728,
+      "sha256": "c12b8ea1c23b4083cde6540a033b0535b8c8bb9a88172f227d2066cc69a9483e"
+    },
+    {
+      "path": "road-editor.mjs",
+      "bytes": 3619,
+      "sha256": "388442066c54c9647a44553a842e246a70f1f6e096f8b2a8a8af35d76c208ece"
+    },
+    {
+      "path": "road-gesture.mjs",
+      "bytes": 4265,
+      "sha256": "227dd1e83e556b7a0c443ad25c9b8d471eb3833245748b6b25ce354edc45ca27"
+    },
+    {
+      "path": "road-junctions.mjs",
+      "bytes": 3304,
+      "sha256": "006e53c4eff16cdc50c888a80ca0d6996c5b70ae11c92253f8f7bb6e12772e01"
+    },
+    {
+      "path": "road-network.mjs",
+      "bytes": 8432,
+      "sha256": "aaa4c8bf4b7bdab34ae549d54b5946f91bce9f0a97d9fcb73cb3b88c8a5acd27"
+    },
+    {
+      "path": "road-surface.mjs",
+      "bytes": 1936,
+      "sha256": "495f2ad9950d5d46da2d1898ff29545168516bdc30c56b8d66097c822acfd2dc"
+    },
+    {
+      "path": "road-visual-offsets.mjs",
+      "bytes": 1196,
+      "sha256": "f4860f58e48453da1d4ff522e483f01ccad6c95770d3b7cc82eaa6eb11d9cecd"
+    },
+    {
+      "path": "save-slots.mjs",
+      "bytes": 5475,
+      "sha256": "16b06ede1f811d5be44f4ccae1ecf47619d23a56883b09c4c6b5545a1491f4de"
+    },
+    {
+      "path": "scene-batches.mjs",
+      "bytes": 2272,
+      "sha256": "29bf23afbe0c3ee74111b0e92f33e693d20e220573e51ea9b37166a1d95fac82"
+    },
+    {
+      "path": "settlement-architecture.mjs",
+      "bytes": 1976,
+      "sha256": "b9cbd242ab745617174f4b9041003109116adc5732a959180a40ca9fb8e7c457"
+    },
+    {
+      "path": "settlement-play.mjs",
+      "bytes": 14946,
+      "sha256": "f81532c1e7b2b621919fcefc218901ef858410aa42c56174410747226c229584"
+    },
+    {
+      "path": "simulation.mjs",
+      "bytes": 19070,
+      "sha256": "2073430cdbbd121f9f2e36251da9835d530fcd30a7671b904962c07b0f31885f"
+    },
+    {
+      "path": "terrain-classification.mjs",
+      "bytes": 2394,
+      "sha256": "a8996943ef3714c32b6b2b637118e2213c0f8b129649dc84cc856464c479954f"
+    },
+    {
+      "path": "terrain-contours.mjs",
+      "bytes": 1621,
+      "sha256": "582acdfd31709d61eaf67735b5aa3fae524fc5b79d70da613c5ffe20281054bc"
+    },
+    {
+      "path": "terrain-surface.mjs",
+      "bytes": 2913,
+      "sha256": "9a979aa4e1338c7e8df5fe8d18fad5e4da7410f75e26979d14f2bc17646ca705"
+    },
+    {
+      "path": "turn-highlights.mjs",
+      "bytes": 1956,
+      "sha256": "f8af172ac8a777992a85b9ff480a55b4ec09ba4f8f1edd5462ea40ed9e5aba2b"
+    },
+    {
+      "path": "ui-components.mjs",
+      "bytes": 13215,
+      "sha256": "fcb13317262acbd9af4c2f7d07dea671c325e5ea8598a72aa378f34a1fce2d91"
+    },
+    {
+      "path": "ui-kit/kenney-models.mjs",
+      "bytes": 14363,
+      "sha256": "d9d8758e7a4f0b531d07f29e51d029ceb84eb12415f1d1a177a64cb9397633cf"
+    },
+    {
+      "path": "ui-kit/render-3d.mjs",
+      "bytes": 16477,
+      "sha256": "a35549fe44dc224d850bb969d5681d0d136e9f53fe4c01f27dc1401d9691613c"
+    },
+    {
+      "path": "ui-kit/wv007-integrated.mjs",
+      "bytes": 3996,
+      "sha256": "95e894df2d2158b40d2cb37843aac80fd18634b1eaa40f6325616cf807fa74f8"
+    },
+    {
+      "path": "world-gen.mjs",
+      "bytes": 15258,
+      "sha256": "5f18a0fbe9377de6d4153c2bb8e557d609a68409e65caec62728ea41d4f9b345"
+    },
+    {
+      "path": "world-renderer-three.mjs",
+      "bytes": 11235,
+      "sha256": "c9d7dfbfcf919b8bc778b7c9f41a3edc2aebc50d39c38496d3934538c168f9e7"
+    },
+    {
+      "path": "world-route.mjs",
+      "bytes": 483,
+      "sha256": "039e118a7d965aec44a902b9ca7882f18612ad7401090c481d1a952d704f25d3"
+    },
+    {
+      "path": "zone-silhouette.mjs",
+      "bytes": 2583,
+      "sha256": "aeab48dff347e57bef04acc825472967104c90ae57c02a965a1fa82f36144a97"
+    }
+  ],
+  "profiles": [
+    {
+      "family": "C4",
+      "quality": "normal",
+      "path": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "bytes": 11024000,
+      "sha256": "6df5b7d03b075ddbce6ef7792a378ee87ce96237c83078ec462c6cc7ec6867dc",
+      "decodedMipBytes": 28639248
+    },
+    {
+      "family": "C4",
+      "quality": "low",
+      "path": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "bytes": 3045888,
+      "sha256": "37d632f2b69477954853ac9b37e209b2044f1ed51a15cc602cfaa5e5d98d5b44",
+      "decodedMipBytes": 6029318
+    },
+    {
+      "family": "C4",
+      "quality": "distance",
+      "path": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "bytes": 2964484,
+      "sha256": "df8e73707d4c86d3a70ee7d04fd050a7e34912c0e58b424ccce2f5164965c8f3",
+      "decodedMipBytes": 6029318
+    },
+    {
+      "family": "D",
+      "quality": "normal",
+      "path": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "bytes": 352960,
+      "sha256": "ef66ab1cd1d1c89c9c915edc16fefd2dac517cb9cc997fafb3cf8ef665942ccf",
+      "decodedMipBytes": 0
+    },
+    {
+      "family": "D",
+      "quality": "low",
+      "path": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "bytes": 189696,
+      "sha256": "b8c4084a6b96f44b5a27a2bc0abb121f38ec7d85abfa8e172971eeaeef2e302c",
+      "decodedMipBytes": 0
+    },
+    {
+      "family": "B",
+      "quality": "normal",
+      "path": "assets/wv/runtime-landscape-v1/normal.glb",
+      "bytes": 761888,
+      "sha256": "f8932832f224195e3cae3685a8e0532b0bc7d9d488f4dc97975325b2c10ce0cd",
+      "decodedMipBytes": 0
+    },
+    {
+      "family": "B",
+      "quality": "low",
+      "path": "assets/wv/runtime-landscape-v1/low.glb",
+      "bytes": 270680,
+      "sha256": "b61aa403694cd723afc662665d9205376318713d10ed2c1223199c856b1781bc",
+      "decodedMipBytes": 0
+    },
+    {
+      "family": "B",
+      "quality": "far",
+      "path": "assets/wv/runtime-landscape-v1/far.glb",
+      "bytes": 228336,
+      "sha256": "fdafb0c120b1a4f8e9974cb730c131ebd0c37c31a4de1b39da4bbafa4b751c2f",
+      "decodedMipBytes": 0
+    }
+  ],
+  "offline": {
+    "profilesStored": [
+      "normal",
+      "low",
+      "distance",
+      "far"
+    ],
+    "activeProfile": "only requested/visible GLBs parsed; stored cache bytes are not decoded-image allocations",
+    "integrity": "atomic SHA-256 install and complete-version rollback",
+    "standaloneHtml": "existing native renderer; installed PWA supports adopted Three"
+  },
+  "deviceAcceptance": "pending installed target-device checklist",
+  "historicalComparisons": "source bundles/pins unchanged; excluded from initial game cache, offline after explicit online visit"
+}

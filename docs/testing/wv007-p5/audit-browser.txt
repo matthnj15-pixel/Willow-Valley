@@ -1,0 +1,12 @@
+[1/11] tests/browser/wv007-landscape.spec.mjs:3:1 › WV007 P3 actual selective GLB loading, stable plans across LOD, contacts and owned resource disposal
+[2/11] tests/browser/wv007-landscape.spec.mjs:216:1 › WV007 P3 actual drag, Commit, Eraser and reload feed one committed plan without writing any save slot
+[3/11] tests/browser/wv007-landscape.spec.mjs:280:1 › WV007 P3 cold low profile fetches only low source and seats tree contacts on the displayed surface
+[4/11] tests/browser/wv007-profiling.spec.mjs:3:1 › local inspection switches real fixtures, checks month, exports schema and preserves all storage
+[5/11] tests/browser/wv007-profiling.spec.mjs:48:1 › missing dependencies and late completion after disposal stay unavailable
+[6/11] tests/browser/wv007-profiling.spec.mjs:66:1 › browser controller samples RAF, pauses hidden tabs and exports an honest incomplete-host record
+[7/11] tests/browser/wv007-world.spec.mjs:3:98 › P2 real-world materials, close/wide categories and host cadence WILLOW-1048 normal
+[8/11] tests/browser/wv007-world.spec.mjs:3:98 › P2 real-world materials, close/wide categories and host cadence WILLOW-1048 low
+[9/11] tests/browser/wv007-world.spec.mjs:3:98 › P2 real-world materials, close/wide categories and host cadence WV007-RIVER-2099 normal
+[10/11] tests/browser/wv007-world.spec.mjs:3:98 › P2 real-world materials, close/wide categories and host cadence WV007-RIVER-2099 low
+[11/11] tests/browser/wv007-world.spec.mjs:88:1 › P2 shader compilation after quality switch, viewport resize, early disposal and missing module
+  11 passed (1.0m)

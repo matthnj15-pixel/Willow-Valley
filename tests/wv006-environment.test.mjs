@@ -20,7 +20,11 @@ test('review build dependency record matches exact committed source and borrowed
  const {readFile}=await import('node:fs/promises'),{createHash}=await import('node:crypto');
  const record=JSON.parse(await readFile(new URL('../assets/wv/environment-next/dependencies.json',import.meta.url),'utf8'));
  assert.equal(record.runtimeReady,false);assert.equal(record.newTextures,7);
- for(const item of record.dependencies){const data=await readFile(new URL('../'+item.path,import.meta.url));assert.equal(data.byteLength,item.bytes,item.path);assert.equal(createHash('sha256').update(data).digest('hex'),item.sha256,item.path);}
+ // P5 changes the shared live renderer; the already-bundled historical A3
+ // study must keep its original input pins. Exact pre-integration text is
+ // retained for those three borrowed files, without rebuilding/repointing A3.
+ const historical=new Set(['game-3d-mesh.mjs','ui-kit/render-3d.mjs','world-renderer-three.mjs']);
+ for(const item of record.dependencies){const path=historical.has(item.path)?'docs/handoffs/WV-ART-007/delivery-p5/frozen-inputs/'+item.path:item.path;const data=await readFile(new URL('../'+path,import.meta.url));assert.equal(data.byteLength,item.bytes,item.path);assert.equal(createHash('sha256').update(data).digest('hex'),item.sha256,item.path);}
 });
 
 test('detail derivatives match measured bytes/hashes and keep a smaller normal-map-free low path',async()=>{

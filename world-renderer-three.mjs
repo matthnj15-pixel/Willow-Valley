@@ -6,8 +6,10 @@ import {mountWorld3D as mountController} from './ui-kit/render-3d.mjs';
 import {createModelRegistry,manifestURL,HOME_IDS} from './asset-registry.mjs';
 import {resolveFoundation} from './foundation-system.mjs';
 import {homePlacement,homeApproach,facilityPlacement,FACILITY_TYPES,farmlandRows} from './building-visuals.mjs';
+import {mountAdoptedWorld} from './render-adoption/integration/renderer.mjs';
 
 export function mountWorld3D(canvas,world,options={}){
+ if(options.adoption===true)return mountAdoptedWorld(canvas,world,options);
  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,powerPreference:'low-power'});
  renderer.outputColorSpace=THREE.SRGBColorSpace;
  const scene=new THREE.Scene();scene.background=new THREE.Color('#b5ccbd');
