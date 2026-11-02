@@ -1,0 +1,5 @@
+
+> willow-valley@0.1.0 build:offline
+> node scripts/build-offline.mjs . offline.html
+
+Wrote self-contained offline game: /workspace/wv007-p5/offline.html (1501189 characters)

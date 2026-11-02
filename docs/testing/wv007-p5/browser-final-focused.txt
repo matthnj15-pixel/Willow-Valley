@@ -1,0 +1,19 @@
+
+Running 7 tests using 1 worker
+
+[1A[2K(node:39440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K(node:39440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1A[2K[1/7] tests/browser/wv007-integration.spec.mjs:3:1 › P5 actual game mounts coherent C4/A3/A1/B layers without changing state or default rollout
+[1A[2K[2/7] tests/browser/wv007-integration.spec.mjs:27:1 › P5 P4 controller sees actual integrated source/LOD/resource status in an isolated fixture
+[1A[2K[3/7] tests/browser/wv007-integration.spec.mjs:64:37 › P5 cold installed Three low keeps all three slots and parsed quality at /
+[1A[2K[4/7] tests/browser/wv007-integration.spec.mjs:64:37 › P5 cold installed Three low keeps all three slots and parsed quality at /dev/
+[1A[2K[5/7] tests/browser/wv007-integration.spec.mjs:140:1 › P5 failed C4 load retains legal legacy sites and a fresh low mount recovers
+[1A[2K[6/7] tests/browser/wv007-integration.spec.mjs:182:1 › P5 superseded mounts ignore late sources and visibility does not rebuild settlement
+[1A[2K[7/7] tests/browser/wv007-integration.spec.mjs:228:1 › P5 live camera distance-load failure rebuilds the actual legacy fallback batches
+[1A[2K  7 passed (2.1m)

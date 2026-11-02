@@ -2,7 +2,7 @@ import {readFile,writeFile} from 'node:fs/promises';
 import {posix} from 'node:path';
 import {createHash} from 'node:crypto';
 const manifest=JSON.parse(await readFile('assets/wv/architecture-v1/manifest.json','utf8'));
-const environment=JSON.parse(await readFile('environment-asset-manifest.json','utf8'));
+
 const files=new Set();
 async function add(path){
  path=posix.normalize(path);if(path.startsWith('../')||path.startsWith('/'))throw Error('Escaping install root');
@@ -10,9 +10,22 @@ async function add(path){
  const bytes=await readFile(path);
  if(path.endsWith('.mjs'))for(const match of bytes.toString().matchAll(/(?:from\s*|import\s*(?:\(\s*)?)["'](\.[^"']+)["']/g))await add(posix.join(posix.dirname(path),match[1]));
 }
-for(const path of ['ui-kit/building-catalog.html','ui-kit/building-catalog.css','ui-kit/building-catalog.mjs','assets/wv/megakit-catalog-v1/manifest.json','assets/wv/megakit-catalog-v1/License_Source.txt','assets/wv/megakit-catalog-v1/catalog.glb','ui-kit/scale-study.html','ui-kit/scale-study.css','ui-kit/scale-study.mjs','assets/wv/megakit-v1/manifest.json','assets/wv/megakit-v1/License_Source.txt','assets/wv/megakit-v1/study.glb','ui-kit/environment-lab.html','ui-kit/environment-lab.mjs','index.html','styles.css','app.mjs','ui-kit/world-lab.html','ui-kit/world-lab.css','ui-kit/world-lab.mjs',
- 'environment-asset-manifest.json','assets/wv/environment-v1/LICENSE.txt',...environment.entries.map(e=>e.url),'assets/vendor/three.module.mjs','assets/wv/architecture-v1/manifest.json','asset-registry.mjs',
- 'ui-kit/settlement-benchmark.html','ui-kit/settlement-benchmark.mjs','ui-kit/asset-gallery.html','ui-kit/asset-gallery.css','ui-kit/asset-gallery.mjs',...manifest.entries.map(e=>e.url)])await add(path);
+// Installed gameplay is independent of historical comparison/gallery studies.
+// Both render profiles are stored on disk for offline quality changes; only the
+// requested profile is parsed/decoded by its selective layer loaders.
+const buildings=JSON.parse(await readFile('assets/wv/runtime-buildings-v1/manifest.json'));
+const landscape=JSON.parse(await readFile('assets/wv/runtime-landscape-v1/manifest.json'));
+for(const path of ['index.html','styles.css','app.mjs','assets/vendor/three.module.mjs',
+ 'ui-kit/world-lab.html','ui-kit/world-lab.css','ui-kit/world-lab.mjs',
+ 'ui-kit/asset-gallery.html','ui-kit/asset-gallery.css','ui-kit/asset-gallery.mjs',
+ 'assets/wv/architecture-v1/manifest.json',...manifest.entries.map(e=>e.url),
+ 'assets/wv/runtime-buildings-v1/manifest.json',...buildings.bundles.map(b=>b.url),
+ 'assets/wv/runtime-buildings-v1/buildings-next-License_Source.txt','assets/wv/runtime-buildings-v1/buildings-next-License_Kit_Source.txt','assets/wv/runtime-buildings-v1/storage-next-LICENSE.txt',
+ 'assets/wv/runtime-landscape-v1/manifest.json','assets/wv/runtime-landscape-v1/metadata.mjs',...Object.values(landscape.outputs).map(o=>o.path),
+ 'assets/wv/runtime-environment-v1/provenance.json',
+ 'render-adoption/integration/admission.json','render-adoption/profiling/manifest.json','render-adoption/profiling/fixtures/30-homes.json','render-adoption/profiling/fixtures/100-homes.json',
+ 'ui-kit/wv007-integrated.html','ui-kit/wv007-integrated.mjs','ui-kit/wv007-diagnostics.css',
+ 'ui-kit/wv007-diagnostics.html','ui-kit/wv007-diagnostics.mjs'])await add(path);
 const entries=[];
 for(const path of [...files].sort()){
  const bytes=await readFile(path);entries.push({url:'./'+path,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex')});

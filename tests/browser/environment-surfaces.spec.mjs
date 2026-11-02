@@ -19,12 +19,13 @@ for(const quality of ['normal','low'])test(`water animation is bounded, pauses h
  await page.waitForTimeout(350);expect(await page.evaluate(()=>window.environmentHarness.viewer.assetStatus().waterFrames)).toBe(hidden);
  await page.evaluate(()=>window.environmentHarness.viewer.dispose());
 });
-for(const scope of ['/','/dev/'])test(`surface textures cold-install offline without visiting a gallery: ${scope}`,async({page,context})=>{
+for(const scope of ['/','/dev/'])test(`adopted world cold-installs without historical photographic images: ${scope}`,async({page,context})=>{
  const external=[];page.on('request',r=>{if(new URL(r.url()).origin!=='http://127.0.0.1:4173')external.push(r.url());});
  await page.goto(scope+'?preview=1&renderer=three');
  await page.evaluate(async()=>{await navigator.serviceWorker.register('./sw.js');await navigator.serviceWorker.ready;});
  await context.setOffline(true);await page.goto(scope+'?preview=1&renderer=three');
  await expect(page.locator('#game3D')).toHaveAttribute('data-loaded-models','13');
- const images=await page.evaluate(async()=>{const m=await (await fetch('./environment-asset-manifest.json')).json();return Promise.all(m.entries.map(async e=>{const b=await (await fetch('./'+e.url)).arrayBuffer();return b.byteLength===e.bytes;}));});
- expect(images).toEqual([true,true]);expect(external).toEqual([]);
+ await expect(page.locator('#game3D')).toHaveAttribute('data-wv007-ready','true',{timeout:60000});
+ const installed=await page.evaluate(async()=>{const cache=await caches.open((await caches.keys()).find(n=>n.startsWith('willow-valley:')));return(await cache.keys()).map(r=>r.url);});
+ expect(installed.some(u=>u.includes('/assets/wv/runtime-buildings-v1/c4-low.glb'))).toBe(true);expect(installed.some(u=>u.includes('/assets/wv/environment-v1/'))).toBe(false);expect(external).toEqual([]);
 });

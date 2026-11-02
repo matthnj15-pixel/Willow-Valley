@@ -1,0 +1,52 @@
+{
+  "sourceFamilies": {
+    "buildings": "C4",
+    "world": "A3+A1",
+    "landscape": "B",
+    "storage": "D-preview"
+  },
+  "verifiedPins": 113,
+  "glbs": [
+    {
+      "path": "assets/wv/runtime-landscape-v1/normal.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-landscape-v1/low.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-landscape-v1/far.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "errors": 0,
+      "warnings": 0
+    }
+  ],
+  "physicalDeviceVerified": false
+}

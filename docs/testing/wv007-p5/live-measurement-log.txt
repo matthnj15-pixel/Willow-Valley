@@ -1,0 +1,5 @@
+{"homes":30,"quality":"normal","live":true,"ready":true}
+{"homes":30,"quality":"low","live":true,"ready":true}
+{"homes":100,"quality":"normal","valid":true,"issues":[],"stats":{"count":94,"medianMs":633.2000000001863,"p95Ms":780.6000000005588,"p99Ms":1021,"rafFps":1.5654117282645177,"longFramesOver33_34Ms":92,"longFramesOver50Ms":92,"renderedFrameObservations":93,"peakCalls":349,"peakTriangles":623145}}
+{"homes":100,"quality":"normal","live":true,"ready":true}
+{"homes":100,"quality":"low","live":true,"ready":true}

@@ -2,7 +2,8 @@
 // Run from repo root: node scripts/build-offline.mjs . offline.html
 // Or specify a separate branch checkout as input to the release workflow.
 import {build} from "esbuild";
-import {readFile,writeFile,cp,access} from "node:fs/promises";
+import {runInNewContext} from "node:vm";
+import {readFile,writeFile,cp,access,mkdir} from "node:fs/promises";
 import {resolve,join,dirname} from "node:path";
 const root=resolve(process.argv[2]||".");
 const destination=resolve(process.argv[3]||"offline.html");
@@ -38,5 +39,10 @@ if(outputRoot!==root){
   let hasEnvironment=false;try{await access(join(root,"environment-asset-manifest.json"));hasEnvironment=true;}catch{}
   if(hasEnvironment)await cp(join(root,"environment-asset-manifest.json"),join(outputRoot,"environment-asset-manifest.json"));
   await cp(join(root,"assets"),join(outputRoot,"assets"),{recursive:true});
+  const self={};runInNewContext(await readFile(join(root,'asset-cache.js'),'utf8'),{self});
+  // The workflow executed from main delegates branch-local source admission to
+  // this tool. Publish precisely the executable module namespace in its cache.
+  for(const url of self.WV_ASSET_CACHE||[]){const path=url.replace(/^\.\//,'');if(!path.startsWith('render-adoption/'))continue;if(path.includes('..'))throw Error('Invalid admitted module path');await mkdir(dirname(join(outputRoot,path)),{recursive:true});await cp(join(root,path),join(outputRoot,path));}
+
  }
 }

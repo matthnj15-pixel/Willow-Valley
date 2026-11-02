@@ -1,0 +1,1751 @@
+{
+  "schema": "wv007-local-diagnostics/v1",
+  "createdAt": "2026-11-02T14:16:15.677Z",
+  "completed": true,
+  "valid": false,
+  "issues": [
+    "non-device-duration"
+  ],
+  "scenario": "idle",
+  "cameraPath": "wv007-idle-v1",
+  "fixture": {
+    "id": "wv007-100-homes-v1",
+    "isolated": true,
+    "complete": true,
+    "expectedHomes": 100
+  },
+  "fixturePins": [
+    {
+      "path": "render-adoption/profiling/fixtures/100-homes.json",
+      "sha256": "bda45c846288bc9bb6f567e86ec8d4676b93029677644a17ec524208a015d3e9"
+    }
+  ],
+  "requestedQuality": "normal",
+  "warmupMs": 0,
+  "durationMs": 1000,
+  "activeMs": 1000.0999999996275,
+  "interruptions": 0,
+  "invalidSamples": 0,
+  "capabilities": {
+    "userAgent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/141.0.7390.37 Safari/537.36",
+    "platform": "Linux x86_64",
+    "browserOS": "As reported by userAgent/platform; no chip or physical device inference",
+    "standalone": false,
+    "displayMode": "browser",
+    "visibility": "visible",
+    "viewport": {
+      "width": 1100,
+      "height": 950,
+      "dpr": 1
+    },
+    "features": {
+      "webgl2": true,
+      "maxTextureSize": 8192,
+      "serviceWorker": true,
+      "contextLost": false
+    },
+    "backend": "three-webgl",
+    "physicalDeviceVerified": false
+  },
+  "manual": {
+    "battery": null,
+    "lowPowerMode": null,
+    "thermal": null,
+    "inputLag": null,
+    "deviceBrowserOS": null
+  },
+  "monthOutcome": null,
+  "stats": {
+    "count": 60,
+    "medianMs": 16.699999999254942,
+    "p95Ms": 17.299999999813735,
+    "p99Ms": 17.90000000037253,
+    "rafFps": 59.994000599962355,
+    "longFramesOver33_34Ms": 0,
+    "longFramesOver50Ms": 0,
+    "renderedFrameObservations": 0,
+    "peakCalls": 328,
+    "peakTriangles": 619046
+  },
+  "warnings": [
+    "provisional-triangle-guard",
+    "provisional-draw-call-guard"
+  ],
+  "interpretation": "RAF intervals measure browser callback pacing, including idle. Renderer frame tokens identify observed renderer work; on-demand idle pacing is not rendered FPS. renderer.info reports counts, not exact GPU/JS memory. Cloud/emulated runs do not approve a physical phone.",
+  "deviceAcceptance": "unverified — requires installed target device, cold offline checklist and sustained play",
+  "events": [],
+  "statuses": [
+    {
+      "atActiveMs": 0,
+      "viewRevision": "settlement-1",
+      "terrainRevision": "terrain-1",
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      },
+      "requestedQuality": "normal",
+      "population": {
+        "homes": 100,
+        "facilities": 7,
+        "facilityTypes": [
+          "farm",
+          "granary",
+          "lumber",
+          "market",
+          "park",
+          "plaza",
+          "smith"
+        ]
+      },
+      "layers": {
+        "buildings": {
+          "available": true,
+          "contractRevision": "wv007-layer-1",
+          "viewRevision": "settlement-1",
+          "sourceFamily": "C4",
+          "quality": "normal",
+          "ready": true,
+          "disposed": false,
+          "pendingLoads": 0,
+          "failedLoads": 0,
+          "sourcePins": [
+            {
+              "path": "scripts/build-wv007-buildings.mjs",
+              "sha256": "c286608ae0c3f1e766876b1b0e946245ab7f4c2d4645bd502761e99771ba352c"
+            },
+            {
+              "path": "package-lock.json",
+              "sha256": "39035df40cc4c6fb6ec49bcfe0b1e1c09fe51b9c69d17e5288aa533ab4d3775e"
+            },
+            {
+              "path": "assets/wv/buildings-next/kit-detail-manifest.json",
+              "sha256": "f5d50ba92ff61a7713390581ea41b8d89cd2057a9a119d6399256bf58305e11d"
+            },
+            {
+              "path": "assets/wv/buildings-next/kit-detail.glb",
+              "sha256": "7008c62c3563029eced76654fb9556fa5da0262e841953a1d92d86075e820f3a"
+            },
+            {
+              "path": "assets/wv/storage-next/manifest.json",
+              "sha256": "b6bd6ca837aab9ec30750cfdaeac7d710bfc33aa0908c9d0fd7dabae37e668ed"
+            },
+            {
+              "path": "assets/wv/storage-next/storage.glb",
+              "sha256": "638fe141f28ca83e23926e21c9f7b2b7c03d7ec14770f64275413f7d46cd36d6"
+            },
+            {
+              "path": "assets/wv/buildings-next/License_Source.txt",
+              "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+            },
+            {
+              "path": "assets/wv/buildings-next/License_Kit_Source.txt",
+              "sha256": "7310dfa8512d7ca12b6591329fda4adab7e8b9cdbe04c7d7061c2fe5c7dc38ee"
+            },
+            {
+              "path": "assets/wv/storage-next/LICENSE.txt",
+              "sha256": "1efe667036d83e52916cc341e0965221f788f5fcc4bbe8bb11984dc606ffb08e"
+            }
+          ],
+          "outputPins": [
+            {
+              "path": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+              "sha256": "6df5b7d03b075ddbce6ef7792a378ee87ce96237c83078ec462c6cc7ec6867dc"
+            },
+            {
+              "path": "assets/wv/runtime-buildings-v1/c4-low.glb",
+              "sha256": "37d632f2b69477954853ac9b37e209b2044f1ed51a15cc602cfaa5e5d98d5b44"
+            },
+            {
+              "path": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+              "sha256": "df8e73707d4c86d3a70ee7d04fd050a7e34912c0e58b424ccce2f5164965c8f3"
+            },
+            {
+              "path": "assets/wv/runtime-buildings-v1/d-normal.glb",
+              "sha256": "ef66ab1cd1d1c89c9c915edc16fefd2dac517cb9cc997fafb3cf8ef665942ccf"
+            },
+            {
+              "path": "assets/wv/runtime-buildings-v1/d-low.glb",
+              "sha256": "b8c4084a6b96f44b5a27a2bc0abb121f38ec7d85abfa8e172971eeaeef2e302c"
+            }
+          ],
+          "effectiveLods": {
+            "culled": 33,
+            "distance": 28,
+            "normal": 5,
+            "legacy": 41
+          },
+          "effectiveHomeLods": {
+            "normal": 5,
+            "low": 0,
+            "distance": 23,
+            "legacy": 41,
+            "culled": 31
+          },
+          "visibleHomeLods": {
+            "normal": 5,
+            "low": 0,
+            "distance": 23,
+            "legacy": 30,
+            "culled": 0
+          },
+          "effectiveMaterialLods": {
+            "low": 15,
+            "normal": 12,
+            "shared": 15
+          },
+          "renderedHomes": 100,
+          "resources": {
+            "bufferBytesEstimate": 20542610,
+            "textureBytesEstimate": 55640096,
+            "loadedQualityImages": [
+              {
+                "quality": "low",
+                "loaded": 10,
+                "expected": 10,
+                "decodedBytesEstimate": 6029318
+              },
+              {
+                "quality": "normal",
+                "loaded": 27,
+                "expected": 27,
+                "decodedBytesEstimate": 28639248
+              },
+              {
+                "quality": "shared",
+                "loaded": 15,
+                "expected": 15,
+                "decodedBytesEstimate": 20971530
+              }
+            ]
+          }
+        },
+        "world": {
+          "available": true,
+          "contractRevision": "wv007-layer-1",
+          "viewRevision": "settlement-1",
+          "sourceFamily": "A3+A1",
+          "quality": "normal",
+          "ready": true,
+          "disposed": false,
+          "pendingLoads": 0,
+          "failedLoads": 0,
+          "sourcePins": [
+            {
+              "path": "environment-next/meadow-layer.mjs",
+              "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+            },
+            {
+              "path": "environment-next/previous-materials.mjs",
+              "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+            },
+            {
+              "path": "environment-next/atmosphere.mjs",
+              "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+            },
+            {
+              "path": "environment-next/preset.mjs",
+              "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+            },
+            {
+              "path": "environment-next/visual-field.mjs",
+              "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+            }
+          ],
+          "outputPins": [
+            {
+              "path": "render-adoption/world/atmosphere.mjs",
+              "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+            },
+            {
+              "path": "render-adoption/world/classification.mjs",
+              "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+            },
+            {
+              "path": "render-adoption/world/fields.mjs",
+              "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+            },
+            {
+              "path": "render-adoption/world/grass.mjs",
+              "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+            },
+            {
+              "path": "render-adoption/world/index.mjs",
+              "sha256": "03b4ced5beb0d2e8d362bf9a14a5abe0724cb6c6b671f3c48eb0c19c6c43cf6e"
+            },
+            {
+              "path": "render-adoption/world/materials.mjs",
+              "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+            },
+            {
+              "path": "render-adoption/world/preset.mjs",
+              "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+            },
+            {
+              "path": "render-adoption/world/recipe.mjs",
+              "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+            },
+            {
+              "path": "render-adoption/world/source-pins.mjs",
+              "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+            },
+            {
+              "path": "render-adoption/world/spatial.mjs",
+              "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+            }
+          ],
+          "effectiveLods": {
+            "grassNear": 0,
+            "grassMid": 16,
+            "grassLow": 0
+          },
+          "effectiveHomeLods": {},
+          "visibleHomeLods": {},
+          "effectiveMaterialLods": {
+            "worldNormal": 3,
+            "grass": 1
+          },
+          "renderedHomes": null,
+          "resources": {
+            "bufferBytesEstimate": 734580,
+            "textureBytesEstimate": 1313160,
+            "loadedQualityImages": [
+              {
+                "quality": "normal",
+                "loaded": 0,
+                "expected": 0,
+                "decodedBytesEstimate": 0
+              }
+            ]
+          }
+        },
+        "landscape": {
+          "available": true,
+          "contractRevision": "wv007-layer-1",
+          "viewRevision": "settlement-1",
+          "sourceFamily": "B",
+          "quality": "normal",
+          "ready": true,
+          "disposed": false,
+          "pendingLoads": 0,
+          "failedLoads": 0,
+          "sourcePins": [
+            {
+              "path": "assets/wv/landscape-next/manifest.json",
+              "sha256": "9c5d8cc914f6032a742aa8c42a025512da0b8b4efac969e8f5a749d602c3f1c8"
+            },
+            {
+              "path": "assets/wv/landscape-next/landscape.glb",
+              "sha256": "20f878c3630c0389467fb76b02047a40e80a46560f9f46bb3992ad3ace67bb76"
+            },
+            {
+              "path": "scripts/build-wv007-landscape.mjs",
+              "sha256": "69d7ad5af0498fa369c88437d38758e68b047be9c1b0ce37cf9bd26c2543fc35"
+            },
+            {
+              "path": "assets/wv/landscape-next/placement.mjs",
+              "sha256": "1e52a9cb1b7cef95ee2346a041793d622c3ba2d3d332f954faf670020f990b46"
+            },
+            {
+              "path": "assets/wv/landscape-next/plot-dressing.mjs",
+              "sha256": "03929ac52933697e49f121a8fe1c04d461e9ce8b48452ecb9e519b4022945d1c"
+            },
+            {
+              "path": "assets/wv/landscape-next/plot-boundaries.mjs",
+              "sha256": "1a65c94bfaff37b8e8027ed1e2d4bf0de58c79d4731eca38bd3a1d9b944faaf0"
+            },
+            {
+              "path": "assets/wv/landscape-next/painted-fields.mjs",
+              "sha256": "ac74250b7ad543f7e7d1d8c5e24a55958b71f86d400e812940ae0536207598b3"
+            },
+            {
+              "path": "assets/wv/landscape-next/plot-fence-view.mjs",
+              "sha256": "dbf276a5a54e15e28552047c42357b762cb924cf9070f88fc87108bcbeb3c10a"
+            },
+            {
+              "path": "assets/wv/landscape-next/hamlet-props.mjs",
+              "sha256": "f9f40588e217052234ee5b8ac711779f81f0302898fd7a279a839e02ccc28fdd"
+            }
+          ],
+          "outputPins": [
+            {
+              "path": "assets/wv/runtime-landscape-v1/normal.glb",
+              "sha256": "f8932832f224195e3cae3685a8e0532b0bc7d9d488f4dc97975325b2c10ce0cd"
+            },
+            {
+              "path": "assets/wv/runtime-landscape-v1/low.glb",
+              "sha256": "b61aa403694cd723afc662665d9205376318713d10ed2c1223199c856b1781bc"
+            },
+            {
+              "path": "assets/wv/runtime-landscape-v1/far.glb",
+              "sha256": "fdafb0c120b1a4f8e9974cb730c131ebd0c37c31a4de1b39da4bbafa4b751c2f"
+            }
+          ],
+          "effectiveLods": {
+            "normal": 2152
+          },
+          "effectiveHomeLods": {},
+          "visibleHomeLods": {},
+          "effectiveMaterialLods": {
+            "normal": 4
+          },
+          "renderedHomes": null,
+          "resources": {
+            "bufferBytesEstimate": 1960644,
+            "textureBytesEstimate": 0,
+            "loadedQualityImages": [
+              {
+                "quality": "shared",
+                "loaded": 0,
+                "expected": 0,
+                "decodedBytesEstimate": 0
+              }
+            ]
+          }
+        }
+      },
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 6,
+        "calls": 328,
+        "triangles": 619046,
+        "points": 0,
+        "lines": 0,
+        "geometries": 206,
+        "textures": 44,
+        "programs": 17
+      },
+      "viewport": {
+        "width": 1100,
+        "height": 950,
+        "dpr": 1
+      },
+      "visibility": "visible"
+    }
+  ],
+  "frames": [
+    {
+      "atActiveMs": 17,
+      "intervalMs": 17,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 33.799999999813735,
+      "intervalMs": 16.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 51.09999999962747,
+      "intervalMs": 17.299999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 67,
+      "intervalMs": 15.900000000372529,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 83.3999999994412,
+      "intervalMs": 16.399999999441206,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 100.19999999925494,
+      "intervalMs": 16.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 117.5,
+      "intervalMs": 17.300000000745058,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 133.5,
+      "intervalMs": 16,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 150.29999999981374,
+      "intervalMs": 16.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 166.8999999994412,
+      "intervalMs": 16.59999999962747,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 183.59999999962747,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 200.09999999962747,
+      "intervalMs": 16.5,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 217,
+      "intervalMs": 16.90000000037253,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 233.59999999962747,
+      "intervalMs": 16.59999999962747,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 250.29999999981374,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 266.8999999994412,
+      "intervalMs": 16.59999999962747,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 283.5,
+      "intervalMs": 16.600000000558794,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 300.19999999925494,
+      "intervalMs": 16.699999999254942,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 316.79999999981374,
+      "intervalMs": 16.600000000558794,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 333.5,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 350.29999999981374,
+      "intervalMs": 16.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 368.09999999962747,
+      "intervalMs": 17.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 383.59999999962747,
+      "intervalMs": 15.5,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 400.09999999962747,
+      "intervalMs": 16.5,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 416.8999999994412,
+      "intervalMs": 16.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 433.59999999962747,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 450.29999999981374,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 466.79999999981374,
+      "intervalMs": 16.5,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 483.69999999925494,
+      "intervalMs": 16.899999999441206,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 500.19999999925494,
+      "intervalMs": 16.5,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 516.8999999994412,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 533.5,
+      "intervalMs": 16.600000000558794,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 550,
+      "intervalMs": 16.5,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 566.8999999994412,
+      "intervalMs": 16.899999999441206,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 583.3999999994412,
+      "intervalMs": 16.5,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 600.1999999992549,
+      "intervalMs": 16.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 616.8999999994412,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 633.5,
+      "intervalMs": 16.600000000558794,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 650.1999999992549,
+      "intervalMs": 16.699999999254942,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 666.8999999994412,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 684.7999999998137,
+      "intervalMs": 17.90000000037253,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 700.5999999996275,
+      "intervalMs": 15.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 716.8999999994412,
+      "intervalMs": 16.299999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 733.6999999992549,
+      "intervalMs": 16.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 750.0999999996275,
+      "intervalMs": 16.40000000037253,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 767,
+      "intervalMs": 16.90000000037253,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 783.6999999992549,
+      "intervalMs": 16.699999999254942,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 800.1999999992549,
+      "intervalMs": 16.5,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 817,
+      "intervalMs": 16.800000000745058,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 833.5999999996275,
+      "intervalMs": 16.59999999962747,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 850.1999999992549,
+      "intervalMs": 16.59999999962747,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 866.8999999994412,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 883.5,
+      "intervalMs": 16.600000000558794,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 900.0999999996275,
+      "intervalMs": 16.59999999962747,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 916.8999999994412,
+      "intervalMs": 16.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 933.3999999994412,
+      "intervalMs": 16.5,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 950.0999999996275,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 966.7999999998137,
+      "intervalMs": 16.700000000186265,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 983.5999999996275,
+      "intervalMs": 16.799999999813735,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    },
+    {
+      "atActiveMs": 1000.0999999996275,
+      "intervalMs": 16.5,
+      "statusIndex": 0,
+      "backend": "three-webgl",
+      "scope": "whole-host-frame",
+      "frame": 6,
+      "calls": 328,
+      "triangles": 619046,
+      "points": 0,
+      "lines": 0,
+      "geometries": 206,
+      "textures": 44,
+      "programs": 17,
+      "camera": {
+        "focusX": -783,
+        "focusZ": -1135,
+        "yaw": 0.71,
+        "pitch": 0.86,
+        "zoom": 650
+      }
+    }
+  ]
+}

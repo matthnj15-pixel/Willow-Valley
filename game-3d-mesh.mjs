@@ -153,7 +153,7 @@ function beacon(out,world,p,radius,color){
 
 const curvePoints=(a,c,b,steps=18)=>Array.from({length:steps+1},(_,i)=>quadraticPoint(a,c,b,i/steps));
 export function settlementGeometry(world,state,{
- modelHouses=new Map(),modelBuildings=new Map(),cropRows=[],draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,
+ modelHouses=new Map(),modelBuildings=new Map(),adoptedHouses=new Set(),adoptedBuildings=new Set(),computeSurfaceOffsets=true,cropRows=[],draft=null,zoneStrokes=[],zoneType="residential",zoneRadius=54,
  zoneEdits=null,mode="explore",liveCurve=null,liveGesture=null,pendingControl=null,touchFocus=null
 }={}){
  const surfaces=[],zones=[],markers=[],roadGuides=[];surfaces.surfaceKinds=[];
@@ -211,12 +211,13 @@ export function settlementGeometry(world,state,{
  }
  for(const house of state.houses||[]){
    const style=cottageBlueprint(house),model=modelHouses.get?.(house);
-   block(markers,world,house,model?.width??style.width,model?.depth??style.depth,style.height,style.wall,style.roof,style.orientation,{...style,foundationOnly:modelHouses.has(house)});
-   if(model)accessSteps(markers,surfaces,world,model.approach);
+   if(!adoptedHouses.has(house)){block(markers,world,house,model?.width??style.width,model?.depth??style.depth,style.height,style.wall,style.roof,style.orientation,{...style,foundationOnly:modelHouses.has(house)});
+   if(model)accessSteps(markers,surfaces,world,model.approach);}
    if(house.foundedTurn===state.turn&&house.parcel?.vertices?.length>2)
     ribbon(roadGuides,world,[...house.parcel.vertices,house.parcel.vertices[0]],2.5,[1,.80,.37],4);
   }
  for(const building of state.buildings||[]){
+  if(adoptedBuildings.has(building))continue;
   const material=colors[building.type]||colors.wall;
   const {width:size,depth}=buildingFootprint(building.type);
   const height=building.type==="granary"?40:building.type==="market"?29:building.type==="lumber"?27:24;
@@ -294,7 +295,7 @@ export function settlementGeometry(world,state,{
    }
   }
  }
- return{editorMarkers:roadGuides.editorMarkers||[],surfaceOffsets:roadVisualOffsets(world,state,surfaces,surfaces.surfaceKinds,liveCurve),surfaceKinds:new Float32Array(surfaces.surfaceKinds),surfaces:new Float32Array(surfaces),zones:new Float32Array(zones),
+ return{editorMarkers:roadGuides.editorMarkers||[],surfaceOffsets:computeSurfaceOffsets?roadVisualOffsets(world,state,surfaces,surfaces.surfaceKinds,liveCurve):new Float32Array(surfaces.surfaceKinds.length),surfaceKinds:new Float32Array(surfaces.surfaceKinds),surfaces:new Float32Array(surfaces),zones:new Float32Array(zones),
   structures:new Float32Array(markers),guides:new Float32Array(roadGuides),
   counts:{roads:(state.roads||[]).length,houses:(state.houses||[]).length,
    buildings:(state.buildings||[]).length,zonedCells:drawn,guideTriangles:roadGuides.length/27}};

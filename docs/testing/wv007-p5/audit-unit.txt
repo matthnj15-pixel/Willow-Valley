@@ -1,0 +1,41 @@
+✔ WV007 P3 coordinate bridges round trip at offsets; original B stays in game units (2.186068ms)
+✔ WV007 P3 saved-state snapshots include actual growth parcel and generated woodland, untouched after planning (70.510017ms)
+✔ WV007 P3 adjacent irregular/rotated/concave/tiny parcels, holes and retained C4 spans use B fit and ownership (22.171487ms)
+✔ WV007 P3 missing envelopes/access defer parcels and never fabricate legacy gardens (3.159619ms)
+✔ WV007 P3 committed field holes/islands, erasure and empty reload replace all derived outlines (26.471139ms)
+✔ WV007 P3 layer coalesces revisions, keeps tree/boundary geometry across LOD and camera; hidden updates never invalidate (62.130727ms)
+✔ WV007 P3 stale completion, late disposal, failure/retry release sources exactly once (38.350003ms)
+✔ WV007 P3 selective GLBs validate and exact runtime closure excludes study and other-quality assets (115.499077ms)
+✔ WV007 P3 retains and reports conflicting earlier spans rather than silently deleting one (21.162832ms)
+✔ WV007 P3 surfaces and crop display share field holes and displayed triangle contacts (26.106564ms)
+✔ sampling math uses nearest-rank percentiles, excludes warmup and reports render work separately (13.617067ms)
+✔ hidden/manual pauses drop cross-gap intervals, invalidate interrupted windows and clean up (2.416479ms)
+✔ invalid timestamps, early stop and short windows cannot produce valid records (0.797231ms)
+✔ readiness enforces missing peers, loads, actual population, quality, LOD, pins and resource completeness (116.193255ms)
+✔ late loads, repeated updates and quality changes remain evidence even after ready again (4.641454ms)
+✔ low admission checks actual geometry/material/image quality, with shared resources allowed (12.022175ms)
+✔ context loss is recorded, disposal stops sampling and never disposes the host (1.216632ms)
+✔ privacy/schema: no arbitrary state, layer extras, renderer internals or private fields in exports (5.092532ms)
+✔ idle does not invent rendered FPS; month outcomes and view revisions require explicit admission (12.425122ms)
+✔ actual 30-home fixture: immutable view, deterministic camera, real month and isolated save (889.222278ms)
+✔ actual 100-home fixture: immutable view, deterministic camera, real month and isolated save (1714.295748ms)
+✔ manifest pins actual fixtures, selected sources, controller outputs and exact camera/month outcomes (2660.278739ms)
+✔ resource estimates deduplicate shared buffers/textures and include loader-retained unused images (1.204915ms)
+✔ P2 real frozen WILLOW-1048 normal: classification, ownership, contacts, lifecycle (6736.570967ms)
+✔ P2 real frozen WILLOW-1048 low: classification, ownership, contacts, lifecycle (1506.00862ms)
+✔ P2 real frozen WV007-RIVER-2099 normal: classification, ownership, contacts, lifecycle (4727.050926ms)
+✔ P2 real frozen WV007-RIVER-2099 low: classification, ownership, contacts, lifecycle (1740.296555ms)
+✔ P2 stale updates, late disposal, quality switches and failed staging preserve resource ownership (1319.145787ms)
+✔ P2 exact displayed contacts include both roots across a terrain diagonal (20.134884ms)
+✔ P2 actual widths/curves/T/acute corridors, rotated exclusions, crops/holes, protection and erased fields (1011.390608ms)
+✔ P2 consumes actual committed paint, erase and reloaded classifications without live-state writes (32.176342ms)
+✔ P2 full large world scales its atlas rather than stretching the study resolution (1499.224618ms)
+✔ P2 exact deterministic runtime closure and source pins; no hidden comparison deps (40.350726ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 24897.773017

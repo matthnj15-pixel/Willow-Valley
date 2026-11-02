@@ -12,7 +12,8 @@ test('ten fixed-scale designs, shell closure, mobile cameras and material contro
  await page.selectOption('#design','home-low-hip');for(const angle of ['rear','side','eye','roof'])await page.selectOption('#view',angle);
  await page.check('#mono');await page.check('#wire');await page.uncheck('#references');await page.selectOption('#design','facility-lumber');await page.screenshot({path:info.outputPath('lumber-wire.png')});expect(errors).toEqual([]);expect(external).toEqual([]);
 });
-for(const base of ['/','/dev/'])test('catalog cold-loads offline from game install without prior gallery visit '+base,async({page,context})=>{
+for(const base of ['/','/dev/'])test('historical catalog remains offline after an explicit online visit '+base,async({page,context})=>{
  test.setTimeout(60000);await page.goto(base+'?preview=1');await page.evaluate(async()=>{await navigator.serviceWorker.ready;if(!navigator.serviceWorker.controller)await new Promise(resolve=>navigator.serviceWorker.addEventListener('controllerchange',resolve,{once:true}));});
+ await page.goto(base+'ui-kit/building-catalog.html');await expect(page.locator('#catalog')).toHaveAttribute('data-loaded','10');
  await context.setOffline(true);await page.goto(base+'ui-kit/building-catalog.html');await expect(page.locator('#catalog')).toHaveAttribute('data-loaded','10');await page.selectOption('#collection','work');await page.selectOption('#design','facility-market');await page.reload();await expect(page.locator('#catalog')).toHaveAttribute('data-loaded','10');
 });

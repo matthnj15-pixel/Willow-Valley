@@ -1,0 +1,28 @@
+✔ P1 selected IDs retain HOME_IDS/visualIdentity; work roles and civic defaults are explicit (5.702947ms)
+✔ P1 fixture facility rotations match the application road/lane-facing legacy rule (5.409103ms)
+✔ P1 full rotated parcel, holes, concave notch and entrance/neighbor clearance (3.779538ms)
+✔ P1 samples shoreline corners, whole interior, unsafe grades and tall chimney bounds (4.199034ms)
+✔ P1 granary level floor and independent feet on displayed slope retain 1.35m open undercroft (1.314187ms)
+✔ P1 selective output hashes, explicit roots, geometric conservation, low image closure and validation (478.254073ms)
+✔ P1 actual start/generated/save snapshots remain byte-equivalent with stable fallback identities (172.64982ms)
+✔ P1 100-home requested normal stays normal regardless of settlement count (90.257568ms)
+✔ P1 async load coalescing, transforms/picking, requested normal, explicit distance, hidden and shared disposal (7.547209ms)
+✔ P1 stale quality/disposal callbacks cannot attach resources; load failure reports host legacy fallback (4.227391ms)
+✔ P1 preview is explicitly D and keyed by family/id/quality without economy (2.228851ms)
+✔ P5 authoritative frozen view preserves hashes, real curves/widths and state without turn-based invalidation (29.981508ms)
+✔ P5 one committed field mask respects paint/erase and feeds both P2 and P3 exactly once (48.4276ms)
+✔ P5 normal/low union registers one physical C4 fence and no fabricated parcel access (0.556024ms)
+✔ P5 retained C4 fence direction survives a rotated normal/low union (0.243481ms)
+✔ P5 exact-coordinate memo is bounded and does not quantize terrain or analytic grades (0.962916ms)
+✔ P5 omission of unused road-shading offsets changes no geometry or editor buffers (8.541932ms)
+✔ P5 installed closure includes all adopted profiles/diagnostics and excludes comparisons/checkpoints (8.144424ms)
+✔ P5 visible home bounds use actual transformed batch geometry (1.975826ms)
+✔ P5 admission pins every composed code input and selected runtime profile (41.262252ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 20
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1184.165452

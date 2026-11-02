@@ -43,6 +43,7 @@ let mode="explore",draft=createRoadDraft(),selectedBuild=null,liveGesture=null,l
 let zoneType="residential",lastZonePaintType="residential",zoneTool="paint",zoneEdits=[],zoneRadius=BRUSH_RADIUS;
 let camera={cx:525,cy:445,scale:1},pointers=new Map(),gesture=null,toastTimer;
 let active3D=null,last3DKey="",worldLoadGeneration=0;
+if(IS_PREVIEW)Object.defineProperty(window,'wv007Runtime',{configurable:true,get:()=>active3D?.getAdoptionRuntime?.()??null});
 function showTerrainFailure(error){
  console.warn("3D world render failed; saved game preserved",error);
  $("terrainLoad").hidden=false;
@@ -95,6 +96,7 @@ async function bootGameWorld({lite=false,preserveCamera=null}={}){
    if(sequence!==worldLoadGeneration)return;
   }
   active3D=mount(canvas,world,{
+   adoption:IS_PREVIEW,
    interactive:false,quality:lite||graphics.quality==="low"?"lite":"game",
    onReady:()=>{if(sequence===worldLoadGeneration){$("terrainLoad").hidden=true;window.__wvBoot?.ready();}},
    onError:error=>{if(sequence===worldLoadGeneration){
@@ -447,6 +449,7 @@ function menuPanel(){const el=document.createElement("div");
  });
  sheetButton(el,"Import a saved game",()=>{$("importSave").click();});
  if(IS_PREVIEW&&location.protocol!=="file:"){
+   const diagnostics=document.createElement('a');diagnostics.href='./ui-kit/wv007-integrated.html';diagnostics.className='download-link';diagnostics.textContent='Local renderer diagnostics · isolated settlements';el.append(diagnostics);
    const kit=document.createElement("a");kit.href="./ui-kit/";kit.className="download-link";
    kit.textContent="View the living UI kit";kit.setAttribute("aria-label","Open the interactive Willow Valley design system");el.append(kit);
  }

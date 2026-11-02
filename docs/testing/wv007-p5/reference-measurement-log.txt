@@ -1,0 +1,8 @@
+{"homes":30,"quality":"normal","full":true,"valid":false,"issues":["stale-layer:buildings","stale-layer:landscape","stale-layer:world"],"stats":{"count":2969,"medianMs":16.699999999254942,"p95Ms":17.09999999962747,"p99Ms":18.199999999254942,"rafFps":49.485642663324136,"longFramesOver33_34Ms":8,"longFramesOver50Ms":3,"renderedFrameObservations":1,"peakCalls":269,"peakTriangles":382521}}
+{"homes":30,"quality":"normal","ready":true}
+{"homes":30,"quality":"low","full":true,"valid":false,"issues":["stale-layer:buildings","stale-layer:landscape","stale-layer:world"],"stats":{"count":3294,"medianMs":16.699999999254942,"p95Ms":17.100000000558794,"p99Ms":18.5,"rafFps":54.90228759531647,"longFramesOver33_34Ms":8,"longFramesOver50Ms":4,"renderedFrameObservations":1,"peakCalls":234,"peakTriangles":177293}}
+{"homes":30,"quality":"low","ready":true}
+{"homes":100,"quality":"normal","full":true,"valid":true,"issues":[],"stats":{"count":75,"medianMs":818.0999999996275,"p95Ms":1018.2000000001863,"p99Ms":1053.4000000003725,"rafFps":1.2346085467834331,"longFramesOver33_34Ms":73,"longFramesOver50Ms":73,"renderedFrameObservations":74,"peakCalls":411,"peakTriangles":888689}}
+{"homes":100,"quality":"normal","ready":true}
+{"homes":100,"quality":"low","full":true,"valid":true,"issues":[],"stats":{"count":132,"medianMs":456.80000000074506,"p95Ms":568.0999999996275,"p99Ms":659.1000000005588,"rafFps":2.187320830253968,"longFramesOver33_34Ms":130,"longFramesOver50Ms":130,"renderedFrameObservations":131,"peakCalls":364,"peakTriangles":456463}}
+{"homes":100,"quality":"low","ready":true}

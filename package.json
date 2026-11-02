@@ -8,7 +8,7 @@
     "test:e2e": "playwright test",
     "build:offline": "node scripts/build-offline.mjs . offline.html",
     "build:icons": "node scripts/build-icons.mjs . .",
-    "build:assets": "node scripts/build-three.mjs && node scripts/build-architecture.mjs && node scripts/build-asset-cache.mjs && node scripts/validate-assets.mjs"
+    "build:assets": "node scripts/build-three.mjs && node scripts/build-architecture.mjs && node scripts/build-wv007-integration.mjs && node scripts/build-asset-cache.mjs && node scripts/validate-assets.mjs && node scripts/validate-wv007-runtime.mjs"
   },
   "devDependencies": {
     "@gltf-transform/core": "4.5.1",
