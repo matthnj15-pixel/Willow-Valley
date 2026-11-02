@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "revision": "wv007-p2-world-1",
+  "selectionRevision": "wv007-adoption-1",
+  "runtimeReady": false,
+  "recipe": "A3 brighter meadow palette and swept ribbons; A1 atmosphere/water/shore/forest/mineral; world-aligned field atlas and exact displayed vertex contacts",
+  "parents": [
+    {
+      "path": "environment-next/meadow-layer.mjs",
+      "bytes": 8539,
+      "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+    },
+    {
+      "path": "environment-next/previous-materials.mjs",
+      "bytes": 7517,
+      "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+    },
+    {
+      "path": "environment-next/atmosphere.mjs",
+      "bytes": 1706,
+      "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+    },
+    {
+      "path": "environment-next/preset.mjs",
+      "bytes": 401,
+      "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+    },
+    {
+      "path": "environment-next/visual-field.mjs",
+      "bytes": 2636,
+      "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+    }
+  ],
+  "closure": [
+    {
+      "path": "render-adoption/world/atmosphere.mjs",
+      "bytes": 1786,
+      "sha256": "38ae12ecadbfe1388bfb1518ed9b5163668f4d290d9ae5fa10e0eff449b6b8bf"
+    },
+    {
+      "path": "render-adoption/world/classification.mjs",
+      "bytes": 5358,
+      "sha256": "9c8c8dd77efa5b07309350b0eeb7a564dffb0976a54ee00d062d7b14fe073f4e"
+    },
+    {
+      "path": "render-adoption/world/fields.mjs",
+      "bytes": 3819,
+      "sha256": "e724207cf4a35c7474e4068585ff0e9628fdb1c4f96f8607934a2e66fadc990d"
+    },
+    {
+      "path": "render-adoption/world/grass.mjs",
+      "bytes": 5988,
+      "sha256": "888376de7e00abcf933a72cd319ea685863e1e18f60e459c815bd8931a88b081"
+    },
+    {
+      "path": "render-adoption/world/index.mjs",
+      "bytes": 5674,
+      "sha256": "14f4960415549963a5faa0b5555bda2d8ab1d43c67cc19409a8289be951444c4"
+    },
+    {
+      "path": "render-adoption/world/materials.mjs",
+      "bytes": 3760,
+      "sha256": "1a1b7871ad59a3ad3a38d7227bd835899cfd796828871be20be9f8d7b031e73d"
+    },
+    {
+      "path": "render-adoption/world/preset.mjs",
+      "bytes": 474,
+      "sha256": "561cf0a978fac79285b11e5b8fe9b2526b01c94dd347aeee863b2622a3021ccf"
+    },
+    {
+      "path": "render-adoption/world/recipe.mjs",
+      "bytes": 1584,
+      "sha256": "8df855ef4af435c03d4c7a3e371cf14169acad581450a8e55e0d55283916d9dd"
+    },
+    {
+      "path": "render-adoption/world/source-pins.mjs",
+      "bytes": 804,
+      "sha256": "054bdea9338c9cbc880df9890b69e6a92f579d63ffc0f77803740582f93e0ca5"
+    },
+    {
+      "path": "render-adoption/world/spatial.mjs",
+      "bytes": 2025,
+      "sha256": "b252e115e26bd886166d32786cdf6a3d4d0e68b6f5ef0fa045ca2143cfe33c52"
+    },
+    {
+      "path": "assets/vendor/three.module.mjs",
+      "bytes": 795147,
+      "sha256": "ddccd4615947d8e44b8eac538d2a94153956a153705a596376557101f02ae6db"
+    }
+  ],
+  "images": [],
+  "glbs": [],
+  "externalResources": [],
+  "offlineInstalled": false,
+  "notes": [
+    "Original project procedural derivatives; no A2/hamlet/runtime photographic assets.",
+    "No GLB outputs; explicit GLB validation is not applicable.",
+    "Host attaches existing terrain, road and clipped water geometry.",
+    "Shared vendor module is borrowed and never disposed by the layer."
+  ],
+  "review": [
+    {
+      "path": "render-adoption/world/fixtures.mjs",
+      "bytes": 2415,
+      "sha256": "dce315e41f3f35265d09051bd7e4886474d85bb416732960825b754a3c5d2157"
+    },
+    {
+      "path": "render-adoption/world/review.mjs",
+      "bytes": 5186,
+      "sha256": "75ecfadce49e24ddd9d7d14a128f768a9dd170384656c44195790af9505da463"
+    },
+    {
+      "path": "assets/wv/runtime-environment-v1/review.html",
+      "bytes": 683,
+      "sha256": "e269ed2953ca235b55e0c71024c6558a5dbee3a713a4146011d58d4f4b4965f3"
+    },
+    {
+      "path": "assets/wv/runtime-environment-v1/review.mjs",
+      "bytes": 99130,
+      "sha256": "4e0245f55ac75af3b6434e2d20af2882e70f4f3f9d05567f2373049c3cacf83d"
+    }
+  ]
+}

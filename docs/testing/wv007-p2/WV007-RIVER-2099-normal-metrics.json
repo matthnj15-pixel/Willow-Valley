@@ -1,0 +1,1040 @@
+{
+  "seed": "WV007-RIVER-2099",
+  "quality": "normal",
+  "measurements": [
+    {
+      "name": "homes",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 497,
+          "y": 555
+        }
+      },
+      "status": {
+        "contractRevision": 1,
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "viewRevision": "WV007-RIVER-2099:initial",
+        "quality": "normal",
+        "effectiveLods": {
+          "terrain": "A3-field-normal",
+          "water": "A1-bounded-ripple",
+          "grass": {
+            "near": 4,
+            "mid": 0,
+            "low": 0
+          }
+        },
+        "pendingLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 16,
+          "columns": 13,
+          "rows": 10,
+          "width": 209,
+          "height": 161,
+          "decodedBytes": 269192,
+          "counts": {
+            "meadow": 20901,
+            "forest": 8914,
+            "lake": 1713,
+            "bank": 258,
+            "road": 316,
+            "rock": 507,
+            "river": 1040
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 4,
+          "visibleChunks": 4,
+          "tufts": 242,
+          "triangles": 22990,
+          "vertices": 32186,
+          "geometryBytes": 1296636,
+          "geometryBuilds": 4,
+          "lods": {
+            "near": 4,
+            "mid": 0,
+            "low": 0
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 269192,
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 2,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 2,
+          "calls": 9,
+          "triangles": 31180,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 900,
+          "drawingBufferHeight": 829,
+          "outputColorSpace": "srgb",
+          "geometries": 9,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "meadow",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 140,
+          "y": 140
+        }
+      },
+      "status": {
+        "contractRevision": 1,
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "viewRevision": "WV007-RIVER-2099:initial",
+        "quality": "normal",
+        "effectiveLods": {
+          "terrain": "A3-field-normal",
+          "water": "A1-bounded-ripple",
+          "grass": {
+            "near": 16,
+            "mid": 0,
+            "low": 0
+          }
+        },
+        "pendingLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 16,
+          "columns": 13,
+          "rows": 10,
+          "width": 209,
+          "height": 161,
+          "decodedBytes": 269192,
+          "counts": {
+            "meadow": 20901,
+            "forest": 8914,
+            "lake": 1713,
+            "bank": 258,
+            "road": 316,
+            "rock": 507,
+            "river": 1040
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 16,
+          "visibleChunks": 16,
+          "tufts": 1954,
+          "triangles": 185630,
+          "vertices": 259882,
+          "geometryBytes": 10469532,
+          "geometryBuilds": 20,
+          "lods": {
+            "near": 16,
+            "mid": 0,
+            "low": 0
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 269192,
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 3,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 3,
+          "calls": 19,
+          "triangles": 192186,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 900,
+          "drawingBufferHeight": 829,
+          "outputColorSpace": "srgb",
+          "geometries": 21,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "forest",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 230,
+          "y": 140
+        }
+      },
+      "status": {
+        "contractRevision": 1,
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "viewRevision": "WV007-RIVER-2099:initial",
+        "quality": "normal",
+        "effectiveLods": {
+          "terrain": "A3-field-normal",
+          "water": "A1-bounded-ripple",
+          "grass": {
+            "near": 16,
+            "mid": 0,
+            "low": 0
+          }
+        },
+        "pendingLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 16,
+          "columns": 13,
+          "rows": 10,
+          "width": 209,
+          "height": 161,
+          "decodedBytes": 269192,
+          "counts": {
+            "meadow": 20901,
+            "forest": 8914,
+            "lake": 1713,
+            "bank": 258,
+            "road": 316,
+            "rock": 507,
+            "river": 1040
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 16,
+          "visibleChunks": 16,
+          "tufts": 1937,
+          "triangles": 184015,
+          "vertices": 257621,
+          "geometryBytes": 10378446,
+          "geometryBuilds": 28,
+          "lods": {
+            "near": 16,
+            "mid": 0,
+            "low": 0
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 269192,
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 4,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 4,
+          "calls": 19,
+          "triangles": 190571,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 900,
+          "drawingBufferHeight": 829,
+          "outputColorSpace": "srgb",
+          "geometries": 21,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "rock",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 1160,
+          "y": 455
+        }
+      },
+      "status": {
+        "contractRevision": 1,
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "viewRevision": "WV007-RIVER-2099:initial",
+        "quality": "normal",
+        "effectiveLods": {
+          "terrain": "A3-field-normal",
+          "water": "A1-bounded-ripple",
+          "grass": {
+            "near": 15,
+            "mid": 0,
+            "low": 0
+          }
+        },
+        "pendingLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 16,
+          "columns": 13,
+          "rows": 10,
+          "width": 209,
+          "height": 161,
+          "decodedBytes": 269192,
+          "counts": {
+            "meadow": 20901,
+            "forest": 8914,
+            "lake": 1713,
+            "bank": 258,
+            "road": 316,
+            "rock": 507,
+            "river": 1040
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 15,
+          "visibleChunks": 15,
+          "tufts": 1356,
+          "triangles": 128820,
+          "vertices": 180348,
+          "geometryBytes": 7265448,
+          "geometryBuilds": 43,
+          "lods": {
+            "near": 15,
+            "mid": 0,
+            "low": 0
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 269192,
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 5,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 5,
+          "calls": 18,
+          "triangles": 135376,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 900,
+          "drawingBufferHeight": 829,
+          "outputColorSpace": "srgb",
+          "geometries": 20,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "bank",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 290,
+          "y": 395
+        }
+      },
+      "status": {
+        "contractRevision": 1,
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "viewRevision": "WV007-RIVER-2099:initial",
+        "quality": "normal",
+        "effectiveLods": {
+          "terrain": "A3-field-normal",
+          "water": "A1-bounded-ripple",
+          "grass": {
+            "near": 13,
+            "mid": 0,
+            "low": 0
+          }
+        },
+        "pendingLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 16,
+          "columns": 13,
+          "rows": 10,
+          "width": 209,
+          "height": 161,
+          "decodedBytes": 269192,
+          "counts": {
+            "meadow": 20901,
+            "forest": 8914,
+            "lake": 1713,
+            "bank": 258,
+            "road": 316,
+            "rock": 507,
+            "river": 1040
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 13,
+          "visibleChunks": 13,
+          "tufts": 1205,
+          "triangles": 114475,
+          "vertices": 160265,
+          "geometryBytes": 6456390,
+          "geometryBuilds": 56,
+          "lods": {
+            "near": 13,
+            "mid": 0,
+            "low": 0
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 269192,
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 6,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 6,
+          "calls": 16,
+          "triangles": 121031,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 900,
+          "drawingBufferHeight": 829,
+          "outputColorSpace": "srgb",
+          "geometries": 18,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "lake",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 245,
+          "y": 410
+        }
+      },
+      "status": {
+        "contractRevision": 1,
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "viewRevision": "WV007-RIVER-2099:initial",
+        "quality": "normal",
+        "effectiveLods": {
+          "terrain": "A3-field-normal",
+          "water": "A1-bounded-ripple",
+          "grass": {
+            "near": 12,
+            "mid": 0,
+            "low": 0
+          }
+        },
+        "pendingLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 16,
+          "columns": 13,
+          "rows": 10,
+          "width": 209,
+          "height": 161,
+          "decodedBytes": 269192,
+          "counts": {
+            "meadow": 20901,
+            "forest": 8914,
+            "lake": 1713,
+            "bank": 258,
+            "road": 316,
+            "rock": 507,
+            "river": 1040
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 12,
+          "visibleChunks": 12,
+          "tufts": 1009,
+          "triangles": 95855,
+          "vertices": 134197,
+          "geometryBytes": 5406222,
+          "geometryBuilds": 58,
+          "lods": {
+            "near": 12,
+            "mid": 0,
+            "low": 0
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 269192,
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 7,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 7,
+          "calls": 14,
+          "triangles": 101461,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 900,
+          "drawingBufferHeight": 829,
+          "outputColorSpace": "srgb",
+          "geometries": 17,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "river",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 1145,
+          "y": 470
+        }
+      },
+      "status": {
+        "contractRevision": 1,
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "viewRevision": "WV007-RIVER-2099:initial",
+        "quality": "normal",
+        "effectiveLods": {
+          "terrain": "A3-field-normal",
+          "water": "A1-bounded-ripple",
+          "grass": {
+            "near": 15,
+            "mid": 0,
+            "low": 0
+          }
+        },
+        "pendingLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 16,
+          "columns": 13,
+          "rows": 10,
+          "width": 209,
+          "height": 161,
+          "decodedBytes": 269192,
+          "counts": {
+            "meadow": 20901,
+            "forest": 8914,
+            "lake": 1713,
+            "bank": 258,
+            "road": 316,
+            "rock": 507,
+            "river": 1040
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 15,
+          "visibleChunks": 15,
+          "tufts": 1229,
+          "triangles": 116755,
+          "vertices": 163457,
+          "geometryBytes": 6584982,
+          "geometryBuilds": 73,
+          "lods": {
+            "near": 15,
+            "mid": 0,
+            "low": 0
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 269192,
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 8,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 8,
+          "calls": 17,
+          "triangles": 123216,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 900,
+          "drawingBufferHeight": 829,
+          "outputColorSpace": "srgb",
+          "geometries": 19,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    },
+    {
+      "name": "wide",
+      "point": {
+        "found": true,
+        "target": {
+          "x": 497,
+          "y": 555
+        }
+      },
+      "status": {
+        "contractRevision": 1,
+        "sourcePins": [
+          {
+            "path": "environment-next/meadow-layer.mjs",
+            "sha256": "e8b539efc934616c05f3281ccee5e7b1017fd35f911a251b7e6f830e8f1d05d0"
+          },
+          {
+            "path": "environment-next/previous-materials.mjs",
+            "sha256": "f2488bca0f9065e9771effba1f989adf8c26ac0953646f654356ccb55b507113"
+          },
+          {
+            "path": "environment-next/atmosphere.mjs",
+            "sha256": "b6f92aca1f1dc039f6647e1b1fbe1af098463fe7e7b1cce7eda8fc23b5ebf42c"
+          },
+          {
+            "path": "environment-next/preset.mjs",
+            "sha256": "4ca21b71d5b332967af7101df049f292b5211cfec59fdab6d81639c05946ada7"
+          },
+          {
+            "path": "environment-next/visual-field.mjs",
+            "sha256": "aea9ff7ea6449161e4ad5d327be3b4dfc6793067c3ac034eff9bff8f0e3b399d"
+          }
+        ],
+        "viewRevision": "WV007-RIVER-2099:initial",
+        "quality": "normal",
+        "effectiveLods": {
+          "terrain": "A3-field-normal",
+          "water": "A1-bounded-ripple",
+          "grass": {
+            "near": 0,
+            "mid": 4,
+            "low": 0
+          }
+        },
+        "pendingLoads": 0,
+        "disposed": false,
+        "ready": true,
+        "runtimeReady": false,
+        "error": null,
+        "fields": {
+          "tileGame": 128,
+          "samplesPerTile": 16,
+          "columns": 13,
+          "rows": 10,
+          "width": 209,
+          "height": 161,
+          "decodedBytes": 269192,
+          "counts": {
+            "meadow": 20901,
+            "forest": 8914,
+            "lake": 1713,
+            "bank": 258,
+            "road": 316,
+            "rock": 507,
+            "river": 1040
+          },
+          "shoreDistanceMethod": "unsigned wet-mask chamfer; not bathymetry"
+        },
+        "fieldBuilds": 2,
+        "grass": {
+          "chunks": 4,
+          "visibleChunks": 4,
+          "tufts": 147,
+          "triangles": 2205,
+          "vertices": 3675,
+          "geometryBytes": 145530,
+          "geometryBuilds": 77,
+          "lods": {
+            "near": 0,
+            "mid": 4,
+            "low": 0
+          },
+          "chunkGame": 64,
+          "nearTrianglesPerTuft": 95,
+          "otherTrianglesPerTuft": 15,
+          "wind": false
+        },
+        "coverDeferred": false,
+        "unknownRoadWidths": 0,
+        "resources": {
+          "textures": 2,
+          "decodedTextureBytes": 269192,
+          "externalImages": 0,
+          "transferImageBytes": 0,
+          "normalMaps": 0,
+          "renderTargets": 0
+        },
+        "textureSamplesPerFragment": {
+          "terrain": 1,
+          "road": 0,
+          "water": 1,
+          "grass": 0
+        },
+        "surfaceTime": 0,
+        "scheduling": {
+          "ownsRAF": false,
+          "ownsTimers": false,
+          "viewportResizes": 0,
+          "visible": true
+        },
+        "acceptance": "P5 attachment, combined offline and target-device checks pending",
+        "draws": 9,
+        "viewportResizes": 1,
+        "renderer": {
+          "frame": 9,
+          "calls": 9,
+          "triangles": 10395,
+          "points": 0,
+          "lines": 0,
+          "drawingBufferWidth": 900,
+          "drawingBufferHeight": 829,
+          "outputColorSpace": "srgb",
+          "geometries": 9,
+          "textures": 3
+        },
+        "stateUnchanged": true
+      }
+    }
+  ],
+  "trueFrameIntervalsMs": [
+    217.70000000018626,
+    216.69999999995343,
+    216.89999999990687,
+    221.80000000004657,
+    219.5,
+    233.89999999990687,
+    240.20000000018626
+  ],
+  "device": "cloud Chromium software; no phone acceptance"
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "seed": "WV007-RIVER-2099",
+    "quality": "low",
+    "fieldSize": [
+      105,
+      81
+    ],
+    "fieldDecodedBytes": 68040,
+    "maxTufts": 384,
+    "maxGrassTriangles": 5760,
+    "maxReviewTriangles": 9798,
+    "maxReviewCalls": 15,
+    "maxGrassBytes": 380160,
+    "frameIntervalRangeMs": [
+      144.60000000009313,
+      148.80000000004657
+    ],
+    "allActualCategoriesFound": true,
+    "stateUnchanged": true
+  },
+  {
+    "seed": "WILLOW-1048",
+    "quality": "low",
+    "fieldSize": [
+      105,
+      81
+    ],
+    "fieldDecodedBytes": 68040,
+    "maxTufts": 384,
+    "maxGrassTriangles": 5760,
+    "maxReviewTriangles": 10581,
+    "maxReviewCalls": 16,
+    "maxGrassBytes": 380160,
+    "frameIntervalRangeMs": [
+      114,
+      129.29999999981374
+    ],
+    "allActualCategoriesFound": true,
+    "stateUnchanged": true
+  },
+  {
+    "seed": "WV007-RIVER-2099",
+    "quality": "normal",
+    "fieldSize": [
+      209,
+      161
+    ],
+    "fieldDecodedBytes": 269192,
+    "maxTufts": 1954,
+    "maxGrassTriangles": 185630,
+    "maxReviewTriangles": 192186,
+    "maxReviewCalls": 19,
+    "maxGrassBytes": 10469532,
+    "frameIntervalRangeMs": [
+      216.69999999995343,
+      240.20000000018626
+    ],
+    "allActualCategoriesFound": true,
+    "stateUnchanged": true
+  },
+  {
+    "seed": "WILLOW-1048",
+    "quality": "normal",
+    "fieldSize": [
+      209,
+      161
+    ],
+    "fieldDecodedBytes": 269192,
+    "maxTufts": 2048,
+    "maxGrassTriangles": 194560,
+    "maxReviewTriangles": 201121,
+    "maxReviewCalls": 19,
+    "maxGrassBytes": 10973184,
+    "frameIntervalRangeMs": [
+      178.89999999990687,
+      215.5
+    ],
+    "allActualCategoriesFound": true,
+    "stateUnchanged": true
+  }
+]
