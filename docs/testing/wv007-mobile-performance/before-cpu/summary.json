@@ -1,0 +1,18 @@
+[
+  {
+    "homes": 30,
+    "renderer": "three",
+    "quality": "normal",
+    "bootMs": 8305,
+    "errors": [],
+    "month": null
+  },
+  {
+    "homes": 100,
+    "renderer": "three",
+    "quality": "normal",
+    "bootMs": 11087,
+    "errors": [],
+    "month": null
+  }
+]

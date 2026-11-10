@@ -1,0 +1,7093 @@
+{
+  "method": "Medians of three independent per-path run statistics; min/max show run spread. Fixed 24-pose paths; intervals are callback/submission pacing, not physical-device FPS. Boot/editor/month are single observations per configuration, not repeated performance claims. CPU-only records suppress renderer.render. See raw records for all samples, source pins, effective LOD/resources and readiness transitions.",
+  "fixturePins": [
+    {
+      "path": "render-adoption/profiling/fixtures/100-homes.json",
+      "sha256": "bda45c846288bc9bb6f567e86ec8d4676b93029677644a17ec524208a015d3e9"
+    },
+    {
+      "path": "render-adoption/profiling/fixtures/30-homes.json",
+      "sha256": "d9708b1b179b368fdcd6c5d95df82faf197de17b1eb99ae759aeb80afec5e10b"
+    }
+  ],
+  "motion": [
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 19.5999999998603,
+          "p99Ms": 310.19999999995343,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 241,
+          "peakTriangles": 317535,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 4.199999999953434,
+            "p95Ms": 4.199999999953434,
+            "p99Ms": 4.199999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 16.9000000001397,
+          "p99Ms": 353.69999999995343,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 251,
+          "peakTriangles": 317535,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 2.3999999999068677,
+            "p95Ms": 2.3999999999068677,
+            "p99Ms": 2.3999999999068677,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 172.80000000004657,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 251,
+          "peakTriangles": 317535,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 2.699999999953434,
+            "p95Ms": 2.699999999953434,
+            "p99Ms": 2.699999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.600000000093132,
+        "min": 16.600000000093132,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 16.9000000001397,
+        "min": 16.800000000046566,
+        "max": 19.5999999998603
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 299.30000000004657,
+          "p95Ms": 401.5,
+          "p99Ms": 419,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 286,
+          "peakTriangles": 336590,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 3.699999999953434,
+            "p95Ms": 86.69999999995343,
+            "p99Ms": 94.19999999995343,
+            "over33_33": 3,
+            "over50": 2
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 319.20000000018626,
+          "p95Ms": 394.69999999995343,
+          "p99Ms": 403.39999999990687,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 296,
+          "peakTriangles": 336590,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.6000000000931323,
+            "p95Ms": 74.60000000009313,
+            "p99Ms": 85.5999999998603,
+            "over33_33": 3,
+            "over50": 2
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 218.30000000004657,
+          "p95Ms": 351.29999999981374,
+          "p99Ms": 393.89999999990687,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 296,
+          "peakTriangles": 336590,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.7000000001862645,
+            "p95Ms": 64.29999999981374,
+            "p99Ms": 83.60000000009313,
+            "over33_33": 2,
+            "over50": 2
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 299.30000000004657,
+        "min": 218.30000000004657,
+        "max": 319.20000000018626
+      },
+      "runP95Ms": {
+        "median": 394.69999999995343,
+        "min": 351.29999999981374,
+        "max": 401.5
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 316.69999999995343,
+          "p95Ms": 1080.8999999999069,
+          "p99Ms": 1156.8999999999069,
+          "over33_33": 24,
+          "over50": 23,
+          "geometryCalls": 11,
+          "geometryMs": 3912.499999999767,
+          "uploads": 44,
+          "uploadedBytes": 71146944,
+          "changedFrameObservations": 24,
+          "peakCalls": 256,
+          "peakTriangles": 327058,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 4.2999999998137355,
+            "p95Ms": 87.30000000004657,
+            "p99Ms": 105,
+            "over33_33": 9,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 364,
+          "p95Ms": 1079.6999999999534,
+          "p99Ms": 1159.6000000000931,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 11,
+          "geometryMs": 3877.8000000005122,
+          "uploads": 44,
+          "uploadedBytes": 71146944,
+          "changedFrameObservations": 24,
+          "peakCalls": 257,
+          "peakTriangles": 327058,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 4.600000000093132,
+            "p95Ms": 75.89999999990687,
+            "p99Ms": 98.79999999981374,
+            "over33_33": 9,
+            "over50": 8
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 307.89999999990687,
+          "p95Ms": 1092.3999999999069,
+          "p99Ms": 1138.1000000000931,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 11,
+          "geometryMs": 3809.7000000001863,
+          "uploads": 44,
+          "uploadedBytes": 71146944,
+          "changedFrameObservations": 24,
+          "peakCalls": 257,
+          "peakTriangles": 327058,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 3.300000000046566,
+            "p95Ms": 81.9000000001397,
+            "p99Ms": 103.10000000009313,
+            "over33_33": 10,
+            "over50": 8
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 316.69999999995343,
+        "min": 307.89999999990687,
+        "max": 364
+      },
+      "runP95Ms": {
+        "median": 1080.8999999999069,
+        "min": 1079.6999999999534,
+        "max": 1092.3999999999069
+      },
+      "runGeometryMs": {
+        "median": 3877.8000000005122,
+        "min": 3809.7000000001863,
+        "max": 3912.499999999767
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 218.4000000001397,
+          "p95Ms": 382.39999999990687,
+          "p99Ms": 1061,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 719.3999999999069,
+          "uploads": 8,
+          "uploadedBytes": 12935808,
+          "changedFrameObservations": 24,
+          "peakCalls": 309,
+          "peakTriangles": 332006,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.800000000046566,
+            "p95Ms": 8.700000000186265,
+            "p99Ms": 21.700000000186265,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 287.39999999990687,
+          "p95Ms": 389.70000000018626,
+          "p99Ms": 960.3999999999069,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 702.4000000001397,
+          "uploads": 8,
+          "uploadedBytes": 12935808,
+          "changedFrameObservations": 24,
+          "peakCalls": 309,
+          "peakTriangles": 332006,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.5999999998603016,
+            "p95Ms": 4.300000000046566,
+            "p99Ms": 19.9000000001397,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 292.30000000004657,
+          "p95Ms": 366.5999999998603,
+          "p99Ms": 1057.6999999999534,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 730.1000000000931,
+          "uploads": 8,
+          "uploadedBytes": 12935808,
+          "changedFrameObservations": 24,
+          "peakCalls": 309,
+          "peakTriangles": 332006,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.300000000046566,
+            "p95Ms": 4.7999999998137355,
+            "p99Ms": 24,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 287.39999999990687,
+        "min": 218.4000000001397,
+        "max": 292.30000000004657
+      },
+      "runP95Ms": {
+        "median": 382.39999999990687,
+        "min": 366.5999999998603,
+        "max": 389.70000000018626
+      },
+      "runGeometryMs": {
+        "median": 719.3999999999069,
+        "min": 702.4000000001397,
+        "max": 730.1000000000931
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 14.099999999860302,
+          "p95Ms": 546.3000000000466,
+          "p99Ms": 547.3000000000466,
+          "over33_33": 12,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 12,
+          "peakCalls": 268,
+          "peakTriangles": 588238,
+          "drawCpu": {
+            "count": 13,
+            "medianMs": 3.199999999953434,
+            "p95Ms": 3.6000000000931323,
+            "p99Ms": 3.6000000000931323,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 14.099999999860302,
+          "p95Ms": 508.60000000009313,
+          "p99Ms": 509.30000000004657,
+          "over33_33": 12,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 12,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 13,
+            "medianMs": 3.0999999998603016,
+            "p95Ms": 4,
+            "p99Ms": 4,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 295.60000000009313,
+          "p95Ms": 526.6000000000931,
+          "p99Ms": 551.8000000000466,
+          "over33_33": 13,
+          "over50": 13,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 13,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 15,
+            "medianMs": 3.3999999999068677,
+            "p95Ms": 6.699999999953434,
+            "p99Ms": 6.699999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 14.099999999860302,
+        "min": 14.099999999860302,
+        "max": 295.60000000009313
+      },
+      "runP95Ms": {
+        "median": 526.6000000000931,
+        "min": 508.60000000009313,
+        "max": 546.3000000000466
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 531.6000000000931,
+          "p95Ms": 660.3000000000466,
+          "p99Ms": 673,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 305,
+          "peakTriangles": 605975,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 9.900000000139698,
+            "p95Ms": 88.30000000004657,
+            "p99Ms": 114.5999999998603,
+            "over33_33": 10,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 502.29999999981374,
+          "p95Ms": 672.0999999998603,
+          "p99Ms": 738.5999999998603,
+          "over33_33": 24,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 318,
+          "peakTriangles": 606332,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 15.800000000046566,
+            "p95Ms": 85.30000000004657,
+            "p99Ms": 112,
+            "over33_33": 12,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 520.2000000001863,
+          "p95Ms": 642.9000000001397,
+          "p99Ms": 728.7000000001863,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 318,
+          "peakTriangles": 606332,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 10,
+            "p95Ms": 87.5,
+            "p99Ms": 116.20000000018626,
+            "over33_33": 8,
+            "over50": 7
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 520.2000000001863,
+        "min": 502.29999999981374,
+        "max": 531.6000000000931
+      },
+      "runP95Ms": {
+        "median": 660.3000000000466,
+        "min": 642.9000000001397,
+        "max": 672.0999999998603
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 492,
+          "p95Ms": 1423.6000000000931,
+          "p99Ms": 1449.1999999999534,
+          "over33_33": 24,
+          "over50": 24,
+          "geometryCalls": 11,
+          "geometryMs": 4684.699999999721,
+          "uploads": 44,
+          "uploadedBytes": 90580248,
+          "changedFrameObservations": 24,
+          "peakCalls": 286,
+          "peakTriangles": 598122,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 20.800000000046566,
+            "p95Ms": 71.69999999995343,
+            "p99Ms": 89.9000000001397,
+            "over33_33": 11,
+            "over50": 8
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 517.3000000000466,
+          "p95Ms": 1479,
+          "p99Ms": 1535.0999999998603,
+          "over33_33": 24,
+          "over50": 24,
+          "geometryCalls": 11,
+          "geometryMs": 4761.600000000326,
+          "uploads": 44,
+          "uploadedBytes": 90580248,
+          "changedFrameObservations": 24,
+          "peakCalls": 287,
+          "peakTriangles": 598122,
+          "drawCpu": {
+            "count": 26,
+            "medianMs": 12,
+            "p95Ms": 87.19999999995343,
+            "p99Ms": 108.20000000018626,
+            "over33_33": 11,
+            "over50": 10
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 538.4000000001397,
+          "p95Ms": 1542.8000000000466,
+          "p99Ms": 1548.5,
+          "over33_33": 24,
+          "over50": 24,
+          "geometryCalls": 11,
+          "geometryMs": 4769.499999999767,
+          "uploads": 44,
+          "uploadedBytes": 90580248,
+          "changedFrameObservations": 24,
+          "peakCalls": 287,
+          "peakTriangles": 598122,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 12.699999999953434,
+            "p95Ms": 80.30000000004657,
+            "p99Ms": 87.30000000004657,
+            "over33_33": 11,
+            "over50": 10
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 517.3000000000466,
+        "min": 492,
+        "max": 538.4000000001397
+      },
+      "runP95Ms": {
+        "median": 1479,
+        "min": 1423.6000000000931,
+        "max": 1542.8000000000466
+      },
+      "runGeometryMs": {
+        "median": 4761.600000000326,
+        "min": 4684.699999999721,
+        "max": 4769.499999999767
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 385.0999999998603,
+          "p95Ms": 556.8000000000466,
+          "p99Ms": 1332.8000000000466,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 930.7999999998137,
+          "uploads": 8,
+          "uploadedBytes": 16469136,
+          "changedFrameObservations": 24,
+          "peakCalls": 328,
+          "peakTriangles": 597098,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 2.6000000000931323,
+            "p95Ms": 3.6000000000931323,
+            "p99Ms": 21.899999999906868,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 360.29999999981374,
+          "p95Ms": 534.8000000000466,
+          "p99Ms": 1280.9000000001397,
+          "over33_33": 24,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 919.1999999999534,
+          "uploads": 8,
+          "uploadedBytes": 16469136,
+          "changedFrameObservations": 24,
+          "peakCalls": 328,
+          "peakTriangles": 597098,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 2.699999999953434,
+            "p95Ms": 8.300000000046566,
+            "p99Ms": 32.699999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 441.60000000009313,
+          "p95Ms": 641.6999999999534,
+          "p99Ms": 1234.4000000001397,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 895.8999999999069,
+          "uploads": 8,
+          "uploadedBytes": 16469136,
+          "changedFrameObservations": 24,
+          "peakCalls": 328,
+          "peakTriangles": 597098,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 2.6000000000931323,
+            "p95Ms": 22.199999999953434,
+            "p99Ms": 22.199999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 385.0999999998603,
+        "min": 360.29999999981374,
+        "max": 441.60000000009313
+      },
+      "runP95Ms": {
+        "median": 556.8000000000466,
+        "min": 534.8000000000466,
+        "max": 641.6999999999534
+      },
+      "runGeometryMs": {
+        "median": 919.1999999999534,
+        "min": 895.8999999999069,
+        "max": 930.7999999998137
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 48.199999999953434,
+          "p99Ms": 75.60000000009313,
+          "over33_33": 2,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.19999999995343387,
+            "p99Ms": 0.19999999995343387,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 34.300000000046566,
+          "p99Ms": 64.30000000004657,
+          "over33_33": 2,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0,
+            "p95Ms": 0,
+            "p99Ms": 0,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 80.30000000004657,
+          "p99Ms": 86.89999999990687,
+          "over33_33": 2,
+          "over50": 2,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.09999999986030161,
+            "p95Ms": 0.09999999986030161,
+            "p99Ms": 0.09999999986030161,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.699999999953434,
+        "min": 16.699999999953434,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 48.199999999953434,
+        "min": 34.300000000046566,
+        "max": 80.30000000004657
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 81.29999999981374,
+          "p95Ms": 92.5,
+          "p99Ms": 98.29999999981374,
+          "over33_33": 24,
+          "over50": 22,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 66.89999999990687,
+          "p95Ms": 76.29999999981374,
+          "p99Ms": 78,
+          "over33_33": 24,
+          "over50": 13,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 82.80000000004657,
+          "p95Ms": 97.4000000001397,
+          "p99Ms": 111.10000000009313,
+          "over33_33": 24,
+          "over50": 24,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 81.29999999981374,
+        "min": 66.89999999990687,
+        "max": 82.80000000004657
+      },
+      "runP95Ms": {
+        "median": 92.5,
+        "min": 76.29999999981374,
+        "max": 97.4000000001397
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 82.5,
+          "p95Ms": 95.69999999995343,
+          "p99Ms": 97.19999999995343,
+          "over33_33": 24,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 64.0999999998603,
+          "p95Ms": 74.39999999990687,
+          "p99Ms": 74.4000000001397,
+          "over33_33": 24,
+          "over50": 13,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 88,
+          "p95Ms": 90.70000000018626,
+          "p99Ms": 94.29999999981374,
+          "over33_33": 24,
+          "over50": 24,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.2999999998137355,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 82.5,
+        "min": 64.0999999998603,
+        "max": 88
+      },
+      "runP95Ms": {
+        "median": 90.70000000018626,
+        "min": 74.39999999990687,
+        "max": 95.69999999995343
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 55,
+          "p95Ms": 77.19999999995343,
+          "p99Ms": 77.89999999990687,
+          "over33_33": 20,
+          "over50": 13,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 80,
+          "p95Ms": 100.69999999995343,
+          "p99Ms": 100.9000000001397,
+          "over33_33": 23,
+          "over50": 21,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 79.5,
+          "p95Ms": 91.89999999990687,
+          "p99Ms": 92.29999999981374,
+          "over33_33": 24,
+          "over50": 21,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 79.5,
+        "min": 55,
+        "max": 80
+      },
+      "runP95Ms": {
+        "median": 91.89999999990687,
+        "min": 77.19999999995343,
+        "max": 100.69999999995343
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 74.40000000002328,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 3.400000000023283,
+            "p95Ms": 3.400000000023283,
+            "p99Ms": 3.400000000023283,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 71.90000000002328,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 2.1000000000931323,
+            "p95Ms": 2.1000000000931323,
+            "p99Ms": 2.1000000000931323,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 131.19999999995343,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 1.8000000000465661,
+            "p95Ms": 1.8000000000465661,
+            "p99Ms": 1.8000000000465661,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.699999999953434,
+        "min": 16.600000000093132,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 16.800000000046566,
+        "min": 16.800000000046566,
+        "max": 16.800000000046566
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 123,
+          "p95Ms": 194.5,
+          "p99Ms": 228.90000000002328,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 154637,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.599999999976717,
+            "p95Ms": 71.69999999995343,
+            "p99Ms": 95.59999999997672,
+            "over33_33": 2,
+            "over50": 2
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 140.90000000002328,
+          "p95Ms": 228,
+          "p99Ms": 235.69999999995343,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 154637,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2,
+            "p95Ms": 66.09999999997672,
+            "p99Ms": 90.89999999990687,
+            "over33_33": 3,
+            "over50": 2
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 119.09999999997672,
+          "p95Ms": 190.5,
+          "p99Ms": 191.09999999997672,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 154637,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.199999999953434,
+            "p95Ms": 67.69999999995343,
+            "p99Ms": 88.69999999995343,
+            "over33_33": 3,
+            "over50": 3
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 123,
+        "min": 119.09999999997672,
+        "max": 140.90000000002328
+      },
+      "runP95Ms": {
+        "median": 194.5,
+        "min": 190.5,
+        "max": 228
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 157.89999999990687,
+          "p95Ms": 627.6000000000931,
+          "p99Ms": 665.9000000000233,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 10,
+          "geometryMs": 2436.099999999744,
+          "uploads": 40,
+          "uploadedBytes": 47148480,
+          "changedFrameObservations": 24,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.900000000023283,
+            "p95Ms": 80.69999999995343,
+            "p99Ms": 126.09999999997672,
+            "over33_33": 8,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 153.39999999990687,
+          "p95Ms": 613.5,
+          "p99Ms": 615.5,
+          "over33_33": 24,
+          "over50": 23,
+          "geometryCalls": 10,
+          "geometryMs": 2318.79999999993,
+          "uploads": 40,
+          "uploadedBytes": 47148480,
+          "changedFrameObservations": 24,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 4,
+            "p95Ms": 103.30000000004657,
+            "p99Ms": 106.90000000002328,
+            "over33_33": 8,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 163.09999999997672,
+          "p95Ms": 627.2999999999302,
+          "p99Ms": 628.5999999999767,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 10,
+          "geometryMs": 2458.79999999993,
+          "uploads": 40,
+          "uploadedBytes": 47148480,
+          "changedFrameObservations": 24,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.699999999953434,
+            "p95Ms": 75.60000000009313,
+            "p99Ms": 105.5,
+            "over33_33": 10,
+            "over50": 7
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 157.89999999990687,
+        "min": 153.39999999990687,
+        "max": 163.09999999997672
+      },
+      "runP95Ms": {
+        "median": 627.2999999999302,
+        "min": 613.5,
+        "max": 627.6000000000931
+      },
+      "runGeometryMs": {
+        "median": 2436.099999999744,
+        "min": 2318.79999999993,
+        "max": 2458.79999999993
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 112.10000000009313,
+          "p95Ms": 169.69999999995343,
+          "p99Ms": 634,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 494.29999999993015,
+          "uploads": 8,
+          "uploadedBytes": 9429696,
+          "changedFrameObservations": 24,
+          "peakCalls": 200,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1.7999999999301508,
+            "p95Ms": 2.400000000023283,
+            "p99Ms": 18.399999999906868,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 133.09999999997672,
+          "p95Ms": 172.90000000002328,
+          "p99Ms": 648.5999999999767,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 506.20000000006985,
+          "uploads": 8,
+          "uploadedBytes": 9429696,
+          "changedFrameObservations": 24,
+          "peakCalls": 200,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1.599999999976717,
+            "p95Ms": 9.29999999993015,
+            "p99Ms": 17.5,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 129.30000000004657,
+          "p95Ms": 171.40000000002328,
+          "p99Ms": 618.7000000000698,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 484.70000000006985,
+          "uploads": 8,
+          "uploadedBytes": 9429696,
+          "changedFrameObservations": 24,
+          "peakCalls": 200,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1.7000000000698492,
+            "p95Ms": 3.8999999999068677,
+            "p99Ms": 19.100000000093132,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 129.30000000004657,
+        "min": 112.10000000009313,
+        "max": 133.09999999997672
+      },
+      "runP95Ms": {
+        "median": 171.40000000002328,
+        "min": 169.69999999995343,
+        "max": 172.90000000002328
+      },
+      "runGeometryMs": {
+        "median": 494.29999999993015,
+        "min": 484.70000000006985,
+        "max": 506.20000000006985
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 15.70000000006985,
+          "p95Ms": 214.39999999990687,
+          "p99Ms": 228.40000000002328,
+          "over33_33": 12,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 12,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 13,
+            "medianMs": 2.200000000069849,
+            "p95Ms": 2.700000000069849,
+            "p99Ms": 2.700000000069849,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 133.5,
+          "p95Ms": 264.69999999995343,
+          "p99Ms": 270.5999999999767,
+          "over33_33": 13,
+          "over50": 13,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 13,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 15,
+            "medianMs": 2.299999999930151,
+            "p95Ms": 3.199999999953434,
+            "p99Ms": 3.199999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 12.900000000023283,
+          "p95Ms": 277.79999999993015,
+          "p99Ms": 279.20000000006985,
+          "over33_33": 12,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 12,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 13,
+            "medianMs": 2.099999999976717,
+            "p95Ms": 2.299999999930151,
+            "p99Ms": 2.299999999930151,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 15.70000000006985,
+        "min": 12.900000000023283,
+        "max": 133.5
+      },
+      "runP95Ms": {
+        "median": 264.69999999995343,
+        "min": 214.39999999990687,
+        "max": 277.79999999993015
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 213.39999999990687,
+          "p95Ms": 317.80000000004657,
+          "p99Ms": 327.30000000004657,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 193,
+          "peakTriangles": 319136,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 8.20000000006985,
+            "p95Ms": 94.39999999990687,
+            "p99Ms": 94.69999999995343,
+            "over33_33": 9,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 247.19999999995343,
+          "p95Ms": 345.5999999999767,
+          "p99Ms": 357.9000000000233,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 193,
+          "peakTriangles": 319136,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 9.900000000023283,
+            "p95Ms": 76.90000000002328,
+            "p99Ms": 86.5,
+            "over33_33": 10,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 236.20000000006985,
+          "p95Ms": 339.69999999995343,
+          "p99Ms": 344.20000000006985,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 193,
+          "peakTriangles": 319136,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 7.400000000023283,
+            "p95Ms": 80,
+            "p99Ms": 95.40000000002328,
+            "over33_33": 9,
+            "over50": 6
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 236.20000000006985,
+        "min": 213.39999999990687,
+        "max": 247.19999999995343
+      },
+      "runP95Ms": {
+        "median": 339.69999999995343,
+        "min": 317.80000000004657,
+        "max": 345.5999999999767
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 254,
+          "p95Ms": 931.5,
+          "p99Ms": 1067.7999999999302,
+          "over33_33": 24,
+          "over50": 24,
+          "geometryCalls": 10,
+          "geometryMs": 3359.5999999998603,
+          "uploads": 40,
+          "uploadedBytes": 62870040,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 26,
+            "medianMs": 10.400000000023283,
+            "p95Ms": 72.29999999993015,
+            "p99Ms": 76.80000000004657,
+            "over33_33": 12,
+            "over50": 8
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 206.59999999997672,
+          "p95Ms": 849.7999999999302,
+          "p99Ms": 865.8000000000466,
+          "over33_33": 24,
+          "over50": 24,
+          "geometryCalls": 10,
+          "geometryMs": 3133.600000000093,
+          "uploads": 40,
+          "uploadedBytes": 62870040,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 11.400000000023283,
+            "p95Ms": 66.19999999995343,
+            "p99Ms": 72.29999999993015,
+            "over33_33": 10,
+            "over50": 8
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 275.9000000000233,
+          "p95Ms": 942.5,
+          "p99Ms": 974.5,
+          "over33_33": 24,
+          "over50": 24,
+          "geometryCalls": 10,
+          "geometryMs": 3198.5999999999767,
+          "uploads": 40,
+          "uploadedBytes": 62870040,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 10.79999999993015,
+            "p95Ms": 68.5,
+            "p99Ms": 90.20000000006985,
+            "over33_33": 10,
+            "over50": 7
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 254,
+        "min": 206.59999999997672,
+        "max": 275.9000000000233
+      },
+      "runP95Ms": {
+        "median": 931.5,
+        "min": 849.7999999999302,
+        "max": 942.5
+      },
+      "runGeometryMs": {
+        "median": 3198.5999999999767,
+        "min": 3133.600000000093,
+        "max": 3359.5999999998603
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 163.39999999990687,
+          "p95Ms": 277,
+          "p99Ms": 834.2000000000698,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 646.5,
+          "uploads": 8,
+          "uploadedBytes": 12574008,
+          "changedFrameObservations": 24,
+          "peakCalls": 208,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 2.299999999930151,
+            "p95Ms": 3.900000000023283,
+            "p99Ms": 21.800000000046566,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 170.40000000002328,
+          "p95Ms": 285.4000000000233,
+          "p99Ms": 826.9000000000233,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 667.5,
+          "uploads": 8,
+          "uploadedBytes": 12574008,
+          "changedFrameObservations": 24,
+          "peakCalls": 208,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 1.7999999999301508,
+            "p95Ms": 7.200000000069849,
+            "p99Ms": 20.20000000006985,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 163.39999999990687,
+          "p95Ms": 250.40000000002328,
+          "p99Ms": 807.5,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 2,
+          "geometryMs": 653.8000000000466,
+          "uploads": 8,
+          "uploadedBytes": 12574008,
+          "changedFrameObservations": 24,
+          "peakCalls": 208,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 1.6999999999534339,
+            "p95Ms": 2,
+            "p99Ms": 20.70000000006985,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 163.39999999990687,
+        "min": 163.39999999990687,
+        "max": 170.40000000002328
+      },
+      "runP95Ms": {
+        "median": 277,
+        "min": 250.40000000002328,
+        "max": 285.4000000000233
+      },
+      "runGeometryMs": {
+        "median": 653.8000000000466,
+        "min": 646.5,
+        "max": 667.5
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 36,
+          "p99Ms": 36.40000000002328,
+          "over33_33": 2,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.09999999997671694,
+            "p95Ms": 0.09999999997671694,
+            "p99Ms": 0.09999999997671694,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 46.29999999993015,
+          "p99Ms": 71.10000000009313,
+          "over33_33": 2,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.2000000000698492,
+            "p95Ms": 0.2000000000698492,
+            "p99Ms": 0.2000000000698492,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 47.199999999953434,
+          "p99Ms": 71.30000000004657,
+          "over33_33": 2,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.19999999995343387,
+            "p99Ms": 0.19999999995343387,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.699999999953434,
+        "min": 16.699999999953434,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 46.29999999993015,
+        "min": 36,
+        "max": 47.199999999953434
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 34.300000000046566,
+          "p95Ms": 64.20000000006985,
+          "p99Ms": 64.80000000004657,
+          "over33_33": 13,
+          "over50": 10,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 0.5,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 41.70000000006985,
+          "p95Ms": 72.5,
+          "p99Ms": 74.90000000002328,
+          "over33_33": 16,
+          "over50": 11,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.2000000000698492,
+            "p99Ms": 0.2999999999301508,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 46.60000000009313,
+          "p95Ms": 74.39999999990687,
+          "p99Ms": 74.89999999990687,
+          "over33_33": 19,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.09999999997671694,
+            "p95Ms": 0.2000000000698492,
+            "p99Ms": 0.2000000000698492,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 41.70000000006985,
+        "min": 34.300000000046566,
+        "max": 46.60000000009313
+      },
+      "runP95Ms": {
+        "median": 72.5,
+        "min": 64.20000000006985,
+        "max": 74.39999999990687
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 46.20000000006985,
+          "p95Ms": 73,
+          "p99Ms": 78,
+          "over33_33": 14,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 30.29999999993015,
+          "p95Ms": 60.90000000002328,
+          "p99Ms": 61.199999999953434,
+          "over33_33": 10,
+          "over50": 9,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.09999999997671694,
+            "p95Ms": 0.2000000000698492,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 75.29999999993015,
+          "p95Ms": 83.09999999997672,
+          "p99Ms": 85.19999999995343,
+          "over33_33": 24,
+          "over50": 18,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.40000000002328306,
+            "p99Ms": 0.5,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 46.20000000006985,
+        "min": 30.29999999993015,
+        "max": 75.29999999993015
+      },
+      "runP95Ms": {
+        "median": 73,
+        "min": 60.90000000002328,
+        "max": 83.09999999997672
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 71,
+          "p95Ms": 84.79999999993015,
+          "p99Ms": 90.70000000006985,
+          "over33_33": 24,
+          "over50": 18,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.2999999999301508,
+            "p99Ms": 0.2999999999301508,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 52.59999999997672,
+          "p95Ms": 90.19999999995343,
+          "p99Ms": 94.20000000006985,
+          "over33_33": 15,
+          "over50": 13,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.09999999997671694,
+            "p95Ms": 0.2000000000698492,
+            "p99Ms": 0.2000000000698492,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 39.70000000006985,
+          "p95Ms": 71.09999999997672,
+          "p99Ms": 80.80000000004657,
+          "over33_33": 17,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.2999999999301508,
+            "p99Ms": 0.40000000002328306,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 52.59999999997672,
+        "min": 39.70000000006985,
+        "max": 71
+      },
+      "runP95Ms": {
+        "median": 84.79999999993015,
+        "min": 71.09999999997672,
+        "max": 90.19999999995343
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 62.300000000046566,
+          "p99Ms": 216.60000000009313,
+          "over33_33": 2,
+          "over50": 2,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 241,
+          "peakTriangles": 317535,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 9.699999999953434,
+            "p95Ms": 9.699999999953434,
+            "p99Ms": 9.699999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 354.4000000001397,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 251,
+          "peakTriangles": 317535,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 2.300000000046566,
+            "p95Ms": 2.300000000046566,
+            "p99Ms": 2.300000000046566,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 17.100000000093132,
+          "p99Ms": 293.39999999990687,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 251,
+          "peakTriangles": 317535,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 2.3999999999068677,
+            "p95Ms": 2.3999999999068677,
+            "p99Ms": 2.3999999999068677,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.699999999953434,
+        "min": 16.600000000093132,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 17.100000000093132,
+        "min": 16.800000000046566,
+        "max": 62.300000000046566
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 307.9000000001397,
+          "p95Ms": 383.80000000004657,
+          "p99Ms": 387.5,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 286,
+          "peakTriangles": 336590,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.8999999999068677,
+            "p95Ms": 65.5,
+            "p99Ms": 84.9000000001397,
+            "over33_33": 4,
+            "over50": 2
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 307.9000000001397,
+          "p95Ms": 380.10000000009313,
+          "p99Ms": 415,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 296,
+          "peakTriangles": 336590,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.5999999998603016,
+            "p95Ms": 69.80000000004657,
+            "p99Ms": 87.10000000009313,
+            "over33_33": 3,
+            "over50": 2
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 315.89999999990687,
+          "p95Ms": 369.19999999995343,
+          "p99Ms": 372.19999999995343,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 296,
+          "peakTriangles": 336590,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.699999999953434,
+            "p95Ms": 62.10000000009313,
+            "p99Ms": 66.30000000004657,
+            "over33_33": 2,
+            "over50": 2
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 307.9000000001397,
+        "min": 307.9000000001397,
+        "max": 315.89999999990687
+      },
+      "runP95Ms": {
+        "median": 380.10000000009313,
+        "min": 369.19999999995343,
+        "max": 383.80000000004657
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 286.89999999990687,
+          "p95Ms": 395,
+          "p99Ms": 409,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 256,
+          "peakTriangles": 327058,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 3.2999999998137355,
+            "p95Ms": 105.80000000004657,
+            "p99Ms": 116.5999999998603,
+            "over33_33": 8,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 327,
+          "p95Ms": 426.9000000001397,
+          "p99Ms": 433.9000000001397,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 257,
+          "peakTriangles": 327058,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.699999999953434,
+            "p95Ms": 82.39999999990687,
+            "p99Ms": 94.69999999995343,
+            "over33_33": 9,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 348.20000000018626,
+          "p95Ms": 414.20000000018626,
+          "p99Ms": 426.19999999995343,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 257,
+          "peakTriangles": 327058,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.5999999998603016,
+            "p95Ms": 88.60000000009313,
+            "p99Ms": 109.5,
+            "over33_33": 9,
+            "over50": 8
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 327,
+        "min": 286.89999999990687,
+        "max": 348.20000000018626
+      },
+      "runP95Ms": {
+        "median": 414.20000000018626,
+        "min": 395,
+        "max": 426.9000000001397
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 224.89999999990687,
+          "p95Ms": 354.60000000009313,
+          "p99Ms": 382.0999999998603,
+          "over33_33": 24,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 309,
+          "peakTriangles": 332006,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.699999999953434,
+            "p95Ms": 3.7000000001862645,
+            "p99Ms": 4.600000000093132,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 213.69999999995343,
+          "p95Ms": 358.5999999998603,
+          "p99Ms": 373.19999999995343,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 309,
+          "peakTriangles": 332006,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.3999999999068677,
+            "p95Ms": 3.5999999998603016,
+            "p99Ms": 4.600000000093132,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 230.69999999995343,
+          "p95Ms": 343.9000000001397,
+          "p99Ms": 347.5,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 309,
+          "peakTriangles": 332006,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.199999999953434,
+            "p95Ms": 4.2000000001862645,
+            "p99Ms": 7.099999999860302,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 224.89999999990687,
+        "min": 213.69999999995343,
+        "max": 230.69999999995343
+      },
+      "runP95Ms": {
+        "median": 354.60000000009313,
+        "min": 343.9000000001397,
+        "max": 358.5999999998603
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.5,
+          "p95Ms": 581,
+          "p99Ms": 592.9000000001397,
+          "over33_33": 12,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 12,
+          "peakCalls": 268,
+          "peakTriangles": 588238,
+          "drawCpu": {
+            "count": 13,
+            "medianMs": 2.800000000046566,
+            "p95Ms": 3,
+            "p99Ms": 3,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 15.799999999813735,
+          "p95Ms": 586.5999999998603,
+          "p99Ms": 645.6999999999534,
+          "over33_33": 12,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 12,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 13,
+            "medianMs": 3.199999999953434,
+            "p95Ms": 4.7999999998137355,
+            "p99Ms": 4.7999999998137355,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 15.199999999953434,
+          "p95Ms": 523.4000000001397,
+          "p99Ms": 548.6000000000931,
+          "over33_33": 12,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 12,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 14,
+            "medianMs": 2.6000000000931323,
+            "p95Ms": 2.9000000001396984,
+            "p99Ms": 2.9000000001396984,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 15.799999999813735,
+        "min": 15.199999999953434,
+        "max": 16.5
+      },
+      "runP95Ms": {
+        "median": 581,
+        "min": 523.4000000001397,
+        "max": 586.5999999998603
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 534.8999999999069,
+          "p95Ms": 626.8999999999069,
+          "p99Ms": 627.0999999998603,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 305,
+          "peakTriangles": 605975,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 8.599999999860302,
+            "p95Ms": 81,
+            "p99Ms": 93.39999999990687,
+            "over33_33": 8,
+            "over50": 5
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 472.0999999998603,
+          "p95Ms": 602.5,
+          "p99Ms": 649.1999999999534,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 318,
+          "peakTriangles": 606332,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 8.400000000139698,
+            "p95Ms": 80.39999999990687,
+            "p99Ms": 82.20000000018626,
+            "over33_33": 9,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 544.8000000000466,
+          "p95Ms": 650.5,
+          "p99Ms": 675.0999999998603,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 318,
+          "peakTriangles": 606332,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 8,
+            "p95Ms": 85,
+            "p99Ms": 94.9000000001397,
+            "over33_33": 9,
+            "over50": 7
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 534.8999999999069,
+        "min": 472.0999999998603,
+        "max": 544.8000000000466
+      },
+      "runP95Ms": {
+        "median": 626.8999999999069,
+        "min": 602.5,
+        "max": 650.5
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 511.69999999995343,
+          "p95Ms": 627.4000000001397,
+          "p99Ms": 683.7000000001863,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 286,
+          "peakTriangles": 598122,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 4.100000000093132,
+            "p95Ms": 90.60000000009313,
+            "p99Ms": 93.60000000009313,
+            "over33_33": 11,
+            "over50": 8
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 384.39999999990687,
+          "p95Ms": 516.6999999999534,
+          "p99Ms": 533.1999999999534,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 287,
+          "peakTriangles": 598122,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 5.600000000093132,
+            "p95Ms": 76.5,
+            "p99Ms": 96.79999999981374,
+            "over33_33": 10,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 522.3999999999069,
+          "p95Ms": 640.1000000000931,
+          "p99Ms": 690.6999999999534,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 287,
+          "peakTriangles": 598122,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 3.699999999953434,
+            "p95Ms": 64.69999999995343,
+            "p99Ms": 77.10000000009313,
+            "over33_33": 11,
+            "over50": 8
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 511.69999999995343,
+        "min": 384.39999999990687,
+        "max": 522.3999999999069
+      },
+      "runP95Ms": {
+        "median": 627.4000000001397,
+        "min": 516.6999999999534,
+        "max": 640.1000000000931
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 397.9000000001397,
+          "p95Ms": 624,
+          "p99Ms": 644.5,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 328,
+          "peakTriangles": 597098,
+          "drawCpu": {
+            "count": 26,
+            "medianMs": 2.9000000001396984,
+            "p95Ms": 6.599999999860302,
+            "p99Ms": 35.5999999998603,
+            "over33_33": 1,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 325.19999999995343,
+          "p95Ms": 478.69999999995343,
+          "p99Ms": 480.80000000004657,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 328,
+          "peakTriangles": 597098,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 2.5,
+            "p95Ms": 5,
+            "p99Ms": 5.300000000046566,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 323,
+          "p95Ms": 510.80000000004657,
+          "p99Ms": 544.8000000000466,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 328,
+          "peakTriangles": 597098,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 2.5,
+            "p95Ms": 4.099999999860302,
+            "p99Ms": 4.800000000046566,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 325.19999999995343,
+        "min": 323,
+        "max": 397.9000000001397
+      },
+      "runP95Ms": {
+        "median": 510.80000000004657,
+        "min": 478.69999999995343,
+        "max": 624
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 33.5,
+          "p99Ms": 35.5,
+          "over33_33": 2,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.10000000009313226,
+            "p99Ms": 0.10000000009313226,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 55.5999999998603,
+          "p99Ms": 73.70000000018626,
+          "over33_33": 2,
+          "over50": 2,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.20000000018626451,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 53.200000000186265,
+          "p99Ms": 70.79999999981374,
+          "over33_33": 2,
+          "over50": 2,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.09999999986030161,
+            "p95Ms": 0.09999999986030161,
+            "p99Ms": 0.09999999986030161,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.699999999953434,
+        "min": 16.699999999953434,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 53.200000000186265,
+        "min": 33.5,
+        "max": 55.5999999998603
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 58.89999999990687,
+          "p95Ms": 83.5999999998603,
+          "p99Ms": 83.89999999990687,
+          "over33_33": 24,
+          "over50": 15,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 89.9000000001397,
+          "p95Ms": 99.19999999995343,
+          "p99Ms": 99.4000000001397,
+          "over33_33": 24,
+          "over50": 24,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 75.9000000001397,
+          "p95Ms": 85.70000000018626,
+          "p99Ms": 95,
+          "over33_33": 24,
+          "over50": 19,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 75.9000000001397,
+        "min": 58.89999999990687,
+        "max": 89.9000000001397
+      },
+      "runP95Ms": {
+        "median": 85.70000000018626,
+        "min": 83.5999999998603,
+        "max": 99.19999999995343
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 64.5999999998603,
+          "p95Ms": 82.79999999981374,
+          "p99Ms": 91.30000000004657,
+          "over33_33": 24,
+          "over50": 16,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 68.80000000004657,
+          "p95Ms": 93.19999999995343,
+          "p99Ms": 93.19999999995343,
+          "over33_33": 24,
+          "over50": 19,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 66.5999999998603,
+          "p95Ms": 84.80000000004657,
+          "p99Ms": 85.19999999995343,
+          "over33_33": 24,
+          "over50": 20,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 0.39999999990686774,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 66.5999999998603,
+        "min": 64.5999999998603,
+        "max": 68.80000000004657
+      },
+      "runP95Ms": {
+        "median": 84.80000000004657,
+        "min": 82.79999999981374,
+        "max": 93.19999999995343
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 78.5,
+          "p95Ms": 105.29999999981374,
+          "p99Ms": 141.70000000018626,
+          "over33_33": 24,
+          "over50": 20,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 79.60000000009313,
+          "p95Ms": 95.4000000001397,
+          "p99Ms": 96.0999999998603,
+          "over33_33": 24,
+          "over50": 20,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.19999999995343387,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 81.89999999990687,
+          "p95Ms": 94.69999999995343,
+          "p99Ms": 95.19999999995343,
+          "over33_33": 24,
+          "over50": 21,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 142864,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 79.60000000009313,
+        "min": 78.5,
+        "max": 81.89999999990687
+      },
+      "runP95Ms": {
+        "median": 95.4000000001397,
+        "min": 94.69999999995343,
+        "max": 105.29999999981374
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 104.79999999981374,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 3.6000000000931323,
+            "p95Ms": 3.6000000000931323,
+            "p99Ms": 3.6000000000931323,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 119,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 5.5,
+            "p95Ms": 5.5,
+            "p99Ms": 5.5,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 118.10000000009313,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 2.5,
+            "p95Ms": 2.5,
+            "p99Ms": 2.5,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.699999999953434,
+        "min": 16.699999999953434,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 16.800000000046566,
+        "min": 16.800000000046566,
+        "max": 16.800000000046566
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 125.70000000018626,
+          "p95Ms": 195.30000000004657,
+          "p99Ms": 222.19999999995343,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 154637,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.300000000046566,
+            "p95Ms": 68.0999999998603,
+            "p99Ms": 73.5999999998603,
+            "over33_33": 2,
+            "over50": 2
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 127.4000000001397,
+          "p95Ms": 185.9000000001397,
+          "p99Ms": 250.30000000004657,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 154637,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2,
+            "p95Ms": 66.69999999995343,
+            "p99Ms": 72,
+            "over33_33": 4,
+            "over50": 2
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 139.29999999981374,
+          "p95Ms": 199.5999999998603,
+          "p99Ms": 234.80000000004657,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 154637,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.0999999998603016,
+            "p95Ms": 66.80000000004657,
+            "p99Ms": 73.39999999990687,
+            "over33_33": 3,
+            "over50": 2
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 127.4000000001397,
+        "min": 125.70000000018626,
+        "max": 139.29999999981374
+      },
+      "runP95Ms": {
+        "median": 195.30000000004657,
+        "min": 185.9000000001397,
+        "max": 199.5999999998603
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 137.10000000009313,
+          "p95Ms": 213.5,
+          "p99Ms": 239.79999999981374,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.3999999999068677,
+            "p95Ms": 100,
+            "p99Ms": 114.5,
+            "over33_33": 8,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 138.19999999995343,
+          "p95Ms": 230.5,
+          "p99Ms": 231.4000000001397,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.5,
+            "p95Ms": 72,
+            "p99Ms": 102,
+            "over33_33": 8,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 129.9000000001397,
+          "p95Ms": 204.29999999981374,
+          "p99Ms": 216.39999999990687,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 170,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.1000000000931323,
+            "p95Ms": 78.4000000001397,
+            "p99Ms": 109.39999999990687,
+            "over33_33": 8,
+            "over50": 8
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 137.10000000009313,
+        "min": 129.9000000001397,
+        "max": 138.19999999995343
+      },
+      "runP95Ms": {
+        "median": 213.5,
+        "min": 204.29999999981374,
+        "max": 230.5
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 92.10000000009313,
+          "p95Ms": 127.10000000009313,
+          "p99Ms": 155.10000000009313,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 200,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1.9000000001396984,
+            "p95Ms": 4,
+            "p99Ms": 4.400000000139698,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 130.10000000009313,
+          "p95Ms": 170,
+          "p99Ms": 170.9000000001397,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 200,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1.6999999999534339,
+            "p95Ms": 4.099999999860302,
+            "p99Ms": 9.199999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 98.60000000009313,
+          "p95Ms": 140.30000000004657,
+          "p99Ms": 150.19999999995343,
+          "over33_33": 23,
+          "over50": 22,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 200,
+          "peakTriangles": 152757,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1.6999999999534339,
+            "p95Ms": 1.9000000001396984,
+            "p99Ms": 3.7000000001862645,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 98.60000000009313,
+        "min": 92.10000000009313,
+        "max": 130.10000000009313
+      },
+      "runP95Ms": {
+        "median": 140.30000000004657,
+        "min": 127.10000000009313,
+        "max": 170
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 213.0999999998603,
+          "p95Ms": 255.60000000009313,
+          "p99Ms": 276.60000000009313,
+          "over33_33": 15,
+          "over50": 15,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 15,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 17,
+            "medianMs": 2.1000000000931323,
+            "p95Ms": 3,
+            "p99Ms": 3,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.800000000046566,
+          "p95Ms": 234.19999999995343,
+          "p99Ms": 242.69999999995343,
+          "over33_33": 12,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 12,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 14,
+            "medianMs": 2,
+            "p95Ms": 2.199999999953434,
+            "p99Ms": 2.199999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.4000000001397,
+          "p95Ms": 269.4000000001397,
+          "p99Ms": 281.69999999995343,
+          "over33_33": 12,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 12,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 13,
+            "medianMs": 2.0999999998603016,
+            "p95Ms": 2.4000000001396984,
+            "p99Ms": 2.4000000001396984,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.800000000046566,
+        "min": 16.4000000001397,
+        "max": 213.0999999998603
+      },
+      "runP95Ms": {
+        "median": 255.60000000009313,
+        "min": 234.19999999995343,
+        "max": 269.4000000001397
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 241.10000000009313,
+          "p95Ms": 331,
+          "p99Ms": 347.29999999981374,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 193,
+          "peakTriangles": 319136,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 8.199999999953434,
+            "p95Ms": 84,
+            "p99Ms": 94,
+            "over33_33": 7,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 233.0999999998603,
+          "p95Ms": 329,
+          "p99Ms": 340.80000000004657,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 193,
+          "peakTriangles": 319136,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 9,
+            "p95Ms": 99.80000000004657,
+            "p99Ms": 100.30000000004657,
+            "over33_33": 8,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 260.19999999995343,
+          "p95Ms": 360.80000000004657,
+          "p99Ms": 368.80000000004657,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 193,
+          "peakTriangles": 319136,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 9.100000000093132,
+            "p95Ms": 86.5,
+            "p99Ms": 88.80000000004657,
+            "over33_33": 10,
+            "over50": 6
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 241.10000000009313,
+        "min": 233.0999999998603,
+        "max": 260.19999999995343
+      },
+      "runP95Ms": {
+        "median": 331,
+        "min": 329,
+        "max": 360.80000000004657
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 220.70000000018626,
+          "p95Ms": 326.5999999998603,
+          "p99Ms": 334.0999999998603,
+          "over33_33": 24,
+          "over50": 24,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 26,
+            "medianMs": 2.699999999953434,
+            "p95Ms": 76.19999999995343,
+            "p99Ms": 88.39999999990687,
+            "over33_33": 10,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 237.19999999995343,
+          "p95Ms": 320.9000000001397,
+          "p99Ms": 341.4000000001397,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 2.5,
+            "p95Ms": 74.89999999990687,
+            "p99Ms": 91.80000000004657,
+            "over33_33": 10,
+            "over50": 9
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 234.10000000009313,
+          "p95Ms": 325.30000000004657,
+          "p99Ms": 331.4000000001397,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 2.5,
+            "p95Ms": 69.60000000009313,
+            "p99Ms": 82.89999999990687,
+            "over33_33": 9,
+            "over50": 7
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 234.10000000009313,
+        "min": 220.70000000018626,
+        "max": 237.19999999995343
+      },
+      "runP95Ms": {
+        "median": 325.30000000004657,
+        "min": 320.9000000001397,
+        "max": 326.5999999998603
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 220.69999999995343,
+          "p95Ms": 265.19999999995343,
+          "p99Ms": 266.4000000001397,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 208,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 1.7000000001862645,
+            "p95Ms": 3.3999999999068677,
+            "p99Ms": 5.699999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 235.30000000004657,
+          "p95Ms": 279.80000000004657,
+          "p99Ms": 280.80000000004657,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 208,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 1.6999999999534339,
+            "p95Ms": 3.6000000000931323,
+            "p99Ms": 5.899999999906868,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 219.29999999981374,
+          "p95Ms": 286.5,
+          "p99Ms": 286.5999999998603,
+          "over33_33": 23,
+          "over50": 23,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 208,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 25,
+            "medianMs": 1.8000000000465661,
+            "p95Ms": 3.800000000046566,
+            "p99Ms": 6.399999999906868,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 220.69999999995343,
+        "min": 219.29999999981374,
+        "max": 235.30000000004657
+      },
+      "runP95Ms": {
+        "median": 279.80000000004657,
+        "min": 265.19999999995343,
+        "max": 286.5
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 47.39999999990687,
+          "p99Ms": 71.9000000001397,
+          "over33_33": 2,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.19999999995343387,
+            "p99Ms": 0.19999999995343387,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 28.5999999998603,
+          "p99Ms": 60.9000000001397,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.10000000009313226,
+            "p99Ms": 0.10000000009313226,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 44.200000000186265,
+          "p99Ms": 67.79999999981374,
+          "over33_33": 2,
+          "over50": 1,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 1,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 1,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.10000000009313226,
+            "p99Ms": 0.10000000009313226,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.699999999953434,
+        "min": 16.699999999953434,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 44.200000000186265,
+        "min": 28.5999999998603,
+        "max": 47.39999999990687
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 46.10000000009313,
+          "p95Ms": 74.69999999995343,
+          "p99Ms": 77.39999999990687,
+          "over33_33": 18,
+          "over50": 12,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.39999999990686774,
+            "p99Ms": 0.5,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 35.9000000001397,
+          "p95Ms": 67.60000000009313,
+          "p99Ms": 67.79999999981374,
+          "over33_33": 16,
+          "over50": 10,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 61.5999999998603,
+          "p95Ms": 86.10000000009313,
+          "p99Ms": 87.39999999990687,
+          "over33_33": 23,
+          "over50": 17,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 29,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 46.10000000009313,
+        "min": 35.9000000001397,
+        "max": 61.5999999998603
+      },
+      "runP95Ms": {
+        "median": 74.69999999995343,
+        "min": 67.60000000009313,
+        "max": 86.10000000009313
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 56.800000000046566,
+          "p95Ms": 81.80000000004657,
+          "p99Ms": 84.0999999998603,
+          "over33_33": 19,
+          "over50": 15,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.19999999995343387,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 59.199999999953434,
+          "p95Ms": 81.4000000001397,
+          "p99Ms": 86.39999999990687,
+          "over33_33": 19,
+          "over50": 15,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.30000000004656613,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 74.79999999981374,
+          "p95Ms": 81.89999999990687,
+          "p99Ms": 82,
+          "over33_33": 24,
+          "over50": 18,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.2999999998137355,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 59.199999999953434,
+        "min": 56.800000000046566,
+        "max": 74.79999999981374
+      },
+      "runP95Ms": {
+        "median": 81.80000000004657,
+        "min": 81.4000000001397,
+        "max": 81.89999999990687
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "webgl",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 64.10000000009313,
+          "p95Ms": 84.69999999995343,
+          "p99Ms": 94.70000000018626,
+          "over33_33": 23,
+          "over50": 15,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.20000000018626451,
+            "p99Ms": 0.8000000000465661,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 70.4000000001397,
+          "p95Ms": 86.10000000009313,
+          "p99Ms": 103.39999999990687,
+          "over33_33": 21,
+          "over50": 16,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.10000000009313226,
+            "p95Ms": 0.19999999995343387,
+            "p99Ms": 0.20000000018626451,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 64.39999999990687,
+          "p95Ms": 83.5999999998603,
+          "p99Ms": 84.70000000018626,
+          "over33_33": 22,
+          "over50": 16,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 24,
+          "peakCalls": 9,
+          "peakTriangles": 122975,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.19999999995343387,
+            "p95Ms": 0.30000000004656613,
+            "p99Ms": 1.9000000001396984,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 64.39999999990687,
+        "min": 64.10000000009313,
+        "max": 70.4000000001397
+      },
+      "runP95Ms": {
+        "median": 84.69999999995343,
+        "min": 83.5999999998603,
+        "max": 86.10000000009313
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before-cpu",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 16.899999999906868,
+          "p99Ms": 19,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 268,
+          "peakTriangles": 588238,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 1.6999999999534339,
+            "p95Ms": 2.199999999953434,
+            "p99Ms": 2.199999999953434,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 16.800000000046566,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 1.3999999999068677,
+            "p95Ms": 1.5,
+            "p99Ms": 1.5,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 16.800000000046566,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 1.2000000001862645,
+            "p95Ms": 1.3999999999068677,
+            "p99Ms": 1.3999999999068677,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.699999999953434,
+        "min": 16.600000000093132,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 16.800000000046566,
+        "min": 16.800000000046566,
+        "max": 16.899999999906868
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before-cpu",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.800000000046566,
+          "p95Ms": 83.69999999995343,
+          "p99Ms": 84.69999999995343,
+          "over33_33": 9,
+          "over50": 6,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 268,
+          "peakTriangles": 588238,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 5.199999999953434,
+            "p95Ms": 73.10000000009313,
+            "p99Ms": 74.60000000009313,
+            "over33_33": 7,
+            "over50": 5
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16,
+          "p95Ms": 78.5999999998603,
+          "p99Ms": 81,
+          "over33_33": 9,
+          "over50": 8,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 5.899999999906868,
+            "p95Ms": 73.0999999998603,
+            "p99Ms": 75,
+            "over33_33": 8,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.199999999953434,
+          "p95Ms": 84.5,
+          "p99Ms": 87.30000000004657,
+          "over33_33": 9,
+          "over50": 6,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 5,
+            "p95Ms": 73.9000000001397,
+            "p99Ms": 77.10000000009313,
+            "over33_33": 8,
+            "over50": 5
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.199999999953434,
+        "min": 16,
+        "max": 16.800000000046566
+      },
+      "runP95Ms": {
+        "median": 83.69999999995343,
+        "min": 78.5999999998603,
+        "max": 84.5
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before-cpu",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 32.699999999953434,
+          "p95Ms": 959.3000000000466,
+          "p99Ms": 960.1999999999534,
+          "over33_33": 12,
+          "over50": 10,
+          "geometryCalls": 11,
+          "geometryMs": 4752.800000000279,
+          "uploads": 44,
+          "uploadedBytes": 90580248,
+          "changedFrameObservations": 0,
+          "peakCalls": 268,
+          "peakTriangles": 588238,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.1000000000931323,
+            "p95Ms": 62.699999999953434,
+            "p99Ms": 68,
+            "over33_33": 8,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 34.800000000046566,
+          "p95Ms": 934.8000000000466,
+          "p99Ms": 944.0999999998603,
+          "over33_33": 13,
+          "over50": 10,
+          "geometryCalls": 11,
+          "geometryMs": 4649.499999999534,
+          "uploads": 44,
+          "uploadedBytes": 90580248,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.0999999998603016,
+            "p95Ms": 80.30000000004657,
+            "p99Ms": 93.70000000018626,
+            "over33_33": 10,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 32.10000000009313,
+          "p95Ms": 965.6000000000931,
+          "p99Ms": 972.1999999999534,
+          "over33_33": 12,
+          "over50": 10,
+          "geometryCalls": 11,
+          "geometryMs": 4799.90000000014,
+          "uploads": 44,
+          "uploadedBytes": 90580248,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2,
+            "p95Ms": 67.9000000001397,
+            "p99Ms": 69.5999999998603,
+            "over33_33": 9,
+            "over50": 6
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 32.699999999953434,
+        "min": 32.10000000009313,
+        "max": 34.800000000046566
+      },
+      "runP95Ms": {
+        "median": 959.3000000000466,
+        "min": 934.8000000000466,
+        "max": 965.6000000000931
+      },
+      "runGeometryMs": {
+        "median": 4752.800000000279,
+        "min": 4649.499999999534,
+        "max": 4799.90000000014
+      }
+    },
+    {
+      "profile": "before-cpu",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 30,
+          "p99Ms": 890.6999999999534,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 2,
+          "geometryMs": 838.2000000001863,
+          "uploads": 8,
+          "uploadedBytes": 16469136,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1.0999999998603016,
+            "p95Ms": 1.3000000000465661,
+            "p99Ms": 1.5,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 24.699999999953434,
+          "p99Ms": 931.5999999998603,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 2,
+          "geometryMs": 891.5000000002328,
+          "uploads": 8,
+          "uploadedBytes": 16469136,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.9000000001396984,
+            "p95Ms": 1.2000000001862645,
+            "p99Ms": 1.2000000001862645,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 24.100000000093132,
+          "p99Ms": 874.3999999999069,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 2,
+          "geometryMs": 835.7000000001863,
+          "uploads": 8,
+          "uploadedBytes": 16469136,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.6000000000931323,
+            "p95Ms": 1,
+            "p99Ms": 1.1000000000931323,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.600000000093132,
+        "min": 16.600000000093132,
+        "max": 16.600000000093132
+      },
+      "runP95Ms": {
+        "median": 24.699999999953434,
+        "min": 24.100000000093132,
+        "max": 30
+      },
+      "runGeometryMs": {
+        "median": 838.2000000001863,
+        "min": 835.7000000001863,
+        "max": 891.5000000002328
+      }
+    },
+    {
+      "profile": "before-cpu",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 17.0999999998603,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 1.0999999998603016,
+            "p95Ms": 2,
+            "p99Ms": 2,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.9000000001397,
+          "p99Ms": 16.9000000001397,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 1,
+            "p95Ms": 1.4000000001396984,
+            "p99Ms": 1.4000000001396984,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.700000000186265,
+          "p99Ms": 16.800000000046566,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 1,
+            "p95Ms": 1.1999999999534339,
+            "p99Ms": 1.1999999999534339,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.699999999953434,
+        "min": 16.699999999953434,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 16.800000000046566,
+        "min": 16.700000000186265,
+        "max": 16.9000000001397
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before-cpu",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 79.30000000004657,
+          "p99Ms": 82.10000000009313,
+          "over33_33": 9,
+          "over50": 6,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 5.7999999998137355,
+            "p95Ms": 72.9000000001397,
+            "p99Ms": 80.60000000009313,
+            "over33_33": 7,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 79.69999999995343,
+          "p99Ms": 86.69999999995343,
+          "over33_33": 9,
+          "over50": 6,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 4.800000000046566,
+            "p95Ms": 68.4000000001397,
+            "p99Ms": 72.5,
+            "over33_33": 8,
+            "over50": 5
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.5,
+          "p95Ms": 84.80000000004657,
+          "p99Ms": 98.39999999990687,
+          "over33_33": 8,
+          "over50": 7,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 5,
+            "p95Ms": 75.30000000004657,
+            "p99Ms": 97.39999999990687,
+            "over33_33": 8,
+            "over50": 5
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.600000000093132,
+        "min": 16.5,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 79.69999999995343,
+        "min": 79.30000000004657,
+        "max": 84.80000000004657
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "before-cpu",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 31.4000000001397,
+          "p95Ms": 688.8999999999069,
+          "p99Ms": 700.4000000001397,
+          "over33_33": 11,
+          "over50": 10,
+          "geometryCalls": 10,
+          "geometryMs": 3047.5,
+          "uploads": 40,
+          "uploadedBytes": 62870040,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1,
+            "p95Ms": 63.699999999953434,
+            "p99Ms": 65,
+            "over33_33": 8,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 31.699999999953434,
+          "p95Ms": 672.3999999999069,
+          "p99Ms": 711.1000000000931,
+          "over33_33": 11,
+          "over50": 10,
+          "geometryCalls": 10,
+          "geometryMs": 3009.4000000001397,
+          "uploads": 40,
+          "uploadedBytes": 62870040,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1.5,
+            "p95Ms": 66.4000000001397,
+            "p99Ms": 74.5,
+            "over33_33": 8,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 31.4000000001397,
+          "p95Ms": 671.3000000000466,
+          "p99Ms": 673.3000000000466,
+          "over33_33": 11,
+          "over50": 10,
+          "geometryCalls": 10,
+          "geometryMs": 3042.3000000000466,
+          "uploads": 40,
+          "uploadedBytes": 62870040,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 3.300000000046566,
+            "p95Ms": 62.5,
+            "p99Ms": 75.69999999995343,
+            "over33_33": 8,
+            "over50": 6
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 31.4000000001397,
+        "min": 31.4000000001397,
+        "max": 31.699999999953434
+      },
+      "runP95Ms": {
+        "median": 672.3999999999069,
+        "min": 671.3000000000466,
+        "max": 688.8999999999069
+      },
+      "runGeometryMs": {
+        "median": 3042.3000000000466,
+        "min": 3009.4000000001397,
+        "max": 3047.5
+      }
+    },
+    {
+      "profile": "before-cpu",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 20,
+          "p99Ms": 645,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 2,
+          "geometryMs": 624.8999999999069,
+          "uploads": 8,
+          "uploadedBytes": 12574008,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.5,
+            "p95Ms": 0.8000000000465661,
+            "p99Ms": 0.8000000000465661,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 19.9000000001397,
+          "p99Ms": 664.3999999999069,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 2,
+          "geometryMs": 641.1999999999534,
+          "uploads": 8,
+          "uploadedBytes": 12574008,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.5,
+            "p95Ms": 0.8000000000465661,
+            "p99Ms": 0.9000000001396984,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 22,
+          "p99Ms": 656.0999999998603,
+          "over33_33": 1,
+          "over50": 1,
+          "geometryCalls": 2,
+          "geometryMs": 635.8999999999069,
+          "uploads": 8,
+          "uploadedBytes": 12574008,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.5,
+            "p95Ms": 1.2000000001862645,
+            "p99Ms": 1.3999999999068677,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.600000000093132,
+        "min": 16.600000000093132,
+        "max": 16.600000000093132
+      },
+      "runP95Ms": {
+        "median": 20,
+        "min": 19.9000000001397,
+        "max": 22
+      },
+      "runGeometryMs": {
+        "median": 635.8999999999069,
+        "min": 624.8999999999069,
+        "max": 641.1999999999534
+      }
+    },
+    {
+      "profile": "after-cpu",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 16.800000000046566,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 268,
+          "peakTriangles": 588238,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 1.1000000000931323,
+            "p95Ms": 1.3000000000465661,
+            "p99Ms": 1.3000000000465661,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 16.899999999906868,
+          "p99Ms": 16.9000000001397,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 1.3000000000465661,
+            "p95Ms": 1.6000000000931323,
+            "p99Ms": 1.6000000000931323,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 16.800000000046566,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 1,
+            "p95Ms": 1.3000000000465661,
+            "p99Ms": 1.3000000000465661,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.600000000093132,
+        "min": 16.600000000093132,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 16.800000000046566,
+        "min": 16.800000000046566,
+        "max": 16.899999999906868
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after-cpu",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.399999999906868,
+          "p95Ms": 83.19999999995343,
+          "p99Ms": 89.89999999990687,
+          "over33_33": 10,
+          "over50": 6,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 268,
+          "peakTriangles": 588238,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 8,
+            "p95Ms": 81.19999999995343,
+            "p99Ms": 82.39999999990687,
+            "over33_33": 8,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.800000000046566,
+          "p95Ms": 81.69999999995343,
+          "p99Ms": 87.19999999995343,
+          "over33_33": 9,
+          "over50": 6,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 5.100000000093132,
+            "p95Ms": 70.10000000009313,
+            "p99Ms": 76.69999999995343,
+            "over33_33": 7,
+            "over50": 5
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.100000000093132,
+          "p95Ms": 76.89999999990687,
+          "p99Ms": 84.69999999995343,
+          "over33_33": 9,
+          "over50": 5,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 6.399999999906868,
+            "p95Ms": 72.89999999990687,
+            "p99Ms": 76.29999999981374,
+            "over33_33": 7,
+            "over50": 5
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.399999999906868,
+        "min": 16.100000000093132,
+        "max": 16.800000000046566
+      },
+      "runP95Ms": {
+        "median": 81.69999999995343,
+        "min": 76.89999999990687,
+        "max": 83.19999999995343
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after-cpu",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 22.800000000046566,
+          "p95Ms": 86.89999999990687,
+          "p99Ms": 96.19999999995343,
+          "over33_33": 11,
+          "over50": 8,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 268,
+          "peakTriangles": 588238,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 2.1000000000931323,
+            "p95Ms": 72.89999999990687,
+            "p99Ms": 73.10000000009313,
+            "over33_33": 8,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 23.5999999998603,
+          "p95Ms": 94.39999999990687,
+          "p99Ms": 117.20000000018626,
+          "over33_33": 11,
+          "over50": 8,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1,
+            "p95Ms": 78.5999999998603,
+            "p99Ms": 90.5,
+            "over33_33": 9,
+            "over50": 7
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 24.100000000093132,
+          "p95Ms": 81.19999999995343,
+          "p99Ms": 92.89999999990687,
+          "over33_33": 11,
+          "over50": 8,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1.1999999999534339,
+            "p95Ms": 69.30000000004657,
+            "p99Ms": 70.60000000009313,
+            "over33_33": 9,
+            "over50": 6
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 23.5999999998603,
+        "min": 22.800000000046566,
+        "max": 24.100000000093132
+      },
+      "runP95Ms": {
+        "median": 86.89999999990687,
+        "min": 81.19999999995343,
+        "max": 94.39999999990687
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after-cpu",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.5,
+          "p95Ms": 25.100000000093132,
+          "p99Ms": 48.39999999990687,
+          "over33_33": 1,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 1.1000000000931323,
+            "p95Ms": 1.9000000001396984,
+            "p99Ms": 2.4000000001396984,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 23.700000000186265,
+          "p99Ms": 34.799999999813735,
+          "over33_33": 1,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.6999999999534339,
+            "p95Ms": 0.8999999999068677,
+            "p99Ms": 0.8999999999068677,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.5999999998603,
+          "p95Ms": 34.700000000186265,
+          "p99Ms": 44,
+          "over33_33": 2,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 281,
+          "peakTriangles": 588595,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.6999999999534339,
+            "p95Ms": 1,
+            "p99Ms": 1.1000000000931323,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.5999999998603,
+        "min": 16.5,
+        "max": 16.600000000093132
+      },
+      "runP95Ms": {
+        "median": 25.100000000093132,
+        "min": 23.700000000186265,
+        "max": 34.700000000186265
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after-cpu",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "idle",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 16.9000000001397,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 1.1999999999534339,
+            "p95Ms": 1.3000000000465661,
+            "p99Ms": 1.3000000000465661,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 16.800000000046566,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 0.8999999999068677,
+            "p95Ms": 1.0999999998603016,
+            "p99Ms": 1.0999999998603016,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.699999999953434,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 16.800000000046566,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 4,
+            "medianMs": 0.9000000001396984,
+            "p95Ms": 1,
+            "p99Ms": 1,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.699999999953434,
+        "min": 16.600000000093132,
+        "max": 16.699999999953434
+      },
+      "runP95Ms": {
+        "median": 16.800000000046566,
+        "min": 16.800000000046566,
+        "max": 16.800000000046566
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after-cpu",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "orbit",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16,
+          "p95Ms": 82.79999999981374,
+          "p99Ms": 85.9000000001397,
+          "over33_33": 9,
+          "over50": 6,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 6,
+            "p95Ms": 76.30000000004657,
+            "p99Ms": 85.30000000004657,
+            "over33_33": 8,
+            "over50": 5
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 83.80000000004657,
+          "p99Ms": 95.30000000004657,
+          "over33_33": 9,
+          "over50": 6,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 4.699999999953434,
+            "p95Ms": 74.0999999998603,
+            "p99Ms": 80.80000000004657,
+            "over33_33": 8,
+            "over50": 5
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.299999999813735,
+          "p95Ms": 81.80000000004657,
+          "p99Ms": 82.19999999995343,
+          "over33_33": 9,
+          "over50": 6,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 4.7000000001862645,
+            "p95Ms": 70.80000000004657,
+            "p99Ms": 73.79999999981374,
+            "over33_33": 7,
+            "over50": 6
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.299999999813735,
+        "min": 16,
+        "max": 16.600000000093132
+      },
+      "runP95Ms": {
+        "median": 82.79999999981374,
+        "min": 81.80000000004657,
+        "max": 83.80000000004657
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after-cpu",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "pan",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 17.600000000093132,
+          "p95Ms": 80.5,
+          "p99Ms": 82.80000000004657,
+          "over33_33": 11,
+          "over50": 8,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.8000000000465661,
+            "p95Ms": 62.39999999990687,
+            "p99Ms": 67.20000000018626,
+            "over33_33": 8,
+            "over50": 6
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 19.700000000186265,
+          "p95Ms": 64.80000000004657,
+          "p99Ms": 77.10000000009313,
+          "over33_33": 11,
+          "over50": 6,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.6999999999534339,
+            "p95Ms": 61.5,
+            "p99Ms": 62.300000000046566,
+            "over33_33": 9,
+            "over50": 5
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 19.9000000001397,
+          "p95Ms": 82.79999999981374,
+          "p99Ms": 92.5999999998603,
+          "over33_33": 11,
+          "over50": 9,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.6999999999534339,
+            "p95Ms": 68.30000000004657,
+            "p99Ms": 76.5,
+            "over33_33": 9,
+            "over50": 6
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 19.700000000186265,
+        "min": 17.600000000093132,
+        "max": 19.9000000001397
+      },
+      "runP95Ms": {
+        "median": 80.5,
+        "min": 64.80000000004657,
+        "max": 82.79999999981374
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    {
+      "profile": "after-cpu",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "path": "zoom",
+      "runs": [
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 18.5,
+          "p99Ms": 20.5,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.5999999998603016,
+            "p95Ms": 0.7000000001862645,
+            "p99Ms": 0.7000000001862645,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 16.800000000046566,
+          "p99Ms": 20,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.39999999990686774,
+            "p95Ms": 0.5,
+            "p99Ms": 0.7000000001862645,
+            "over33_33": 0,
+            "over50": 0
+          }
+        },
+        {
+          "count": 24,
+          "medianMs": 16.600000000093132,
+          "p95Ms": 17.200000000186265,
+          "p99Ms": 19.600000000093132,
+          "over33_33": 0,
+          "over50": 0,
+          "geometryCalls": 0,
+          "geometryMs": 0,
+          "uploads": 0,
+          "uploadedBytes": 0,
+          "changedFrameObservations": 0,
+          "peakCalls": 182,
+          "peakTriangles": 317256,
+          "drawCpu": {
+            "count": 24,
+            "medianMs": 0.5,
+            "p95Ms": 0.8000000000465661,
+            "p99Ms": 0.9000000001396984,
+            "over33_33": 0,
+            "over50": 0
+          }
+        }
+      ],
+      "runMedianMs": {
+        "median": 16.600000000093132,
+        "min": 16.600000000093132,
+        "max": 16.600000000093132
+      },
+      "runP95Ms": {
+        "median": 17.200000000186265,
+        "min": 16.800000000046566,
+        "max": 18.5
+      },
+      "runGeometryMs": {
+        "median": 0,
+        "min": 0,
+        "max": 0
+      }
+    }
+  ],
+  "bootEditsMonth": [
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "bootMs": 7021,
+      "firstHostDrawMs": 1164.5999999998603,
+      "initialPhaseMs": {
+        "readView": 86.10000000009313,
+        "buildings": 795,
+        "landscape": 1477.7000000001863,
+        "world": 1543.0999999998603
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 931.5,
+        "updatedInteractiveSceneMs": 4158.800000000047,
+        "simulationMs": [
+          650.1000000000931
+        ],
+        "persistenceMs": [
+          1.6999999999534339,
+          1
+        ],
+        "finalRevision": "settlement-2",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-1"
+          }
+        }
+      },
+      "edits": null
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 10700,
+      "firstHostDrawMs": 1257,
+      "initialPhaseMs": {
+        "readView": 89.10000000009313,
+        "buildings": 982.7000000000698,
+        "landscape": 1642.7999999999302,
+        "world": 4206
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 1011.8000000000466,
+        "updatedInteractiveSceneMs": 7351.100000000093,
+        "simulationMs": [
+          655
+        ],
+        "persistenceMs": [
+          1.3000000000465661,
+          0.8000000000465661
+        ],
+        "finalRevision": "settlement-2",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-1"
+          }
+        }
+      },
+      "edits": null
+    },
+    {
+      "profile": "before",
+      "homes": 100,
+      "renderer": "webgl",
+      "quality": "normal",
+      "bootMs": 22493,
+      "firstHostDrawMs": 10959.5,
+      "initialPhaseMs": null,
+      "month": null,
+      "edits": null
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "bootMs": 4882,
+      "firstHostDrawMs": 485.5,
+      "initialPhaseMs": {
+        "readView": 80.39999999990687,
+        "buildings": 486.10000000009313,
+        "landscape": 833.6999999999534,
+        "world": 1468.0999999999767
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 439.60000000009313,
+        "updatedInteractiveSceneMs": 2602,
+        "simulationMs": [
+          200.19999999995343
+        ],
+        "persistenceMs": [
+          0.8999999999068677,
+          0.8000000000465661
+        ],
+        "finalRevision": "settlement-2",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-1"
+          }
+        }
+      },
+      "edits": null
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 8473,
+      "firstHostDrawMs": 734.0999999999767,
+      "initialPhaseMs": {
+        "readView": 78.09999999997672,
+        "buildings": 620.6999999999534,
+        "landscape": 1022.7000000000698,
+        "world": 4099
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 480.5999999999767,
+        "updatedInteractiveSceneMs": 5775.699999999953,
+        "simulationMs": [
+          188.59999999997672
+        ],
+        "persistenceMs": [
+          1,
+          0.6999999999534339
+        ],
+        "finalRevision": "settlement-2",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-1"
+          }
+        }
+      },
+      "edits": null
+    },
+    {
+      "profile": "before",
+      "homes": 30,
+      "renderer": "webgl",
+      "quality": "normal",
+      "bootMs": 22868,
+      "firstHostDrawMs": 10990.599999999977,
+      "initialPhaseMs": null,
+      "month": null,
+      "edits": null
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "bootMs": 5203,
+      "firstHostDrawMs": 1166.1999999999534,
+      "initialPhaseMs": {
+        "readView": 86,
+        "buildings": 424.5999999998603,
+        "landscape": 1056.9000000001397,
+        "world": 1114.2999999998137
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 1019.8000000000466,
+        "updatedInteractiveSceneMs": 3684.2000000001863,
+        "simulationMs": [
+          664.6999999999534
+        ],
+        "persistenceMs": [
+          1.7000000001862645,
+          0.8999999999068677
+        ],
+        "finalRevision": "settlement-2",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-1"
+          }
+        }
+      },
+      "edits": null
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 8336,
+      "firstHostDrawMs": 1264,
+      "initialPhaseMs": {
+        "readView": 94.29999999981374,
+        "buildings": 529.5999999998603,
+        "landscape": 1231.8000000000466,
+        "world": 3619
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 1073.6999999999534,
+        "updatedInteractiveSceneMs": 6758,
+        "simulationMs": [
+          657.6999999999534
+        ],
+        "persistenceMs": [
+          2.0999999998603016,
+          1.5
+        ],
+        "finalRevision": "settlement-2",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-1"
+          }
+        }
+      },
+      "edits": null
+    },
+    {
+      "profile": "after",
+      "homes": 100,
+      "renderer": "webgl",
+      "quality": "normal",
+      "bootMs": 22405,
+      "firstHostDrawMs": 10914.100000000093,
+      "initialPhaseMs": null,
+      "month": null,
+      "edits": null
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "bootMs": 3498,
+      "firstHostDrawMs": 500.9000000001397,
+      "initialPhaseMs": {
+        "readView": 80.60000000009313,
+        "buildings": 248.10000000009313,
+        "landscape": 521.3000000000466,
+        "world": 1137.3000000000466
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 428.5,
+        "updatedInteractiveSceneMs": 1862.8000000000466,
+        "simulationMs": [
+          188.89999999990687
+        ],
+        "persistenceMs": [
+          1.1000000000931323,
+          0.5
+        ],
+        "finalRevision": "settlement-2",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-1"
+          }
+        }
+      },
+      "edits": null
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 6991,
+      "firstHostDrawMs": 607.3999999999069,
+      "initialPhaseMs": {
+        "readView": 73.10000000009313,
+        "buildings": 333.69999999995343,
+        "landscape": 689.1999999999534,
+        "world": 4047.1999999999534
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 529.5,
+        "updatedInteractiveSceneMs": 4919.199999999953,
+        "simulationMs": [
+          191.39999999990687
+        ],
+        "persistenceMs": [
+          1.1000000000931323,
+          0.6000000000931323
+        ],
+        "finalRevision": "settlement-2",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-1"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-1"
+          }
+        }
+      },
+      "edits": null
+    },
+    {
+      "profile": "after",
+      "homes": 30,
+      "renderer": "webgl",
+      "quality": "normal",
+      "bootMs": 23260,
+      "firstHostDrawMs": 10959.199999999953,
+      "initialPhaseMs": null,
+      "month": null,
+      "edits": null
+    },
+    {
+      "profile": "before-cpu",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 11087,
+      "firstHostDrawMs": 1317.9000000001397,
+      "initialPhaseMs": {
+        "readView": 95.80000000004657,
+        "buildings": 988.6999999999534,
+        "landscape": 1824.0999999998603,
+        "world": 4353.600000000093
+      },
+      "month": null,
+      "edits": null
+    },
+    {
+      "profile": "before-cpu",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 8305,
+      "firstHostDrawMs": 706.0999999998603,
+      "initialPhaseMs": {
+        "readView": 81.19999999995343,
+        "buildings": 677.8000000000466,
+        "landscape": 1030.3000000000466,
+        "world": 4008.8000000000466
+      },
+      "month": null,
+      "edits": null
+    },
+    {
+      "profile": "after-cpu",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 8408,
+      "firstHostDrawMs": 1261.8000000000466,
+      "initialPhaseMs": {
+        "readView": 88.80000000004657,
+        "buildings": 534.1999999999534,
+        "landscape": 1269.5,
+        "world": 3655.8000000000466
+      },
+      "month": null,
+      "edits": null
+    },
+    {
+      "profile": "after-cpu",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 6628,
+      "firstHostDrawMs": 601.8000000000466,
+      "initialPhaseMs": {
+        "readView": 81.5,
+        "buildings": 254.9000000001397,
+        "landscape": 710.0999999998603,
+        "world": 3703.600000000093
+      },
+      "month": null,
+      "edits": null
+    },
+    {
+      "profile": "before-edits",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "bootMs": 7340,
+      "firstHostDrawMs": 1188.5,
+      "initialPhaseMs": {
+        "readView": 89.6999999997206,
+        "buildings": 826.2999999998137,
+        "landscape": 1508.3000000002794,
+        "world": 1654.6000000000931
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 944.8000000002794,
+        "updatedInteractiveSceneMs": 4894.200000000186,
+        "simulationMs": [
+          650.2000000001863
+        ],
+        "persistenceMs": [
+          1.1999999997206032,
+          1.2000000001862645
+        ],
+        "finalRevision": "settlement-4",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-3"
+          }
+        }
+      },
+      "edits": [
+        {
+          "name": "road-mode",
+          "synchronousMs": 340.79999999981374,
+          "updatedSceneMs": 1006.6999999997206,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-two-anchors",
+          "synchronousMs": 793.6000000000931,
+          "updatedSceneMs": 5033,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-cancel",
+          "synchronousMs": 335.60000000009313,
+          "updatedSceneMs": 566.6000000000931,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-mode",
+          "synchronousMs": 327.60000000009313,
+          "updatedSceneMs": 583.2000000001863,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-paint",
+          "synchronousMs": 690.2999999998137,
+          "updatedSceneMs": 916.5,
+          "pendingZoning": "1"
+        },
+        {
+          "name": "zone-erase",
+          "synchronousMs": 1034.7999999998137,
+          "updatedSceneMs": 1399.8999999999069,
+          "pendingZoning": "2"
+        },
+        {
+          "name": "zone-commit",
+          "synchronousMs": 408.59999999962747,
+          "updatedSceneMs": 4383.0999999996275,
+          "pendingZoning": "0"
+        }
+      ]
+    },
+    {
+      "profile": "before-edits",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 11152,
+      "firstHostDrawMs": 1250.2999999998137,
+      "initialPhaseMs": {
+        "readView": 89.20000000018626,
+        "buildings": 979.1000000000931,
+        "landscape": 1760.8999999999069,
+        "world": 4587.899999999907
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 993.7000000001863,
+        "updatedInteractiveSceneMs": 8188,
+        "simulationMs": [
+          633.5
+        ],
+        "persistenceMs": [
+          1.5,
+          1.1999999997206032
+        ],
+        "finalRevision": "settlement-4",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-3"
+          }
+        }
+      },
+      "edits": [
+        {
+          "name": "road-mode",
+          "synchronousMs": 455.39999999990687,
+          "updatedSceneMs": 2160.899999999907,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-two-anchors",
+          "synchronousMs": 1027.1000000000931,
+          "updatedSceneMs": 9082.700000000186,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-cancel",
+          "synchronousMs": 451.09999999962747,
+          "updatedSceneMs": 1688.1999999997206,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-mode",
+          "synchronousMs": 444.60000000009313,
+          "updatedSceneMs": 1580.3999999999069,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-paint",
+          "synchronousMs": 882.2999999998137,
+          "updatedSceneMs": 1808.1999999997206,
+          "pendingZoning": "1"
+        },
+        {
+          "name": "zone-erase",
+          "synchronousMs": 1325.6999999997206,
+          "updatedSceneMs": 2011.8999999999069,
+          "pendingZoning": "2"
+        },
+        {
+          "name": "zone-commit",
+          "synchronousMs": 564.5999999996275,
+          "updatedSceneMs": 9012.399999999907,
+          "pendingZoning": "0"
+        }
+      ]
+    },
+    {
+      "profile": "before-edits",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "bootMs": 4516,
+      "firstHostDrawMs": 462.70000000018626,
+      "initialPhaseMs": {
+        "readView": 73.6999999997206,
+        "buildings": 461.70000000018626,
+        "landscape": 771.8999999999069,
+        "world": 1310.2999999998137
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 421.10000000009313,
+        "updatedInteractiveSceneMs": 2943.6999999997206,
+        "simulationMs": [
+          189.59999999962747
+        ],
+        "persistenceMs": [
+          0.7000000001862645,
+          0.8999999999068677
+        ],
+        "finalRevision": "settlement-4",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-3"
+          }
+        }
+      },
+      "edits": [
+        {
+          "name": "road-mode",
+          "synchronousMs": 233.40000000037253,
+          "updatedSceneMs": 599.6000000000931,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-two-anchors",
+          "synchronousMs": 554,
+          "updatedSceneMs": 3149.8000000002794,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-cancel",
+          "synchronousMs": 225,
+          "updatedSceneMs": 369,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-mode",
+          "synchronousMs": 231,
+          "updatedSceneMs": 380.70000000018626,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-paint",
+          "synchronousMs": 464.6999999997206,
+          "updatedSceneMs": 633.3999999999069,
+          "pendingZoning": "1"
+        },
+        {
+          "name": "zone-erase",
+          "synchronousMs": 696.6999999997206,
+          "updatedSceneMs": 870.7999999998137,
+          "pendingZoning": "2"
+        },
+        {
+          "name": "zone-commit",
+          "synchronousMs": 310,
+          "updatedSceneMs": 3095.399999999907,
+          "pendingZoning": "0"
+        }
+      ]
+    },
+    {
+      "profile": "before-edits",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 8538,
+      "firstHostDrawMs": 759.1000000000931,
+      "initialPhaseMs": {
+        "readView": 95.90000000037253,
+        "buildings": 615.2999999998137,
+        "landscape": 1028.5,
+        "world": 4278.200000000186
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 472.89999999990687,
+        "updatedInteractiveSceneMs": 6511.600000000093,
+        "simulationMs": [
+          185.39999999990687
+        ],
+        "persistenceMs": [
+          0.6000000000931323,
+          0.6999999997206032
+        ],
+        "finalRevision": "settlement-4",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-3"
+          }
+        }
+      },
+      "edits": [
+        {
+          "name": "road-mode",
+          "synchronousMs": 311.1999999997206,
+          "updatedSceneMs": 992.8999999999069,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-two-anchors",
+          "synchronousMs": 781.7000000001863,
+          "updatedSceneMs": 6709.4000000003725,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-cancel",
+          "synchronousMs": 424.10000000009313,
+          "updatedSceneMs": 887.8000000002794,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-mode",
+          "synchronousMs": 329.89999999990687,
+          "updatedSceneMs": 807.2999999998137,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-paint",
+          "synchronousMs": 629.7999999998137,
+          "updatedSceneMs": 1061.2999999998137,
+          "pendingZoning": "1"
+        },
+        {
+          "name": "zone-erase",
+          "synchronousMs": 930.7999999998137,
+          "updatedSceneMs": 1240.1999999997206,
+          "pendingZoning": "2"
+        },
+        {
+          "name": "zone-commit",
+          "synchronousMs": 393.79999999981374,
+          "updatedSceneMs": 6212.700000000186,
+          "pendingZoning": "0"
+        }
+      ]
+    },
+    {
+      "profile": "after-edits",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "low",
+      "bootMs": 5240,
+      "firstHostDrawMs": 1152.3999999999069,
+      "initialPhaseMs": {
+        "readView": 82.60000000009313,
+        "buildings": 411.60000000009313,
+        "landscape": 1057.5,
+        "world": 1229.1000000000931
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 936.5,
+        "updatedInteractiveSceneMs": 3873,
+        "simulationMs": [
+          652
+        ],
+        "persistenceMs": [
+          1.099999999627471,
+          1.1000000000931323
+        ],
+        "finalRevision": "settlement-4",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-3"
+          }
+        }
+      },
+      "edits": [
+        {
+          "name": "road-mode",
+          "synchronousMs": 375.20000000018626,
+          "updatedSceneMs": 1034.3000000002794,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-two-anchors",
+          "synchronousMs": 754.7000000001863,
+          "updatedSceneMs": 4099.600000000093,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-cancel",
+          "synchronousMs": 365.60000000009313,
+          "updatedSceneMs": 666.8999999999069,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-mode",
+          "synchronousMs": 340.10000000009313,
+          "updatedSceneMs": 699.6000000000931,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-paint",
+          "synchronousMs": 677.2999999998137,
+          "updatedSceneMs": 1007.5,
+          "pendingZoning": "1"
+        },
+        {
+          "name": "zone-erase",
+          "synchronousMs": 1037.3000000002794,
+          "updatedSceneMs": 1375.6000000000931,
+          "pendingZoning": "2"
+        },
+        {
+          "name": "zone-commit",
+          "synchronousMs": 434.89999999990687,
+          "updatedSceneMs": 3499.8000000002794,
+          "pendingZoning": "0"
+        }
+      ]
+    },
+    {
+      "profile": "after-edits",
+      "homes": 100,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 8437,
+      "firstHostDrawMs": 1239.7999999998137,
+      "initialPhaseMs": {
+        "readView": 96.10000000009313,
+        "buildings": 468,
+        "landscape": 1280,
+        "world": 3773.7000000001863
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 998.2000000001863,
+        "updatedInteractiveSceneMs": 7288.300000000279,
+        "simulationMs": [
+          637.7000000001863
+        ],
+        "persistenceMs": [
+          1.2000000001862645,
+          1
+        ],
+        "finalRevision": "settlement-4",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-3"
+          }
+        }
+      },
+      "edits": [
+        {
+          "name": "road-mode",
+          "synchronousMs": 409.6999999997206,
+          "updatedSceneMs": 1459.1000000000931,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-two-anchors",
+          "synchronousMs": 981.7000000001863,
+          "updatedSceneMs": 7830.300000000279,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-cancel",
+          "synchronousMs": 449,
+          "updatedSceneMs": 1079.9000000003725,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-mode",
+          "synchronousMs": 475.40000000037253,
+          "updatedSceneMs": 1517.4000000003725,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-paint",
+          "synchronousMs": 874.4000000003725,
+          "updatedSceneMs": 1960,
+          "pendingZoning": "1"
+        },
+        {
+          "name": "zone-erase",
+          "synchronousMs": 1277.1000000000931,
+          "updatedSceneMs": 2215.100000000093,
+          "pendingZoning": "2"
+        },
+        {
+          "name": "zone-commit",
+          "synchronousMs": 536.3999999999069,
+          "updatedSceneMs": 7133.100000000093,
+          "pendingZoning": "0"
+        }
+      ]
+    },
+    {
+      "profile": "after-edits",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "low",
+      "bootMs": 3474,
+      "firstHostDrawMs": 508.5,
+      "initialPhaseMs": {
+        "readView": 74.90000000037253,
+        "buildings": 189.5,
+        "landscape": 540.3000000002794,
+        "world": 1157.5
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 425.6999999997206,
+        "updatedInteractiveSceneMs": 2271,
+        "simulationMs": [
+          189
+        ],
+        "persistenceMs": [
+          0.7999999998137355,
+          0.6999999997206032
+        ],
+        "finalRevision": "settlement-4",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-3"
+          }
+        }
+      },
+      "edits": [
+        {
+          "name": "road-mode",
+          "synchronousMs": 241.5,
+          "updatedSceneMs": 512.9000000003725,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-two-anchors",
+          "synchronousMs": 545.8999999999069,
+          "updatedSceneMs": 2616.2000000001863,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-cancel",
+          "synchronousMs": 229.70000000018626,
+          "updatedSceneMs": 416.5,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-mode",
+          "synchronousMs": 230.29999999981374,
+          "updatedSceneMs": 416.60000000009313,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-paint",
+          "synchronousMs": 495.60000000009313,
+          "updatedSceneMs": 649.8000000002794,
+          "pendingZoning": "1"
+        },
+        {
+          "name": "zone-erase",
+          "synchronousMs": 719,
+          "updatedSceneMs": 833.1999999997206,
+          "pendingZoning": "2"
+        },
+        {
+          "name": "zone-commit",
+          "synchronousMs": 317.1999999997206,
+          "updatedSceneMs": 2232.899999999907,
+          "pendingZoning": "0"
+        }
+      ]
+    },
+    {
+      "profile": "after-edits",
+      "homes": 30,
+      "renderer": "three",
+      "quality": "normal",
+      "bootMs": 6497,
+      "firstHostDrawMs": 568,
+      "initialPhaseMs": {
+        "readView": 81.3000000002794,
+        "buildings": 303,
+        "landscape": 701,
+        "world": 3644.4000000003725
+      },
+      "month": {
+        "checked": true,
+        "synchronousSimulationPersistenceAndRefreshMs": 524.1000000000931,
+        "updatedInteractiveSceneMs": 5360.800000000279,
+        "simulationMs": [
+          230
+        ],
+        "persistenceMs": [
+          0.6999999997206032,
+          0.5
+        ],
+        "finalRevision": "settlement-4",
+        "transientLayers": {
+          "buildings": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "world": {
+            "ready": true,
+            "revision": "settlement-3"
+          },
+          "landscape": {
+            "ready": true,
+            "revision": "settlement-3"
+          }
+        }
+      },
+      "edits": [
+        {
+          "name": "road-mode",
+          "synchronousMs": 308,
+          "updatedSceneMs": 874.2999999998137,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-two-anchors",
+          "synchronousMs": 718.3999999999069,
+          "updatedSceneMs": 5546.600000000093,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "road-cancel",
+          "synchronousMs": 316.79999999981374,
+          "updatedSceneMs": 675.7999999998137,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-mode",
+          "synchronousMs": 302.39999999990687,
+          "updatedSceneMs": 837.1000000000931,
+          "pendingZoning": "0"
+        },
+        {
+          "name": "zone-paint",
+          "synchronousMs": 630.3999999999069,
+          "updatedSceneMs": 1166.5999999996275,
+          "pendingZoning": "1"
+        },
+        {
+          "name": "zone-erase",
+          "synchronousMs": 950.8000000002794,
+          "updatedSceneMs": 1720.6000000000931,
+          "pendingZoning": "2"
+        },
+        {
+          "name": "zone-commit",
+          "synchronousMs": 451.10000000009313,
+          "updatedSceneMs": 5751.799999999814,
+          "pendingZoning": "0"
+        }
+      ]
+    }
+  ]
+}

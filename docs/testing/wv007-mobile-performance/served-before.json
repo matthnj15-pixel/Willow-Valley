@@ -1,0 +1,8 @@
+{
+  "url": "https://matthnj15-pixel.github.io/Willow-Valley/dev/",
+  "servedBuildSha": "ffba0efc21743123dcf6fbaa140084eb255e6932",
+  "assetVersion": "95b5b50f7296bdf0",
+  "serviceWorkerSha256": "d4b559f287aff9fa105b4a5a966868b4115d4d03dd8257a95a8bfeafc22740cd",
+  "assetCacheSha256": "07839745beb6fceb35eeb1da8f1dd16e6751d94111ff1e4a480e83139fcb2d7b",
+  "note": "Remote response before implementation deployment; local matched perf contexts block service workers and record empty caches. Nate installed cache and renderer are unknown."
+}

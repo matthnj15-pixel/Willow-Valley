@@ -1,0 +1,46 @@
+[
+  {
+    "homes": 30,
+    "renderer": "three",
+    "quality": "normal",
+    "bootMs": 6559,
+    "errors": [],
+    "month": {
+      "checked": true,
+      "ms": 5779.4000000003725
+    }
+  },
+  {
+    "homes": 30,
+    "renderer": "three",
+    "quality": "low",
+    "bootMs": 3849,
+    "errors": [],
+    "month": {
+      "checked": true,
+      "ms": 2322
+    }
+  },
+  {
+    "homes": 100,
+    "renderer": "three",
+    "quality": "normal",
+    "bootMs": 9412,
+    "errors": [],
+    "month": {
+      "checked": true,
+      "ms": 7233.799999999814
+    }
+  },
+  {
+    "homes": 100,
+    "renderer": "three",
+    "quality": "low",
+    "bootMs": 5393,
+    "errors": [],
+    "month": {
+      "checked": true,
+      "ms": 3922
+    }
+  }
+]

@@ -1,0 +1,104 @@
+{
+  "interpretation": "Pixel differences include live animated water phase. Assess geometry/material/LOD parity with matched images and raw layer records. This is not phone art approval.",
+  "rows": [
+    {
+      "before": "before/100-three-normal-close.png",
+      "after": "after/100-three-normal-close.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 0,
+      "changedFraction": 0,
+      "maxChannelDelta": 0
+    },
+    {
+      "before": "before/100-three-normal-far.png",
+      "after": "after/100-three-normal-far.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 4528,
+      "changedFraction": 0.009909679226659838,
+      "maxChannelDelta": 1
+    },
+    {
+      "before": "before/100-three-normal-town.png",
+      "after": "after/100-three-normal-town.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 1288,
+      "changedFraction": 0.0028188310167707314,
+      "maxChannelDelta": 1
+    },
+    {
+      "before": "before/30-three-normal-close.png",
+      "after": "after/30-three-normal-close.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 362,
+      "changedFraction": 0.0007922490901172397,
+      "maxChannelDelta": 1
+    },
+    {
+      "before": "before/30-three-normal-far.png",
+      "after": "after/30-three-normal-far.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 7154,
+      "changedFraction": 0.015656767930106997,
+      "maxChannelDelta": 1
+    },
+    {
+      "before": "before/30-three-normal-town.png",
+      "after": "after/30-three-normal-town.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 4900,
+      "changedFraction": 0.010723813650758217,
+      "maxChannelDelta": 1
+    },
+    {
+      "before": "before-c4-detail/30-facility-granary.png",
+      "after": "after-c4-detail/30-facility-granary.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 0,
+      "changedFraction": 0,
+      "maxChannelDelta": 0
+    },
+    {
+      "before": "before-c4-detail/30-facility-smith.png",
+      "after": "after-c4-detail/30-facility-smith.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 0,
+      "changedFraction": 0,
+      "maxChannelDelta": 0
+    },
+    {
+      "before": "before-c4-detail/30-home-long-ridge.png",
+      "after": "after-c4-detail/30-home-long-ridge.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 0,
+      "changedFraction": 0,
+      "maxChannelDelta": 0
+    },
+    {
+      "before": "before-c4-detail/30-home-low-hip.png",
+      "after": "after-c4-detail/30-home-low-hip.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 0,
+      "changedFraction": 0,
+      "maxChannelDelta": 0
+    },
+    {
+      "before": "before-c4-detail/30-home-steep-gable.png",
+      "after": "after-c4-detail/30-home-steep-gable.png",
+      "width": 669,
+      "height": 683,
+      "changedPixels": 0,
+      "changedFraction": 0,
+      "maxChannelDelta": 0
+    }
+  ]
+}

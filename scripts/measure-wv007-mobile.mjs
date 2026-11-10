@@ -12,11 +12,12 @@ const revision=process.env.WV007_REVISION||execFileSync('git',['rev-parse','HEAD
 const baseline=process.env.WV007_REVISION,base=process.env.WV007_BASE_URL||'http://127.0.0.1:4173';
 const onlyEdits=process.env.WV007_EDITS_ONLY==='1';
 const onlyCpu=process.env.WV007_CPU_ONLY==='1';
+const onlyDetail=process.env.WV007_DETAIL_ONLY==='1';
 const sourceCache=new Map();
 async function source(path){if(!sourceCache.has(path))sourceCache.set(path,baseline?execFileSync('git',['show',baseline+':'+path],{encoding:'utf8',maxBuffer:16*1024*1024}):await readFile(path,'utf8'));return sourceCache.get(path);}
 const summary=[],browser=await chromium.launch({headless:true});
 try{for(const homes of (process.env.WV007_HOMES||'30,100').split(',').map(Number))for(const [renderer,quality]of [['three','normal'],['three','low'],['webgl','normal']]){
- if((onlyEdits&&renderer!=='three')||(onlyCpu&&(renderer!=='three'||quality!=='normal')))continue;
+ if((onlyEdits&&renderer!=='three')||((onlyCpu||onlyDetail)&&(renderer!=='three'||quality!=='normal')))continue;
  const context=await browser.newContext({viewport:{width:669,height:951},deviceScaleFactor:1,isMobile:true,hasTouch:true,serviceWorkers:'block'});
  const fixture=JSON.parse(await readFile(`render-adoption/profiling/fixtures/${homes}-homes.json`));
  await context.addInitScript(f=>{
@@ -64,14 +65,27 @@ try{for(const homes of (process.env.WV007_HOMES||'30,100').split(',').map(Number
  const records=[];
  const parcel=fixture.state.houses.find(h=>h.parcel),first=fixture.state.houses[0];
  const plannedCamera={...initial.camera,focusX:initial.camera.focusX-115+parcel.x-first.x,focusZ:initial.camera.focusZ+parcel.y-first.y,yaw:Math.PI/4,pitch:.72};
- if(!onlyEdits&&!onlyCpu&&quality==='normal')for(const [view,zoom]of [['close',180],['town',650],['far',1200]]){
+ if(!onlyEdits&&!onlyCpu&&!onlyDetail&&quality==='normal')for(const [view,zoom]of [['close',180],['town',650],['far',1200]]){
   // Reset from the exact initial camera for matched normal screenshots.
   await page.evaluate(async({zoom,camera})=>{probeViewer.setCamera({...camera,zoom});await probeViewer.whenReady?.();await new Promise(requestAnimationFrame);},{zoom,camera:plannedCamera});
   await page.locator('#game3D').screenshot({path:`${output}/${homes}-${renderer}-${quality}-${view}.png`});
   records.push({view,zoom,status:await page.evaluate(()=>probeViewer.assetStatus()),layers:renderer==='three'?await page.evaluate(()=>Object.fromEntries(Object.entries(probeViewer.getAdoptionRuntime().layers).map(([k,l])=>[k,l.status()]))):null});
  }
+ if(onlyDetail)for(const assetId of ['home-steep-gable','home-low-hip','home-long-ridge','facility-smith','facility-granary']){
+  const detail=await page.evaluate(async assetId=>{
+   const v=probeViewer,r=v.getAdoptionRuntime(),{entityBounds}=await import('/dev/render-adoption/integration/visibility.mjs');
+   const p=r.getPlacements().records.find(p=>p.assetId===assetId&&p.mode!=='legacy');if(!p)throw Error('No admitted '+assetId);
+   const e=[...r.getReadView().houses,...r.getReadView().facilities].find(e=>e.key===p.key),w=r.getReadView().world;
+   v.setCamera({focusX:e.savedPosition.x-w.width/2,focusZ:e.savedPosition.y-w.depth/2,zoom:180});await v.whenReady();
+   const box=entityBounds([r.scene]).get(p.key),center=box.getCenter(new (await import('/dev/assets/vendor/three.module.mjs')).Vector3()),yaw=.6,pitch=assetId==='facility-granary'?.5:.72,shift=(center.y-17)/Math.tan(pitch);
+   const camera={focusX:center.x+Math.sin(yaw)*shift,focusZ:center.z-Math.cos(yaw)*shift,zoom:45,yaw,pitch};v.setCamera(camera);await v.whenReady();
+   const placement=r.getPlacements().records.find(n=>n.key===p.key);if(placement.effectiveLod!=='normal')throw Error('Detail did not use normal C4');
+   return {assetId,key:p.key,camera,placement,status:v.assetStatus()};
+  },assetId);
+  await page.locator('#game3D').screenshot({path:`${output}/${homes}-${assetId}.png`});records.push(detail);
+ }
  const runs=[];
- for(let repeat=0;repeat<(onlyEdits?0:3);repeat++)for(const path of ['idle','orbit','pan','zoom']){
+ for(let repeat=0;repeat<(onlyEdits||onlyDetail?0:3);repeat++)for(const path of ['idle','orbit','pan','zoom']){
   const run=await page.evaluate(async({path,repeat,camera,onlyCpu})=>{
    const v=probeViewer,r=v.getAdoptionRuntime?.(),frame=()=>new Promise(requestAnimationFrame),stats=()=>r?{...r.renderer.info.render}:__wvProbe.native;
    v.setCamera({...camera,zoom:650});await v.whenReady?.();await frame();
@@ -102,10 +116,14 @@ try{for(const homes of (process.env.WV007_HOMES||'30,100').split(',').map(Number
    __wvProbe.geometry=[];__wvProbe.draw=[];__wvProbe.uploads=[];__wvProbe.persistence=[];
    const t=performance.now();action();const synchronousMs=performance.now()-t;
    await frame();await v.whenReady();await frame();
-   results.push({name,synchronousMs,updatedSceneMs:performance.now()-t,probe:structuredClone(__wvProbe),pendingZoning:document.querySelector('#game3D').dataset.pendingZoning});
+   results.push({name,synchronousMs,updatedSceneMs:performance.now()-t,probe:structuredClone(__wvProbe),pendingZoning:document.querySelector('#game3D').dataset.pendingZoning,roadDraftReady:!document.querySelector('#confirmRoad').disabled});
   }
   await timed('road-mode',()=>document.querySelector('#roadsBtn').click());
-  await timed('road-two-anchors',()=>{tap(-30,20);tap(30,30);});
+  await timed('road-two-anchors',()=>{
+   tap(-30,20);
+   const extend=[...document.querySelectorAll('button')].find(b=>['Extend road from here','Insert a junction here and extend'].includes(b.textContent.trim()));extend?.click();
+   tap(80,50);if(document.querySelector('#confirmRoad').disabled)throw Error('Road probe did not create a buildable two-anchor draft');
+  });
   await timed('road-cancel',()=>document.querySelector('#cancelRoad').click());
   await timed('zone-mode',()=>document.querySelector('#zoneBtn').click());
   await timed('zone-paint',()=>{send('pointerdown',20,20);send('pointermove',40,25);send('pointerup',40,25);});
@@ -116,7 +134,7 @@ try{for(const homes of (process.env.WV007_HOMES||'30,100').split(',').map(Number
  },plannedCamera):null;
  // Explicitly retain the async month transition, including temporary stale
  // revisions. Readiness is checked again after the final rendered update.
- const month=renderer==='three'&&!onlyCpu?await page.evaluate(async()=>{
+ const month=renderer==='three'&&!onlyCpu&&!onlyDetail?await page.evaluate(async()=>{
   const v=probeViewer,r=v.getAdoptionRuntime(),key='willow-valley:dev:v1:slot:1',before=JSON.parse(localStorage.getItem(key)).state;
   const {advance}=await import('/dev/simulation.mjs'),expected=structuredClone(before);advance(expected,{events:true});
   const snapshots=[],t=performance.now();__wvProbe.geometry=[];__wvProbe.draw=[];__wvProbe.uploads=[];__wvProbe.simulation=[];__wvProbe.persistence=[];
