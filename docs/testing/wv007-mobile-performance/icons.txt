@@ -1,0 +1,16 @@
+
+> willow-valley@0.1.0 build:icons
+> node scripts/build-icons.mjs . .
+
+Generated apple-touch-icon.png 180×180
+Generated icon-192.png 192×192
+Generated icon-512.png 512×512
+✔ WV-ICON-002 generated PNG icons have correct dimensions and signatures (1.071581ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 1
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 39.91524

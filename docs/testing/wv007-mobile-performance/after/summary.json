@@ -1,0 +1,62 @@
+[
+  {
+    "homes": 30,
+    "renderer": "three",
+    "quality": "normal",
+    "bootMs": 6991,
+    "errors": [],
+    "month": {
+      "checked": true,
+      "ms": 4919.199999999953
+    }
+  },
+  {
+    "homes": 30,
+    "renderer": "three",
+    "quality": "low",
+    "bootMs": 3498,
+    "errors": [],
+    "month": {
+      "checked": true,
+      "ms": 1862.8000000000466
+    }
+  },
+  {
+    "homes": 30,
+    "renderer": "webgl",
+    "quality": "normal",
+    "bootMs": 23260,
+    "errors": [],
+    "month": null
+  },
+  {
+    "homes": 100,
+    "renderer": "three",
+    "quality": "normal",
+    "bootMs": 8336,
+    "errors": [],
+    "month": {
+      "checked": true,
+      "ms": 6758
+    }
+  },
+  {
+    "homes": 100,
+    "renderer": "three",
+    "quality": "low",
+    "bootMs": 5203,
+    "errors": [],
+    "month": {
+      "checked": true,
+      "ms": 3684.2000000001863
+    }
+  },
+  {
+    "homes": 100,
+    "renderer": "webgl",
+    "quality": "normal",
+    "bootMs": 22405,
+    "errors": [],
+    "month": null
+  }
+]

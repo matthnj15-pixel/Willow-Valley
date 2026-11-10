@@ -175,7 +175,7 @@ export function createDiagnosticsController(host={}, options={}) {
     if (!run.frames.length) issues.add('no-frame-samples');
     if (!run.sceneRendered) issues.add('no-rendered-scene-evidence');
     const frames=run.frames, stats=percentiles(frames.map(f=>f.intervalMs));
-    return {schema:SCHEMA,createdAt:run.createdAt,completed:run.completed,valid:issues.size===0,issues:[...issues].sort(),
+    return {schema:SCHEMA,presentationProfile:token(options.presentationProfile),createdAt:run.createdAt,completed:run.completed,valid:issues.size===0,issues:[...issues].sort(),
       scenario:run.scenario,cameraPath:`wv007-${run.scenario}-v1`,fixture:run.fixture,fixturePins:run.fixturePins,
       requestedQuality:run.requestedQuality,warmupMs:run.warmupMs,durationMs:run.durationMs,activeMs:run.activeMs,
       interruptions:run.interruptions,invalidSamples:run.invalidSamples,capabilities:run.capabilities,

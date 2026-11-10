@@ -1,0 +1,1055 @@
+{
+  "environment": "Headless Chromium/software renderer, actual live distance/culling policy; device acceptance unverified",
+  "measurements": [
+    {
+      "homes": 30,
+      "quality": "normal",
+      "zoom": 180,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 5,
+        "calls": 96,
+        "triangles": 301052,
+        "points": 0,
+        "lines": 0,
+        "geometries": 173,
+        "textures": 40,
+        "programs": 17
+      },
+      "effectiveHomeLods": {
+        "normal": 3,
+        "low": 0,
+        "distance": 5,
+        "legacy": 16,
+        "culled": 6
+      },
+      "visibleHomeLods": {
+        "normal": 3,
+        "low": 0,
+        "distance": 0,
+        "legacy": 3,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 18478582,
+          "textureBytesEstimate": 55640096,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "normal",
+              "loaded": 27,
+              "expected": 27,
+              "decodedBytesEstimate": 28639248
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 734580,
+          "textureBytesEstimate": 1313160,
+          "loadedQualityImages": [
+            {
+              "quality": "normal",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 1151596,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 30,
+      "quality": "normal",
+      "zoom": 650,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 6,
+        "calls": 215,
+        "triangles": 330308,
+        "points": 0,
+        "lines": 0,
+        "geometries": 173,
+        "textures": 40,
+        "programs": 17
+      },
+      "effectiveHomeLods": {
+        "normal": 3,
+        "low": 0,
+        "distance": 5,
+        "legacy": 16,
+        "culled": 6
+      },
+      "visibleHomeLods": {
+        "normal": 3,
+        "low": 0,
+        "distance": 5,
+        "legacy": 12,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 18478582,
+          "textureBytesEstimate": 55640096,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "normal",
+              "loaded": 27,
+              "expected": 27,
+              "decodedBytesEstimate": 28639248
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 734580,
+          "textureBytesEstimate": 1313160,
+          "loadedQualityImages": [
+            {
+              "quality": "normal",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 1151596,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 30,
+      "quality": "normal",
+      "zoom": 1200,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-draw-call-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 8,
+        "calls": 214,
+        "triangles": 176114,
+        "points": 0,
+        "lines": 0,
+        "geometries": 164,
+        "textures": 40,
+        "programs": 17
+      },
+      "effectiveHomeLods": {
+        "normal": 3,
+        "low": 0,
+        "distance": 5,
+        "legacy": 16,
+        "culled": 6
+      },
+      "visibleHomeLods": {
+        "normal": 3,
+        "low": 0,
+        "distance": 5,
+        "legacy": 15,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 18478582,
+          "textureBytesEstimate": 55640096,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "normal",
+              "loaded": 27,
+              "expected": 27,
+              "decodedBytesEstimate": 28639248
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 0,
+          "textureBytesEstimate": 1313160,
+          "loadedQualityImages": [
+            {
+              "quality": "normal",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 428364,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 30,
+      "quality": "low",
+      "zoom": 180,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 5,
+        "calls": 84,
+        "triangles": 136615,
+        "points": 0,
+        "lines": 0,
+        "geometries": 154,
+        "textures": 24,
+        "programs": 14
+      },
+      "effectiveHomeLods": {
+        "normal": 0,
+        "low": 2,
+        "distance": 5,
+        "legacy": 18,
+        "culled": 5
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 2,
+        "distance": 0,
+        "legacy": 4,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 11566052,
+          "textureBytesEstimate": 33030166,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 380160,
+          "textureBytesEstimate": 329928,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 449820,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 30,
+      "quality": "low",
+      "zoom": 650,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 6,
+        "calls": 203,
+        "triangles": 159329,
+        "points": 0,
+        "lines": 0,
+        "geometries": 154,
+        "textures": 24,
+        "programs": 14
+      },
+      "effectiveHomeLods": {
+        "normal": 0,
+        "low": 2,
+        "distance": 5,
+        "legacy": 18,
+        "culled": 5
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 2,
+        "distance": 5,
+        "legacy": 13,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 11566052,
+          "textureBytesEstimate": 33030166,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 380160,
+          "textureBytesEstimate": 329928,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 449820,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 30,
+      "quality": "low",
+      "zoom": 1200,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-draw-call-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 8,
+        "calls": 214,
+        "triangles": 140425,
+        "points": 0,
+        "lines": 0,
+        "geometries": 149,
+        "textures": 24,
+        "programs": 14
+      },
+      "effectiveHomeLods": {
+        "normal": 0,
+        "low": 2,
+        "distance": 5,
+        "legacy": 18,
+        "culled": 5
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 2,
+        "distance": 5,
+        "legacy": 17,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 11566052,
+          "textureBytesEstimate": 33030166,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 0,
+          "textureBytesEstimate": 329928,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 386460,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "normal",
+      "zoom": 180,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 5,
+        "calls": 140,
+        "triangles": 549404,
+        "points": 0,
+        "lines": 0,
+        "geometries": 206,
+        "textures": 44,
+        "programs": 17
+      },
+      "effectiveHomeLods": {
+        "normal": 5,
+        "low": 0,
+        "distance": 23,
+        "legacy": 41,
+        "culled": 31
+      },
+      "visibleHomeLods": {
+        "normal": 5,
+        "low": 0,
+        "distance": 1,
+        "legacy": 5,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 20542610,
+          "textureBytesEstimate": 55640096,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "normal",
+              "loaded": 27,
+              "expected": 27,
+              "decodedBytesEstimate": 28639248
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 734580,
+          "textureBytesEstimate": 1313160,
+          "loadedQualityImages": [
+            {
+              "quality": "normal",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 1960644,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "normal",
+      "zoom": 650,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 6,
+        "calls": 328,
+        "triangles": 619046,
+        "points": 0,
+        "lines": 0,
+        "geometries": 206,
+        "textures": 44,
+        "programs": 17
+      },
+      "effectiveHomeLods": {
+        "normal": 5,
+        "low": 0,
+        "distance": 23,
+        "legacy": 41,
+        "culled": 31
+      },
+      "visibleHomeLods": {
+        "normal": 5,
+        "low": 0,
+        "distance": 23,
+        "legacy": 30,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 20542610,
+          "textureBytesEstimate": 55640096,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "normal",
+              "loaded": 27,
+              "expected": 27,
+              "decodedBytesEstimate": 28639248
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 734580,
+          "textureBytesEstimate": 1313160,
+          "loadedQualityImages": [
+            {
+              "quality": "normal",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 1960644,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "normal",
+      "zoom": 1200,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 8,
+        "calls": 361,
+        "triangles": 354969,
+        "points": 0,
+        "lines": 0,
+        "geometries": 197,
+        "textures": 44,
+        "programs": 17
+      },
+      "effectiveHomeLods": {
+        "normal": 5,
+        "low": 0,
+        "distance": 23,
+        "legacy": 41,
+        "culled": 31
+      },
+      "visibleHomeLods": {
+        "normal": 5,
+        "low": 0,
+        "distance": 23,
+        "legacy": 40,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 20542610,
+          "textureBytesEstimate": 55640096,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "normal",
+              "loaded": 27,
+              "expected": 27,
+              "decodedBytesEstimate": 28639248
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 0,
+          "textureBytesEstimate": 1313160,
+          "loadedQualityImages": [
+            {
+              "quality": "normal",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 807780,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "low",
+      "zoom": 180,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 5,
+        "calls": 134,
+        "triangles": 287245,
+        "points": 0,
+        "lines": 0,
+        "geometries": 184,
+        "textures": 27,
+        "programs": 14
+      },
+      "effectiveHomeLods": {
+        "normal": 0,
+        "low": 4,
+        "distance": 24,
+        "legacy": 44,
+        "culled": 28
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 4,
+        "distance": 1,
+        "legacy": 6,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 13427572,
+          "textureBytesEstimate": 33030166,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 380160,
+          "textureBytesEstimate": 329928,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 827060,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "low",
+      "zoom": 650,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 6,
+        "calls": 310,
+        "triangles": 341933,
+        "points": 0,
+        "lines": 0,
+        "geometries": 184,
+        "textures": 27,
+        "programs": 14
+      },
+      "effectiveHomeLods": {
+        "normal": 0,
+        "low": 4,
+        "distance": 24,
+        "legacy": 44,
+        "culled": 28
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 4,
+        "distance": 24,
+        "legacy": 30,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 13427572,
+          "textureBytesEstimate": 33030166,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 380160,
+          "textureBytesEstimate": 329928,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 827060,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "homes": 100,
+      "quality": "low",
+      "zoom": 1200,
+      "issues": [
+        "non-device-duration"
+      ],
+      "warnings": [
+        "provisional-triangle-guard",
+        "provisional-draw-call-guard"
+      ],
+      "renderer": {
+        "backend": "three-webgl",
+        "scope": "whole-host-frame",
+        "frame": 8,
+        "calls": 349,
+        "triangles": 317384,
+        "points": 0,
+        "lines": 0,
+        "geometries": 179,
+        "textures": 27,
+        "programs": 14
+      },
+      "effectiveHomeLods": {
+        "normal": 0,
+        "low": 4,
+        "distance": 24,
+        "legacy": 44,
+        "culled": 28
+      },
+      "visibleHomeLods": {
+        "normal": 0,
+        "low": 4,
+        "distance": 24,
+        "legacy": 43,
+        "culled": 0
+      },
+      "resources": {
+        "buildings": {
+          "bufferBytesEstimate": 13427572,
+          "textureBytesEstimate": 33030166,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "low",
+              "loaded": 10,
+              "expected": 10,
+              "decodedBytesEstimate": 6029318
+            },
+            {
+              "quality": "shared",
+              "loaded": 15,
+              "expected": 15,
+              "decodedBytesEstimate": 20971530
+            }
+          ]
+        },
+        "world": {
+          "bufferBytesEstimate": 0,
+          "textureBytesEstimate": 329928,
+          "loadedQualityImages": [
+            {
+              "quality": "low",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        },
+        "landscape": {
+          "bufferBytesEstimate": 731316,
+          "textureBytesEstimate": 0,
+          "loadedQualityImages": [
+            {
+              "quality": "shared",
+              "loaded": 0,
+              "expected": 0,
+              "decodedBytesEstimate": 0
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "errors": []
+}

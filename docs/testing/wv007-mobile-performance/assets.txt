@@ -1,0 +1,102 @@
+
+> willow-valley@0.1.0 build:assets
+> node scripts/build-three.mjs && node scripts/build-architecture.mjs && node scripts/build-wv007-integration.mjs && node scripts/build-asset-cache.mjs && node scripts/validate-assets.mjs && node scripts/validate-wv007-runtime.mjs
+
+prune: Removed types... Primitive (4), Accessor (5)
+prune: Removed types... Primitive (1), Accessor (6)
+prune: Removed types... Primitive (1), Accessor (4)
+prune: Removed types... Primitive (13), Accessor (4)
+prune: Removed types... Primitive (4), Accessor (6)
+prune: Removed types... Primitive (2), Accessor (5)
+prune: Removed types... Primitive (1), Accessor (5)
+prune: Removed types... Primitive (8), Accessor (4)
+prune: Removed types... Primitive (1), Accessor (9)
+prune: Removed types... Primitive (7), Accessor (1)
+prune: Removed types... Primitive (1), Accessor (6)
+prune: Removed types... Primitive (2), Accessor (1)
+prune: Removed types... Accessor (6)
+prune: Removed types... Accessor (2)
+[
+  { id: 'home-long-ridge', triangles: 614, bytes: 49856 },
+  { id: 'home-steep-gable', triangles: 614, bytes: 50160 },
+  { id: 'home-low-hip', triangles: 566, bytes: 47060 },
+  { id: 'home-crooked-wing', triangles: 518, bytes: 45300 },
+  { id: 'home-offset-gables', triangles: 634, bytes: 53504 },
+  { id: 'home-porch-cabin', triangles: 650, bytes: 52952 },
+  { id: 'facility-farm', triangles: 658, bytes: 53844 },
+  { id: 'facility-lumber', triangles: 372, bytes: 41268 },
+  { id: 'facility-smith', triangles: 1160, bytes: 99548 },
+  { id: 'facility-granary', triangles: 480, bytes: 42680 },
+  { id: 'facility-market', triangles: 1250, bytes: 104612 },
+  { id: 'facility-plaza', triangles: 192, bytes: 27076 },
+  { id: 'facility-park', triangles: 534, bytes: 46484 },
+  { id: 'tree-oak', triangles: 196, bytes: 10732 }
+]
+home-long-ridge 0 errors 0 warnings
+home-steep-gable 0 errors 0 warnings
+home-low-hip 0 errors 0 warnings
+home-crooked-wing 0 errors 0 warnings
+home-offset-gables 0 errors 0 warnings
+home-porch-cabin 0 errors 0 warnings
+facility-farm 0 errors 0 warnings
+facility-lumber 0 errors 0 warnings
+facility-smith 0 errors 0 warnings
+facility-granary 0 errors 0 warnings
+facility-market 0 errors 0 warnings
+facility-plaza 0 errors 0 warnings
+facility-park 0 errors 0 warnings
+tree-oak 0 errors 0 warnings
+assets/wv/megakit-v1/study.glb 0 errors 0 warnings
+assets/wv/megakit-catalog-v1/catalog.glb 0 errors 0 warnings
+{
+  "sourceFamilies": {
+    "buildings": "C4",
+    "world": "A3+A1",
+    "landscape": "B",
+    "storage": "D-preview"
+  },
+  "verifiedPins": 113,
+  "glbs": [
+    {
+      "path": "assets/wv/runtime-landscape-v1/normal.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-landscape-v1/low.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-landscape-v1/far.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/c4-normal.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/c4-low.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/c4-distance.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/d-normal.glb",
+      "errors": 0,
+      "warnings": 0
+    },
+    {
+      "path": "assets/wv/runtime-buildings-v1/d-low.glb",
+      "errors": 0,
+      "warnings": 0
+    }
+  ],
+  "physicalDeviceVerified": false
+}
