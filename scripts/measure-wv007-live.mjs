@@ -1,9 +1,10 @@
 // Actual gameplay distance/culling policy, alongside the separate full-detail
 // reference captures. These isolated sessions never access player slots.
 import {chromium} from '@playwright/test';
-import {readFile,writeFile} from 'node:fs/promises';
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
 import {gzipSync} from 'node:zlib';
-const output='docs/testing/wv007-p5',base=process.env.WV007_BASE_URL||'http://127.0.0.1:4173';
+const output=process.env.WV007_OUTPUT||'docs/testing/wv007-p5',base=process.env.WV007_BASE_URL||'http://127.0.0.1:4173';
+await mkdir(output,{recursive:true});
 const browser=await chromium.launch({headless:true}),page=await browser.newPage({viewport:{width:1100,height:950},deviceScaleFactor:1});
 const errors=[],measurements=[];page.on('pageerror',e=>errors.push(e.message));
 const save=(name,data)=>{const text=JSON.stringify(data,null,2)+'\n',compressed=name.endsWith('-full');return writeFile(`${output}/${name}.json${compressed?'.gz':''}`,compressed?gzipSync(text):text);};
@@ -21,7 +22,7 @@ try{
    const old=document.getElementById('integrated'),canvas=old.cloneNode(false);old.replaceWith(canvas);
    const viewer=mountWorld3D(canvas,session.world,{adoption:true,referenceProfile:false,quality:quality==='low'?'lite':'game',animateWater:false,interactive:false}),first=session.getReadView().houses.find(h=>h.parcel);
    viewer.setCamera({focusX:first.savedPosition.x-session.world.width/2,focusZ:first.savedPosition.y-session.world.depth/2,zoom:650});viewer.setSettlement(session.snapshot());await viewer.whenReady();
-   const host=viewer.getAdoptionRuntime(),diagnostics=createDiagnosticsController(host,{requestFrame:()=>null,cancelFrame:()=>{},expectedSourcePins:manifest.expectedSourcePins});let frame;
+   const host=viewer.getAdoptionRuntime(),diagnostics=createDiagnosticsController(host,{requestFrame:()=>null,cancelFrame:()=>{},expectedSourcePins:manifest.expectedSourcePins,presentationProfile:'live-gameplay-water-off'});let frame;
    window.liveHarness={viewer,host,session,async run({zoom=650,scenario='idle',warmupMs=0,durationMs=1000}={}){
     viewer.setCamera({zoom});await viewer.whenReady();
     const driver=scenario==='orbit'?createScenarioDriver(session,scenario,{setCamera:p=>viewer.setCamera(p)}):null;driver?.step(0);await viewer.whenReady();
