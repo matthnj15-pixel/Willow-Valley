@@ -263,8 +263,8 @@
     },
     {
       "path": "render-adoption/integration/presentation.mjs",
-      "bytes": 16348,
-      "sha256": "2603130002976e29649a39ca09a530ba737e3a4616327f0fa7d479919136693e"
+      "bytes": 16610,
+      "sha256": "cc8a3889412198802cbc7c830ce699908ee6f72865fffff3ceecfa41316709e4"
     },
     {
       "path": "render-adoption/integration/read-view.mjs",
@@ -273,8 +273,8 @@
     },
     {
       "path": "render-adoption/integration/renderer.mjs",
-      "bytes": 7715,
-      "sha256": "a464c4cf1abced9faaf1184cbbab6cbddf4f676097cff595c00d8bef166f7b94"
+      "bytes": 7764,
+      "sha256": "8f06c157f05aa18a3ae9bb4f8742416f9c9f7f3ee288cadab34b3d7aa04dd9ea"
     },
     {
       "path": "render-adoption/integration/sampling.mjs",
@@ -308,8 +308,8 @@
     },
     {
       "path": "render-adoption/profiling/index.mjs",
-      "bytes": 17805,
-      "sha256": "98fc7d13a87fee53bb162cc0578d2a0dc7ec9d4246d58482c3e12191e15cbd26"
+      "bytes": 17860,
+      "sha256": "b4d4b95aa97c8904ed46dc0ec1a611d66fe396485308e54fa1a9c064d5ed1deb"
     },
     {
       "path": "render-adoption/profiling/resources.mjs",
@@ -473,8 +473,8 @@
     },
     {
       "path": "ui-kit/wv007-integrated.mjs",
-      "bytes": 3996,
-      "sha256": "95e894df2d2158b40d2cb37843aac80fd18634b1eaa40f6325616cf807fa74f8"
+      "bytes": 4177,
+      "sha256": "4a63d2fd10769be0cd09c012814fc18ba65f658aac2f0a95b207f0f4489fc424"
     },
     {
       "path": "world-gen.mjs",

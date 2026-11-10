@@ -36,7 +36,7 @@
   "outputs": [
     {
       "path": "render-adoption/profiling/index.mjs",
-      "sha256": "98fc7d13a87fee53bb162cc0578d2a0dc7ec9d4246d58482c3e12191e15cbd26"
+      "sha256": "b4d4b95aa97c8904ed46dc0ec1a611d66fe396485308e54fa1a9c064d5ed1deb"
     },
     {
       "path": "render-adoption/profiling/resources.mjs",
